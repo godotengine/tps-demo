@@ -1,12 +1,23 @@
-
-![](screenshot.png)
+![Screenshot of TPS demo](screenshot.png)
 
 ## Third Person Shooter Demo
 
-This third person shooter demo made using Godot, make sure to update to latest
-HEAD to test.
+Third person shooter demo made using [Godot Engine](https://godotengine.org) 3.1.
 
-## Git-LFS
+Note: Until Godot 3.1-stable is released, you need a recent build from Godot's
+*master* branch to run this demo. You can build the engine from source, or use one
+of @Calinou's [nightly builds](https://hugo.pro/projects/godot-builds).
 
-If you plan to checkout or submit PRs to this repo, git-lfs support is
-required, due to the large size of many files.
+### Git LFS
+
+This demo uses [Git LFS](https://git-lfs.github.com/) to store the heaviest assets.
+
+You need to install Git LFS on your system, and then fetch the assets from the LFS
+repository with:
+```
+git lfs fetch
+```
+
+### License
+
+See [LICENSE.txt] for details.
