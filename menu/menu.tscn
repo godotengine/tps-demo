@@ -1,0 +1,1403 @@
+[gd_scene load_steps=64 format=2]
+
+[ext_resource path="res://menu/menu.gd" type="Script" id=1]
+[ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
+[ext_resource path="res://player/player.dae" type="PackedScene" id=3]
+[ext_resource path="res://menu/floor.png" type="Texture" id=4]
+[ext_resource path="res://music/intro.ogg" type="AudioStream" id=5]
+[ext_resource path="res://menu/tps_demo.png" type="Texture" id=6]
+[ext_resource path="res://menu/button_play.png" type="Texture" id=7]
+[ext_resource path="res://menu/button_play_hover.png" type="Texture" id=8]
+[ext_resource path="res://menu/button_settings.png" type="Texture" id=9]
+[ext_resource path="res://menu/button_settings_hover.png" type="Texture" id=10]
+[ext_resource path="res://menu/button_font.tres" type="DynamicFont" id=11]
+[ext_resource path="res://menu/button_pressed.tres" type="StyleBox" id=12]
+[ext_resource path="res://menu/button_normal.tres" type="StyleBox" id=13]
+
+[sub_resource type="PanoramaSky" id=1]
+
+radiance_size = 4
+panorama = ExtResource( 2 )
+
+[sub_resource type="Environment" id=2]
+
+background_mode = 3
+background_sky = SubResource( 1 )
+background_sky_custom_fov = 0.0
+background_color = Color( 0, 0, 0, 1 )
+background_energy = 1.0
+background_canvas_max_layer = 0
+ambient_light_color = Color( 0, 0, 0, 1 )
+ambient_light_energy = 1.0
+ambient_light_sky_contribution = 1.0
+fog_enabled = false
+fog_color = Color( 0.5, 0.6, 0.7, 1 )
+fog_sun_color = Color( 1, 0.9, 0.7, 1 )
+fog_sun_amount = 0.0
+fog_depth_enabled = true
+fog_depth_begin = 10.0
+fog_depth_curve = 1.0
+fog_transmit_enabled = false
+fog_transmit_curve = 1.0
+fog_height_enabled = false
+fog_height_min = 0.0
+fog_height_max = 100.0
+fog_height_curve = 1.0
+tonemap_mode = 0
+tonemap_exposure = 1.0
+tonemap_white = 1.0
+auto_exposure_enabled = false
+auto_exposure_scale = 0.4
+auto_exposure_min_luma = 0.05
+auto_exposure_max_luma = 8.0
+auto_exposure_speed = 0.5
+ss_reflections_enabled = false
+ss_reflections_max_steps = 64
+ss_reflections_fade_in = 0.15
+ss_reflections_fade_out = 2.0
+ss_reflections_depth_tolerance = 0.2
+ss_reflections_roughness = true
+ssao_enabled = false
+ssao_radius = 1.0
+ssao_intensity = 1.0
+ssao_radius2 = 0.0
+ssao_intensity2 = 1.0
+ssao_bias = 0.01
+ssao_light_affect = 0.0
+ssao_ao_channel_affect = 0.0
+ssao_color = Color( 0, 0, 0, 1 )
+ssao_quality = 0
+ssao_blur = 3
+ssao_edge_sharpness = 4.0
+dof_blur_far_enabled = false
+dof_blur_far_distance = 10.0
+dof_blur_far_transition = 5.0
+dof_blur_far_amount = 0.1
+dof_blur_far_quality = 1
+dof_blur_near_enabled = false
+dof_blur_near_distance = 2.0
+dof_blur_near_transition = 1.0
+dof_blur_near_amount = 0.1
+dof_blur_near_quality = 1
+glow_enabled = true
+glow_levels/1 = false
+glow_levels/2 = false
+glow_levels/3 = true
+glow_levels/4 = false
+glow_levels/5 = true
+glow_levels/6 = false
+glow_levels/7 = true
+glow_intensity = 0.4
+glow_strength = 1.0
+glow_bloom = 0.0
+glow_blend_mode = 1
+glow_hdr_threshold = 0.34
+glow_hdr_scale = 2.0
+glow_bicubic_upscale = true
+adjustment_enabled = false
+adjustment_brightness = 1.0
+adjustment_contrast = 1.0
+adjustment_saturation = 1.0
+_sections_unfolded = [ "Background", "Glow", "background_sky", "levels" ]
+
+[sub_resource type="QuadMesh" id=3]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+size = Vector2( 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+flags_do_not_receive_shadows = false
+flags_disable_ambient_light = false
+flags_ensure_correct_normals = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_billboard_keep_scale = false
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 1, 1, 1 )
+albedo_texture = ExtResource( 4 )
+metallic = 0.78
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 1.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_mode = 0
+_sections_unfolded = [ "Albedo", "Metallic", "Roughness" ]
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+
+resource_local_to_scene = true
+filter_enabled = false
+filters = [  ]
+animation = "eyes-cycle"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+
+resource_local_to_scene = true
+filter_enabled = false
+filters = [  ]
+animation = "Idlecombatrest-cycle"
+
+[sub_resource type="AnimationNodeBlend2" id=7]
+
+resource_local_to_scene = true
+filter_enabled = true
+filters = [ "Robot_Skeleton/Skeleton:eyelid.d.L", "Robot_Skeleton/Skeleton:eyelid.d.R", "Robot_Skeleton/Skeleton:eyelid.u.L", "Robot_Skeleton/Skeleton:eyelid.u.R", "Robot_Skeleton/Skeleton:eyes" ]
+sync = false
+
+[sub_resource type="AnimationNodeBlendTree" id=8]
+
+resource_local_to_scene = true
+graph_offset = Vector2( -401, 57 )
+nodes/Animation/node = SubResource( 6 )
+nodes/Animation/position = Vector2( -120, 100 )
+"nodes/Animation 2/node" = SubResource( 5 )
+"nodes/Animation 2/position" = Vector2( -140, 220 )
+nodes/Blend2/node = SubResource( 7 )
+nodes/Blend2/position = Vector2( 180, 120 )
+nodes/output/position = Vector2( 420, 120 )
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="ButtonGroup" id=10]
+
+resource_local_to_scene = true
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="DynamicFontData" id=12]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=13]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 12 )
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="DynamicFontData" id=15]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=16]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 15 )
+
+[sub_resource type="DynamicFontData" id=17]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=18]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 17 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0, 0, 0 )
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 1, 1, 1, 0.6 )
+shadow_size = 3
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="StyleBoxFlat" id=20]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0, 0, 0 )
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 1, 1, 1, 0.6 )
+shadow_size = 3
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="DynamicFontData" id=22]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=23]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 22 )
+
+[sub_resource type="ButtonGroup" id=24]
+
+resource_local_to_scene = true
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="DynamicFontData" id=26]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=27]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 26 )
+
+[sub_resource type="StyleBoxEmpty" id=28]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="DynamicFontData" id=29]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=30]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 29 )
+
+[sub_resource type="StyleBoxEmpty" id=31]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="DynamicFontData" id=32]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=33]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 32 )
+
+[sub_resource type="DynamicFontData" id=34]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=35]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 34 )
+
+[sub_resource type="StyleBoxEmpty" id=36]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="DynamicFontData" id=37]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=38]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 37 )
+
+[sub_resource type="ButtonGroup" id=39]
+
+resource_local_to_scene = true
+
+[sub_resource type="StyleBoxEmpty" id=40]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="DynamicFontData" id=41]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=42]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 41 )
+
+[sub_resource type="StyleBoxEmpty" id=43]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="DynamicFontData" id=44]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=45]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 44 )
+
+[sub_resource type="ButtonGroup" id=46]
+
+resource_local_to_scene = true
+
+[sub_resource type="StyleBoxEmpty" id=47]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="StyleBoxFlat" id=48]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0, 0, 0 )
+draw_center = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.34902, 0.34902, 0.34902, 1 )
+border_blend = false
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 1, 1, 1, 0.6 )
+shadow_size = 3
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="DynamicFontData" id=49]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=50]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 49 )
+
+[node name="main" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+_sections_unfolded = [ "environment" ]
+
+[node name="Scene Root" parent="." instance=ExtResource( 3 )]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 14.9811, 0, 0, 0, -6.54845e-07, 14.9811, 0, -14.9811, -6.54845e-07, 0, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 3 )
+skeleton = NodePath("..")
+material/0 = SubResource( 4 )
+_sections_unfolded = [ "Material", "material/0" ]
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 0.967027, 0, 0.254675, -0.225291, 0.466312, 0.855452, -0.118758, -0.88462, 0.450936, 0.557445, 2.31204, 0.556668 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 1.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.01
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+spot_range = 5.0
+spot_attenuation = 1.0
+spot_angle = 45.0
+spot_angle_attenuation = 1.0
+_sections_unfolded = [ "Light", "Shadow" ]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.871624, -0.0363083, 0.488828, 0, 0.997253, 0.0740721, -0.490175, -0.064563, 0.86923, 0.0702285, 1.22404, 2.09675 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+stream_paused = false
+mix_target = 0
+bus = "Master"
+
+[node name="anim_tree" type="AnimationTree" parent="."]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../Scene Root/AnimationPlayer")
+active = true
+process_mode = 1
+root_motion_track = NodePath("")
+parameters/Blend2/blend_amount = 0
+_sections_unfolded = [ "tree_root" ]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.1403
+margin_top = 5.03506
+margin_right = 1044.14
+margin_bottom = 238.035
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 6 )
+stretch_mode = 0
+
+[node name="ui" type="Control" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="main" type="Control" parent="ui"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="play" type="TextureButton" parent="ui/main"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 100.0
+margin_top = 390.0
+margin_right = 400.0
+margin_bottom = 440.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="settings" type="TextureButton" parent="ui/main"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 100.0
+margin_top = 490.0
+margin_right = 400.0
+margin_bottom = 540.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="settings" type="Control" parent="ui"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="gi_label" type="Label" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 390.0
+margin_right = 368.0
+margin_bottom = 443.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Global Illumination:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts" ]
+
+[node name="gi_high" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 400.0
+margin_top = 390.0
+margin_right = 650.0
+margin_bottom = 447.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 10 )
+text = "High"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="gi_low" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 690.0
+margin_top = 390.0
+margin_right = 940.0
+margin_bottom = 447.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 10 )
+text = "Low"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="gi_disabled" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 980.0
+margin_top = 390.0
+margin_right = 1230.0
+margin_bottom = 447.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = SubResource( 16 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 10 )
+text = "Disabled"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="aa_label" type="Label" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 510.0
+margin_right = 368.0
+margin_bottom = 563.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Anti Aliasing:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts" ]
+
+[node name="aa_8x" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 400.0
+margin_top = 510.0
+margin_right = 650.0
+margin_bottom = 567.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = SubResource( 23 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 24 )
+text = "8x"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="aa_4x" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 690.0
+margin_top = 510.0
+margin_right = 940.0
+margin_bottom = 567.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 25 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = SubResource( 27 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 24 )
+text = "4x"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="aa_2x" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 980.0
+margin_top = 510.0
+margin_right = 1230.0
+margin_bottom = 567.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 28 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = SubResource( 30 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 24 )
+text = "2x"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="aa_disabled" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1270.0
+margin_top = 510.0
+margin_right = 1520.0
+margin_bottom = 567.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 31 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = SubResource( 33 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 24 )
+text = "Disabled"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="ssao_label" type="Label" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 620.0
+margin_right = 368.0
+margin_bottom = 673.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 35 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "SSAO:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts" ]
+
+[node name="ssao_high" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 400.0
+margin_top = 620.0
+margin_right = 650.0
+margin_bottom = 677.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 36 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = SubResource( 38 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 39 )
+text = "High"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="ssao_low" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 690.0
+margin_top = 620.0
+margin_right = 940.0
+margin_bottom = 677.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 40 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = SubResource( 42 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 39 )
+text = "Low"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles" ]
+
+[node name="ssao_disabled" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 980.0
+margin_top = 620.0
+margin_right = 1230.0
+margin_bottom = 677.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 43 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = SubResource( 45 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 39 )
+text = "Disabled"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="resolution_label" type="Label" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 730.0
+margin_right = 368.0
+margin_bottom = 783.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 35 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Resolution:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts" ]
+
+[node name="resolution_native" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 400.0
+margin_top = 730.0
+margin_right = 650.0
+margin_bottom = 787.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 36 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = SubResource( 38 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 46 )
+text = "Native"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="resolution_1080" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 690.0
+margin_top = 730.0
+margin_right = 940.0
+margin_bottom = 787.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 36 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = SubResource( 38 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 46 )
+text = "1080"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="resolution_720" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 980.0
+margin_top = 730.0
+margin_right = 1230.0
+margin_bottom = 787.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 36 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = SubResource( 38 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 46 )
+text = "720"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="resolution_576" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1270.0
+margin_top = 730.0
+margin_right = 1520.0
+margin_bottom = 787.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 36 )
+custom_styles/normal = ExtResource( 13 )
+custom_fonts/font = SubResource( 38 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = SubResource( 46 )
+text = "576"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="apply" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 400.0
+margin_top = 930.0
+margin_right = 650.0
+margin_bottom = 987.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 47 )
+custom_styles/normal = SubResource( 48 )
+custom_fonts/font = SubResource( 50 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Apply"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal", "shortcut" ]
+
+[node name="cancel" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 980.0
+margin_top = 920.0
+margin_right = 1230.0
+margin_bottom = 977.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 47 )
+custom_styles/normal = SubResource( 48 )
+custom_fonts/font = SubResource( 50 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Cancel"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal", "shortcut" ]
+
+[node name="loading" type="Control" parent="ui"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="label" type="Label" parent="ui/loading"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 120.0
+margin_top = 930.0
+margin_right = 288.0
+margin_bottom = 983.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 11 )
+text = "Loading..."
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Custom Fonts" ]
+
+[node name="begin_load_timer" type="Timer" parent="."]
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = false
+
+[connection signal="pressed" from="ui/main/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ui/main/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ui/settings/apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="ui/settings/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="timeout" from="begin_load_timer" to="." method="_on_begin_load_timer_timeout"]
+
+[editable path="Scene Root"]

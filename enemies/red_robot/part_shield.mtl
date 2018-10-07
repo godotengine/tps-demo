@@ -1,0 +1,13 @@
+# Blender MTL File: 'badrobot_large.blend'
+# Material Count: 1
+
+newmtl EvilRobo
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.452006 0.397301 0.361267
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 0
+map_Kd /home/red/coding/godot/Desktop/RobotMalo/EvilRobo-BaseColor.png

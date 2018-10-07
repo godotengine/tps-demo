@@ -1,0 +1,501 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://level/level.gd" type="Script" id=1]
+[ext_resource path="res://level/geometry/demolevel.dae" type="PackedScene" id=2]
+[ext_resource path="res://level/giprobe_data.res" type="GIProbeData" id=3]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://enemies/red_robot/red_robot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://music/music.ogg" type="AudioStream" id=6]
+[ext_resource path="res://level/lightdata.res" type="BakedLightmapData" id=7]
+[ext_resource path="res://fx/smoke/smoke.tscn" type="PackedScene" id=8]
+[ext_resource path="res://fx/plasma/plasma.tscn" type="PackedScene" id=9]
+[ext_resource path="res://level/forklift/forklift.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Environment" id=1]
+
+background_mode = 1
+background_sky_custom_fov = 0.0
+background_color = Color( 0, 0, 0, 1 )
+background_energy = 1.0
+background_canvas_max_layer = 0
+ambient_light_color = Color( 0.258824, 0.203922, 0.152941, 1 )
+ambient_light_energy = 1.0
+ambient_light_sky_contribution = 0.0
+fog_enabled = true
+fog_color = Color( 0.403922, 0.25098, 0.105882, 1 )
+fog_sun_color = Color( 1, 0.9, 0.7, 1 )
+fog_sun_amount = 0.0
+fog_depth_enabled = true
+fog_depth_begin = 3.0
+fog_depth_curve = 1.27456
+fog_transmit_enabled = false
+fog_transmit_curve = 1.03526
+fog_height_enabled = true
+fog_height_min = 0.0
+fog_height_max = -200.0
+fog_height_curve = 0.812252
+tonemap_mode = 2
+tonemap_exposure = 1.0
+tonemap_white = 1.0
+auto_exposure_enabled = false
+auto_exposure_scale = 0.08
+auto_exposure_min_luma = 0.01
+auto_exposure_max_luma = 16.0
+auto_exposure_speed = 2.0
+ss_reflections_enabled = false
+ss_reflections_max_steps = 64
+ss_reflections_fade_in = 0.15
+ss_reflections_fade_out = 2.0
+ss_reflections_depth_tolerance = 0.2
+ss_reflections_roughness = true
+ssao_enabled = true
+ssao_radius = 1.0
+ssao_intensity = 3.0
+ssao_radius2 = 0.0
+ssao_intensity2 = 1.0
+ssao_bias = 0.01
+ssao_light_affect = 0.59
+ssao_ao_channel_affect = 1.0
+ssao_color = Color( 0, 0, 0, 1 )
+ssao_quality = 0
+ssao_blur = 3
+ssao_edge_sharpness = 4.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 100.0
+dof_blur_far_transition = 50.0
+dof_blur_far_amount = 0.1
+dof_blur_far_quality = 1
+dof_blur_near_enabled = true
+dof_blur_near_distance = 2.0
+dof_blur_near_transition = 1.0
+dof_blur_near_amount = 0.1
+dof_blur_near_quality = 1
+glow_enabled = true
+glow_levels/1 = false
+glow_levels/2 = false
+glow_levels/3 = false
+glow_levels/4 = true
+glow_levels/5 = true
+glow_levels/6 = false
+glow_levels/7 = true
+glow_intensity = 0.1
+glow_strength = 1.0
+glow_bloom = 0.2
+glow_blend_mode = 1
+glow_hdr_threshold = 0.7
+glow_hdr_scale = 2.0
+glow_bicubic_upscale = true
+adjustment_enabled = true
+adjustment_brightness = 1.48
+adjustment_contrast = 1.05
+adjustment_saturation = 1.61
+_sections_unfolded = [ "Adjustments", "Ambient Light", "Auto Exposure", "Background", "DOF Far Blur", "DOF Near Blur", "Fog", "Glow", "SS Reflections", "SSAO", "Tonemap", "levels" ]
+
+[sub_resource type="CapsuleShape" id=2]
+
+margin = 0.04
+radius = 39.7506
+height = 78.0251
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "mawaru"
+length = 30.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 30 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -360, 0 ) ]
+}
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Scene Root" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+
+[node name="hallreactor_circ4500_giantpillar003" parent="Scene Root/00ReactorInnerWall" index="26"]
+_sections_unfolded = [ "mesh" ]
+
+[node name="FLOORhall_circ1125_FloorLightsA002" parent="Scene Root" index="90"]
+_sections_unfolded = [ "Material", "mesh" ]
+
+[node name="Point" parent="Scene Root" index="109"]
+transform = Transform( 0.999986, -0.00522796, -2.28521e-10, 0, -4.37114e-08, 1, -0.00522796, -0.999986, -4.37108e-08, 8.46026, -4.73813, 85.4573 )
+light_color = Color( 0.0666667, 0.239216, 0.235294, 1 )
+shadow_enabled = true
+shadow_color = Color( 0.223529, 0.478431, 0.494118, 1 )
+omni_range = 15.0
+_sections_unfolded = [ "Light", "Omni", "Shadow" ]
+
+[node name="Point001" parent="Scene Root" index="110"]
+light_color = Color( 1, 0.647059, 0.0941176, 1 )
+shadow_enabled = true
+omni_range = 25.0
+_sections_unfolded = [ "Light", "Omni", "Shadow" ]
+
+[node name="Point002" parent="Scene Root" index="111"]
+light_color = Color( 0.239216, 0.176471, 0.0666667, 1 )
+shadow_enabled = true
+omni_range = 15.0
+_sections_unfolded = [ "Light", "Omni", "Shadow" ]
+
+[node name="Point004" parent="Scene Root" index="112"]
+light_color = Color( 0.239216, 0.164706, 0.0666667, 1 )
+shadow_enabled = true
+omni_range = 15.0
+_sections_unfolded = [ "Light", "Omni", "Shadow" ]
+
+[node name="Point006" parent="Scene Root" index="113"]
+light_color = Color( 0.0666667, 0.239216, 0.235294, 1 )
+shadow_enabled = true
+omni_range = 15.0
+_sections_unfolded = [ "Light", "Omni", "Shadow" ]
+
+[node name="Point008" parent="Scene Root" index="114"]
+light_color = Color( 0.0666667, 0.239216, 0.235294, 1 )
+shadow_enabled = true
+omni_range = 15.0
+_sections_unfolded = [ "Omni", "Shadow" ]
+
+[node name="Point010" parent="Scene Root" index="115"]
+light_color = Color( 0.0666667, 0.239216, 0.235294, 1 )
+shadow_enabled = true
+omni_range = 15.0
+_sections_unfolded = [ "Omni", "Shadow" ]
+
+[node name="Spot000" parent="Scene Root" index="138"]
+transform = Transform( -0.607523, 0.277253, -0.744343, -3.70498e-09, 0.937103, 0.349052, 0.794302, 0.212058, -0.569312, 28.2569, -3.29872, 75.6575 )
+light_energy = 2.26
+shadow_enabled = true
+spot_range = 26.2797
+_sections_unfolded = [ "Light", "Shadow", "Spot", "Transform" ]
+
+[node name="Spot001" parent="Scene Root" index="139"]
+transform = Transform( 0.0776758, 0.347998, -0.934272, -3.70498e-09, 0.937103, 0.349052, 0.996979, -0.0271129, 0.0727902, 20.3872, 1.99402, 95.6067 )
+light_energy = 2.0
+shadow_enabled = true
+spot_range = 8.75991
+spot_angle = 28.8
+_sections_unfolded = [ "Light", "Shadow", "Spot", "Transform" ]
+
+[node name="Spot002" parent="Scene Root" index="140"]
+transform = Transform( 0.811037, 0.204194, -0.548201, -3.70498e-09, 0.937103, 0.349052, 0.584995, -0.283094, 0.760025, 23.4435, 1.94828, 99.7339 )
+light_energy = 2.0
+shadow_enabled = true
+spot_range = 12.0553
+_sections_unfolded = [ "Light", "Shadow", "Spot", "Transform" ]
+
+[node name="Spot003" parent="Scene Root" index="141"]
+transform = Transform( 0.270754, 0.336015, -0.902101, -3.70498e-09, 0.937103, 0.349052, 0.962649, -0.0945072, 0.253724, 75.3359, -3.51153, 29.3609 )
+light_color = Color( 0.584314, 0.796078, 0.8, 1 )
+light_energy = 4.34
+shadow_enabled = true
+spot_range = 10.0
+_sections_unfolded = [ "Light", "Shadow", "Spot", "Transform" ]
+
+[node name="Spot004" parent="Scene Root" index="142"]
+transform = Transform( -0.947825, 0.111275, -0.298741, -3.70498e-09, 0.937103, 0.349052, 0.318792, 0.330841, -0.88821, 79.4885, -3.55559, 17.7325 )
+light_color = Color( 0.827451, 0.894118, 0.894118, 1 )
+light_energy = 2.0
+shadow_enabled = true
+spot_range = 10.0
+_sections_unfolded = [ "Light", "Shadow", "Spot", "Transform" ]
+
+[node name="Spot005" parent="Scene Root" index="143"]
+transform = Transform( -0.266959, -0.336385, 0.903094, -3.70498e-09, 0.937103, 0.349052, -0.963708, 0.0931828, -0.250168, 83.6479, -3.51461, 39.2692 )
+light_color = Color( 0.827451, 0.894118, 0.894118, 1 )
+light_energy = 3.26
+shadow_enabled = true
+spot_range = 10.0
+_sections_unfolded = [ "Light", "Shadow", "Spot", "Transform" ]
+
+[node name="Spot006" parent="Scene Root" index="144"]
+light_energy = 2.0
+spot_range = 10.0
+spot_angle_attenuation = 0.933033
+_sections_unfolded = [ "Light", "Spot" ]
+
+[node name="Spot007" parent="Scene Root" index="145"]
+light_energy = 2.0
+spot_range = 10.0
+_sections_unfolded = [ "Light", "Spot" ]
+
+[node name="Spot008" parent="Scene Root" index="146"]
+light_color = Color( 0.341176, 0.529412, 0.564706, 1 )
+light_energy = 3.0
+spot_range = 22.0
+_sections_unfolded = [ "Light", "Spot" ]
+
+[node name="Spot009" parent="Scene Root" index="147"]
+light_color = Color( 0.341176, 0.529412, 0.564706, 1 )
+light_energy = 3.0
+spot_range = 22.0
+_sections_unfolded = [ "Light", "Spot" ]
+
+[node name="Spot010" parent="Scene Root" index="148"]
+transform = Transform( -0.287308, 0.481547, -0.827989, 0.047241, 0.870507, 0.489883, 0.956673, 0.101632, -0.272852, 49.1395, -2.7686, 14.9908 )
+light_color = Color( 0.341176, 0.529412, 0.564706, 1 )
+light_energy = 3.0
+shadow_enabled = true
+shadow_bias = 0.1
+spot_range = 26.2797
+spot_angle = 28.8
+_sections_unfolded = [ "Light", "Shadow", "Spot", "Transform" ]
+
+[node name="Spot012" parent="Scene Root" index="149"]
+transform = Transform( 0.0710858, -0.348169, 0.934733, -3.70498e-09, 0.937103, 0.349052, -0.99747, -0.0248127, 0.0666148, 40.7131, -5.08587, 79.4903 )
+light_energy = 2.98
+shadow_enabled = true
+shadow_bias = 0.03
+spot_angle = 26.8
+_sections_unfolded = [ "Light", "Shadow", "Spot", "Transform" ]
+
+[node name="Spot013" parent="Scene Root" index="150"]
+transform = Transform( 0.0710858, -0.348169, 0.934733, -3.70498e-09, 0.937103, 0.349052, -0.99747, -0.0248127, 0.0666148, 40.8719, -5.08675, 77.923 )
+light_energy = 2.26
+shadow_enabled = true
+spot_angle = 30.8
+_sections_unfolded = [ "Light", "Shadow", "Spot", "Transform", "Visibility" ]
+
+[node name="prop_barrel3010" parent="Scene Root" index="210"]
+_sections_unfolded = [ "mesh" ]
+
+[node name="prop_cargobox5b013" parent="Scene Root" index="321"]
+_sections_unfolded = [ "mesh" ]
+
+[node name="prop_container2002" parent="Scene Root" index="334"]
+_sections_unfolded = [ "mesh" ]
+
+[node name="prop_container3001" parent="Scene Root" index="344"]
+_sections_unfolded = [ "mesh" ]
+
+[node name="prop_container3door1005" parent="Scene Root/prop_container3007" index="1"]
+transform = Transform( 1, 0, 0, 3.86238e-12, 1, -9.59978e-10, 0, 0, 1, -1.22162, 1.55, 2.85 )
+_sections_unfolded = [ "Material", "mesh" ]
+
+[node name="prop_container3008" parent="Scene Root" index="349"]
+_sections_unfolded = [ "mesh" ]
+
+[node name="prop_container4bare1004" parent="Scene Root" index="359"]
+_sections_unfolded = [ "mesh" ]
+
+[node name="prop_gastank3009" parent="Scene Root/prop_gastriple002" index="5"]
+transform = Transform( 1, 0, 7.45058e-09, 5.72164e-11, 1, 8.73443e-11, -1.49012e-08, 0, 1, -65.7593, -8.26237, 12.077 )
+
+[node name="prop_lightstick002" parent="Scene Root" index="415"]
+_sections_unfolded = [ "mesh" ]
+
+[node name="prop_lightstick005" parent="Scene Root" index="418"]
+_sections_unfolded = [ "mesh" ]
+
+[node name="scificar_body" parent="Scene Root" index="565"]
+_sections_unfolded = [ "Material", "mesh" ]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+_sections_unfolded = [ "environment" ]
+
+[node name="GIProbe" type="GIProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.09263, 1.28266, 2.88598 )
+layers = 1
+subdiv = 2
+extents = Vector3( 113.946, 48.8048, 117.028 )
+dynamic_range = 4
+energy = 2.2
+propagation = 1.0
+bias = 1.5
+normal_bias = 0.0
+interior = true
+compress = false
+data = ExtResource( 3 )
+
+[node name="robot" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.575826, 0, -0.817573, 0, 1, 0, 0.817573, 0, -0.575826, 64.8183, -1.0765, 78.7639 )
+
+[node name="big_robot" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.843905, 0, -0.536493, 0, 1, 0, 0.536493, 0, 0.843905, 71.5907, -6.05686, 46.2736 )
+
+[node name="big_robot2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.338334, 0, 0.941027, 0, 1, 0, -0.941027, 0, 0.338334, 53.2126, -6.05686, 15.9321 )
+
+[node name="big_robot3" parent="." instance=ExtResource( 5 )]
+transform = Transform( -0.164432, 0, 0.986389, 0, 1, 0, -0.986389, 0, -0.164432, -2.96096, -11.6923, 20.2343 )
+
+[node name="big_robot4" parent="." instance=ExtResource( 5 )]
+transform = Transform( -0.164432, 0, 0.986389, 0, 1, 0, -0.986389, 0, -0.164432, -9.15526, -11.6923, -16.9238 )
+
+[node name="sound_outside" type="Area" parent="."]
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 0
+audio_bus_override = true
+audio_bus_name = "Outside"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Audio Bus", "Collision" ]
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="sound_outside"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+depth = 100.0
+disabled = false
+polygon = PoolVector2Array( -75.798, 98.0935, -18.4854, 34.621, -6.1658, 39.1739, 6.95718, 39.4417, 23.0262, 32.7463, 36.9526, 17.7486, 31.5629, 13.7491, 33.7076, 6.64486, 40.9698, 3.55431, 36.417, -21.6204, 26.5078, -30.1905, 93.7297, -71.4343, 118.637, 0.608329, 70.4297, 120.322, -36.9647, 128.089 )
+
+[node name="sound_reactor_room" type="Area" parent="."]
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 0
+audio_bus_override = true
+audio_bus_name = "Reactor"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Audio Bus", "Collision" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="sound_reactor_room"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 2 )
+disabled = false
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+stream_paused = false
+mix_target = 0
+bus = "Master"
+
+[node name="refprobes" type="Spatial" parent="."]
+visible = false
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="refprobes"]
+transform = Transform( 0.494055, 0, -0.869431, 0, 1, 0, 0.869431, 0, 0.494055, 28.1433, -18.8082, 71.0693 )
+layers = 1
+update_mode = 0
+intensity = 1.0
+max_distance = 0.0
+extents = Vector3( 37.3556, 50, 83.0437 )
+origin_offset = Vector3( 0, 0, 0 )
+box_projection = true
+enable_shadows = false
+cull_mask = 1048575
+interior_enable = true
+interior_ambient_color = Color( 0.239216, 0.160784, 0.0588235, 1 )
+interior_ambient_energy = 1.0
+interior_ambient_contrib = 0.33
+_sections_unfolded = [ "Interior" ]
+
+[node name="ReflectionProbe2" type="ReflectionProbe" parent="refprobes"]
+transform = Transform( 0.999799, 0, -0.0200534, 0, 1, 0, 0.0200534, 0, 0.999799, 73.9972, 0, -12.2086 )
+layers = 1
+update_mode = 0
+intensity = 1.0
+max_distance = 0.0
+extents = Vector3( 35.8169, 50, 64.5769 )
+origin_offset = Vector3( 0, 0, 0 )
+box_projection = true
+enable_shadows = false
+cull_mask = 1048575
+interior_enable = true
+interior_ambient_color = Color( 0.152941, 0.0941176, 0.027451, 1 )
+interior_ambient_energy = 1.0
+interior_ambient_contrib = 0.45
+_sections_unfolded = [ "Interior" ]
+
+[node name="ReflectionProbe3" type="ReflectionProbe" parent="refprobes"]
+transform = Transform( 0.999799, 0, -0.0200534, 0, 1, 0, 0.0200534, 0, 0.999799, -0.392717, -7.57649, 0.0575469 )
+layers = 1
+update_mode = 0
+intensity = 1.0
+max_distance = 0.0
+extents = Vector3( 38.9134, 50, 37.1232 )
+origin_offset = Vector3( 0, 0, 0 )
+box_projection = false
+enable_shadows = false
+cull_mask = 1048575
+interior_enable = true
+interior_ambient_color = Color( 0.2, 0.129412, 0.0470588, 1 )
+interior_ambient_energy = 1.0
+interior_ambient_contrib = 0.3
+_sections_unfolded = [ "Interior" ]
+
+[node name="BakedLightmap" type="BakedLightmap" parent="."]
+layers = 1
+bake_cell_size = 1.0
+bake_quality = 1
+bake_mode = 0
+bake_propagation = 1.0
+bake_energy = 2.2
+bake_hdr = false
+bake_extents = Vector3( 127.692, 56.9907, 126.895 )
+capture_cell_size = 4.0
+image_path = "res://level/baked"
+light_data = ExtResource( 7 )
+_sections_unfolded = [ "Bake", "Capture", "Data", "light_data" ]
+
+[node name="smoke1" parent="." instance=ExtResource( 8 )]
+transform = Transform( 2.81076, 0, 0, 0, 2.81076, 0, 0, 0, 2.81076, -31.0061, -16.8843, 64.9964 )
+
+[node name="smoke3" parent="." instance=ExtResource( 8 )]
+transform = Transform( 2.81076, 0, 0, 0, 2.81076, 0, 0, 0, 2.81076, -57.857, -16.8843, 48.4801 )
+
+[node name="smoke2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 2.81076, 0, 0, 0, 2.81076, 0, 0, 0, 2.81076, 65.1483, -16.8843, -12.7312 )
+
+[node name="plasma" parent="." instance=ExtResource( 9 )]
+transform = Transform( 4.91931, 0, 0, 0, 4.91931, 0, 0, 0, 4.91931, 0, -2.27672, 0.025551 )
+
+[node name="forklifts_a" type="Spatial" parent="."]
+_sections_unfolded = [ "Transform" ]
+
+[node name="Spatial" parent="forklifts_a" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 67.8049, 2.27771, 0 )
+
+[node name="Spatial2" parent="forklifts_a" instance=ExtResource( 10 )]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -68.2496, 2.27771, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="forklifts_a"]
+root_node = NodePath("..")
+autoplay = "mawaru"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/mawaru = SubResource( 3 )
+blend_times = [  ]
+
+
+[editable path="Scene Root"]

@@ -1,0 +1,875 @@
+[gd_scene load_steps=49 format=2]
+
+[ext_resource path="res://enemies/red_robot/red_robot.gd" type="Script" id=1]
+[ext_resource path="res://enemies/red_robot/badrobot_large.dae" type="PackedScene" id=2]
+[ext_resource path="res://enemies/red_robot/ray.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://enemies/red_robot/ray.shader" type="Shader" id=4]
+[ext_resource path="res://enemies/red_robot/ray_texture.png" type="Texture" id=5]
+[ext_resource path="res://enemies/red_robot/ray_smoke_texture.png" type="Texture" id=6]
+[ext_resource path="res://enemies/red_robot/particle.png" type="Texture" id=7]
+[ext_resource path="res://enemies/red_robot/explosion.png" type="Texture" id=8]
+[ext_resource path="res://enemies/red_robot/part_shield.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://enemies/red_robot/EvilRobo.material" type="Material" id=10]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+render_priority = 0
+shader = ExtResource( 4 )
+shader_param/deform = 2.0
+shader_param/transparency = 0.0
+shader_param/energy = 1.0
+shader_param/smoke = 1.0
+shader_param/clip = 20.0
+shader_param/ray_texture = ExtResource( 5 )
+shader_param/smoke_texture = ExtResource( 6 )
+_sections_unfolded = [ "Shader Param", "shader", "shader_param" ]
+
+[sub_resource type="Gradient" id=2]
+
+offsets = PoolRealArray( 0, 0.283019, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.283019, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+
+flags = 4
+gradient = SubResource( 2 )
+width = 2048
+_sections_unfolded = [ "gradient" ]
+
+[sub_resource type="Curve" id=4]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5264 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+
+flags = 4
+width = 2048
+curve = SubResource( 4 )
+_sections_unfolded = [ "curve" ]
+
+[sub_resource type="ParticlesMaterial" id=6]
+
+render_priority = 0
+trail_divisor = 6
+trail_size_modifier = SubResource( 5 )
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = false
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = -0.381543
+angular_velocity_random = 0.0
+linear_accel = 1.0
+linear_accel_random = 1.0
+radial_accel = -1.0
+radial_accel_random = 0.0
+tangential_accel = 1.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 0.1
+scale_random = 0.0
+color_ramp = SubResource( 3 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Emission Shape", "Gravity", "Initial Velocity", "Linear Accel", "Radial Accel", "Scale", "Tangential Accel", "Trail", "trail_size_modifier" ]
+
+[sub_resource type="SpatialMaterial" id=7]
+
+render_priority = 0
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+flags_do_not_receive_shadows = false
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 1
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 3
+params_grow = false
+params_use_alpha_scissor = false
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = 0
+albedo_color = Color( 0.870588, 0.294118, 0.294118, 1 )
+albedo_texture = ExtResource( 7 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Flags", "Parameters", "Vertex Color" ]
+
+[sub_resource type="QuadMesh" id=8]
+
+material = SubResource( 7 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+size = Vector2( 1, 1 )
+
+[sub_resource type="Gradient" id=9]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.961538, 0.960784, 0.960784, 0.960784, 0 )
+
+[sub_resource type="GradientTexture" id=10]
+
+flags = 4
+gradient = SubResource( 9 )
+width = 2048
+_sections_unfolded = [ "gradient" ]
+
+[sub_resource type="Curve" id=11]
+
+min_value = 0.0
+max_value = 2.0
+bake_resolution = 100
+_data = [ Vector2( 0, 0.3856 ), 0.0, 0.0, 0, 0, Vector2( 0.0612366, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.999703, 1.4752 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=12]
+
+flags = 4
+width = 2048
+curve = SubResource( 11 )
+
+[sub_resource type="ParticlesMaterial" id=13]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 1
+emission_sphere_radius = 0.1
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = false
+spread = 180.0
+flatness = 0.0
+gravity = Vector3( 0, 2, 0 )
+initial_velocity = 0.3
+initial_velocity_random = 0.0
+angular_velocity = 84.86
+angular_velocity_random = 1.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 1.0
+scale_random = 0.0
+scale_curve = SubResource( 12 )
+color_ramp = SubResource( 10 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angular Velocity", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread", "color_ramp", "scale_curve" ]
+
+[sub_resource type="SpatialMaterial" id=14]
+
+render_priority = 0
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+flags_do_not_receive_shadows = false
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 1
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 3
+params_grow = false
+params_use_alpha_scissor = false
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = 0
+albedo_color = Color( 1, 1, 1, 1 )
+albedo_texture = ExtResource( 8 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = true
+proximity_fade_distance = 0.2
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Distance Fade", "Flags", "Parameters", "Proximity Fade", "Vertex Color", "albedo_texture" ]
+
+[sub_resource type="QuadMesh" id=15]
+
+material = SubResource( 14 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+size = Vector2( 1, 1 )
+_sections_unfolded = [ "material" ]
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+
+resource_local_to_scene = true
+animation = "TurnRight-cycle"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+
+resource_local_to_scene = true
+animation = "TurnLeft-cycle"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+
+resource_local_to_scene = true
+animation = "Walk-cycle"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+
+resource_local_to_scene = true
+animation = "Damage_take1"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+
+resource_local_to_scene = true
+animation = "Damage_take2"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+
+resource_local_to_scene = true
+animation = "Damage_heavy"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+
+resource_local_to_scene = true
+animation = "Idle-cycle"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+
+resource_local_to_scene = true
+animation = "Cannon-U"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+
+resource_local_to_scene = true
+animation = "Cannon-D"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+
+resource_local_to_scene = true
+animation = "Cannon-R"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+
+resource_local_to_scene = true
+animation = "Cannon-L"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+
+resource_local_to_scene = true
+animation = "Cannon-N"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=28]
+
+resource_local_to_scene = true
+auto_triangles = true
+blend_point_0/node = SubResource( 23 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 24 )
+blend_point_1/pos = Vector2( 0, -1 )
+blend_point_2/node = SubResource( 25 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 26 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_point_4/node = SubResource( 27 )
+blend_point_4/pos = Vector2( 0, 0 )
+triangles = PoolIntArray( 0, 2, 4, 0, 3, 4, 1, 2, 4, 1, 3, 4 )
+min_space = Vector2( -1, -1 )
+max_space = Vector2( 1, 1 )
+snap = Vector2( 0.1, 0.1 )
+blend_position = Vector2( -0.00151747, -0.0113636 )
+x_label = "x"
+y_label = "y"
+
+[sub_resource type="AnimationNodeBlend2" id=29]
+
+resource_local_to_scene = true
+filter_enabled = true
+filters = [ "Armature/Skeleton:Cannon-TrackTurret", "Armature/Skeleton:CannonAnimRecoil" ]
+amount = 0.0
+sync = false
+
+[sub_resource type="AnimationNodeOneShot" id=30]
+
+resource_local_to_scene = true
+filter_enabled = false
+filters = [  ]
+fadein_time = 0.1
+fadeout_time = 0.5
+autorestart = false
+autorestart_delay = 1.0
+autorestart_random_delay = 0.0
+sync = false
+
+[sub_resource type="AnimationNodeOneShot" id=31]
+
+resource_local_to_scene = true
+filter_enabled = false
+filters = [  ]
+fadein_time = 0.1
+fadeout_time = 0.5
+autorestart = false
+autorestart_delay = 1.0
+autorestart_random_delay = 0.0
+sync = false
+
+[sub_resource type="AnimationNodeOneShot" id=32]
+
+resource_local_to_scene = true
+filter_enabled = false
+filters = [  ]
+fadein_time = 0.1
+fadeout_time = 0.5
+autorestart = false
+autorestart_delay = 1.0
+autorestart_random_delay = 0.0
+sync = false
+
+[sub_resource type="AnimationNodeTransition" id=33]
+
+resource_local_to_scene = true
+input_count = 4
+current = 0
+xfade_time = 0.5
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "turn_left"
+input_1/auto_advance = false
+input_2/name = "turn_right"
+input_2/auto_advance = false
+input_3/name = "walk"
+input_3/auto_advance = false
+_sections_unfolded = [ "Input 0", "Input 1", "Input 2", "Input 3" ]
+
+[sub_resource type="AnimationNodeBlendTree" id=34]
+
+resource_local_to_scene = true
+graph_offset = Vector2( -16, 79 )
+nodes/Animation/node = SubResource( 22 )
+nodes/Animation/position = Vector2( -200, 100 )
+"nodes/Animation 2/node" = SubResource( 16 )
+"nodes/Animation 2/position" = Vector2( -200, 340 )
+"nodes/Animation 3/node" = SubResource( 17 )
+"nodes/Animation 3/position" = Vector2( -200, 220 )
+"nodes/Animation 4/node" = SubResource( 18 )
+"nodes/Animation 4/position" = Vector2( -160, 460 )
+"nodes/Animation 5/node" = SubResource( 19 )
+"nodes/Animation 5/position" = Vector2( 200, 440 )
+"nodes/Animation 6/node" = SubResource( 20 )
+"nodes/Animation 6/position" = Vector2( 500, 440 )
+"nodes/Animation 7/node" = SubResource( 21 )
+"nodes/Animation 7/position" = Vector2( 740, 440 )
+nodes/aim/node = SubResource( 28 )
+nodes/aim/position = Vector2( 80, 320 )
+nodes/aiming/node = SubResource( 29 )
+nodes/aiming/position = Vector2( 320, 200 )
+nodes/hit1/node = SubResource( 30 )
+nodes/hit1/position = Vector2( 540, 240 )
+nodes/hit2/node = SubResource( 31 )
+nodes/hit2/position = Vector2( 760, 240 )
+nodes/hit3/node = SubResource( 32 )
+nodes/hit3/position = Vector2( 980, 240 )
+nodes/output/position = Vector2( 1180, 200 )
+nodes/state/node = SubResource( 33 )
+nodes/state/position = Vector2( 60, 100 )
+node_connections = [ "output", 0, "hit3", "state", 0, "Animation", "state", 1, "Animation 3", "state", 2, "Animation 2", "state", 3, "Animation 4", "aiming", 0, "state", "aiming", 1, "aim", "hit1", 0, "aiming", "hit1", 1, "Animation 5", "hit2", 0, "hit1", "hit2", 1, "Animation 6", "hit3", 0, "hit2", "hit3", 1, "Animation 7" ]
+
+[sub_resource type="SphereShape" id=35]
+
+radius = 1.11815
+
+[sub_resource type="SphereShape" id=36]
+
+radius = 18.1337
+
+[sub_resource type="Animation" id=37]
+
+length = 4.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Scene Root/Armature/Skeleton/ray_from/ray:material/0:shader_param/energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 2.1, 2.2, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 5.0, 1.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Scene Root/Armature/Skeleton/ray_from/ray:material/0:shader_param/transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 2.1, 2.6, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Scene Root/Armature/Skeleton/ray_from/ray:material/0:shader_param/deform")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 2.6, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 2.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Scene Root/Armature/Skeleton/ray_from/ray:material/0:shader_param/smoke")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2, 2.2, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("shoot_light:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2, 1.6, 2, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("shoot_light:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.9, 1.6, 2, 2.1, 2.6 ),
+"transitions": PoolRealArray( 1, -2, 4.28709, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 0.0, 0.0, 5.0, 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Scene Root/Armature/Skeleton/ray_from/Particles:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Scene Root/Armature/Skeleton/ray_from/explosion:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 2.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("AnimationTree:active")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = false
+tracks/8/keys = {
+"times": PoolRealArray( 0, 2.6, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 1.9, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot_check"
+}, {
+"args": [  ],
+"method": "resume_approach"
+} ]
+}
+
+[sub_resource type="BoxShape" id=38]
+
+extents = Vector3( 0.499703, 0.514522, 0.0474423 )
+
+[node name="big_robot" type="KinematicBody" index="0"]
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+collision/safe_margin = 0.001
+script = ExtResource( 1 )
+
+[node name="Scene Root" parent="." index="0" instance=ExtResource( 2 )]
+_sections_unfolded = [ "Transform" ]
+
+[node name="Armature" parent="Scene Root" index="0"]
+_sections_unfolded = [ "Transform" ]
+
+[node name="Skeleton" parent="Scene Root/Armature" index="0"]
+bones/14/bound_children = [ NodePath("ray_from") ]
+_sections_unfolded = [ "Transform" ]
+
+[node name="EvilRoboBody" parent="Scene Root/Armature/Skeleton" index="0"]
+_sections_unfolded = [ "mesh" ]
+
+[node name="ray_from" type="BoneAttachment" parent="Scene Root/Armature/Skeleton" index="4"]
+transform = Transform( -0.996181, 0.0216769, 0.0845814, 0.0448158, 0.958298, 0.282233, -0.0749363, 0.284946, -0.95561, 0.0285844, 1.88065, 0.865486 )
+bone_name = "CannonAnimRecoil"
+
+[node name="ray" type="MeshInstance" parent="Scene Root/Armature/Skeleton/ray_from" index="0"]
+transform = Transform( 1, 8.40737e-09, -9.31323e-10, -6.55928e-09, 1, -9.31323e-10, 4.65661e-10, 0, 1, 1.67638e-08, 0, -1.21376 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 3 )
+skeleton = NodePath("")
+material/0 = SubResource( 1 )
+_sections_unfolded = [ "Material", "material/0" ]
+
+[node name="Particles" type="Particles" parent="Scene Root/Armature/Skeleton/ray_from" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.07273 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = false
+amount = 64
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 6 )
+draw_passes = 1
+draw_pass_1 = SubResource( 8 )
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Time", "draw_pass_1", "process_material" ]
+
+[node name="explosion" type="Particles" parent="Scene Root/Armature/Skeleton/ray_from" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0332087, -10.283 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = false
+amount = 64
+lifetime = 0.5
+one_shot = true
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 1.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 13 )
+draw_passes = 1
+draw_pass_1 = SubResource( 15 )
+_sections_unfolded = [ "Draw Passes", "Drawing", "Process Material", "Time", "process_material" ]
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="1"]
+tree_root = SubResource( 34 )
+anim_player = NodePath("../Scene Root/AnimationPlayer")
+active = true
+process_mode = 0
+root_motion_track = NodePath("Armature/Skeleton:MASTER")
+_sections_unfolded = [ "Root Motion", "tree_root" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11655, -0.0212681 )
+shape = SubResource( 35 )
+disabled = false
+
+[node name="area" type="Area" parent="." index="3"]
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="area" index="0"]
+shape = SubResource( 36 )
+disabled = false
+
+[node name="RootMotionView" type="RootMotionView" parent="." index="4"]
+layers = 1
+animation_path = NodePath("../AnimationTree")
+color = Color( 0.5, 0.5, 1, 1 )
+cell_size = 1.0
+radius = 10.0
+zero_y = true
+
+[node name="shoot_anim" type="AnimationPlayer" parent="." index="5"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/shoot = SubResource( 37 )
+blend_times = [  ]
+
+[node name="shoot_light" type="OmniLight" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82358, 2.06607 )
+visible = false
+layers = 1
+light_color = Color( 0.992157, 0.713726, 0.713726, 1 )
+light_energy = 0.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 8.68993
+omni_attenuation = 1.0
+omni_shadow_mode = 0
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni", "Shadow", "Visibility" ]
+
+[node name="death" type="Spatial" parent="." index="7"]
+
+[node name="part_shield" type="RigidBody" parent="death" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81641, 0, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+
+[node name="mesh" type="MeshInstance" parent="death/part_shield" index="0"]
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 9 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 10 )
+_sections_unfolded = [ "Geometry", "Material" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="death/part_shield" index="1"]
+transform = Transform( 1, 0, 0, 0, 0.908425, 0.418048, 0, -0.418048, 0.908425, 1.26196, 1.92252, 0.648781 )
+shape = SubResource( 38 )
+disabled = false
+
+[node name="CollisionShape2" type="CollisionShape" parent="death/part_shield" index="2"]
+transform = Transform( 1, 0, 0, 0, 0.999275, -0.038063, 0, 0.038063, 0.999275, 1.26196, 0.914196, 0.807968 )
+shape = SubResource( 38 )
+disabled = false
+
+[node name="fire" type="Particles" parent="death/part_shield" index="3"]
+transform = Transform( -0.999594, 0.0284228, 0.00205158, 0.0284288, 0.999592, 0.00296096, -0.0019666, 0.00301808, -0.999993, 1.84765, 2.51685, 10.484 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = true
+amount = 32
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 13 )
+draw_passes = 1
+draw_pass_1 = SubResource( 15 )
+_sections_unfolded = [ "Draw Passes", "Process Material", "Time", "draw_pass_1", "process_material" ]
+
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="area" to="." method="_on_area_body_exited"]
+
+[editable path="Scene Root"]
