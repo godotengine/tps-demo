@@ -15,8 +15,12 @@ a high CPU and RAM load when opening the project for the first time.
 
 This demo uses [Git LFS](https://git-lfs.github.com/) to store the heaviest assets.
 
-You need to install Git LFS on your system, and then fetch the assets from the LFS
-repository with:
+You need to install the Git LFS extension on your system, so that Git can fetch the
+assets from the LFS repository. It should happen automatically when using the usual
+Git commands.
+
+If you cloned this Git repository *before* installing Git LFS, you will have to fetch
+the assets manually the first time:
 
 ```text
 git lfs fetch
