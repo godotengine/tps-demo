@@ -2,10 +2,19 @@ All assets (C) 2018 Juan Linietsky, Fernando Miguel Calabró
 Distributed under the terms of the Creative Commons Attribution License
 version 3.0 (CC-BY 3.0) <https://creativecommons.org/licenses/by/3.0/legalcode>.
 
+--
 
-Code under MIT License:
+Music (C) 2018 Christian Fernando Perucchi
+Distributed under the terms of the Creative Commons Attribution License
+version 3.0 (CC-BY 3.0) <https://creativecommons.org/licenses/by/3.0/legalcode>.
 
-Copyright 2018 Juan Linietsky
+--
+
+Existing as derivatived work, many original Substance Painter materials used to create this scene were kindly provided by GameTextures.com
+
+--
+
+Code under MIT License, Copyright 2018 Juan Linietsky and Godot Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
