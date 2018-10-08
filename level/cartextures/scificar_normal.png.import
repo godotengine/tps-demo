@@ -14,6 +14,7 @@ dest_files=[ "res://.import/scificar_normal.png-173b7bd0b35684e82e76ddb7668bbed8
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=1
 flags/repeat=true
 flags/filter=true

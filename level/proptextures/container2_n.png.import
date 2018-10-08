@@ -14,6 +14,7 @@ dest_files=[ "res://.import/container2_n.png-46b8fd87854f9a6b56d4a9f9a5447d8b.s3
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=1
 flags/repeat=true
 flags/filter=true

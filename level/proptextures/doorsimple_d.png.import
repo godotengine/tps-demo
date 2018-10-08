@@ -14,6 +14,7 @@ dest_files=[ "res://.import/doorsimple_d.png-06d2d6131ca3317728c5b94e94e753f4.s3
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

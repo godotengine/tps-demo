@@ -14,6 +14,7 @@ dest_files=[ "res://.import/scificar_emissive.png-fd269a6887b6a0ad32d67219562b2f
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

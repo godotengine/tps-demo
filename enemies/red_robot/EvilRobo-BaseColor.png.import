@@ -14,6 +14,7 @@ dest_files=[ "res://.import/EvilRobo-BaseColor.png-e1a7e1393d4f8b785136b1fbae2e6
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

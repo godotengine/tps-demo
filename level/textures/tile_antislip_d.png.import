@@ -14,6 +14,7 @@ dest_files=[ "res://.import/tile_antislip_d.png-179d445737fc11aacf1377603c59e6ed
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

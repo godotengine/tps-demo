@@ -14,6 +14,7 @@ dest_files=[ "res://.import/tile_steel_n.png-91486b9a779af0dd751fe3e838b8a53f.s3
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=1
 flags/repeat=true
 flags/filter=true

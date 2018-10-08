@@ -14,6 +14,7 @@ dest_files=[ "res://.import/playerrobot_diffusion.png-87af19dce8d18d8080572c9165
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

@@ -14,6 +14,7 @@ dest_files=[ "res://.import/tile_techpanels2color_n.png-fdd405f5db4236be65e017ad
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true

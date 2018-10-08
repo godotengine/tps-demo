@@ -14,6 +14,7 @@ dest_files=[ "res://.import/LargeContainer1_container1_Normal.png-4680a3e52e13b0
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true

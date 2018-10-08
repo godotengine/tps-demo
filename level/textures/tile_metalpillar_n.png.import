@@ -14,6 +14,7 @@ dest_files=[ "res://.import/tile_metalpillar_n.png-57da421ea3f3cad01addb1caa387c
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=1
 flags/repeat=true
 flags/filter=true

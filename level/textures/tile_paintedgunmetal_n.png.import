@@ -14,6 +14,7 @@ dest_files=[ "res://.import/tile_paintedgunmetal_n.png-18bf74efab8aeed852e473589
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=1
 flags/repeat=true
 flags/filter=true

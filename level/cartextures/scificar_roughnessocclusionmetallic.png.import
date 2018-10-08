@@ -14,6 +14,7 @@ dest_files=[ "res://.import/scificar_roughnessocclusionmetallic.png-8e7b7e8c724d
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

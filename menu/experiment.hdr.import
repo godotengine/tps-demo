@@ -14,6 +14,7 @@ dest_files=[ "res://.import/experiment.hdr-b8c588f778b1bbe816e1780c3767a773.stex
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true

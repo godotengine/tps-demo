@@ -14,6 +14,7 @@ dest_files=[ "res://.import/column_n.png-8b821599eef47b1e08305b708a3484bc.s3tc.s
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=1
 flags/repeat=true
 flags/filter=true

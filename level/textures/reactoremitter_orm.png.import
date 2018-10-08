@@ -14,6 +14,7 @@ dest_files=[ "res://.import/reactoremitter_orm.png-c8ed41d2ef604e71dfa0e9605833d
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

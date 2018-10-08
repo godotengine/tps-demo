@@ -14,6 +14,7 @@ dest_files=[ "res://.import/set_asphalt_d.png-3b00f66fffc673d2311b948f91778de4.s
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

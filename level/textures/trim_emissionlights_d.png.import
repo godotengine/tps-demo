@@ -14,6 +14,7 @@ dest_files=[ "res://.import/trim_emissionlights_d.png-9a0a53d0d99b1e683348c4e0cb
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

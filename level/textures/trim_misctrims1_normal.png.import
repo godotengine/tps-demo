@@ -14,6 +14,7 @@ dest_files=[ "res://.import/trim_misctrims1_normal.png-db4843f7c251b6a7a2ba8a81f
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=1
 flags/repeat=true
 flags/filter=true

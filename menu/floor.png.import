@@ -14,6 +14,7 @@ dest_files=[ "res://.import/floor.png-cfea6a18452e506a975e8d6895f52a1e.s3tc.stex
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

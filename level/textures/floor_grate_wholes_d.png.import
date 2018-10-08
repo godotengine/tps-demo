@@ -14,6 +14,7 @@ dest_files=[ "res://.import/floor_grate_wholes_d.png-c2eda738f3f77fae0f249280e59
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

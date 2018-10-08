@@ -14,6 +14,7 @@ dest_files=[ "res://.import/tile_glass_e.png-d4c586a0ec83d7b817be05e8b20ce846.s3
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

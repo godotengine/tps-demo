@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://enemies/red_robot/red_robot.gd" type="Script" id=1]
 [ext_resource path="res://enemies/red_robot/badrobot_large.dae" type="PackedScene" id=2]
@@ -34,72 +34,7 @@ shader_param/ray_texture = ExtResource( 5 )
 shader_param/smoke_texture = ExtResource( 6 )
 _sections_unfolded = [ "Resource", "Shader Param", "shader", "shader_param" ]
 
-[sub_resource type="Gradient" id=2]
-
-offsets = PoolRealArray( 0, 0.283019, 1 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.283019, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=3]
-
-flags = 4
-gradient = SubResource( 2 )
-width = 2048
-_sections_unfolded = [ "gradient" ]
-
-[sub_resource type="Curve" id=4]
-
-min_value = 0.0
-max_value = 1.0
-bake_resolution = 100
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5264 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=5]
-
-flags = 4
-width = 2048
-curve = SubResource( 4 )
-_sections_unfolded = [ "curve" ]
-
-[sub_resource type="ParticlesMaterial" id=6]
-
-render_priority = 0
-trail_divisor = 6
-trail_size_modifier = SubResource( 5 )
-emission_shape = 1
-emission_sphere_radius = 1.0
-flag_align_y = false
-flag_rotate_y = false
-flag_disable_z = false
-spread = 45.0
-flatness = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.0
-initial_velocity_random = 0.0
-angular_velocity = -0.381543
-angular_velocity_random = 0.0
-linear_accel = 1.0
-linear_accel_random = 1.0
-radial_accel = -1.0
-radial_accel_random = 0.0
-tangential_accel = 1.0
-tangential_accel_random = 0.0
-damping = 0.0
-damping_random = 0.0
-angle = 0.0
-angle_random = 0.0
-scale = 0.1
-scale_random = 0.0
-color_ramp = SubResource( 3 )
-hue_variation = 0.0
-hue_variation_random = 0.0
-anim_speed = 0.0
-anim_speed_random = 0.0
-anim_offset = 0.0
-anim_offset_random = 0.0
-anim_loop = false
-_sections_unfolded = [ "Emission Shape", "Gravity", "Initial Velocity", "Linear Accel", "Radial Accel", "Scale", "Tangential Accel", "Trail", "trail_size_modifier" ]
-
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=2]
 
 render_priority = 0
 flags_transparent = true
@@ -159,78 +94,19 @@ proximity_fade_enable = false
 distance_fade_mode = 0
 _sections_unfolded = [ "Albedo", "Flags", "Parameters", "Vertex Color" ]
 
-[sub_resource type="QuadMesh" id=8]
+[sub_resource type="QuadMesh" id=3]
 
-material = SubResource( 7 )
+material = SubResource( 2 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 1, 1 )
 
-[sub_resource type="Gradient" id=9]
+[sub_resource type="Gradient" id=4]
 
-offsets = PoolRealArray( 0, 1 )
-colors = PoolColorArray( 1, 1, 1, 0.961538, 0.960784, 0.960784, 0.960784, 0 )
+offsets = PoolRealArray( 0, 0.283019, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.283019, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=10]
-
-flags = 4
-gradient = SubResource( 9 )
-width = 2048
-_sections_unfolded = [ "gradient" ]
-
-[sub_resource type="Curve" id=11]
-
-min_value = 0.0
-max_value = 2.0
-bake_resolution = 100
-_data = [ Vector2( 0, 0.3856 ), 0.0, 0.0, 0, 0, Vector2( 0.0490487, 1.5632 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.0528 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=12]
-
-flags = 4
-width = 2048
-curve = SubResource( 11 )
-_sections_unfolded = [ "curve" ]
-
-[sub_resource type="ParticlesMaterial" id=13]
-
-render_priority = 0
-trail_divisor = 1
-emission_shape = 0
-flag_align_y = false
-flag_rotate_y = false
-flag_disable_z = false
-spread = 180.0
-flatness = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.3
-initial_velocity_random = 0.0
-angular_velocity = 35.2
-angular_velocity_random = 1.0
-linear_accel = 0.0
-linear_accel_random = 0.0
-radial_accel = 0.0
-radial_accel_random = 0.0
-tangential_accel = 0.0
-tangential_accel_random = 0.0
-damping = 0.0
-damping_random = 0.0
-angle = 0.0
-angle_random = 0.0
-scale = 4.0
-scale_random = 0.0
-scale_curve = SubResource( 12 )
-color_ramp = SubResource( 10 )
-hue_variation = 0.0
-hue_variation_random = 0.0
-anim_speed = 0.0
-anim_speed_random = 0.0
-anim_offset = 0.0
-anim_offset_random = 0.0
-anim_loop = false
-_sections_unfolded = [ "Angular Velocity", "Gravity", "Initial Velocity", "Scale", "Spread", "scale_curve" ]
-
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="SpatialMaterial" id=5]
 
 render_priority = 0
 flags_transparent = true
@@ -291,111 +167,123 @@ proximity_fade_distance = 0.2
 distance_fade_mode = 0
 _sections_unfolded = [ "Albedo", "Distance Fade", "Flags", "Parameters", "Proximity Fade", "Vertex Color", "albedo_texture" ]
 
-[sub_resource type="QuadMesh" id=15]
+[sub_resource type="QuadMesh" id=6]
 
-material = SubResource( 14 )
+material = SubResource( 5 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 1, 1 )
 _sections_unfolded = [ "material" ]
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="Curve" id=7]
+
+min_value = 0.0
+max_value = 2.0
+bake_resolution = 100
+_data = [ Vector2( 0, 0.3856 ), 0.0, 0.0, 0, 0, Vector2( 0.0490487, 1.5632 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.0528 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=8]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.961538, 0.960784, 0.960784, 0.960784, 0 )
+
+[sub_resource type="AnimationNodeAnimation" id=9]
 
 resource_local_to_scene = true
 filter_enabled = false
 filters = [  ]
 animation = "TurnRight-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=10]
 
 resource_local_to_scene = true
 filter_enabled = false
 filters = [  ]
 animation = "TurnLeft-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=11]
 
 resource_local_to_scene = true
 filter_enabled = false
 filters = [  ]
 animation = "Walk-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=12]
 
 resource_local_to_scene = true
 filter_enabled = false
 filters = [  ]
 animation = "Damage_take1"
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=13]
 
 resource_local_to_scene = true
 filter_enabled = false
 filters = [  ]
 animation = "Damage_take2"
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=14]
 
 resource_local_to_scene = true
 filter_enabled = false
 filters = [  ]
 animation = "Damage_heavy"
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=15]
 
 resource_local_to_scene = true
 filter_enabled = false
 filters = [  ]
 animation = "Idle-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=23]
+[sub_resource type="AnimationNodeAnimation" id=16]
 
 resource_local_to_scene = true
 filter_enabled = false
 filters = [  ]
 animation = "Cannon-U"
 
-[sub_resource type="AnimationNodeAnimation" id=24]
+[sub_resource type="AnimationNodeAnimation" id=17]
 
 resource_local_to_scene = true
 filter_enabled = false
 filters = [  ]
 animation = "Cannon-D"
 
-[sub_resource type="AnimationNodeAnimation" id=25]
+[sub_resource type="AnimationNodeAnimation" id=18]
 
 resource_local_to_scene = true
 filter_enabled = false
 filters = [  ]
 animation = "Cannon-R"
 
-[sub_resource type="AnimationNodeAnimation" id=26]
+[sub_resource type="AnimationNodeAnimation" id=19]
 
 resource_local_to_scene = true
 filter_enabled = false
 filters = [  ]
 animation = "Cannon-L"
 
-[sub_resource type="AnimationNodeAnimation" id=27]
+[sub_resource type="AnimationNodeAnimation" id=20]
 
 resource_local_to_scene = true
 filter_enabled = false
 filters = [  ]
 animation = "Cannon-N"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=28]
+[sub_resource type="AnimationNodeBlendSpace2D" id=21]
 
 resource_local_to_scene = true
 auto_triangles = true
-blend_point_0/node = SubResource( 23 )
+blend_point_0/node = SubResource( 16 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 24 )
+blend_point_1/node = SubResource( 17 )
 blend_point_1/pos = Vector2( 0, -1 )
-blend_point_2/node = SubResource( 25 )
+blend_point_2/node = SubResource( 18 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 26 )
+blend_point_3/node = SubResource( 19 )
 blend_point_3/pos = Vector2( -1, 0 )
-blend_point_4/node = SubResource( 27 )
+blend_point_4/node = SubResource( 20 )
 blend_point_4/pos = Vector2( 0, 0 )
 triangles = PoolIntArray( 0, 2, 4, 0, 3, 4, 1, 2, 4, 1, 3, 4 )
 min_space = Vector2( -1, -1 )
@@ -404,14 +292,14 @@ snap = Vector2( 0.1, 0.1 )
 x_label = "x"
 y_label = "y"
 
-[sub_resource type="AnimationNodeBlend2" id=29]
+[sub_resource type="AnimationNodeBlend2" id=22]
 
 resource_local_to_scene = true
 filter_enabled = true
 filters = [ "Armature/Skeleton:Cannon-TrackTurret", "Armature/Skeleton:CannonAnimRecoil" ]
 sync = false
 
-[sub_resource type="AnimationNodeOneShot" id=30]
+[sub_resource type="AnimationNodeOneShot" id=23]
 
 resource_local_to_scene = true
 filter_enabled = false
@@ -423,7 +311,7 @@ autorestart_delay = 1.0
 autorestart_random_delay = 0.0
 sync = false
 
-[sub_resource type="AnimationNodeOneShot" id=31]
+[sub_resource type="AnimationNodeOneShot" id=24]
 
 resource_local_to_scene = true
 filter_enabled = false
@@ -435,7 +323,7 @@ autorestart_delay = 1.0
 autorestart_random_delay = 0.0
 sync = false
 
-[sub_resource type="AnimationNodeOneShot" id=32]
+[sub_resource type="AnimationNodeOneShot" id=25]
 
 resource_local_to_scene = true
 filter_enabled = false
@@ -447,7 +335,7 @@ autorestart_delay = 1.0
 autorestart_random_delay = 0.0
 sync = false
 
-[sub_resource type="AnimationNodeTransition" id=33]
+[sub_resource type="AnimationNodeTransition" id=26]
 
 resource_local_to_scene = true
 input_count = 4
@@ -462,50 +350,50 @@ input_3/name = "walk"
 input_3/auto_advance = false
 _sections_unfolded = [ "Input 0", "Input 1", "Input 2", "Input 3" ]
 
-[sub_resource type="AnimationNodeBlendTree" id=34]
+[sub_resource type="AnimationNodeBlendTree" id=27]
 
 resource_local_to_scene = true
 graph_offset = Vector2( 0, 196.5 )
-nodes/Animation/node = SubResource( 22 )
+nodes/Animation/node = SubResource( 15 )
 nodes/Animation/position = Vector2( -200, 100 )
-"nodes/Animation 2/node" = SubResource( 16 )
+"nodes/Animation 2/node" = SubResource( 9 )
 "nodes/Animation 2/position" = Vector2( -200, 340 )
-"nodes/Animation 3/node" = SubResource( 17 )
+"nodes/Animation 3/node" = SubResource( 10 )
 "nodes/Animation 3/position" = Vector2( -200, 220 )
-"nodes/Animation 4/node" = SubResource( 18 )
+"nodes/Animation 4/node" = SubResource( 11 )
 "nodes/Animation 4/position" = Vector2( -160, 460 )
-"nodes/Animation 5/node" = SubResource( 19 )
+"nodes/Animation 5/node" = SubResource( 12 )
 "nodes/Animation 5/position" = Vector2( 200, 440 )
-"nodes/Animation 6/node" = SubResource( 20 )
+"nodes/Animation 6/node" = SubResource( 13 )
 "nodes/Animation 6/position" = Vector2( 500, 440 )
-"nodes/Animation 7/node" = SubResource( 21 )
+"nodes/Animation 7/node" = SubResource( 14 )
 "nodes/Animation 7/position" = Vector2( 740, 440 )
-nodes/aim/node = SubResource( 28 )
+nodes/aim/node = SubResource( 21 )
 nodes/aim/position = Vector2( 80, 320 )
-nodes/aiming/node = SubResource( 29 )
+nodes/aiming/node = SubResource( 22 )
 nodes/aiming/position = Vector2( 320, 200 )
-nodes/hit1/node = SubResource( 30 )
+nodes/hit1/node = SubResource( 23 )
 nodes/hit1/position = Vector2( 540, 240 )
-nodes/hit2/node = SubResource( 31 )
+nodes/hit2/node = SubResource( 24 )
 nodes/hit2/position = Vector2( 760, 240 )
-nodes/hit3/node = SubResource( 32 )
+nodes/hit3/node = SubResource( 25 )
 nodes/hit3/position = Vector2( 980, 240 )
 nodes/output/position = Vector2( 1180, 200 )
-nodes/state/node = SubResource( 33 )
+nodes/state/node = SubResource( 26 )
 nodes/state/position = Vector2( 60, 100 )
 node_connections = [ "output", 0, "hit3", "state", 0, "Animation", "state", 1, "Animation 3", "state", 2, "Animation 2", "state", 3, "Animation 4", "aiming", 0, "state", "aiming", 1, "aim", "hit1", 0, "aiming", "hit1", 1, "Animation 5", "hit2", 0, "hit1", "hit2", 1, "Animation 6", "hit3", 0, "hit2", "hit3", 1, "Animation 7" ]
 
-[sub_resource type="SphereShape" id=35]
+[sub_resource type="SphereShape" id=28]
 
 margin = 0.04
 radius = 1.11815
 
-[sub_resource type="SphereShape" id=36]
+[sub_resource type="SphereShape" id=29]
 
 margin = 0.04
 radius = 18.1337
 
-[sub_resource type="Animation" id=37]
+[sub_resource type="Animation" id=30]
 
 length = 4.0
 loop = false
@@ -654,88 +542,24 @@ tracks/10/keys = {
 "times": PoolRealArray( 0, 2.1 )
 }
 
-[sub_resource type="PhysicsMaterial" id=38]
+[sub_resource type="PhysicsMaterial" id=31]
 
 friction = 1.0
 rough = false
 bounce = 0.0
 absorbent = false
 
-[sub_resource type="BoxShape" id=39]
+[sub_resource type="BoxShape" id=32]
 
 margin = 0.04
 extents = Vector3( 0.445466, 0.622832, 0.0474423 )
 
-[sub_resource type="BoxShape" id=40]
+[sub_resource type="BoxShape" id=33]
 
 margin = 0.04
 extents = Vector3( 0.432293, 0.514522, 0.0474423 )
 
-[sub_resource type="Gradient" id=41]
-
-offsets = PoolRealArray( 0, 1 )
-colors = PoolColorArray( 1, 1, 1, 0.961538, 0.960784, 0.960784, 0.960784, 0 )
-
-[sub_resource type="GradientTexture" id=42]
-
-flags = 4
-gradient = SubResource( 41 )
-width = 2048
-_sections_unfolded = [ "gradient" ]
-
-[sub_resource type="Curve" id=43]
-
-min_value = 0.0
-max_value = 2.0
-bake_resolution = 100
-_data = [ Vector2( 0, 0.3856 ), 0.0, 0.0, 0, 0, Vector2( 0.0612366, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.999703, 1.4752 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=44]
-
-flags = 4
-width = 2048
-curve = SubResource( 43 )
-
-[sub_resource type="ParticlesMaterial" id=45]
-
-render_priority = 0
-trail_divisor = 1
-emission_shape = 1
-emission_sphere_radius = 0.1
-flag_align_y = false
-flag_rotate_y = false
-flag_disable_z = false
-spread = 180.0
-flatness = 0.0
-gravity = Vector3( 0, 2, 0 )
-initial_velocity = 0.3
-initial_velocity_random = 0.0
-angular_velocity = 84.86
-angular_velocity_random = 1.0
-linear_accel = 0.0
-linear_accel_random = 0.0
-radial_accel = 0.0
-radial_accel_random = 0.0
-tangential_accel = 0.0
-tangential_accel_random = 0.0
-damping = 0.0
-damping_random = 0.0
-angle = 0.0
-angle_random = 0.0
-scale = 1.0
-scale_random = 0.0
-scale_curve = SubResource( 44 )
-color_ramp = SubResource( 42 )
-hue_variation = 0.0
-hue_variation_random = 0.0
-anim_speed = 0.0
-anim_speed_random = 0.0
-anim_offset = 0.0
-anim_offset_random = 0.0
-anim_loop = false
-_sections_unfolded = [ "Angular Velocity", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread", "color_ramp", "scale_curve" ]
-
-[sub_resource type="SpatialMaterial" id=46]
+[sub_resource type="SpatialMaterial" id=34]
 
 render_priority = 0
 flags_transparent = true
@@ -796,39 +620,51 @@ proximity_fade_distance = 0.2
 distance_fade_mode = 0
 _sections_unfolded = [ "Albedo", "Distance Fade", "Flags", "Parameters", "Proximity Fade", "Vertex Color", "albedo_texture" ]
 
-[sub_resource type="QuadMesh" id=47]
+[sub_resource type="QuadMesh" id=35]
 
-material = SubResource( 46 )
+material = SubResource( 34 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 1, 1 )
 _sections_unfolded = [ "material" ]
 
-[sub_resource type="PhysicsMaterial" id=48]
+[sub_resource type="Curve" id=36]
+
+min_value = 0.0
+max_value = 2.0
+bake_resolution = 100
+_data = [ Vector2( 0, 0.3856 ), 0.0, 0.0, 0, 0, Vector2( 0.0612366, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.999703, 1.4752 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=37]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.961538, 0.960784, 0.960784, 0.960784, 0 )
+
+[sub_resource type="PhysicsMaterial" id=38]
 
 friction = 1.0
 rough = false
 bounce = 0.0
 absorbent = false
 
-[sub_resource type="BoxShape" id=49]
+[sub_resource type="BoxShape" id=39]
 
 margin = 0.04
 extents = Vector3( 0.411196, 0.514522, 0.0474423 )
 
-[sub_resource type="BoxShape" id=50]
+[sub_resource type="BoxShape" id=40]
 
 margin = 0.04
 extents = Vector3( 0.403063, 0.514522, 0.0474423 )
 
-[sub_resource type="PhysicsMaterial" id=51]
+[sub_resource type="PhysicsMaterial" id=41]
 
 friction = 1.0
 rough = false
 bounce = 0.0
 absorbent = false
 
-[sub_resource type="SpatialMaterial" id=52]
+[sub_resource type="SpatialMaterial" id=42]
 
 render_priority = 0
 flags_transparent = false
@@ -893,17 +729,17 @@ proximity_fade_enable = false
 distance_fade_mode = 0
 _sections_unfolded = [ "Albedo", "Ambient Occlusion", "Emission", "Flags", "Metallic", "Normal Map", "Roughness" ]
 
-[sub_resource type="SphereShape" id=53]
+[sub_resource type="SphereShape" id=43]
 
 margin = 0.04
 radius = 1.0
 
-[sub_resource type="BoxShape" id=54]
+[sub_resource type="BoxShape" id=44]
 
 margin = 0.04
 extents = Vector3( 0.0885272, 0.514522, 0.0474423 )
 
-[sub_resource type="Animation" id=55]
+[sub_resource type="Animation" id=45]
 
 length = 1.0
 loop = false
@@ -1041,45 +877,7 @@ tracks/10/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="ParticlesMaterial" id=56]
-
-render_priority = 0
-trail_divisor = 1
-emission_shape = 0
-flag_align_y = false
-flag_rotate_y = false
-flag_disable_z = false
-spread = 180.0
-flatness = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.3
-initial_velocity_random = 0.0
-angular_velocity = 35.2
-angular_velocity_random = 1.0
-linear_accel = 1.0
-linear_accel_random = 0.0
-radial_accel = 0.0
-radial_accel_random = 0.0
-tangential_accel = 0.0
-tangential_accel_random = 0.0
-damping = 0.0
-damping_random = 0.0
-angle = 0.0
-angle_random = 0.0
-scale = 4.0
-scale_random = 0.0
-scale_curve = SubResource( 12 )
-color_ramp = SubResource( 10 )
-hue_variation = 0.0
-hue_variation_random = 0.0
-anim_speed = 0.0
-anim_speed_random = 0.0
-anim_offset = 0.0
-anim_offset_random = 0.0
-anim_loop = false
-_sections_unfolded = [ "Angular Velocity", "Gravity", "Initial Velocity", "Linear Accel", "Scale", "Spread", "scale_curve" ]
-
-[sub_resource type="AudioStreamRandomPitch" id=57]
+[sub_resource type="AudioStreamRandomPitch" id=46]
 
 audio_stream = ExtResource( 18 )
 random_pitch = 1.1
@@ -1102,10 +900,11 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 _sections_unfolded = [ "Transform" ]
 
 [node name="Skeleton" parent="Scene Root/Armature" index="0"]
+bones/14/bound_children = [ NodePath("ray_from") ]
 _sections_unfolded = [ "Transform" ]
 
 [node name="ray_from" type="BoneAttachment" parent="Scene Root/Armature/Skeleton" index="4"]
-transform = Transform( -0.999276, 0.0369356, 0.00913521, 0.0373678, 0.997904, 0.0528345, -0.00716457, 0.0531376, -0.998561, 0.0598805, 2.05722, 0.190641 )
+transform = Transform( -0.863181, 0.105804, -0.493684, -0.012343, 0.973082, 0.230128, 0.504743, 0.204736, -0.83864, 0.138718, 1.96543, 0.175195 )
 bone_name = "CannonAnimRecoil"
 
 [node name="ray" type="MeshInstance" parent="Scene Root/Armature/Skeleton/ray_from"]
@@ -1124,7 +923,7 @@ skeleton = NodePath("")
 material/0 = SubResource( 1 )
 _sections_unfolded = [ "Material", "material/0" ]
 
-[node name="Particles" type="Particles" parent="Scene Root/Armature/Skeleton/ray_from"]
+[node name="Particles" type="CPUParticles" parent="Scene Root/Armature/Skeleton/ray_from"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.07273 )
 layers = 1
 material_override = null
@@ -1145,15 +944,55 @@ explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
-visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 6 )
-draw_passes = 1
-draw_pass_1 = SubResource( 8 )
-_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Time", "draw_pass_1", "process_material" ]
+mesh = SubResource( 3 )
+emission_shape = 1
+emission_sphere_radius = 1.0
+emission_points = PoolVector3Array(  )
+emission_colors = PoolColorArray(  )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = false
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = -0.381543
+angular_velocity_random = 0.0
+angular_velocity_curve = null
+linear_accel = 1.0
+linear_accel_random = 1.0
+linear_accel_curve = null
+radial_accel = -1.0
+radial_accel_random = 0.0
+radial_accel_curve = null
+tangential_accel = 1.0
+tangential_accel_random = 0.0
+tangential_accel_curve = null
+damping = 0.0
+damping_random = 0.0
+damping_curve = null
+angle = 0.0
+angle_random = 0.0
+angle_curve = null
+scale = 0.1
+scale_random = 0.0
+scale_curve = null
+color_ramp = SubResource( 4 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+hue_variation_curve = null
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_speed_curve = null
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_offset_curve = null
+anim_loop = false
 
-[node name="explosion" type="Particles" parent="Scene Root/Armature/Skeleton/ray_from"]
+[node name="explosion" type="CPUParticles" parent="Scene Root/Armature/Skeleton/ray_from"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0332087, -10.283 )
 layers = 1
 material_override = null
@@ -1174,16 +1013,55 @@ explosiveness = 1.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
-visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 13 )
-draw_passes = 1
-draw_pass_1 = SubResource( 15 )
-_sections_unfolded = [ "Draw Passes", "Process Material", "Time", "draw_pass_1" ]
+mesh = SubResource( 6 )
+emission_shape = 0
+emission_points = PoolVector3Array(  )
+emission_colors = PoolColorArray(  )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = false
+spread = 180.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.3
+initial_velocity_random = 0.0
+angular_velocity = 35.2
+angular_velocity_random = 1.0
+angular_velocity_curve = null
+linear_accel = 0.0
+linear_accel_random = 0.0
+linear_accel_curve = null
+radial_accel = 0.0
+radial_accel_random = 0.0
+radial_accel_curve = null
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+tangential_accel_curve = null
+damping = 0.0
+damping_random = 0.0
+damping_curve = null
+angle = 0.0
+angle_random = 0.0
+angle_curve = null
+scale = 4.0
+scale_random = 0.0
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 8 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+hue_variation_curve = null
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_speed_curve = null
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_offset_curve = null
+anim_loop = false
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 34 )
+tree_root = SubResource( 27 )
 anim_player = NodePath("../Scene Root/AnimationPlayer")
 active = true
 process_mode = 0
@@ -1198,7 +1076,7 @@ _sections_unfolded = [ "Aim", "Aiming", "Hit 1", "Parameters", "Root Motion", "t
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11655, -0.0212681 )
-shape = SubResource( 35 )
+shape = SubResource( 28 )
 disabled = false
 
 [node name="area" type="Area" parent="."]
@@ -1225,7 +1103,7 @@ reverb_bus_uniformity = 0.0
 _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="area"]
-shape = SubResource( 36 )
+shape = SubResource( 29 )
 disabled = false
 
 [node name="RootMotionView" type="RootMotionView" parent="."]
@@ -1242,7 +1120,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/shoot = SubResource( 37 )
+anims/shoot = SubResource( 30 )
 blend_times = [  ]
 
 [node name="shoot_light" type="OmniLight" parent="."]
@@ -1281,7 +1159,7 @@ collision_layer = 1
 collision_mask = 1
 mode = 1
 mass = 1.0
-physics_material_override = SubResource( 38 )
+physics_material_override = SubResource( 31 )
 gravity_scale = 1.0
 custom_integrator = false
 continuous_cd = false
@@ -1318,15 +1196,15 @@ _sections_unfolded = [ "Geometry", "Material" ]
 
 [node name="col1" type="CollisionShape" parent="death/part_shield1"]
 transform = Transform( 1, 0, 0, 0, 0.908425, 0.418048, 0, -0.418048, 0.908425, -0.0167698, 0.5788, -0.122978 )
-shape = SubResource( 39 )
+shape = SubResource( 32 )
 disabled = true
 
 [node name="col2" type="CollisionShape" parent="death/part_shield1"]
 transform = Transform( 1, 0, 0, 0, 0.994888, 0.100984, 0, -0.100984, 0.994888, 0.0804193, -0.63062, 0.179012 )
-shape = SubResource( 40 )
+shape = SubResource( 33 )
 disabled = true
 
-[node name="fire" type="Particles" parent="death/part_shield1"]
+[node name="fire" type="CPUParticles" parent="death/part_shield1"]
 transform = Transform( -0.999594, 0.0284228, 0.00205158, 0.0284288, 0.999592, 0.00296096, -0.0019666, 0.00301808, -0.999993, -0.196335, 0.103942, -0.0579731 )
 layers = 1
 material_override = null
@@ -1347,13 +1225,53 @@ explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
-visibility_aabb = AABB( -4.04492, -3.80908, -4, 8, 8, 8 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 45 )
-draw_passes = 1
-draw_pass_1 = SubResource( 47 )
-_sections_unfolded = [ "Draw Passes", "Process Material", "Time", "draw_pass_1", "process_material" ]
+mesh = SubResource( 35 )
+emission_shape = 1
+emission_sphere_radius = 0.1
+emission_points = PoolVector3Array(  )
+emission_colors = PoolColorArray(  )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = false
+spread = 180.0
+flatness = 0.0
+gravity = Vector3( 0, 2, 0 )
+initial_velocity = 0.3
+initial_velocity_random = 0.0
+angular_velocity = 84.86
+angular_velocity_random = 1.0
+angular_velocity_curve = null
+linear_accel = 0.0
+linear_accel_random = 0.0
+linear_accel_curve = null
+radial_accel = 0.0
+radial_accel_random = 0.0
+radial_accel_curve = null
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+tangential_accel_curve = null
+damping = 0.0
+damping_random = 0.0
+damping_curve = null
+angle = 0.0
+angle_random = 0.0
+angle_curve = null
+scale = 1.0
+scale_random = 0.0
+scale_curve = SubResource( 36 )
+color_ramp = SubResource( 37 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+hue_variation_curve = null
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_speed_curve = null
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_offset_curve = null
+anim_loop = false
 
 [node name="part_shield2" type="RigidBody" parent="death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75083, 1.02975, 0.162546 )
@@ -1363,7 +1281,7 @@ collision_layer = 1
 collision_mask = 1
 mode = 1
 mass = 1.0
-physics_material_override = SubResource( 48 )
+physics_material_override = SubResource( 38 )
 gravity_scale = 1.0
 custom_integrator = false
 continuous_cd = false
@@ -1400,15 +1318,15 @@ _sections_unfolded = [ "Geometry", "Material" ]
 
 [node name="col1" type="CollisionShape" parent="death/part_shield2"]
 transform = Transform( 1, 0, 0, 0, 0.908425, 0.418048, 0, -0.418048, 0.908425, -0.0150018, 0.599786, -0.170673 )
-shape = SubResource( 49 )
+shape = SubResource( 39 )
 disabled = true
 
 [node name="col2" type="CollisionShape" parent="death/part_shield2"]
 transform = Transform( 1, 0, 0, 0, 0.999275, -0.038063, 0, 0.038063, 0.999275, 0.0207567, -0.47267, 0.0351334 )
-shape = SubResource( 50 )
+shape = SubResource( 40 )
 disabled = true
 
-[node name="fire" type="Particles" parent="death/part_shield2"]
+[node name="fire" type="CPUParticles" parent="death/part_shield2"]
 transform = Transform( -0.999594, 0.0284228, 0.00205158, 0.0284288, 0.999592, 0.00296096, -0.0019666, 0.00301808, -0.999993, -0.196335, 0.103942, -0.0579731 )
 layers = 1
 material_override = null
@@ -1429,13 +1347,53 @@ explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
-visibility_aabb = AABB( -4.04492, -3.80908, -4, 8, 8, 8 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 45 )
-draw_passes = 1
-draw_pass_1 = SubResource( 47 )
-_sections_unfolded = [ "Draw Passes", "Process Material", "Time", "draw_pass_1", "process_material" ]
+mesh = SubResource( 35 )
+emission_shape = 1
+emission_sphere_radius = 0.1
+emission_points = PoolVector3Array(  )
+emission_colors = PoolColorArray(  )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = false
+spread = 180.0
+flatness = 0.0
+gravity = Vector3( 0, 2, 0 )
+initial_velocity = 0.3
+initial_velocity_random = 0.0
+angular_velocity = 84.86
+angular_velocity_random = 1.0
+angular_velocity_curve = null
+linear_accel = 0.0
+linear_accel_random = 0.0
+linear_accel_curve = null
+radial_accel = 0.0
+radial_accel_random = 0.0
+radial_accel_curve = null
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+tangential_accel_curve = null
+damping = 0.0
+damping_random = 0.0
+damping_curve = null
+angle = 0.0
+angle_random = 0.0
+angle_curve = null
+scale = 1.0
+scale_random = 0.0
+scale_curve = SubResource( 36 )
+color_ramp = SubResource( 37 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+hue_variation_curve = null
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_speed_curve = null
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_offset_curve = null
+anim_loop = false
 
 [node name="part_shield3" type="RigidBody" parent="death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0374503, 1.02975, 0.162546 )
@@ -1445,7 +1403,7 @@ collision_layer = 1
 collision_mask = 1
 mode = 1
 mass = 1.0
-physics_material_override = SubResource( 51 )
+physics_material_override = SubResource( 41 )
 gravity_scale = 1.0
 custom_integrator = false
 continuous_cd = false
@@ -1478,22 +1436,22 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 13 )
 skeleton = NodePath("..")
-material/0 = SubResource( 52 )
+material/0 = SubResource( 42 )
 material/1 = null
 _sections_unfolded = [ "Geometry", "Material", "material/0" ]
 
 [node name="col1" type="CollisionShape" parent="death/part_shield3"]
-shape = SubResource( 53 )
+shape = SubResource( 43 )
 disabled = true
 _sections_unfolded = [ "Transform", "shape" ]
 
 [node name="col2" type="CollisionShape" parent="death/part_shield3"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0753293, 0.680746, 0.945143 )
-shape = SubResource( 54 )
+shape = SubResource( 44 )
 disabled = true
 _sections_unfolded = [ "Transform" ]
 
-[node name="fire" type="Particles" parent="death/part_shield3"]
+[node name="fire" type="CPUParticles" parent="death/part_shield3"]
 transform = Transform( -0.999594, 0.0284228, 0.00205158, 0.0284288, 0.999592, 0.00296096, -0.0019666, 0.00301808, -0.999993, -0.196335, 0.103942, -0.0579731 )
 layers = 1
 material_override = null
@@ -1514,13 +1472,53 @@ explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
-visibility_aabb = AABB( -4.04492, -3.80908, -4, 8, 8, 8 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 45 )
-draw_passes = 1
-draw_pass_1 = SubResource( 47 )
-_sections_unfolded = [ "Draw Passes", "Process Material", "Time", "draw_pass_1", "process_material" ]
+mesh = SubResource( 35 )
+emission_shape = 1
+emission_sphere_radius = 0.1
+emission_points = PoolVector3Array(  )
+emission_colors = PoolColorArray(  )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = false
+spread = 180.0
+flatness = 0.0
+gravity = Vector3( 0, 2, 0 )
+initial_velocity = 0.3
+initial_velocity_random = 0.0
+angular_velocity = 84.86
+angular_velocity_random = 1.0
+angular_velocity_curve = null
+linear_accel = 0.0
+linear_accel_random = 0.0
+linear_accel_curve = null
+radial_accel = 0.0
+radial_accel_random = 0.0
+radial_accel_curve = null
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+tangential_accel_curve = null
+damping = 0.0
+damping_random = 0.0
+damping_curve = null
+angle = 0.0
+angle_random = 0.0
+angle_curve = null
+scale = 1.0
+scale_random = 0.0
+scale_curve = SubResource( 36 )
+color_ramp = SubResource( 37 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+hue_variation_curve = null
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_speed_curve = null
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_offset_curve = null
+anim_loop = false
 
 [node name="explosion" type="AnimationPlayer" parent="death"]
 root_node = NodePath("..")
@@ -1528,10 +1526,10 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/kaboom = SubResource( 55 )
+anims/kaboom = SubResource( 45 )
 blend_times = [  ]
 
-[node name="particles" type="Particles" parent="death"]
+[node name="particles" type="CPUParticles" parent="death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.213713, 0.763735, 0 )
 layers = 1
 material_override = null
@@ -1552,13 +1550,52 @@ explosiveness = 1.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
-visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 56 )
-draw_passes = 1
-draw_pass_1 = SubResource( 15 )
-_sections_unfolded = [ "Draw Passes", "Process Material", "Time", "Transform", "process_material" ]
+mesh = SubResource( 6 )
+emission_shape = 0
+emission_points = PoolVector3Array(  )
+emission_colors = PoolColorArray(  )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = false
+spread = 180.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.3
+initial_velocity_random = 0.0
+angular_velocity = 35.2
+angular_velocity_random = 1.0
+angular_velocity_curve = null
+linear_accel = 1.0
+linear_accel_random = 0.0
+linear_accel_curve = null
+radial_accel = 0.0
+radial_accel_random = 0.0
+radial_accel_curve = null
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+tangential_accel_curve = null
+damping = 0.0
+damping_random = 0.0
+damping_curve = null
+angle = 0.0
+angle_random = 0.0
+angle_curve = null
+scale = 4.0
+scale_random = 0.0
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 8 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+hue_variation_curve = null
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_speed_curve = null
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_offset_curve = null
+anim_loop = false
 
 [node name="sfx" type="Spatial" parent="."]
 
@@ -1603,7 +1640,7 @@ attenuation_filter_db = -24.0
 doppler_tracking = 0
 
 [node name="hit" type="AudioStreamPlayer3D" parent="sfx"]
-stream = SubResource( 57 )
+stream = SubResource( 46 )
 attenuation_model = 0
 unit_db = 3.0
 unit_size = 15.0
