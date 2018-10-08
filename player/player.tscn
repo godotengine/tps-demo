@@ -223,7 +223,7 @@ nodes/strafe/node = SubResource( 16 )
 nodes/strafe/position = Vector2( -340, 120 )
 nodes/walk/node = SubResource( 21 )
 nodes/walk/position = Vector2( -340, 220 )
-node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "land", 0, "state", "land", 1, "hardland", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes" ]
+node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "land", 0, "state", "land", 1, "hardland" ]
 
 [sub_resource type="CapsuleShape" id=23]
 
@@ -315,13 +315,21 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "Visibility", "collision" ]
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
 _sections_unfolded = [ "Transform" ]
+
+[node name="Robot_Skeleton" parent="Scene Root" index="0"]
+editor/display_folded = true
+
+[node name="Skeleton" parent="Scene Root/Robot_Skeleton" index="0"]
+editor/display_folded = true
+bones/46/bound_children = [ NodePath("gun_bone") ]
 
 [node name="00Robot_Body008" parent="Scene Root/Robot_Skeleton/Skeleton" index="0"]
 _sections_unfolded = [ "mesh" ]
 
 [node name="gun_bone" type="BoneAttachment" parent="Scene Root/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.899558, -0.254122, 0.35553, -0.263966, -0.964322, -0.0216976, 0.348395, -0.0742979, -0.934413, -0.207111, 1.36245, 0.547424 )
+transform = Transform( 0.911689, -0.245517, 0.32975, -0.248791, -0.968019, -0.0332267, 0.327396, -0.0517192, -0.943482, -0.207148, 1.37688, 0.510783 )
 bone_name = "hand.R"
 
 [node name="shoot_from" type="Position3D" parent="Scene Root/Robot_Skeleton/Skeleton/gun_bone"]
@@ -360,6 +368,7 @@ shape = SubResource( 24 )
 disabled = false
 
 [node name="camera_base" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85456, 0 )
 
 [node name="camera_rot" type="Spatial" parent="camera_base"]
@@ -411,6 +420,7 @@ stretch_mode = 0
 _sections_unfolded = [ "Anchor", "Visibility" ]
 
 [node name="sfx" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="step" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 4 )
@@ -450,5 +460,12 @@ mix_target = 0
 bus = "Master"
 _sections_unfolded = [ "stream" ]
 
+[node name="TimerBackToMenu" type="Timer" parent="."]
+process_mode = 1
+wait_time = 0.1
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="TimerBackToMenu" to="." method="_on_TimerBackToMenu_timeout"]
 
 [editable path="Scene Root"]

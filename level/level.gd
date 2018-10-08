@@ -1,9 +1,5 @@
 extends Spatial
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 func _ready():
 	if (settings.gi_quality == settings.GI_QUALITY_HIGH):
 		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"]=true
@@ -40,8 +36,3 @@ func _ready():
 	elif (settings.ssao_quality == settings.RESOLUTION_576):
 		var minsize=Vector2( OS.window_size.x * 576 / OS.window_size.y, 576.0)
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,SceneTree.STRETCH_ASPECT_KEEP_HEIGHT,minsize)
-		
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass

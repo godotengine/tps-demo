@@ -1,18 +1,21 @@
 extends Spatial
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 func _ready():
-	pass
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _process(delta):
+	if (Input.is_action_just_pressed("quit")):
+		if $ui/settings.visible:
+			$ui/main.show()
+			$ui/settings.hide()
+		else:
+			get_tree().quit()
+			
 
 func _on_play_pressed():
 	$ui/main.hide()
 	$ui/loading.show()
 	$begin_load_timer.start()
-
-
 
 func _on_settings_pressed():
 	$ui/main.hide()

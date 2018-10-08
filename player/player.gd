@@ -41,6 +41,9 @@ func _ready():
 	
 func _physics_process(delta):
 	
+	if (Input.is_action_just_released("quit")):
+		$TimerBackToMenu.start()
+	
 	var motion_target = Vector2( 	Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 									Input.get_action_strength("move_forward") - Input.get_action_strength("move_back") )
 			
@@ -172,11 +175,9 @@ func _physics_process(delta):
 	orientation = orientation.orthonormalized() # orthonormalize orientation
 	
 	$"Scene Root".global_transform.basis = orientation.basis
-	
-	
-		
-		
-	
-	
+
 func _init():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _on_TimerBackToMenu_timeout():
+	get_tree().change_scene("res://menu/menu.tscn")
