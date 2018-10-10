@@ -315,13 +315,17 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "Visibility", "collision" ]
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
 _sections_unfolded = [ "Transform" ]
+
+[node name="Skeleton" parent="Scene Root/Robot_Skeleton" index="0"]
+bones/46/bound_children = [ NodePath("gun_bone") ]
 
 [node name="00Robot_Body008" parent="Scene Root/Robot_Skeleton/Skeleton" index="0"]
 _sections_unfolded = [ "mesh" ]
 
 [node name="gun_bone" type="BoneAttachment" parent="Scene Root/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.899558, -0.254122, 0.35553, -0.263966, -0.964322, -0.0216976, 0.348395, -0.0742979, -0.934413, -0.207111, 1.36245, 0.547424 )
+transform = Transform( 0.91775, -0.232517, 0.32228, -0.226944, -0.972349, -0.0555918, 0.326331, -0.0220962, -0.945009, -0.207101, 1.39746, 0.46531 )
 bone_name = "hand.R"
 
 [node name="shoot_from" type="Position3D" parent="Scene Root/Robot_Skeleton/Skeleton/gun_bone"]
@@ -350,22 +354,23 @@ parameters/walk/blend_position = Vector2( 0, 0 )
 _sections_unfolded = [ "Aim", "Parameters", "Root Motion", "Strafe", "Walk", "tree_root" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.03615, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 1.03615, 0 )
 shape = SubResource( 23 )
 disabled = false
 
 [node name="CollisionShape2" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.00357, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.00357, 0 )
 shape = SubResource( 24 )
 disabled = false
 
 [node name="camera_base" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85456, 0 )
 
 [node name="camera_rot" type="Spatial" parent="camera_base"]
 
 [node name="Camera" type="Camera" parent="camera_base/camera_rot"]
-transform = Transform( -1, 0, -8.74228e-08, -3.17959e-08, 0.931515, 0.363703, 8.14356e-08, 0.363703, -0.931515, 0, 0.592719, -2.15676 )
+transform = Transform( -1, 0, -8.74228e-008, -3.17959e-008, 0.931515, 0.363703, 8.14356e-008, 0.363703, -0.931515, 0, 0.592719, -2.15676 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -411,6 +416,7 @@ stretch_mode = 0
 _sections_unfolded = [ "Anchor", "Visibility" ]
 
 [node name="sfx" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="step" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 4 )
@@ -449,6 +455,13 @@ stream_paused = false
 mix_target = 0
 bus = "Master"
 _sections_unfolded = [ "stream" ]
+
+[node name="ShootCooldown" type="Timer" parent="."]
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = true
+_sections_unfolded = [ "Pause", "Script" ]
 
 
 [editable path="Scene Root"]

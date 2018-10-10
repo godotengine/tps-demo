@@ -107,34 +107,31 @@ func _physics_process(delta):
 
 		$animation_tree["parameters/strafe/blend_position"]=motion
 
-
 		# get root motion transform
-		root_motion = $animation_tree.get_root_motion_transform()		
-
-		if (Input.is_action_just_pressed("shoot")):
+		root_motion = $animation_tree.get_root_motion_transform()
+		if (Input.is_action_pressed("shoot") && $ShootCooldown.time_left == 0):
 			var shoot_from = $"Scene Root/Robot_Skeleton/Skeleton/gun_bone/shoot_from".global_transform.origin
 			var cam = $camera_base/camera_rot/Camera
-			
+
 			var ch_pos = $crosshair.rect_position + $crosshair.rect_size * 0.5
 			var ray_from = cam.project_ray_origin(ch_pos)
 			var ray_dir = cam.project_ray_normal(ch_pos)
 			var shoot_target
-			
-			var col = get_world().direct_space_state.intersect_ray( ray_from, ray_from + ray_dir * 1000, [self] )
+			var col = get_world().direct_space_state.intersect_ray(ray_from, ray_from + ray_dir * 1000, [self])
 			if (col.empty()):
 				shoot_target = ray_from + ray_dir * 1000
 			else:
 				shoot_target = col.position
-				
-			var shoot_dir = (shoot_target - shoot_from).normalized()
-			
-			var bullet = preload("res://player/bullet.tscn").instance()
 
+			var shoot_dir = (shoot_target - shoot_from).normalized()
+			var bullet = preload("res://player/bullet.tscn").instance()
 			get_parent().add_child(bullet)
 			bullet.global_transform.origin = shoot_from
-			bullet.direction = shoot_dir 	
+			bullet.direction = shoot_dir
 			bullet.add_collision_exception_with(self)
-			$sfx/shoot.play()							
+
+			$ShootCooldown.start()
+			$sfx/shoot.play()
 			
 	else: 		
 		# convert orientation to quaternions for interpolating rotation
