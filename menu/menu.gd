@@ -1,17 +1,14 @@
 extends Spatial
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
 
 func _ready():
-	pass
+	if (settings.fullscreen == settings.FULLSCREEN):
+		OS.window_fullscreen = true
 
 func _on_play_pressed():
 	$ui/main.hide()
 	$ui/loading.show()
 	$begin_load_timer.start()
-
 
 
 func _on_settings_pressed():
@@ -49,6 +46,9 @@ func _on_settings_pressed():
 		$ui/settings/resolution_720.pressed = true
 	elif (settings.resolution == settings.RESOLUTION_576):
 		$ui/settings/resolution_576.pressed = true
+		
+	if(settings.fullscreen == settings.FULLSCREEN):
+		$ui/settings/fullscreen.pressed = true
 
 
 func _on_apply_pressed():
@@ -86,13 +86,20 @@ func _on_apply_pressed():
 		settings.resolution = settings.RESOLUTION_720
 	elif($ui/settings/resolution_576.pressed):
 		settings.resolution = settings.RESOLUTION_576
-
+		
+	
+	if($ui/settings/fullscreen.pressed):
+		settings.fullscreen = settings.FULLSCREEN
+		OS.window_fullscreen = true
+	else:
+		settings.fullscreen = settings.NO_FULLSCREEN
+		OS.window_fullscreen = false
+		
 	settings.save_settings()
 
 func _on_cancel_pressed():
 	$ui/main.show()
 	$ui/settings.hide()
-
 
 func _on_begin_load_timer_timeout():
 	get_tree().change_scene("res://level/level.tscn")

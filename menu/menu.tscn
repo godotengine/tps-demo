@@ -5,14 +5,14 @@
 [ext_resource path="res://player/player.dae" type="PackedScene" id=3]
 [ext_resource path="res://menu/floor.png" type="Texture" id=4]
 [ext_resource path="res://music/intro.ogg" type="AudioStream" id=5]
-[ext_resource path="res://menu/tps_demo.png" type="Texture" id=6]
-[ext_resource path="res://menu/button_play.png" type="Texture" id=7]
-[ext_resource path="res://menu/button_play_hover.png" type="Texture" id=8]
-[ext_resource path="res://menu/button_settings.png" type="Texture" id=9]
-[ext_resource path="res://menu/button_settings_hover.png" type="Texture" id=10]
-[ext_resource path="res://menu/button_font.tres" type="DynamicFont" id=11]
-[ext_resource path="res://menu/button_pressed.tres" type="StyleBox" id=12]
-[ext_resource path="res://menu/button_normal.tres" type="StyleBox" id=13]
+[ext_resource path="res://menu/button_play.png" type="Texture" id=6]
+[ext_resource path="res://menu/button_play_hover.png" type="Texture" id=7]
+[ext_resource path="res://menu/button_settings.png" type="Texture" id=8]
+[ext_resource path="res://menu/button_settings_hover.png" type="Texture" id=9]
+[ext_resource path="res://menu/button_font.tres" type="DynamicFont" id=10]
+[ext_resource path="res://menu/button_pressed.tres" type="StyleBox" id=11]
+[ext_resource path="res://menu/button_normal.tres" type="StyleBox" id=12]
+[ext_resource path="res://menu/tps_demo.png" type="Texture" id=13]
 
 [sub_resource type="PanoramaSky" id=1]
 
@@ -187,7 +187,7 @@ sync = false
 [sub_resource type="AnimationNodeBlendTree" id=8]
 
 resource_local_to_scene = true
-graph_offset = Vector2( -401, 57 )
+graph_offset = Vector2( -570.848, 66 )
 nodes/Animation/node = SubResource( 6 )
 nodes/Animation/position = Vector2( -120, 100 )
 "nodes/Animation 2/node" = SubResource( 5 )
@@ -197,17 +197,6 @@ nodes/Blend2/position = Vector2( 180, 120 )
 nodes/output/position = Vector2( 420, 120 )
 node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
 
-[sub_resource type="StyleBoxEmpty" id=9]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
-[sub_resource type="ButtonGroup" id=10]
-
-resource_local_to_scene = true
-
 [sub_resource type="StyleBoxEmpty" id=11]
 
 content_margin_left = -1.0
@@ -215,40 +204,37 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="DynamicFontData" id=12]
+[sub_resource type="ButtonGroup" id=12]
 
-hinting = 2
-font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+resource_local_to_scene = true
 
-[sub_resource type="DynamicFont" id=13]
-
-size = 40
-outline_size = 0
-outline_color = Color( 1, 1, 1, 1 )
-use_mipmaps = false
-use_filter = false
-font_data = SubResource( 12 )
-
-[sub_resource type="StyleBoxEmpty" id=14]
+[sub_resource type="StyleBoxEmpty" id=13]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="DynamicFontData" id=15]
+[sub_resource type="DynamicFontData" id=14]
 
 hinting = 2
 font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=15]
 
 size = 40
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 15 )
+font_data = SubResource( 14 )
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
 
 [sub_resource type="DynamicFontData" id=17]
 
@@ -264,149 +250,149 @@ use_mipmaps = false
 use_filter = false
 font_data = SubResource( 17 )
 
-[sub_resource type="StyleBoxFlat" id=19]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0, 0, 0, 0 )
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 1, 1, 1, 0.6 )
-shadow_size = 3
-anti_aliasing = true
-anti_aliasing_size = 1
-
-[sub_resource type="StyleBoxFlat" id=20]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0, 0, 0, 0 )
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 1, 1, 1, 0.6 )
-shadow_size = 3
-anti_aliasing = true
-anti_aliasing_size = 1
-
-[sub_resource type="StyleBoxEmpty" id=21]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
-[sub_resource type="DynamicFontData" id=22]
+[sub_resource type="DynamicFontData" id=19]
 
 hinting = 2
 font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=23]
+[sub_resource type="DynamicFont" id=20]
 
 size = 40
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 22 )
+font_data = SubResource( 19 )
 
-[sub_resource type="ButtonGroup" id=24]
+[sub_resource type="StyleBoxFlat" id=21]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0, 0, 0 )
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 1, 1, 1, 0.6 )
+shadow_size = 3
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="StyleBoxFlat" id=22]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0, 0, 0 )
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 1, 1, 1, 0.6 )
+shadow_size = 3
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="DynamicFontData" id=24]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=25]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 24 )
+
+[sub_resource type="ButtonGroup" id=26]
 
 resource_local_to_scene = true
 
-[sub_resource type="StyleBoxEmpty" id=25]
+[sub_resource type="StyleBoxEmpty" id=27]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="DynamicFontData" id=26]
+[sub_resource type="DynamicFontData" id=28]
 
 hinting = 2
 font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=27]
+[sub_resource type="DynamicFont" id=29]
 
 size = 40
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 26 )
+font_data = SubResource( 28 )
 
-[sub_resource type="StyleBoxEmpty" id=28]
+[sub_resource type="StyleBoxEmpty" id=30]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="DynamicFontData" id=29]
+[sub_resource type="DynamicFontData" id=31]
 
 hinting = 2
 font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=30]
+[sub_resource type="DynamicFont" id=32]
 
 size = 40
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 29 )
+font_data = SubResource( 31 )
 
-[sub_resource type="StyleBoxEmpty" id=31]
+[sub_resource type="StyleBoxEmpty" id=33]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-
-[sub_resource type="DynamicFontData" id=32]
-
-hinting = 2
-font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
-
-[sub_resource type="DynamicFont" id=33]
-
-size = 40
-outline_size = 0
-outline_color = Color( 1, 1, 1, 1 )
-use_mipmaps = false
-use_filter = false
-font_data = SubResource( 32 )
 
 [sub_resource type="DynamicFontData" id=34]
 
@@ -422,85 +408,100 @@ use_mipmaps = false
 use_filter = false
 font_data = SubResource( 34 )
 
-[sub_resource type="StyleBoxEmpty" id=36]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
-[sub_resource type="DynamicFontData" id=37]
+[sub_resource type="DynamicFontData" id=36]
 
 hinting = 2
 font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=38]
+[sub_resource type="DynamicFont" id=37]
 
 size = 40
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 37 )
+font_data = SubResource( 36 )
+_sections_unfolded = [ "Font", "font_data" ]
 
-[sub_resource type="ButtonGroup" id=39]
+[sub_resource type="StyleBoxEmpty" id=38]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="DynamicFontData" id=39]
+
+hinting = 2
+font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=40]
+
+size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 39 )
+
+[sub_resource type="ButtonGroup" id=41]
 
 resource_local_to_scene = true
 
-[sub_resource type="StyleBoxEmpty" id=40]
+[sub_resource type="StyleBoxEmpty" id=42]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="DynamicFontData" id=41]
+[sub_resource type="DynamicFontData" id=43]
 
 hinting = 2
 font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=42]
+[sub_resource type="DynamicFont" id=44]
 
 size = 40
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 41 )
+font_data = SubResource( 43 )
 
-[sub_resource type="StyleBoxEmpty" id=43]
+[sub_resource type="StyleBoxEmpty" id=45]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="DynamicFontData" id=44]
+[sub_resource type="DynamicFontData" id=46]
 
 hinting = 2
 font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=45]
+[sub_resource type="DynamicFont" id=47]
 
 size = 40
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 44 )
+font_data = SubResource( 46 )
 
-[sub_resource type="ButtonGroup" id=46]
+[sub_resource type="ButtonGroup" id=48]
 
 resource_local_to_scene = true
 
-[sub_resource type="StyleBoxEmpty" id=47]
+[sub_resource type="StyleBoxEmpty" id=49]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="StyleBoxFlat" id=48]
+[sub_resource type="StyleBoxFlat" id=50]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -528,19 +529,19 @@ shadow_size = 3
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[sub_resource type="DynamicFontData" id=49]
+[sub_resource type="DynamicFontData" id=51]
 
 hinting = 2
 font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=50]
+[sub_resource type="DynamicFont" id=52]
 
 size = 40
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 49 )
+font_data = SubResource( 51 )
 
 [node name="main" type="Spatial"]
 script = ExtResource( 1 )
@@ -550,8 +551,9 @@ environment = SubResource( 2 )
 _sections_unfolded = [ "environment" ]
 
 [node name="Scene Root" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="Floor" type="MeshInstance" parent="."]
 transform = Transform( 14.9811, 0, 0, 0, -6.54845e-07, 14.9811, 0, -14.9811, -6.54845e-07, 0, 0, 0 )
 layers = 1
 material_override = null
@@ -622,24 +624,6 @@ root_motion_track = NodePath("")
 parameters/Blend2/blend_amount = 0
 _sections_unfolded = [ "tree_root" ]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 20.1403
-margin_top = 5.03506
-margin_right = 1044.14
-margin_bottom = 238.035
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 6 )
-stretch_mode = 0
-
 [node name="ui" type="Control" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
@@ -669,10 +653,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 100.0
-margin_top = 390.0
-margin_right = 400.0
-margin_bottom = 440.0
+margin_left = 76.0
+margin_top = 418.0
+margin_right = 376.0
+margin_bottom = 468.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -684,9 +668,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 8 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="settings" type="TextureButton" parent="ui/main"]
@@ -694,10 +678,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 100.0
-margin_top = 490.0
-margin_right = 400.0
-margin_bottom = 540.0
+margin_left = 75.0
+margin_top = 534.0
+margin_right = 375.0
+margin_bottom = 584.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -709,9 +693,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 10 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="settings" type="Control" parent="ui"]
@@ -742,7 +726,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Global Illumination:"
 percent_visible = 1.0
@@ -766,11 +750,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = ExtResource( 11 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -778,7 +762,7 @@ toggle_mode = true
 pressed = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 10 )
+group = SubResource( 12 )
 text = "High"
 flat = false
 align = 1
@@ -800,18 +784,18 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 11 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 13 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 10 )
+group = SubResource( 12 )
 text = "Low"
 flat = false
 align = 1
@@ -833,18 +817,18 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 14 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 16 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 10 )
+group = SubResource( 12 )
 text = "Disabled"
 flat = false
 align = 1
@@ -865,7 +849,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Anti Aliasing:"
 percent_visible = 1.0
@@ -889,11 +873,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = SubResource( 19 )
-custom_styles/pressed = SubResource( 20 )
-custom_styles/focus = SubResource( 21 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 23 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 25 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -901,7 +885,7 @@ toggle_mode = true
 pressed = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 24 )
+group = SubResource( 26 )
 text = "8x"
 flat = false
 align = 1
@@ -923,18 +907,18 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 25 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 27 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 27 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 29 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 24 )
+group = SubResource( 26 )
 text = "4x"
 flat = false
 align = 1
@@ -956,18 +940,18 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 28 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 30 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 30 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 32 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 24 )
+group = SubResource( 26 )
 text = "2x"
 flat = false
 align = 1
@@ -989,18 +973,18 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 31 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 33 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 33 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 35 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 24 )
+group = SubResource( 26 )
 text = "Disabled"
 flat = false
 align = 1
@@ -1021,7 +1005,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 35 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "SSAO:"
 percent_visible = 1.0
@@ -1045,11 +1029,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 36 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 38 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 38 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 40 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -1057,7 +1041,7 @@ toggle_mode = true
 pressed = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 39 )
+group = SubResource( 41 )
 text = "High"
 flat = false
 align = 1
@@ -1079,18 +1063,18 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 40 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 42 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 42 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 44 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 39 )
+group = SubResource( 41 )
 text = "Low"
 flat = false
 align = 1
@@ -1112,18 +1096,18 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 43 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 45 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 45 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 47 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 39 )
+group = SubResource( 41 )
 text = "Disabled"
 flat = false
 align = 1
@@ -1144,13 +1128,13 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 35 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Resolution:"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Custom Colors", "Custom Fonts" ]
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "custom_fonts", "custom_fonts/font" ]
 
 [node name="resolution_native" type="Button" parent="ui/settings"]
 anchor_left = 0.0
@@ -1168,11 +1152,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 36 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 38 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 38 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 40 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -1180,7 +1164,7 @@ toggle_mode = true
 pressed = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 46 )
+group = SubResource( 48 )
 text = "Native"
 flat = false
 align = 1
@@ -1202,18 +1186,18 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 36 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 38 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 38 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 40 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 46 )
+group = SubResource( 48 )
 text = "1080"
 flat = false
 align = 1
@@ -1235,18 +1219,18 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 36 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 38 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 38 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 40 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 46 )
+group = SubResource( 48 )
 text = "720"
 flat = false
 align = 1
@@ -1268,19 +1252,75 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 36 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 38 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 38 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 40 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-group = SubResource( 46 )
+group = SubResource( 48 )
 text = "576"
+flat = false
+align = 1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
+
+[node name="fullscreen_label" type="Label" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 825.0
+margin_right = 368.0
+margin_bottom = 878.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 37 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Fullscreen:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "custom_fonts", "custom_fonts/font" ]
+
+[node name="fullscreen" type="Button" parent="ui/settings"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 400.0
+margin_top = 824.0
+margin_right = 650.0
+margin_bottom = 881.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 38 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Fullscreen"
 flat = false
 align = 1
 _sections_unfolded = [ "Custom Colors", "Custom Fonts", "Custom Styles", "custom_styles/normal" ]
@@ -1301,11 +1341,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 47 )
-custom_styles/normal = SubResource( 48 )
-custom_fonts/font = SubResource( 50 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 49 )
+custom_styles/normal = SubResource( 50 )
+custom_fonts/font = SubResource( 52 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -1334,11 +1374,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/focus = SubResource( 47 )
-custom_styles/normal = SubResource( 48 )
-custom_fonts/font = SubResource( 50 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 49 )
+custom_styles/normal = SubResource( 50 )
+custom_fonts/font = SubResource( 52 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -1381,12 +1421,30 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 10 )
 text = "Loading..."
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Custom Fonts" ]
+
+[node name="TextureRect" type="TextureRect" parent="ui"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 5.0
+margin_right = 1044.0
+margin_bottom = 238.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 13 )
+stretch_mode = 0
 
 [node name="begin_load_timer" type="Timer" parent="."]
 process_mode = 1
