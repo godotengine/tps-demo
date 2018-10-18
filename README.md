@@ -24,6 +24,7 @@ the assets manually the first time:
 
 ```text
 git lfs fetch
+git pull
 git checkout master
 ```
 
