@@ -144,7 +144,7 @@ shoot={
 
 [physics]
 
-3d/physics_engine="GodotPhysics - deprecated"
+3d/physics_engine="GodotPhysics"
 
 [rendering]
 
