@@ -9,75 +9,46 @@
 [ext_resource path="res://player/fx_shoot.wav" type="AudioStream" id=7]
 
 [sub_resource type="AnimationNodeAdd3" id=1]
-
 resource_local_to_scene = true
 filter_enabled = true
 filters = [ "Robot_Skeleton/Skeleton:neck.001", "Robot_Skeleton/Skeleton:upper_arm.R" ]
-sync = false
 
 [sub_resource type="AnimationNodeAnimation" id=2]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "AIM-Down"
 
 [sub_resource type="AnimationNodeAnimation" id=3]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "AIM-Up"
 
 [sub_resource type="AnimationNodeBlend2" id=4]
-
 resource_local_to_scene = true
 filter_enabled = true
 filters = [ "Robot_Skeleton/Skeleton:eyelid.d.L", "Robot_Skeleton/Skeleton:eyelid.d.R", "Robot_Skeleton/Skeleton:eyelid.u.L", "Robot_Skeleton/Skeleton:eyelid.u.R", "Robot_Skeleton/Skeleton:eyes" ]
-sync = false
 
 [sub_resource type="AnimationNodeAnimation" id=5]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "eyes-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=6]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "jump_5_hardlanding"
 
 [sub_resource type="AnimationNodeAnimation" id=7]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "jump_4_falling-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=8]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "jump_2_upwards-cycle"
 
 [sub_resource type="AnimationNodeOneShot" id=9]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 fadein_time = 0.25
 fadeout_time = 0.25
-autorestart = false
-autorestart_delay = 1.0
 autorestart_random_delay = 1.0
-sync = false
 
 [sub_resource type="AnimationNodeTransition" id=10]
-
 resource_local_to_scene = true
 input_count = 4
 xfade_time = 0.15
@@ -89,47 +60,29 @@ input_2/name = "jump_up"
 input_2/auto_advance = false
 input_3/name = "jump_down"
 input_3/auto_advance = false
-_sections_unfolded = [ "Input 0", "Input 1", "Input 2", "Input 3" ]
 
 [sub_resource type="AnimationNodeAnimation" id=11]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "strafe_left-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=12]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "strafe_right-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=13]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "strafe_back-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=14]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "strafe_front-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=15]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "Idlecombat-cycle"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=16]
-
 resource_local_to_scene = true
-auto_triangles = true
 blend_point_0/node = SubResource( 11 )
 blend_point_0/pos = Vector2( 1, 0 )
 blend_point_1/node = SubResource( 12 )
@@ -140,45 +93,25 @@ blend_point_3/node = SubResource( 14 )
 blend_point_3/pos = Vector2( 0, 1 )
 blend_point_4/node = SubResource( 15 )
 blend_point_4/pos = Vector2( 0, 0 )
-triangles = PoolIntArray( 0, 2, 4, 0, 3, 4, 1, 2, 4, 1, 3, 4 )
-min_space = Vector2( -1, -1 )
-max_space = Vector2( 1, 1 )
-snap = Vector2( 0.1, 0.1 )
-x_label = "x"
-y_label = "y"
 
 [sub_resource type="AnimationNodeAnimation" id=17]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "Idle-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=18]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "running_nogun-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=19]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "running_gun-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=20]
-
 resource_local_to_scene = true
-filter_enabled = false
-filters = [  ]
 animation = "Idlecombat-cycle"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=21]
-
 resource_local_to_scene = true
-auto_triangles = true
 blend_point_0/node = SubResource( 17 )
 blend_point_0/pos = Vector2( 0, 0 )
 blend_point_1/node = SubResource( 18 )
@@ -187,15 +120,11 @@ blend_point_2/node = SubResource( 19 )
 blend_point_2/pos = Vector2( 1, 1 )
 blend_point_3/node = SubResource( 20 )
 blend_point_3/pos = Vector2( 0, 1 )
-triangles = PoolIntArray(  )
 min_space = Vector2( 0, 0 )
-max_space = Vector2( 1, 1 )
-snap = Vector2( 0.1, 0.1 )
 x_label = "speed"
 y_label = "gun"
 
 [sub_resource type="AnimationNodeBlendTree" id=22]
-
 resource_local_to_scene = true
 graph_offset = Vector2( -517, 242 )
 nodes/aim/node = SubResource( 1 )
@@ -223,25 +152,15 @@ nodes/strafe/node = SubResource( 16 )
 nodes/strafe/position = Vector2( -340, 120 )
 nodes/walk/node = SubResource( 21 )
 nodes/walk/position = Vector2( -340, 220 )
-node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "land", 0, "state", "land", 1, "hardland", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes" ]
+node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "land", 0, "state", "land", 1, "hardland", "eye_blend", 0, "aim", "eye_blend", 1, "eyes" ]
 
 [sub_resource type="CapsuleShape" id=23]
-
-margin = 0.04
 radius = 0.490082
 height = 0.560254
 
 [sub_resource type="RayShape" id=24]
 
-margin = 0.04
-length = 1.0
-slips_on_slope = false
-
 [sub_resource type="Animation" id=25]
-
-length = 1.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("camera_rot/Camera:translation")
 tracks/0/interp = 1
@@ -268,10 +187,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=26]
-
-length = 1.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("camera_rot/Camera:translation")
 tracks/0/interp = 1
@@ -298,42 +213,26 @@ tracks/1/keys = {
 }
 
 [sub_resource type="AudioStreamRandomPitch" id=27]
-
 audio_stream = ExtResource( 7 )
-random_pitch = 1.1
 
 [node name="robot" type="KinematicBody"]
-input_ray_pickable = true
-input_capture_on_drag = false
 collision_layer = 3
-collision_mask = 1
-move_lock_x = false
-move_lock_y = false
-move_lock_z = false
-collision/safe_margin = 0.001
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform", "Visibility", "collision" ]
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
-_sections_unfolded = [ "Transform" ]
 
-[node name="00Robot_Body008" parent="Scene Root/Robot_Skeleton/Skeleton" index="0"]
-_sections_unfolded = [ "mesh" ]
+[node name="Skeleton" parent="Scene Root/Robot_Skeleton" index="0"]
+bones/46/bound_children = [ NodePath("gun_bone") ]
 
 [node name="gun_bone" type="BoneAttachment" parent="Scene Root/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.899558, -0.254122, 0.35553, -0.263966, -0.964322, -0.0216976, 0.348395, -0.0742979, -0.934413, -0.207111, 1.36245, 0.547424 )
+transform = Transform( 0.916359, -0.241676, 0.319485, -0.24069, -0.969658, -0.0434851, 0.320335, -0.037023, -0.946592, -0.207126, 1.38918, 0.483377 )
 bone_name = "hand.R"
 
 [node name="shoot_from" type="Position3D" parent="Scene Root/Robot_Skeleton/Skeleton/gun_bone"]
 transform = Transform( 0.999919, 0.0106283, -0.00705317, -0.0105956, 0.99993, 0.00505793, 0.00710796, -0.0049828, 0.999962, 0.0100024, -0.00491095, -0.40371 )
 
 [node name="RootMotionView" type="RootMotionView" parent="."]
-layers = 1
 animation_path = NodePath("../AnimationTree")
-color = Color( 0.5, 0.5, 1, 1 )
-cell_size = 1.0
-radius = 10.0
-zero_y = true
 
 [node name="animation_tree" type="AnimationTree" parent="."]
 tree_root = SubResource( 22 )
@@ -347,17 +246,14 @@ parameters/land/active = false
 parameters/state/current = 0
 parameters/strafe/blend_position = Vector2( 0, 0 )
 parameters/walk/blend_position = Vector2( 0, 0 )
-_sections_unfolded = [ "Aim", "Parameters", "Root Motion", "Strafe", "Walk", "tree_root" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.03615, 0 )
 shape = SubResource( 23 )
-disabled = false
 
 [node name="CollisionShape2" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.00357, 0 )
 shape = SubResource( 24 )
-disabled = false
 
 [node name="camera_base" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85456, 0 )
@@ -366,29 +262,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85456, 0 )
 
 [node name="Camera" type="Camera" parent="camera_base/camera_rot"]
 transform = Transform( -1, 0, -8.74228e-08, -3.17959e-08, 0.931515, 0.363703, 8.14356e-08, 0.363703, -0.931515, 0, 0.592719, -2.15676 )
-keep_aspect = 1
-cull_mask = 1048575
-environment = null
-h_offset = 0.0
-v_offset = 0.0
-doppler_tracking = 0
-projection = 0
 current = true
-fov = 70.0
-size = 1.0
-near = 0.05
 far = 300.0
-_sections_unfolded = [ "Transform" ]
 
 [node name="animation" type="AnimationPlayer" parent="camera_base"]
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
 anims/far = SubResource( 25 )
 anims/shoot = SubResource( 26 )
-blend_times = [  ]
 
 [node name="crosshair" type="TextureRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -400,55 +279,21 @@ margin_left = -17.3346
 margin_top = -23.8394
 margin_right = 14.6654
 margin_bottom = 8.16064
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 3 )
-stretch_mode = 0
-_sections_unfolded = [ "Anchor", "Visibility" ]
 
 [node name="sfx" type="Node" parent="."]
 
 [node name="step" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 4 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-mix_target = 0
-bus = "Master"
-_sections_unfolded = [ "stream" ]
 
 [node name="jump" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 5 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-mix_target = 0
-bus = "Master"
 
 [node name="land" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 6 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-mix_target = 0
-bus = "Master"
 
 [node name="shoot" type="AudioStreamPlayer" parent="sfx"]
 stream = SubResource( 27 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-mix_target = 0
-bus = "Master"
-_sections_unfolded = [ "stream" ]
 
 
 [editable path="Scene Root"]

@@ -4,77 +4,25 @@
 [ext_resource path="res://fx/smoke/smoke_n.png" type="Texture" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
-
-render_priority = 0
 flags_transparent = true
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-flags_do_not_receive_shadows = false
-flags_disable_ambient_light = false
-flags_ensure_correct_normals = false
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
 params_billboard_mode = 3
-params_billboard_keep_scale = false
-params_grow = false
-params_use_alpha_scissor = false
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
-particles_anim_loop = 0
+particles_anim_loop = false
 albedo_color = Color( 1, 1, 1, 0.654902 )
 albedo_texture = ExtResource( 1 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 1.0
-roughness_texture_channel = 0
-emission_enabled = false
 normal_enabled = true
 normal_scale = 1.0
 normal_texture = ExtResource( 2 )
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = true
 proximity_fade_distance = 1.0
-distance_fade_mode = 0
-_sections_unfolded = [ "Albedo", "Flags", "Metallic", "NormalMap", "Parameters", "Proximity Fade", "Roughness", "Vertex Color" ]
 
 [sub_resource type="QuadMesh" id=2]
-
 material = SubResource( 1 )
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-flip_faces = false
-size = Vector2( 1, 1 )
 
 [sub_resource type="Gradient" id=3]
-
 offsets = PoolRealArray( 0, 0.181467, 0.891892, 1 )
 colors = PoolColorArray( 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
@@ -82,70 +30,18 @@ colors = PoolColorArray( 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="Particles" type="CPUParticles" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-emitting = true
 amount = 3
 lifetime = 8.0
-one_shot = false
-preprocess = 0.0
 speed_scale = 0.3
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-local_coords = true
-draw_order = 0
 mesh = SubResource( 2 )
 emission_shape = 2
 emission_box_extents = Vector3( 1, 1, 1 )
-emission_points = PoolVector3Array(  )
-emission_colors = PoolColorArray(  )
-flag_align_y = false
-flag_rotate_y = false
-flag_disable_z = false
 spread = 0.0
-flatness = 0.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 2.0
-initial_velocity_random = 0.0
 angular_velocity = 30.0
 angular_velocity_random = 1.0
-angular_velocity_curve = null
-linear_accel = 0.0
-linear_accel_random = 0.0
-linear_accel_curve = null
-radial_accel = 0.0
-radial_accel_random = 0.0
-radial_accel_curve = null
-tangential_accel = 0.0
-tangential_accel_random = 0.0
-tangential_accel_curve = null
-damping = 0.0
-damping_random = 0.0
-damping_curve = null
 angle = 720.0
 angle_random = 1.0
-angle_curve = null
-scale = 15.0
-scale_random = 0.0
-scale_curve = null
 color_ramp = SubResource( 3 )
-hue_variation = 0.0
-hue_variation_random = 0.0
-hue_variation_curve = null
-anim_speed = 0.0
-anim_speed_random = 0.0
-anim_speed_curve = null
-anim_offset = 0.0
-anim_offset_random = 0.0
-anim_offset_curve = null
-anim_loop = false
 
