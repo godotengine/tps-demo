@@ -3,6 +3,10 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/hallreactor_circ4500_ReactorOuterWall8.png-2c1b40c9c4cd34df50f1310dedb4d55c.s3tc.stex"
+metadata={
+"imported_formats": [ "s3tc" ],
+"vram_texture": true
+}
 
 [deps]
 

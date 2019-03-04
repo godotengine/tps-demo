@@ -3,6 +3,10 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/tile_metalpillar_orm.png-54788ac6439845643a03611e4ba60883.s3tc.stex"
+metadata={
+"imported_formats": [ "s3tc" ],
+"vram_texture": true
+}
 
 [deps]
 

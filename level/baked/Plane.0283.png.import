@@ -3,6 +3,10 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Plane.0283.png-e2b084c4770ae29eea018390be41344f.s3tc.stex"
+metadata={
+"imported_formats": [ "s3tc" ],
+"vram_texture": true
+}
 
 [deps]
 

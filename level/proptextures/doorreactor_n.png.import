@@ -3,6 +3,10 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/doorreactor_n.png-39e7fae50a7194e2c400f3f7961180ec.s3tc.stex"
+metadata={
+"imported_formats": [ "s3tc" ],
+"vram_texture": true
+}
 
 [deps]
 

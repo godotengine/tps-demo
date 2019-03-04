@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/ContainerCage_container4_OcclusionRoughnessMetallic.png-7bb77496ed51bc5e2b09aeeef39436b1.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

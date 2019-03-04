@@ -3,6 +3,10 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/reactorcorecylinder_reactor_cilinder_Normal.png-271e5d8bb0c88e72fd9d0e3376338208.s3tc.stex"
+metadata={
+"imported_formats": [ "s3tc" ],
+"vram_texture": true
+}
 
 [deps]
 

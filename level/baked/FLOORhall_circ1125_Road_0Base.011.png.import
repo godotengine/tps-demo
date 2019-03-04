@@ -3,6 +3,10 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/FLOORhall_circ1125_Road_0Base.011.png-7ac90bc3f5ba4aa45fad0c12227a7492.s3tc.stex"
+metadata={
+"imported_formats": [ "s3tc" ],
+"vram_texture": true
+}
 
 [deps]
 

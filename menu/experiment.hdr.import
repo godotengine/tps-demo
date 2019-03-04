@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/experiment.hdr-b8c588f778b1bbe816e1780c3767a773.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

@@ -3,6 +3,10 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/flyingforklift_scificarglass_OcclusionRoughnessMetallic.png-b776512801a6ce5c87227c5888944895.s3tc.stex"
+metadata={
+"imported_formats": [ "s3tc" ],
+"vram_texture": true
+}
 
 [deps]
 

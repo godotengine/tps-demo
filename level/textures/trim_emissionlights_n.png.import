@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/trim_emissionlights_n.png-159021fb93703b8d8ba1a662d3a5d00e.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
