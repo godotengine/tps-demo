@@ -1,12 +1,13 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/player.dae" type="PackedScene" id=2]
-[ext_resource path="res://player/crosshair.png" type="Texture" id=3]
-[ext_resource path="res://player/step_random_pitch.tres" type="AudioStream" id=4]
-[ext_resource path="res://player/fx_jump.wav" type="AudioStream" id=5]
-[ext_resource path="res://player/fx_land.wav" type="AudioStream" id=6]
-[ext_resource path="res://player/fx_shoot.wav" type="AudioStream" id=7]
+[ext_resource path="res://player/bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/crosshair.png" type="Texture" id=4]
+[ext_resource path="res://player/step_random_pitch.tres" type="AudioStream" id=5]
+[ext_resource path="res://player/fx_jump.wav" type="AudioStream" id=6]
+[ext_resource path="res://player/fx_land.wav" type="AudioStream" id=7]
+[ext_resource path="res://player/fx_shoot.wav" type="AudioStream" id=8]
 
 [sub_resource type="AnimationNodeAdd3" id=1]
 resource_local_to_scene = true
@@ -213,7 +214,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="AudioStreamRandomPitch" id=27]
-audio_stream = ExtResource( 7 )
+audio_stream = ExtResource( 8 )
 
 [node name="robot" type="KinematicBody"]
 collision_layer = 3
@@ -265,6 +266,12 @@ transform = Transform( -1, 0, -8.74228e-08, -3.17959e-08, 0.931515, 0.363703, 8.
 current = true
 far = 300.0
 
+[node name="ShaderCache" type="Spatial" parent="camera_base/camera_rot/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+visible = false
+
+[node name="bullet" parent="camera_base/camera_rot/Camera/ShaderCache" instance=ExtResource( 3 )]
+
 [node name="animation" type="AnimationPlayer" parent="camera_base"]
 anims/far = SubResource( 25 )
 anims/shoot = SubResource( 26 )
@@ -279,18 +286,24 @@ margin_left = -17.3346
 margin_top = -23.8394
 margin_right = 14.6654
 margin_bottom = 8.16064
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
+
+[node name="fade_in" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
 
 [node name="sfx" type="Node" parent="."]
 
 [node name="step" type="AudioStreamPlayer" parent="sfx"]
-stream = ExtResource( 4 )
-
-[node name="jump" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 5 )
 
-[node name="land" type="AudioStreamPlayer" parent="sfx"]
+[node name="jump" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 6 )
+
+[node name="land" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 7 )
 
 [node name="shoot" type="AudioStreamPlayer" parent="sfx"]
 stream = SubResource( 27 )

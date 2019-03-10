@@ -26,6 +26,17 @@ const JUMP_SPEED = 5
 
 var root_motion = Transform()
 
+var fade_in_frame_counter = 60
+
+func _enter_tree():
+	$fade_in.show()
+
+func _ready():
+	#pre initialize orientation transform
+	orientation=$"Scene Root".global_transform
+	orientation.origin = Vector3()
+#	$camera_base/camera_rot/Camera.add_exception(self)
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		$camera_base.rotate_y( -event.relative.x * CAMERA_ROTATION_SPEED )
@@ -33,13 +44,18 @@ func _input(event):
 		camera_x_rot = clamp(camera_x_rot + event.relative.y * CAMERA_ROTATION_SPEED,deg2rad(CAMERA_X_ROT_MIN), deg2rad(CAMERA_X_ROT_MAX) )
 		$camera_base/camera_rot.rotation.x =  camera_x_rot
 
-func _ready():
-	#pre initialize orientation transform	
-	orientation=$"Scene Root".global_transform
-	orientation.origin = Vector3()
-#	$camera_base/camera_rot/Camera.add_exception(self)
-	
 func _physics_process(delta):
+	# Fade-in progressively to hide initial artifacts
+	if fade_in_frame_counter > 0:
+		if fade_in_frame_counter == 50:
+			# Hide ShaderCache after a few frames to be sure the shaders compiled
+			$camera_base/camera_rot/Camera/ShaderCache.hide()
+		$fade_in.modulate.a = lerp(1.0, 0.0, 1.0 - fade_in_frame_counter / 60.0)
+		fade_in_frame_counter -= 1
+		if fade_in_frame_counter == 0:
+			$fade_in.hide()
+
+	# Character controller
 	
 	var motion_target = Vector2( 	Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 									Input.get_action_strength("move_forward") - Input.get_action_strength("move_back") )
