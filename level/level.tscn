@@ -1,15 +1,17 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://level/level.gd" type="Script" id=1]
 [ext_resource path="res://level/geometry/demolevel.dae" type="PackedScene" id=2]
-[ext_resource path="res://level/giprobe_data.res" type="GIProbeData" id=3]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://enemies/red_robot/red_robot.tscn" type="PackedScene" id=5]
-[ext_resource path="res://music/music.ogg" type="AudioStream" id=6]
-[ext_resource path="res://level/lightdata.res" type="BakedLightmapData" id=7]
-[ext_resource path="res://fx/smoke/smoke.tscn" type="PackedScene" id=8]
-[ext_resource path="res://fx/plasma/plasma.tscn" type="PackedScene" id=9]
-[ext_resource path="res://level/forklift/forklift.tscn" type="PackedScene" id=10]
+[ext_resource path="res://level/shader_cache.gd" type="Script" id=3]
+[ext_resource path="res://player/bullet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://level/giprobe_data.res" type="GIProbeData" id=5]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://enemies/red_robot/red_robot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://music/music.ogg" type="AudioStream" id=8]
+[ext_resource path="res://level/lightdata.res" type="BakedLightmapData" id=9]
+[ext_resource path="res://fx/smoke/smoke.tscn" type="PackedScene" id=10]
+[ext_resource path="res://fx/plasma/plasma.tscn" type="PackedScene" id=11]
+[ext_resource path="res://level/forklift/forklift.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -75,7 +77,6 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 
 [node name="Point" parent="Scene Root" index="109"]
 transform = Transform( 0.999986, -0.00522796, -2.28521e-10, 0, -4.37114e-08, 1, -0.00522796, -0.999986, -4.37108e-08, 8.46026, -4.73813, 85.4573 )
@@ -204,6 +205,11 @@ transform = Transform( 1, 0, 7.45058e-09, 5.72164e-11, 1, 8.73443e-11, -1.49012e
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
+[node name="shader_cache" type="Node" parent="WorldEnvironment"]
+script = ExtResource( 3 )
+
+[node name="bullet" parent="WorldEnvironment/shader_cache" instance=ExtResource( 4 )]
+
 [node name="GIProbe" type="GIProbe" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.09263, 1.28266, 2.88598 )
 subdiv = 2
@@ -211,21 +217,21 @@ extents = Vector3( 113.946, 48.8048, 117.028 )
 energy = 2.2
 propagation = 1.0
 interior = true
-data = ExtResource( 3 )
+data = ExtResource( 5 )
 
-[node name="robot" parent="." instance=ExtResource( 4 )]
+[node name="player" parent="." instance=ExtResource( 6 )]
 transform = Transform( -0.575826, 0, -0.817573, 0, 1, 0, 0.817573, 0, -0.575826, 64.8183, -1.0765, 78.7639 )
 
-[node name="big_robot" parent="." instance=ExtResource( 5 )]
+[node name="big_robot" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.843905, 0, -0.536493, 0, 1, 0, 0.536493, 0, 0.843905, 71.5907, -6.05686, 46.2736 )
 
-[node name="big_robot2" parent="." instance=ExtResource( 5 )]
+[node name="big_robot2" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.338334, 0, 0.941027, 0, 1, 0, -0.941027, 0, 0.338334, 53.2126, -6.05686, 15.9321 )
 
-[node name="big_robot3" parent="." instance=ExtResource( 5 )]
+[node name="big_robot3" parent="." instance=ExtResource( 7 )]
 transform = Transform( -0.164432, 0, 0.986389, 0, 1, 0, -0.986389, 0, -0.164432, -2.96096, -11.6923, 20.2343 )
 
-[node name="big_robot4" parent="." instance=ExtResource( 5 )]
+[node name="big_robot4" parent="." instance=ExtResource( 7 )]
 transform = Transform( -0.164432, 0, 0.986389, 0, 1, 0, -0.986389, 0, -0.164432, -9.15526, -11.6923, -16.9238 )
 
 [node name="sound_outside" type="Area" parent="."]
@@ -248,7 +254,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0
 shape = SubResource( 2 )
 
 [node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource( 8 )
 autoplay = true
 
 [node name="refprobes" type="Spatial" parent="."]
@@ -283,31 +289,30 @@ bake_energy = 2.2
 bake_extents = Vector3( 127.692, 56.9907, 126.895 )
 capture_cell_size = 4.0
 image_path = "res://level/baked"
-light_data = ExtResource( 7 )
+light_data = ExtResource( 9 )
 
-[node name="smoke1" parent="." instance=ExtResource( 8 )]
+[node name="smoke1" parent="." instance=ExtResource( 10 )]
 transform = Transform( 2.81076, 0, 0, 0, 2.81076, 0, 0, 0, 2.81076, -31.0061, -16.8843, 64.9964 )
 
-[node name="smoke3" parent="." instance=ExtResource( 8 )]
+[node name="smoke3" parent="." instance=ExtResource( 10 )]
 transform = Transform( 2.81076, 0, 0, 0, 2.81076, 0, 0, 0, 2.81076, -57.857, -16.8843, 48.4801 )
 
-[node name="smoke2" parent="." instance=ExtResource( 8 )]
+[node name="smoke2" parent="." instance=ExtResource( 10 )]
 transform = Transform( 2.81076, 0, 0, 0, 2.81076, 0, 0, 0, 2.81076, 65.1483, -16.8843, -12.7312 )
 
-[node name="plasma" parent="." instance=ExtResource( 9 )]
+[node name="plasma" parent="." instance=ExtResource( 11 )]
 transform = Transform( 4.91931, 0, 0, 0, 4.91931, 0, 0, 0, 4.91931, 0, -2.27672, 0.025551 )
 
 [node name="forklifts_a" type="Spatial" parent="."]
 
-[node name="Spatial" parent="forklifts_a" instance=ExtResource( 10 )]
+[node name="Spatial" parent="forklifts_a" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 67.8049, 2.27771, 0 )
 
-[node name="Spatial2" parent="forklifts_a" instance=ExtResource( 10 )]
+[node name="Spatial2" parent="forklifts_a" instance=ExtResource( 12 )]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -68.2496, 2.27771, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="forklifts_a"]
 autoplay = "mawaru"
 anims/mawaru = SubResource( 3 )
-
 
 [editable path="Scene Root"]
