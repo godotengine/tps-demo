@@ -33,6 +33,9 @@ func _input(event):
 		camera_x_rot = clamp(camera_x_rot + event.relative.y * CAMERA_ROTATION_SPEED,deg2rad(CAMERA_X_ROT_MIN), deg2rad(CAMERA_X_ROT_MAX) )
 		$camera_base/camera_rot.rotation.x =  camera_x_rot
 
+	if event.is_action_pressed("quit"):
+		get_tree().quit()
+
 func _ready():
 	#pre initialize orientation transform	
 	orientation=$"Scene Root".global_transform

@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
@@ -10,9 +10,11 @@
 [ext_resource path="res://menu/button_play_hover.png" type="Texture" id=8]
 [ext_resource path="res://menu/button_settings.png" type="Texture" id=9]
 [ext_resource path="res://menu/button_settings_hover.png" type="Texture" id=10]
-[ext_resource path="res://menu/button_font.tres" type="DynamicFont" id=11]
-[ext_resource path="res://menu/button_pressed.tres" type="StyleBox" id=12]
-[ext_resource path="res://menu/button_normal.tres" type="StyleBox" id=13]
+[ext_resource path="res://menu/button_quit.png" type="Texture" id=11]
+[ext_resource path="res://menu/button_quit_hover.png" type="Texture" id=12]
+[ext_resource path="res://menu/button_font.tres" type="DynamicFont" id=13]
+[ext_resource path="res://menu/button_pressed.tres" type="StyleBox" id=14]
+[ext_resource path="res://menu/button_normal.tres" type="StyleBox" id=15]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 2 )
@@ -223,7 +225,7 @@ environment = SubResource( 2 )
 [node name="Scene Root" parent="." instance=ExtResource( 3 )]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 14.9811, 0, 0, 0, -6.54845e-07, 14.9811, 0, -14.9811, -6.54845e-07, 0, 0, 0 )
+transform = Transform( 15, 0, 0, 0, 0, 15, 0, -15, 0, 0, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
@@ -278,6 +280,15 @@ texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 10 )
 
+[node name="quit" type="TextureButton" parent="ui/main"]
+margin_left = 100.0
+margin_top = 590.0
+margin_right = 400.0
+margin_bottom = 640.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
+
 [node name="settings" type="Control" parent="ui"]
 visible = false
 anchor_right = 1.0
@@ -288,7 +299,7 @@ margin_left = 30.0
 margin_top = 390.0
 margin_right = 368.0
 margin_bottom = 443.0
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Global Illumination:"
 
@@ -297,11 +308,11 @@ margin_left = 400.0
 margin_top = 390.0
 margin_right = 650.0
 margin_bottom = 447.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 9 )
-custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = ExtResource( 11 )
+custom_styles/normal = ExtResource( 15 )
+custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -315,10 +326,10 @@ margin_left = 690.0
 margin_top = 390.0
 margin_right = 940.0
 margin_bottom = 447.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 11 )
-custom_styles/normal = ExtResource( 13 )
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -332,10 +343,10 @@ margin_left = 980.0
 margin_top = 390.0
 margin_right = 1230.0
 margin_bottom = 447.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 14 )
-custom_styles/normal = ExtResource( 13 )
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -361,7 +372,7 @@ margin_bottom = 567.0
 custom_styles/hover = SubResource( 19 )
 custom_styles/pressed = SubResource( 20 )
 custom_styles/focus = SubResource( 21 )
-custom_styles/normal = ExtResource( 13 )
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 23 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -376,10 +387,10 @@ margin_left = 690.0
 margin_top = 510.0
 margin_right = 940.0
 margin_bottom = 567.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 25 )
-custom_styles/normal = ExtResource( 13 )
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 27 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -393,10 +404,10 @@ margin_left = 980.0
 margin_top = 510.0
 margin_right = 1230.0
 margin_bottom = 567.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 28 )
-custom_styles/normal = ExtResource( 13 )
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 30 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -410,10 +421,10 @@ margin_left = 1270.0
 margin_top = 510.0
 margin_right = 1520.0
 margin_bottom = 567.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 31 )
-custom_styles/normal = ExtResource( 13 )
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 33 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -436,10 +447,10 @@ margin_left = 400.0
 margin_top = 620.0
 margin_right = 650.0
 margin_bottom = 677.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 36 )
-custom_styles/normal = ExtResource( 13 )
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 38 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -454,10 +465,10 @@ margin_left = 690.0
 margin_top = 620.0
 margin_right = 940.0
 margin_bottom = 677.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 40 )
-custom_styles/normal = ExtResource( 13 )
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 42 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -471,10 +482,10 @@ margin_left = 980.0
 margin_top = 620.0
 margin_right = 1230.0
 margin_bottom = 677.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 43 )
-custom_styles/normal = ExtResource( 13 )
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 45 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -497,10 +508,10 @@ margin_left = 400.0
 margin_top = 730.0
 margin_right = 650.0
 margin_bottom = 787.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 36 )
-custom_styles/normal = ExtResource( 13 )
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 38 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -515,10 +526,10 @@ margin_left = 690.0
 margin_top = 730.0
 margin_right = 940.0
 margin_bottom = 787.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 36 )
-custom_styles/normal = ExtResource( 13 )
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 38 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -532,10 +543,10 @@ margin_left = 980.0
 margin_top = 730.0
 margin_right = 1230.0
 margin_bottom = 787.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 36 )
-custom_styles/normal = ExtResource( 13 )
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 38 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -549,10 +560,10 @@ margin_left = 1270.0
 margin_top = 730.0
 margin_right = 1520.0
 margin_bottom = 787.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 36 )
-custom_styles/normal = ExtResource( 13 )
+custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 38 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -566,8 +577,8 @@ margin_left = 400.0
 margin_top = 930.0
 margin_right = 650.0
 margin_bottom = 987.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 47 )
 custom_styles/normal = SubResource( 48 )
 custom_fonts/font = SubResource( 50 )
@@ -581,8 +592,8 @@ margin_left = 980.0
 margin_top = 920.0
 margin_right = 1230.0
 margin_bottom = 977.0
-custom_styles/hover = ExtResource( 12 )
-custom_styles/pressed = ExtResource( 12 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = SubResource( 47 )
 custom_styles/normal = SubResource( 48 )
 custom_fonts/font = SubResource( 50 )
@@ -601,7 +612,7 @@ margin_left = 120.0
 margin_top = 930.0
 margin_right = 288.0
 margin_bottom = 983.0
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 13 )
 text = "Loading..."
 
 [node name="begin_load_timer" type="Timer" parent="."]
@@ -609,6 +620,7 @@ wait_time = 0.2
 
 [connection signal="pressed" from="ui/main/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ui/main/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ui/main/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="ui/settings/apply" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="ui/settings/cancel" to="." method="_on_cancel_pressed"]
 [connection signal="timeout" from="begin_load_timer" to="." method="_on_begin_load_timer_timeout"]

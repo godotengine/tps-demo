@@ -51,6 +51,10 @@ func _on_settings_pressed():
 		$ui/settings/resolution_576.pressed = true
 
 
+func _on_quit_pressed():
+	get_tree().quit()
+
+
 func _on_apply_pressed():
 	$ui/main.show()
 	$ui/settings.hide()
