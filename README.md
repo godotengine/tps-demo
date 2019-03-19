@@ -27,6 +27,11 @@ git lfs fetch
 git checkout master
 ```
 
+Note that you cannot use the Download ZIP link provided by GitHub;
+[it contains only the pointers](https://github.com/git-lfs/git-lfs/issues/903) to the
+to the files, not the files themselves. This results in corruption errors when opening
+the project in Godot. Use your Git client to create a proper clone instead.
+
 ## License
 
 See [LICENSE.txt](/LICENSE.txt) for details.
