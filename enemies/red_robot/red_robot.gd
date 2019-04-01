@@ -183,7 +183,7 @@ func _physics_process(delta):
 				blend_pos.y += v_motion
 				blend_pos.y = clamp(blend_pos.y, -1 , 1 )
 					
-				$AnimationTree["parameters/aiming/blend_amount"]= blend_pos
+				$AnimationTree["parameters/aim/blend_position"]= blend_pos
 
 				
 			
