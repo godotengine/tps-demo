@@ -19,10 +19,12 @@ You need to install the Git LFS extension on your system, so that Git can fetch 
 assets from the LFS repository. It should happen automatically when using the usual
 Git commands.
 
-If you cloned this Git repository *before* installing Git LFS, you will have to fetch
-the assets manually the first time:
+If you cloned this Git repository *before* installing Git LFS, or if for any other
+reason you get errors importing .dae files in Godot, try to run those commands
+manually:
 
 ```text
+git lfs install
 git lfs fetch
 git checkout master
 ```
