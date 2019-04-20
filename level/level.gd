@@ -23,9 +23,9 @@ func _ready():
 		get_node("/root").msaa = Viewport.MSAA_DISABLED
 		
 	if (settings.ssao_quality == settings.SSAO_QUALITY_HIGH):
-		pass
+		$WorldEnvironment.environment.ssao_quality = $WorldEnvironment.environment.SSAO_QUALITY_HIGH
 	elif (settings.ssao_quality == settings.SSAO_QUALITY_LOW):
-		pass
+		$WorldEnvironment.environment.ssao_quality = $WorldEnvironment.environment.SSAO_QUALITY_LOW
 	else:
 		$WorldEnvironment.environment.ssao_enabled = false
 		
