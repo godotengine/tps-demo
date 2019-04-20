@@ -31,13 +31,13 @@ func _ready():
 		
 	if (settings.resolution == settings.RESOLUTION_NATIVE):
 		pass
-	elif (settings.ssao_quality == settings.RESOLUTION_1080):
+	elif (settings.resolution == settings.RESOLUTION_1080):
 		var minsize=Vector2( OS.window_size.x * 1080 / OS.window_size.y, 1080.0)
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,SceneTree.STRETCH_ASPECT_KEEP_HEIGHT,minsize)
-	elif (settings.ssao_quality == settings.RESOLUTION_720):
+	elif (settings.resolution == settings.RESOLUTION_720):
 		var minsize=Vector2( OS.window_size.x * 720 / OS.window_size.y, 720.0)
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,SceneTree.STRETCH_ASPECT_KEEP_HEIGHT,minsize)
-	elif (settings.ssao_quality == settings.RESOLUTION_576):
+	elif (settings.resolution == settings.RESOLUTION_576):
 		var minsize=Vector2( OS.window_size.x * 576 / OS.window_size.y, 576.0)
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,SceneTree.STRETCH_ASPECT_KEEP_HEIGHT,minsize)
 		
