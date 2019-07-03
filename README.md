@@ -29,6 +29,21 @@ git lfs fetch
 git checkout master
 ```
 
+**Note:** The above steps are very important, if you do not have the LFS assets
+checked out, you will not be able to run this demo.
+You can confirm that you properly checked out the assets by verifying e.g. that
+your ``level/geometry/demolevel.dae`` file is over 300 MBs.
+
+## Running
+
+You need [Godot Engine](https://godotengine.org) in version 3.1 or later to run
+this demo project. Download the latest stable version [from the website](https://godotengine.org/download/)
+or [build it from source](https://github.com/godotengine/godot).
+
+Once you have cloned this repository and made sure that all LFS assets were
+checked out, you should open the project in the Godot editor to trigger the
+import of all assets.
+
 ## License
 
 See [LICENSE.txt](/LICENSE.txt) for details.
