@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GodotDemoLevel"
+config/name="Godot Third-Person Shooter Demo"
 run/main_scene="res://menu/menu.tscn"
 config/icon="res://icon.png"
 
