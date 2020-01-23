@@ -617,7 +617,6 @@ text = "Loading..."
 
 [node name="begin_load_timer" type="Timer" parent="."]
 wait_time = 0.2
-
 [connection signal="pressed" from="ui/main/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ui/main/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="ui/main/quit" to="." method="_on_quit_pressed"]
