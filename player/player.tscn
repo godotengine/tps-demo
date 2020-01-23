@@ -215,7 +215,7 @@ tracks/1/keys = {
 [sub_resource type="AudioStreamRandomPitch" id=27]
 audio_stream = ExtResource( 7 )
 
-[node name="robot" type="KinematicBody"]
+[node name="player" type="KinematicBody"]
 collision_layer = 3
 script = ExtResource( 1 )
 
@@ -294,6 +294,5 @@ stream = ExtResource( 6 )
 
 [node name="shoot" type="AudioStreamPlayer" parent="sfx"]
 stream = SubResource( 27 )
-
 
 [editable path="Scene Root"]
