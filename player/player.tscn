@@ -152,7 +152,7 @@ nodes/strafe/node = SubResource( 16 )
 nodes/strafe/position = Vector2( -340, 120 )
 nodes/walk/node = SubResource( 21 )
 nodes/walk/position = Vector2( -340, 220 )
-node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "land", 0, "state", "land", 1, "hardland", "eye_blend", 0, "aim", "eye_blend", 1, "eyes" ]
+node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "land", 0, "state", "land", 1, "hardland", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup" ]
 
 [sub_resource type="CapsuleShape" id=23]
 radius = 0.490082
@@ -225,7 +225,7 @@ script = ExtResource( 1 )
 bones/46/bound_children = [ NodePath("gun_bone") ]
 
 [node name="gun_bone" type="BoneAttachment" parent="Scene Root/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.916359, -0.241676, 0.319485, -0.24069, -0.969658, -0.0434851, 0.320335, -0.037023, -0.946592, -0.207126, 1.38918, 0.483377 )
+transform = Transform( 0.90287, -0.253554, 0.347451, -0.259802, -0.965241, -0.0296011, 0.342916, -0.0635128, -0.93723, -0.207006, 1.36658, 0.538869 )
 bone_name = "hand.R"
 
 [node name="shoot_from" type="Position3D" parent="Scene Root/Robot_Skeleton/Skeleton/gun_bone"]
@@ -256,6 +256,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.00
 shape = SubResource( 24 )
 
 [node name="camera_base" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85456, 0 )
 
 [node name="camera_rot" type="Spatial" parent="camera_base"]
@@ -282,6 +283,7 @@ margin_bottom = 8.16064
 texture = ExtResource( 3 )
 
 [node name="sfx" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="step" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 4 )
@@ -294,5 +296,10 @@ stream = ExtResource( 6 )
 
 [node name="shoot" type="AudioStreamPlayer" parent="sfx"]
 stream = SubResource( 27 )
+
+[node name="FireCooldown" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
 
 [editable path="Scene Root"]

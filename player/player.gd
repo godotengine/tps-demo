@@ -97,7 +97,7 @@ func _physics_process(delta):
 		
 		root_motion = $animation_tree.get_root_motion_transform()
 		
-		if Input.is_action_just_pressed("shoot"):
+		if Input.is_action_pressed("shoot") and $FireCooldown.time_left == 0:
 			var shoot_from = $"Scene Root/Robot_Skeleton/Skeleton/gun_bone/shoot_from".global_transform.origin
 			var cam = $camera_base/camera_rot/Camera
 			
@@ -118,6 +118,7 @@ func _physics_process(delta):
 			bullet.global_transform.origin = shoot_from
 			bullet.direction = shoot_dir
 			bullet.add_collision_exception_with(self)
+			$FireCooldown.start()
 			$sfx/shoot.play()
 	else: # Not in air or aiming, idle.
 		# Convert orientation to quaternions for interpolating rotation.
