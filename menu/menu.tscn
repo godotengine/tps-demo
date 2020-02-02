@@ -259,8 +259,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="main" type="Control" parent="ui"]
+anchor_top = -0.00189865
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.998101
+margin_left = -4.10107
+margin_top = 2.05054
+margin_right = -4.10107
+margin_bottom = 2.05054
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="play" type="TextureButton" parent="ui/main"]
 margin_left = 100.0
@@ -270,6 +278,9 @@ margin_bottom = 440.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="settings" type="TextureButton" parent="ui/main"]
 margin_left = 100.0
