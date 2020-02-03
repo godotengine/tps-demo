@@ -1,14 +1,18 @@
 # Third Person Shooter Demo
 
+Third person shooter demo made using [Godot Engine](https://godotengine.org).
+
 ![Screenshot of TPS demo](screenshot.png)
 
-Third person shooter demo made using [Godot Engine](https://godotengine.org) 3.1.
+## Godot versions
 
-**Note:** Until Godot 3.1-stable is released, you need a recent build from Godot's
-*master* branch to run this demo. You can build the engine from source, or use one
-of @Calinou's [nightly builds](https://hugo.pro/projects/godot-builds).
+- The [`master`](https://github.com/godotengine/tps-demo) branch is compatible with the latest stable Godot version (currently 3.2).
+- If you are using an older version of Godot, use the appropriate branch for your Godot version:
 
-**Note 2:** The repository is big and asset importing not well optimized yet, so expect
+  - [`3.1`](https://github.com/godotengine/tps-demo/tree/3.1) branch
+  for Godot 3.1.x.
+
+**Note:** The repository is big and asset importing not well optimized yet, so expect
 a high CPU and RAM load when opening the project for the first time.
 
 ## Git LFS
@@ -36,8 +40,8 @@ your ``level/geometry/demolevel.dae`` file is over 300 MBs.
 
 ## Running
 
-You need [Godot Engine](https://godotengine.org) in version 3.1 or later to run
-this demo project. Download the latest stable version [from the website](https://godotengine.org/download/)
+You need [Godot Engine](https://godotengine.org) to run this demo project.
+Download the latest stable version [from the website](https://godotengine.org/download/),
 or [build it from source](https://github.com/godotengine/godot).
 
 Once you have cloned this repository and made sure that all LFS assets were
@@ -46,4 +50,4 @@ import of all assets.
 
 ## License
 
-See [LICENSE.txt](/LICENSE.txt) for details.
+See [LICENSE.md](LICENSE.md) for details.
