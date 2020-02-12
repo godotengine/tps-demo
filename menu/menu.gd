@@ -1,12 +1,47 @@
 extends Spatial
 
+var res_loader : ResourceInteractiveLoader = null
+var loading_thread : Thread = null
+
 func _ready():
 	$ui/main/play.grab_focus()
+
+
+func interactive_load(loader):
+	while true:
+		var status = loader.poll()
+		if status == OK:
+			$ui/loading/progress.value = (loader.get_stage() * 100) / loader.get_stage_count()
+			continue
+		elif status == ERR_FILE_EOF:
+			$ui/loading/progress.value = 100
+			$ui/loading/loading_done_timer.start()
+			break
+		else:
+			print("Error while loading level: " + str(status))
+			$ui/main.show()
+			$ui/loading.hide()
+			break
+
+
+func loading_done(loader):
+	loading_thread.wait_to_finish()
+	#warning-ignore:return_value_discarded
+	get_tree().change_scene_to(loader.get_resource())
+
+
+func _on_loading_done_timer_timeout():
+	call_deferred("loading_done", res_loader)
+
 
 func _on_play_pressed():
 	$ui/main.hide()
 	$ui/loading.show()
-	$begin_load_timer.start()
+	res_loader = ResourceLoader.load_interactive("res://level/level.tscn")
+	loading_thread = Thread.new()
+	#warning-ignore:return_value_discarded
+	loading_thread.start(self, "interactive_load", res_loader)
+
 
 func _on_settings_pressed():
 	$ui/main.hide()
@@ -94,8 +129,3 @@ func _on_cancel_pressed():
 	$ui/main.show()
 	$ui/main/play.grab_focus()
 	$ui/settings.hide()
-
-
-func _on_begin_load_timer_timeout():
-	#warning-ignore:return_value_discarded
-	get_tree().change_scene("res://level/level.tscn")
