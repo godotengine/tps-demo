@@ -1,6 +1,7 @@
 extends KinematicBody
 
-const CAMERA_ROTATION_SPEED = 0.001
+const CAMERA_MOUSE_ROTATION_SPEED = 0.001
+const CAMERA_CONTROLLER_ROTATION_SPEED = 1.0
 const CAMERA_X_ROT_MIN = -40
 const CAMERA_X_ROT_MAX = 30
 
@@ -32,8 +33,17 @@ func _ready():
 	orientation = $"Scene Root".global_transform
 	orientation.origin = Vector3()
 
+func rotate_camera(move):
+	$camera_base.rotate_y(-move.x)
+	$camera_base.orthonormalize() # After relative transforms, camera needs to be renormalized.
+	camera_x_rot += move.y
+	camera_x_rot = clamp(camera_x_rot, deg2rad(CAMERA_X_ROT_MIN), deg2rad(CAMERA_X_ROT_MAX))
+	$camera_base/camera_rot.rotation.x = camera_x_rot
 
 func _physics_process(delta):
+	var camera_move = Vector2(Input.get_action_strength("view_right") - Input.get_action_strength("view_left"),
+								Input.get_action_strength("view_up") - Input.get_action_strength("view_down"))
+	rotate_camera(camera_move * delta * CAMERA_CONTROLLER_ROTATION_SPEED)
 	var motion_target = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 
 								Input.get_action_strength("move_forward") - Input.get_action_strength("move_back"))
 	motion = motion.linear_interpolate(motion_target, MOTION_INTERPOLATE_SPEED * delta)
@@ -155,11 +165,7 @@ func _physics_process(delta):
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		$camera_base.rotate_y(-event.relative.x * CAMERA_ROTATION_SPEED)
-		$camera_base.orthonormalize() # After relative transforms, camera needs to be renormalized.
-		camera_x_rot += event.relative.y * CAMERA_ROTATION_SPEED
-		camera_x_rot = clamp(camera_x_rot, deg2rad(CAMERA_X_ROT_MIN), deg2rad(CAMERA_X_ROT_MAX))
-		$camera_base/camera_rot.rotation.x = camera_x_rot
+		rotate_camera(event.relative * CAMERA_MOUSE_ROTATION_SPEED)
 	
 	if event.is_action_pressed("quit"):
 		get_tree().quit()

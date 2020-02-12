@@ -1,14 +1,17 @@
 extends Spatial
 
+func _ready():
+	$ui/main/play.grab_focus()
+
 func _on_play_pressed():
 	$ui/main.hide()
 	$ui/loading.show()
 	$begin_load_timer.start()
 
-
 func _on_settings_pressed():
 	$ui/main.hide()
 	$ui/settings.show()
+	$ui/settings/cancel.grab_focus()
 	
 	if settings.gi_quality == settings.GIQuality.HIGH:
 		$ui/settings/gi_high.pressed=true
@@ -49,6 +52,7 @@ func _on_quit_pressed():
 
 func _on_apply_pressed():
 	$ui/main.show()
+	$ui/main/play.grab_focus()
 	$ui/settings.hide()
 	
 	if $ui/settings/gi_high.pressed:
@@ -88,6 +92,7 @@ func _on_apply_pressed():
 
 func _on_cancel_pressed():
 	$ui/main.show()
+	$ui/main/play.grab_focus()
 	$ui/settings.hide()
 
 
