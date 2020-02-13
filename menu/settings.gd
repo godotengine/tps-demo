@@ -30,6 +30,7 @@ var gi_quality = GIQuality.LOW
 var aa_quality = AAQuality.AA_2X
 var ssao_quality = SSAOQuality.DISABLED
 var resolution = Resolution.NATIVE
+var fullscreen = true
 
 func _ready():
 	load_settings()
@@ -58,11 +59,13 @@ func load_settings():
 	if "resolution" in d:
 		resolution = int(d.resolution)
 
+	if "fullscreen" in d:
+		fullscreen = bool(d.fullscreen)
 
 func save_settings():
 	var f = File.new()
 	var error = f.open("user://settings.json", File.WRITE)
 	assert(not error)
-	
-	var d = { "gi":gi_quality, "aa":aa_quality, "ssao":ssao_quality, "resolution":resolution }
+
+	var d = { "gi":gi_quality, "aa":aa_quality, "ssao":ssao_quality, "resolution":resolution, "fullscreen":fullscreen }
 	f.store_line(to_json(d))

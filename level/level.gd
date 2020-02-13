@@ -1,5 +1,11 @@
 extends Spatial
 
+
+signal quit
+#warning-ignore:unused_signal
+signal replace_main_scene # Useless, but needed as there is no clean way to check if a node exposes a signal
+
+
 func _ready():
 	if settings.gi_quality == settings.GIQuality.HIGH:
 		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = true
@@ -36,3 +42,9 @@ func _ready():
 	elif settings.resolution == settings.Resolution.RES_576:
 		var minsize = Vector2(OS.window_size.x * 576 / OS.window_size.y, 576.0)
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,SceneTree.STRETCH_ASPECT_KEEP_HEIGHT,minsize)
+
+
+func _input(event):
+	if event.is_action_pressed("quit"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		emit_signal("quit")
