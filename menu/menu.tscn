@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
@@ -58,7 +58,7 @@ nodes/Animation/position = Vector2( -120, 100 )
 nodes/Blend2/node = SubResource( 7 )
 nodes/Blend2/position = Vector2( 180, 120 )
 nodes/output/position = Vector2( 420, 120 )
-node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
+node_connections = [ "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "output", 0, "Blend2" ]
 
 [sub_resource type="StyleBoxEmpty" id=9]
 
@@ -216,6 +216,30 @@ font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
 size = 40
 font_data = SubResource( 49 )
 
+[sub_resource type="StyleBoxFlat" id=51]
+bg_color = Color( 0.278431, 0.278431, 0.360784, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=52]
+bg_color = Color( 0.0901961, 0.0784314, 0.117647, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="main" type="Spatial"]
 script = ExtResource( 1 )
 
@@ -257,10 +281,14 @@ texture = ExtResource( 6 )
 [node name="ui" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="main" type="Control" parent="ui"]
+anchor_left = -0.000673103
 anchor_top = -0.00189865
-anchor_right = 1.0
+anchor_right = 0.999327
 anchor_bottom = 0.998101
 margin_left = -4.10107
 margin_top = 2.05054
@@ -613,26 +641,47 @@ custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 text = "Cancel"
 
-[node name="loading" type="Control" parent="ui"]
+[node name="loading" type="HBoxContainer" parent="ui"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = -135.0
+margin_right = -130.0
+margin_bottom = -100.0
+custom_constants/separation = 100
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
 
 [node name="label" type="Label" parent="ui/loading"]
-margin_left = 120.0
-margin_top = 930.0
-margin_right = 288.0
-margin_bottom = 983.0
+margin_right = 168.0
+margin_bottom = 53.0
 custom_fonts/font = ExtResource( 13 )
 text = "Loading..."
 
-[node name="begin_load_timer" type="Timer" parent="."]
-wait_time = 0.2
+[node name="progress" type="ProgressBar" parent="ui/loading"]
+margin_left = 268.0
+margin_right = 1690.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 51 )
+custom_styles/bg = SubResource( 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loading_done_timer" type="Timer" parent="ui/loading"]
+wait_time = 0.5
+one_shot = true
 [connection signal="pressed" from="ui/main/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ui/main/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="ui/main/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="ui/settings/apply" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="ui/settings/cancel" to="." method="_on_cancel_pressed"]
-[connection signal="timeout" from="begin_load_timer" to="." method="_on_begin_load_timer_timeout"]
+[connection signal="timeout" from="ui/loading/loading_done_timer" to="." method="_on_loading_done_timer_timeout"]
 
 [editable path="Scene Root"]
