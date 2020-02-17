@@ -1,7 +1,7 @@
 extends KinematicBody
 
 const CAMERA_MOUSE_ROTATION_SPEED = 0.001
-const CAMERA_CONTROLLER_ROTATION_SPEED = 1.0
+const CAMERA_CONTROLLER_ROTATION_SPEED = 3.0
 const CAMERA_X_ROT_MIN = -40
 const CAMERA_X_ROT_MAX = 30
 
@@ -33,6 +33,7 @@ func _ready():
 	orientation = $"Scene Root".global_transform
 	orientation.origin = Vector3()
 
+
 func rotate_camera(move):
 	$camera_base.rotate_y(-move.x)
 	$camera_base.orthonormalize() # After relative transforms, camera needs to be renormalized.
@@ -40,10 +41,14 @@ func rotate_camera(move):
 	camera_x_rot = clamp(camera_x_rot, deg2rad(CAMERA_X_ROT_MIN), deg2rad(CAMERA_X_ROT_MAX))
 	$camera_base/camera_rot.rotation.x = camera_x_rot
 
+
 func _physics_process(delta):
 	var camera_move = Vector2(Input.get_action_strength("view_right") - Input.get_action_strength("view_left"),
 								Input.get_action_strength("view_up") - Input.get_action_strength("view_down"))
-	rotate_camera(camera_move * delta * CAMERA_CONTROLLER_ROTATION_SPEED)
+	var camera_speed_this_frame = delta * CAMERA_CONTROLLER_ROTATION_SPEED
+	if aiming:
+		camera_speed_this_frame *= 0.5
+	rotate_camera(camera_move * camera_speed_this_frame)
 	var motion_target = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 
 								Input.get_action_strength("move_forward") - Input.get_action_strength("move_back"))
 	motion = motion.linear_interpolate(motion_target, MOTION_INTERPOLATE_SPEED * delta)
@@ -101,7 +106,6 @@ func _physics_process(delta):
 		var q_to = $camera_base.global_transform.basis.get_rotation_quat()
 		# Interpolate current rotation with desired one.
 		orientation.basis = Basis(q_from.slerp(q_to, delta * ROTATION_INTERPOLATE_SPEED))
-		
 		
 		$animation_tree["parameters/strafe/blend_position"] = motion
 		
@@ -165,4 +169,7 @@ func _physics_process(delta):
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_camera(event.relative * CAMERA_MOUSE_ROTATION_SPEED)
+		var camera_speed_this_frame = CAMERA_MOUSE_ROTATION_SPEED
+		if aiming:
+			camera_speed_this_frame *= 0.75
+		rotate_camera(event.relative * camera_speed_this_frame)
