@@ -30,6 +30,7 @@ manually:
 ```text
 git lfs install
 git lfs fetch
+git pull
 git checkout master
 ```
 
