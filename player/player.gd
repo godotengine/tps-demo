@@ -166,6 +166,3 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_camera(event.relative * CAMERA_MOUSE_ROTATION_SPEED)
-	
-	if event.is_action_pressed("quit"):
-		get_tree().quit()

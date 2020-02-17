@@ -3,7 +3,12 @@ extends Spatial
 var res_loader : ResourceInteractiveLoader = null
 var loading_thread : Thread = null
 
+signal replace_main_scene
+#warning-ignore:unused_signal
+signal quit # Useless, but needed as there is no clean way to check if a node exposes a signal
+
 func _ready():
+	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(1920, 1080))
 	$ui/main/play.grab_focus()
 
 
@@ -26,59 +31,68 @@ func interactive_load(loader):
 
 func loading_done(loader):
 	loading_thread.wait_to_finish()
-	#warning-ignore:return_value_discarded
-	get_tree().change_scene_to(loader.get_resource())
+	emit_signal("replace_main_scene", loader.get_resource())
+	res_loader = null # Weirdly, this is needed as otherwise loading the resource again is not possible
 
 
 func _on_loading_done_timer_timeout():
-	call_deferred("loading_done", res_loader)
+	loading_done(res_loader)
 
 
 func _on_play_pressed():
 	$ui/main.hide()
 	$ui/loading.show()
-	res_loader = ResourceLoader.load_interactive("res://level/level.tscn")
-	loading_thread = Thread.new()
-	#warning-ignore:return_value_discarded
-	loading_thread.start(self, "interactive_load", res_loader)
+	var path = "res://level/level.tscn"
+	if ResourceLoader.has_cached(path):
+		emit_signal("replace_main_scene", ResourceLoader.load(path))
+	else:
+		res_loader = ResourceLoader.load_interactive(path)
+		loading_thread = Thread.new()
+		#warning-ignore:return_value_discarded
+		loading_thread.start(self, "interactive_load", res_loader)
 
 
 func _on_settings_pressed():
 	$ui/main.hide()
 	$ui/settings.show()
-	$ui/settings/cancel.grab_focus()
+	$ui/settings/actions/cancel.grab_focus()
 	
 	if settings.gi_quality == settings.GIQuality.HIGH:
-		$ui/settings/gi_high.pressed=true
+		$ui/settings/gi/gi_high.pressed=true
 	elif settings.gi_quality == settings.GIQuality.LOW:
-		$ui/settings/gi_low.pressed=true
+		$ui/settings/gi/gi_low.pressed=true
 	elif settings.gi_quality == settings.GIQuality.DISABLED:
-		$ui/settings/gi_disabled.pressed=true
+		$ui/settings/gi/gi_disabled.pressed=true
 
 	if settings.aa_quality == settings.AAQuality.AA_8X:
-		$ui/settings/aa_8x.pressed=true
+		$ui/settings/aa/aa_8x.pressed=true
 	elif settings.aa_quality == settings.AAQuality.AA_4X:
-		$ui/settings/aa_4x.pressed=true
+		$ui/settings/aa/aa_4x.pressed=true
 	elif settings.aa_quality == settings.AAQuality.AA_2X:
-		$ui/settings/aa_2x.pressed=true
+		$ui/settings/aa/aa_2x.pressed=true
 	elif settings.aa_quality == settings.AAQuality.AA_DISABLED:
-		$ui/settings/aa_disabled.pressed=true
+		$ui/settings/aa/aa_disabled.pressed=true
 
 	if settings.ssao_quality == settings.SSAOQuality.HIGH:
-		$ui/settings/ssao_high.pressed=true
+		$ui/settings/ssao/ssao_high.pressed=true
 	elif settings.ssao_quality == settings.SSAOQuality.LOW:
-		$ui/settings/ssao_low.pressed=true
+		$ui/settings/ssao/ssao_low.pressed=true
 	elif settings.ssao_quality == settings.SSAOQuality.DISABLED:
-		$ui/settings/ssao_disabled.pressed=true
+		$ui/settings/ssao/ssao_disabled.pressed=true
 		
 	if settings.resolution == settings.Resolution.NATIVE:
-		$ui/settings/resolution_native.pressed = true
+		$ui/settings/resolution/resolution_native.pressed = true
 	elif settings.resolution == settings.Resolution.RES_1080:
-		$ui/settings/resolution_1080.pressed = true
+		$ui/settings/resolution/resolution_1080.pressed = true
 	elif settings.resolution == settings.Resolution.RES_720:
-		$ui/settings/resolution_720.pressed = true
+		$ui/settings/resolution/resolution_720.pressed = true
 	elif settings.resolution == settings.Resolution.RES_576:
-		$ui/settings/resolution_576.pressed = true
+		$ui/settings/resolution/resolution_576.pressed = true
+
+	if settings.fullscreen:
+		$ui/settings/fullscreen/fullscreen_yes.pressed = true
+	else:
+		$ui/settings/fullscreen/fullscreen_no.pressed = true
 
 
 func _on_quit_pressed():
@@ -90,38 +104,43 @@ func _on_apply_pressed():
 	$ui/main/play.grab_focus()
 	$ui/settings.hide()
 	
-	if $ui/settings/gi_high.pressed:
+	if $ui/settings/gi/gi_high.pressed:
 		settings.gi_quality = settings.GIQuality.HIGH
-	elif $ui/settings/gi_low.pressed:
+	elif $ui/settings/gi/gi_low.pressed:
 		settings.gi_quality = settings.GIQuality.LOW
-	elif $ui/settings/gi_disabled.pressed:
+	elif $ui/settings/gi/gi_disabled.pressed:
 		settings.gi_quality = settings.GIQuality.DISABLED
 	
-	if $ui/settings/aa_8x.pressed:
+	if $ui/settings/aa/aa_8x.pressed:
 		settings.aa_quality = settings.AAQuality.AA_8X
-	elif $ui/settings/aa_4x.pressed:
+	elif $ui/settings/aa/aa_4x.pressed:
 		settings.aa_quality = settings.AAQuality.AA_4X
-	elif $ui/settings/aa_2x.pressed:
+	elif $ui/settings/aa/aa_2x.pressed:
 		settings.aa_quality = settings.AAQuality.AA_2X
-	elif $ui/settings/aa_disabled.pressed:
+	elif $ui/settings/aa/aa_disabled.pressed:
 		settings.aa_quality = settings.AAQuality.AA_DISABLED
 	
-	if $ui/settings/ssao_high.pressed:
+	if $ui/settings/ssao/ssao_high.pressed:
 		settings.ssao_quality = settings.SSAOQuality.HIGH
-	elif $ui/settings/ssao_low.pressed:
+	elif $ui/settings/ssao/ssao_low.pressed:
 		settings.ssao_quality = settings.SSAOQuality.LOW
-	elif $ui/settings/ssao_disabled.pressed:
+	elif $ui/settings/ssao/ssao_disabled.pressed:
 		settings.ssao_quality = settings.SSAOQuality.DISABLED
 	
-	if $ui/settings/resolution_native.pressed:
+	if $ui/settings/resolution/resolution_native.pressed:
 		settings.resolution = settings.Resolution.NATIVE
-	elif $ui/settings/resolution_1080.pressed:
+	elif $ui/settings/resolution/resolution_1080.pressed:
 		settings.resolution = settings.Resolution.RES_1080
-	elif $ui/settings/resolution_720.pressed:
+	elif $ui/settings/resolution/resolution_720.pressed:
 		settings.resolution = settings.Resolution.RES_720
-	elif $ui/settings/resolution_576.pressed:
+	elif $ui/settings/resolution/resolution_576.pressed:
 		settings.resolution = settings.Resolution.RES_576
+
+	settings.fullscreen = $ui/settings/fullscreen/fullscreen_yes.pressed
 	
+	# Apply the setting directly
+	OS.window_fullscreen = settings.fullscreen
+
 	settings.save_settings()
 
 

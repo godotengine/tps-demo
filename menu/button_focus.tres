@@ -3,16 +3,15 @@
 [resource]
 bg_color = Color( 0, 0, 0, 0 )
 draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.321569, 0.396078, 0.890196, 0.752941 )
 border_blend = true
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-shadow_color = Color( 1, 1, 1, 0.6 )
-shadow_size = 10
 anti_aliasing = false
 anti_aliasing_size = 2
