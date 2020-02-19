@@ -44,4 +44,3 @@ angular_velocity_random = 1.0
 angle = 720.0
 angle_random = 1.0
 color_ramp = SubResource( 3 )
-

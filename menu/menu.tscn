@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://menu/button_focus.tres" type="StyleBox" id=16]
 [ext_resource path="res://menu/button_hover.tres" type="StyleBox" id=17]
 [ext_resource path="res://menu/button_action_pressed.tres" type="StyleBox" id=18]
+[ext_resource path="res://player/fx_step.wav" type="AudioStream" id=19]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 2 )
@@ -63,7 +64,7 @@ nodes/Blend2/position = Vector2( 180, 120 )
 nodes/output/position = Vector2( 420, 120 )
 node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
 
-[sub_resource type="Theme" id=57]
+[sub_resource type="Theme" id=9]
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -87,22 +88,22 @@ Label/styles/normal = null
 
 [sub_resource type="ButtonGroup" id=10]
 
-[sub_resource type="ButtonGroup" id=24]
+[sub_resource type="ButtonGroup" id=11]
 
-[sub_resource type="ButtonGroup" id=39]
+[sub_resource type="ButtonGroup" id=12]
 
-[sub_resource type="ButtonGroup" id=46]
+[sub_resource type="ButtonGroup" id=13]
 
-[sub_resource type="ButtonGroup" id=53]
+[sub_resource type="ButtonGroup" id=14]
 
-[sub_resource type="DynamicFontData" id=49]
+[sub_resource type="DynamicFontData" id=15]
 font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=50]
+[sub_resource type="DynamicFont" id=16]
 size = 40
-font_data = SubResource( 49 )
+font_data = SubResource( 15 )
 
-[sub_resource type="StyleBoxFlat" id=51]
+[sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0.278431, 0.278431, 0.360784, 1 )
 border_width_left = 5
 border_width_top = 5
@@ -114,7 +115,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=52]
+[sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0.0901961, 0.0784314, 0.117647, 1 )
 border_width_left = 3
 border_width_top = 3
@@ -133,6 +134,11 @@ script = ExtResource( 1 )
 environment = SubResource( 2 )
 
 [node name="Scene Root" parent="." instance=ExtResource( 3 )]
+
+[node name="sfx" type="Node" parent="Scene Root"]
+
+[node name="step" type="AudioStreamPlayer" parent="Scene Root/sfx"]
+stream = ExtResource( 19 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 15, 0, 0, 0, 0, 15, 0, -15, 0, 0, 0, 0 )
@@ -157,6 +163,11 @@ anim_player = NodePath("../Scene Root/AnimationPlayer")
 active = true
 parameters/Blend2/blend_amount = 0
 
+[node name="sfx" type="Node" parent="."]
+
+[node name="step" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 19 )
+
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 20.1403
 margin_top = 5.03506
@@ -171,7 +182,7 @@ __meta__ = {
 anchor_left = 0.00106799
 anchor_right = 1.00107
 anchor_bottom = 1.0
-theme = SubResource( 57 )
+theme = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -300,7 +311,7 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 24 )
+group = SubResource( 11 )
 text = "8x"
 
 [node name="aa_4x" type="Button" parent="ui/settings/aa"]
@@ -309,7 +320,7 @@ margin_right = 870.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 24 )
+group = SubResource( 11 )
 text = "4x"
 
 [node name="aa_2x" type="Button" parent="ui/settings/aa"]
@@ -318,7 +329,7 @@ margin_right = 1105.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 24 )
+group = SubResource( 11 )
 text = "2x"
 
 [node name="aa_disabled" type="Button" parent="ui/settings/aa"]
@@ -327,7 +338,7 @@ margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 24 )
+group = SubResource( 11 )
 text = "Disabled"
 
 [node name="ssao" type="HBoxContainer" parent="ui/settings"]
@@ -357,7 +368,7 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 39 )
+group = SubResource( 12 )
 text = "High"
 
 [node name="ssao_low" type="Button" parent="ui/settings/ssao"]
@@ -366,7 +377,7 @@ margin_right = 1028.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 39 )
+group = SubResource( 12 )
 text = "Low"
 
 [node name="ssao_disabled" type="Button" parent="ui/settings/ssao"]
@@ -375,7 +386,7 @@ margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 39 )
+group = SubResource( 12 )
 text = "Disabled"
 
 [node name="resolution" type="HBoxContainer" parent="ui/settings"]
@@ -405,7 +416,7 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 46 )
+group = SubResource( 13 )
 text = "Native"
 
 [node name="resolution_1080" type="Button" parent="ui/settings/resolution"]
@@ -414,7 +425,7 @@ margin_right = 870.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 46 )
+group = SubResource( 13 )
 text = "1080"
 
 [node name="resolution_720" type="Button" parent="ui/settings/resolution"]
@@ -423,7 +434,7 @@ margin_right = 1105.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 46 )
+group = SubResource( 13 )
 text = "720"
 
 [node name="resolution_576" type="Button" parent="ui/settings/resolution"]
@@ -432,7 +443,7 @@ margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 46 )
+group = SubResource( 13 )
 text = "576"
 
 [node name="fullscreen" type="HBoxContainer" parent="ui/settings"]
@@ -459,7 +470,7 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 53 )
+group = SubResource( 14 )
 text = "Yes"
 
 [node name="fullscreen_no" type="Button" parent="ui/settings/fullscreen"]
@@ -468,7 +479,7 @@ margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 53 )
+group = SubResource( 14 )
 text = "No"
 
 [node name="sep" type="Control" parent="ui/settings"]
@@ -489,7 +500,7 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 custom_styles/hover = ExtResource( 18 )
 custom_styles/pressed = ExtResource( 18 )
-custom_fonts/font = SubResource( 50 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -505,7 +516,7 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 custom_styles/hover = ExtResource( 18 )
 custom_styles/pressed = ExtResource( 18 )
-custom_fonts/font = SubResource( 50 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -538,8 +549,8 @@ margin_right = 1690.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_styles/fg = SubResource( 51 )
-custom_styles/bg = SubResource( 52 )
+custom_styles/fg = SubResource( 17 )
+custom_styles/bg = SubResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
