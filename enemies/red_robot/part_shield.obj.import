@@ -15,4 +15,5 @@ dest_files=[ "res://.import/part_shield.obj-3ee32b2d765fa709ced40b01f8f70521.mes
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
 optimize_mesh=true

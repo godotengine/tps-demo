@@ -140,17 +140,14 @@ filters = [ "Armature/Skeleton:Cannon-TrackTurret", "Armature/Skeleton:CannonAni
 [sub_resource type="AnimationNodeOneShot" id=22]
 resource_local_to_scene = true
 fadeout_time = 0.5
-autorestart_random_delay = 0.0
 
 [sub_resource type="AnimationNodeOneShot" id=23]
 resource_local_to_scene = true
 fadeout_time = 0.5
-autorestart_random_delay = 0.0
 
 [sub_resource type="AnimationNodeOneShot" id=24]
 resource_local_to_scene = true
 fadeout_time = 0.5
-autorestart_random_delay = 0.0
 
 [sub_resource type="AnimationNodeTransition" id=25]
 resource_local_to_scene = true
@@ -550,9 +547,6 @@ script = ExtResource( 1 )
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
 
-[node name="Skeleton" parent="Scene Root/Armature" index="0"]
-bones/14/bound_children = [ NodePath("ray_from") ]
-
 [node name="ray_from" type="BoneAttachment" parent="Scene Root/Armature/Skeleton" index="4"]
 transform = Transform( -0.999975, 0.0070746, 0.000551782, 0.00707948, 0.999931, 0.0094271, -0.000485051, 0.00943077, -0.999955, 0.00850569, 2.08377, 0.183162 )
 bone_name = "CannonAnimRecoil"
@@ -571,7 +565,6 @@ mesh = SubResource( 3 )
 emission_shape = 1
 emission_sphere_radius = 1.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.0
 angular_velocity = -0.381543
 linear_accel = 1.0
 linear_accel_random = 1.0
@@ -780,7 +773,6 @@ unit_size = 15.0
 stream = ExtResource( 19 )
 unit_db = 3.0
 unit_size = 15.0
-
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
 [connection signal="body_exited" from="area" to="." method="_on_area_body_exited"]
 

@@ -30,7 +30,7 @@ glow_bloom = 0.04
 glow_blend_mode = 1
 glow_bicubic_upscale = true
 
-[node name="Spatial" type="Spatial"]
+[node name="TestLevel2" type="Spatial"]
 
 [node name="CSGCombiner" type="CSGCombiner" parent="."]
 use_collision = true
@@ -98,4 +98,3 @@ directional_shadow_max_distance = 50.0
 
 [node name="door" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.00977782, 0, -0.999952, 0, 1, 0, 0.999952, 0, 0.00977782, 5.99869, -0.231766, -16.1618 )
-
