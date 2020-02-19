@@ -58,27 +58,27 @@ func _on_settings_pressed():
 	$ui/settings/actions/cancel.grab_focus()
 	
 	if settings.gi_quality == settings.GIQuality.HIGH:
-		$ui/settings/gi/gi_high.pressed=true
+		$ui/settings/gi/gi_high.pressed = true
 	elif settings.gi_quality == settings.GIQuality.LOW:
-		$ui/settings/gi/gi_low.pressed=true
+		$ui/settings/gi/gi_low.pressed = true
 	elif settings.gi_quality == settings.GIQuality.DISABLED:
-		$ui/settings/gi/gi_disabled.pressed=true
+		$ui/settings/gi/gi_disabled.pressed = true
 
 	if settings.aa_quality == settings.AAQuality.AA_8X:
-		$ui/settings/aa/aa_8x.pressed=true
+		$ui/settings/aa/aa_8x.pressed = true
 	elif settings.aa_quality == settings.AAQuality.AA_4X:
-		$ui/settings/aa/aa_4x.pressed=true
+		$ui/settings/aa/aa_4x.pressed = true
 	elif settings.aa_quality == settings.AAQuality.AA_2X:
-		$ui/settings/aa/aa_2x.pressed=true
-	elif settings.aa_quality == settings.AAQuality.AA_DISABLED:
-		$ui/settings/aa/aa_disabled.pressed=true
+		$ui/settings/aa/aa_2x.pressed = true
+	elif settings.aa_quality == settings.AAQuality.DISABLED:
+		$ui/settings/aa/aa_disabled.pressed = true
 
 	if settings.ssao_quality == settings.SSAOQuality.HIGH:
-		$ui/settings/ssao/ssao_high.pressed=true
+		$ui/settings/ssao/ssao_high.pressed = true
 	elif settings.ssao_quality == settings.SSAOQuality.LOW:
-		$ui/settings/ssao/ssao_low.pressed=true
+		$ui/settings/ssao/ssao_low.pressed = true
 	elif settings.ssao_quality == settings.SSAOQuality.DISABLED:
-		$ui/settings/ssao/ssao_disabled.pressed=true
+		$ui/settings/ssao/ssao_disabled.pressed = true
 		
 	if settings.resolution == settings.Resolution.NATIVE:
 		$ui/settings/resolution/resolution_native.pressed = true
@@ -118,7 +118,7 @@ func _on_apply_pressed():
 	elif $ui/settings/aa/aa_2x.pressed:
 		settings.aa_quality = settings.AAQuality.AA_2X
 	elif $ui/settings/aa/aa_disabled.pressed:
-		settings.aa_quality = settings.AAQuality.AA_DISABLED
+		settings.aa_quality = settings.AAQuality.DISABLED
 	
 	if $ui/settings/ssao/ssao_high.pressed:
 		settings.ssao_quality = settings.SSAOQuality.HIGH
