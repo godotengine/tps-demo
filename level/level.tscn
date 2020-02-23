@@ -223,16 +223,16 @@ data = ExtResource( 5 )
 [node name="Player" parent="." instance=ExtResource( 6 )]
 transform = Transform( -0.575826, 0, -0.817573, 0, 1, 0, 0.817573, 0, -0.575826, 64.8183, -1.0765, 78.7639 )
 
-[node name="big_robot" parent="." instance=ExtResource( 7 )]
+[node name="RedRobot1" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.843905, 0, -0.536493, 0, 1, 0, 0.536493, 0, 0.843905, 71.5907, -6.05686, 46.2736 )
 
-[node name="big_robot2" parent="." instance=ExtResource( 7 )]
+[node name="RedRobot2" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.338334, 0, 0.941027, 0, 1, 0, -0.941027, 0, 0.338334, 53.2126, -6.05686, 15.9321 )
 
-[node name="big_robot3" parent="." instance=ExtResource( 7 )]
+[node name="RedRobot3" parent="." instance=ExtResource( 7 )]
 transform = Transform( -0.164432, 0, 0.986389, 0, 1, 0, -0.986389, 0, -0.164432, -2.96096, -11.6923, 20.2343 )
 
-[node name="big_robot4" parent="." instance=ExtResource( 7 )]
+[node name="RedRobot4" parent="." instance=ExtResource( 7 )]
 transform = Transform( -0.164432, 0, 0.986389, 0, 1, 0, -0.986389, 0, -0.164432, -9.15526, -11.6923, -16.9238 )
 
 [node name="sound_outside" type="Area" parent="."]

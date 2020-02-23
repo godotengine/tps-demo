@@ -194,9 +194,14 @@ toggle_fullscreen={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Level"
+3d_physics/layer_2="Player"
+
 [physics]
 
-3d/physics_engine="GodotPhysics"
+3d/physics_engine="Bullet"
 
 [rendering]
 

@@ -126,7 +126,7 @@ y_label = "gun"
 
 [sub_resource type="AnimationNodeBlendTree" id=22]
 resource_local_to_scene = true
-graph_offset = Vector2( -480.904, 74.268 )
+graph_offset = Vector2( 1, 85 )
 nodes/aim/node = SubResource( 1 )
 nodes/aim/position = Vector2( 380, 120 )
 nodes/aimdown/node = SubResource( 2 )
@@ -155,14 +155,14 @@ nodes/walk/position = Vector2( -400, 40 )
 node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "land", 0, "state", "land", 1, "hardland", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes" ]
 
 [sub_resource type="CapsuleShape" id=23]
-radius = 0.490082
-height = 0.560254
+radius = 0.5
+height = 0.6
 
 [sub_resource type="RayShape" id=24]
 
 [sub_resource type="Animation" id=25]
 tracks/0/type = "value"
-tracks/0/path = NodePath("CameraRot/Camera:translation")
+tracks/0/path = NodePath("CameraRot/SpringArm:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -171,7 +171,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 0.287175, 1 ),
 "update": 3,
-"values": [ Vector3( 0, 0.593, -2.157 ), Vector3( 0, 0.593, -2.157 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../Crosshair:self_modulate")
@@ -188,7 +188,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=26]
 tracks/0/type = "value"
-tracks/0/path = NodePath("CameraRot/Camera:translation")
+tracks/0/path = NodePath("CameraRot/SpringArm:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -197,7 +197,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 0.233259, 1 ),
 "update": 3,
-"values": [ Vector3( -0.684193, 0.265504, -1.04126 ), Vector3( -0.684193, 0.265504, -1.04126 ) ]
+"values": [ Vector3( -0.6, -0.3, 1.1 ), Vector3( -0.6, -0.3, 1.1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../Crosshair:self_modulate")
@@ -216,7 +216,8 @@ tracks/1/keys = {
 audio_stream = ExtResource( 7 )
 
 [node name="Player" type="KinematicBody"]
-collision_layer = 3
+collision_layer = 2
+collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
@@ -225,7 +226,7 @@ script = ExtResource( 1 )
 bones/46/bound_children = [ NodePath("GunBone") ]
 
 [node name="GunBone" type="BoneAttachment" parent="Scene Root/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.908797, -0.252345, 0.332564, -0.248902, -0.967057, -0.0539471, 0.335258, -0.0337236, -0.941535, -0.207594, 1.37206, 0.52221 )
+transform = Transform( 0.898624, -0.247907, 0.362217, -0.262223, -0.964987, -0.0102129, 0.352102, -0.0857715, -0.932036, -0.207116, 1.3624, 0.547539 )
 bone_name = "hand.R"
 
 [node name="ShootFrom" type="Position3D" parent="Scene Root/Robot_Skeleton/Skeleton/GunBone"]
@@ -247,16 +248,19 @@ parameters/state/current = 0
 parameters/strafe/blend_position = Vector2( 0, 0 )
 parameters/walk/blend_position = Vector2( 0, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.03615, 0 )
+[node name="CapsuleShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0 )
 shape = SubResource( 23 )
 
-[node name="CollisionShape2" type="CollisionShape" parent="."]
+[node name="RayShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.00357, 0 )
 shape = SubResource( 24 )
 
+[node name="Spatial" type="Position3D" parent="."]
+transform = Transform( -1, 1.18511e-07, -3.03525e-07, 0, 0.931513, 0.363707, 3.25841e-07, 0.363707, -0.931513, 0, 2.44728, -2.15676 )
+
 [node name="CameraBase" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85456, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0 )
 __meta__ = {
 "_editor_description_": "Handles Y rotation (yaw)."
 }
@@ -266,8 +270,12 @@ __meta__ = {
 "_editor_description_": "Handles X rotation (pitch)."
 }
 
-[node name="Camera" type="Camera" parent="CameraBase/CameraRot"]
-transform = Transform( -1, 1.18511e-07, -3.03526e-07, 0, 0.931514, 0.363707, 3.25841e-07, 0.363707, -0.931514, 0, 0.592719, -2.15676 )
+[node name="SpringArm" type="SpringArm" parent="CameraBase/CameraRot"]
+transform = Transform( -1, -1.11444e-07, 3.06191e-07, 0, 0.939693, 0.34202, -3.25841e-07, 0.34202, -0.939693, 0, 0, 0 )
+spring_length = 2.4
+
+[node name="Camera" type="Camera" parent="CameraBase/CameraRot/SpringArm"]
+transform = Transform( 1, 1.42109e-14, -2.84217e-14, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 current = true
 far = 300.0
 __meta__ = {

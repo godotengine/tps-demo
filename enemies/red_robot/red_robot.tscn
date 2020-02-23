@@ -192,7 +192,7 @@ nodes/hit3/position = Vector2( 980, 240 )
 nodes/output/position = Vector2( 1180, 200 )
 nodes/state/node = SubResource( 25 )
 nodes/state/position = Vector2( 60, 100 )
-node_connections = [ "output", 0, "hit3", "state", 0, "Animation", "state", 1, "Animation 3", "state", 2, "Animation 2", "state", 3, "Animation 4", "hit2", 0, "hit1", "hit2", 1, "Animation 6", "hit3", 0, "hit2", "hit3", 1, "Animation 7", "aiming", 0, "state", "aiming", 1, "aim", "hit1", 0, "aiming", "hit1", 1, "Animation 5" ]
+node_connections = [ "output", 0, "hit3", "state", 0, "Animation", "state", 1, "Animation 3", "state", 2, "Animation 2", "state", 3, "Animation 4", "aiming", 0, "state", "aiming", 1, "aim", "hit1", 0, "aiming", "hit1", 1, "Animation 5", "hit2", 0, "hit1", "hit2", 1, "Animation 6", "hit3", 0, "hit2", "hit3", 1, "Animation 7" ]
 
 [sub_resource type="SphereShape" id=27]
 radius = 1.11815
@@ -542,13 +542,18 @@ tracks/10/keys = {
 [sub_resource type="AudioStreamRandomPitch" id=44]
 audio_stream = ExtResource( 18 )
 
-[node name="big_robot" type="KinematicBody"]
+[node name="RedRobot" type="KinematicBody"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
 
+[node name="Skeleton" parent="Scene Root/Armature" index="0"]
+bones/14/bound_children = [ NodePath("ray_from") ]
+
 [node name="ray_from" type="BoneAttachment" parent="Scene Root/Armature/Skeleton" index="4"]
-transform = Transform( -0.999975, 0.0070746, 0.000551782, 0.00707948, 0.999931, 0.0094271, -0.000485051, 0.00943077, -0.999955, 0.00850569, 2.08377, 0.183162 )
+transform = Transform( -0.862541, 0.0793345, -0.499729, -0.033231, 0.976617, 0.2124, 0.504895, 0.19981, -0.839736, 0.123715, 2.00738, 0.252644 )
 bone_name = "CannonAnimRecoil"
 
 [node name="ray" type="MeshInstance" parent="Scene Root/Armature/Skeleton/ray_from"]
@@ -631,6 +636,8 @@ visible = false
 
 [node name="part_shield1" type="RigidBody" parent="death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37822, 1.11034, 1.09121 )
+collision_layer = 3
+collision_mask = 3
 mode = 1
 physics_material_override = SubResource( 30 )
 
@@ -666,6 +673,8 @@ color_ramp = SubResource( 35 )
 
 [node name="part_shield2" type="RigidBody" parent="death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75083, 1.02975, 0.162546 )
+collision_layer = 3
+collision_mask = 3
 mode = 1
 physics_material_override = SubResource( 36 )
 
@@ -701,6 +710,8 @@ color_ramp = SubResource( 35 )
 
 [node name="part_shield3" type="RigidBody" parent="death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0374503, 1.02975, 0.162546 )
+collision_layer = 3
+collision_mask = 3
 mode = 1
 physics_material_override = SubResource( 39 )
 angular_damp = 0.3
