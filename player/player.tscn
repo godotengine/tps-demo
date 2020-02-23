@@ -126,33 +126,33 @@ y_label = "gun"
 
 [sub_resource type="AnimationNodeBlendTree" id=22]
 resource_local_to_scene = true
-graph_offset = Vector2( -517, 242 )
+graph_offset = Vector2( -480.904, 74.268 )
 nodes/aim/node = SubResource( 1 )
-nodes/aim/position = Vector2( 340, 120 )
+nodes/aim/position = Vector2( 380, 120 )
 nodes/aimdown/node = SubResource( 2 )
-nodes/aimdown/position = Vector2( 120, 120 )
+nodes/aimdown/position = Vector2( 120, 60 )
 nodes/aimup/node = SubResource( 3 )
-nodes/aimup/position = Vector2( 140, 420 )
+nodes/aimup/position = Vector2( 140, 380 )
 nodes/eye_blend/node = SubResource( 4 )
-nodes/eye_blend/position = Vector2( 560, 120 )
+nodes/eye_blend/position = Vector2( 640, 120 )
 nodes/eyes/node = SubResource( 5 )
-nodes/eyes/position = Vector2( 340, 360 )
+nodes/eyes/position = Vector2( 380, 360 )
 nodes/hardland/node = SubResource( 6 )
-nodes/hardland/position = Vector2( -140, 440 )
+nodes/hardland/position = Vector2( -160, 340 )
 nodes/jumpdown/node = SubResource( 7 )
-nodes/jumpdown/position = Vector2( -380, 440 )
+nodes/jumpdown/position = Vector2( -460, 320 )
 nodes/jumpup/node = SubResource( 8 )
-nodes/jumpup/position = Vector2( -400, 320 )
+nodes/jumpup/position = Vector2( -480, 200 )
 nodes/land/node = SubResource( 9 )
-nodes/land/position = Vector2( 120, 240 )
-nodes/output/position = Vector2( 760, 120 )
+nodes/land/position = Vector2( 120, 180 )
+nodes/output/position = Vector2( 840, 120 )
 nodes/state/node = SubResource( 10 )
-nodes/state/position = Vector2( -60, 180 )
+nodes/state/position = Vector2( -120, 120 )
 nodes/strafe/node = SubResource( 16 )
-nodes/strafe/position = Vector2( -340, 120 )
+nodes/strafe/position = Vector2( -400, -120 )
 nodes/walk/node = SubResource( 21 )
-nodes/walk/position = Vector2( -340, 220 )
-node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "land", 0, "state", "land", 1, "hardland", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup" ]
+nodes/walk/position = Vector2( -400, 40 )
+node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "land", 0, "state", "land", 1, "hardland", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes" ]
 
 [sub_resource type="CapsuleShape" id=23]
 radius = 0.490082
@@ -162,7 +162,7 @@ height = 0.560254
 
 [sub_resource type="Animation" id=25]
 tracks/0/type = "value"
-tracks/0/path = NodePath("camera_rot/Camera:translation")
+tracks/0/path = NodePath("CameraRot/Camera:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -171,10 +171,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 0.287175, 1 ),
 "update": 3,
-"values": [ Vector3( 0, 0.592719, -2.15676 ), Vector3( 0, 0.592719, -2.15676 ) ]
+"values": [ Vector3( 0, 0.593, -2.157 ), Vector3( 0, 0.593, -2.157 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../crosshair:self_modulate")
+tracks/1/path = NodePath("../Crosshair:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -188,7 +188,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=26]
 tracks/0/type = "value"
-tracks/0/path = NodePath("camera_rot/Camera:translation")
+tracks/0/path = NodePath("CameraRot/Camera:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -200,7 +200,7 @@ tracks/0/keys = {
 "values": [ Vector3( -0.684193, 0.265504, -1.04126 ), Vector3( -0.684193, 0.265504, -1.04126 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../crosshair:self_modulate")
+tracks/1/path = NodePath("../Crosshair:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -215,23 +215,26 @@ tracks/1/keys = {
 [sub_resource type="AudioStreamRandomPitch" id=27]
 audio_stream = ExtResource( 7 )
 
-[node name="player" type="KinematicBody"]
+[node name="Player" type="KinematicBody"]
 collision_layer = 3
 script = ExtResource( 1 )
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
 
-[node name="gun_bone" type="BoneAttachment" parent="Scene Root/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.90287, -0.253554, 0.347451, -0.259802, -0.965241, -0.0296011, 0.342916, -0.0635128, -0.93723, -0.207006, 1.36658, 0.538869 )
+[node name="Skeleton" parent="Scene Root/Robot_Skeleton" index="0"]
+bones/46/bound_children = [ NodePath("GunBone") ]
+
+[node name="GunBone" type="BoneAttachment" parent="Scene Root/Robot_Skeleton/Skeleton" index="5"]
+transform = Transform( 0.908797, -0.252345, 0.332564, -0.248902, -0.967057, -0.0539471, 0.335258, -0.0337236, -0.941535, -0.207594, 1.37206, 0.52221 )
 bone_name = "hand.R"
 
-[node name="shoot_from" type="Position3D" parent="Scene Root/Robot_Skeleton/Skeleton/gun_bone"]
+[node name="ShootFrom" type="Position3D" parent="Scene Root/Robot_Skeleton/Skeleton/GunBone"]
 transform = Transform( 0.999919, 0.0106283, -0.00705317, -0.0105956, 0.99993, 0.00505793, 0.00710796, -0.0049828, 0.999962, 0.0100024, -0.00491095, -0.40371 )
 
 [node name="RootMotionView" type="RootMotionView" parent="."]
 animation_path = NodePath("../AnimationTree")
 
-[node name="animation_tree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 22 )
 anim_player = NodePath("../Scene Root/AnimationPlayer")
 active = true
@@ -252,21 +255,30 @@ shape = SubResource( 23 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.00357, 0 )
 shape = SubResource( 24 )
 
-[node name="camera_base" type="Spatial" parent="."]
+[node name="CameraBase" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85456, 0 )
+__meta__ = {
+"_editor_description_": "Handles Y rotation (yaw)."
+}
 
-[node name="camera_rot" type="Spatial" parent="camera_base"]
+[node name="CameraRot" type="Spatial" parent="CameraBase"]
+__meta__ = {
+"_editor_description_": "Handles X rotation (pitch)."
+}
 
-[node name="Camera" type="Camera" parent="camera_base/camera_rot"]
-transform = Transform( -1, 0, -8.74228e-08, -3.17959e-08, 0.931515, 0.363703, 8.14356e-08, 0.363703, -0.931515, 0, 0.592719, -2.15676 )
+[node name="Camera" type="Camera" parent="CameraBase/CameraRot"]
+transform = Transform( -1, 1.18511e-07, -3.03526e-07, 0, 0.931514, 0.363707, 3.25841e-07, 0.363707, -0.931514, 0, 0.592719, -2.15676 )
 current = true
 far = 300.0
+__meta__ = {
+"_editor_description_": "Translated when aiming."
+}
 
-[node name="animation" type="AnimationPlayer" parent="camera_base"]
+[node name="Animation" type="AnimationPlayer" parent="CameraBase"]
 anims/far = SubResource( 25 )
 anims/shoot = SubResource( 26 )
 
-[node name="crosshair" type="TextureRect" parent="."]
+[node name="Crosshair" type="TextureRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -277,6 +289,9 @@ margin_top = -23.8394
 margin_right = 14.6654
 margin_bottom = 8.16064
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="sfx" type="Node" parent="."]
 

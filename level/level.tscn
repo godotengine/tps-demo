@@ -206,10 +206,10 @@ transform = Transform( 1, 0, 7.45058e-09, 5.72164e-11, 1, 8.73443e-11, -1.49012e
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
-[node name="shader_cache" type="Node" parent="WorldEnvironment"]
+[node name="ShaderCache" type="Node" parent="WorldEnvironment"]
 script = ExtResource( 3 )
 
-[node name="bullet" parent="WorldEnvironment/shader_cache" instance=ExtResource( 4 )]
+[node name="Bullet" parent="WorldEnvironment/ShaderCache" instance=ExtResource( 4 )]
 
 [node name="GIProbe" type="GIProbe" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.09263, 1.28266, 2.88598 )
@@ -220,7 +220,7 @@ propagation = 1.0
 interior = true
 data = ExtResource( 5 )
 
-[node name="player" parent="." instance=ExtResource( 6 )]
+[node name="Player" parent="." instance=ExtResource( 6 )]
 transform = Transform( -0.575826, 0, -0.817573, 0, 1, 0, 0.817573, 0, -0.575826, 64.8183, -1.0765, 78.7639 )
 
 [node name="big_robot" parent="." instance=ExtResource( 7 )]
