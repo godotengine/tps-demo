@@ -22,6 +22,7 @@ var velocity = Vector3()
 var aiming = false
 var camera_x_rot = 0.0
 
+onready var initial_position = transform.origin
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
 onready var animation_tree = $AnimationTree
@@ -39,6 +40,18 @@ func _ready():
 	# Pre-initialize orientation transform.
 	orientation = $"Scene Root".global_transform
 	orientation.origin = Vector3()
+
+
+func _process(_delta):
+	# Fade out to black if falling out of the map. -17 is lower than
+	# the lowest valid position on the map (which is a bit under -16).
+	# At 15 units below -17 (so -32), the screen turns fully black.
+	if transform.origin.y < -17:
+		$ColorRect.modulate.a = min((-17 - transform.origin.y) / 15, 1)
+		# If we're below -40, respawn (teleport to the initial position).
+		if transform.origin.y < -40:
+			$ColorRect.modulate.a = 0
+			transform.origin = initial_position
 
 
 func _physics_process(delta):
@@ -175,8 +188,8 @@ func _input(event):
 
 
 func rotate_camera(move):
-	$CameraBase.rotate_y(-move.x)
-	$CameraBase.orthonormalize() # After relative transforms, camera needs to be renormalized.
+	camera_base.rotate_y(-move.x)
+	camera_base.orthonormalize() # After relative transforms, camera needs to be renormalized.
 	camera_x_rot += move.y
 	camera_x_rot = clamp(camera_x_rot, deg2rad(CAMERA_X_ROT_MIN), deg2rad(CAMERA_X_ROT_MAX))
 	camera_rot.rotation.x = camera_x_rot
