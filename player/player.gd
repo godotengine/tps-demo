@@ -22,7 +22,15 @@ var velocity = Vector3()
 var aiming = false
 var camera_x_rot = 0.0
 
+onready var initial_position = transform.origin
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
+
+onready var animation_tree = $AnimationTree
+onready var camera_base = $CameraBase
+onready var camera_animation = $CameraBase/Animation
+onready var camera_rot = $CameraBase/CameraRot
+onready var camera_spring_arm = $CameraBase/CameraRot/SpringArm
+onready var camera = $CameraBase/CameraRot/SpringArm/Camera
 
 func _init():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -34,12 +42,16 @@ func _ready():
 	orientation.origin = Vector3()
 
 
-func rotate_camera(move):
-	$camera_base.rotate_y(-move.x)
-	$camera_base.orthonormalize() # After relative transforms, camera needs to be renormalized.
-	camera_x_rot += move.y
-	camera_x_rot = clamp(camera_x_rot, deg2rad(CAMERA_X_ROT_MIN), deg2rad(CAMERA_X_ROT_MAX))
-	$camera_base/camera_rot.rotation.x = camera_x_rot
+func _process(_delta):
+	# Fade out to black if falling out of the map. -17 is lower than
+	# the lowest valid position on the map (which is a bit under -16).
+	# At 15 units below -17 (so -32), the screen turns fully black.
+	if transform.origin.y < -17:
+		$ColorRect.modulate.a = min((-17 - transform.origin.y) / 15, 1)
+		# If we're below -40, respawn (teleport to the initial position).
+		if transform.origin.y < -40:
+			$ColorRect.modulate.a = 0
+			transform.origin = initial_position
 
 
 func _physics_process(delta):
@@ -50,10 +62,10 @@ func _physics_process(delta):
 		camera_speed_this_frame *= 0.5
 	rotate_camera(camera_move * camera_speed_this_frame)
 	var motion_target = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 
-								Input.get_action_strength("move_forward") - Input.get_action_strength("move_back"))
+								Input.get_action_strength("move_back") - Input.get_action_strength("move_forward"))
 	motion = motion.linear_interpolate(motion_target, MOTION_INTERPOLATE_SPEED * delta)
 	
-	var camera_basis = $camera_base/camera_rot/Camera.global_transform.basis
+	var camera_basis = camera_rot.global_transform.basis
 	var camera_z = camera_basis.z
 	var camera_x = camera_basis.x
 	
@@ -67,9 +79,9 @@ func _physics_process(delta):
 	if aiming != current_aim:
 			aiming = current_aim
 			if (aiming):
-				$camera_base/animation.play("shoot")
+				camera_animation.play("shoot")
 			else:
-				$camera_base/animation.play("far")
+				camera_animation.play("far")
 	
 	# Jump/in-air logic.
 	airborne_time += delta
@@ -83,41 +95,41 @@ func _physics_process(delta):
 	if not on_air and Input.is_action_just_pressed("jump"):
 		velocity.y = JUMP_SPEED
 		on_air = true
-		$animation_tree["parameters/state/current"] = 2
+		animation_tree["parameters/state/current"] = 2
 		$sfx/jump.play()
 	
 	if on_air:
 		if (velocity.y > 0):
-			$animation_tree["parameters/state/current"] = 2
+			animation_tree["parameters/state/current"] = 2
 		else:
-			$animation_tree["parameters/state/current"] = 3
+			animation_tree["parameters/state/current"] = 3
 	elif aiming:
 		# Change state to strafe.
-		$animation_tree["parameters/state/current"] = 0
+		animation_tree["parameters/state/current"] = 0
 		
 		# Change aim according to camera rotation.
 		if camera_x_rot >= 0: # Aim up.
-			$animation_tree["parameters/aim/add_amount"] = -camera_x_rot / deg2rad(CAMERA_X_ROT_MAX)
+			animation_tree["parameters/aim/add_amount"] = -camera_x_rot / deg2rad(CAMERA_X_ROT_MAX)
 		else: # Aim down.
-			$animation_tree["parameters/aim/add_amount"] = camera_x_rot / deg2rad(CAMERA_X_ROT_MIN)
+			animation_tree["parameters/aim/add_amount"] = camera_x_rot / deg2rad(CAMERA_X_ROT_MIN)
 		
 		# Convert orientation to quaternions for interpolating rotation.
 		var q_from = orientation.basis.get_rotation_quat()
-		var q_to = $camera_base.global_transform.basis.get_rotation_quat()
+		var q_to = $CameraBase.global_transform.basis.get_rotation_quat()
 		# Interpolate current rotation with desired one.
 		orientation.basis = Basis(q_from.slerp(q_to, delta * ROTATION_INTERPOLATE_SPEED))
 		
-		$animation_tree["parameters/strafe/blend_position"] = motion
+		# The animation's forward/backward axis is reversed.
+		animation_tree["parameters/strafe/blend_position"] = Vector2(motion.x, -motion.y)
 		
-		root_motion = $animation_tree.get_root_motion_transform()
+		root_motion = animation_tree.get_root_motion_transform()
 		
 		if Input.is_action_pressed("shoot") and $FireCooldown.time_left == 0:
-			var shoot_from = $"Scene Root/Robot_Skeleton/Skeleton/gun_bone/shoot_from".global_transform.origin
-			var cam = $camera_base/camera_rot/Camera
+			var shoot_from = $"Scene Root/Robot_Skeleton/Skeleton/GunBone/ShootFrom".global_transform.origin
 			
-			var ch_pos = $crosshair.rect_position + $crosshair.rect_size * 0.5
-			var ray_from = cam.project_ray_origin(ch_pos)
-			var ray_dir = cam.project_ray_normal(ch_pos)
+			var ch_pos = $Crosshair.rect_position + $Crosshair.rect_size * 0.5
+			var ray_from = camera.project_ray_origin(ch_pos)
+			var ray_dir = camera.project_ray_normal(ch_pos)
 			
 			var shoot_target
 			var col = get_world().direct_space_state.intersect_ray(ray_from, ray_from + ray_dir * 1000, [self])
@@ -136,21 +148,21 @@ func _physics_process(delta):
 			$sfx/shoot.play()
 	else: # Not in air or aiming, idle.
 		# Convert orientation to quaternions for interpolating rotation.
-		var target = camera_z * motion.y - camera_x * motion.x
+		var target = camera_x * motion.x + camera_z * motion.y
 		if target.length() > 0.001:
 			var q_from = orientation.basis.get_rotation_quat()
-			var q_to = Quat(Transform().looking_at(target, Vector3.UP).basis)
-			# Interpolate current rotation with desired one
+			var q_to = Transform().looking_at(target, Vector3.UP).basis.get_rotation_quat()
+			# Interpolate current rotation with desired one.
 			orientation.basis = Basis(q_from.slerp(q_to, delta * ROTATION_INTERPOLATE_SPEED))
 		
 		# Aim to zero (no aiming while walking).
-		$animation_tree["parameters/aim/add_amount"] = 0
+		animation_tree["parameters/aim/add_amount"] = 0
 		# Change state to walk.
-		$animation_tree["parameters/state/current"] = 1
+		animation_tree["parameters/state/current"] = 1
 		# Blend position for walk speed based on motion.
-		$animation_tree["parameters/walk/blend_position"] = Vector2(motion.length(), 0) 
+		animation_tree["parameters/walk/blend_position"] = Vector2(motion.length(), 0) 
 		
-		root_motion = $animation_tree.get_root_motion_transform()
+		root_motion = animation_tree.get_root_motion_transform()
 	
 	# Apply root motion to orientation.
 	orientation *= root_motion
@@ -173,3 +185,11 @@ func _input(event):
 		if aiming:
 			camera_speed_this_frame *= 0.75
 		rotate_camera(event.relative * camera_speed_this_frame)
+
+
+func rotate_camera(move):
+	camera_base.rotate_y(-move.x)
+	camera_base.orthonormalize() # After relative transforms, camera needs to be renormalized.
+	camera_x_rot += move.y
+	camera_x_rot = clamp(camera_x_rot, deg2rad(CAMERA_X_ROT_MIN), deg2rad(CAMERA_X_ROT_MAX))
+	camera_rot.rotation.x = camera_x_rot

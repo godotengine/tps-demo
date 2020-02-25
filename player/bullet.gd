@@ -13,13 +13,13 @@ func _process(delta):
 	time_alive -= delta
 	if time_alive < 0:
 		hit = true
-		$anim.play("explode")
+		$AnimationPlayer.play("explode")
 	var col = move_and_collide(delta * direction * BULLET_VELOCITY)
 	if col:
 		if col.collider and col.collider.has_method("hit"):
 			col.collider.hit()
 		$CollisionShape.disabled = true
-		$anim.play("explode")
+		$AnimationPlayer.play("explode")
 		hit = true
 
 
