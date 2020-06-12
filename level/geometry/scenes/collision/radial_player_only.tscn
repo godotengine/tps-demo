@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="BoxShape" id=25]
+extents = Vector3( 7, 2, 0.5 )
+
+[sub_resource type="BoxShape" id=26]
+extents = Vector3( 0.3, 4, 2.5 )
+
+[sub_resource type="BoxShape" id=24]
+extents = Vector3( 3.1, 1.6, 2.2 )
+
+[node name="RadialPlayerOnly" type="StaticBody"]
+transform = Transform( 0.956305, 0, -0.292372, 0, 1, 0, 0.292372, 0, 0.956305, 0, 0, 0 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="EntranceSideRailing1" type="CollisionShape" parent="."]
+transform = Transform( 0.819153, 0, 0.573577, 0, 1, 0, -0.573577, 0, 0.819153, 30, -5, -13.5 )
+shape = SubResource( 25 )
+
+[node name="EntranceSideRailing2" type="CollisionShape" parent="."]
+transform = Transform( 0.819153, 0, -0.573577, 0, 1, 0, 0.573577, 0, 0.819153, 30, -5, 13.5 )
+shape = SubResource( 25 )
+
+[node name="MainFloorRailing1" type="CollisionShape" parent="."]
+transform = Transform( 0.987689, 0, -0.156435, 0, 1, 0, 0.156435, 0, 0.987689, 26.4701, -11, 4.19245 )
+shape = SubResource( 26 )
+
+[node name="MainFloorRailing2" type="CollisionShape" parent="."]
+transform = Transform( 0.951057, 0, -0.309017, 0, 1, 0, 0.309017, 0, 0.951057, 25.4883, -11, 8.28166 )
+shape = SubResource( 26 )
+
+[node name="MainFloorRailing3" type="CollisionShape" parent="."]
+transform = Transform( 0.891007, 0, -0.453991, 0, 1, 0, 0.453991, 0, 0.891007, 23.879, -11, 12.167 )
+shape = SubResource( 26 )
+
+[node name="MainFloorRailing4" type="CollisionShape" parent="."]
+transform = Transform( 0.809017, 0, -0.587786, 0, 1, 0, 0.587786, 0, 0.809017, 21.6817, -11, 15.7527 )
+shape = SubResource( 26 )
+
+[node name="MainFloorRailing5" type="CollisionShape" parent="."]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 18.9505, -11, 18.9505 )
+shape = SubResource( 26 )
+
+[node name="MainFloorRailing6" type="CollisionShape" parent="."]
+transform = Transform( 0.587785, 0, -0.809018, 0, 1, 0, 0.809018, 0, 0.587785, 15.7526, -11, 21.6817 )
+shape = SubResource( 26 )
+
+[node name="MainFloorRailing7" type="CollisionShape" parent="."]
+transform = Transform( 0.987689, 0, 0.156434, 0, 1, 0, -0.156434, 0, 0.987689, 26.4701, -11, -4.19244 )
+shape = SubResource( 26 )
+
+[node name="MainFloorRailing8" type="CollisionShape" parent="."]
+transform = Transform( 0.951057, 0, 0.309017, 0, 1, 0, -0.309017, 0, 0.951057, 25.4883, -11, -8.28166 )
+shape = SubResource( 26 )
+
+[node name="MainFloorRailing9" type="CollisionShape" parent="."]
+transform = Transform( 0.891007, 0, 0.453991, 0, 1, 0, -0.453991, 0, 0.891007, 23.879, -11, -12.1669 )
+shape = SubResource( 26 )
+
+[node name="MainFloorRailing10" type="CollisionShape" parent="."]
+transform = Transform( 0.809018, 0, 0.587785, 0, 1, 0, -0.587785, 0, 0.809018, 21.6817, -11, -15.7526 )
+shape = SubResource( 26 )
+
+[node name="MainFloorRailing11" type="CollisionShape" parent="."]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 18.9505, -11, -18.9505 )
+shape = SubResource( 26 )
+
+[node name="MainFloorRailing12" type="CollisionShape" parent="."]
+transform = Transform( 0.587785, 0, 0.809017, 0, 1, 0, -0.809017, 0, 0.587785, 15.7527, -11, -21.6817 )
+shape = SubResource( 26 )
+
+[node name="MainFloorRailing13" type="CollisionShape" parent="."]
+transform = Transform( 0.453991, 0, 0.891007, 0, 1, 0, -0.891007, 0, 0.453991, 12.167, -11, -23.879 )
+shape = SubResource( 26 )
+
+[node name="ArmBasePlayerOnly" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9, -12.4, 0 )
+shape = SubResource( 24 )
+__meta__ = {
+"_editor_description_": ""
+}

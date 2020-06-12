@@ -549,11 +549,8 @@ script = ExtResource( 1 )
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
 
-[node name="Skeleton" parent="Scene Root/Armature" index="0"]
-bones/14/bound_children = [ NodePath("ray_from") ]
-
 [node name="ray_from" type="BoneAttachment" parent="Scene Root/Armature/Skeleton" index="4"]
-transform = Transform( -0.862541, 0.0793345, -0.499729, -0.033231, 0.976617, 0.2124, 0.504895, 0.19981, -0.839736, 0.123715, 2.00738, 0.252644 )
+transform = Transform( -0.999793, -0.020126, -0.00284071, -0.0201501, 0.999759, 0.00871106, 0.00266471, 0.0087665, -0.999958, -0.0437056, 2.0732, 0.178361 )
 bone_name = "CannonAnimRecoil"
 
 [node name="ray" type="MeshInstance" parent="Scene Root/Armature/Skeleton/ray_from"]

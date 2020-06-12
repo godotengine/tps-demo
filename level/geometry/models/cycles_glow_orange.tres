@@ -1,0 +1,6 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "cycles_glow_orange"
+albedo_color = Color( 0.639282, 0.251191, 0.0284811, 1 )
+roughness = 0.0960784

@@ -1,0 +1,1934 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://level/geometry/scenes/collision/stair_pillar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://level/geometry/models/structure.glb" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 6, 9, 10 )
+
+[sub_resource type="BoxShape" id=30]
+extents = Vector3( 4, 20, 4.5 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 5, 20, 3.5 )
+
+[sub_resource type="BoxShape" id=29]
+extents = Vector3( 6, 16, 8 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1, 18, 1.4 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 3.5, 1, 1.5 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 12.5, 2, 1.5 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 1.75, 4, 0.8 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 8, 3.2, 10 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 1.3, 0.3, 7 )
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 30, 30, 20 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 14, 15, 5 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 5, 5, 5 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 0.5, 0.1, 1 )
+
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 100, 6, 100 )
+
+[sub_resource type="BoxShape" id=14]
+extents = Vector3( 4.2, 0.7, 0.3 )
+
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 2.8, 0.9, 0.25 )
+
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 3.5, 0.7, 0.3 )
+
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 2.2, 0.8, 0.3 )
+
+[sub_resource type="BoxShape" id=18]
+extents = Vector3( 1.2, 0.8, 0.3 )
+
+[sub_resource type="BoxShape" id=31]
+extents = Vector3( 2.6, 0.7, 0.4 )
+
+[sub_resource type="BoxShape" id=19]
+extents = Vector3( 1.25, 1.5, 0.8 )
+
+[sub_resource type="BoxShape" id=20]
+extents = Vector3( 19.5, 0.7, 0.2 )
+
+[sub_resource type="BoxShape" id=21]
+extents = Vector3( 11, 2.5, 1.5 )
+
+[sub_resource type="BoxShape" id=22]
+extents = Vector3( 23, 0.5, 3.8 )
+
+[sub_resource type="BoxShape" id=23]
+extents = Vector3( 6, 2, 6.5 )
+
+[sub_resource type="BoxShape" id=24]
+extents = Vector3( 3, 0.75, 1.4 )
+
+[sub_resource type="BoxShape" id=25]
+extents = Vector3( 10, 1.5, 1.4 )
+
+[sub_resource type="BoxShape" id=26]
+extents = Vector3( 3, 0.75, 0.75 )
+
+[sub_resource type="BoxShape" id=27]
+extents = Vector3( 3, 0.25, 0.25 )
+
+[sub_resource type="BoxShape" id=28]
+extents = Vector3( 0.75, 1.5, 3.7 )
+
+[node name="Structure" type="Spatial"]
+
+[node name="StructureModel" parent="." instance=ExtResource( 2 )]
+
+[node name="StairPillar4" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1.09128, 0, -0.588822, 0, 1.24, 0, 0.588822, 0, -1.09128, 48.9491, 2.48, -26.4115 )
+
+[node name="ThreeBox" type="CollisionShape" parent="StairPillar4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 12, 0 )
+shape = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="StairPillar5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.35529, 0, 1.18801, 0, 1.24, 0, -1.18801, 0, 0.35529, 15.9365, 2.48, -53.288 )
+
+[node name="ThreeBox" type="CollisionShape" parent="StairPillar5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 12, 0 )
+shape = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="StairPillar6" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.35529, 0, 1.18801, 0, 1.24, 0, -1.18801, 0, 0.35529, -15.9365, 2.48, 53.288 )
+
+[node name="ThreeBox" type="CollisionShape" parent="StairPillar6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 12, 0 )
+shape = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="StairPillar7" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.588822, 0, 1.09128, 0, 1.24, 0, -1.09128, 0, -0.588822, 26.4115, 2.48, 48.9491 )
+
+[node name="ThreeBox" type="CollisionShape" parent="StairPillar7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 12, 0 )
+shape = SubResource( 1 )
+
+[node name="Pillars" type="StaticBody" parent="."]
+
+[node name="PillarTop1" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.995396, 0.0958458, -1.56152e-08, 0, -1.62921e-07, -1, -0.0958458, 0.995396, -1.62171e-07, 7.85935, 26, 81.6225 )
+shape = SubResource( 30 )
+
+[node name="PillarUpper1" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.995396, 0.0405062, 0.0868657, 0, 0.906308, -0.422618, -0.0958458, 0.420673, 0.902135, 5.36736, 17, 55.7422 )
+shape = SubResource( 30 )
+
+[node name="PillarLower1" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.995396, -0.0199274, 0.0937512, 0, 0.978148, 0.207912, -0.0958457, -0.206954, 0.973644, 4.86896, -10, 50.5661 )
+shape = SubResource( 2 )
+
+[node name="PillarBase1" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.995396, 0, 0.0958457, 0, 1, 0, -0.0958457, 0, 0.995396, 4.79229, -25, 49.7698 )
+shape = SubResource( 29 )
+
+[node name="PillarTop2" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.636078, 0.771624, -1.25714e-07, 0, -1.62921e-07, -1, -0.771624, 0.636078, -1.0363e-07, 63.2732, 26, 52.1584 )
+shape = SubResource( 30 )
+
+[node name="PillarUpper2" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.636078, 0.326103, 0.699329, 0, 0.906308, -0.422618, -0.771624, 0.268818, 0.576482, 43.211, 17, 35.6204 )
+shape = SubResource( 30 )
+
+[node name="PillarLower2" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.636078, -0.16043, 0.754762, 0, 0.978148, 0.207912, -0.771624, -0.132248, 0.622178, 39.1985, -10, 32.3128 )
+shape = SubResource( 2 )
+
+[node name="PillarBase2" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.636078, 0, 0.771624, 0, 1, 0, -0.771624, 0, 0.636078, 38.5812, -25, 31.8039 )
+shape = SubResource( 29 )
+
+[node name="PillarTop3" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.0958458, 0.995396, -1.62171e-07, 0, -1.62921e-07, -1, -0.995396, -0.0958458, 1.56153e-08, 81.6225, 26, -7.85936 )
+shape = SubResource( 30 )
+
+[node name="PillarUpper3" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.0958459, 0.420673, 0.902135, 0, 0.906308, -0.422618, -0.995396, -0.0405062, -0.0868658, 55.7422, 17, -5.36736 )
+shape = SubResource( 30 )
+
+[node name="PillarLower3" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.0958458, -0.206954, 0.973644, 0, 0.978148, 0.207912, -0.995396, 0.0199275, -0.0937513, 50.5661, -10, -4.86897 )
+shape = SubResource( 2 )
+
+[node name="PillarBase3" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.0958458, 0, 0.995396, 0, 1, 0, -0.995396, 0, -0.0958458, 49.7698, -25, -4.79229 )
+shape = SubResource( 29 )
+
+[node name="PillarTop4" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.772733, 0.63473, -1.03411e-07, 0, -1.62921e-07, -1, -0.63473, -0.772733, 1.25894e-07, 52.0479, 26, -63.3641 )
+shape = SubResource( 30 )
+
+[node name="PillarUpper4" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.772733, 0.268249, 0.575261, 0, 0.906308, -0.422618, -0.63473, -0.326571, -0.700334, 35.5449, 17, -43.2731 )
+shape = SubResource( 30 )
+
+[node name="PillarLower4" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.772733, -0.131968, 0.62086, 0, 0.978148, 0.207912, -0.63473, 0.16066, -0.755847, 32.2443, -10, -39.2548 )
+shape = SubResource( 2 )
+
+[node name="PillarBase4" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.772733, 0, 0.63473, 0, 1, 0, -0.63473, 0, -0.772733, 31.7365, -25, -38.6367 )
+shape = SubResource( 29 )
+
+[node name="PillarTop5" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.995055, -0.0993194, 1.61812e-08, 0, -1.62921e-07, -1, 0.0993194, -0.995055, 1.62115e-07, -8.14419, 26, -81.5945 )
+shape = SubResource( 30 )
+
+[node name="PillarUpper5" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.995055, -0.0419742, -0.0900139, 0, 0.906308, -0.422618, 0.0993194, -0.420529, -0.901826, -5.56188, 17, -55.7231 )
+shape = SubResource( 30 )
+
+[node name="PillarLower5" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.995055, 0.0206497, -0.097149, 0, 0.978148, 0.207912, 0.0993193, 0.206884, -0.973311, -5.04542, -10, -50.5488 )
+shape = SubResource( 2 )
+
+[node name="PillarBase5" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.995055, 0, -0.0993193, 0, 1, 0, 0.0993193, 0, -0.995055, -4.96597, -25, -49.7528 )
+shape = SubResource( 29 )
+
+[node name="PillarTop6" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.882947, -0.469471, 7.64866e-08, 0, -1.62921e-07, -1, 0.469471, -0.882947, 1.4385e-07, -38.4967, 26, -72.4017 )
+shape = SubResource( 30 )
+
+[node name="PillarUpper6" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.882947, -0.198407, -0.425486, 0, 0.906308, -0.422618, 0.469471, -0.37315, -0.800222, -26.2904, 17, -49.445 )
+shape = SubResource( 30 )
+
+[node name="PillarLower6" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.882947, 0.0976086, -0.459212, 0, 0.978148, 0.207912, 0.469471, 0.183575, -0.863653, -23.8491, -10, -44.8537 )
+shape = SubResource( 2 )
+
+[node name="PillarBase6" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.882947, 0, -0.469471, 0, 1, 0, 0.469471, 0, -0.882947, -23.4736, -25, -44.1474 )
+shape = SubResource( 29 )
+
+[node name="PillarTop7" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.63473, -0.772733, 1.25894e-07, 0, -1.62921e-07, -1, 0.772733, -0.63473, 1.03411e-07, -63.3641, 26, -52.0479 )
+shape = SubResource( 30 )
+
+[node name="PillarUpper7" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.63473, -0.326571, -0.700334, 0, 0.906308, -0.422618, 0.772733, -0.268249, -0.575261, -43.2731, 17, -35.5449 )
+shape = SubResource( 30 )
+
+[node name="PillarLower7" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.63473, 0.16066, -0.755847, 0, 0.978148, 0.207912, 0.772733, 0.131968, -0.62086, -39.2548, -10, -32.2443 )
+shape = SubResource( 2 )
+
+[node name="PillarBase7" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.63473, 0, -0.772733, 0, 1, 0, 0.772733, 0, -0.63473, -38.6367, -25, -31.7365 )
+shape = SubResource( 29 )
+
+[node name="PillarTop8" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.290702, -0.956813, 1.55885e-07, 0, -1.62921e-07, -1, 0.956813, -0.290702, 4.73614e-08, -78.4587, 26, -23.8376 )
+shape = SubResource( 30 )
+
+[node name="PillarUpper8" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.290702, -0.404367, -0.867167, 0, 0.906308, -0.422618, 0.956813, -0.122856, -0.263466, -53.5815, 17, -16.2793 )
+shape = SubResource( 30 )
+
+[node name="PillarLower8" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.290702, 0.198933, -0.935904, 0, 0.978148, 0.207912, 0.956813, 0.0604404, -0.28435, -48.6061, -10, -14.7677 )
+shape = SubResource( 2 )
+
+[node name="PillarBase8" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.290702, 0, -0.956813, 0, 1, 0, 0.956813, 0, -0.290702, -47.8407, -25, -14.5351 )
+shape = SubResource( 29 )
+
+[node name="PillarTop9" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.0958456, -0.995396, 1.62171e-07, 0, -1.62921e-07, -1, 0.995396, 0.0958456, -1.56152e-08, -81.6225, 26, 7.85934 )
+shape = SubResource( 30 )
+
+[node name="PillarUpper9" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.0958457, -0.420673, -0.902135, 0, 0.906308, -0.422618, 0.995396, 0.0405061, 0.0868656, -55.7422, 17, 5.36735 )
+shape = SubResource( 30 )
+
+[node name="PillarLower9" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.0958456, 0.206954, -0.973644, 0, 0.978148, 0.207912, 0.995396, -0.0199274, 0.0937511, -50.5661, -10, 4.86896 )
+shape = SubResource( 2 )
+
+[node name="PillarBase9" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.0958456, 0, -0.995396, 0, 1, 0, 0.995396, 0, 0.0958456, -49.7698, -25, 4.79228 )
+shape = SubResource( 29 )
+
+[node name="PillarTop10" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.469471, -0.882947, 1.4385e-07, 0, -1.62921e-07, -1, 0.882947, 0.469471, -7.64866e-08, -72.4017, 26, 38.4966 )
+shape = SubResource( 30 )
+
+[node name="PillarUpper10" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.469471, -0.37315, -0.800222, 0, 0.906308, -0.422618, 0.882947, 0.198407, 0.425485, -49.445, 17, 26.2904 )
+shape = SubResource( 30 )
+
+[node name="PillarLower10" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.469471, 0.183575, -0.863653, 0, 0.978148, 0.207912, 0.882947, -0.0976086, 0.459212, -44.8537, -10, 23.8491 )
+shape = SubResource( 2 )
+
+[node name="PillarBase10" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.469471, 0, -0.882947, 0, 1, 0, 0.882947, 0, 0.469471, -44.1474, -25, 23.4736 )
+shape = SubResource( 29 )
+
+[node name="PillarTop11" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.772733, -0.63473, 1.03411e-07, 0, -1.62921e-07, -1, 0.63473, 0.772733, -1.25894e-07, -52.0479, 26, 63.3641 )
+shape = SubResource( 30 )
+
+[node name="PillarUpper11" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.772733, -0.268249, -0.575261, 0, 0.906308, -0.422618, 0.63473, 0.326571, 0.700334, -35.5449, 17, 43.2731 )
+shape = SubResource( 30 )
+
+[node name="PillarLower11" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.772733, 0.131968, -0.62086, 0, 0.978148, 0.207912, 0.63473, -0.16066, 0.755847, -32.2443, -10, 39.2548 )
+shape = SubResource( 2 )
+
+[node name="PillarBase11" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.772733, 0, -0.63473, 0, 1, 0, 0.63473, 0, 0.772733, -31.7365, -25, 38.6367 )
+shape = SubResource( 29 )
+
+[node name="OuterPillarA1" type="CollisionShape" parent="Pillars"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 77.6, -15, 0 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB1" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 80.35, 4.5, 0 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC1" type="CollisionShape" parent="Pillars"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 93.6, 5.5, 0 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD1" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.642788, 0.766044, 0, -0.766044, 0.642788, 0, 0, 0, 0.5, 92.1, 1, 0 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE1" type="CollisionShape" parent="Pillars"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 95.35, -3.5, 0 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF1" type="CollisionShape" parent="Pillars"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 98.35, 8.7, 0 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG1" type="CollisionShape" parent="Pillars"]
+transform = Transform( -2.44381e-07, 0, 1, 0, 1, 0, -1.5, 0, -1.62921e-07, 103.6, 2, 0 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH1" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.703703, -0.703703, 0.0980176, 0.707108, 0.707108, 0, -0.0693089, 0.0693089, 0.995185, 81.2071, 5.9, -7.9982 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA2" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.980785, 0, 0.19509, 0, 1, 0, -0.19509, 0, 0.980785, 76.1089, -15, -15.139 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB2" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.69352, -0.69352, 0.19509, 0.707107, 0.707107, 0, -0.13795, 0.13795, 0.980785, 78.8061, 4.5, -15.6755 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC2" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.980785, 0, 0.19509, 0, 1, 0, -0.19509, 0, 0.980785, 91.8015, 5.5, -18.2604 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD2" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.630437, 0.751325, 0.097545, -0.766044, 0.642788, 0, -0.125402, -0.149448, 0.490393, 90.3303, 1, -17.9678 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE2" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.980785, 0, 0.19509, 0, 1, 0, -0.19509, 0, 0.980785, 93.5178, -3.5, -18.6018 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF2" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.980785, 0, 0.19509, 0, 1, 0, -0.19509, 0, 0.980785, 96.4602, 8.7, -19.1871 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG2" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.292635, 0, 0.980785, 0, 1, 0, -1.47118, 0, -0.19509, 101.609, 2, -20.2113 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH2" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.67666, -0.67666, 0.290285, 0.707108, 0.707108, 0, -0.205263, 0.205263, 0.956941, 78.0864, 5.9, -23.6872 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA3" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.923879, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.923879, 71.6931, -15, -29.6962 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB3" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.653282, -0.653282, 0.382683, 0.707107, 0.707107, 0, -0.270598, 0.270598, 0.92388, 74.2338, 4.5, -30.7486 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC3" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 86.4752, 5.5, -35.8191 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD3" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.593859, 0.707732, 0.191342, -0.766044, 0.642788, 0, -0.245984, -0.293152, 0.46194, 85.0894, 1, -35.2451 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE3" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 88.092, -3.5, -36.4888 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF3" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 90.8636, 8.7, -37.6369 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG3" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.574025, 0, 0.92388, 0, 1, 0, -1.38582, 0, -0.382683, 95.714, 2, -39.646 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH3" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.623613, -0.623613, 0.471397, 0.707108, 0.707108, 0, -0.333328, 0.333328, 0.881922, 71.9648, 5.9, -38.466 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA4" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.83147, 0, 0.55557, 0, 1, 0, -0.55557, 0, 0.83147, 64.522, -15, -43.1123 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB4" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.587938, -0.587938, 0.55557, 0.707107, 0.707107, 0, -0.392847, 0.392847, 0.83147, 66.8085, 4.5, -44.6401 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC4" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.83147, 0, 0.55557, 0, 1, 0, -0.55557, 0, 0.83147, 77.8255, 5.5, -52.0014 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD4" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.534459, 0.636943, 0.277785, -0.766044, 0.642788, 0, -0.357114, -0.425591, 0.415735, 76.5783, 1, -51.1681 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE4" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.83147, 0, 0.55557, 0, 1, 0, -0.55557, 0, 0.83147, 79.2806, -3.5, -52.9737 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF4" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.83147, 0, 0.55557, 0, 1, 0, -0.55557, 0, 0.83147, 81.775, 8.7, -54.6404 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG4" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.833355, 0, 0.83147, 0, 1, 0, -1.2472, 0, -0.55557, 86.1402, 2, -57.5571 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH4" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.546601, -0.546601, 0.634394, 0.707108, 0.707108, 0, -0.448584, 0.448584, 0.773011, 63.0777, 5.9, -51.7665 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA5" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 54.8715, -15, -54.8715 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB5" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.5, -0.5, 0.707107, 0.707107, 0.707107, 0, -0.5, 0.5, 0.707107, 56.816, 4.5, -56.816 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC5" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 66.1852, 5.5, -66.1852 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD5" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.45452, 0.541675, 0.353553, -0.766044, 0.642788, 0, -0.45452, -0.541675, 0.353553, 65.1245, 1, -65.1245 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE5" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 67.4226, -3.5, -67.4226 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF5" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 69.544, 8.7, -69.544 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG5" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.06066, 0, 0.707107, 0, 1, 0, -1.06066, 0, -0.707107, 73.2563, 2, -73.2563 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH5" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.448584, -0.448584, 0.773011, 0.707108, 0.707108, 0, -0.546602, 0.546602, 0.634393, 51.7665, 5.9, -63.0777 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA6" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.55557, 0, 0.83147, 0, 1, 0, -0.83147, 0, 0.55557, 43.1122, -15, -64.522 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB6" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.392847, -0.392847, 0.83147, 0.707107, 0.707107, 0, -0.587938, 0.587938, 0.55557, 44.64, 4.5, -66.8085 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC6" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.55557, 0, 0.83147, 0, 1, 0, -0.83147, 0, 0.55557, 52.0013, 5.5, -77.8255 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD6" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.357114, 0.425591, 0.415735, -0.766044, 0.642788, 0, -0.534459, -0.636943, 0.277785, 51.168, 1, -76.5783 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE6" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.55557, 0, 0.83147, 0, 1, 0, -0.83147, 0, 0.55557, 52.9736, -3.5, -79.2806 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF6" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.55557, 0, 0.83147, 0, 1, 0, -0.83147, 0, 0.55557, 54.6403, 8.7, -81.775 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG6" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.24721, 0, 0.55557, 0, 1, 0, -0.833355, 0, -0.83147, 57.557, 2, -86.1402 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH6" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.333328, -0.333328, 0.881922, 0.707108, 0.707108, 0, -0.623613, 0.623613, 0.471397, 38.466, 5.9, -71.9648 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA7" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.382683, 0, 0.923879, 0, 1, 0, -0.923879, 0, 0.382683, 29.6962, -15, -71.6931 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB7" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.270598, -0.270598, 0.92388, 0.707107, 0.707107, 0, -0.653282, 0.653282, 0.382683, 30.7486, 4.5, -74.2338 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC7" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.382683, 0, 0.92388, 0, 1, 0, -0.92388, 0, 0.382683, 35.8191, 5.5, -86.4752 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD7" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.245984, 0.293152, 0.46194, -0.766044, 0.642788, 0, -0.593859, -0.707732, 0.191342, 35.2451, 1, -85.0894 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE7" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.382683, 0, 0.92388, 0, 1, 0, -0.92388, 0, 0.382683, 36.4888, -3.5, -88.092 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF7" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.382683, 0, 0.92388, 0, 1, 0, -0.92388, 0, 0.382683, 37.6369, 8.7, -90.8636 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG7" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.38582, 0, 0.382683, 0, 1, 0, -0.574025, 0, -0.92388, 39.646, 2, -95.714 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH7" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.205262, -0.205262, 0.956941, 0.707108, 0.707108, 0, -0.67666, 0.67666, 0.290284, 23.6872, 5.9, -78.0864 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA8" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.19509, 0, 0.980785, 0, 1, 0, -0.980785, 0, 0.19509, 15.139, -15, -76.1089 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB8" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.13795, -0.13795, 0.980785, 0.707107, 0.707107, 0, -0.69352, 0.69352, 0.19509, 15.6755, 4.5, -78.8061 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC8" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.19509, 0, 0.980785, 0, 1, 0, -0.980785, 0, 0.19509, 18.2604, 5.5, -91.8015 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD8" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.125402, 0.149448, 0.490393, -0.766044, 0.642788, 0, -0.630437, -0.751325, 0.097545, 17.9678, 1, -90.3303 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE8" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.19509, 0, 0.980785, 0, 1, 0, -0.980785, 0, 0.19509, 18.6018, -3.5, -93.5178 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF8" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.19509, 0, 0.980785, 0, 1, 0, -0.980785, 0, 0.19509, 19.1871, 8.7, -96.4602 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG8" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.47118, 0, 0.19509, 0, 1, 0, -0.292635, 0, -0.980786, 20.2113, 2, -101.609 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH8" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.0693083, -0.0693083, 0.995185, 0.707108, 0.707108, 0, -0.703703, 0.703703, 0.0980167, 7.99819, 5.9, -81.2071 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA9" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1.26426e-05, -15, -77.6 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB9" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.15203e-07, 1.15203e-07, 1, 0.707107, 0.707107, 0, -0.707107, 0.707107, -1.62921e-07, -1.30906e-05, 4.5, -80.35 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC9" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1.52493e-05, 5.5, -93.6 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD9" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.04724e-07, -1.24805e-07, 0.5, -0.766044, 0.642788, 0, -0.642788, -0.766044, -8.14605e-08, -1.5005e-05, 1, -92.1 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE9" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1.55344e-05, -3.5, -95.35 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF9" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1.60232e-05, 8.7, -98.35 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG9" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.5, 0, -3.25842e-07, 0, 1, 0, 4.88763e-07, 0, -1, -1.68785e-05, 2, -103.6 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH9" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.0693091, 0.0693091, 0.995185, 0.707108, 0.707108, 0, -0.703703, 0.703703, -0.0980178, -7.99822, 5.9, -81.2071 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA10" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.195091, 0, 0.980785, 0, 1, 0, -0.980785, 0, -0.195091, -15.139, -15, -76.1089 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB10" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.13795, 0.13795, 0.980785, 0.707107, 0.707107, 0, -0.69352, 0.69352, -0.195091, -15.6755, 4.5, -78.8061 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC10" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.195091, 0, 0.980785, 0, 1, 0, -0.980785, 0, -0.195091, -18.2605, 5.5, -91.8015 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD10" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.125402, -0.149448, 0.490393, -0.766044, 0.642788, 0, -0.630437, -0.751325, -0.0975455, -17.9678, 1, -90.3303 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE10" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.195091, 0, 0.980785, 0, 1, 0, -0.980785, 0, -0.195091, -18.6019, -3.5, -93.5178 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF10" type="CollisionShape" parent="Pillars"]
+transform = Transform( -0.195091, 0, 0.980785, 0, 1, 0, -0.980785, 0, -0.195091, -19.1871, 8.7, -96.4602 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG10" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.47118, 0, -0.195091, 0, 1, 0, 0.292637, 0, -0.980785, -20.2114, 2, -101.609 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarA11" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.980785, 0, -0.19509, 0, 1, 0, 0.19509, 0, 0.980785, 76.1089, -15, 15.139 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB11" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.69352, -0.69352, -0.19509, 0.707107, 0.707107, 0, 0.13795, -0.13795, 0.980785, 78.8061, 4.5, 15.6755 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC11" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.980785, 0, -0.19509, 0, 1, 0, 0.19509, 0, 0.980785, 91.8015, 5.5, 18.2604 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD11" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.630437, 0.751325, -0.097545, -0.766044, 0.642788, 0, 0.125402, 0.149448, 0.490393, 90.3303, 1, 17.9678 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE11" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.980785, 0, -0.19509, 0, 1, 0, 0.19509, 0, 0.980785, 93.5178, -3.5, 18.6018 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF11" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.980785, 0, -0.19509, 0, 1, 0, 0.19509, 0, 0.980785, 96.4602, 8.7, 19.1871 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG11" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.292635, 0, 0.980786, 0, 1, 0, -1.47118, 0, 0.19509, 101.609, 2, 20.2113 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH11" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.703703, -0.703703, -0.0980169, 0.707108, 0.707108, 0, 0.0693084, -0.0693084, 0.995185, 81.2071, 5.9, 7.9982 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA12" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.923879, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.923879, 71.6931, -15, 29.6962 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB12" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.653282, -0.653282, -0.382683, 0.707107, 0.707107, 0, 0.270598, -0.270598, 0.92388, 74.2338, 4.5, 30.7486 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC12" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, 86.4752, 5.5, 35.8191 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD12" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.593859, 0.707732, -0.191342, -0.766044, 0.642788, 0, 0.245984, 0.293152, 0.46194, 85.0894, 1, 35.2451 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE12" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, 88.092, -3.5, 36.4888 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF12" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.92388, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.92388, 90.8636, 8.7, 37.6369 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG12" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.574025, 0, 0.92388, 0, 1, 0, -1.38582, 0, 0.382683, 95.714, 2, 39.646 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH12" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.67666, -0.67666, -0.290284, 0.707108, 0.707108, 0, 0.205262, -0.205262, 0.956941, 78.0864, 5.9, 23.6872 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA13" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.83147, 0, -0.55557, 0, 1, 0, 0.55557, 0, 0.83147, 64.522, -15, 43.1123 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB13" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.587938, -0.587938, -0.55557, 0.707107, 0.707107, 0, 0.392847, -0.392847, 0.83147, 66.8085, 4.5, 44.6401 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC13" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.83147, 0, -0.55557, 0, 1, 0, 0.55557, 0, 0.83147, 77.8255, 5.5, 52.0014 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD13" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.534459, 0.636943, -0.277785, -0.766044, 0.642788, 0, 0.357114, 0.425591, 0.415735, 76.5783, 1, 51.1681 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE13" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.83147, 0, -0.55557, 0, 1, 0, 0.55557, 0, 0.83147, 79.2806, -3.5, 52.9737 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF13" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.83147, 0, -0.55557, 0, 1, 0, 0.55557, 0, 0.83147, 81.775, 8.7, 54.6404 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG13" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.833355, 0, 0.83147, 0, 1, 0, -1.24721, 0, 0.55557, 86.1402, 2, 57.5571 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH13" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.623613, -0.623613, -0.471397, 0.707108, 0.707108, 0, 0.333328, -0.333328, 0.881922, 71.9648, 5.9, 38.466 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA14" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 54.8715, -15, 54.8715 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB14" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.5, -0.5, -0.707107, 0.707107, 0.707107, 0, 0.5, -0.5, 0.707107, 56.816, 4.5, 56.816 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC14" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 66.1852, 5.5, 66.1852 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD14" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.45452, 0.541675, -0.353553, -0.766044, 0.642788, 0, 0.45452, 0.541675, 0.353553, 65.1245, 1, 65.1245 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE14" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 67.4226, -3.5, 67.4226 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF14" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 69.544, 8.7, 69.544 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG14" type="CollisionShape" parent="Pillars"]
+transform = Transform( 1.06066, 0, 0.707107, 0, 1, 0, -1.06066, 0, 0.707107, 73.2563, 2, 73.2563 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH14" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.546602, -0.546602, -0.634393, 0.707108, 0.707108, 0, 0.448584, -0.448584, 0.773011, 63.0777, 5.9, 51.7665 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA15" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.55557, 0, -0.83147, 0, 1, 0, 0.83147, 0, 0.55557, 43.1122, -15, 64.522 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB15" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.392847, -0.392847, -0.83147, 0.707107, 0.707107, 0, 0.587938, -0.587938, 0.55557, 44.64, 4.5, 66.8085 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC15" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.55557, 0, -0.83147, 0, 1, 0, 0.83147, 0, 0.55557, 52.0013, 5.5, 77.8255 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD15" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.357114, 0.425591, -0.415735, -0.766044, 0.642788, 0, 0.534459, 0.636943, 0.277785, 51.168, 1, 76.5783 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE15" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.55557, 0, -0.83147, 0, 1, 0, 0.83147, 0, 0.55557, 52.9736, -3.5, 79.2806 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF15" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.55557, 0, -0.83147, 0, 1, 0, 0.83147, 0, 0.55557, 54.6403, 8.7, 81.775 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG15" type="CollisionShape" parent="Pillars"]
+transform = Transform( 1.2472, 0, 0.55557, 0, 1, 0, -0.833355, 0, 0.83147, 57.557, 2, 86.1402 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH15" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.448584, -0.448584, -0.773011, 0.707108, 0.707108, 0, 0.546601, -0.546601, 0.634394, 51.7665, 5.9, 63.0777 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA16" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.382683, 0, -0.923879, 0, 1, 0, 0.923879, 0, 0.382683, 29.6962, -15, 71.6931 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB16" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.270598, -0.270598, -0.92388, 0.707107, 0.707107, 0, 0.653282, -0.653282, 0.382683, 30.7486, 4.5, 74.2338 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC16" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.382683, 0, -0.92388, 0, 1, 0, 0.92388, 0, 0.382683, 35.8191, 5.5, 86.4752 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD16" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.245984, 0.293152, -0.46194, -0.766044, 0.642788, 0, 0.593859, 0.707732, 0.191342, 35.2451, 1, 85.0894 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE16" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.382683, 0, -0.92388, 0, 1, 0, 0.92388, 0, 0.382683, 36.4888, -3.5, 88.092 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF16" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.382683, 0, -0.92388, 0, 1, 0, 0.92388, 0, 0.382683, 37.6369, 8.7, 90.8636 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG16" type="CollisionShape" parent="Pillars"]
+transform = Transform( 1.38582, 0, 0.382683, 0, 1, 0, -0.574025, 0, 0.92388, 39.646, 2, 95.714 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH16" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.333328, -0.333328, -0.881922, 0.707108, 0.707108, 0, 0.623613, -0.623613, 0.471397, 38.466, 5.9, 71.9648 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA17" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.19509, 0, -0.980785, 0, 1, 0, 0.980785, 0, 0.19509, 15.139, -15, 76.1089 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB17" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.13795, -0.13795, -0.980785, 0.707107, 0.707107, 0, 0.69352, -0.69352, 0.19509, 15.6755, 4.5, 78.8061 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC17" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.19509, 0, -0.980785, 0, 1, 0, 0.980785, 0, 0.19509, 18.2604, 5.5, 91.8015 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD17" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.125402, 0.149448, -0.490393, -0.766044, 0.642788, 0, 0.630437, 0.751325, 0.097545, 17.9678, 1, 90.3303 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE17" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.19509, 0, -0.980785, 0, 1, 0, 0.980785, 0, 0.19509, 18.6018, -3.5, 93.5178 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF17" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.19509, 0, -0.980785, 0, 1, 0, 0.980785, 0, 0.19509, 19.1871, 8.7, 96.4602 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG17" type="CollisionShape" parent="Pillars"]
+transform = Transform( 1.47118, 0, 0.19509, 0, 1, 0, -0.292635, 0, 0.980785, 20.2113, 2, 101.609 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH17" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.205263, -0.205263, -0.956941, 0.707108, 0.707108, 0, 0.67666, -0.67666, 0.290285, 23.6872, 5.9, 78.0864 )
+shape = SubResource( 8 )
+
+[node name="OuterPillarA18" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -1.26426e-05, -15, 77.6 )
+shape = SubResource( 3 )
+
+[node name="OuterPillarB18" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.15203e-07, 1.15203e-07, -1, 0.707107, 0.707107, 0, 0.707107, -0.707107, -1.62921e-07, -1.30906e-05, 4.5, 80.35 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarC18" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -1.52493e-05, 5.5, 93.6 )
+shape = SubResource( 5 )
+
+[node name="OuterPillarD18" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.04724e-07, -1.24805e-07, -0.5, -0.766044, 0.642788, 0, 0.642788, 0.766044, -8.14605e-08, -1.5005e-05, 1, 92.1 )
+shape = SubResource( 4 )
+
+[node name="OuterPillarE18" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -1.55344e-05, -3.5, 95.35 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarF18" type="CollisionShape" parent="Pillars"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -1.60232e-05, 8.7, 98.35 )
+shape = SubResource( 7 )
+
+[node name="OuterPillarG18" type="CollisionShape" parent="Pillars"]
+transform = Transform( 1.5, 0, -3.12639e-13, 0, 1, 0, 4.54747e-13, 0, 1, -1.68785e-05, 2, 103.6 )
+shape = SubResource( 6 )
+
+[node name="OuterPillarH18" type="CollisionShape" parent="Pillars"]
+transform = Transform( 0.0693088, -0.0693088, -0.995185, 0.707108, 0.707108, 0, 0.703703, -0.703703, 0.0980174, 7.99819, 5.9, 81.2071 )
+shape = SubResource( 8 )
+
+[node name="OuterWallWest1" type="CollisionShape" parent="Pillars"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.75, -5, 96.6 )
+shape = SubResource( 9 )
+
+[node name="MainFloor" type="StaticBody" parent="."]
+
+[node name="StartHall1" type="CollisionShape" parent="MainFloor"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -1.48991e-05, -21.4, 91.45 )
+shape = SubResource( 10 )
+
+[node name="StartHall2" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.0871556, 0, -0.996195, 0, 1, 0, 0.996195, 0, 0.0871556, 7.97038, -21.4, 91.102 )
+shape = SubResource( 10 )
+
+[node name="StartHall3" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 15.8801, -21.4, 90.0607 )
+shape = SubResource( 10 )
+
+[node name="StartHall4" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 23.669, -21.4, 88.3339 )
+shape = SubResource( 10 )
+
+[node name="StartHall5" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 31.2777, -21.4, 85.9349 )
+shape = SubResource( 10 )
+
+[node name="StartHall6" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, 0.422618, 38.6484, -21.4, 82.8819 )
+shape = SubResource( 10 )
+
+[node name="StartHall7" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 45.725, -21.4, 79.198 )
+shape = SubResource( 10 )
+
+[node name="StartHall8" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, 52.4536, -21.4, 74.9115 )
+shape = SubResource( 10 )
+
+[node name="StartHall9" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 58.7829, -21.4, 70.0548 )
+shape = SubResource( 10 )
+
+[node name="StartHall10" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 64.6649, -21.4, 64.6649 )
+shape = SubResource( 10 )
+
+[node name="StartHall11" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, 0.766044, 70.0548, -21.4, 58.7829 )
+shape = SubResource( 10 )
+
+[node name="StartHall12" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.819152, 0, -0.573577, 0, 1, 0, 0.573577, 0, 0.819152, 74.9115, -21.4, 52.4536 )
+shape = SubResource( 10 )
+
+[node name="StartHall13" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 79.198, -21.4, 45.725 )
+shape = SubResource( 10 )
+
+[node name="StartHall14" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 82.8819, -21.4, 38.6484 )
+shape = SubResource( 10 )
+
+[node name="StartHall15" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 87.3444, -21.4, 31.7907 )
+shape = SubResource( 10 )
+
+[node name="StartHall16" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 89.7828, -21.4, 24.0572 )
+shape = SubResource( 10 )
+
+[node name="StartHall17" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 91.5379, -21.4, 16.1406 )
+shape = SubResource( 10 )
+
+[node name="StartHall18" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 90.9277, -21.4, 9.96278 )
+shape = SubResource( 10 )
+
+[node name="StartHall19" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 91.45, -21.4, 0 )
+shape = SubResource( 10 )
+
+[node name="StartHall20" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 91.102, -21.4, -7.97039 )
+shape = SubResource( 10 )
+
+[node name="StartHall21" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 90.0607, -21.4, -15.8801 )
+shape = SubResource( 10 )
+
+[node name="StartHall22" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 88.3339, -21.4, -23.669 )
+shape = SubResource( 10 )
+
+[node name="StartHall23" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 85.9349, -21.4, -31.2777 )
+shape = SubResource( 10 )
+
+[node name="StartHall24" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 82.8819, -21.4, -38.6484 )
+shape = SubResource( 10 )
+
+[node name="StartHall25" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 79.198, -21.4, -45.725 )
+shape = SubResource( 10 )
+
+[node name="StartHall26" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.819152, 0, 0.573577, 0, 1, 0, -0.573577, 0, 0.819152, 74.9115, -21.4, -52.4536 )
+shape = SubResource( 10 )
+
+[node name="StartHall27" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 70.0548, -21.4, -58.7829 )
+shape = SubResource( 10 )
+
+[node name="StartHall28" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 64.6649, -21.4, -64.6649 )
+shape = SubResource( 10 )
+
+[node name="StartHall29" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 58.7829, -21.4, -70.0548 )
+shape = SubResource( 10 )
+
+[node name="StartHall30" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 52.4536, -21.4, -74.9115 )
+shape = SubResource( 10 )
+
+[node name="StartHall31" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 45.725, -21.4, -79.198 )
+shape = SubResource( 10 )
+
+[node name="StartHall32" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, 0.422618, 38.6484, -21.4, -82.8819 )
+shape = SubResource( 10 )
+
+[node name="StartHall33" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, 0.34202, 31.2777, -21.4, -85.9349 )
+shape = SubResource( 10 )
+
+[node name="StartHall34" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 23.669, -21.4, -88.3339 )
+shape = SubResource( 10 )
+
+[node name="StartHall35" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 15.8801, -21.4, -90.0607 )
+shape = SubResource( 10 )
+
+[node name="StartHall36" type="CollisionShape" parent="MainFloor"]
+transform = Transform( 0.0871556, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.0871556, 7.97038, -21.4, -91.102 )
+shape = SubResource( 10 )
+
+[node name="StartHall37" type="CollisionShape" parent="MainFloor"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1.48991e-05, -21.4, -91.45 )
+shape = SubResource( 10 )
+
+[node name="StartHall38" type="CollisionShape" parent="MainFloor"]
+transform = Transform( -0.0871559, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871559, -7.97041, -21.4, -91.102 )
+shape = SubResource( 10 )
+
+[node name="UpperFloor" type="StaticBody" parent="."]
+
+[node name="ElevatorBack" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.292372, 0, -0.956305, 0, 1, 0, 0.956305, 0, 0.292372, 31, -6.2, 102 )
+shape = SubResource( 11 )
+
+[node name="ElevatorBase" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.292372, 0, -0.956305, 0, 1, 0, 0.956305, 0, 0.292372, 28.9415, -8.772, 95.8087 )
+shape = SubResource( 11 )
+
+[node name="ElevatorTip1" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.292372, 0, -0.956305, 0, 1, 0, 0.956305, 0, 0.292372, 30.2208, -3.86, 89.6544 )
+shape = SubResource( 12 )
+
+[node name="ElevatorTip2" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.292372, 0, -0.956305, 0, 1, 0, 0.956305, 0, 0.292372, 24.722, -3.86, 91.3355 )
+shape = SubResource( 12 )
+
+[node name="StartHall1" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -1.78643e-05, -16.2, 109.65 )
+shape = SubResource( 10 )
+
+[node name="StartHall2" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.0871556, 0, -0.996195, 0, 1, 0, 0.996195, 0, 0.0871556, 9.55661, -16.2, 109.233 )
+shape = SubResource( 10 )
+
+[node name="StartHall3" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 19.0405, -16.2, 107.984 )
+shape = SubResource( 10 )
+
+[node name="StartHall4" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.292372, 0, -0.956305, 0, 1, 0, 0.956305, 0, 0.292372, 23.2555, -16.2, 107.271 )
+shape = SubResource( 10 )
+
+[node name="StartHall5" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.292372, 0, -0.956305, 0, 1, 0, 0.956305, 0, 0.292372, 40.3382, -16.2, 102.061 )
+shape = SubResource( 10 )
+
+[node name="StartHall6" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, 0.422618, 46.3401, -16.2, 99.3766 )
+shape = SubResource( 10 )
+
+[node name="StartHall7" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 54.825, -16.2, 94.9597 )
+shape = SubResource( 10 )
+
+[node name="StartHall8" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, 62.8927, -16.2, 89.82 )
+shape = SubResource( 10 )
+
+[node name="StartHall9" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 70.4817, -16.2, 83.9968 )
+shape = SubResource( 10 )
+
+[node name="StartHall10" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 77.5342, -16.2, 77.5343 )
+shape = SubResource( 10 )
+
+[node name="StartHall11" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, 0.766044, 83.9968, -16.2, 70.4817 )
+shape = SubResource( 10 )
+
+[node name="StartHall12" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.819152, 0, -0.573577, 0, 1, 0, 0.573577, 0, 0.819152, 89.82, -16.2, 62.8927 )
+shape = SubResource( 10 )
+
+[node name="StartHall13" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 94.9597, -16.2, 54.825 )
+shape = SubResource( 10 )
+
+[node name="StartHall14" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 99.3766, -16.2, 46.3401 )
+shape = SubResource( 10 )
+
+[node name="StartHall15" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 103.037, -16.2, 37.5025 )
+shape = SubResource( 10 )
+
+[node name="StartHall16" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 105.914, -16.2, 28.3795 )
+shape = SubResource( 10 )
+
+[node name="StartHall17" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 107.984, -16.2, 19.0405 )
+shape = SubResource( 10 )
+
+[node name="StartHall18" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 109.233, -16.2, 9.55663 )
+shape = SubResource( 10 )
+
+[node name="StartHall19" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 109.65, -16.2, 0 )
+shape = SubResource( 10 )
+
+[node name="StartHall20" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 109.233, -16.2, -9.55663 )
+shape = SubResource( 10 )
+
+[node name="StartHall21" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 107.984, -16.2, -19.0405 )
+shape = SubResource( 10 )
+
+[node name="StartHall22" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 105.914, -16.2, -28.3795 )
+shape = SubResource( 10 )
+
+[node name="StartHall23" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 103.037, -16.2, -37.5025 )
+shape = SubResource( 10 )
+
+[node name="StartHall24" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 99.3766, -16.2, -46.3401 )
+shape = SubResource( 10 )
+
+[node name="StartHall25" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 94.9597, -16.2, -54.825 )
+shape = SubResource( 10 )
+
+[node name="StartHall26" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.819152, 0, 0.573577, 0, 1, 0, -0.573577, 0, 0.819152, 89.82, -16.2, -62.8927 )
+shape = SubResource( 10 )
+
+[node name="StartHall27" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 83.9968, -16.2, -70.4817 )
+shape = SubResource( 10 )
+
+[node name="StartHall28" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 77.5342, -16.2, -77.5343 )
+shape = SubResource( 10 )
+
+[node name="StartHall29" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 70.4817, -16.2, -83.9968 )
+shape = SubResource( 10 )
+
+[node name="StartHall30" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 62.8927, -16.2, -89.82 )
+shape = SubResource( 10 )
+
+[node name="StartHall31" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 54.825, -16.2, -94.9597 )
+shape = SubResource( 10 )
+
+[node name="StartHall32" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, 0.422618, 46.3401, -16.2, -99.3766 )
+shape = SubResource( 10 )
+
+[node name="StartHall33" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, 0.34202, 37.5025, -16.2, -103.037 )
+shape = SubResource( 10 )
+
+[node name="StartHall34" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 28.3795, -16.2, -105.914 )
+shape = SubResource( 10 )
+
+[node name="StartHall35" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 19.0405, -16.2, -107.984 )
+shape = SubResource( 10 )
+
+[node name="StartHall36" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.0871556, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.0871556, 9.55661, -16.2, -109.233 )
+shape = SubResource( 10 )
+
+[node name="StartHall37" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1.78643e-05, -16.2, -109.65 )
+shape = SubResource( 10 )
+
+[node name="StartHall38" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( -0.0871559, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871559, -9.55664, -16.2, -109.233 )
+shape = SubResource( 10 )
+
+[node name="StartHall39" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -1.76199e-05, -18.2, 108.15 )
+shape = SubResource( 10 )
+
+[node name="StartHall40" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.0871556, 0, -0.996195, 0, 1, 0, 0.996195, 0, 0.0871556, 9.42588, -18.2, 107.739 )
+shape = SubResource( 10 )
+
+[node name="StartHall41" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 18.78, -18.2, 106.507 )
+shape = SubResource( 10 )
+
+[node name="StartHall42" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.292372, 0, -0.956305, 0, 1, 0, 0.956305, 0, 0.292372, 22.8169, -18.2, 105.837 )
+shape = SubResource( 10 )
+
+[node name="StartHall43" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.292372, 0, -0.956305, 0, 1, 0, 0.956305, 0, 0.292372, 39.8996, -18.2, 100.627 )
+shape = SubResource( 10 )
+
+[node name="StartHall44" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, 0.422618, 45.7062, -18.2, 98.0171 )
+shape = SubResource( 10 )
+
+[node name="StartHall45" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 54.075, -18.2, 93.6607 )
+shape = SubResource( 10 )
+
+[node name="StartHall46" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.601815, 0, -0.798635, 0, 1, 0, 0.798635, 0, 0.601815, 60.7543, -18.2, 88.8587 )
+shape = SubResource( 10 )
+
+[node name="StartHall48" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, 0.669131, 75.5477, -18.2, 77.1448 )
+shape = SubResource( 10 )
+
+[node name="StartHall49" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, 0.766044, 82.8477, -18.2, 69.5175 )
+shape = SubResource( 10 )
+
+[node name="StartHall50" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.819152, 0, -0.573577, 0, 1, 0, 0.573577, 0, 0.819152, 88.5913, -18.2, 62.0323 )
+shape = SubResource( 10 )
+
+[node name="StartHall51" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 93.6607, -18.2, 54.075 )
+shape = SubResource( 10 )
+
+[node name="StartHall52" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 98.0171, -18.2, 45.7062 )
+shape = SubResource( 10 )
+
+[node name="StartHall53" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 101.627, -18.2, 36.9895 )
+shape = SubResource( 10 )
+
+[node name="StartHall54" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 104.465, -18.2, 27.9913 )
+shape = SubResource( 10 )
+
+[node name="StartHall55" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 106.507, -18.2, 18.78 )
+shape = SubResource( 10 )
+
+[node name="StartHall56" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 107.739, -18.2, 9.4259 )
+shape = SubResource( 10 )
+
+[node name="StartHall57" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 108.15, -18.2, 0 )
+shape = SubResource( 10 )
+
+[node name="StartHall58" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 107.739, -18.2, -9.4259 )
+shape = SubResource( 10 )
+
+[node name="StartHall59" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 106.507, -18.2, -18.78 )
+shape = SubResource( 10 )
+
+[node name="StartHall60" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 104.465, -18.2, -27.9913 )
+shape = SubResource( 10 )
+
+[node name="StartHall61" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 101.627, -18.2, -36.9895 )
+shape = SubResource( 10 )
+
+[node name="StartHall62" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 98.0171, -18.2, -45.7062 )
+shape = SubResource( 10 )
+
+[node name="StartHall63" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 93.6607, -18.2, -54.075 )
+shape = SubResource( 10 )
+
+[node name="StartHall64" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.819152, 0, 0.573577, 0, 1, 0, -0.573577, 0, 0.819152, 88.5913, -18.2, -62.0323 )
+shape = SubResource( 10 )
+
+[node name="StartHall65" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 82.8477, -18.2, -69.5175 )
+shape = SubResource( 10 )
+
+[node name="StartHall66" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 76.4735, -18.2, -76.4736 )
+shape = SubResource( 10 )
+
+[node name="StartHall67" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 69.5175, -18.2, -82.8477 )
+shape = SubResource( 10 )
+
+[node name="StartHall68" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 62.0323, -18.2, -88.5913 )
+shape = SubResource( 10 )
+
+[node name="StartHall69" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 54.075, -18.2, -93.6607 )
+shape = SubResource( 10 )
+
+[node name="StartHall70" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, 0.422618, 45.7062, -18.2, -98.0171 )
+shape = SubResource( 10 )
+
+[node name="StartHall71" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, 0.34202, 36.9895, -18.2, -101.627 )
+shape = SubResource( 10 )
+
+[node name="StartHall72" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 27.9913, -18.2, -104.465 )
+shape = SubResource( 10 )
+
+[node name="StartHall73" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 18.78, -18.2, -106.507 )
+shape = SubResource( 10 )
+
+[node name="StartHall74" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( 0.0871556, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.0871556, 9.42588, -18.2, -107.739 )
+shape = SubResource( 10 )
+
+[node name="StartHall75" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1.76199e-05, -18.2, -108.15 )
+shape = SubResource( 10 )
+
+[node name="StartHall76" type="CollisionShape" parent="UpperFloor"]
+transform = Transform( -0.0871559, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871559, -9.42591, -18.2, -107.739 )
+shape = SubResource( 10 )
+
+[node name="OuterWalls" type="StaticBody" parent="."]
+
+[node name="Ceiling" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28, -1.90735e-06 )
+shape = SubResource( 13 )
+
+[node name="StartHall1" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -1.90455e-05, 13.8, 116.9 )
+shape = SubResource( 10 )
+
+[node name="StartHall2" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.0871556, 0, -0.996195, 0, 1, 0, 0.996195, 0, 0.0871556, 10.1885, 13.8, 116.455 )
+shape = SubResource( 10 )
+
+[node name="StartHall3" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 20.2995, 13.8, 115.124 )
+shape = SubResource( 10 )
+
+[node name="StartHall4" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 30.6442, 13.8, 114.366 )
+shape = SubResource( 10 )
+
+[node name="StartHall5" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 40.4952, 13.8, 111.259 )
+shape = SubResource( 10 )
+
+[node name="StartHall6" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, 0.422618, 49.4041, 13.8, 105.947 )
+shape = SubResource( 10 )
+
+[node name="StartHall7" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 58.45, 13.8, 101.238 )
+shape = SubResource( 10 )
+
+[node name="StartHall8" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, 67.9115, 13.8, 96.9876 )
+shape = SubResource( 10 )
+
+[node name="StartHall9" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 76.1061, 13.8, 90.6997 )
+shape = SubResource( 10 )
+
+[node name="StartHall10" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 82.6607, 13.8, 82.6608 )
+shape = SubResource( 10 )
+
+[node name="StartHall11" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, 0.766044, 89.5506, 13.8, 75.1419 )
+shape = SubResource( 10 )
+
+[node name="StartHall12" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.819152, 0, -0.573577, 0, 1, 0, 0.573577, 0, 0.819152, 95.7589, 13.8, 67.0511 )
+shape = SubResource( 10 )
+
+[node name="StartHall13" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 102.537, 13.8, 59.2 )
+shape = SubResource( 10 )
+
+[node name="StartHall14" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 107.307, 13.8, 50.038 )
+shape = SubResource( 10 )
+
+[node name="StartHall15" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 109.85, 13.8, 39.9821 )
+shape = SubResource( 10 )
+
+[node name="StartHall16" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 112.917, 13.8, 30.2559 )
+shape = SubResource( 10 )
+
+[node name="StartHall17" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 116.601, 13.8, 20.5599 )
+shape = SubResource( 10 )
+
+[node name="StartHall18" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 117.972, 13.8, 10.0702 )
+shape = SubResource( 10 )
+
+[node name="StartHall19" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 116.9, 13.8, -1 )
+shape = SubResource( 10 )
+
+[node name="StartHall20" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 116.455, 13.8, -10.1885 )
+shape = SubResource( 10 )
+
+[node name="StartHall21" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 115.124, 13.8, -20.2995 )
+shape = SubResource( 10 )
+
+[node name="StartHall22" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 114.366, 13.8, -30.6442 )
+shape = SubResource( 10 )
+
+[node name="StartHall23" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 111.259, 13.8, -40.4952 )
+shape = SubResource( 10 )
+
+[node name="StartHall24" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 105.947, 13.8, -49.4041 )
+shape = SubResource( 10 )
+
+[node name="StartHall25" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 101.238, 13.8, -58.45 )
+shape = SubResource( 10 )
+
+[node name="StartHall26" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.819152, 0, 0.573577, 0, 1, 0, -0.573577, 0, 0.819152, 96.9876, 13.8, -67.9115 )
+shape = SubResource( 10 )
+
+[node name="StartHall27" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 90.539, 13.8, -76.2976 )
+shape = SubResource( 10 )
+
+[node name="StartHall28" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 81.9536, 13.8, -83.3679 )
+shape = SubResource( 10 )
+
+[node name="StartHall29" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 75.1419, 13.8, -89.5506 )
+shape = SubResource( 10 )
+
+[node name="StartHall30" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 67.0511, 13.8, -95.7589 )
+shape = SubResource( 10 )
+
+[node name="StartHall31" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 58.45, 13.8, -101.238 )
+shape = SubResource( 10 )
+
+[node name="StartHall32" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, 0.422618, 49.4041, 13.8, -105.947 )
+shape = SubResource( 10 )
+
+[node name="StartHall33" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, 0.34202, 39.9821, 13.8, -109.85 )
+shape = SubResource( 10 )
+
+[node name="StartHall34" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 30.2559, 13.8, -112.917 )
+shape = SubResource( 10 )
+
+[node name="StartHall35" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 20.2995, 13.8, -115.124 )
+shape = SubResource( 10 )
+
+[node name="StartHall36" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.0871556, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.0871556, 10.1885, 13.8, -116.455 )
+shape = SubResource( 10 )
+
+[node name="StartHall37" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1.90455e-05, 13.8, -116.9 )
+shape = SubResource( 10 )
+
+[node name="StartHall38" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( -0.0871559, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871559, -10.1885, 13.8, -116.455 )
+shape = SubResource( 10 )
+
+[node name="StartHall39" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, 0.422618, 45.75, 13.8, 107.25 )
+shape = SubResource( 10 )
+
+[node name="StartHall40" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 21.9736, 13.8, 114.985 )
+shape = SubResource( 10 )
+
+[node name="StartHall41" type="CollisionShape" parent="OuterWalls"]
+transform = Transform( 0.615661, 0, -0.788011, 0, 1, 0, 0.788011, 0, 0.615661, 65.6, 13.8, 97.5 )
+shape = SubResource( 10 )
+
+[node name="PlayerOnly" type="StaticBody" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Railing1" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 67.85, -0.5, 67.85 )
+shape = SubResource( 14 )
+
+[node name="Railing2" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 61.6783, -0.5, 73.5053 )
+shape = SubResource( 14 )
+
+[node name="Railing3" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, 0.819152, 55.0372, -0.5, 78.6012 )
+shape = SubResource( 14 )
+
+[node name="Railing4" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 47.9772, -0.5, 83.0989 )
+shape = SubResource( 14 )
+
+[node name="Railing5" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 40.5521, -0.5, 86.9642 )
+shape = SubResource( 14 )
+
+[node name="Spatial" type="Spatial" parent="PlayerOnly"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="Spatial2" type="Spatial" parent="PlayerOnly"]
+transform = Transform( 0.92388, 0, -0.382684, 0, 1, 0, 0.382684, 0, 0.92388, 0, 0, 0 )
+
+[node name="Spatial3" type="Spatial" parent="PlayerOnly"]
+transform = Transform( 0.83147, 0, -0.55557, 0, 1, 0, 0.55557, 0, 0.83147, 0, 0, 0 )
+
+[node name="Railing6" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.939692, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939692, 34.387, -0.5, 89.5811 )
+shape = SubResource( 15 )
+
+[node name="Railing7" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 73.5053, -0.5, 61.6783 )
+shape = SubResource( 14 )
+
+[node name="Railing8" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 78.6012, -0.5, 55.0372 )
+shape = SubResource( 14 )
+
+[node name="Railing9" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 83.0989, -0.5, 47.9772 )
+shape = SubResource( 14 )
+
+[node name="Railing10" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, 0.422618, 86.9642, -0.5, 40.5521 )
+shape = SubResource( 14 )
+
+[node name="Railing11" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, 0.34202, 90.1676, -0.5, 32.8183 )
+shape = SubResource( 14 )
+
+[node name="Railing12" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 92.6848, -0.5, 24.8348 )
+shape = SubResource( 14 )
+
+[node name="Railing13" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 94.4966, -0.5, 16.6623 )
+shape = SubResource( 14 )
+
+[node name="Railing14" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 55.9706, -5.7, 55.9706 )
+shape = SubResource( 16 )
+
+[node name="Railing15" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 50.8795, -5.7, 60.6358 )
+shape = SubResource( 16 )
+
+[node name="Railing16" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, 0.819152, 45.4011, -5.7, 64.8395 )
+shape = SubResource( 16 )
+
+[node name="Railing17" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 39.5772, -5.7, 68.5497 )
+shape = SubResource( 16 )
+
+[node name="Railing18" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 33.4521, -5.7, 71.7383 )
+shape = SubResource( 16 )
+
+[node name="Railing19" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 27.0724, -5.7, 74.3809 )
+shape = SubResource( 16 )
+
+[node name="Railing20" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 60.6358, -5.7, 50.8795 )
+shape = SubResource( 16 )
+
+[node name="Railing21" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 64.8395, -5.7, 45.4011 )
+shape = SubResource( 16 )
+
+[node name="Railing22" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 68.5497, -5.7, 39.5772 )
+shape = SubResource( 16 )
+
+[node name="Railing23" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, 0.422618, 71.7382, -5.7, 33.4521 )
+shape = SubResource( 16 )
+
+[node name="Railing24" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, 0.34202, 73.9533, -5.7, 28.247 )
+shape = SubResource( 17 )
+
+[node name="Railing25" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 77.0267, -5.7, 18.3617 )
+shape = SubResource( 18 )
+
+[node name="Railing26" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 77.9519, -5.7, 13.745 )
+shape = SubResource( 16 )
+
+[node name="Railing27" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 20.4867, -5.7, 76.4573 )
+shape = SubResource( 16 )
+
+[node name="Railing28" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 13.745, -5.7, 77.9519 )
+shape = SubResource( 16 )
+
+[node name="Railing29" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.996195, 0, 0.0871554, 0, 1, 0, -0.0871554, 0, 0.996195, 6.89875, -5.7, 78.8532 )
+shape = SubResource( 16 )
+
+[node name="Railing30" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 1, 0, -3.8743e-07, 0, 1, 0, 3.8743e-07, 0, 1, -2.28882e-05, -5.7, 79.1544 )
+shape = SubResource( 16 )
+
+[node name="Railing31" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 1, 0, -3.8743e-07, 0, 1, 0, 3.8743e-07, 0, 1, -7.00865, -5.7, 79.1542 )
+shape = SubResource( 16 )
+
+[node name="Railing32" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.087156, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.087156, 78.8532, -5.7, 6.89878 )
+shape = SubResource( 16 )
+
+[node name="Railing33" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 2.68221e-07, 0, 1, 0, 1, 0, -1, 0, 2.68221e-07, 79.1544, -5.7, 1.52588e-05 )
+shape = SubResource( 16 )
+
+[node name="Railing34" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.0871556, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871556, 78.8532, -5.7, -6.89876 )
+shape = SubResource( 16 )
+
+[node name="Railing35" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, -0.173648, 77.9519, -5.7, -13.745 )
+shape = SubResource( 16 )
+
+[node name="Railing36" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 76.4573, -5.7, -20.4867 )
+shape = SubResource( 16 )
+
+[node name="Railing37" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, 74.3808, -5.7, -27.0724 )
+shape = SubResource( 16 )
+
+[node name="Railing38" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, -0.422618, 71.7383, -5.7, -33.4521 )
+shape = SubResource( 16 )
+
+[node name="Railing39" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, 68.5498, -5.7, -39.5772 )
+shape = SubResource( 16 )
+
+[node name="Railing40" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, -0.573576, 64.8395, -5.7, -45.4011 )
+shape = SubResource( 16 )
+
+[node name="Railing41" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.642787, 0, 0.766045, 0, 1, 0, -0.766045, 0, -0.642787, 60.6358, -5.7, -50.8795 )
+shape = SubResource( 16 )
+
+[node name="Railing42" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 55.9706, -5.7, -55.9706 )
+shape = SubResource( 16 )
+
+[node name="Railing43" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, -0.766044, 50.8795, -5.7, -60.6358 )
+shape = SubResource( 16 )
+
+[node name="Railing44" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.819152, 0, 0.573577, 0, 1, 0, -0.573577, 0, -0.819152, 45.4011, -5.7, -64.8395 )
+shape = SubResource( 16 )
+
+[node name="Railing45" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 39.5772, -5.7, -68.5498 )
+shape = SubResource( 16 )
+
+[node name="Railing46" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.906308, 0, 0.422619, 0, 1, 0, -0.422619, 0, -0.906308, 33.4521, -5.7, -71.7383 )
+shape = SubResource( 16 )
+
+[node name="Railing47" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.939692, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939692, 27.0724, -5.7, -74.3808 )
+shape = SubResource( 16 )
+
+[node name="Railing48" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 20.4867, -5.7, -76.4573 )
+shape = SubResource( 16 )
+
+[node name="Railing49" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, -0.984808, 13.745, -5.7, -77.9519 )
+shape = SubResource( 16 )
+
+[node name="Railing50" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.996195, 0, 0.0871559, 0, 1, 0, -0.0871559, 0, -0.996195, 6.89876, -5.7, -78.8532 )
+shape = SubResource( 16 )
+
+[node name="Railing51" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -1, 0, 3.8743e-07, 0, 1, 0, -3.8743e-07, 0, -1, 2.28882e-05, -5.7, -79.1544 )
+shape = SubResource( 16 )
+
+[node name="Railing52" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.996195, 0, -0.0871556, 0, 1, 0, 0.0871556, 0, -0.996195, -6.89876, -5.7, -78.8532 )
+shape = SubResource( 16 )
+
+[node name="Railing53" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.976296, 0, 0.216439, 0, 1, 0, -0.216439, 0, 0.976296, 21.4, -0.5, 93.4 )
+shape = SubResource( 31 )
+
+[node name="Railing54" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.991444, 0, 0.130526, 0, 1, 0, -0.130526, 0, 0.991444, 12.5246, -0.5, 95.1335 )
+shape = SubResource( 14 )
+
+[node name="Railing55" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.999048, 0, 0.0436191, 0, 1, 0, -0.0436191, 0, 0.999048, 4.18549, -0.5, 95.8631 )
+shape = SubResource( 14 )
+
+[node name="Railing56" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.999762, 0, 0.0218145, 0, 1, 0, -0.0218145, 0, 0.999762, 2.09327, -0.5, 95.9315 )
+shape = SubResource( 14 )
+
+[node name="Railing57" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.997859, 0, -0.0654029, 0, 1, 0, 0.0654029, 0, 0.997859, -6.27569, -0.5, 95.7489 )
+shape = SubResource( 14 )
+
+[node name="OuterPillarPlayer1" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 92.7, 2, 0 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer2" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.980785, 0, 0.19509, 0, 1, 0, -0.19509, 0, 0.980785, 90.9188, 2, -18.0849 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer3" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.923879, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.923879, 85.6436, 2, -35.4748 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer4" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.83147, 0, 0.55557, 0, 1, 0, -0.55557, 0, 0.83147, 77.0772, 2, -51.5014 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer5" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 65.5488, 2, -65.5488 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer6" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.55557, 0, 0.83147, 0, 1, 0, -0.83147, 0, 0.55557, 51.5014, 2, -77.0772 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer7" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.382683, 0, 0.923879, 0, 1, 0, -0.923879, 0, 0.382683, 35.4748, 2, -85.6436 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer8" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.19509, 0, 0.980785, 0, 1, 0, -0.980785, 0, 0.19509, 18.0849, 2, -90.9188 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer9" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1.51027e-05, 2, -92.7 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer10" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -0.195091, 0, 0.980785, 0, 1, 0, -0.980785, 0, -0.195091, -18.0849, 2, -90.9188 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer11" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.980785, 0, -0.19509, 0, 1, 0, 0.19509, 0, 0.980785, 90.9188, 2, 18.0849 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer12" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.923879, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.923879, 85.6436, 2, 35.4748 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer13" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.83147, 0, -0.55557, 0, 1, 0, 0.55557, 0, 0.83147, 77.0772, 2, 51.5014 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer14" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 65.5488, 2, 65.5488 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer15" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.55557, 0, -0.83147, 0, 1, 0, 0.83147, 0, 0.55557, 51.5014, 2, 77.0772 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer16" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.382683, 0, -0.923879, 0, 1, 0, 0.923879, 0, 0.382683, 35.4748, 2, 85.6436 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer17" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.19509, 0, -0.980785, 0, 1, 0, 0.980785, 0, 0.19509, 18.0849, 2, 90.9188 )
+shape = SubResource( 19 )
+
+[node name="OuterPillarPlayer18" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -1.51027e-05, 2, 92.7 )
+shape = SubResource( 19 )
+
+[node name="BridgeRailing1" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.956305, 0, -0.292372, 0, 1, 0, 0.292372, 0, 0.956305, 55.8691, -5.6, 20.767 )
+shape = SubResource( 20 )
+
+[node name="BridgeRailing2" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.956305, 0, -0.292372, 0, 1, 0, 0.292372, 0, 0.956305, 58.0915, -5.6, 13.4987 )
+shape = SubResource( 20 )
+
+[node name="BridgeRailing3" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.956305, 0, -0.292372, 0, 1, 0, 0.292372, 0, 0.956305, 51.7775, -2.4, 10.2093 )
+shape = SubResource( 21 )
+
+[node name="BridgeRailing4" type="CollisionShape" parent="PlayerOnly"]
+transform = Transform( 0.956305, 0, -0.292372, 0, 1, 0, 0.292372, 0, 0.956305, 48.7953, -2.4, 19.9637 )
+shape = SubResource( 21 )
+
+[node name="Bridge" type="StaticBody" parent="."]
+transform = Transform( 0.956305, 0, -0.292372, 0, 1, 0, 0.292372, 0, 0.956305, 56.9805, -6.8, 17.1331 )
+
+[node name="Bridge" type="CollisionShape" parent="Bridge"]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0 )
+shape = SubResource( 22 )
+
+[node name="BridgeTop" type="CollisionShape" parent="Bridge"]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -14.6, 7.6, -9.53674e-07 )
+shape = SubResource( 23 )
+
+[node name="BridgePillar1" type="CollisionShape" parent="Bridge"]
+transform = Transform( 0.707107, 0.707107, -5.96046e-08, -0.707107, 0.707107, 0, 1.49012e-08, 1.49012e-08, 1, 1.30001, 4.3, -5.1 )
+shape = SubResource( 24 )
+
+[node name="BridgePillar2" type="CollisionShape" parent="Bridge"]
+transform = Transform( 1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -10, 5.4, -5.1 )
+shape = SubResource( 25 )
+
+[node name="BridgePillar3" type="CollisionShape" parent="Bridge"]
+transform = Transform( -1.62921e-07, -1, -1.19209e-07, 1, -1.62921e-07, 0, -7.10543e-15, -2.98023e-08, 1, 3, 0, -5.1 )
+shape = SubResource( 24 )
+
+[node name="BridgePillar4" type="CollisionShape" parent="Bridge"]
+transform = Transform( 0.601815, -0.798636, -5.96046e-08, 0.798635, 0.601815, 0, -2.98023e-08, -2.98023e-08, 1, -4.5, 2, -5.1 )
+shape = SubResource( 26 )
+
+[node name="BridgePillar5" type="CollisionShape" parent="Bridge"]
+transform = Transform( 0.601815, 0.798636, -5.96046e-08, -0.798635, 0.601815, 0, -2.98023e-08, 2.98023e-08, 1, -8.30001, 2, -5.1 )
+shape = SubResource( 27 )
+
+[node name="BridgePillar6" type="CollisionShape" parent="Bridge"]
+transform = Transform( 0.601815, -0.798636, -5.96046e-08, 0.798635, 0.601815, 0, -2.98023e-08, -2.98023e-08, 1, -11.1, 2, -5.1 )
+shape = SubResource( 27 )
+
+[node name="BridgePillar7" type="CollisionShape" parent="Bridge"]
+transform = Transform( 0.601815, 0.798636, -5.96046e-08, -0.798635, 0.601815, 0, -2.98023e-08, 2.98023e-08, 1, -14.25, 2, -5.1 )
+shape = SubResource( 27 )
+
+[node name="BridgePillar8" type="CollisionShape" parent="Bridge"]
+transform = Transform( 0.707107, 0.707107, -8.9407e-08, -0.707107, 0.707107, 0, 1.49012e-08, 1.49012e-08, 1, 1.30001, 4.3, 5.1 )
+shape = SubResource( 24 )
+
+[node name="BridgePillar9" type="CollisionShape" parent="Bridge"]
+transform = Transform( 1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -10, 5.4, 5.10001 )
+shape = SubResource( 25 )
+
+[node name="BridgePillar10" type="CollisionShape" parent="Bridge"]
+transform = Transform( -1.62921e-07, -1, -1.78814e-07, 1, -1.62921e-07, 0, -7.10543e-15, -2.98023e-08, 1, 3, 0, 5.10001 )
+shape = SubResource( 24 )
+
+[node name="BridgePillar11" type="CollisionShape" parent="Bridge"]
+transform = Transform( 0.601815, -0.798636, -8.9407e-08, 0.798635, 0.601815, 0, -4.47035e-08, -4.47035e-08, 1, -4.49999, 2, 5.1 )
+shape = SubResource( 26 )
+
+[node name="BridgePillar12" type="CollisionShape" parent="Bridge"]
+transform = Transform( 0.601815, 0.798636, -8.9407e-08, -0.798635, 0.601815, 0, -4.47035e-08, 4.47035e-08, 1, -8.3, 2, 5.1 )
+shape = SubResource( 27 )
+
+[node name="BridgePillar13" type="CollisionShape" parent="Bridge"]
+transform = Transform( 0.601815, -0.798636, -8.9407e-08, 0.798635, 0.601815, 0, -4.47035e-08, -4.47035e-08, 1, -11.1, 2, 5.10001 )
+shape = SubResource( 27 )
+
+[node name="BridgePillar14" type="CollisionShape" parent="Bridge"]
+transform = Transform( 0.601815, 0.798636, -8.9407e-08, -0.798635, 0.601815, 0, -4.47035e-08, 4.47035e-08, 1, -14.25, 2, 5.1 )
+shape = SubResource( 27 )
+
+[node name="BridgePillar15" type="CollisionShape" parent="Bridge"]
+transform = Transform( 1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 3, -1.5, 0 )
+shape = SubResource( 28 )

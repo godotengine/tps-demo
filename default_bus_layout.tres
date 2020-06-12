@@ -13,6 +13,7 @@ hipass = 0.14
 wet = 0.56
 
 [resource]
+bus/0/volume_db = -10.0
 bus/1/name = "Outside"
 bus/1/solo = false
 bus/1/mute = false

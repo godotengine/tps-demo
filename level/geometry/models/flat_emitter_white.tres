@@ -1,0 +1,11 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "flat_emitter_white"
+albedo_color = Color( 0.64, 0.64, 0.64, 1 )
+roughness = 0.542695
+emission_enabled = true
+emission = Color( 0.678431, 0.572549, 0.509804, 1 )
+emission_energy = 5.0
+emission_operator = 0
+emission_on_uv2 = false

@@ -1,0 +1,23 @@
+[gd_resource type="SpatialMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://level/textures/structure/tile_rivetpanels_d.png" type="Texture" id=1]
+[ext_resource path="res://level/textures/structure/tile_rivetpanels_n.png" type="Texture" id=2]
+[ext_resource path="res://level/textures/structure/tile_rivetpanels_orm.png" type="Texture" id=3]
+
+
+[resource]
+resource_name = "tile_rivet_panels"
+albedo_texture = ExtResource( 1 )
+metallic = 0.5
+metallic_texture = ExtResource( 3 )
+metallic_texture_channel = 2
+roughness_texture = ExtResource( 3 )
+roughness_texture_channel = 1
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 2 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 3 )
+ao_on_uv2 = false
+ao_texture_channel = 0

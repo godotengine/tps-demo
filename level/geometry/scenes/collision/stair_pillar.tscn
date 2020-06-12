@@ -1,0 +1,175 @@
+[gd_scene load_steps=9 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 3, 10, 1.8 )
+
+[sub_resource type="CylinderShape" id=2]
+radius = 1.8
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1.8, 0.4, 0.8 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1.8, 0.4, 3.2 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 2.285, 0.4, 0.8 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.1, 0.5, 0.8 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 2, 0.5, 0.1 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 0.1, 0.5, 3.2 )
+
+[node name="StairPillar" type="StaticBody"]
+
+[node name="CenterCube" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+shape = SubResource( 1 )
+
+[node name="CenterCylinder" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0 )
+shape = SubResource( 2 )
+
+[node name="LowestPlatform" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1, -9.9, 2.4 )
+shape = SubResource( 3 )
+
+[node name="MainPlatform1" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -6.9, 0 )
+shape = SubResource( 4 )
+
+[node name="MainPlatform2" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, -3.1, -3.9, 0 )
+shape = SubResource( 4 )
+
+[node name="MainPlatform3" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -0.9, 0 )
+shape = SubResource( 4 )
+
+[node name="MainPlatform4" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, -3.1, 2.1, 0 )
+shape = SubResource( 4 )
+
+[node name="MainPlatform5" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 5.1, 0 )
+shape = SubResource( 4 )
+
+[node name="Stair1" type="CollisionShape" parent="."]
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -2.98023e-08, 0, 1, -0.0300026, -8.4, 2.4 )
+shape = SubResource( 5 )
+
+[node name="Stair2" type="CollisionShape" parent="."]
+transform = Transform( -0.707107, 0.707107, -3.57628e-07, 0.707107, 0.707107, 0, 2.98023e-07, -2.38419e-07, -1, 0.0299988, -5.4, -2.4 )
+shape = SubResource( 5 )
+
+[node name="Stair3" type="CollisionShape" parent="."]
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -2.98023e-08, 0, 1, -0.0300026, -2.4, 2.4 )
+shape = SubResource( 5 )
+
+[node name="Stair4" type="CollisionShape" parent="."]
+transform = Transform( -0.707107, 0.707107, -3.57628e-07, 0.707107, 0.707107, 0, 2.98023e-07, -2.38419e-07, -1, 0.0299988, 0.599999, -2.4 )
+shape = SubResource( 5 )
+
+[node name="Stair5" type="CollisionShape" parent="."]
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -2.98023e-08, 0, 1, -0.0300026, 3.6, 2.4 )
+shape = SubResource( 5 )
+
+[node name="Railing1" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, -9, 2.4 )
+shape = SubResource( 6 )
+
+[node name="Railing2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -9, 3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing3" type="CollisionShape" parent="."]
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -2.98023e-08, 0, 1, -0.400003, -7.3, 3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing4" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, -6, 3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing5" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, -6, -9.53674e-07 )
+shape = SubResource( 8 )
+
+[node name="Railing6" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -9, 1.68 )
+shape = SubResource( 7 )
+
+[node name="Railing7" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, 2.7, -6, -3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing8" type="CollisionShape" parent="."]
+transform = Transform( -0.707107, 0.707107, -3.57628e-07, 0.707107, 0.707107, 0, 2.68221e-07, -2.38419e-07, -1, 0.399998, -4.3, -3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing9" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, -2.7, -3, -3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing10" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, -4.8, -3, -9.53674e-07 )
+shape = SubResource( 8 )
+
+[node name="Railing11" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -3, 3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing12" type="CollisionShape" parent="."]
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -2.98023e-08, 0, 1, -0.400003, -1.3, 3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing13" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, -4.76837e-07, 3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing14" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, -4.76837e-07, -9.53674e-07 )
+shape = SubResource( 8 )
+
+[node name="Railing16" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, 2.7, 0, -3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing17" type="CollisionShape" parent="."]
+transform = Transform( -0.707107, 0.707107, -3.57628e-07, 0.707107, 0.707107, 0, 2.68221e-07, -2.38419e-07, -1, 0.399998, 1.7, -3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing18" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, -2.7, 3, -3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing19" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, -4.8, 3, -9.53674e-07 )
+shape = SubResource( 8 )
+
+[node name="Railing20" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 3, 3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing21" type="CollisionShape" parent="."]
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -2.98023e-08, 0, 1, -0.400003, 4.7, 3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing22" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 6, 3.2 )
+shape = SubResource( 7 )
+
+[node name="Railing23" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 6, -9.53674e-07 )
+shape = SubResource( 8 )
+
+[node name="Railing24" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, 2.7, 6, 1.5 )
+shape = SubResource( 7 )
+
+[node name="Railing25" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, 2.7, 6, -3.2 )
+shape = SubResource( 7 )

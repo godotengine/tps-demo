@@ -1,0 +1,6 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "tile_steel"
+params_cull_mode = 2
+metallic = 1.0

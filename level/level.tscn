@@ -1,63 +1,26 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://level/level.gd" type="Script" id=1]
-[ext_resource path="res://level/geometry/demolevel.dae" type="PackedScene" id=2]
+[ext_resource path="res://level/geometry/scenes/props.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level/shader_cache.gd" type="Script" id=3]
 [ext_resource path="res://player/bullet.tscn" type="PackedScene" id=4]
-[ext_resource path="res://level/giprobe_data.res" type="GIProbeData" id=5]
+[ext_resource path="res://level/geometry/giprobe_data.res" type="GIProbeData" id=5]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://enemies/red_robot/red_robot.tscn" type="PackedScene" id=7]
 [ext_resource path="res://music/music.ogg" type="AudioStream" id=8]
-[ext_resource path="res://level/lightdata.res" type="BakedLightmapData" id=9]
 [ext_resource path="res://fx/smoke/smoke.tscn" type="PackedScene" id=10]
 [ext_resource path="res://fx/plasma/plasma.tscn" type="PackedScene" id=11]
 [ext_resource path="res://level/forklift/forklift.tscn" type="PackedScene" id=12]
+[ext_resource path="res://level/geometry/scenes/lights.tscn" type="PackedScene" id=13]
+[ext_resource path="res://level/geometry/scenes/core.tscn" type="PackedScene" id=14]
+[ext_resource path="res://level/geometry/scenes/structure.tscn" type="PackedScene" id=15]
+[ext_resource path="res://level/geometry/environment.tres" type="Environment" id=16]
 
-[sub_resource type="Environment" id=1]
-background_mode = 1
-ambient_light_color = Color( 0.258824, 0.203922, 0.152941, 1 )
-ambient_light_sky_contribution = 0.0
-fog_enabled = true
-fog_color = Color( 0.403922, 0.25098, 0.105882, 1 )
-fog_depth_begin = 3.0
-fog_depth_end = 0.0
-fog_depth_curve = 1.27456
-fog_transmit_curve = 1.03526
-fog_height_enabled = true
-fog_height_max = -200.0
-fog_height_curve = 0.812252
-tonemap_mode = 2
-auto_exposure_scale = 0.08
-auto_exposure_min_luma = 0.01
-auto_exposure_max_luma = 16.0
-auto_exposure_speed = 2.0
-ssao_enabled = true
-ssao_intensity = 3.0
-ssao_light_affect = 0.59
-ssao_ao_channel_affect = 1.0
-dof_blur_far_enabled = true
-dof_blur_far_distance = 100.0
-dof_blur_far_transition = 50.0
-dof_blur_near_enabled = true
-glow_enabled = true
-glow_levels/3 = false
-glow_levels/4 = true
-glow_levels/7 = true
-glow_intensity = 0.1
-glow_bloom = 0.2
-glow_blend_mode = 1
-glow_hdr_threshold = 0.7
-glow_bicubic_upscale = true
-adjustment_enabled = true
-adjustment_brightness = 1.48
-adjustment_contrast = 1.05
-adjustment_saturation = 1.61
-
-[sub_resource type="CapsuleShape" id=2]
+[sub_resource type="CapsuleShape" id=1]
 radius = 39.7506
 height = 78.0251
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "mawaru"
 length = 30.0
 loop = true
@@ -74,137 +37,22 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, -360, 0 ) ]
 }
 
-[node name="Spatial" type="Spatial"]
+[node name="Level" type="Spatial"]
 script = ExtResource( 1 )
 
-[node name="Scene Root" parent="." instance=ExtResource( 2 )]
+[node name="Core" parent="." instance=ExtResource( 14 )]
 
-[node name="Point" parent="Scene Root" index="109"]
-transform = Transform( 0.999986, -0.00522796, -2.28521e-10, 0, -4.37114e-08, 1, -0.00522796, -0.999986, -4.37108e-08, 8.46026, -4.73813, 85.4573 )
-light_color = Color( 0.0666667, 0.239216, 0.235294, 1 )
-shadow_enabled = true
-shadow_color = Color( 0.223529, 0.478431, 0.494118, 1 )
-omni_range = 15.0
+[node name="Plasma" parent="Core" instance=ExtResource( 11 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -2.27672, 0.025551 )
 
-[node name="Point001" parent="Scene Root" index="110"]
-light_color = Color( 1, 0.647059, 0.0941176, 1 )
-shadow_enabled = true
-omni_range = 25.0
+[node name="Structure" parent="." instance=ExtResource( 15 )]
 
-[node name="Point002" parent="Scene Root" index="111"]
-light_color = Color( 0.239216, 0.176471, 0.0666667, 1 )
-shadow_enabled = true
-omni_range = 15.0
+[node name="Props" parent="." instance=ExtResource( 2 )]
 
-[node name="Point004" parent="Scene Root" index="112"]
-light_color = Color( 0.239216, 0.164706, 0.0666667, 1 )
-shadow_enabled = true
-omni_range = 15.0
-
-[node name="Point006" parent="Scene Root" index="113"]
-light_color = Color( 0.0666667, 0.239216, 0.235294, 1 )
-shadow_enabled = true
-omni_range = 15.0
-
-[node name="Point008" parent="Scene Root" index="114"]
-light_color = Color( 0.0666667, 0.239216, 0.235294, 1 )
-shadow_enabled = true
-omni_range = 15.0
-
-[node name="Point010" parent="Scene Root" index="115"]
-light_color = Color( 0.0666667, 0.239216, 0.235294, 1 )
-shadow_enabled = true
-omni_range = 15.0
-
-[node name="Spot000" parent="Scene Root" index="138"]
-transform = Transform( -0.607523, 0.277253, -0.744343, -3.70498e-09, 0.937103, 0.349052, 0.794302, 0.212058, -0.569312, 28.2569, -3.29872, 75.6575 )
-light_energy = 2.26
-shadow_enabled = true
-spot_range = 26.2797
-
-[node name="Spot001" parent="Scene Root" index="139"]
-transform = Transform( 0.0776758, 0.347998, -0.934272, -3.70498e-09, 0.937103, 0.349052, 0.996979, -0.0271129, 0.0727902, 20.3872, 1.99402, 95.6067 )
-light_energy = 2.0
-shadow_enabled = true
-spot_range = 8.75991
-spot_angle = 28.8
-
-[node name="Spot002" parent="Scene Root" index="140"]
-transform = Transform( 0.811037, 0.204194, -0.548201, -3.70498e-09, 0.937103, 0.349052, 0.584995, -0.283094, 0.760025, 23.4435, 1.94828, 99.7339 )
-light_energy = 2.0
-shadow_enabled = true
-spot_range = 12.0553
-
-[node name="Spot003" parent="Scene Root" index="141"]
-transform = Transform( 0.270754, 0.336015, -0.902101, -3.70498e-09, 0.937103, 0.349052, 0.962649, -0.0945072, 0.253724, 75.3359, -3.51153, 29.3609 )
-light_color = Color( 0.584314, 0.796078, 0.8, 1 )
-light_energy = 4.34
-shadow_enabled = true
-spot_range = 10.0
-
-[node name="Spot004" parent="Scene Root" index="142"]
-transform = Transform( -0.947825, 0.111275, -0.298741, -3.70498e-09, 0.937103, 0.349052, 0.318792, 0.330841, -0.88821, 79.4885, -3.55559, 17.7325 )
-light_color = Color( 0.827451, 0.894118, 0.894118, 1 )
-light_energy = 2.0
-shadow_enabled = true
-spot_range = 10.0
-
-[node name="Spot005" parent="Scene Root" index="143"]
-transform = Transform( -0.266959, -0.336385, 0.903094, -3.70498e-09, 0.937103, 0.349052, -0.963708, 0.0931828, -0.250168, 83.6479, -3.51461, 39.2692 )
-light_color = Color( 0.827451, 0.894118, 0.894118, 1 )
-light_energy = 3.26
-shadow_enabled = true
-spot_range = 10.0
-
-[node name="Spot006" parent="Scene Root" index="144"]
-light_energy = 2.0
-spot_range = 10.0
-spot_angle_attenuation = 0.933033
-
-[node name="Spot007" parent="Scene Root" index="145"]
-light_energy = 2.0
-spot_range = 10.0
-
-[node name="Spot008" parent="Scene Root" index="146"]
-light_color = Color( 0.341176, 0.529412, 0.564706, 1 )
-light_energy = 3.0
-spot_range = 22.0
-
-[node name="Spot009" parent="Scene Root" index="147"]
-light_color = Color( 0.341176, 0.529412, 0.564706, 1 )
-light_energy = 3.0
-spot_range = 22.0
-
-[node name="Spot010" parent="Scene Root" index="148"]
-transform = Transform( -0.287308, 0.481547, -0.827989, 0.047241, 0.870507, 0.489883, 0.956673, 0.101632, -0.272852, 49.1395, -2.7686, 14.9908 )
-light_color = Color( 0.341176, 0.529412, 0.564706, 1 )
-light_energy = 3.0
-shadow_enabled = true
-shadow_bias = 0.1
-spot_range = 26.2797
-spot_angle = 28.8
-
-[node name="Spot012" parent="Scene Root" index="149"]
-transform = Transform( 0.0710858, -0.348169, 0.934733, -3.70498e-09, 0.937103, 0.349052, -0.99747, -0.0248127, 0.0666148, 40.7131, -5.08587, 79.4903 )
-light_energy = 2.98
-shadow_enabled = true
-shadow_bias = 0.03
-spot_angle = 26.8
-
-[node name="Spot013" parent="Scene Root" index="150"]
-transform = Transform( 0.0710858, -0.348169, 0.934733, -3.70498e-09, 0.937103, 0.349052, -0.99747, -0.0248127, 0.0666148, 40.8719, -5.08675, 77.923 )
-light_energy = 2.26
-shadow_enabled = true
-spot_angle = 30.8
-
-[node name="prop_container3door1005" parent="Scene Root/prop_container3007" index="1"]
-transform = Transform( 1, 0, 0, 3.86238e-12, 1, -9.59978e-10, 0, 0, 1, -1.22162, 1.55, 2.85 )
-
-[node name="prop_gastank3009" parent="Scene Root/prop_gastriple002" index="5"]
-transform = Transform( 1, 0, 7.45058e-09, 5.72164e-11, 1, 8.73443e-11, -1.49012e-08, 0, 1, -65.7593, -8.26237, 12.077 )
+[node name="Lights" parent="." instance=ExtResource( 13 )]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+environment = ExtResource( 16 )
 
 [node name="ShaderCache" type="Node" parent="WorldEnvironment"]
 script = ExtResource( 3 )
@@ -252,45 +100,11 @@ audio_bus_name = "Reactor"
 
 [node name="CollisionShape" type="CollisionShape" parent="sound_reactor_room"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
-
-[node name="refprobes" type="Spatial" parent="."]
-visible = false
-
-[node name="ReflectionProbe" type="ReflectionProbe" parent="refprobes"]
-transform = Transform( 0.494055, 0, -0.869431, 0, 1, 0, 0.869431, 0, 0.494055, 28.1433, -18.8082, 71.0693 )
-extents = Vector3( 37.3556, 50, 83.0437 )
-box_projection = true
-interior_enable = true
-interior_ambient_color = Color( 0.239216, 0.160784, 0.0588235, 1 )
-interior_ambient_contrib = 0.33
-
-[node name="ReflectionProbe2" type="ReflectionProbe" parent="refprobes"]
-transform = Transform( 0.999799, 0, -0.0200534, 0, 1, 0, 0.0200534, 0, 0.999799, 73.9972, 0, -12.2086 )
-extents = Vector3( 35.8169, 50, 64.5769 )
-box_projection = true
-interior_enable = true
-interior_ambient_color = Color( 0.152941, 0.0941176, 0.027451, 1 )
-interior_ambient_contrib = 0.45
-
-[node name="ReflectionProbe3" type="ReflectionProbe" parent="refprobes"]
-transform = Transform( 0.999799, 0, -0.0200534, 0, 1, 0, 0.0200534, 0, 0.999799, -0.392717, -7.57649, 0.0575469 )
-extents = Vector3( 38.9134, 50, 37.1232 )
-interior_enable = true
-interior_ambient_color = Color( 0.2, 0.129412, 0.0470588, 1 )
-interior_ambient_contrib = 0.3
-
-[node name="BakedLightmap" type="BakedLightmap" parent="."]
-bake_cell_size = 1.0
-bake_energy = 2.2
-bake_extents = Vector3( 127.692, 56.9907, 126.895 )
-capture_cell_size = 4.0
-image_path = "res://level/baked"
-light_data = ExtResource( 9 )
 
 [node name="smoke1" parent="." instance=ExtResource( 10 )]
 transform = Transform( 2.81076, 0, 0, 0, 2.81076, 0, 0, 0, 2.81076, -31.0061, -16.8843, 64.9964 )
@@ -300,9 +114,6 @@ transform = Transform( 2.81076, 0, 0, 0, 2.81076, 0, 0, 0, 2.81076, -57.857, -16
 
 [node name="smoke2" parent="." instance=ExtResource( 10 )]
 transform = Transform( 2.81076, 0, 0, 0, 2.81076, 0, 0, 0, 2.81076, 65.1483, -16.8843, -12.7312 )
-
-[node name="plasma" parent="." instance=ExtResource( 11 )]
-transform = Transform( 4.91931, 0, 0, 0, 4.91931, 0, 0, 0, 4.91931, 0, -2.27672, 0.025551 )
 
 [node name="forklifts_a" type="Spatial" parent="."]
 
@@ -314,6 +125,4 @@ transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -68.249
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="forklifts_a"]
 autoplay = "mawaru"
-anims/mawaru = SubResource( 3 )
-
-[editable path="Scene Root"]
+anims/mawaru = SubResource( 2 )

@@ -1,0 +1,337 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://level/geometry/models/props.glb" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 5.2, 1.5, 3 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 3.2, 1.5, 3 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1.5, 0.9, 1 )
+
+[sub_resource type="BoxShape" id=33]
+extents = Vector3( 2.5, 6.4, 3 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 2.6, 1.5, 2.6 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 3, 1.7, 5 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 1.8, 1.8, 1.8 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 3.4, 3, 4.3 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 13.5, 8, 4.3 )
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 2, 3, 2.5 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 1.5, 1.1, 3 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.7, 1.3, 1 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 1, 0.8, 1.5 )
+
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 0.9, 0.8, 3.3 )
+
+[sub_resource type="BoxShape" id=14]
+extents = Vector3( 3, 1.6, 3.8 )
+
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 4.4, 1.8, 2.6 )
+
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 0.4, 1.1, 4.2 )
+
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 0.6, 1.4, 4.2 )
+
+[sub_resource type="BoxShape" id=18]
+extents = Vector3( 2.1, 1.1, 1 )
+
+[sub_resource type="BoxShape" id=19]
+extents = Vector3( 4.2, 1.3, 1.5 )
+
+[sub_resource type="BoxShape" id=20]
+extents = Vector3( 0.7, 0.7, 4.2 )
+
+[sub_resource type="BoxShape" id=21]
+extents = Vector3( 1.4, 0.7, 1.4 )
+
+[sub_resource type="BoxShape" id=22]
+extents = Vector3( 6, 1.6, 1.8 )
+
+[sub_resource type="BoxShape" id=23]
+extents = Vector3( 2.8, 1.8, 1.8 )
+
+[sub_resource type="BoxShape" id=24]
+extents = Vector3( 15.2, 8, 5 )
+
+[sub_resource type="BoxShape" id=25]
+extents = Vector3( 0.8, 1.8, 0.9 )
+
+[sub_resource type="BoxShape" id=26]
+extents = Vector3( 20, 3.6, 2.5 )
+
+[sub_resource type="BoxShape" id=27]
+extents = Vector3( 4, 2, 1.6 )
+
+[sub_resource type="BoxShape" id=28]
+extents = Vector3( 2.2, 2, 1 )
+
+[sub_resource type="BoxShape" id=29]
+extents = Vector3( 0.5, 0.7, 0.5 )
+
+[sub_resource type="BoxShape" id=30]
+
+[sub_resource type="BoxShape" id=31]
+extents = Vector3( 1.5, 0.7, 0.9 )
+
+[sub_resource type="BoxShape" id=32]
+extents = Vector3( 0.5, 0.8, 3.3 )
+
+[node name="Props" type="Spatial"]
+
+[node name="PropsModel" parent="." instance=ExtResource( 1 )]
+
+[node name="Props" type="StaticBody" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Props1" type="CollisionShape" parent="Props"]
+transform = Transform( 0.882948, 0, 0.469472, 0, 1, 0, -0.469472, 0, 0.882948, 47.8, 0.3, 90.25 )
+shape = SubResource( 1 )
+
+[node name="Props2" type="CollisionShape" parent="Props"]
+transform = Transform( 0.829038, 0, 0.559193, 0, 1, 0, -0.559193, 0, 0.829038, 43.8, 0.3, 93.5 )
+shape = SubResource( 1 )
+
+[node name="Props3" type="CollisionShape" parent="Props"]
+transform = Transform( 0.798636, 0, 0.601815, 0, 1, 0, -0.601815, 0, 0.798636, 52.8, 0.3, 88.7 )
+shape = SubResource( 1 )
+
+[node name="Props4" type="CollisionShape" parent="Props"]
+transform = Transform( 0.891007, 0, 0.453991, 0, 1, 0, -0.453991, 0, 0.891007, 57.482, 0.3, 85.892 )
+shape = SubResource( 2 )
+
+[node name="Props5" type="CollisionShape" parent="Props"]
+transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 34.4477, -0.3, 90.0466 )
+shape = SubResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Props6" type="CollisionShape" parent="Props"]
+transform = Transform( 0.656059, 0, 0.75471, 0, 1, 0, -0.75471, 0, 0.656059, 70.1, -4.9, 60.5 )
+shape = SubResource( 1 )
+
+[node name="Props7" type="CollisionShape" parent="Props"]
+transform = Transform( 0.819152, 0, -0.573577, 0, 1, 0, 0.573577, 0, 0.819152, 65.7, 0, 66.2 )
+shape = SubResource( 33 )
+
+[node name="Props52" type="CollisionShape" parent="Props"]
+transform = Transform( 0.819152, 0, 0.573577, 0, 1, 0, -0.573577, 0, 0.819152, 65.7, 0, 68.25 )
+shape = SubResource( 33 )
+
+[node name="Props8" type="CollisionShape" parent="Props"]
+transform = Transform( 0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, 74.3, -4.9, 57.6 )
+shape = SubResource( 1 )
+
+[node name="Props9" type="CollisionShape" parent="Props"]
+transform = Transform( 0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, 0.809017, 77.933, -4.9, 52.174 )
+shape = SubResource( 4 )
+
+[node name="Props10" type="CollisionShape" parent="Props"]
+transform = Transform( 0.766045, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766045, 87.1, -4.7, 46 )
+shape = SubResource( 5 )
+
+[node name="Props11" type="CollisionShape" parent="Props"]
+transform = Transform( 0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 84, -4.9, 49.3 )
+shape = SubResource( 4 )
+
+[node name="Props12" type="CollisionShape" parent="Props"]
+transform = Transform( 0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 85, -4.6, 38.5 )
+shape = SubResource( 6 )
+
+[node name="Props13" type="CollisionShape" parent="Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 90.5, -3.4, 24.5 )
+shape = SubResource( 7 )
+
+[node name="Props14" type="CollisionShape" parent="Props"]
+transform = Transform( 0.981627, 0, -0.190809, 0, 1, 0, 0.190809, 0, 0.981627, 92.5, -3.4, 17.1 )
+shape = SubResource( 7 )
+
+[node name="Props15" type="CollisionShape" parent="Props"]
+transform = Transform( 0.996195, 0, -0.0871558, 0, 1, 0, 0.0871558, 0, 0.996195, 90, 0, 9.5 )
+shape = SubResource( 8 )
+
+[node name="Props16" type="CollisionShape" parent="Props"]
+transform = Transform( 0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 80, -3.4, 13.5 )
+shape = SubResource( 7 )
+
+[node name="Props17" type="CollisionShape" parent="Props"]
+transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 77.93, -3.4, 17.5 )
+shape = SubResource( 9 )
+
+[node name="Props18" type="CollisionShape" parent="Props"]
+transform = Transform( 0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 74.5282, -5.3, 32.2613 )
+shape = SubResource( 10 )
+
+[node name="Props19" type="CollisionShape" parent="Props"]
+transform = Transform( 0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, 0.5, 74, -3.4, 29.7 )
+shape = SubResource( 9 )
+
+[node name="Props20" type="CollisionShape" parent="Props"]
+transform = Transform( 0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 70.5532, -5.3, 39.7113 )
+shape = SubResource( 10 )
+
+[node name="Props21" type="CollisionShape" parent="Props"]
+transform = Transform( 0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 71.9, -5.1, 35.5 )
+shape = SubResource( 11 )
+
+[node name="Props22" type="CollisionShape" parent="Props"]
+transform = Transform( 0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 52.6, -5.6, 61.3 )
+shape = SubResource( 12 )
+
+[node name="Props23" type="CollisionShape" parent="Props"]
+transform = Transform( 0.207912, 0, -0.978148, 0, 1, 0, 0.978148, 0, 0.207912, 50.1, -5.6, 63.25 )
+shape = SubResource( 13 )
+
+[node name="Props24" type="CollisionShape" parent="Props"]
+transform = Transform( -0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, 53.65, -4.8, 74.1526 )
+shape = SubResource( 14 )
+
+[node name="Props25" type="CollisionShape" parent="Props"]
+transform = Transform( -0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, 50.15, -4.8, 76.7526 )
+shape = SubResource( 14 )
+
+[node name="Props26" type="CollisionShape" parent="Props"]
+transform = Transform( 0.994522, 0, -0.104528, 0, 1, 0, 0.104528, 0, 0.994522, 45, -4.6, 79.1 )
+shape = SubResource( 15 )
+
+[node name="Props27" type="CollisionShape" parent="Props"]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 44.5, -1.5, 80.4 )
+shape = SubResource( 16 )
+
+[node name="Props28" type="CollisionShape" parent="Props"]
+transform = Transform( 0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 39, -5, 82.8 )
+shape = SubResource( 17 )
+
+[node name="Props29" type="CollisionShape" parent="Props"]
+transform = Transform( 0.939692, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939692, 32.7, -5.3, 86.7 )
+shape = SubResource( 18 )
+
+[node name="Props30" type="CollisionShape" parent="Props"]
+transform = Transform( 0.951056, 0, 0.309017, 0, 1, 0, -0.309017, 0, 0.951056, 19.8, -5.1, 78.4 )
+shape = SubResource( 19 )
+
+[node name="Props31" type="CollisionShape" parent="Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, -5.1, 80.9 )
+shape = SubResource( 19 )
+
+[node name="Props32" type="CollisionShape" parent="Props"]
+transform = Transform( -0.0871559, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871559, 7.3, -5.7, 81.6 )
+shape = SubResource( 20 )
+
+[node name="Props33" type="CollisionShape" parent="Props"]
+transform = Transform( 0.990268, 0, 0.139173, 0, 1, 0, -0.139173, 0, 0.990268, 11.1, -5.7, 80.4 )
+shape = SubResource( 21 )
+
+[node name="Props34" type="CollisionShape" parent="Props"]
+transform = Transform( 0.984807, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984807, 10.2, -5.7, 91.9 )
+shape = SubResource( 21 )
+
+[node name="Props35" type="CollisionShape" parent="Props"]
+transform = Transform( 0.998629, 0, 0.052336, 0, 1, 0, -0.052336, 0, 0.998629, -0.8, -4.8, 91.8 )
+shape = SubResource( 22 )
+
+[node name="Props36" type="CollisionShape" parent="Props"]
+transform = Transform( 0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 14.5, -4.6, 91.1 )
+shape = SubResource( 23 )
+
+[node name="Props37" type="CollisionShape" parent="Props"]
+transform = Transform( 0.992546, 0, 0.121869, 0, 1, 0, -0.121869, 0, 0.992546, 7.8, 6.8, 99 )
+shape = SubResource( 8 )
+
+[node name="Props38" type="CollisionShape" parent="Props"]
+transform = Transform( 0.984807, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984807, 21.5, 0.6, 101.3 )
+shape = SubResource( 23 )
+
+[node name="Props39" type="CollisionShape" parent="Props"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 78.4749, 6.8, 64.0251 )
+shape = SubResource( 24 )
+
+[node name="Props40" type="CollisionShape" parent="Props"]
+transform = Transform( 0.48481, 0, 0.87462, 0, 1, 0, -0.87462, 0, 0.48481, 92, 6.8, 42.1 )
+shape = SubResource( 24 )
+
+[node name="Props41" type="CollisionShape" parent="Props"]
+transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 95, 6.8, 38.2 )
+shape = SubResource( 24 )
+
+[node name="Props42" type="CollisionShape" parent="Props"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 100.5, 6.8, -12 )
+shape = SubResource( 24 )
+
+[node name="Props43" type="CollisionShape" parent="Props"]
+transform = Transform( 0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, 0.5, 87, 6.8, -50 )
+shape = SubResource( 24 )
+
+[node name="Props44" type="CollisionShape" parent="Props"]
+transform = Transform( 0.951056, 0, 0.309017, 0, 1, 0, -0.309017, 0, 0.951056, 28.2, -4.6, 75.5 )
+shape = SubResource( 25 )
+
+[node name="Props45" type="CollisionShape" parent="Props"]
+transform = Transform( 0.992546, 0, 0.121869, 0, 1, 0, -0.121869, 0, 0.992546, 7, 2, 85.2 )
+shape = SubResource( 26 )
+
+[node name="Props46" type="CollisionShape" parent="Props"]
+transform = Transform( 0.961262, 0, -0.275637, 0, 1, 0, 0.275637, 0, 0.961262, -13.5, -10.4, 20.6 )
+shape = SubResource( 27 )
+
+[node name="Props47" type="CollisionShape" parent="Props"]
+transform = Transform( 0.978148, 0, 0.207912, 0, 1, 0, -0.207912, 0, 0.978148, -12.4, -10.4, -20.8 )
+shape = SubResource( 28 )
+
+[node name="Props48" type="CollisionShape" parent="Props"]
+transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 52.5, -0.6, 81.3 )
+shape = SubResource( 29 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Props49" type="CollisionShape" parent="Props"]
+transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 62.7, -0.5, 73.746 )
+shape = SubResource( 29 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Props50" type="CollisionShape" parent="Props"]
+transform = Transform( 0.965272, 0, 0.261246, 0, 1, 0, -0.261246, 0, 0.965272, 69.95, -0.2, 76.65 )
+shape = SubResource( 30 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Props51" type="CollisionShape" parent="Props"]
+transform = Transform( 0.779709, 0, 0.626141, 0, 1, 0, -0.626141, 0, 0.779709, 64.25, -0.5, 72.8 )
+shape = SubResource( 31 )
+
+[node name="Props54" type="CollisionShape" parent="Props"]
+transform = Transform( 0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 64.6, -5.6, 48.6 )
+shape = SubResource( 12 )
+
+[node name="Props55" type="CollisionShape" parent="Props"]
+transform = Transform( 0.777146, 0, -0.62932, 0, 1, 0, 0.62932, 0, 0.777146, 64.1, -5.6, 51.3 )
+shape = SubResource( 32 )
