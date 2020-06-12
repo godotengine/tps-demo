@@ -5,8 +5,6 @@
 [ext_resource path="res://level/textures/car/scificar_emissive.png" type="Texture" id=3]
 [ext_resource path="res://level/textures/car/scificar_roughnessocclusionmetallic.png" type="Texture" id=4]
 
-
-
 [resource]
 resource_name = "scifi_car"
 albedo_texture = ExtResource( 1 )

@@ -4,7 +4,6 @@
 [ext_resource path="res://level/textures/structure/TrainTexture_orm.png" type="Texture" id=2]
 [ext_resource path="res://level/textures/structure/TrainTexture_d.png" type="Texture" id=3]
 
-
 [resource]
 resource_name = "train_texture"
 albedo_texture = ExtResource( 3 )

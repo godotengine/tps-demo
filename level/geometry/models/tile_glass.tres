@@ -5,7 +5,6 @@
 [ext_resource path="res://level/textures/structure/tile_glass_orm.png" type="Texture" id=3]
 [ext_resource path="res://level/textures/structure/tile_glass_e.png" type="Texture" id=4]
 
-
 [resource]
 resource_name = "tile_glass"
 flags_transparent = true

@@ -4,7 +4,6 @@
 [ext_resource path="res://level/textures/structure/reactoremitter_orm.png" type="Texture" id=2]
 [ext_resource path="res://level/textures/structure/reactoremitter_n.png" type="Texture" id=3]
 
-
 [resource]
 resource_name = "reactor_emitter"
 albedo_texture = ExtResource( 1 )
