@@ -4,7 +4,6 @@
 [ext_resource path="res://level/textures/structure/trim_misctrims2_d.png" type="Texture" id=2]
 [ext_resource path="res://level/textures/structure/trim_misctrims2_n.png" type="Texture" id=3]
 
-
 [resource]
 resource_name = "trim_misc_2"
 albedo_texture = ExtResource( 2 )

@@ -4,7 +4,6 @@
 [ext_resource path="res://level/textures/structure/tile_metalpillar_n.png" type="Texture" id=2]
 [ext_resource path="res://level/textures/structure/tile_metalpillar_orm.png" type="Texture" id=3]
 
-
 [resource]
 resource_name = "Tile_metal_pillars"
 albedo_texture = ExtResource( 1 )

@@ -5,8 +5,6 @@
 [ext_resource path="res://level/textures/props/doorreactor_n.png" type="Texture" id=3]
 [ext_resource path="res://level/textures/props/doorreactor_orm.png" type="Texture" id=4]
 
-
-
 [resource]
 resource_name = "door_reactor"
 albedo_texture = ExtResource( 2 )

@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://level/forklift/flying_forklift.glb" type="PackedScene" id=1]
+[ext_resource path="res://fx/smoke/dot.png" type="Texture" id=2]
+[ext_resource path="res://level/forklift/flying_forklift.gd" type="Script" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2, 1, 4 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 1, 1, 1, 0.176471 )
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="QuadMesh" id=3]
+material = SubResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 0, 1, 0.976562, 1, 1, 1, 1, 0 )
+
+[node name="FlyingForklift" type="KinematicBody"]
+script = ExtResource( 3 )
+
+[node name="FlyingForkliftModel" parent="." instance=ExtResource( 1 )]
+
+[node name="RedFlyingForklift" parent="FlyingForkliftModel" index="0"]
+visible = false
+
+[node name="YellowFlyingForklift" parent="FlyingForkliftModel" index="1"]
+visible = false
+
+[node name="Collider" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Particles1" type="CPUParticles" parent="."]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.471727, -0.377269, -3.29514 )
+amount = 16
+lifetime = 0.5
+fixed_fps = 60
+fract_delta = false
+mesh = SubResource( 3 )
+direction = Vector3( 0, 0, 1 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 3.0
+angular_velocity = 360.0
+angular_velocity_random = 1.0
+color_ramp = SubResource( 4 )
+
+[node name="Particles2" type="CPUParticles" parent="."]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.501376, -0.377269, -3.29514 )
+amount = 16
+lifetime = 0.5
+fixed_fps = 60
+fract_delta = false
+mesh = SubResource( 3 )
+direction = Vector3( 0, 0, 1 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 3.0
+angular_velocity = 360.0
+angular_velocity_random = 1.0
+color_ramp = SubResource( 4 )
+
+[node name="Particles3" type="CPUParticles" parent="."]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1.42691, -0.514244, -2.88934 )
+amount = 16
+lifetime = 0.5
+fixed_fps = 60
+fract_delta = false
+mesh = SubResource( 3 )
+direction = Vector3( 0, 0, 1 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 3.0
+angular_velocity = 360.0
+angular_velocity_random = 1.0
+color_ramp = SubResource( 4 )
+
+[node name="Particles4" type="CPUParticles" parent="."]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.33273, -0.514244, -2.88934 )
+amount = 16
+lifetime = 0.5
+fixed_fps = 60
+fract_delta = false
+mesh = SubResource( 3 )
+direction = Vector3( 0, 0, 1 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 3.0
+angular_velocity = 360.0
+angular_velocity_random = 1.0
+color_ramp = SubResource( 4 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.819152, 0.573576, 0, -0.573576, -0.819152, 0, 0.181815, 4.10661 )
+light_bake_mode = 0
+shadow_enabled = true
+spot_range = 7.70138
+spot_angle = 22.7554
+
+[editable path="FlyingForkliftModel"]

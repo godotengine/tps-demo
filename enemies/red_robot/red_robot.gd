@@ -93,7 +93,7 @@ func shoot():
 
 
 func _physics_process(delta):
-	if (test_shoot):
+	if test_shoot:
 		shoot()
 		test_shoot = false
 	
@@ -104,10 +104,10 @@ func _physics_process(delta):
 		$AnimationTree["parameters/state/current"] = 0 # Go idle.
 		return
 	
-	if (state == State.APPROACH):
-		if (aim_preparing > 0):
+	if state == State.APPROACH:
+		if aim_preparing > 0:
 			aim_preparing -= delta
-			if (aim_preparing < 0):
+			if aim_preparing < 0:
 				aim_preparing = 0
 			$AnimationTree["parameters/aiming/blend_amount"] = aim_preparing / AIM_PREPARE_TIME
 		
@@ -115,15 +115,15 @@ func _physics_process(delta):
 		# The front of the robot is +Z, and atan2 is zero at +X, so we need to use the Z for the X parameter (second one).
 		var angle_to_player = atan2(to_player_local.x, to_player_local.z)
 		var tolerance = deg2rad(PLAYER_AIM_TOLERANCE_DEGREES)
-		if (angle_to_player > tolerance):
+		if angle_to_player > tolerance:
 			$AnimationTree["parameters/state/current"] = 1
-		elif (angle_to_player < -tolerance):
+		elif angle_to_player < -tolerance:
 			$AnimationTree["parameters/state/current"] = 2
 		else:
 			$AnimationTree["parameters/state/current"] = 3
 			# Facing player, try to shoot.
 			shoot_countdown -= delta
-			if (shoot_countdown < 0):
+			if shoot_countdown < 0:
 				# See if player can be killed because in they're sight.
 				var ray_from = $"Scene Root/Armature/Skeleton/ray_from".global_transform.origin
 				var ray_to = player.global_transform.origin + Vector3.UP # Above middle of player.
@@ -138,9 +138,9 @@ func _physics_process(delta):
 					shoot_countdown = SHOOT_WAIT
 	
 	elif state == State.AIM or state == State.SHOOTING:
-			if (aim_preparing < AIM_PREPARE_TIME):
+			if aim_preparing < AIM_PREPARE_TIME:
 				aim_preparing += delta
-				if (aim_preparing > AIM_PREPARE_TIME):
+				if aim_preparing > AIM_PREPARE_TIME:
 					aim_preparing = AIM_PREPARE_TIME
 			
 			$AnimationTree["parameters/aiming/blend_amount"] = clamp(aim_preparing / AIM_PREPARE_TIME, 0, 1)
