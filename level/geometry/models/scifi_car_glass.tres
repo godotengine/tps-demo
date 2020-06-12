@@ -1,0 +1,8 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "scifi_car_glass"
+flags_transparent = true
+albedo_color = Color( 0.191406, 0.0710055, 0.0710055, 0.720039 )
+metallic = 1.0
+roughness = 0.0

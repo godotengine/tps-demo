@@ -24,7 +24,7 @@ material = SubResource( 1 )
 offsets = PoolRealArray( 0, 0.34749, 0.509652, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[node name="Spatial" type="Spatial"]
+[node name="Plasma" type="Spatial"]
 
 [node name="Particles" type="CPUParticles" parent="."]
 amount = 64

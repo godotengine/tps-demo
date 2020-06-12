@@ -1,0 +1,36 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[ext_resource path="res://level/textures/structure/tile_glass_d.png" type="Texture" id=1]
+[ext_resource path="res://level/textures/structure/tile_glass_n.png" type="Texture" id=2]
+[ext_resource path="res://level/textures/structure/tile_glass_orm.png" type="Texture" id=3]
+[ext_resource path="res://level/textures/structure/tile_glass_e.png" type="Texture" id=4]
+
+
+[resource]
+resource_name = "tile_glass"
+flags_transparent = true
+albedo_color = Color( 0.0120779, 0.0427238, 0.0474042, 0.43502 )
+albedo_texture = ExtResource( 1 )
+metallic = 0.5
+metallic_texture = ExtResource( 3 )
+metallic_texture_channel = 2
+roughness = 0.5
+roughness_texture = ExtResource( 3 )
+roughness_texture_channel = 1
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 4 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 2 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 3 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+refraction_enabled = true
+refraction_scale = 0.0
+refraction_texture_channel = 0

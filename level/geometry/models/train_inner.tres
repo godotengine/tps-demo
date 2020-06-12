@@ -1,0 +1,7 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "train_inner"
+albedo_color = Color( 0.10375, 0.125224, 0.213956, 1 )
+metallic = 0.5
+roughness = 0.0960784

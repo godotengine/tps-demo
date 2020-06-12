@@ -55,14 +55,16 @@ func _process(_delta):
 
 
 func _physics_process(delta):
-	var camera_move = Vector2(Input.get_action_strength("view_right") - Input.get_action_strength("view_left"),
-								Input.get_action_strength("view_up") - Input.get_action_strength("view_down"))
+	var camera_move = Vector2(
+			Input.get_action_strength("view_right") - Input.get_action_strength("view_left"),
+			Input.get_action_strength("view_up") - Input.get_action_strength("view_down"))
 	var camera_speed_this_frame = delta * CAMERA_CONTROLLER_ROTATION_SPEED
 	if aiming:
 		camera_speed_this_frame *= 0.5
 	rotate_camera(camera_move * camera_speed_this_frame)
-	var motion_target = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 
-								Input.get_action_strength("move_back") - Input.get_action_strength("move_forward"))
+	var motion_target = Vector2(
+			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 
+			Input.get_action_strength("move_back") - Input.get_action_strength("move_forward"))
 	motion = motion.linear_interpolate(motion_target, MOTION_INTERPOLATE_SPEED * delta)
 	
 	var camera_basis = camera_rot.global_transform.basis
@@ -77,11 +79,11 @@ func _physics_process(delta):
 	var current_aim = Input.is_action_pressed("aim")
 	
 	if aiming != current_aim:
-			aiming = current_aim
-			if (aiming):
-				camera_animation.play("shoot")
-			else:
-				camera_animation.play("far")
+		aiming = current_aim
+		if aiming:
+			camera_animation.play("shoot")
+		else:
+			camera_animation.play("far")
 	
 	# Jump/in-air logic.
 	airborne_time += delta

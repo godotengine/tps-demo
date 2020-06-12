@@ -1,0 +1,31 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[ext_resource path="res://level/textures/props/doorsimple_n.png" type="Texture" id=1]
+[ext_resource path="res://level/textures/props/doorsimple_orm.png" type="Texture" id=2]
+[ext_resource path="res://level/textures/props/doorsimple_e.png" type="Texture" id=3]
+[ext_resource path="res://level/textures/props/doorsimple_d.png" type="Texture" id=4]
+
+
+
+[resource]
+resource_name = "door"
+albedo_texture = ExtResource( 4 )
+metallic = 0.5
+metallic_texture = ExtResource( 2 )
+metallic_texture_channel = 2
+roughness_texture = ExtResource( 2 )
+roughness_texture_channel = 1
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 3.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 3 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 1 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0

@@ -216,17 +216,14 @@ tracks/1/keys = {
 audio_stream = ExtResource( 7 )
 
 [node name="Player" type="KinematicBody"]
-collision_layer = 2
-collision_mask = 3
+collision_layer = 6
+collision_mask = 7
 script = ExtResource( 1 )
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
 
-[node name="Skeleton" parent="Scene Root/Robot_Skeleton" index="0"]
-bones/46/bound_children = [ NodePath("GunBone") ]
-
 [node name="GunBone" type="BoneAttachment" parent="Scene Root/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.898624, -0.247907, 0.362217, -0.262223, -0.964987, -0.0102129, 0.352102, -0.0857715, -0.932036, -0.207116, 1.3624, 0.547539 )
+transform = Transform( 0.907044, -0.252145, 0.337463, -0.254377, -0.966365, -0.0386576, 0.335896, -0.0507507, -0.940543, -0.206507, 1.37272, 0.526382 )
 bone_name = "hand.R"
 
 [node name="ShootFrom" type="Position3D" parent="Scene Root/Robot_Skeleton/Skeleton/GunBone"]

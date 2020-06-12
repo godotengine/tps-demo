@@ -1,0 +1,6 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "tile_black_plastic"
+albedo_color = Color( 0.0224657, 0.027302, 0.0741629, 1 )
+roughness = 0.542695

@@ -1,0 +1,7 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "tile_silver_metal"
+albedo_color = Color( 0.21507, 0.216532, 0.239556, 1 )
+metallic = 0.5
+roughness = 0.0960784

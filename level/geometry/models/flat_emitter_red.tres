@@ -1,0 +1,6 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "flat_emitter_red"
+albedo_color = Color( 0.64, 0, 0.00179112, 1 )
+roughness = 0.0960784
