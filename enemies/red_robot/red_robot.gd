@@ -19,7 +19,7 @@ var state = State.APPROACH
 var shoot_countdown = SHOOT_WAIT
 var aim_countdown = AIM_TIME
 var aim_preparing = AIM_PREPARE_TIME
-var energy = 5
+var health = 5
 var dead = false
 var test_shoot = false
 
@@ -45,38 +45,38 @@ func hit():
 		return
 	$AnimationTree["parameters/hit" + ["1", "2", "3"][randi() % 3] + "/active"] = true
 	$sfx/hit.play()
-	energy -= 1
-	if energy == 0:
+	health -= 1
+	if health == 0:
 		dead = true
 		var base_xf = global_transform.basis
 		$AnimationTree.active = false
-		#$death/explosion.play("kaboom")
-		$"Scene Root".visible = false
-		$death.visible = true
+		#$Death/explosion.play("kaboom")
+		$RedRobotModel.visible = false
+		$Death.visible = true
 		$CollisionShape.disabled = true
-		$death/particles.emitting = true
+		$Death/particles.emitting = true
 		
-		$death/part_shield1/col1.disabled = false
-		$death/part_shield1/col2.disabled = false
-		$death/part_shield1.mode = RigidBody.MODE_RIGID
-		$death/part_shield2/col1.disabled = false
-		$death/part_shield2/col2.disabled = false
-		$death/part_shield2.mode = RigidBody.MODE_RIGID
-		$death/part_shield3/col1.disabled = false
-		$death/part_shield3/col2.disabled = false
-		$death/part_shield3.mode = RigidBody.MODE_RIGID
+		$Death/PartShield1/Col1.disabled = false
+		$Death/PartShield1/Col2.disabled = false
+		$Death/PartShield1.mode = RigidBody.MODE_RIGID
+		$Death/PartShield2/Col1.disabled = false
+		$Death/PartShield2/Col2.disabled = false
+		$Death/PartShield2.mode = RigidBody.MODE_RIGID
+		$Death/PartShield3/Col1.disabled = false
+		$Death/PartShield3/Col2.disabled = false
+		$Death/PartShield3.mode = RigidBody.MODE_RIGID
 		
-		$death/part_shield2.linear_velocity = 3 * (Vector3.UP + base_xf.x).normalized()
-		$death/part_shield3.linear_velocity = 3 * (Vector3.UP).normalized()
-		$death/part_shield1.linear_velocity = 3 * (Vector3.UP - base_xf.x).normalized()
-		$death/part_shield2.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
-		$death/part_shield1.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
-		$death/part_shield3.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
+		$Death/PartShield2.linear_velocity = 3 * (Vector3.UP + base_xf.x).normalized()
+		$Death/PartShield3.linear_velocity = 3 * (Vector3.UP).normalized()
+		$Death/PartShield1.linear_velocity = 3 * (Vector3.UP - base_xf.x).normalized()
+		$Death/PartShield2.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
+		$Death/PartShield1.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
+		$Death/PartShield3.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
 		$sfx/explosion.play()
 
 
 func shoot():
-	var gt = $"Scene Root/Armature/Skeleton/ray_from".global_transform
+	var gt = $RedRobotModel/Armature/Skeleton/ray_from.global_transform
 	var ray_from = gt.origin
 	var ray_dir = -gt.basis.z
 	var max_dist = 1000
@@ -87,9 +87,9 @@ func shoot():
 		if col.collider == player:
 			pass # Kill.
 	# Clip ray in shader.
-	$"Scene Root/Armature/Skeleton/ray_from/ray".get_surface_material(0).set_shader_param("clip", max_dist)
+	$RedRobotModel/Armature/Skeleton/ray_from/ray.get_surface_material(0).set_shader_param("clip", max_dist)
 	# Position explosion.
-	$"Scene Root/Armature/Skeleton/ray_from/explosion".transform.origin.z = -max_dist
+	$RedRobotModel/Armature/Skeleton/ray_from/explosion.transform.origin.z = -max_dist
 
 
 func _physics_process(delta):
@@ -125,7 +125,7 @@ func _physics_process(delta):
 			shoot_countdown -= delta
 			if shoot_countdown < 0:
 				# See if player can be killed because in they're sight.
-				var ray_from = $"Scene Root/Armature/Skeleton/ray_from".global_transform.origin
+				var ray_from = $RedRobotModel/Armature/Skeleton/ray_from.global_transform.origin
 				var ray_to = player.global_transform.origin + Vector3.UP # Above middle of player.
 				var col = get_world().direct_space_state.intersect_ray(ray_from, ray_to, [self])
 				if not col.empty() and col.collider == player:
@@ -146,7 +146,7 @@ func _physics_process(delta):
 			$AnimationTree["parameters/aiming/blend_amount"] = clamp(aim_preparing / AIM_PREPARE_TIME, 0, 1)
 			aim_countdown -= delta
 			if aim_countdown < 0 and state == State.AIM:
-				var ray_from = $"Scene Root/Armature/Skeleton/ray_from".global_transform.origin
+				var ray_from = $RedRobotModel/Armature/Skeleton/ray_from.global_transform.origin
 				var ray_to = player.global_transform.origin + Vector3.UP # Above middle of player.
 				var col = get_world().direct_space_state.intersect_ray(ray_from, ray_to, [self])
 				if not col.empty() and col.collider == player:
@@ -156,7 +156,7 @@ func _physics_process(delta):
 					resume_approach()
 			
 			if $AnimationTree.active:
-				var to_cannon_local = $"Scene Root/Armature/Skeleton/ray_from/ray".global_transform.xform_inv(player.global_transform.origin + Vector3.UP)
+				var to_cannon_local = $RedRobotModel/Armature/Skeleton/ray_from/ray.global_transform.xform_inv(player.global_transform.origin + Vector3.UP)
 				var h_angle = rad2deg(atan2( to_cannon_local.x, -to_cannon_local.z ))
 				var v_angle = rad2deg(atan2( to_cannon_local.y, -to_cannon_local.z ))
 				var blend_pos = $AnimationTree["parameters/aim/blend_position"]

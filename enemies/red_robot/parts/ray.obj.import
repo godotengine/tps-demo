@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/ray.obj-5128ee1dbe69c47b0f2bbd81cf95917e.mesh"
+
+[deps]
+
+files=[ "res://.import/ray.obj-5128ee1dbe69c47b0f2bbd81cf95917e.mesh" ]
+
+source_file="res://enemies/red_robot/parts/ray.obj"
+dest_files=[ "res://.import/ray.obj-5128ee1dbe69c47b0f2bbd81cf95917e.mesh", "res://.import/ray.obj-5128ee1dbe69c47b0f2bbd81cf95917e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=false

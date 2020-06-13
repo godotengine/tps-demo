@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/explosion.wav-8b1408a92e13f73affdc0326a2858c09.sample"
+
+[deps]
+
+source_file="res://enemies/red_robot/audio/explosion.wav"
+dest_files=[ "res://.import/explosion.wav-8b1408a92e13f73affdc0326a2858c09.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
