@@ -38,7 +38,7 @@ func _init():
 
 func _ready():
 	# Pre-initialize orientation transform.
-	orientation = $"Scene Root".global_transform
+	orientation = $PlayerModel.global_transform
 	orientation.origin = Vector3()
 
 
@@ -63,7 +63,7 @@ func _physics_process(delta):
 		camera_speed_this_frame *= 0.5
 	rotate_camera(camera_move * camera_speed_this_frame)
 	var motion_target = Vector2(
-			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 
+			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 			Input.get_action_strength("move_back") - Input.get_action_strength("move_forward"))
 	motion = motion.linear_interpolate(motion_target, MOTION_INTERPOLATE_SPEED * delta)
 	
@@ -127,21 +127,21 @@ func _physics_process(delta):
 		root_motion = animation_tree.get_root_motion_transform()
 		
 		if Input.is_action_pressed("shoot") and $FireCooldown.time_left == 0:
-			var shoot_from = $"Scene Root/Robot_Skeleton/Skeleton/GunBone/ShootFrom".global_transform.origin
+			var shoot_from = $PlayerModel/Robot_Skeleton/Skeleton/GunBone/ShootFrom.global_transform.origin
 			
 			var ch_pos = $Crosshair.rect_position + $Crosshair.rect_size * 0.5
 			var ray_from = camera.project_ray_origin(ch_pos)
 			var ray_dir = camera.project_ray_normal(ch_pos)
 			
 			var shoot_target
-			var col = get_world().direct_space_state.intersect_ray(ray_from, ray_from + ray_dir * 1000, [self])
+			var col = get_world().direct_space_state.intersect_ray(ray_from, ray_from + ray_dir * 1000, [self], 0b11)
 			if col.empty():
 				shoot_target = ray_from + ray_dir * 1000
 			else:
 				shoot_target = col.position
 			var shoot_dir = (shoot_target - shoot_from).normalized()
 			
-			var bullet = preload("res://player/bullet.tscn").instance()
+			var bullet = preload("res://player/bullet/bullet.tscn").instance()
 			get_parent().add_child(bullet)
 			bullet.global_transform.origin = shoot_from
 			bullet.direction = shoot_dir
@@ -162,7 +162,7 @@ func _physics_process(delta):
 		# Change state to walk.
 		animation_tree["parameters/state/current"] = 1
 		# Blend position for walk speed based on motion.
-		animation_tree["parameters/walk/blend_position"] = Vector2(motion.length(), 0) 
+		animation_tree["parameters/walk/blend_position"] = Vector2(motion.length(), 0)
 		
 		root_motion = animation_tree.get_root_motion_transform()
 	
@@ -178,7 +178,7 @@ func _physics_process(delta):
 	orientation.origin = Vector3() # Clear accumulated root motion displacement (was applied to speed).
 	orientation = orientation.orthonormalized() # Orthonormalize orientation.
 	
-	$"Scene Root".global_transform.basis = orientation.basis
+	$PlayerModel.global_transform.basis = orientation.basis
 
 
 func _input(event):

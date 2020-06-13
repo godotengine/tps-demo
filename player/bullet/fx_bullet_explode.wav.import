@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fx_bullet_explode.wav-3e28ecffba96cce32761062ec2cfa05d.sample"
+
+[deps]
+
+source_file="res://player/bullet/fx_bullet_explode.wav"
+dest_files=[ "res://.import/fx_bullet_explode.wav-3e28ecffba96cce32761062ec2cfa05d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

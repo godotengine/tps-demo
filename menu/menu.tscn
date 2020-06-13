@@ -2,7 +2,7 @@
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
-[ext_resource path="res://player/player.dae" type="PackedScene" id=3]
+[ext_resource path="res://player/model/player.dae" type="PackedScene" id=3]
 [ext_resource path="res://menu/floor.png" type="Texture" id=4]
 [ext_resource path="res://music/intro.ogg" type="AudioStream" id=5]
 [ext_resource path="res://menu/tps_demo.png" type="Texture" id=6]
@@ -18,7 +18,7 @@
 [ext_resource path="res://menu/button_focus.tres" type="StyleBox" id=16]
 [ext_resource path="res://menu/button_hover.tres" type="StyleBox" id=17]
 [ext_resource path="res://menu/button_action_pressed.tres" type="StyleBox" id=18]
-[ext_resource path="res://player/fx_step.wav" type="AudioStream" id=19]
+[ext_resource path="res://player/audio/fx_step.wav" type="AudioStream" id=19]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 2 )
@@ -39,30 +39,30 @@ glow_bicubic_upscale = true
 albedo_texture = ExtResource( 4 )
 metallic = 0.78
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeBlend2" id=5]
 resource_local_to_scene = true
-animation = "eyes-cycle"
+filter_enabled = true
+filters = [ "Robot_Skeleton/Skeleton:eyelid.d.L", "Robot_Skeleton/Skeleton:eyelid.d.R", "Robot_Skeleton/Skeleton:eyelid.u.L", "Robot_Skeleton/Skeleton:eyelid.u.R", "Robot_Skeleton/Skeleton:eyes" ]
 
 [sub_resource type="AnimationNodeAnimation" id=6]
 resource_local_to_scene = true
 animation = "Idlecombatrest-cycle"
 
-[sub_resource type="AnimationNodeBlend2" id=7]
+[sub_resource type="AnimationNodeAnimation" id=7]
 resource_local_to_scene = true
-filter_enabled = true
-filters = [ "Robot_Skeleton/Skeleton:eyelid.d.L", "Robot_Skeleton/Skeleton:eyelid.d.R", "Robot_Skeleton/Skeleton:eyelid.u.L", "Robot_Skeleton/Skeleton:eyelid.u.R", "Robot_Skeleton/Skeleton:eyes" ]
+animation = "eyes-cycle"
 
 [sub_resource type="AnimationNodeBlendTree" id=8]
 resource_local_to_scene = true
-graph_offset = Vector2( -401, 57 )
-nodes/Animation/node = SubResource( 6 )
-nodes/Animation/position = Vector2( -120, 100 )
-"nodes/Animation 2/node" = SubResource( 5 )
-"nodes/Animation 2/position" = Vector2( -140, 220 )
-nodes/Blend2/node = SubResource( 7 )
-nodes/Blend2/position = Vector2( 180, 120 )
+graph_offset = Vector2( -349.781, 55.0218 )
+nodes/Blend/node = SubResource( 5 )
+nodes/Blend/position = Vector2( 180, 120 )
+nodes/CombatRest/node = SubResource( 6 )
+nodes/CombatRest/position = Vector2( -120, 100 )
+nodes/Eyes/node = SubResource( 7 )
+nodes/Eyes/position = Vector2( -40, 220 )
 nodes/output/position = Vector2( 420, 120 )
-node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
+node_connections = [ "output", 0, "Blend", "Blend", 0, "CombatRest", "Blend", 1, "Eyes" ]
 
 [sub_resource type="Theme" id=9]
 Button/colors/font_color = Color( 1, 1, 1, 1 )
@@ -133,11 +133,14 @@ script = ExtResource( 1 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
 
-[node name="Scene Root" parent="." instance=ExtResource( 3 )]
+[node name="PlayerModel" parent="." instance=ExtResource( 3 )]
 
-[node name="sfx" type="Node" parent="Scene Root"]
+[node name="Robot_Skeleton" parent="PlayerModel" index="0"]
+transform = Transform( 0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0 )
 
-[node name="step" type="AudioStreamPlayer" parent="Scene Root/sfx"]
+[node name="sfx" type="Node" parent="PlayerModel"]
+
+[node name="step" type="AudioStreamPlayer" parent="PlayerModel/sfx"]
 stream = ExtResource( 19 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
@@ -157,11 +160,11 @@ transform = Transform( 0.871624, -0.0363083, 0.488828, 0, 0.997253, 0.0740721, -
 stream = ExtResource( 5 )
 autoplay = true
 
-[node name="anim_tree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 8 )
-anim_player = NodePath("../Scene Root/AnimationPlayer")
+anim_player = NodePath("../PlayerModel/AnimationPlayer")
 active = true
-parameters/Blend2/blend_amount = 0
+parameters/Blend/blend_amount = 1.0
 
 [node name="sfx" type="Node" parent="."]
 
@@ -565,4 +568,4 @@ one_shot = true
 [connection signal="pressed" from="ui/settings/actions/cancel" to="." method="_on_cancel_pressed"]
 [connection signal="timeout" from="ui/loading/loading_done_timer" to="." method="_on_loading_done_timer_timeout"]
 
-[editable path="Scene Root"]
+[editable path="PlayerModel"]

@@ -5,7 +5,6 @@
 [ext_resource path="res://level/geometry/models/core.glb" type="PackedScene" id=3]
 [ext_resource path="res://level/geometry/scenes/collision/radial_player_only.tscn" type="PackedScene" id=4]
 
-
 [sub_resource type="CylinderShape" id=1]
 radius = 10.5
 height = 4.0

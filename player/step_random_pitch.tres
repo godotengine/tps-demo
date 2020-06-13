@@ -1,9 +1,0 @@
-[gd_resource type="AudioStreamRandomPitch" load_steps=2 format=2]
-
-[ext_resource path="res://player/fx_step.wav" type="AudioStream" id=1]
-
-[resource]
-
-audio_stream = ExtResource( 1 )
-random_pitch = 1.1
-
