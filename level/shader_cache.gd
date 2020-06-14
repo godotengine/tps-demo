@@ -1,6 +1,6 @@
 extends Node
 
-var fade_in_frame_counter = 60
+var fade_in_frame_counter = 100
 
 func _ready():
 	# We don't want the cache bullet to make noise. So just get rid of its audio.
@@ -10,7 +10,7 @@ func _ready():
 func _physics_process(_delta):
 	fade_in_frame_counter -= 1
 	# Fade in progressively to hide artifacts.
-	if fade_in_frame_counter == 50:
+	if fade_in_frame_counter == 20:
 		# Hide after a few frames to be sure the shaders compiled.
 		$Bullet.hide()
 	if fade_in_frame_counter == 0:
