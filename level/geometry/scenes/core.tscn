@@ -1,73 +1,111 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://level/geometry/scenes/collision/radial_colliders.tscn" type="PackedScene" id=1]
 [ext_resource path="res://level/geometry/scenes/collision/stair_pillar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level/geometry/models/core.glb" type="PackedScene" id=3]
 [ext_resource path="res://level/geometry/scenes/collision/radial_player_only.tscn" type="PackedScene" id=4]
+[ext_resource path="res://level/textures/plasma.png" type="Texture" id=5]
 
-[sub_resource type="CylinderShape" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.843137, 0.709804, 0.427451, 1 )
+albedo_texture = ExtResource( 5 )
+proximity_fade_enable = true
+proximity_fade_distance = 0.2
+
+[sub_resource type="QuadMesh" id=2]
+material = SubResource( 1 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.34749, 0.509652, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="CylinderShape" id=4]
 radius = 10.5
 height = 4.0
 
-[sub_resource type="CylinderShape" id=2]
+[sub_resource type="CylinderShape" id=5]
 radius = 11.0
 height = 3.6
 
-[sub_resource type="CylinderShape" id=3]
+[sub_resource type="CylinderShape" id=6]
 radius = 4.5
 height = 24.0
 
-[sub_resource type="CylinderShape" id=4]
+[sub_resource type="CylinderShape" id=7]
 radius = 10.0
 height = 11.0
 
-[sub_resource type="CylinderShape" id=5]
+[sub_resource type="CylinderShape" id=8]
 radius = 35.0
 height = 5.0
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape" id=9]
 extents = Vector3( 40, 6, 40 )
 
-[sub_resource type="BoxShape" id=7]
+[sub_resource type="BoxShape" id=10]
 extents = Vector3( 0.6, 0.6, 1.4 )
 
 [node name="Core" type="Spatial"]
 
 [node name="CoreModel" parent="." instance=ExtResource( 3 )]
 
+[node name="Plasma" type="CPUParticles" parent="."]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -2.3, 0 )
+amount = 64
+speed_scale = 0.2
+mesh = SubResource( 2 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.3
+angular_velocity = 120.0
+angular_velocity_random = 1.0
+angle = 720.0
+angle_random = 1.0
+color_ramp = SubResource( 3 )
+
 [node name="CentralColliders" type="StaticBody" parent="."]
 
 [node name="CentralCylinder1" type="CollisionShape" parent="CentralColliders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.3, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="CentralCylinder2" type="CollisionShape" parent="CentralColliders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="CentralCylinder3" type="CollisionShape" parent="CentralColliders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 6 )
 
 [node name="CentralCylinder4" type="CollisionShape" parent="CentralColliders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="LowerFloorCylinder" type="CollisionShape" parent="CentralColliders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.9, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 8 )
 
 [node name="Ceiling" type="CollisionShape" parent="CentralColliders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="ExtendedCyl1" type="CollisionShape" parent="CentralColliders"]
 transform = Transform( 0.97437, 0, 0.224951, 0, 1, 0, -0.224951, 0, 0.97437, -4.04912, -8.1, -17.5387 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="ExtendedCyl2" type="CollisionShape" parent="CentralColliders"]
 transform = Transform( -0.681998, 0, 0.731354, 0, 1, 0, -0.731354, 0, -0.681998, -13.1644, -8.1, 12.276 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="RadialColliders1" parent="." instance=ExtResource( 1 )]
 
