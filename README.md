@@ -2,7 +2,7 @@
 
 Third person shooter demo made using [Godot Engine](https://godotengine.org).
 
-![Screenshot of TPS demo](screenshot.png)
+![Screenshot of TPS demo](screenshots/screenshot.png)
 
 ## Godot versions
 
@@ -14,42 +14,20 @@ Third person shooter demo made using [Godot Engine](https://godotengine.org).
   - [`3.1`](https://github.com/godotengine/tps-demo/tree/3.1) branch
   for Godot 3.1.x.
 
-**Note:** The repository is big and asset importing not well optimized yet, so expect
-a high CPU and RAM load when opening the project for the first time.
+**Note:** The repository is big and asset importing not well optimized yet,
+so expect a high wait time when opening the project for the first time.
 
 ## Git LFS
 
-This demo uses [Git LFS](https://git-lfs.github.com/) to store the heaviest assets.
-
-You need to install the Git LFS extension on your system, so that Git can fetch the
-assets from the LFS repository. It should happen automatically when using the usual
-Git commands.
-
-If you cloned this Git repository *before* installing Git LFS, or if for any other
-reason you get errors importing .dae files in Godot, try to run those commands
-manually:
-
-```text
-git lfs install
-git lfs fetch
-git pull
-git checkout master
-```
-
-**Note:** The above steps are very important, if you do not have the LFS assets
-checked out, you will not be able to run this demo.
-You can confirm that you properly checked out the assets by verifying e.g. that
-your ``level/geometry/demolevel.dae`` file is over 300 MBs.
+Git LFS is no longer required for the current master branch.
+You only need Git LFS if you are checking out the 3.1 or 3.2.1 branches.
+Those branches have instructions for Git LFS in their README files.
 
 ## Running
 
 You need [Godot Engine](https://godotengine.org) to run this demo project.
 Download the latest stable version [from the website](https://godotengine.org/download/),
 or [build it from source](https://github.com/godotengine/godot).
-
-Once you have cloned this repository and made sure that all LFS assets were
-checked out, you should open the project in the Godot editor to trigger the
-import of all assets.
 
 ## License
 
