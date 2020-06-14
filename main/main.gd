@@ -1,7 +1,7 @@
 extends Node
 
 func _ready():
-	OS.window_fullscreen = settings.fullscreen
+	OS.window_fullscreen = Settings.fullscreen
 	go_to_main_menu()
 
 
@@ -23,9 +23,3 @@ func change_scene(resource : Resource):
 	
 	node.connect("quit", self, "go_to_main_menu")
 	node.connect("replace_main_scene", self, "replace_main_scene")
-
-
-func _input(event : InputEvent):
-	if event.is_action_pressed("toggle_fullscreen"):
-		OS.window_fullscreen = !OS.window_fullscreen
-		get_tree().set_input_as_handled()

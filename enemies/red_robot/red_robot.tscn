@@ -23,10 +23,10 @@
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 4 )
-shader_param/deform = 2.0
+shader_param/deform = 0.0
 shader_param/transparency = 0.0
 shader_param/energy = 1.0
-shader_param/smoke = 1.0
+shader_param/smoke = 0.0
 shader_param/clip = 20.0
 shader_param/ray_texture = ExtResource( 5 )
 shader_param/smoke_texture = ExtResource( 6 )
@@ -192,18 +192,18 @@ nodes/hit3/position = Vector2( 980, 240 )
 nodes/output/position = Vector2( 1180, 200 )
 nodes/state/node = SubResource( 25 )
 nodes/state/position = Vector2( 60, 100 )
-node_connections = [ "output", 0, "hit3", "state", 0, "Animation", "state", 1, "Animation 3", "state", 2, "Animation 2", "state", 3, "Animation 4", "hit2", 0, "hit1", "hit2", 1, "Animation 6", "hit3", 0, "hit2", "hit3", 1, "Animation 7", "aiming", 0, "state", "aiming", 1, "aim", "hit1", 0, "aiming", "hit1", 1, "Animation 5" ]
+node_connections = [ "output", 0, "hit3", "state", 0, "Animation", "state", 1, "Animation 3", "state", 2, "Animation 2", "state", 3, "Animation 4", "aiming", 0, "state", "aiming", 1, "aim", "hit1", 0, "aiming", "hit1", 1, "Animation 5", "hit2", 0, "hit1", "hit2", 1, "Animation 6", "hit3", 0, "hit2", "hit3", 1, "Animation 7" ]
 
 [sub_resource type="SphereShape" id=27]
 radius = 1.11815
 
 [sub_resource type="SphereShape" id=28]
-radius = 18.1337
+radius = 20.0
 
 [sub_resource type="Animation" id=29]
 length = 4.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("RedRobotModel/Armature/Skeleton/ray_from/ray:material/0:shader_param/energy")
+tracks/0/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -215,7 +215,7 @@ tracks/0/keys = {
 "values": [ 1.0, 1.0, 5.0, 1.0, 1.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RedRobotModel/Armature/Skeleton/ray_from/ray:material/0:shader_param/transparency")
+tracks/1/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/transparency")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -227,7 +227,7 @@ tracks/1/keys = {
 "values": [ 0.0, 0.0, 1.0, 1.0, 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("RedRobotModel/Armature/Skeleton/ray_from/ray:material/0:shader_param/deform")
+tracks/2/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/deform")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -239,7 +239,7 @@ tracks/2/keys = {
 "values": [ 0.0, 0.0, 0.0, 2.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("RedRobotModel/Armature/Skeleton/ray_from/ray:material/0:shader_param/smoke")
+tracks/3/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/smoke")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -251,7 +251,7 @@ tracks/3/keys = {
 "values": [ 0.0, 0.0, 0.0, 1.0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("shoot_light:visible")
+tracks/4/path = NodePath("ShootLight:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -263,7 +263,7 @@ tracks/4/keys = {
 "values": [ true, false, true, false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("shoot_light:light_energy")
+tracks/5/path = NodePath("ShootLight:light_energy")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -275,7 +275,7 @@ tracks/5/keys = {
 "values": [ 0.0, 0.0, 1.0, 0.0, 0.0, 5.0, 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("RedRobotModel/Armature/Skeleton/ray_from/Particles:emitting")
+tracks/6/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/BuildupParticles:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -287,7 +287,7 @@ tracks/6/keys = {
 "values": [ false, true, false ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("RedRobotModel/Armature/Skeleton/ray_from/explosion:emitting")
+tracks/7/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/ExplosionParticles:emitting")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -328,7 +328,7 @@ tracks/9/keys = {
 } ]
 }
 tracks/10/type = "audio"
-tracks/10/path = NodePath("sfx/cannon")
+tracks/10/path = NodePath("SoundEffects/Cannon")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -515,7 +515,7 @@ tracks/8/keys = {
 "values": [ true, false ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("particles:one_shot")
+tracks/9/path = NodePath("Particles:one_shot")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -527,7 +527,7 @@ tracks/9/keys = {
 "values": [ true ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("particles:emitting")
+tracks/10/path = NodePath("Particles:emitting")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -550,19 +550,19 @@ script = ExtResource( 1 )
 [node name="RedRobotModel" parent="." instance=ExtResource( 2 )]
 
 [node name="Skeleton" parent="RedRobotModel/Armature" index="0"]
-bones/14/bound_children = [ NodePath("ray_from") ]
+bones/14/bound_children = [ NodePath("RayFrom") ]
 
-[node name="ray_from" type="BoneAttachment" parent="RedRobotModel/Armature/Skeleton" index="4"]
-transform = Transform( -0.999999, -3.84405e-05, -0.00153932, -3.90035e-05, 1, 0.000365729, 0.0015393, 0.000365788, -0.999999, -0.0237867, 1.94358, 0.194639 )
+[node name="RayFrom" type="BoneAttachment" parent="RedRobotModel/Armature/Skeleton" index="4"]
+transform = Transform( -0.999994, -0.00279503, -0.00183882, -0.00279578, 0.999996, 0.000401379, 0.0018377, 0.000406517, -0.999998, -0.0288596, 1.94004, 0.194757 )
 bone_name = "CannonAnimRecoil"
 
-[node name="ray" type="MeshInstance" parent="RedRobotModel/Armature/Skeleton/ray_from"]
+[node name="RayMesh" type="MeshInstance" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
 transform = Transform( 1, 8.40737e-09, -9.31323e-10, -6.55928e-09, 1, -9.31323e-10, 4.65661e-10, 0, 1, 1.67638e-08, 0, -1.21376 )
 mesh = ExtResource( 3 )
 skeleton = NodePath("")
 material/0 = SubResource( 1 )
 
-[node name="Particles" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/ray_from"]
+[node name="BuildupParticles" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.07273 )
 emitting = false
 amount = 64
@@ -577,7 +577,7 @@ radial_accel = -1.0
 tangential_accel = 1.0
 color_ramp = SubResource( 4 )
 
-[node name="explosion" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/ray_from"]
+[node name="ExplosionParticles" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0332087, -10.283 )
 emitting = false
 amount = 32
@@ -608,20 +608,20 @@ parameters/state/current = 0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11655, -0.0212681 )
 shape = SubResource( 27 )
 
-[node name="area" type="Area" parent="."]
+[node name="PlayerDetectionArea" type="Area" parent="."]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape" type="CollisionShape" parent="area"]
+[node name="CollisionShape" type="CollisionShape" parent="PlayerDetectionArea"]
 shape = SubResource( 28 )
 
 [node name="RootMotionView" type="RootMotionView" parent="."]
 animation_path = NodePath("../AnimationTree")
 
-[node name="shoot_anim" type="AnimationPlayer" parent="."]
+[node name="ShootAnimation" type="AnimationPlayer" parent="."]
 anims/shoot = SubResource( 29 )
 
-[node name="shoot_light" type="OmniLight" parent="."]
+[node name="ShootLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82358, 2.06607 )
 visible = false
 light_color = Color( 0.992157, 0.713726, 0.713726, 1 )
@@ -749,12 +749,11 @@ angular_velocity = 84.86
 angular_velocity_random = 1.0
 color_ramp = SubResource( 35 )
 
-[node name="explosion" type="AnimationPlayer" parent="Death"]
+[node name="Explosion" type="AnimationPlayer" parent="Death"]
 anims/kaboom = SubResource( 43 )
 
-[node name="particles" type="CPUParticles" parent="Death"]
+[node name="Particles" type="CPUParticles" parent="Death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.213713, 0.763735, 0 )
-emitting = false
 amount = 32
 one_shot = true
 explosiveness = 1.0
@@ -767,27 +766,27 @@ angular_velocity_random = 1.0
 linear_accel = 1.0
 color_ramp = SubResource( 7 )
 
-[node name="sfx" type="Spatial" parent="."]
+[node name="SoundEffects" type="Spatial" parent="."]
 
-[node name="cannon" type="AudioStreamPlayer3D" parent="sfx"]
+[node name="Cannon" type="AudioStreamPlayer3D" parent="SoundEffects"]
 stream = ExtResource( 10 )
 unit_size = 15.0
 
-[node name="explosion" type="AudioStreamPlayer3D" parent="sfx"]
+[node name="Explosion" type="AudioStreamPlayer3D" parent="SoundEffects"]
 stream = ExtResource( 17 )
 unit_db = 12.0
 unit_size = 15.0
 
-[node name="hit" type="AudioStreamPlayer3D" parent="sfx"]
+[node name="Hit" type="AudioStreamPlayer3D" parent="SoundEffects"]
 stream = SubResource( 44 )
 unit_db = 3.0
 unit_size = 15.0
 
-[node name="walk" type="AudioStreamPlayer3D" parent="sfx"]
+[node name="Walk" type="AudioStreamPlayer3D" parent="SoundEffects"]
 stream = ExtResource( 19 )
 unit_db = 3.0
 unit_size = 15.0
-[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
-[connection signal="body_exited" from="area" to="." method="_on_area_body_exited"]
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_area_body_exited"]
 
 [editable path="RedRobotModel"]

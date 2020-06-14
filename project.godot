@@ -21,7 +21,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-settings="*res://menu/settings.gd"
+Settings="*res://menu/settings.gd"
 
 [display]
 

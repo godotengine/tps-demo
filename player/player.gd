@@ -26,11 +26,22 @@ onready var initial_position = transform.origin
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
 onready var animation_tree = $AnimationTree
+onready var player_model = $PlayerModel
+onready var shoot_from = player_model.get_node(@"Robot_Skeleton/Skeleton/GunBone/ShootFrom")
+onready var color_rect = $ColorRect
+onready var crosshair = $Crosshair
+onready var fire_cooldown = $FireCooldown
+
 onready var camera_base = $CameraBase
-onready var camera_animation = $CameraBase/Animation
-onready var camera_rot = $CameraBase/CameraRot
-onready var camera_spring_arm = $CameraBase/CameraRot/SpringArm
-onready var camera = $CameraBase/CameraRot/SpringArm/Camera
+onready var camera_animation = camera_base.get_node(@"Animation")
+onready var camera_rot = camera_base.get_node(@"CameraRot")
+onready var camera_spring_arm = camera_rot.get_node(@"SpringArm")
+onready var camera_camera = camera_spring_arm.get_node(@"Camera")
+
+onready var sound_effects = $SoundEffects
+onready var sound_effect_jump = sound_effects.get_node(@"Jump")
+onready var sound_effect_land = sound_effects.get_node(@"Land")
+onready var sound_effect_shoot = sound_effects.get_node(@"Shoot")
 
 func _init():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -38,7 +49,7 @@ func _init():
 
 func _ready():
 	# Pre-initialize orientation transform.
-	orientation = $PlayerModel.global_transform
+	orientation = player_model.global_transform
 	orientation.origin = Vector3()
 
 
@@ -47,10 +58,10 @@ func _process(_delta):
 	# the lowest valid position on the map (which is a bit under -16).
 	# At 15 units below -17 (so -32), the screen turns fully black.
 	if transform.origin.y < -17:
-		$ColorRect.modulate.a = min((-17 - transform.origin.y) / 15, 1)
+		color_rect.modulate.a = min((-17 - transform.origin.y) / 15, 1)
 		# If we're below -40, respawn (teleport to the initial position).
 		if transform.origin.y < -40:
-			$ColorRect.modulate.a = 0
+			color_rect.modulate.a = 0
 			transform.origin = initial_position
 
 
@@ -89,7 +100,7 @@ func _physics_process(delta):
 	airborne_time += delta
 	if is_on_floor():
 		if airborne_time > 0.5:
-			$sfx/land.play()
+			sound_effect_land.play()
 		airborne_time = 0
 	
 	var on_air = airborne_time > MIN_AIRBORNE_TIME
@@ -98,7 +109,7 @@ func _physics_process(delta):
 		velocity.y = JUMP_SPEED
 		on_air = true
 		animation_tree["parameters/state/current"] = 2
-		$sfx/jump.play()
+		sound_effect_jump.play()
 	
 	if on_air:
 		if (velocity.y > 0):
@@ -117,7 +128,7 @@ func _physics_process(delta):
 		
 		# Convert orientation to quaternions for interpolating rotation.
 		var q_from = orientation.basis.get_rotation_quat()
-		var q_to = $CameraBase.global_transform.basis.get_rotation_quat()
+		var q_to = camera_base.global_transform.basis.get_rotation_quat()
 		# Interpolate current rotation with desired one.
 		orientation.basis = Basis(q_from.slerp(q_to, delta * ROTATION_INTERPOLATE_SPEED))
 		
@@ -126,12 +137,12 @@ func _physics_process(delta):
 		
 		root_motion = animation_tree.get_root_motion_transform()
 		
-		if Input.is_action_pressed("shoot") and $FireCooldown.time_left == 0:
-			var shoot_from = $PlayerModel/Robot_Skeleton/Skeleton/GunBone/ShootFrom.global_transform.origin
+		if Input.is_action_pressed("shoot") and fire_cooldown.time_left == 0:
+			var shoot_origin = shoot_from.global_transform.origin
 			
-			var ch_pos = $Crosshair.rect_position + $Crosshair.rect_size * 0.5
-			var ray_from = camera.project_ray_origin(ch_pos)
-			var ray_dir = camera.project_ray_normal(ch_pos)
+			var ch_pos = crosshair.rect_position + crosshair.rect_size * 0.5
+			var ray_from = camera_camera.project_ray_origin(ch_pos)
+			var ray_dir = camera_camera.project_ray_normal(ch_pos)
 			
 			var shoot_target
 			var col = get_world().direct_space_state.intersect_ray(ray_from, ray_from + ray_dir * 1000, [self], 0b11)
@@ -139,15 +150,15 @@ func _physics_process(delta):
 				shoot_target = ray_from + ray_dir * 1000
 			else:
 				shoot_target = col.position
-			var shoot_dir = (shoot_target - shoot_from).normalized()
+			var shoot_dir = (shoot_target - shoot_origin).normalized()
 			
 			var bullet = preload("res://player/bullet/bullet.tscn").instance()
 			get_parent().add_child(bullet)
-			bullet.global_transform.origin = shoot_from
+			bullet.global_transform.origin = shoot_origin
 			bullet.direction = shoot_dir
 			bullet.add_collision_exception_with(self)
-			$FireCooldown.start()
-			$sfx/shoot.play()
+			fire_cooldown.start()
+			sound_effect_shoot.play()
 	else: # Not in air or aiming, idle.
 		# Convert orientation to quaternions for interpolating rotation.
 		var target = camera_x * motion.x + camera_z * motion.y
@@ -178,7 +189,7 @@ func _physics_process(delta):
 	orientation.origin = Vector3() # Clear accumulated root motion displacement (was applied to speed).
 	orientation = orientation.orthonormalized() # Orthonormalize orientation.
 	
-	$PlayerModel.global_transform.basis = orientation.basis
+	player_model.global_transform.basis = orientation.basis
 
 
 func _input(event):
@@ -191,7 +202,8 @@ func _input(event):
 
 func rotate_camera(move):
 	camera_base.rotate_y(-move.x)
-	camera_base.orthonormalize() # After relative transforms, camera needs to be renormalized.
+	# After relative transforms, camera needs to be renormalized.
+	camera_base.orthonormalize()
 	camera_x_rot += move.y
 	camera_x_rot = clamp(camera_x_rot, deg2rad(CAMERA_X_ROT_MIN), deg2rad(CAMERA_X_ROT_MAX))
 	camera_rot.rotation.x = camera_x_rot

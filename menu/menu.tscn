@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
@@ -18,14 +18,13 @@
 [ext_resource path="res://menu/button_focus.tres" type="StyleBox" id=16]
 [ext_resource path="res://menu/button_hover.tres" type="StyleBox" id=17]
 [ext_resource path="res://menu/button_action_pressed.tres" type="StyleBox" id=18]
-[ext_resource path="res://player/audio/step.wav" type="AudioStream" id=19]
 
-[sub_resource type="PanoramaSky" id=1]
+[sub_resource type="PanoramaSky" id=9]
 panorama = ExtResource( 2 )
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id=10]
 background_mode = 3
-background_sky = SubResource( 1 )
+background_sky = SubResource( 9 )
 glow_enabled = true
 glow_levels/7 = true
 glow_intensity = 0.4
@@ -33,9 +32,9 @@ glow_blend_mode = 1
 glow_hdr_threshold = 0.34
 glow_bicubic_upscale = true
 
-[sub_resource type="QuadMesh" id=3]
+[sub_resource type="QuadMesh" id=11]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=12]
 albedo_texture = ExtResource( 4 )
 metallic = 0.78
 
@@ -54,7 +53,7 @@ animation = "eyes-cycle"
 
 [sub_resource type="AnimationNodeBlendTree" id=8]
 resource_local_to_scene = true
-graph_offset = Vector2( -349.781, 55.0218 )
+graph_offset = Vector2( -260.487, 63.5 )
 nodes/Blend/node = SubResource( 5 )
 nodes/Blend/position = Vector2( 180, 120 )
 nodes/CombatRest/node = SubResource( 6 )
@@ -64,7 +63,7 @@ nodes/Eyes/position = Vector2( -40, 220 )
 nodes/output/position = Vector2( 420, 120 )
 node_connections = [ "output", 0, "Blend", "Blend", 0, "CombatRest", "Blend", 1, "Eyes" ]
 
-[sub_resource type="Theme" id=9]
+[sub_resource type="Theme" id=13]
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -86,24 +85,24 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = ExtResource( 13 )
 Label/styles/normal = null
 
-[sub_resource type="ButtonGroup" id=10]
-
-[sub_resource type="ButtonGroup" id=11]
-
-[sub_resource type="ButtonGroup" id=12]
-
-[sub_resource type="ButtonGroup" id=13]
-
 [sub_resource type="ButtonGroup" id=14]
 
-[sub_resource type="DynamicFontData" id=15]
+[sub_resource type="ButtonGroup" id=15]
+
+[sub_resource type="ButtonGroup" id=16]
+
+[sub_resource type="ButtonGroup" id=17]
+
+[sub_resource type="ButtonGroup" id=18]
+
+[sub_resource type="DynamicFontData" id=19]
 font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=20]
 size = 40
-font_data = SubResource( 15 )
+font_data = SubResource( 19 )
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=21]
 bg_color = Color( 0.278431, 0.278431, 0.360784, 1 )
 border_width_left = 5
 border_width_top = 5
@@ -115,7 +114,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.0901961, 0.0784314, 0.117647, 1 )
 border_width_left = 3
 border_width_top = 3
@@ -127,26 +126,31 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="menu" type="Spatial"]
+[node name="Menu" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource( 10 )
 
 [node name="PlayerModel" parent="." instance=ExtResource( 3 )]
 
 [node name="Robot_Skeleton" parent="PlayerModel" index="0"]
 transform = Transform( 0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0 )
 
-[node name="sfx" type="Node" parent="PlayerModel"]
+[node name="SoundEffects" type="Node" parent="."]
+__meta__ = {
+"_editor_description_": "There must be an AudioStreamPlayer node at the path \"SoundEffects/Step\" next to the player model, anywhere that the player model is instanced. This is to prevent the animation from deleting the step from the track."
+}
 
-[node name="step" type="AudioStreamPlayer" parent="PlayerModel/sfx"]
-stream = ExtResource( 19 )
+[node name="Step" type="AudioStreamPlayer" parent="SoundEffects"]
+__meta__ = {
+"_editor_description_": "There must be an AudioStreamPlayer node at the path \"SoundEffects/Step\" next to the player model, anywhere that the player model is instanced. This is to prevent the animation from deleting the step from the track."
+}
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="Floor" type="MeshInstance" parent="."]
 transform = Transform( 15, 0, 0, 0, 0, 15, 0, -15, 0, 0, 0, 0 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
+mesh = SubResource( 11 )
+material/0 = SubResource( 12 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 0.967027, 0, 0.254675, -0.225291, 0.466312, 0.855452, -0.118758, -0.88462, 0.450936, 0.557445, 2.31204, 0.556668 )
@@ -156,7 +160,7 @@ shadow_bias = 0.01
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.871624, -0.0363083, 0.488828, 0, 0.997253, 0.0740721, -0.490175, -0.064563, 0.86923, 0.0702285, 1.22404, 2.09675 )
 
-[node name="music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 autoplay = true
 
@@ -165,11 +169,6 @@ tree_root = SubResource( 8 )
 anim_player = NodePath("../PlayerModel/AnimationPlayer")
 active = true
 parameters/Blend/blend_amount = 1.0
-
-[node name="sfx" type="Node" parent="."]
-
-[node name="step" type="AudioStreamPlayer" parent="sfx"]
-stream = ExtResource( 19 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 20.1403
@@ -181,16 +180,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 anchor_left = 0.00106799
 anchor_right = 1.00107
 anchor_bottom = 1.0
-theme = SubResource( 9 )
+theme = SubResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="main" type="Control" parent="ui"]
+[node name="Main" type="Control" parent="UI"]
 anchor_left = -0.000673103
 anchor_top = -0.00189865
 anchor_right = 0.999327
@@ -203,7 +202,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="play" type="TextureButton" parent="ui/main"]
+[node name="Play" type="TextureButton" parent="UI/Main"]
 margin_left = 100.0
 margin_top = 390.0
 margin_right = 400.0
@@ -215,7 +214,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="settings" type="TextureButton" parent="ui/main"]
+[node name="Settings" type="TextureButton" parent="UI/Main"]
 margin_left = 100.0
 margin_top = 490.0
 margin_right = 400.0
@@ -224,7 +223,7 @@ texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 10 )
 
-[node name="quit" type="TextureButton" parent="ui/main"]
+[node name="Quit" type="TextureButton" parent="UI/Main"]
 margin_left = 100.0
 margin_top = 590.0
 margin_right = 400.0
@@ -233,7 +232,7 @@ texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
 
-[node name="settings" type="VBoxContainer" parent="ui"]
+[node name="Settings" type="VBoxContainer" parent="UI"]
 visible = false
 anchor_left = 0.109896
 anchor_top = 0.32037
@@ -244,7 +243,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="gi" type="HBoxContainer" parent="ui/settings"]
+[node name="GI" type="HBoxContainer" parent="UI/Settings"]
 margin_right = 1342.0
 margin_bottom = 57.0
 custom_constants/separation = 30
@@ -253,7 +252,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="gi_label" type="Label" parent="ui/settings/gi"]
+[node name="Label" type="Label" parent="UI/Settings/GI"]
 margin_top = 2.0
 margin_right = 400.0
 margin_bottom = 55.0
@@ -261,35 +260,35 @@ rect_min_size = Vector2( 400, 0 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Global Illumination:"
 
-[node name="gi_high" type="Button" parent="ui/settings/gi"]
+[node name="High" type="Button" parent="UI/Settings/GI"]
 margin_left = 430.0
 margin_right = 714.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 10 )
+group = SubResource( 14 )
 text = "High"
 
-[node name="gi_low" type="Button" parent="ui/settings/gi"]
+[node name="Low" type="Button" parent="UI/Settings/GI"]
 margin_left = 744.0
 margin_right = 1028.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 10 )
+group = SubResource( 14 )
 text = "Low"
 
-[node name="gi_disabled" type="Button" parent="ui/settings/gi"]
+[node name="Disabled" type="Button" parent="UI/Settings/GI"]
 margin_left = 1058.0
 margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 10 )
+group = SubResource( 14 )
 text = "Disabled"
 
-[node name="aa" type="HBoxContainer" parent="ui/settings"]
+[node name="AA" type="HBoxContainer" parent="UI/Settings"]
 margin_top = 87.0
 margin_right = 1342.0
 margin_bottom = 144.0
@@ -299,7 +298,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="aa_label" type="Label" parent="ui/settings/aa"]
+[node name="Label" type="Label" parent="UI/Settings/AA"]
 margin_right = 400.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 400, 0 )
@@ -307,44 +306,44 @@ size_flags_vertical = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Anti Aliasing:"
 
-[node name="aa_8x" type="Button" parent="ui/settings/aa"]
+[node name="8X" type="Button" parent="UI/Settings/AA"]
 margin_left = 430.0
 margin_right = 635.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 11 )
+group = SubResource( 15 )
 text = "8x"
 
-[node name="aa_4x" type="Button" parent="ui/settings/aa"]
+[node name="4X" type="Button" parent="UI/Settings/AA"]
 margin_left = 665.0
 margin_right = 870.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 11 )
+group = SubResource( 15 )
 text = "4x"
 
-[node name="aa_2x" type="Button" parent="ui/settings/aa"]
+[node name="2X" type="Button" parent="UI/Settings/AA"]
 margin_left = 900.0
 margin_right = 1105.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 11 )
+group = SubResource( 15 )
 text = "2x"
 
-[node name="aa_disabled" type="Button" parent="ui/settings/aa"]
+[node name="Disabled" type="Button" parent="UI/Settings/AA"]
 margin_left = 1135.0
 margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 11 )
+group = SubResource( 15 )
 text = "Disabled"
 
-[node name="ssao" type="HBoxContainer" parent="ui/settings"]
+[node name="SSAO" type="HBoxContainer" parent="UI/Settings"]
 margin_top = 174.0
 margin_right = 1342.0
 margin_bottom = 231.0
@@ -353,7 +352,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ssao_label" type="Label" parent="ui/settings/ssao"]
+[node name="Label" type="Label" parent="UI/Settings/SSAO"]
 margin_right = 400.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 400, 0 )
@@ -364,35 +363,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ssao_high" type="Button" parent="ui/settings/ssao"]
+[node name="High" type="Button" parent="UI/Settings/SSAO"]
 margin_left = 430.0
 margin_right = 714.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 12 )
+group = SubResource( 16 )
 text = "High"
 
-[node name="ssao_low" type="Button" parent="ui/settings/ssao"]
+[node name="Low" type="Button" parent="UI/Settings/SSAO"]
 margin_left = 744.0
 margin_right = 1028.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 12 )
+group = SubResource( 16 )
 text = "Low"
 
-[node name="ssao_disabled" type="Button" parent="ui/settings/ssao"]
+[node name="Disabled" type="Button" parent="UI/Settings/SSAO"]
 margin_left = 1058.0
 margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 12 )
+group = SubResource( 16 )
 text = "Disabled"
 
-[node name="resolution" type="HBoxContainer" parent="ui/settings"]
+[node name="Resolution" type="HBoxContainer" parent="UI/Settings"]
 margin_top = 261.0
 margin_right = 1342.0
 margin_bottom = 318.0
@@ -401,7 +400,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="resolution_label" type="Label" parent="ui/settings/resolution"]
+[node name="Label" type="Label" parent="UI/Settings/Resolution"]
 margin_top = 2.0
 margin_right = 400.0
 margin_bottom = 55.0
@@ -412,50 +411,50 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="resolution_native" type="Button" parent="ui/settings/resolution"]
+[node name="Native" type="Button" parent="UI/Settings/Resolution"]
 margin_left = 430.0
 margin_right = 635.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 13 )
+group = SubResource( 17 )
 text = "Native"
 
-[node name="resolution_1080" type="Button" parent="ui/settings/resolution"]
+[node name="1080" type="Button" parent="UI/Settings/Resolution"]
 margin_left = 665.0
 margin_right = 870.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 13 )
+group = SubResource( 17 )
 text = "1080"
 
-[node name="resolution_720" type="Button" parent="ui/settings/resolution"]
+[node name="720" type="Button" parent="UI/Settings/Resolution"]
 margin_left = 900.0
 margin_right = 1105.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 13 )
+group = SubResource( 17 )
 text = "720"
 
-[node name="resolution_576" type="Button" parent="ui/settings/resolution"]
+[node name="540" type="Button" parent="UI/Settings/Resolution"]
 margin_left = 1135.0
 margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 13 )
-text = "576"
+group = SubResource( 17 )
+text = "540"
 
-[node name="fullscreen" type="HBoxContainer" parent="ui/settings"]
+[node name="Fullscreen" type="HBoxContainer" parent="UI/Settings"]
 margin_top = 348.0
 margin_right = 1342.0
 margin_bottom = 405.0
 custom_constants/separation = 30
 
-[node name="fullscreen_label" type="Label" parent="ui/settings/fullscreen"]
+[node name="Label" type="Label" parent="UI/Settings/Fullscreen"]
 margin_top = 2.0
 margin_right = 400.0
 margin_bottom = 55.0
@@ -466,44 +465,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="fullscreen_yes" type="Button" parent="ui/settings/fullscreen"]
+[node name="Yes" type="Button" parent="UI/Settings/Fullscreen"]
 margin_left = 430.0
 margin_right = 871.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 14 )
+group = SubResource( 18 )
 text = "Yes"
 
-[node name="fullscreen_no" type="Button" parent="ui/settings/fullscreen"]
+[node name="No" type="Button" parent="UI/Settings/Fullscreen"]
 margin_left = 901.0
 margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 14 )
+group = SubResource( 18 )
 text = "No"
 
-[node name="sep" type="Control" parent="ui/settings"]
+[node name="HSeparator" type="HSeparator" parent="UI/Settings"]
+modulate = Color( 1, 1, 1, 0 )
 margin_top = 435.0
 margin_right = 1342.0
 margin_bottom = 455.0
 rect_min_size = Vector2( 0, 20 )
 
-[node name="actions" type="HBoxContainer" parent="ui/settings"]
+[node name="Actions" type="HBoxContainer" parent="UI/Settings"]
 margin_top = 485.0
 margin_right = 1342.0
 margin_bottom = 542.0
 custom_constants/separation = 50
 
-[node name="apply" type="Button" parent="ui/settings/actions"]
+[node name="Apply" type="Button" parent="UI/Settings/Actions"]
 margin_right = 646.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 custom_styles/hover = ExtResource( 18 )
 custom_styles/pressed = ExtResource( 18 )
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -512,20 +512,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cancel" type="Button" parent="ui/settings/actions"]
+[node name="Cancel" type="Button" parent="UI/Settings/Actions"]
 margin_left = 696.0
 margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 custom_styles/hover = ExtResource( 18 )
 custom_styles/pressed = ExtResource( 18 )
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 text = "Cancel"
 
-[node name="loading" type="HBoxContainer" parent="ui"]
+[node name="Loading" type="HBoxContainer" parent="UI"]
 visible = false
 anchor_top = 1.0
 anchor_right = 1.0
@@ -540,32 +540,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="label" type="Label" parent="ui/loading"]
+[node name="Label" type="Label" parent="UI/Loading"]
 margin_right = 168.0
 margin_bottom = 53.0
 custom_fonts/font = ExtResource( 13 )
 text = "Loading..."
 
-[node name="progress" type="ProgressBar" parent="ui/loading"]
+[node name="Progress" type="ProgressBar" parent="UI/Loading"]
 margin_left = 268.0
 margin_right = 1690.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_styles/fg = SubResource( 17 )
-custom_styles/bg = SubResource( 18 )
+custom_styles/fg = SubResource( 21 )
+custom_styles/bg = SubResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="loading_done_timer" type="Timer" parent="ui/loading"]
+[node name="DoneTimer" type="Timer" parent="UI/Loading"]
 wait_time = 0.5
 one_shot = true
-[connection signal="pressed" from="ui/main/play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="ui/main/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="ui/main/quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="ui/settings/actions/apply" to="." method="_on_apply_pressed"]
-[connection signal="pressed" from="ui/settings/actions/cancel" to="." method="_on_cancel_pressed"]
-[connection signal="timeout" from="ui/loading/loading_done_timer" to="." method="_on_loading_done_timer_timeout"]
+[connection signal="pressed" from="UI/Main/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="UI/Main/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="UI/Main/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="UI/Settings/Actions/Apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="UI/Settings/Actions/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="timeout" from="UI/Loading/DoneTimer" to="." method="_on_loading_done_timer_timeout"]
 
 [editable path="PlayerModel"]

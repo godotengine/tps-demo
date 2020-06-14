@@ -5,42 +5,43 @@ signal quit
 #warning-ignore:unused_signal
 signal replace_main_scene # Useless, but needed as there is no clean way to check if a node exposes a signal
 
+onready var world_environment = $WorldEnvironment
 
 func _ready():
-	if settings.gi_quality == settings.GIQuality.HIGH:
+	if Settings.gi_quality == Settings.GIQuality.HIGH:
 		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = true
-	elif settings.gi_quality == settings.GIQuality.LOW:
+	elif Settings.gi_quality == Settings.GIQuality.LOW:
 		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = false
 	else:
 		$GIProbe.hide()
 		$ReflectionProbes.show()
 	
-	if settings.aa_quality == settings.AAQuality.AA_8X:
+	if Settings.aa_quality == Settings.AAQuality.AA_8X:
 		get_node("/root").msaa = Viewport.MSAA_8X
-	elif settings.aa_quality == settings.AAQuality.AA_4X:
+	elif Settings.aa_quality == Settings.AAQuality.AA_4X:
 		get_node("/root").msaa = Viewport.MSAA_4X
-	elif settings.aa_quality == settings.AAQuality.AA_2X:
+	elif Settings.aa_quality == Settings.AAQuality.AA_2X:
 		get_node("/root").msaa = Viewport.MSAA_2X
 	else:
 		get_node("/root").msaa = Viewport.MSAA_DISABLED
 	
-	if settings.ssao_quality == settings.SSAOQuality.HIGH:
-		$WorldEnvironment.environment.ssao_quality = $WorldEnvironment.environment.SSAO_QUALITY_HIGH
-	elif settings.ssao_quality == settings.SSAOQuality.LOW:
-		$WorldEnvironment.environment.ssao_quality = $WorldEnvironment.environment.SSAO_QUALITY_LOW
+	if Settings.ssao_quality == Settings.SSAOQuality.HIGH:
+		world_environment.environment.ssao_quality = world_environment.environment.SSAO_QUALITY_HIGH
+	elif Settings.ssao_quality == Settings.SSAOQuality.LOW:
+		world_environment.environment.ssao_quality = world_environment.environment.SSAO_QUALITY_LOW
 	else:
-		$WorldEnvironment.environment.ssao_enabled = false
+		world_environment.environment.ssao_enabled = false
 	
-	if settings.resolution == settings.Resolution.NATIVE:
+	if Settings.resolution == Settings.Resolution.NATIVE:
 		pass
-	elif settings.resolution == settings.Resolution.RES_1080:
+	elif Settings.resolution == Settings.Resolution.RES_1080:
 		var minsize = Vector2(OS.window_size.x * 1080 / OS.window_size.y, 1080.0)
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP_HEIGHT, minsize)
-	elif settings.resolution == settings.Resolution.RES_720:
+	elif Settings.resolution == Settings.Resolution.RES_720:
 		var minsize = Vector2(OS.window_size.x * 720 / OS.window_size.y, 720.0)
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP_HEIGHT, minsize)
-	elif settings.resolution == settings.Resolution.RES_576:
-		var minsize = Vector2(OS.window_size.x * 576 / OS.window_size.y, 576.0)
+	elif Settings.resolution == Settings.Resolution.RES_540:
+		var minsize = Vector2(OS.window_size.x * 540 / OS.window_size.y, 540.0)
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP_HEIGHT, minsize)
 
 

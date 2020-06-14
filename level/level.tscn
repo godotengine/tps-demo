@@ -104,28 +104,28 @@ transform = Transform( -0.164432, 0, 0.986389, 0, 1, 0, -0.986389, 0, -0.164432,
 [node name="RedRobot4" parent="." instance=ExtResource( 7 )]
 transform = Transform( -0.164432, 0, 0.986389, 0, 1, 0, -0.986389, 0, -0.164432, -9.15526, -11.6923, -16.9238 )
 
-[node name="sound_outside" type="Area" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+
+[node name="SoundOutside" type="Area" parent="."]
 collision_mask = 0
 audio_bus_override = true
 audio_bus_name = "Outside"
 
-[node name="CollisionPolygon" type="CollisionPolygon" parent="sound_outside"]
+[node name="CollisionPolygon" type="CollisionPolygon" parent="SoundOutside"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 depth = 100.0
 polygon = PoolVector2Array( -75.798, 98.0935, -18.4854, 34.621, -6.1658, 39.1739, 6.95718, 39.4417, 23.0262, 32.7463, 36.9526, 17.7486, 31.5629, 13.7491, 33.7076, 6.64486, 40.9698, 3.55431, 36.417, -21.6204, 26.5078, -30.1905, 93.7297, -71.4343, 118.637, 0.608329, 70.4297, 120.322, -36.9647, 128.089 )
 
-[node name="sound_reactor_room" type="Area" parent="."]
+[node name="SoundReactorRoom" type="Area" parent="."]
 collision_mask = 0
 audio_bus_override = true
 audio_bus_name = "Reactor"
 
-[node name="CollisionShape" type="CollisionShape" parent="sound_reactor_room"]
+[node name="CollisionShape" type="CollisionShape" parent="SoundReactorRoom"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 1 )
-
-[node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
-autoplay = true
 
 [node name="FlyingForklifts" type="Spatial" parent="."]
 
