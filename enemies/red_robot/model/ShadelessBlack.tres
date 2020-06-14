@@ -1,0 +1,6 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "ShadelessBlack"
+flags_unshaded = true
+albedo_color = Color( 0, 0, 0, 1 )

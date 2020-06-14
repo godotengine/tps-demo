@@ -21,7 +21,3 @@ func _process(delta):
 		$CollisionShape.disabled = true
 		$AnimationPlayer.play("explode")
 		hit = true
-
-
-func _on_bullet_body_entered():
-	print("got into body")
