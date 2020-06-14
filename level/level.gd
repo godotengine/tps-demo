@@ -13,7 +13,7 @@ func _ready():
 		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = false
 	else:
 		$GIProbe.hide()
-		$refprobes.show()
+		$ReflectionProbes.show()
 	
 	if settings.aa_quality == settings.AAQuality.AA_8X:
 		get_node("/root").msaa = Viewport.MSAA_8X
