@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/smoke_n.png-7a6c69884d1ce1241dad357f68ddea48.s3tc.stex"
+path.s3tc="res://.import/plasma.png-6d59facfec6f6a5fd1f7e9f2f6b90a8f.s3tc.stex"
 metadata={
 "imported_formats": [ "s3tc" ],
 "vram_texture": true
@@ -10,8 +10,8 @@ metadata={
 
 [deps]
 
-source_file="res://fx/smoke/smoke_n.png"
-dest_files=[ "res://.import/smoke_n.png-7a6c69884d1ce1241dad357f68ddea48.s3tc.stex" ]
+source_file="res://level/textures/plasma.png"
+dest_files=[ "res://.import/plasma.png-6d59facfec6f6a5fd1f7e9f2f6b90a8f.s3tc.stex" ]
 
 [params]
 
@@ -19,12 +19,12 @@ compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=1
+compress/normal_map=0
 flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
