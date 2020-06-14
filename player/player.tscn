@@ -1,12 +1,12 @@
 [gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
-[ext_resource path="res://player/player.dae" type="PackedScene" id=2]
+[ext_resource path="res://player/model/player.dae" type="PackedScene" id=2]
 [ext_resource path="res://player/crosshair.png" type="Texture" id=3]
-[ext_resource path="res://player/step_random_pitch.tres" type="AudioStream" id=4]
-[ext_resource path="res://player/fx_jump.wav" type="AudioStream" id=5]
-[ext_resource path="res://player/fx_land.wav" type="AudioStream" id=6]
-[ext_resource path="res://player/fx_shoot.wav" type="AudioStream" id=7]
+[ext_resource path="res://player/audio/step_random_pitch.tres" type="AudioStream" id=4]
+[ext_resource path="res://player/audio/fx_jump.wav" type="AudioStream" id=5]
+[ext_resource path="res://player/audio/fx_land.wav" type="AudioStream" id=6]
+[ext_resource path="res://player/audio/fx_shoot.wav" type="AudioStream" id=7]
 
 [sub_resource type="AnimationNodeAdd3" id=1]
 resource_local_to_scene = true
@@ -152,7 +152,7 @@ nodes/strafe/node = SubResource( 16 )
 nodes/strafe/position = Vector2( -400, -120 )
 nodes/walk/node = SubResource( 21 )
 nodes/walk/position = Vector2( -400, 40 )
-node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "land", 0, "state", "land", 1, "hardland", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes" ]
+node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "land", 0, "state", "land", 1, "hardland" ]
 
 [sub_resource type="CapsuleShape" id=23]
 radius = 0.5
@@ -220,13 +220,19 @@ collision_layer = 6
 collision_mask = 7
 script = ExtResource( 1 )
 
-[node name="Scene Root" parent="." instance=ExtResource( 2 )]
+[node name="PlayerModel" parent="." instance=ExtResource( 2 )]
 
-[node name="GunBone" type="BoneAttachment" parent="Scene Root/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.907044, -0.252145, 0.337463, -0.254377, -0.966365, -0.0386576, 0.335896, -0.0507507, -0.940543, -0.206507, 1.37272, 0.526382 )
+[node name="Robot_Skeleton" parent="PlayerModel" index="0"]
+transform = Transform( 0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0 )
+
+[node name="Skeleton" parent="PlayerModel/Robot_Skeleton" index="0"]
+bones/46/bound_children = [ NodePath("GunBone") ]
+
+[node name="GunBone" type="BoneAttachment" parent="PlayerModel/Robot_Skeleton/Skeleton" index="5"]
+transform = Transform( 0.918466, -0.262051, 0.296549, -0.240686, -0.964677, -0.107372, 0.314249, 0.0272598, -0.948962, -0.207504, 1.38366, 0.480875 )
 bone_name = "hand.R"
 
-[node name="ShootFrom" type="Position3D" parent="Scene Root/Robot_Skeleton/Skeleton/GunBone"]
+[node name="ShootFrom" type="Position3D" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone"]
 transform = Transform( 0.999919, 0.0106283, -0.00705317, -0.0105956, 0.99993, 0.00505793, 0.00710796, -0.0049828, 0.999962, 0.0100024, -0.00491095, -0.40371 )
 
 [node name="RootMotionView" type="RootMotionView" parent="."]
@@ -234,7 +240,7 @@ animation_path = NodePath("../AnimationTree")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 22 )
-anim_player = NodePath("../Scene Root/AnimationPlayer")
+anim_player = NodePath("../PlayerModel/AnimationPlayer")
 active = true
 process_mode = 0
 root_motion_track = NodePath("Robot_Skeleton/Skeleton:root")
@@ -252,9 +258,6 @@ shape = SubResource( 23 )
 [node name="RayShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.00357, 0 )
 shape = SubResource( 24 )
-
-[node name="Spatial" type="Position3D" parent="."]
-transform = Transform( -1, 1.18511e-07, -3.03525e-07, 0, 0.931513, 0.363707, 3.25841e-07, 0.363707, -0.931513, 0, 2.44728, -2.15676 )
 
 [node name="CameraBase" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0 )
@@ -326,4 +329,4 @@ wait_time = 0.4
 one_shot = true
 autostart = true
 
-[editable path="Scene Root"]
+[editable path="PlayerModel"]
