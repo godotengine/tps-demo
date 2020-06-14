@@ -2,7 +2,7 @@
 
 [ext_resource path="res://player/bullet/bullet.gd" type="Script" id=1]
 [ext_resource path="res://player/bullet/blue_myst.png" type="Texture" id=2]
-[ext_resource path="res://player/bullet/fx_bullet_explode.wav" type="AudioStream" id=3]
+[ext_resource path="res://player/bullet/bullet_explode.wav" type="AudioStream" id=3]
 
 [sub_resource type="SphereMesh" id=1]
 radial_segments = 9

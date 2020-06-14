@@ -1,8 +1,8 @@
 [gd_resource type="SpatialMaterial" load_steps=4 format=2]
 
-[ext_resource path="res://level/textures/props/propsmisc_d.png" type="Texture" id=1]
-[ext_resource path="res://level/textures/props/propsmisc_orm.png" type="Texture" id=2]
-[ext_resource path="res://level/textures/props/propsmisc_n.png" type="Texture" id=3]
+[ext_resource path="res://level/textures/props/mid_cargo_box_albedo.png" type="Texture" id=1]
+[ext_resource path="res://level/textures/props/mid_cargo_box_orm.png" type="Texture" id=2]
+[ext_resource path="res://level/textures/props/mid_cargo_box_normal.png" type="Texture" id=3]
 
 [resource]
 resource_name = "mid_cargo_box"

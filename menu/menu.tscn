@@ -18,7 +18,7 @@
 [ext_resource path="res://menu/button_focus.tres" type="StyleBox" id=16]
 [ext_resource path="res://menu/button_hover.tres" type="StyleBox" id=17]
 [ext_resource path="res://menu/button_action_pressed.tres" type="StyleBox" id=18]
-[ext_resource path="res://player/audio/fx_step.wav" type="AudioStream" id=19]
+[ext_resource path="res://player/audio/step.wav" type="AudioStream" id=19]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 2 )

@@ -1,7 +1,7 @@
 [gd_resource type="SpatialMaterial" load_steps=4 format=2]
 
-[ext_resource path="res://level/textures/structure/set_asphalt_d.png" type="Texture" id=1]
-[ext_resource path="res://level/textures/structure/set_asphalt_n.png" type="Texture" id=2]
+[ext_resource path="res://level/textures/structure/set_asphalt_albedo.png" type="Texture" id=1]
+[ext_resource path="res://level/textures/structure/set_asphalt_normal.png" type="Texture" id=2]
 [ext_resource path="res://level/textures/structure/set_asphalt_orm.png" type="Texture" id=3]
 
 [resource]

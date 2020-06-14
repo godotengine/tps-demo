@@ -4,9 +4,9 @@
 [ext_resource path="res://player/model/player.dae" type="PackedScene" id=2]
 [ext_resource path="res://player/crosshair.png" type="Texture" id=3]
 [ext_resource path="res://player/audio/step_random_pitch.tres" type="AudioStream" id=4]
-[ext_resource path="res://player/audio/fx_jump.wav" type="AudioStream" id=5]
-[ext_resource path="res://player/audio/fx_land.wav" type="AudioStream" id=6]
-[ext_resource path="res://player/audio/fx_shoot.wav" type="AudioStream" id=7]
+[ext_resource path="res://player/audio/jump.wav" type="AudioStream" id=5]
+[ext_resource path="res://player/audio/land.wav" type="AudioStream" id=6]
+[ext_resource path="res://player/audio/shoot.wav" type="AudioStream" id=7]
 
 [sub_resource type="AnimationNodeAdd3" id=1]
 resource_local_to_scene = true
