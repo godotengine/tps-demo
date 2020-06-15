@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://level/level.gd" type="Script" id=1]
 [ext_resource path="res://level/geometry/demolevel.dae" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://fx/smoke/smoke.tscn" type="PackedScene" id=10]
 [ext_resource path="res://fx/plasma/plasma.tscn" type="PackedScene" id=11]
 [ext_resource path="res://level/forklift/forklift.tscn" type="PackedScene" id=12]
+[ext_resource path="res://level/debug.gd" type="Script" id=13]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -315,5 +316,19 @@ transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -68.249
 [node name="AnimationPlayer" type="AnimationPlayer" parent="forklifts_a"]
 autoplay = "mawaru"
 anims/mawaru = SubResource( 3 )
+
+[node name="Debug" type="Label" parent="."]
+visible = false
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 40.0
+margin_bottom = 14.0
+text = "FPS: 0
+VSync:
+Memory:"
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [editable path="Scene Root"]
