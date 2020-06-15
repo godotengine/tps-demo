@@ -20,7 +20,7 @@ enum SSAOQuality {
 }
 
 enum Resolution {
-	RES_576 = 0
+	RES_540 = 0
 	RES_720 = 1
 	RES_1080 = 2
 	NATIVE = 3
@@ -34,6 +34,12 @@ var fullscreen = true
 
 func _ready():
 	load_settings()
+
+
+func _input(event):
+	if event.is_action_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
+		get_tree().set_input_as_handled()
 
 
 func load_settings():
@@ -61,6 +67,7 @@ func load_settings():
 
 	if "fullscreen" in d:
 		fullscreen = bool(d.fullscreen)
+
 
 func save_settings():
 	var f = File.new()

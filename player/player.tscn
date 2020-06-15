@@ -152,7 +152,7 @@ nodes/strafe/node = SubResource( 16 )
 nodes/strafe/position = Vector2( -400, -120 )
 nodes/walk/node = SubResource( 21 )
 nodes/walk/position = Vector2( -400, 40 )
-node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "land", 0, "state", "land", 1, "hardland" ]
+node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "land", 0, "state", "land", 1, "hardland", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes" ]
 
 [sub_resource type="CapsuleShape" id=23]
 radius = 0.5
@@ -229,7 +229,7 @@ transform = Transform( 0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0 )
 bones/46/bound_children = [ NodePath("GunBone") ]
 
 [node name="GunBone" type="BoneAttachment" parent="PlayerModel/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.918466, -0.262051, 0.296549, -0.240686, -0.964677, -0.107372, 0.314249, 0.0272598, -0.948962, -0.207504, 1.38366, 0.480875 )
+transform = Transform( 0.916368, -0.24167, 0.319464, -0.240673, -0.969661, -0.0435164, 0.320323, -0.0369838, -0.946598, -0.207126, 1.38922, 0.483314 )
 bone_name = "hand.R"
 
 [node name="ShootFrom" type="Position3D" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone"]
@@ -310,18 +310,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sfx" type="Node" parent="."]
+[node name="SoundEffects" type="Node" parent="."]
 
-[node name="step" type="AudioStreamPlayer" parent="sfx"]
+[node name="Step" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 4 )
 
-[node name="jump" type="AudioStreamPlayer" parent="sfx"]
+[node name="Jump" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 5 )
 
-[node name="land" type="AudioStreamPlayer" parent="sfx"]
+[node name="Land" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 6 )
 
-[node name="shoot" type="AudioStreamPlayer" parent="sfx"]
+[node name="Shoot" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = SubResource( 27 )
 
 [node name="FireCooldown" type="Timer" parent="."]
