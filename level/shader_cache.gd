@@ -3,8 +3,8 @@ extends Node
 var fade_in_frame_counter = 100
 
 func _ready():
-	# We don't want the cache bullet to make noise. So just get rid of its audio.
-	$Bullet/ExplosionAudio.queue_free()
+	# We don't want the cache bullet to make noise. So make it silent.
+	$Bullet/ExplosionAudio.unit_db = -INF
 
 
 func _physics_process(_delta):
