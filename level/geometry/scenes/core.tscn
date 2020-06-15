@@ -6,7 +6,6 @@
 [ext_resource path="res://level/geometry/scenes/collision/radial_player_only.tscn" type="PackedScene" id=4]
 [ext_resource path="res://level/textures/plasma.png" type="Texture" id=5]
 
-
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
 flags_unshaded = true
