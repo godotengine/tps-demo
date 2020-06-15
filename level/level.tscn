@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://level/level.gd" type="Script" id=1]
 [ext_resource path="res://level/geometry/scenes/props.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://enemies/red_robot/red_robot.tscn" type="PackedScene" id=7]
 [ext_resource path="res://level/level_music.ogg" type="AudioStream" id=8]
+[ext_resource path="res://level/debug.gd" type="Script" id=9]
 [ext_resource path="res://level/forklift/flying_forklift.tscn" type="PackedScene" id=12]
 [ext_resource path="res://level/geometry/scenes/lights.tscn" type="PackedScene" id=13]
 [ext_resource path="res://level/geometry/scenes/core.tscn" type="PackedScene" id=14]
@@ -138,3 +139,17 @@ transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -68.249
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FlyingForklifts"]
 autoplay = "mawaru"
 anims/mawaru = SubResource( 2 )
+
+[node name="Debug" type="Label" parent="."]
+visible = false
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 40.0
+margin_bottom = 14.0
+text = "FPS: 0
+VSync:
+Memory:"
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
