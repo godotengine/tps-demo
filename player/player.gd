@@ -184,7 +184,7 @@ func _physics_process(delta):
 	velocity.x = h_velocity.x
 	velocity.z = h_velocity.z
 	velocity += gravity * delta
-	velocity = move_and_slide(velocity, Vector3.UP)
+	velocity = move_and_slide(velocity, Vector3.UP, true)
 	
 	orientation.origin = Vector3() # Clear accumulated root motion displacement (was applied to speed).
 	orientation = orientation.orthonormalized() # Orthonormalize orientation.
