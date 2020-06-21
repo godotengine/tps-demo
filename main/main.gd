@@ -17,8 +17,9 @@ func replace_main_scene(resource):
 func change_scene(resource : Resource):
 	var node = resource.instance()
 	
-	while get_child_count() > 0:
-		remove_child(get_child(0))
+	for child in get_children():
+		remove_child(child)
+		child.queue_free()
 	add_child(node)
 	
 	node.connect("quit", self, "go_to_main_menu")
