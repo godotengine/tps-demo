@@ -1,10 +1,10 @@
-All assets Copyright (c) 2018 Juan Linietsky, Fernando Miguel Calabró  
+All assets Copyright (c) 2018 Juan Linietsky, Fernando Miguel Calabró \
 Distributed under the terms of the Creative Commons Attribution License
 version 3.0 (CC-BY 3.0) <https://creativecommons.org/licenses/by/3.0/legalcode>.
 
 ************************************************************************
 
-Music Copyright (c) 2018 Christian Fernando Perucchi  
+Music Copyright (c) 2018 Christian Fernando Perucchi \
 Distributed under the terms of the Creative Commons Attribution License
 version 3.0 (CC-BY 3.0) <https://creativecommons.org/licenses/by/3.0/legalcode>.
 
