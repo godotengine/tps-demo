@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/model/player.dae" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://player/audio/jump.wav" type="AudioStream" id=5]
 [ext_resource path="res://player/audio/land.wav" type="AudioStream" id=6]
 [ext_resource path="res://player/audio/shoot.wav" type="AudioStream" id=7]
+[ext_resource path="res://player/camera_noise_shake_effect.gd" type="Script" id=8]
 
 [sub_resource type="AnimationNodeAdd3" id=1]
 resource_local_to_scene = true
@@ -152,7 +153,7 @@ nodes/strafe/node = SubResource( 16 )
 nodes/strafe/position = Vector2( -400, -120 )
 nodes/walk/node = SubResource( 21 )
 nodes/walk/position = Vector2( -400, 40 )
-node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "land", 0, "state", "land", 1, "hardland", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes" ]
+node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "land", 0, "state", "land", 1, "hardland" ]
 
 [sub_resource type="CapsuleShape" id=23]
 radius = 0.5
@@ -229,7 +230,7 @@ transform = Transform( 0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0 )
 bones/46/bound_children = [ NodePath("GunBone") ]
 
 [node name="GunBone" type="BoneAttachment" parent="PlayerModel/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.916368, -0.24167, 0.319464, -0.240673, -0.969661, -0.0435164, 0.320323, -0.0369838, -0.946598, -0.207126, 1.38922, 0.483314 )
+transform = Transform( 0.904321, -0.247813, 0.347821, -0.25677, -0.966275, -0.0211712, 0.341372, -0.0701338, -0.937322, -0.207136, 1.3677, 0.535182 )
 bone_name = "hand.R"
 
 [node name="ShootFrom" type="Position3D" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone"]
@@ -278,6 +279,7 @@ spring_length = 2.4
 transform = Transform( 1, 1.42109e-14, -2.84217e-14, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 current = true
 far = 300.0
+script = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": "Translated when aiming."
 }
