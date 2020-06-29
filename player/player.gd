@@ -159,6 +159,8 @@ func _physics_process(delta):
 			bullet.add_collision_exception_with(self)
 			fire_cooldown.start()
 			sound_effect_shoot.play()
+			camera_camera.add_trauma(0.35)
+
 	else: # Not in air or aiming, idle.
 		# Convert orientation to quaternions for interpolating rotation.
 		var target = camera_x * motion.x + camera_z * motion.y
