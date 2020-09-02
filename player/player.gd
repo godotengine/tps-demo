@@ -108,6 +108,8 @@ func _physics_process(delta):
 	if not on_air and Input.is_action_just_pressed("jump"):
 		velocity.y = JUMP_SPEED
 		on_air = true
+		# Increase airborne time so next frame on_air is still true
+		airborne_time = MIN_AIRBORNE_TIME
 		animation_tree["parameters/state/current"] = 2
 		sound_effect_jump.play()
 	
