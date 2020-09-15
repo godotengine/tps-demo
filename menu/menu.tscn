@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
@@ -90,6 +90,8 @@ Label/styles/normal = null
 [sub_resource type="ButtonGroup" id=11]
 
 [sub_resource type="ButtonGroup" id=12]
+
+[sub_resource type="ButtonGroup" id=19]
 
 [sub_resource type="ButtonGroup" id=13]
 
@@ -389,6 +391,54 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 group = SubResource( 12 )
+text = "Disabled"
+
+[node name="Bloom" type="HBoxContainer" parent="UI/Settings"]
+margin_top = 174.0
+margin_right = 1342.0
+margin_bottom = 231.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="UI/Settings/Bloom"]
+margin_right = 400.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_vertical = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Bloom:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="High" type="Button" parent="UI/Settings/Bloom"]
+margin_left = 430.0
+margin_right = 714.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+toggle_mode = true
+pressed = true
+group = SubResource( 19 )
+text = "High"
+
+[node name="Low" type="Button" parent="UI/Settings/Bloom"]
+margin_left = 744.0
+margin_right = 1028.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+toggle_mode = true
+group = SubResource( 19 )
+text = "Low"
+
+[node name="Disabled" type="Button" parent="UI/Settings/Bloom"]
+margin_left = 1058.0
+margin_right = 1342.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+toggle_mode = true
+group = SubResource( 19 )
 text = "Disabled"
 
 [node name="Resolution" type="HBoxContainer" parent="UI/Settings"]
