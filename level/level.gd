@@ -15,7 +15,7 @@ func _ready():
 	else:
 		$GIProbe.hide()
 		$ReflectionProbes.show()
-	
+
 	if Settings.aa_quality == Settings.AAQuality.AA_8X:
 		get_node("/root").msaa = Viewport.MSAA_8X
 	elif Settings.aa_quality == Settings.AAQuality.AA_4X:
@@ -24,14 +24,24 @@ func _ready():
 		get_node("/root").msaa = Viewport.MSAA_2X
 	else:
 		get_node("/root").msaa = Viewport.MSAA_DISABLED
-	
+
 	if Settings.ssao_quality == Settings.SSAOQuality.HIGH:
 		world_environment.environment.ssao_quality = world_environment.environment.SSAO_QUALITY_HIGH
 	elif Settings.ssao_quality == Settings.SSAOQuality.LOW:
 		world_environment.environment.ssao_quality = world_environment.environment.SSAO_QUALITY_LOW
 	else:
 		world_environment.environment.ssao_enabled = false
-	
+
+	if Settings.bloom_quality == Settings.BloomQuality.HIGH:
+		world_environment.environment.glow_enabled = true
+		world_environment.environment.glow_bicubic_upscale = true
+	elif Settings.bloom_quality == Settings.BloomQuality.LOW:
+		world_environment.environment.glow_enabled = true
+		world_environment.environment.glow_bicubic_upscale = false
+	else:
+		world_environment.environment.glow_enabled = false
+		world_environment.environment.glow_bicubic_upscale = false
+
 	if Settings.resolution == Settings.Resolution.NATIVE:
 		pass
 	elif Settings.resolution == Settings.Resolution.RES_1080:

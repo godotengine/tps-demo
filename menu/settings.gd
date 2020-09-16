@@ -19,6 +19,12 @@ enum SSAOQuality {
 	HIGH = 2
 }
 
+enum BloomQuality {
+	DISABLED = 0
+	LOW = 1
+	HIGH = 2
+}
+
 enum Resolution {
 	RES_540 = 0
 	RES_720 = 1
@@ -29,6 +35,7 @@ enum Resolution {
 var gi_quality = GIQuality.LOW
 var aa_quality = AAQuality.AA_2X
 var ssao_quality = SSAOQuality.DISABLED
+var bloom_quality = BloomQuality.HIGH
 var resolution = Resolution.NATIVE
 var fullscreen = true
 
@@ -48,20 +55,23 @@ func load_settings():
 	if error:
 		print("There are no settings to load.")
 		return
-	
+
 	var d = parse_json(f.get_as_text())
 	if typeof(d) != TYPE_DICTIONARY:
 		return
-	
+
 	if "gi" in d:
 		gi_quality = int(d.gi)
-	
+
 	if "aa" in d:
 		aa_quality = int(d.aa)
-	
+
 	if "ssao" in d:
 		ssao_quality = int(d.ssao)
-	
+
+	if "bloom" in d:
+		bloom_quality = int(d.bloom)
+
 	if "resolution" in d:
 		resolution = int(d.resolution)
 
@@ -74,5 +84,5 @@ func save_settings():
 	var error = f.open("user://settings.json", File.WRITE)
 	assert(not error)
 
-	var d = { "gi":gi_quality, "aa":aa_quality, "ssao":ssao_quality, "resolution":resolution, "fullscreen":fullscreen }
+	var d = { "gi":gi_quality, "aa":aa_quality, "ssao":ssao_quality, "bloom":bloom_quality, "resolution":resolution, "fullscreen":fullscreen }
 	f.store_line(to_json(d))

@@ -34,6 +34,11 @@ onready var ssao_high = ssao_menu.get_node(@"High")
 onready var ssao_low = ssao_menu.get_node(@"Low")
 onready var ssao_disabled = ssao_menu.get_node(@"Disabled")
 
+onready var bloom_menu = settings_menu.get_node(@"Bloom")
+onready var bloom_high = bloom_menu.get_node(@"High")
+onready var bloom_low = bloom_menu.get_node(@"Low")
+onready var bloom_disabled = bloom_menu.get_node(@"Disabled")
+
 onready var resolution_menu = settings_menu.get_node(@"Resolution")
 onready var resolution_native = resolution_menu.get_node(@"Native")
 onready var resolution_1080 = resolution_menu.get_node(@"1080")
@@ -99,7 +104,7 @@ func _on_settings_pressed():
 	main.hide()
 	settings_menu.show()
 	settings_action_cancel.grab_focus()
-	
+
 	if Settings.gi_quality == Settings.GIQuality.HIGH:
 		gi_high.pressed = true
 	elif Settings.gi_quality == Settings.GIQuality.LOW:
@@ -122,7 +127,14 @@ func _on_settings_pressed():
 		ssao_low.pressed = true
 	elif Settings.ssao_quality == Settings.SSAOQuality.DISABLED:
 		ssao_disabled.pressed = true
-		
+
+	if Settings.bloom_quality == Settings.BloomQuality.HIGH:
+		bloom_high.pressed = true
+	elif Settings.bloom_quality == Settings.BloomQuality.LOW:
+		bloom_low.pressed = true
+	elif Settings.bloom_quality == Settings.BloomQuality.DISABLED:
+		bloom_disabled.pressed = true
+
 	if Settings.resolution == Settings.Resolution.NATIVE:
 		resolution_native.pressed = true
 	elif Settings.resolution == Settings.Resolution.RES_1080:
@@ -146,14 +158,14 @@ func _on_apply_pressed():
 	main.show()
 	play_button.grab_focus()
 	settings_menu.hide()
-	
+
 	if gi_high.pressed:
 		Settings.gi_quality = Settings.GIQuality.HIGH
 	elif gi_low.pressed:
 		Settings.gi_quality = Settings.GIQuality.LOW
 	elif gi_disabled.pressed:
 		Settings.gi_quality = Settings.GIQuality.DISABLED
-	
+
 	if aa_8x.pressed:
 		Settings.aa_quality = Settings.AAQuality.AA_8X
 	elif aa_4x.pressed:
@@ -162,14 +174,21 @@ func _on_apply_pressed():
 		Settings.aa_quality = Settings.AAQuality.AA_2X
 	elif aa_disabled.pressed:
 		Settings.aa_quality = Settings.AAQuality.DISABLED
-	
+
 	if ssao_high.pressed:
 		Settings.ssao_quality = Settings.SSAOQuality.HIGH
 	elif ssao_low.pressed:
 		Settings.ssao_quality = Settings.SSAOQuality.LOW
 	elif ssao_disabled.pressed:
 		Settings.ssao_quality = Settings.SSAOQuality.DISABLED
-	
+
+	if bloom_high.pressed:
+		Settings.bloom_quality = Settings.BloomQuality.HIGH
+	elif bloom_low.pressed:
+		Settings.bloom_quality = Settings.BloomQuality.LOW
+	elif bloom_disabled.pressed:
+		Settings.bloom_quality = Settings.BloomQuality.DISABLED
+
 	if resolution_native.pressed:
 		Settings.resolution = Settings.Resolution.NATIVE
 	elif resolution_1080.pressed:
@@ -180,7 +199,7 @@ func _on_apply_pressed():
 		Settings.resolution = Settings.Resolution.RES_540
 
 	Settings.fullscreen = fullscreen_yes.pressed
-	
+
 	# Apply the setting directly
 	OS.window_fullscreen = Settings.fullscreen
 
