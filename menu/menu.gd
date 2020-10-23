@@ -1,70 +1,71 @@
-extends Spatial
+extends Node3D
 
-var res_loader : ResourceInteractiveLoader = null
 var loading_thread : Thread = null
+var load_path : String
 
 signal replace_main_scene
 #warning-ignore:unused_signal
 signal quit # Useless, but needed as there is no clean way to check if a node exposes a signal
 
-onready var ui = $UI
-onready var main = ui.get_node(@"Main")
-onready var play_button = main.get_node(@"Play")
-onready var settings_button = main.get_node(@"Settings")
-onready var quit_button = main.get_node(@"Quit")
+@onready var ui = $UI
+@onready var main = ui.get_node("Main")
+@onready var play_button = main.get_node("Play")
+@onready var settings_button = main.get_node("Settings")
+@onready var quit_button = main.get_node("Quit")
 
-onready var settings_menu = ui.get_node(@"Settings")
-onready var settings_actions = settings_menu.get_node(@"Actions")
-onready var settings_action_apply = settings_actions.get_node(@"Apply")
-onready var settings_action_cancel = settings_actions.get_node(@"Cancel")
+@onready var settings_menu = ui.get_node("Settings")
+@onready var settings_actions = settings_menu.get_node("Actions")
+@onready var settings_action_apply = settings_actions.get_node("Apply")
+@onready var settings_action_cancel = settings_actions.get_node("Cancel")
 
-onready var gi_menu = settings_menu.get_node(@"GI")
-onready var gi_high = gi_menu.get_node(@"High")
-onready var gi_low = gi_menu.get_node(@"Low")
-onready var gi_disabled = gi_menu.get_node(@"Disabled")
+@onready var gi_menu = settings_menu.get_node("GI")
+@onready var gi_high = gi_menu.get_node("High")
+@onready var gi_low = gi_menu.get_node("Low")
+@onready var gi_disabled = gi_menu.get_node("Disabled")
 
-onready var aa_menu = settings_menu.get_node(@"AA")
-onready var aa_8x = aa_menu.get_node(@"8X")
-onready var aa_4x = aa_menu.get_node(@"4X")
-onready var aa_2x = aa_menu.get_node(@"2X")
-onready var aa_disabled = aa_menu.get_node(@"Disabled")
+@onready var aa_menu = settings_menu.get_node("AA")
+@onready var aa_8x = aa_menu.get_node("8X")
+@onready var aa_4x = aa_menu.get_node("4X")
+@onready var aa_2x = aa_menu.get_node("2X")
+@onready var aa_disabled = aa_menu.get_node("Disabled")
 
-onready var ssao_menu = settings_menu.get_node(@"SSAO")
-onready var ssao_high = ssao_menu.get_node(@"High")
-onready var ssao_low = ssao_menu.get_node(@"Low")
-onready var ssao_disabled = ssao_menu.get_node(@"Disabled")
+@onready var ssao_menu = settings_menu.get_node("SSAO")
+@onready var ssao_high = ssao_menu.get_node("High")
+@onready var ssao_low = ssao_menu.get_node("Low")
+@onready var ssao_disabled = ssao_menu.get_node("Disabled")
 
-onready var bloom_menu = settings_menu.get_node(@"Bloom")
-onready var bloom_high = bloom_menu.get_node(@"High")
-onready var bloom_low = bloom_menu.get_node(@"Low")
-onready var bloom_disabled = bloom_menu.get_node(@"Disabled")
+@onready var bloom_menu = settings_menu.get_node("Bloom")
+@onready var bloom_high = bloom_menu.get_node("High")
+@onready var bloom_low = bloom_menu.get_node("Low")
+@onready var bloom_disabled = bloom_menu.get_node("Disabled")
 
-onready var resolution_menu = settings_menu.get_node(@"Resolution")
-onready var resolution_native = resolution_menu.get_node(@"Native")
-onready var resolution_1080 = resolution_menu.get_node(@"1080")
-onready var resolution_720 = resolution_menu.get_node(@"720")
-onready var resolution_540 = resolution_menu.get_node(@"540")
+@onready var resolution_menu = settings_menu.get_node("Resolution")
+@onready var resolution_native = resolution_menu.get_node("Native")
+@onready var resolution_1080 = resolution_menu.get_node("1080")
+@onready var resolution_720 = resolution_menu.get_node("720")
+@onready var resolution_540 = resolution_menu.get_node("540")
 
-onready var fullscreen_menu = settings_menu.get_node(@"Fullscreen")
-onready var fullscreen_yes = fullscreen_menu.get_node(@"Yes")
-onready var fullscreen_no = fullscreen_menu.get_node(@"No")
+@onready var fullscreen_menu = settings_menu.get_node("Fullscreen")
+@onready var fullscreen_yes = fullscreen_menu.get_node("Yes")
+@onready var fullscreen_no = fullscreen_menu.get_node("No")
 
-onready var loading = ui.get_node(@"Loading")
-onready var loading_progress = loading.get_node(@"Progress")
-onready var loading_done_timer = loading.get_node(@"DoneTimer")
+@onready var loading = ui.get_node("Loading")
+@onready var loading_progress = loading.get_node("Progress")
+@onready var loading_done_timer = loading.get_node("DoneTimer")
 
 func _ready():
-	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(1920, 1080))
+	#get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(1920, 1080))
 	play_button.grab_focus()
 
 
-func interactive_load(loader):
+func interactive_load(path):
 	while true:
-		var status = loader.poll()
-		if status == OK:
-			loading_progress.value = (loader.get_stage() * 100) / loader.get_stage_count()
+		var load_progress = []
+		var status = ResourceLoader.load_threaded_get_status(path, load_progress)
+		if status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+			loading_progress.value = load_progress[0] * 100.0
 			continue
-		elif status == ERR_FILE_EOF:
+		elif status == ResourceLoader.THREAD_LOAD_LOADED:
 			loading_progress.value = 100
 			loading_done_timer.start()
 			break
@@ -75,16 +76,15 @@ func interactive_load(loader):
 			break
 
 
-func loading_done(loader):
+func loading_done(path):
 	loading_thread.wait_to_finish()
-	emit_signal("replace_main_scene", loader.get_resource())
-	res_loader = null
+	emit_signal("replace_main_scene", ResourceLoader.load_threaded_get(path))
 	# Weirdly, "res_loader = null" is needed as otherwise
 	# loading the resource again is not possible.
 
 
 func _on_loading_done_timer_timeout():
-	loading_done(res_loader)
+	loading_done(load_path)
 
 
 func _on_play_pressed():
@@ -94,10 +94,11 @@ func _on_play_pressed():
 	if ResourceLoader.has_cached(path):
 		emit_signal("replace_main_scene", ResourceLoader.load(path))
 	else:
-		res_loader = ResourceLoader.load_interactive(path)
-		loading_thread = Thread.new()
-		#warning-ignore:return_value_discarded
-		loading_thread.start(self, "interactive_load", res_loader)
+		#load_path = path
+		#ResourceLoader.load_threaded_request(path)
+		#loading_thread = Thread.new()
+		#loading_thread.start(self, "interactive_load", path)
+		emit_signal("replace_main_scene", ResourceLoader.load(path))
 
 
 func _on_settings_pressed():
@@ -201,7 +202,8 @@ func _on_apply_pressed():
 	Settings.fullscreen = fullscreen_yes.pressed
 
 	# Apply the setting directly
-	OS.window_fullscreen = Settings.fullscreen
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if Settings.fullscreen else DisplayServer.WINDOW_MODE_WINDOWED)
+
 
 	Settings.save_settings()
 

@@ -1,17 +1,17 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
-[ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
+[ext_resource path="res://menu/experiment.hdr" type="Texture2D" id=2]
 [ext_resource path="res://player/model/player.dae" type="PackedScene" id=3]
-[ext_resource path="res://menu/floor.png" type="Texture" id=4]
+[ext_resource path="res://menu/floor.png" type="Texture2D" id=4]
 [ext_resource path="res://menu/menu_intro_music.ogg" type="AudioStream" id=5]
-[ext_resource path="res://menu/tps_demo.png" type="Texture" id=6]
-[ext_resource path="res://menu/button_play.png" type="Texture" id=7]
-[ext_resource path="res://menu/button_play_hover.png" type="Texture" id=8]
-[ext_resource path="res://menu/button_settings.png" type="Texture" id=9]
-[ext_resource path="res://menu/button_settings_hover.png" type="Texture" id=10]
-[ext_resource path="res://menu/button_quit.png" type="Texture" id=11]
-[ext_resource path="res://menu/button_quit_hover.png" type="Texture" id=12]
+[ext_resource path="res://menu/tps_demo.png" type="Texture2D" id=6]
+[ext_resource path="res://menu/button_play.png" type="Texture2D" id=7]
+[ext_resource path="res://menu/button_play_hover.png" type="Texture2D" id=8]
+[ext_resource path="res://menu/button_settings.png" type="Texture2D" id=9]
+[ext_resource path="res://menu/button_settings_hover.png" type="Texture2D" id=10]
+[ext_resource path="res://menu/button_quit.png" type="Texture2D" id=11]
+[ext_resource path="res://menu/button_quit_hover.png" type="Texture2D" id=12]
 [ext_resource path="res://menu/button_font.tres" type="DynamicFont" id=13]
 [ext_resource path="res://menu/button_pressed.tres" type="StyleBox" id=14]
 [ext_resource path="res://menu/button_normal.tres" type="StyleBox" id=15]
@@ -19,51 +19,54 @@
 [ext_resource path="res://menu/button_hover.tres" type="StyleBox" id=17]
 [ext_resource path="res://menu/button_action_pressed.tres" type="StyleBox" id=18]
 
-[sub_resource type="PanoramaSky" id=1]
+[sub_resource type="PanoramaSkyMaterial" id=1]
 panorama = ExtResource( 2 )
 
-[sub_resource type="Environment" id=2]
-background_mode = 3
-background_sky = SubResource( 1 )
+[sub_resource type="Sky" id=2]
+sky_material = SubResource( 1 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 1
+sky = SubResource( 2 )
+ambient_light_source = 3
 glow_enabled = true
-glow_levels/7 = true
+glow_levels/7 = 1.0
 glow_intensity = 0.4
 glow_blend_mode = 1
 glow_hdr_threshold = 0.34
-glow_bicubic_upscale = true
 
-[sub_resource type="QuadMesh" id=3]
+[sub_resource type="QuadMesh" id=4]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="StandardMaterial3D" id=5]
 albedo_texture = ExtResource( 4 )
 metallic = 0.78
 
-[sub_resource type="AnimationNodeBlend2" id=5]
+[sub_resource type="AnimationNodeBlend2" id=6]
 resource_local_to_scene = true
 filter_enabled = true
-filters = [ "Robot_Skeleton/Skeleton:eyelid.d.L", "Robot_Skeleton/Skeleton:eyelid.d.R", "Robot_Skeleton/Skeleton:eyelid.u.L", "Robot_Skeleton/Skeleton:eyelid.u.R", "Robot_Skeleton/Skeleton:eyes" ]
-
-[sub_resource type="AnimationNodeAnimation" id=6]
-resource_local_to_scene = true
-animation = "Idlecombatrest-cycle"
+filters = [ "Robot_Skeleton/Skeleton3D:eyelid.d.L", "Robot_Skeleton/Skeleton3D:eyelid.d.R", "Robot_Skeleton/Skeleton3D:eyelid.u.L", "Robot_Skeleton/Skeleton3D:eyelid.u.R", "Robot_Skeleton/Skeleton3D:eyes", "Robot_Skeleton/Skeleton:eyelid.d.L", "Robot_Skeleton/Skeleton:eyelid.d.R", "Robot_Skeleton/Skeleton:eyelid.u.L", "Robot_Skeleton/Skeleton:eyelid.u.R", "Robot_Skeleton/Skeleton:eyes" ]
 
 [sub_resource type="AnimationNodeAnimation" id=7]
 resource_local_to_scene = true
-animation = "eyes-cycle"
+animation = @"Idlecombatrest-cycle"
 
-[sub_resource type="AnimationNodeBlendTree" id=8]
+[sub_resource type="AnimationNodeAnimation" id=8]
 resource_local_to_scene = true
-graph_offset = Vector2( -260.487, 63.5 )
-nodes/Blend/node = SubResource( 5 )
+animation = @"eyes-cycle"
+
+[sub_resource type="AnimationNodeBlendTree" id=9]
+resource_local_to_scene = true
+graph_offset = Vector2( -351.487, 86.5 )
+nodes/Blend/node = SubResource( 6 )
 nodes/Blend/position = Vector2( 180, 120 )
-nodes/CombatRest/node = SubResource( 6 )
+nodes/CombatRest/node = SubResource( 7 )
 nodes/CombatRest/position = Vector2( -120, 100 )
-nodes/Eyes/node = SubResource( 7 )
+nodes/Eyes/node = SubResource( 8 )
 nodes/Eyes/position = Vector2( -40, 220 )
 nodes/output/position = Vector2( 420, 120 )
-node_connections = [ "output", 0, "Blend", "Blend", 0, "CombatRest", "Blend", 1, "Eyes" ]
+node_connections = [ @"output", 0, @"Blend", @"Blend", 0, @"CombatRest", @"Blend", 1, @"Eyes" ]
 
-[sub_resource type="Theme" id=9]
+[sub_resource type="Theme" id=10]
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -85,26 +88,26 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = ExtResource( 13 )
 Label/styles/normal = null
 
-[sub_resource type="ButtonGroup" id=10]
-
 [sub_resource type="ButtonGroup" id=11]
 
 [sub_resource type="ButtonGroup" id=12]
-
-[sub_resource type="ButtonGroup" id=19]
 
 [sub_resource type="ButtonGroup" id=13]
 
 [sub_resource type="ButtonGroup" id=14]
 
-[sub_resource type="DynamicFontData" id=15]
+[sub_resource type="ButtonGroup" id=15]
+
+[sub_resource type="ButtonGroup" id=16]
+
+[sub_resource type="DynamicFontData" id=17]
 font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=18]
 size = 40
-font_data = SubResource( 15 )
+font_data = SubResource( 17 )
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=19]
 bg_color = Color( 0.278431, 0.278431, 0.360784, 1 )
 border_width_left = 5
 border_width_top = 5
@@ -116,7 +119,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=20]
 bg_color = Color( 0.0901961, 0.0784314, 0.117647, 1 )
 border_width_left = 3
 border_width_top = 3
@@ -128,49 +131,171 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="Menu" type="Spatial"]
+[node name="Menu" type="Node3D"]
 script = ExtResource( 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource( 3 )
+script = null
 
 [node name="PlayerModel" parent="." instance=ExtResource( 3 )]
 
 [node name="Robot_Skeleton" parent="PlayerModel" index="0"]
 transform = Transform( 0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0 )
 
+[node name="Skeleton3D" parent="PlayerModel/Robot_Skeleton" index="0"]
+bones/0/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.68434e-14, 0 )
+bones/1/pose = Transform( 0.999921, -0.00463077, -0.0116468, 0.00584711, 0.994277, 0.106672, 0.0110862, -0.106731, 0.994226, 0.268172, -0.193448, 0.238203 )
+bones/2/pose = Transform( 0.99999, 0.00156333, -0.00414364, -0.00247102, 0.973403, -0.229085, 0.0036753, 0.229093, 0.973398, 1.36154e-05, 0.000286782, -0.0035182 )
+bones/3/pose = Transform( 0.99999, 0.00238038, -0.00373467, -0.00317265, 0.973401, -0.229084, 0.00309002, 0.229094, 0.973399, 1.36152e-05, 0.00100246, -0.00338408 )
+bones/4/pose = Transform( 0.99999, 0.00267197, -0.00353192, -0.00341004, 0.973401, -0.229084, 0.00282586, 0.229094, 0.9734, 1.36355e-05, 0.00127054, -0.00329342 )
+bones/5/pose = Transform( 0.999993, -0.000845859, -0.00366037, 0.000845859, 1, -1.51666e-06, 0.00366037, -1.57951e-06, 0.999993, -4.8487e-08, 6.70552e-08, 8.9407e-08 )
+bones/6/pose = Transform( 0.999066, 0.0244371, -0.0356254, -0.039854, 0.839613, -0.541722, 0.0166734, 0.542636, 0.839803, -4.91642e-09, -2.73143e-07, -2.0325e-07 )
+bones/7/pose = Transform( 0.999891, 0.00272904, -0.0145449, -0.00272721, 0.999996, 0.000145486, 0.0145452, -0.000105803, 0.999894, -4.93851e-08, -0.000460945, 0.012866 )
+bones/8/pose = Transform( 1, 1.38126e-09, 3.94166e-10, -1.38126e-09, 1, -5.71903e-19, -3.94166e-10, 2.74571e-20, 1, 7.19851e-09, 2.38419e-07, -3.27826e-07 )
+bones/9/pose = Transform( 1, -8.4719e-11, -1.052e-10, 8.4719e-11, 1, -1.49012e-08, 1.052e-10, 1.49012e-08, 1, 7.22491e-10, 1.86265e-08, 3.57628e-07 )
+bones/10/pose = Transform( 1, 1.42109e-14, 5.84116e-14, -1.42109e-14, 1, -2.13162e-14, -5.84116e-14, 2.13162e-14, 1, 0, -1.3411e-07, -1.49012e-08 )
+bones/11/pose = Transform( 1, -6.03879e-09, -7.18722e-09, 8.9763e-09, 0.839204, 0.543816, 2.74755e-09, -0.543816, 0.839204, -3.16982e-09, -1.27097e-08, 2.00527e-08 )
+bones/12/pose = Transform( 1, -6.03893e-09, -7.18712e-09, 8.97637e-09, 0.839204, 0.543816, 2.7474e-09, -0.543816, 0.839204, -1.49012e-08, 3.74448e-08, -7.53283e-08 )
+bones/13/pose = Transform( 0.995637, -0.00332791, 0.0932479, 0.0392777, 0.921455, -0.386494, -0.0846376, 0.388471, 0.917566, -1.06204e-08, -2.50232e-07, 5.89223e-09 )
+bones/14/pose = Transform( 1, -1.51001e-08, -1.00282e-08, 1.00183e-08, 0.921455, -0.388485, 1.51067e-08, 0.388485, 0.921455, -7.45058e-09, 1.71855e-08, -3.9568e-08 )
+bones/15/pose = Transform( 0.998265, 0.00734008, -0.0584293, -0.00075445, 0.993714, 0.111944, 0.0588837, -0.111706, 0.991995, 4.4376e-08, -2.5885e-07, 7.89109e-08 )
+bones/16/pose = Transform( 0.756542, -0.333326, 0.562617, -0.398461, 0.44722, 0.800763, -0.518529, -0.829992, 0.205524, -5.85638e-08, 2.35482e-07, 1.46287e-08 )
+bones/17/pose = Transform( 0.817731, -0.0210167, -0.575217, -0.0143468, 0.998278, -0.0568695, 0.575422, 0.0547564, 0.816022, 5.79997e-08, 1.52353e-07, -1.81823e-08 )
+bones/18/pose = Transform( 0.804694, -0.0163248, -0.593466, -0.0165434, 0.998617, -0.049901, 0.59346, 0.049973, 0.803311, -1.6316e-09, -1.13916e-07, -4.64802e-08 )
+bones/19/pose = Transform( 1, -1.97906e-09, 2.23518e-08, 1.97906e-09, 1, -2.24682e-08, -2.23518e-08, 2.24682e-08, 1, 4.47035e-08, 2.22644e-08, -8.9407e-08 )
+bones/20/pose = Transform( 0.941698, 0.0726681, -0.328518, -0.0608106, 0.997078, 0.0462396, 0.330919, -0.0235663, 0.943365, -3.72494e-09, -9.68575e-08, 8.56817e-08 )
+bones/21/pose = Transform( 1, -8.828e-09, 6.26062e-09, 8.828e-09, 1, 2.77214e-08, -6.26062e-09, -2.77214e-08, 1, 0, 1.78814e-07, 1.49012e-08 )
+bones/22/pose = Transform( 0.997254, -0.0740561, -6.50994e-07, 0.0715277, 0.963204, 0.259079, -0.0191858, -0.258368, 0.965856, -3.39933e-08, -2.27243e-07, -2.49594e-07 )
+bones/23/pose = Transform( 1, -1.96419e-06, -3.23857e-07, 1.98724e-06, 0.975347, 0.220677, -1.1758e-07, -0.220677, 0.975347, 2.12021e-08, 1.55531e-07, 7.45058e-09 )
+bones/24/pose = Transform( 1, -1.10416e-05, -1.65139e-06, 1.11461e-05, 0.978878, 0.204432, -6.40754e-07, -0.204431, 0.97888, 2.8871e-08, 7.54371e-08, -1.30385e-07 )
+bones/25/pose = Transform( 1, 2.92092e-08, -1.99063e-08, -2.61766e-08, 0.990397, 0.138253, 2.37534e-08, -0.138253, 0.990397, 2.98023e-08, -8.19564e-08, -7.45058e-09 )
+bones/26/pose = Transform( 0.999972, -5.03844e-07, -4.20833e-05, 5.03846e-07, 1, 3.86533e-07, 4.20808e-05, -3.86543e-07, 1.00003, -1.9744e-07, 1.67696e-07, 0 )
+bones/27/pose = Transform( 1.00003, 4.05584e-07, -7.48001e-06, -4.05592e-07, 1, 5.82524e-07, 7.48042e-06, -5.82536e-07, 0.999974, 7.45058e-08, 2.69152e-07, -8.9407e-08 )
+bones/28/pose = Transform( 1, -2.64222e-09, 9.31322e-09, 2.64222e-09, 1, 1.63145e-08, -9.31322e-09, -1.63145e-08, 1, 9.31323e-10, -1.04308e-07, 5.96046e-08 )
+bones/29/pose = Transform( 0.999698, -0.0245565, -1.12434e-06, 0.0237303, 0.966051, 0.257259, -0.00631631, -0.257182, 0.966342, 1.35042e-08, 1.45286e-07, -4.91738e-07 )
+bones/30/pose = Transform( 0.999794, -0.0202866, -6.45173e-07, 0.0187922, 0.926129, 0.376738, -0.00764215, -0.376661, 0.926319, 5.24306e-08, -2.58675e-07, 2.5332e-07 )
+bones/31/pose = Transform( 1, -1.05126e-05, -3.66828e-06, 1.11162e-05, 0.9239, 0.382628, -6.333e-07, -0.382627, 0.923901, -5.82077e-08, 1.95578e-08, 7.45058e-08 )
+bones/32/pose = Transform( 1, 2.34984e-09, 2.01408e-08, -2.34984e-09, 1, 1.18234e-09, -2.01408e-08, -1.18234e-09, 1, 4.47035e-08, 3.57628e-07, -2.98023e-08 )
+bones/33/pose = Transform( 0.999881, 0.0154191, -3.8743e-07, -0.0152107, 0.98637, 0.163838, 0.00252661, -0.163819, 0.986487, 9.0804e-09, -8.19564e-08, 2.12342e-07 )
+bones/34/pose = Transform( 0.999992, 0.00410412, -1.11782e-06, -0.0033659, 0.820275, 0.571959, 0.00234831, -0.571954, 0.820282, 2.46073e-08, 3.23169e-07, -1.75089e-07 )
+bones/35/pose = Transform( 1, -8.84103e-06, -6.56835e-06, 1.09877e-05, 0.759649, 0.650331, -7.59951e-07, -0.650329, 0.75965, 1.04774e-07, -1.22935e-07, -2.04891e-07 )
+bones/36/pose = Transform( 1, 3.70472e-09, 1.40039e-09, -3.70472e-09, 1, -2.9801e-08, -1.40039e-09, 2.9801e-08, 1, 2.79397e-09, 2.75671e-07, 2.98023e-08 )
+bones/37/pose = Transform( 0.93287, 0.0028905, -0.360186, 0.00294304, 0.999873, 0.0156465, 0.360182, -0.0156563, 0.93275, 1.77672e-07, -1.29537e-07, -2.99568e-08 )
+bones/38/pose = Transform( 0.779144, -0.241765, 0.578346, -0.241765, 0.735347, 0.633099, -0.578346, -0.633099, 0.514491, -2.9733e-08, -9.21197e-08, -1.34703e-07 )
+bones/39/pose = Transform( 0.622551, -0.0477058, 0.781124, -0.0477057, 0.99397, 0.0987262, -0.781124, -0.0987262, 0.616521, -2.25908e-07, -1.60871e-08, -4.27074e-07 )
+bones/40/pose = Transform( 0.94294, -0.0843122, 0.322109, -0.0843122, 0.875418, 0.475957, -0.322109, -0.475957, 0.818359, 3.54549e-08, -1.20238e-07, 2.17865e-07 )
+bones/41/pose = Transform( 0.996551, 0.0437316, 0.0705314, -0.0530533, 0.989256, 0.136231, -0.063816, -0.139503, 0.988163, -4.0533e-08, -1.87049e-07, 3.9713e-08 )
+bones/42/pose = Transform( 0.680765, 0.256483, 0.686131, -0.462031, 0.877209, 0.130507, -0.568408, -0.405858, 0.715676, -2.21995e-07, -3.38622e-07, -4.01905e-08 )
+bones/43/pose = Transform( 0.761932, 0.294541, 0.576806, 0.0459079, 0.863802, -0.501735, -0.646028, 0.408768, 0.644637, 1.59614e-08, 5.51343e-07, -9.26881e-08 )
+bones/44/pose = Transform( 0.838076, 0.154357, 0.523261, 0.0757711, 0.916909, -0.391837, -0.540266, 0.368037, 0.756744, 2.20097e-08, 1.44062e-07, -2.07112e-07 )
+bones/45/pose = Transform( 1, 2.40252e-08, 1.49012e-08, -2.40252e-08, 1, -4.65662e-09, -1.49012e-08, 4.65662e-09, 1, 4.47035e-08, -4.84288e-08, 8.9407e-08 )
+bones/46/pose = Transform( 0.999985, 0.00552822, 0.000286092, 0.00552822, -0.999985, 2.51619e-06, 0.000286102, -9.3457e-07, -1, 3.25963e-09, 3.42727e-07, 1.04308e-07 )
+bones/47/pose = Transform( 0.737175, -0.017528, -0.208751, 0.0246372, 0.765629, 0.0227158, 0.208032, -0.0285617, 0.737033, 1.86256e-08, -2.34693e-07, -2.00234e-08 )
+bones/48/pose = Transform( 1, -3.93046e-08, -1.23347e-08, 3.93046e-08, 1, 6.28052e-09, 1.23347e-08, -6.28052e-09, 1, 7.45058e-09, -2.08616e-07, -1.19209e-07 )
+bones/49/pose = Transform( 0.994105, 0.0108316, 0.107743, -0.0439831, 0.94961, 0.310362, -0.0989502, -0.313279, 0.944492, -7.45058e-09, -1.22935e-07, 2.23517e-08 )
+bones/50/pose = Transform( 0.997527, 0.069453, 0.0108002, 0.00974878, -0.28888, 0.957315, 0.0696088, -0.954836, -0.288845, -1.15397e-08, 2.92202e-07, 1.45286e-07 )
+bones/51/pose = Transform( 0.952644, 0.19799, -0.230741, 0.135224, 0.403852, 0.904745, 0.272315, -0.893176, 0.357934, 1.18744e-07, -7.35745e-08, -1.30385e-07 )
+bones/52/pose = Transform( 1, 8.81477e-09, 8.22141e-08, -6.99021e-08, 0.621216, 0.783639, -4.41651e-08, -0.783639, 0.621216, 4.47035e-08, 8.19564e-08, 0 )
+bones/53/pose = Transform( 0.880617, 0.00904365, -0.473735, -0.00709168, 0.999957, 0.00590658, 0.473766, -0.00184186, 0.880648, -7.45058e-08, -2.16241e-07, -2.98023e-08 )
+bones/54/pose = Transform( -0.332433, -0.0128943, -0.943006, -0.0141965, 0.999857, -0.00866704, 0.943083, 0.0105059, -0.332537, 7.07805e-08, 7.59319e-08, 3.83705e-07 )
+bones/55/pose = Transform( 1, -2.48254e-08, 1.49012e-08, 2.48254e-08, 1, 3.1138e-08, -1.49012e-08, -3.1138e-08, 1, 2.51457e-08, -2.98023e-08, -5.96046e-08 )
+bones/56/pose = Transform( 0.994104, 0.0108332, 0.107737, -0.0439818, 0.949612, 0.310357, -0.0989433, -0.313274, 0.944495, 2.11876e-08, -2.94298e-07, -2.23517e-08 )
+bones/57/pose = Transform( 0.997527, 0.0694562, 0.0107965, 0.00975323, -0.288879, 0.957315, 0.0696109, -0.954834, -0.288845, 5.13392e-08, -8.77772e-08, -3.65078e-07 )
+bones/58/pose = Transform( 0.952647, 0.197993, -0.230734, 0.135224, 0.403829, 0.904756, 0.272311, -0.893186, 0.357913, -4.07043e-08, 4.83239e-08, 7.47685e-08 )
+bones/59/pose = Transform( 1, -5.79904e-09, 2.43474e-08, 5.79904e-09, 1, 1.23587e-08, -2.43474e-08, -1.23587e-08, 1, 1.49012e-08, -8.9407e-08, -1.93715e-07 )
+bones/60/pose = Transform( 0.994105, 0.0108307, 0.107743, -0.0439828, 0.949607, 0.31037, -0.0989494, -0.313287, 0.944489, 5.37476e-10, -1.34721e-07, 6.21653e-08 )
+bones/61/pose = Transform( 0.997527, 0.0694555, 0.0107988, 0.00975132, -0.288887, 0.957313, 0.0696108, -0.954833, -0.288851, -5.8164e-08, -2.63099e-08, 2.23517e-07 )
+bones/62/pose = Transform( 0.952645, 0.19799, -0.230739, 0.135223, 0.403853, 0.904744, 0.272313, -0.893176, 0.357936, -2.93367e-08, 5.4948e-08, -2.01166e-07 )
+bones/63/pose = Transform( 1, 1.69675e-08, -1.11788e-08, -1.69675e-08, 1, 2.98036e-08, 1.11788e-08, -2.98036e-08, 1, -3.72529e-09, -7.45058e-08, 5.96046e-08 )
+bones/64/pose = Transform( 0.969976, -0.00991883, -0.242894, -0.00978108, 0.996806, -0.0797632, 0.242895, 0.07975, 0.966762, -5.50767e-10, -8.94628e-08, -1.7145e-08 )
+bones/65/pose = Transform( 1, 2.9839e-08, 5.83372e-09, -2.9839e-08, 1, -3.70852e-08, -5.83372e-09, 3.70852e-08, 1, -2.23517e-08, -2.23517e-07, 4.93611e-08 )
+bones/66/pose = Transform( 1, -7.89668e-09, 8.88918e-09, 7.89668e-09, 1, -6.47576e-09, -8.88918e-09, 6.47576e-09, 1, 3.27826e-07, -3.72529e-09, 3.72529e-08 )
+bones/67/pose = Transform( 1, 4.47616e-08, -1.36109e-09, -4.47616e-08, 1, -1.7342e-08, 1.36109e-09, 1.7342e-08, 1, 2.98023e-08, -1.86265e-07, 1.67638e-07 )
+bones/68/pose = Transform( 1, 3.1905e-08, -1.19737e-08, -3.1905e-08, 1, 3.24026e-08, 1.19737e-08, -3.24026e-08, 1, 7.15256e-07, 5.58794e-07, 3.37353e-05 )
+bones/69/pose = Transform( 1, 3.1905e-08, -1.19735e-08, -3.1905e-08, 1, 3.24028e-08, 1.19735e-08, -3.24028e-08, 1, -6.4075e-07, 1.11014e-06, -3.34848e-05 )
+bones/70/pose = Transform( 1, -3.31784e-09, -1.49012e-08, 3.31784e-09, 1, 7.10134e-09, 1.49012e-08, -7.10134e-09, 1, 1.86265e-08, -1.86614e-07, 2.45869e-07 )
+bones/71/pose = Transform( 1, -8.76489e-16, -4.18368e-09, 8.88179e-16, 1, 2.79396e-09, 4.18368e-09, -2.79396e-09, 1, 2.42144e-08, 1.93715e-07, 6.51926e-09 )
+bones/72/pose = Transform( 0.999998, 0.00107648, 0.00143883, -0.000519455, 0.939694, -0.342016, -0.00172023, 0.342015, 0.939693, -1.86265e-08, 2.98023e-08, 5.96046e-08 )
+bones/73/pose = Transform( 1, -8.62158e-16, -9.31322e-09, 8.88178e-16, 1, 2.79396e-09, 9.31322e-09, -2.79396e-09, 1, 7.45058e-09, 5.96046e-08, -2.08616e-07 )
+bones/74/pose = Transform( 1, -8.76489e-16, -4.18368e-09, 8.88179e-16, 1, 2.79396e-09, 4.18368e-09, -2.79396e-09, 1, 7.45058e-09, 2.68221e-07, -5.05242e-08 )
+bones/75/pose = Transform( 1, -8.62158e-16, -9.31322e-09, 8.88178e-16, 1, 2.79396e-09, 9.31322e-09, -2.79396e-09, 1, 4.47035e-08, -1.08033e-07, -9.68575e-08 )
+bones/76/pose = Transform( 1, 1.6764e-08, -7.45058e-09, -1.6764e-08, 1, -5.42058e-09, 7.45058e-09, 5.42058e-09, 1, 2.70084e-08, 5.96046e-08, 1.02737e-07 )
+bones/77/pose = Transform( 0.872566, 0.134981, 0.469477, 0.134981, 0.857026, -0.49728, -0.469477, 0.49728, 0.729592, -1.77789e-07, -1.37272e-07, -2.38691e-07 )
+bones/78/pose = Transform( 0.986693, 0.0231015, 0.160945, 0.0231016, 0.959895, -0.279406, -0.160945, 0.279406, 0.946588, -3.07368e-09, 9.26881e-08, -3.0609e-07 )
+bones/79/pose = Transform( 0.908585, 0.0379418, 0.415973, 0.037942, 0.984252, -0.17265, -0.415973, 0.17265, 0.892837, -3.21264e-07, -1.74028e-07, 2.29677e-08 )
+bones/80/pose = Transform( 0.982455, 0.000210353, 0.1865, -6.28848e-05, 1, -0.000796631, -0.1865, 0.000770926, 0.982455, -6.27159e-09, -9.77458e-08, -2.95752e-07 )
+bones/81/pose = Transform( 0.895403, -0.137577, 0.423468, -0.137577, 0.819044, 0.556992, -0.423468, -0.556992, 0.714447, -2.13045e-08, -2.27114e-07, 4.52965e-08 )
+bones/82/pose = Transform( 0.987084, -0.000854292, -0.160186, -0.000858718, 0.999943, -0.0106244, 0.160186, 0.0106247, 0.987029, -5.32467e-08, 1.17056e-07, -4.77123e-08 )
+bones/83/pose = Transform( 0.943634, 0.00183705, 0.330985, 0.00183732, 0.999939, -0.0107881, -0.330985, 0.0107881, 0.943574, -1.62886e-07, 8.65372e-08, 1.01027e-07 )
+bones/84/pose = Transform( 0.931149, -0.200077, 0.304846, -0.200077, 0.418589, 0.885863, -0.304846, -0.885862, 0.349738, -7.80592e-08, -1.02451e-09, 3.33558e-08 )
+bones/85/pose = Transform( 0.995731, -0.0533156, 0.0753499, 0.0655022, 0.983292, -0.169845, -0.0650356, 0.174055, 0.982586, 8.56817e-08, -3.72529e-09, -2.98023e-08 )
+bones/86/pose = Transform( 0.94235, -0.0430722, 0.331845, -0.0430723, 0.967819, 0.247933, -0.331845, -0.247933, 0.910169, -1.02804e-07, -9.8978e-08, 0 )
+bones/87/pose = Transform( 0.972537, -0.0102653, 0.232515, -0.0102612, 0.996163, 0.0868992, -0.232515, -0.0868987, 0.968702, 7.77869e-08, -7.45386e-08, 4.78546e-09 )
+bones/88/pose = Transform( 0.814899, -0.0251596, 0.579056, -0.0251604, 0.996579, 0.0787085, -0.579057, -0.0787087, 0.811478, 1.6316e-07, 2.21876e-07, 1.52429e-07 )
+bones/89/pose = Transform( 0.986483, -0.0327353, 0.16056, -0.0327362, 0.920719, 0.388851, -0.160559, -0.388851, 0.907202, 4.115e-08, -9.14557e-08, -4.25831e-08 )
+bones/90/pose = Transform( 0.995325, 0.0739165, 0.0621597, -0.0701675, 0.9957, -0.0604769, -0.0663627, 0.0558326, 0.996232, 1.49012e-08, 4.93601e-08, 3.72529e-08 )
+bones/91/pose = Transform( 1, -7.77782e-10, -2.24342e-09, 7.77782e-10, 1, 1.49012e-08, 2.24342e-09, -1.49012e-08, 1, -2.35159e-08, -2.98023e-08, -2.68221e-07 )
+bones/92/pose = Transform( 1, -8.28848e-10, -2.22506e-09, 8.28848e-10, 1, 1.49012e-08, 2.22506e-09, -1.49012e-08, 1, -1.00117e-08, -2.98023e-08, -8.9407e-08 )
+bones/93/pose = Transform( 1, -8.28848e-10, -2.22506e-09, 8.28848e-10, 1, 1.49012e-08, 2.22506e-09, -1.49012e-08, 1, -1.58325e-08, -1.19209e-07, -1.04308e-07 )
+bones/94/pose = Transform( 0.999998, -0.000204171, -0.00215083, 0.00048581, 0.99128, 0.131772, 0.00210517, -0.131773, 0.991278, 1.63595e-08, -4.97613e-08, 2.23654e-07 )
+bones/95/pose = Transform( 0.999998, -0.000345124, 0.00189059, 0.000549785, 0.994004, -0.109346, -0.00184152, 0.109347, 0.994002, -3.27966e-08, -1.31244e-08, -1.11708e-07 )
+bones/96/pose = Transform( 0.999975, -0.00707621, 4.89494e-05, 0.00697114, 0.986269, 0.164997, -0.00121583, -0.164992, 0.986294, -0.00475323, -0.018718, -0.0325594 )
+bones/97/pose = Transform( 0.999976, -0.00692654, 6.8685e-08, 0.00683153, 0.986262, 0.165049, -0.00114328, -0.165045, 0.986285, -0.00473434, -0.0186665, -0.032556 )
+bones/98/pose = Transform( 0.881051, -0.00748117, -0.472966, 0.253417, 0.851741, 0.458609, 0.399409, -0.52391, 0.752331, 3.30834e-08, -2.98023e-08, 1.02052e-07 )
+bones/99/pose = Transform( 1, -7.29601e-07, -1.54809e-06, 3.66979e-08, 0.913504, -0.406824, 1.71101e-06, 0.406823, 0.913507, -5.15927e-09, -1.00593e-08, -2.30672e-07 )
+bones/100/pose = Transform( 1, 1.38987e-08, 3.46404e-08, -1.88692e-09, 0.94572, -0.324978, -3.72769e-08, 0.324978, 0.945721, -2.52825e-08, 5.87072e-08, 7.48023e-08 )
+bones/101/pose = Transform( 0.938616, -0.279886, 0.201652, 0.273105, 0.96003, 0.0612832, -0.210745, -0.0024492, 0.977537, 1.48326e-08, -2.98023e-08, 1.9959e-08 )
+bones/102/pose = Transform( 1, -1.33025e-09, 7.36788e-09, 1.33025e-09, 1, -5.96046e-08, -7.36788e-09, 5.96046e-08, 1, 3.02537e-08, 2.98023e-08, -1.49012e-08 )
+bones/103/pose = Transform( 1, -2.11532e-08, 2.09932e-08, 2.11532e-08, 1, 2.98024e-08, -2.09932e-08, -2.98024e-08, 1, -4.56348e-08, 5.96046e-08, -2.98023e-08 )
+bones/104/pose = Transform( 1, -1.22927e-07, 8.52996e-07, -1.43296e-07, 0.95232, 0.305221, -8.49811e-07, -0.305233, 0.952282, 4.18081e-08, 1.10276e-08, -1.58103e-07 )
+bones/105/pose = Transform( 0.906633, 0.0990949, 0.410118, -0.185864, 0.966435, 0.177367, -0.378776, -0.237033, 0.89462, -1.81823e-08, -4.30629e-08, 1.43474e-07 )
+bones/106/pose = Transform( 1, -7.58432e-07, -9.78774e-07, 1.48718e-07, 0.858303, -0.513141, 1.22927e-06, 0.51314, 0.858305, 3.33158e-08, -9.68385e-10, -2.08616e-07 )
+bones/107/pose = Transform( 1, -1.03486e-08, -2.84351e-08, -1.15922e-09, 0.925911, -0.377742, 3.02374e-08, 0.377742, 0.925911, 1.46274e-08, 4.32367e-09, 9.83619e-08 )
+bones/108/pose = Transform( 0.932795, 0.23988, -0.268978, -0.106357, 0.896302, 0.430501, 0.344354, -0.372962, 0.861579, 0.0286197, -0.0015638, -0.0024291 )
+bones/109/pose = Transform( 1, 6.14312e-09, -3.38892e-08, -1.0298e-08, 0.992282, -0.124, 3.2866e-08, 0.124, 0.992282, -3.17939e-09, 1.49012e-08, -1.49012e-08 )
+bones/110/pose = Transform( 1, 2.62016e-08, 3.69782e-08, -2.62016e-08, 1, -7.3182e-16, -3.69782e-08, -2.37068e-16, 1, -2.23517e-08, 0, 5.96046e-08 )
+bones/111/pose = Transform( 1, -2.4512e-07, 1.09099e-06, -1.92287e-07, 0.923475, 0.383728, -1.10152e-06, -0.383736, 0.923457, -3.96503e-08, 1.68379e-08, 0.000705866 )
+
 [node name="SoundEffects" type="Node" parent="."]
+script = null
 __meta__ = {
 "_editor_description_": "There must be an AudioStreamPlayer node at the path \"SoundEffects/Step\" next to the player model, anywhere that the player model is instanced. This is to prevent the animation from deleting the step from the track."
 }
 
 [node name="Step" type="AudioStreamPlayer" parent="SoundEffects"]
+script = null
 __meta__ = {
 "_editor_description_": "There must be an AudioStreamPlayer node at the path \"SoundEffects/Step\" next to the player model, anywhere that the player model is instanced. This is to prevent the animation from deleting the step from the track."
 }
 
-[node name="Floor" type="MeshInstance" parent="."]
+[node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform( 15, 0, 0, 0, 0, 15, 0, -15, 0, 0, 0, 0 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+script = null
 
-[node name="SpotLight" type="SpotLight" parent="."]
+[node name="SpotLight" type="SpotLight3D" parent="."]
 transform = Transform( 0.967027, 0, 0.254675, -0.225291, 0.466312, 0.855452, -0.118758, -0.88462, 0.450936, 0.557445, 2.31204, 0.556668 )
 shadow_enabled = true
 shadow_bias = 0.01
+script = null
 
-[node name="Camera" type="Camera" parent="."]
+[node name="Camera" type="Camera3D" parent="."]
 transform = Transform( 0.871624, -0.0363083, 0.488828, 0, 0.997253, 0.0740721, -0.490175, -0.064563, 0.86923, 0.0702285, 1.22404, 2.09675 )
+script = null
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 autoplay = true
+script = null
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 8 )
+tree_root = SubResource( 9 )
 anim_player = NodePath("../PlayerModel/AnimationPlayer")
 active = true
 parameters/Blend/blend_amount = 1.0
+script = null
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 20.1403
@@ -178,6 +303,7 @@ margin_top = 5.03506
 margin_right = 1044.14
 margin_bottom = 238.035
 texture = ExtResource( 6 )
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -186,7 +312,8 @@ __meta__ = {
 anchor_left = 0.00106799
 anchor_right = 1.00107
 anchor_bottom = 1.0
-theme = SubResource( 9 )
+theme = SubResource( 10 )
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -200,6 +327,7 @@ margin_left = -4.10107
 margin_top = 2.05054
 margin_right = -4.10107
 margin_bottom = 2.05054
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -212,6 +340,7 @@ margin_bottom = 440.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 8 )
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -224,6 +353,7 @@ margin_bottom = 540.0
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 10 )
+script = null
 
 [node name="Quit" type="TextureButton" parent="UI/Main"]
 margin_left = 100.0
@@ -233,6 +363,7 @@ margin_bottom = 640.0
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
+script = null
 
 [node name="Settings" type="VBoxContainer" parent="UI"]
 visible = false
@@ -241,6 +372,7 @@ anchor_top = 0.32037
 anchor_right = 0.808854
 anchor_bottom = 0.785185
 custom_constants/separation = 30
+script = null
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -249,6 +381,7 @@ __meta__ = {
 margin_right = 1342.0
 margin_bottom = 57.0
 custom_constants/separation = 30
+script = null
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -261,6 +394,7 @@ margin_bottom = 55.0
 rect_min_size = Vector2( 400, 0 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Global Illumination:"
+script = null
 
 [node name="High" type="Button" parent="UI/Settings/GI"]
 margin_left = 430.0
@@ -269,8 +403,9 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 10 )
+group = SubResource( 11 )
 text = "High"
+script = null
 
 [node name="Low" type="Button" parent="UI/Settings/GI"]
 margin_left = 744.0
@@ -278,8 +413,9 @@ margin_right = 1028.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 10 )
+group = SubResource( 11 )
 text = "Low"
+script = null
 
 [node name="Disabled" type="Button" parent="UI/Settings/GI"]
 margin_left = 1058.0
@@ -287,14 +423,16 @@ margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 10 )
+group = SubResource( 11 )
 text = "Disabled"
+script = null
 
 [node name="AA" type="HBoxContainer" parent="UI/Settings"]
 margin_top = 87.0
 margin_right = 1342.0
 margin_bottom = 144.0
 custom_constants/separation = 30
+script = null
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -307,6 +445,7 @@ rect_min_size = Vector2( 400, 0 )
 size_flags_vertical = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Anti Aliasing:"
+script = null
 
 [node name="8X" type="Button" parent="UI/Settings/AA"]
 margin_left = 430.0
@@ -315,8 +454,9 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 11 )
+group = SubResource( 12 )
 text = "8x"
+script = null
 
 [node name="4X" type="Button" parent="UI/Settings/AA"]
 margin_left = 665.0
@@ -324,8 +464,9 @@ margin_right = 870.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 11 )
+group = SubResource( 12 )
 text = "4x"
+script = null
 
 [node name="2X" type="Button" parent="UI/Settings/AA"]
 margin_left = 900.0
@@ -333,8 +474,9 @@ margin_right = 1105.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 11 )
+group = SubResource( 12 )
 text = "2x"
+script = null
 
 [node name="Disabled" type="Button" parent="UI/Settings/AA"]
 margin_left = 1135.0
@@ -342,14 +484,16 @@ margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 11 )
+group = SubResource( 12 )
 text = "Disabled"
+script = null
 
 [node name="SSAO" type="HBoxContainer" parent="UI/Settings"]
 margin_top = 174.0
 margin_right = 1342.0
 margin_bottom = 231.0
 custom_constants/separation = 30
+script = null
 __meta__ = {
 "_edit_group_": true
 }
@@ -361,6 +505,7 @@ rect_min_size = Vector2( 400, 0 )
 size_flags_vertical = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "SSAO:"
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -372,8 +517,9 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 12 )
+group = SubResource( 13 )
 text = "High"
+script = null
 
 [node name="Low" type="Button" parent="UI/Settings/SSAO"]
 margin_left = 744.0
@@ -381,8 +527,9 @@ margin_right = 1028.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 12 )
+group = SubResource( 13 )
 text = "Low"
+script = null
 
 [node name="Disabled" type="Button" parent="UI/Settings/SSAO"]
 margin_left = 1058.0
@@ -390,14 +537,16 @@ margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 12 )
+group = SubResource( 13 )
 text = "Disabled"
+script = null
 
 [node name="Bloom" type="HBoxContainer" parent="UI/Settings"]
 margin_top = 174.0
 margin_right = 1342.0
 margin_bottom = 231.0
 custom_constants/separation = 30
+script = null
 __meta__ = {
 "_edit_group_": true
 }
@@ -409,6 +558,7 @@ rect_min_size = Vector2( 400, 0 )
 size_flags_vertical = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Bloom:"
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -420,8 +570,9 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 19 )
+group = SubResource( 14 )
 text = "High"
+script = null
 
 [node name="Low" type="Button" parent="UI/Settings/Bloom"]
 margin_left = 744.0
@@ -429,8 +580,9 @@ margin_right = 1028.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 19 )
+group = SubResource( 14 )
 text = "Low"
+script = null
 
 [node name="Disabled" type="Button" parent="UI/Settings/Bloom"]
 margin_left = 1058.0
@@ -438,14 +590,16 @@ margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 19 )
+group = SubResource( 14 )
 text = "Disabled"
+script = null
 
 [node name="Resolution" type="HBoxContainer" parent="UI/Settings"]
 margin_top = 261.0
 margin_right = 1342.0
 margin_bottom = 318.0
 custom_constants/separation = 30
+script = null
 __meta__ = {
 "_edit_group_": true
 }
@@ -457,6 +611,7 @@ margin_bottom = 55.0
 rect_min_size = Vector2( 400, 0 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Resolution:"
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -468,8 +623,9 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 13 )
+group = SubResource( 15 )
 text = "Native"
+script = null
 
 [node name="1080" type="Button" parent="UI/Settings/Resolution"]
 margin_left = 665.0
@@ -477,8 +633,9 @@ margin_right = 870.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 13 )
+group = SubResource( 15 )
 text = "1080"
+script = null
 
 [node name="720" type="Button" parent="UI/Settings/Resolution"]
 margin_left = 900.0
@@ -486,8 +643,9 @@ margin_right = 1105.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 13 )
+group = SubResource( 15 )
 text = "720"
+script = null
 
 [node name="540" type="Button" parent="UI/Settings/Resolution"]
 margin_left = 1135.0
@@ -495,14 +653,16 @@ margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 13 )
+group = SubResource( 15 )
 text = "540"
+script = null
 
 [node name="Fullscreen" type="HBoxContainer" parent="UI/Settings"]
 margin_top = 348.0
 margin_right = 1342.0
 margin_bottom = 405.0
 custom_constants/separation = 30
+script = null
 
 [node name="Label" type="Label" parent="UI/Settings/Fullscreen"]
 margin_top = 2.0
@@ -511,6 +671,7 @@ margin_bottom = 55.0
 rect_min_size = Vector2( 400, 0 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Fullscreen"
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -522,8 +683,9 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 14 )
+group = SubResource( 16 )
 text = "Yes"
+script = null
 
 [node name="No" type="Button" parent="UI/Settings/Fullscreen"]
 margin_left = 901.0
@@ -531,8 +693,9 @@ margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 14 )
+group = SubResource( 16 )
 text = "No"
+script = null
 
 [node name="HSeparator" type="HSeparator" parent="UI/Settings"]
 modulate = Color( 1, 1, 1, 0 )
@@ -540,12 +703,14 @@ margin_top = 435.0
 margin_right = 1342.0
 margin_bottom = 455.0
 rect_min_size = Vector2( 0, 20 )
+script = null
 
 [node name="Actions" type="HBoxContainer" parent="UI/Settings"]
 margin_top = 485.0
 margin_right = 1342.0
 margin_bottom = 542.0
 custom_constants/separation = 50
+script = null
 
 [node name="Apply" type="Button" parent="UI/Settings/Actions"]
 margin_right = 646.0
@@ -553,11 +718,12 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 custom_styles/hover = ExtResource( 18 )
 custom_styles/pressed = ExtResource( 18 )
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 text = "Apply"
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -569,11 +735,12 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 custom_styles/hover = ExtResource( 18 )
 custom_styles/pressed = ExtResource( 18 )
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 text = "Cancel"
+script = null
 
 [node name="Loading" type="HBoxContainer" parent="UI"]
 visible = false
@@ -585,6 +752,7 @@ margin_top = -135.0
 margin_right = -130.0
 margin_bottom = -100.0
 custom_constants/separation = 100
+script = null
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -595,6 +763,7 @@ margin_right = 168.0
 margin_bottom = 53.0
 custom_fonts/font = ExtResource( 13 )
 text = "Loading..."
+script = null
 
 [node name="Progress" type="ProgressBar" parent="UI/Loading"]
 margin_left = 268.0
@@ -602,8 +771,9 @@ margin_right = 1690.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_styles/fg = SubResource( 17 )
-custom_styles/bg = SubResource( 18 )
+custom_styles/fg = SubResource( 19 )
+custom_styles/bg = SubResource( 20 )
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -611,6 +781,8 @@ __meta__ = {
 [node name="DoneTimer" type="Timer" parent="UI/Loading"]
 wait_time = 0.5
 one_shot = true
+script = null
+
 [connection signal="pressed" from="UI/Main/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="UI/Main/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="UI/Main/Quit" to="." method="_on_quit_pressed"]

@@ -1,7 +1,7 @@
 extends Node
 
 func _ready():
-	OS.window_fullscreen = Settings.fullscreen
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if Settings.fullscreen else DisplayServer.WINDOW_MODE_WINDOWED)
 	go_to_main_menu()
 
 
@@ -22,5 +22,5 @@ func change_scene(resource : Resource):
 		child.queue_free()
 	add_child(node)
 
-	node.connect("quit", self, "go_to_main_menu")
-	node.connect("replace_main_scene", self, "replace_main_scene")
+	node.connect("quit", go_to_main_menu)
+	node.connect("replace_main_scene", replace_main_scene)

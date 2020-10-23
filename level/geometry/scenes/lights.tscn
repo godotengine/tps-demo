@@ -2,7 +2,8 @@
 
 [ext_resource path="res://level/geometry/models/lights.glb" type="PackedScene" id=1]
 
-[node name="Lights" type="Spatial"]
+[node name="Lights" type="Node3D"]
+script = null
 
 [node name="LightsModel" parent="." instance=ExtResource( 1 )]
 

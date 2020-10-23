@@ -2,14 +2,14 @@
 
 importer="wavefront_obj"
 type="Mesh"
-path="res://.import/part_head.obj-7a8f612f76d91bb53e5cdc56fcf4ec21.mesh"
+path="res://.godot/imported/part_head.obj-7a8f612f76d91bb53e5cdc56fcf4ec21.mesh"
 
 [deps]
 
-files=[ "res://.import/part_head.obj-7a8f612f76d91bb53e5cdc56fcf4ec21.mesh" ]
+files=[ "res://.godot/imported/part_head.obj-7a8f612f76d91bb53e5cdc56fcf4ec21.mesh" ]
 
 source_file="res://enemies/red_robot/parts/part_head.obj"
-dest_files=[ "res://.import/part_head.obj-7a8f612f76d91bb53e5cdc56fcf4ec21.mesh", "res://.import/part_head.obj-7a8f612f76d91bb53e5cdc56fcf4ec21.mesh" ]
+dest_files=[ "res://.godot/imported/part_head.obj-7a8f612f76d91bb53e5cdc56fcf4ec21.mesh", "res://.godot/imported/part_head.obj-7a8f612f76d91bb53e5cdc56fcf4ec21.mesh" ]
 
 [params]
 

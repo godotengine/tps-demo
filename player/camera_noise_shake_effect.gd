@@ -1,4 +1,4 @@
-extends Camera
+extends Camera3D
 
 # Constant values of the effect.
 const SPEED = 1.0

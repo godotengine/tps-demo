@@ -2,17 +2,17 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/player.dae-92e1e0573104b21fc5d660846ac0ca65.scn"
+path="res://.godot/imported/player.dae-92e1e0573104b21fc5d660846ac0ca65.scn"
 
 [deps]
 
 source_file="res://player/model/player.dae"
-dest_files=[ "res://.import/player.dae-92e1e0573104b21fc5d660846ac0ca65.scn" ]
+dest_files=[ "res://.godot/imported/player.dae-92e1e0573104b21fc5d660846ac0ca65.scn" ]
 
 [params]
 
-nodes/root_type="Spatial"
-nodes/root_name="PlayerModel"
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0

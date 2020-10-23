@@ -7,6 +7,7 @@ Check out this demo on the asset library: https://godotengine.org/asset-library/
 ![Screenshot of TPS demo](screenshots/screenshot.png)
 
 ## Godot versions
+- The [`4.0`](https://github.com/Syntaxxor/tps-demo) branch is compatible with Godot 4.0, which must be built from source.
 
 - The [`master`](https://github.com/godotengine/tps-demo) branch is compatible with the latest stable Godot version (currently 3.2.x that is at least 3.2.2).
 - If you are using an older version of Godot, use the appropriate branch for your Godot version:

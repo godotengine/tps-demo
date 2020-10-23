@@ -2,8 +2,8 @@
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/model/player.dae" type="PackedScene" id=2]
-[ext_resource path="res://player/crosshair.png" type="Texture" id=3]
-[ext_resource path="res://player/audio/step_random_pitch.tres" type="AudioStream" id=4]
+[ext_resource path="res://player/crosshair.png" type="Texture2D" id=3]
+[ext_resource path="res://player/audio/step.wav" type="AudioStream" id=4]
 [ext_resource path="res://player/audio/jump.wav" type="AudioStream" id=5]
 [ext_resource path="res://player/audio/land.wav" type="AudioStream" id=6]
 [ext_resource path="res://player/audio/shoot.wav" type="AudioStream" id=7]
@@ -12,36 +12,36 @@
 [sub_resource type="AnimationNodeAdd3" id=1]
 resource_local_to_scene = true
 filter_enabled = true
-filters = [ "Robot_Skeleton/Skeleton:neck.001", "Robot_Skeleton/Skeleton:upper_arm.R" ]
+filters = [ "Robot_Skeleton/Skeleton3D:neck.001", "Robot_Skeleton/Skeleton3D:upper_arm.R", "Robot_Skeleton/Skeleton:neck.001", "Robot_Skeleton/Skeleton:upper_arm.R" ]
 
 [sub_resource type="AnimationNodeAnimation" id=2]
 resource_local_to_scene = true
-animation = "AIM-Down"
+animation = @"AIM-Down"
 
 [sub_resource type="AnimationNodeAnimation" id=3]
 resource_local_to_scene = true
-animation = "AIM-Up"
+animation = @"AIM-Up"
 
 [sub_resource type="AnimationNodeBlend2" id=4]
 resource_local_to_scene = true
 filter_enabled = true
-filters = [ "Robot_Skeleton/Skeleton:eyelid.d.L", "Robot_Skeleton/Skeleton:eyelid.d.R", "Robot_Skeleton/Skeleton:eyelid.u.L", "Robot_Skeleton/Skeleton:eyelid.u.R", "Robot_Skeleton/Skeleton:eyes" ]
+filters = [ "Robot_Skeleton/Skeleton3D:eyelid.d.L", "Robot_Skeleton/Skeleton3D:eyelid.d.R", "Robot_Skeleton/Skeleton3D:eyelid.u.L", "Robot_Skeleton/Skeleton3D:eyelid.u.R", "Robot_Skeleton/Skeleton3D:eyes", "Robot_Skeleton/Skeleton:eyelid.d.L", "Robot_Skeleton/Skeleton:eyelid.d.R", "Robot_Skeleton/Skeleton:eyelid.u.L", "Robot_Skeleton/Skeleton:eyelid.u.R", "Robot_Skeleton/Skeleton:eyes" ]
 
 [sub_resource type="AnimationNodeAnimation" id=5]
 resource_local_to_scene = true
-animation = "eyes-cycle"
+animation = @"eyes-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=6]
 resource_local_to_scene = true
-animation = "jump_5_hardlanding"
+animation = @"jump_5_hardlanding"
 
 [sub_resource type="AnimationNodeAnimation" id=7]
 resource_local_to_scene = true
-animation = "jump_4_falling-cycle"
+animation = @"jump_4_falling-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=8]
 resource_local_to_scene = true
-animation = "jump_2_upwards-cycle"
+animation = @"jump_2_upwards-cycle"
 
 [sub_resource type="AnimationNodeOneShot" id=9]
 resource_local_to_scene = true
@@ -64,23 +64,23 @@ input_3/auto_advance = false
 
 [sub_resource type="AnimationNodeAnimation" id=11]
 resource_local_to_scene = true
-animation = "strafe_left-cycle"
+animation = @"strafe_left-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=12]
 resource_local_to_scene = true
-animation = "strafe_right-cycle"
+animation = @"strafe_right-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=13]
 resource_local_to_scene = true
-animation = "strafe_back-cycle"
+animation = @"strafe_back-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=14]
 resource_local_to_scene = true
-animation = "strafe_front-cycle"
+animation = @"strafe_front-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=15]
 resource_local_to_scene = true
-animation = "Idlecombat-cycle"
+animation = @"Idlecombat-cycle"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=16]
 resource_local_to_scene = true
@@ -97,19 +97,19 @@ blend_point_4/pos = Vector2( 0, 0 )
 
 [sub_resource type="AnimationNodeAnimation" id=17]
 resource_local_to_scene = true
-animation = "Idle-cycle"
+animation = @"Idle-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=18]
 resource_local_to_scene = true
-animation = "running_nogun-cycle"
+animation = @"running_nogun-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=19]
 resource_local_to_scene = true
-animation = "running_gun-cycle"
+animation = @"running_gun-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=20]
 resource_local_to_scene = true
-animation = "Idlecombat-cycle"
+animation = @"Idlecombat-cycle"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=21]
 resource_local_to_scene = true
@@ -127,7 +127,7 @@ y_label = "gun"
 
 [sub_resource type="AnimationNodeBlendTree" id=22]
 resource_local_to_scene = true
-graph_offset = Vector2( 1, 85 )
+graph_offset = Vector2( -190, 147 )
 nodes/aim/node = SubResource( 1 )
 nodes/aim/position = Vector2( 380, 120 )
 nodes/aimdown/node = SubResource( 2 )
@@ -153,13 +153,13 @@ nodes/strafe/node = SubResource( 16 )
 nodes/strafe/position = Vector2( -400, -120 )
 nodes/walk/node = SubResource( 21 )
 nodes/walk/position = Vector2( -400, 40 )
-node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "land", 0, "state", "land", 1, "hardland" ]
+node_connections = [ @"land", 0, @"state", @"land", 1, @"hardland", @"aim", 0, @"aimdown", @"aim", 1, @"land", @"aim", 2, @"aimup", @"eye_blend", 0, @"aim", @"eye_blend", 1, @"eyes", @"output", 0, @"eye_blend", @"state", 0, @"strafe", @"state", 1, @"walk", @"state", 2, @"jumpup", @"state", 3, @"jumpdown" ]
 
-[sub_resource type="CapsuleShape" id=23]
+[sub_resource type="CapsuleShape3D" id=23]
 radius = 0.5
 height = 0.6
 
-[sub_resource type="RayShape" id=24]
+[sub_resource type="RayShape3D" id=24]
 
 [sub_resource type="Animation" id=25]
 tracks/0/type = "value"
@@ -169,8 +169,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 0.287175, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 0.287175, 1 ),
 "update": 3,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
@@ -181,8 +181,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.3 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 3,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -195,8 +195,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 0.233259, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 0.233259, 1 ),
 "update": 3,
 "values": [ Vector3( -0.6, -0.3, 1.1 ), Vector3( -0.6, -0.3, 1.1 ) ]
 }
@@ -207,8 +207,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.3 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 3,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -216,66 +216,183 @@ tracks/1/keys = {
 [sub_resource type="AudioStreamRandomPitch" id=27]
 audio_stream = ExtResource( 7 )
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="KinematicBody3D"]
 collision_layer = 6
 collision_mask = 7
 script = ExtResource( 1 )
 
 [node name="PlayerModel" parent="." instance=ExtResource( 2 )]
 
-[node name="Robot_Skeleton" parent="PlayerModel" index="0"]
-transform = Transform( 0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0 )
+[node name="Skeleton3D" parent="PlayerModel/Robot_Skeleton" index="0"]
+bones/0/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04479, 0 )
+bones/1/pose = Transform( 0.999921, -0.00463077, -0.0116468, 0.00447545, 0.999901, -0.0133267, 0.0117074, 0.0132735, 0.999843, 0.268172, -0.180759, 0.274085 )
+bones/2/pose = Transform( 0.999992, -0.000796445, -0.00378534, 7.15411e-05, 0.982215, -0.187761, 0.00386756, 0.187759, 0.982207, 9.23549e-06, 9.39572e-05, -0.00239552 )
+bones/3/pose = Transform( 0.999992, -2.73326e-06, -0.00386821, -0.000723615, 0.982215, -0.18776, 0.00379993, 0.187761, 0.982207, 9.23768e-06, 0.000583353, -0.00232495 )
+bones/4/pose = Transform( 0.999992, 0.000307245, -0.00385601, -0.00102579, 0.982214, -0.187759, 0.00372974, 0.187762, 0.982208, 9.22027e-06, 0.000767923, -0.00227121 )
+bones/5/pose = Transform( 0.999993, -0.000845859, -0.00366038, 0.000845859, 1, -1.51666e-06, 0.00366038, -1.57951e-06, 0.999993, -4.8487e-08, 6.70552e-08, 8.9407e-08 )
+bones/6/pose = Transform( 0.998685, 0.0246213, -0.0449674, -0.0462073, 0.81224, -0.58149, 0.0222073, 0.582803, 0.81231, 1.37983e-08, -1.78615e-07, -1.48623e-07 )
+bones/7/pose = Transform( 0.999891, 0.00272905, -0.0145449, -0.00272722, 0.999996, 0.000145486, 0.0145452, -0.000105803, 0.999894, -4.93851e-08, -0.000460945, 0.012866 )
+bones/8/pose = Transform( 1, 1.38126e-09, 3.94166e-10, -1.38126e-09, 1, -5.71904e-19, -3.94166e-10, 2.74576e-20, 1, 7.19851e-09, 2.38419e-07, -3.27826e-07 )
+bones/9/pose = Transform( 1, -8.4719e-11, -1.052e-10, 8.4719e-11, 1, -1.49012e-08, 1.052e-10, 1.49012e-08, 1, 7.22491e-10, 1.86265e-08, 3.57628e-07 )
+bones/10/pose = Transform( 1, 1.20413e-14, 7.57683e-14, -1.20413e-14, 1, 1.05443e-08, -7.57683e-14, -1.05443e-08, 1, 0, -1.3411e-07, -1.49012e-08 )
+bones/11/pose = Transform( 1, -6.03881e-09, -7.18721e-09, 8.97631e-09, 0.839204, 0.543817, 2.74753e-09, -0.543817, 0.839205, 0, -1.40853e-08, 1.94305e-08 )
+bones/12/pose = Transform( 1, -6.03887e-09, -7.18714e-09, 8.97633e-09, 0.839204, 0.543817, 2.74744e-09, -0.543817, 0.839204, -1.49012e-08, 3.60692e-08, -7.59505e-08 )
+bones/13/pose = Transform( 0.995637, -0.00332784, 0.0932479, 0.0392776, 0.921456, -0.386494, -0.0846376, 0.388471, 0.917566, -7.45058e-09, -2.51737e-07, 5.77806e-09 )
+bones/14/pose = Transform( 1, -1.51e-08, -1.00282e-08, 1.00182e-08, 0.921455, -0.388485, 1.51067e-08, 0.388485, 0.921455, -7.45058e-09, 1.56801e-08, -3.96822e-08 )
+bones/15/pose = Transform( 0.998212, 0.00754063, -0.0592967, -0.000753739, 0.99352, 0.113655, 0.0597695, -0.113407, 0.991749, 3.71732e-08, -1.78894e-07, 4.46038e-08 )
+bones/16/pose = Transform( 0.621103, -0.401379, 0.673146, -0.399363, 0.576936, 0.712498, -0.674344, -0.711365, 0.198041, -6.52773e-08, 3.05773e-07, 1.45823e-08 )
+bones/17/pose = Transform( 0.83037, 0.0172211, -0.556946, 0.0147089, 0.998496, 0.0528041, 0.557018, -0.052039, 0.828869, -3.32685e-08, 1.81452e-07, -1.48613e-08 )
+bones/18/pose = Transform( 0.830201, 0.0151317, -0.557259, 0.0154742, 0.998621, 0.0501697, 0.55725, -0.0502741, 0.828822, -3.63809e-09, -1.18999e-07, -4.43049e-08 )
+bones/19/pose = Transform( 1, -1.97906e-09, 2.23517e-08, 1.97906e-09, 1, -2.24682e-08, -2.23517e-08, 2.24682e-08, 1, 4.47035e-08, 2.22644e-08, -8.9407e-08 )
+bones/20/pose = Transform( 0.941698, 0.0726681, -0.328518, -0.0608106, 0.997078, 0.0462396, 0.330918, -0.0235664, 0.943365, -3.72494e-09, -9.68575e-08, 8.56817e-08 )
+bones/21/pose = Transform( 1, -8.82799e-09, 6.26062e-09, 8.82799e-09, 1, 2.77214e-08, -6.26062e-09, -2.77214e-08, 1, 0, 1.78814e-07, 1.49012e-08 )
+bones/22/pose = Transform( 0.997255, -0.0740562, -6.37025e-07, 0.0715279, 0.963204, 0.259079, -0.0191858, -0.258367, 0.965856, -3.39933e-08, -2.27243e-07, -2.49594e-07 )
+bones/23/pose = Transform( 1, -1.96419e-06, -3.23857e-07, 1.98724e-06, 0.975347, 0.220677, -1.17579e-07, -0.220677, 0.975347, 2.12021e-08, 1.55531e-07, 7.45058e-09 )
+bones/24/pose = Transform( 1, -1.10416e-05, -1.65139e-06, 1.11461e-05, 0.978878, 0.204431, -6.4075e-07, -0.204431, 0.97888, 2.8871e-08, 7.54371e-08, -1.30385e-07 )
+bones/25/pose = Transform( 1, 2.92092e-08, -1.99062e-08, -2.61766e-08, 0.990397, 0.138253, 2.37533e-08, -0.138253, 0.990397, 2.98023e-08, -8.19564e-08, -7.45058e-09 )
+bones/26/pose = Transform( 0.999972, -5.03843e-07, -4.20832e-05, 5.03846e-07, 1, 3.86531e-07, 4.20809e-05, -3.86542e-07, 1.00003, -1.9744e-07, 1.67696e-07, 0 )
+bones/27/pose = Transform( 1.00003, 4.05585e-07, -7.48e-06, -4.05591e-07, 1, 5.82525e-07, 7.48038e-06, -5.82537e-07, 0.999974, 7.45058e-08, 2.69152e-07, -8.9407e-08 )
+bones/28/pose = Transform( 1, -2.64222e-09, 9.31323e-09, 2.64222e-09, 1, 1.63145e-08, -9.31323e-09, -1.63145e-08, 1, 9.31323e-10, -1.04308e-07, 5.96046e-08 )
+bones/29/pose = Transform( 0.999699, -0.0245565, -1.1255e-06, 0.0237303, 0.966051, 0.25726, -0.00631631, -0.257183, 0.966342, 1.35042e-08, 1.45286e-07, -4.91738e-07 )
+bones/30/pose = Transform( 0.999794, -0.0202866, -6.33066e-07, 0.0187922, 0.926129, 0.376738, -0.00764216, -0.37666, 0.926319, 5.24306e-08, -2.58675e-07, 2.5332e-07 )
+bones/31/pose = Transform( 1, -1.05126e-05, -3.66828e-06, 1.11163e-05, 0.9239, 0.382628, -6.333e-07, -0.382627, 0.923902, -5.82077e-08, 1.95578e-08, 7.45058e-08 )
+bones/32/pose = Transform( 1, 2.34983e-09, 2.01408e-08, -2.34983e-09, 1, 1.18234e-09, -2.01408e-08, -1.18234e-09, 1, 4.47035e-08, 3.57628e-07, -2.98023e-08 )
+bones/33/pose = Transform( 0.999881, 0.0154191, -3.87663e-07, -0.0152106, 0.98637, 0.163838, 0.00252661, -0.163819, 0.986487, 9.0804e-09, -8.19564e-08, 2.12342e-07 )
+bones/34/pose = Transform( 0.999992, 0.00410412, -1.11875e-06, -0.00336589, 0.820277, 0.571959, 0.00234831, -0.571956, 0.820282, 2.46073e-08, 3.23169e-07, -1.75089e-07 )
+bones/35/pose = Transform( 1, -8.84103e-06, -6.56835e-06, 1.09877e-05, 0.759648, 0.65033, -7.59959e-07, -0.650329, 0.75965, 1.04774e-07, -1.22935e-07, -2.04891e-07 )
+bones/36/pose = Transform( 1, 3.70471e-09, 1.40039e-09, -3.70471e-09, 1, -2.9801e-08, -1.40039e-09, 2.9801e-08, 1, 2.79397e-09, 2.75671e-07, 2.98023e-08 )
+bones/37/pose = Transform( 0.932869, 0.0028831, -0.360188, 0.00294241, 0.999878, 0.0156243, 0.360183, -0.0156354, 0.932753, 1.09834e-07, -2.45989e-07, -4.83889e-08 )
+bones/38/pose = Transform( 0.693357, -0.284658, 0.661986, -0.284658, 0.735751, 0.614525, -0.661986, -0.614524, 0.429109, 3.37269e-08, -1.00782e-07, -1.93954e-07 )
+bones/39/pose = Transform( 0.519535, -0.0372614, 0.853636, -0.0372615, 0.99711, 0.066202, -0.853636, -0.066202, 0.516646, -4.46836e-08, -5.96046e-08, -2.53798e-07 )
+bones/40/pose = Transform( 0.850894, -0.149153, 0.503718, -0.149153, 0.850799, 0.503879, -0.503718, -0.503879, 0.701693, 1.63594e-07, -2.30689e-07, 1.34031e-07 )
+bones/41/pose = Transform( 0.99644, 0.0432073, 0.0723964, -0.0530422, 0.988735, 0.139962, -0.0655335, -0.143304, 0.987506, -2.95532e-08, -1.78774e-07, 4.46238e-08 )
+bones/42/pose = Transform( 0.222352, 0.297045, 0.928614, -0.514342, 0.844875, -0.147102, -0.828258, -0.444917, 0.340642, 6.48687e-08, -2.6081e-07, 2.94834e-08 )
+bones/43/pose = Transform( 0.983032, 0.0814067, 0.164379, -0.0540067, 0.984854, -0.164761, -0.175302, 0.153088, 0.97254, 1.30236e-08, 5.29876e-07, -1.1905e-07 )
+bones/44/pose = Transform( 0.686163, -0.726907, -0.0280531, 0.726698, 0.686696, -0.0189471, 0.0330368, -0.00738536, 0.999427, 3.80098e-08, 1.12979e-07, -1.64152e-07 )
+bones/45/pose = Transform( 1, -4.6537e-08, 1.49012e-08, 4.6537e-08, 1, -1.21072e-08, -1.49012e-08, 1.21072e-08, 1, 3.72529e-08, -7.45058e-09, 7.45058e-08 )
+bones/46/pose = Transform( 0.999984, 0.00552822, 0.0002861, 0.00552822, -0.999985, 2.55955e-06, 0.00028611, -9.77887e-07, -1, -4.23752e-08, 2.6077e-07, 5.96046e-08 )
+bones/47/pose = Transform( 0.737174, -0.0175281, -0.208752, 0.0246373, 0.765629, 0.0227157, 0.208033, -0.0285616, 0.737033, 1.86259e-08, -1.60188e-07, 2.98023e-08 )
+bones/48/pose = Transform( 1, 2.77504e-08, 7.03949e-10, -2.77504e-08, 1, -4.89626e-09, -7.03949e-10, 4.89626e-09, 1, -2.23517e-08, -4.17233e-07, -4.47035e-08 )
+bones/49/pose = Transform( 0.994105, 0.0108317, 0.107744, -0.0439833, 0.949612, 0.31036, -0.0989511, -0.313278, 0.944492, -2.79397e-08, -8.19564e-08, 1.30385e-07 )
+bones/50/pose = Transform( 0.997529, 0.0694528, 0.0108009, 0.00974833, -0.288883, 0.957315, 0.069609, -0.954835, -0.288848, -4.87198e-08, 4.67757e-07, 1.49012e-08 )
+bones/51/pose = Transform( 0.952644, 0.19799, -0.23074, 0.135223, 0.403854, 0.904744, 0.272314, -0.893175, 0.357936, 1.82539e-07, -2.57976e-07, -1.49012e-07 )
+bones/52/pose = Transform( 1, 1.56239e-08, -1.11347e-08, -9.80207e-10, 0.621216, 0.783639, 1.91606e-08, -0.783639, 0.621216, 5.96046e-08, -2.12342e-07, -1.49012e-08 )
+bones/53/pose = Transform( 0.880617, 0.00904518, -0.473736, -0.00709208, 0.999961, 0.005909, 0.473766, -0.0018438, 0.880648, -7.82311e-08, -1.79367e-07, -1.3411e-07 )
+bones/54/pose = Transform( -0.33243, -0.0128929, -0.943007, -0.0141949, 0.999857, -0.00866614, 0.943084, 0.0105048, -0.332533, -1.10672e-08, 1.27609e-07, 2.08231e-07 )
+bones/55/pose = Transform( 1, 3.11412e-09, 3.72529e-09, -3.11412e-09, 1, -1.24464e-09, -3.72529e-09, 1.24464e-09, 1, -4.79631e-08, -2.23517e-07, 2.98023e-08 )
+bones/56/pose = Transform( 0.994103, 0.0108327, 0.107736, -0.0439814, 0.949611, 0.310362, -0.0989419, -0.313279, 0.944495, -1.72295e-08, -2.49594e-07, 1.9744e-07 )
+bones/57/pose = Transform( 0.997529, 0.0694563, 0.0107957, 0.0097537, -0.288874, 0.95732, 0.069611, -0.954836, -0.28884, 4.22733e-08, -4.35393e-08, -2.64496e-07 )
+bones/58/pose = Transform( 0.952646, 0.197989, -0.230739, 0.135225, 0.40384, 0.904751, 0.272312, -0.893177, 0.357926, -9.03427e-08, -1.30329e-08, 4.59743e-08 )
+bones/59/pose = Transform( 1, 3.05226e-08, 3.85836e-09, -3.05226e-08, 1, -6.26869e-09, -3.85836e-09, 6.26869e-09, 1, -2.98023e-08, -3.241e-07, -1.49012e-07 )
+bones/60/pose = Transform( 0.994105, 0.0108317, 0.107745, -0.0439834, 0.949612, 0.31036, -0.0989514, -0.313278, 0.944492, -3.49246e-08, 1.08033e-07, 1.15484e-07 )
+bones/61/pose = Transform( 0.997528, 0.0694552, 0.0107996, 0.00975059, -0.288888, 0.957314, 0.0696108, -0.954832, -0.288853, 1.6077e-07, -1.00583e-07, 6.33299e-08 )
+bones/62/pose = Transform( 0.952645, 0.19799, -0.230738, 0.135221, 0.403852, 0.904744, 0.272313, -0.893176, 0.357936, -1.55732e-08, -7.0427e-08, -2.95094e-07 )
+bones/63/pose = Transform( 1, -2.77358e-08, -2.95565e-12, 2.77358e-08, 1, -3.72393e-09, 2.95575e-12, 3.72393e-09, 1, 6.70552e-08, -3.05474e-07, 8.9407e-08 )
+bones/64/pose = Transform( 0.969976, -0.00992701, -0.242894, -0.00978135, 0.996802, -0.0797979, 0.242895, 0.0797836, 0.966758, 1.19223e-07, -3.42762e-07, 6.1334e-08 )
+bones/65/pose = Transform( 1, -1.85897e-08, 5.05374e-08, 1.85897e-08, 1, 2.96132e-09, -5.05374e-08, -2.96131e-09, 1, -1.49012e-08, -2.68221e-07, 6.51938e-08 )
+bones/66/pose = Transform( 1, -2.09352e-08, 7.02653e-09, 2.09352e-08, 1, -3.81401e-08, -7.02653e-09, 3.81401e-08, 1, 1.19209e-07, 1.11759e-08, 1.49012e-07 )
+bones/67/pose = Transform( 1, 2.24172e-08, -5.08668e-09, -2.24172e-08, 1, -6.16592e-09, 5.08668e-09, 6.16592e-09, 1, 2.98023e-08, -2.16067e-07, 5.7742e-08 )
+bones/68/pose = Transform( 1, 9.56061e-09, 1.31717e-08, -9.56061e-09, 1, -3.91879e-09, -1.31717e-08, 3.91879e-09, 1, 6.4075e-07, 6.81728e-07, 3.3617e-05 )
+bones/69/pose = Transform( 1, 9.56061e-09, 1.31719e-08, -9.56061e-09, 1, -3.91856e-09, -1.31719e-08, 3.91856e-09, 1, -6.92904e-07, 1.13994e-06, -3.36375e-05 )
+bones/70/pose = Transform( 1, 7.91624e-09, 2.23517e-08, -7.91624e-09, 1, 3.37604e-09, -2.23517e-08, -3.37604e-09, 1, 3.35276e-08, -1.47382e-07, 1.78814e-07 )
+bones/71/pose = Transform( 1, -7.45058e-09, 3.95885e-08, 7.45058e-09, 1, -9.31323e-09, -3.95885e-08, 9.31323e-09, 1, -2.23517e-08, 4.47035e-08, 4.84288e-08 )
+bones/72/pose = Transform( 0.999998, 0.00107641, 0.00143886, -0.000519384, 0.939694, -0.342016, -0.00172024, 0.342015, 0.939693, 3.72529e-08, -4.09782e-08, 8.9407e-08 )
+bones/73/pose = Transform( 1, -7.45058e-09, 3.44589e-08, 7.45058e-09, 1, -9.31323e-09, -3.44589e-08, 9.31323e-09, 1, -2.98023e-08, -1.56462e-07, -1.63913e-07 )
+bones/74/pose = Transform( 1, -7.45058e-09, 3.95885e-08, 7.45058e-09, 1, -9.31323e-09, -3.95885e-08, 9.31323e-09, 1, -2.23517e-08, 1.49012e-07, 1.49012e-08 )
+bones/75/pose = Transform( 1, -7.45058e-09, 3.44589e-08, 7.45058e-09, 1, -9.31323e-09, -3.44589e-08, 9.31323e-09, 1, -4.47035e-08, -1.67638e-07, -7.45058e-09 )
+bones/76/pose = Transform( 1, -4.09784e-08, 3.72529e-09, 4.09784e-08, 1, -6.46469e-09, -3.72529e-09, 6.46469e-09, 1, 2.42144e-08, 1.19209e-07, 6.08852e-08 )
+bones/77/pose = Transform( 0.837927, 0.246682, 0.486853, 0.246682, 0.624538, -0.741013, -0.486853, 0.741013, 0.462465, -8.57714e-08, -1.41845e-07, -1.93835e-07 )
+bones/78/pose = Transform( 0.956439, 0.0698578, 0.283451, 0.0698577, 0.887971, -0.454563, -0.283451, 0.454563, 0.84441, 1.33851e-07, -5.97641e-08, -3.42647e-07 )
+bones/79/pose = Transform( 0.860628, 0.0995883, 0.499401, 0.0995883, 0.928839, -0.356847, -0.499401, 0.356848, 0.789467, -2.08098e-07, -2.90413e-07, 1.1909e-07 )
+bones/80/pose = Transform( 0.986902, 0.000192104, 0.161322, -8.38251e-05, 1, -0.000677998, -0.161323, 0.000655595, 0.986901, -1.90467e-08, -2.9603e-08, -2.26924e-07 )
+bones/81/pose = Transform( 0.828806, -0.175958, 0.531149, -0.175958, 0.819145, 0.545931, -0.531149, -0.54593, 0.647951, 8.88489e-08, -1.48533e-07, -2.97625e-08 )
+bones/82/pose = Transform( 0.989659, -0.0149783, 0.142646, -0.0149831, 0.978294, 0.206675, -0.142645, -0.206675, 0.967956, -1.04358e-07, 1.9751e-07, -2.99219e-08 )
+bones/83/pose = Transform( 0.914478, -0.0264873, 0.403768, -0.026487, 0.991796, 0.125051, -0.403768, -0.125051, 0.906274, -1.37851e-07, 3.42767e-07, 1.04408e-07 )
+bones/84/pose = Transform( 0.897181, -0.234543, 0.37424, -0.234543, 0.464979, 0.853689, -0.37424, -0.853688, 0.36216, -1.04468e-07, 5.95648e-08, 4.46437e-08 )
+bones/85/pose = Transform( 0.995731, -0.0533155, 0.0753499, 0.0655021, 0.983291, -0.169845, -0.0650356, 0.174055, 0.982586, 8.56817e-08, -3.72529e-09, -2.98023e-08 )
+bones/86/pose = Transform( 0.843027, -0.0108195, 0.537762, -0.0108197, 0.999254, 0.037066, -0.537762, -0.0370661, 0.842282, -1.18771e-07, -2.67902e-07, -2.97625e-08 )
+bones/87/pose = Transform( 0.995673, -0.00932642, 0.0924435, -0.0093218, 0.979901, 0.199262, -0.0924439, -0.199262, 0.975576, 8.18966e-08, 4.44245e-08, -7.45058e-08 )
+bones/88/pose = Transform( 0.837066, -0.0899562, 0.539654, -0.0899568, 0.950334, 0.297947, -0.539654, -0.297947, 0.787401, 1.37766e-07, 1.93277e-07, 1.04109e-07 )
+bones/89/pose = Transform( 0.99793, -0.00927311, 0.063631, -0.00927391, 0.958447, 0.28512, -0.0636309, -0.28512, 0.956377, 1.63674e-07, -3.00016e-08, 1.45623e-08 )
+bones/90/pose = Transform( 0.995325, 0.0739165, 0.0621596, -0.0701675, 0.9957, -0.0604769, -0.0663626, 0.0558326, 0.996232, 1.21072e-08, 2.33995e-08, 6.70552e-08 )
+bones/91/pose = Transform( 1, -7.77783e-10, -2.24342e-09, 7.77782e-10, 1, 1.49012e-08, 2.24342e-09, -1.49012e-08, 1, -2.35159e-08, -2.98023e-08, -2.68221e-07 )
+bones/92/pose = Transform( 1, -8.28848e-10, -2.22505e-09, 8.28848e-10, 1, 1.49012e-08, 2.22505e-09, -1.49012e-08, 1, -1.00117e-08, -2.98023e-08, -8.9407e-08 )
+bones/93/pose = Transform( 1, -8.28848e-10, -2.22505e-09, 8.28848e-10, 1, 1.49012e-08, 2.22505e-09, -1.49012e-08, 1, -1.58325e-08, -1.19209e-07, -1.04308e-07 )
+bones/94/pose = Transform( 0.999998, -0.000209522, -0.00210742, 0.00044611, 0.993606, 0.1129, 0.00207029, -0.1129, 0.993604, -1.92861e-08, 2.96429e-08, 2.68211e-07 )
+bones/95/pose = Transform( 0.999998, -0.000348738, 0.0018548, 0.000517185, 0.995795, -0.0916068, -0.00181505, 0.0916076, 0.995793, -1.60338e-08, -1.49809e-08, -2.30774e-07 )
+bones/96/pose = Transform( 0.999975, -0.0070762, 4.89502e-05, 0.0070171, 0.992468, 0.122298, -0.000913984, -0.122294, 0.992493, -0.00352073, -0.0138547, -0.0240891 )
+bones/97/pose = Transform( 0.999976, -0.00692653, 7.03731e-08, 0.00687448, 0.992463, 0.12235, -0.00084753, -0.122347, 0.992487, -0.00350183, -0.0138033, -0.0240835 )
+bones/98/pose = Transform( 0.860026, 0.0372314, -0.508894, 0.343895, 0.694493, 0.632, 0.37695, -0.718537, 0.584483, -4.45042e-08, -8.18966e-08, 1.85866e-07 )
+bones/99/pose = Transform( 1, -1.26086e-06, -1.62777e-06, 2.7457e-07, 0.865167, -0.501479, 2.0406e-06, 0.501477, 0.86517, 2.97164e-09, -1.49809e-08, -1.78654e-07 )
+bones/100/pose = Transform( 1, -9.90345e-10, 1.2441e-09, 1.4303e-09, 0.902068, -0.43159, -6.9484e-10, 0.431589, 0.902071, 7.58261e-08, 6.39945e-10, 1.11779e-07 )
+bones/101/pose = Transform( 0.932719, -0.260591, 0.249263, 0.230105, 0.962302, 0.145006, -0.277654, -0.0778932, 0.957518, 3.40791e-08, -7.97229e-11, -1.50207e-08 )
+bones/102/pose = Transform( 1, -1.33025e-09, 7.36788e-09, 1.33025e-09, 1, -5.96047e-08, -7.36788e-09, 5.96046e-08, 1, 3.02537e-08, 2.98023e-08, -1.49012e-08 )
+bones/103/pose = Transform( 1, -2.11532e-08, 2.09933e-08, 2.11532e-08, 1, 2.98023e-08, -2.09933e-08, -2.98023e-08, 1, -4.56348e-08, 5.96046e-08, -2.98023e-08 )
+bones/104/pose = Transform( 1, -2.29992e-07, 9.50184e-07, -1.44541e-07, 0.926504, 0.376367, -9.66872e-07, -0.376378, 0.926476, 3.4205e-08, -7.37086e-09, -1.41581e-07 )
+bones/105/pose = Transform( 0.894008, 0.059717, 0.444059, -0.238164, 0.902806, 0.358081, -0.379513, -0.425884, 0.821342, -1.48214e-08, -8.92276e-08, 2.2278e-07 )
+bones/106/pose = Transform( 1, -1.2539e-06, -1.41979e-06, 1.73058e-07, 0.806877, -0.590716, 1.8863e-06, 0.590714, 0.80688, -3.01073e-08, 2.95831e-08, -1.79053e-07 )
+bones/107/pose = Transform( 1, 2.7444e-09, -1.01107e-08, -7.10794e-09, 0.886709, -0.462329, 7.69642e-09, 0.462329, 0.886709, 1.49793e-09, -1.76982e-08, 1.34091e-07 )
+bones/108/pose = Transform( 0.922033, 0.252774, -0.293189, -0.0709663, 0.854916, 0.513892, 0.38055, -0.453019, 0.806199, 0.0286198, -0.00156385, -0.00242911 )
+bones/109/pose = Transform( 1, 6.14311e-09, -3.38893e-08, -1.0298e-08, 0.992282, -0.124, 3.2866e-08, 0.124, 0.992282, -3.17939e-09, 1.49012e-08, -1.49012e-08 )
+bones/110/pose = Transform( 1, 2.62016e-08, 3.69782e-08, -2.62016e-08, 1, -7.31821e-16, -3.69782e-08, -2.37068e-16, 1, -2.23517e-08, 0, 5.96046e-08 )
+bones/111/pose = Transform( 1, -3.25103e-07, 1.4726e-06, -3.61215e-07, 0.896457, 0.443192, -1.46415e-06, -0.443204, 0.896434, -1.25309e-08, 2.9882e-08, 0.000705905 )
 
-[node name="Skeleton" parent="PlayerModel/Robot_Skeleton" index="0"]
-bones/46/bound_children = [ NodePath("GunBone") ]
-
-[node name="GunBone" type="BoneAttachment" parent="PlayerModel/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.904321, -0.247813, 0.347821, -0.25677, -0.966275, -0.0211712, 0.341372, -0.0701338, -0.937322, -0.207136, 1.3677, 0.535182 )
+[node name="GunBone" type="BoneAttachment3D" parent="PlayerModel/Robot_Skeleton/Skeleton3D" index="5"]
+transform = Transform( 0.902812, -0.251362, 0.349188, -0.259812, -0.965406, -0.0235312, 0.343058, -0.069448, -0.936756, -0.206192, 1.36737, 1.58492 )
 bone_name = "hand.R"
+script = null
 
-[node name="ShootFrom" type="Position3D" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone"]
-transform = Transform( 0.999919, 0.0106283, -0.00705317, -0.0105956, 0.99993, 0.00505793, 0.00710796, -0.0049828, 0.999962, 0.0100024, -0.00491095, -0.40371 )
+[node name="ShootFrom" type="Position3D" parent="PlayerModel/Robot_Skeleton/Skeleton3D/GunBone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+script = null
 
 [node name="RootMotionView" type="RootMotionView" parent="."]
 animation_path = NodePath("../AnimationTree")
+script = null
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 22 )
 anim_player = NodePath("../PlayerModel/AnimationPlayer")
 active = true
 process_mode = 0
-root_motion_track = NodePath("Robot_Skeleton/Skeleton:root")
-parameters/aim/add_amount = 0
+root_motion_track = NodePath("Robot_Skeleton/Skeleton3D:root")
+parameters/aim/add_amount = 0.0
 parameters/eye_blend/blend_amount = 1.0
 parameters/land/active = false
 parameters/state/current = 0
 parameters/strafe/blend_position = Vector2( 0, 0 )
 parameters/walk/blend_position = Vector2( 0, 0 )
+script = null
 
-[node name="CapsuleShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0 )
+[node name="CapsuleShape" type="CollisionShape3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 23 )
+script = null
 
-[node name="RayShape" type="CollisionShape" parent="."]
+[node name="RayShape" type="CollisionShape3D" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.00357, 0 )
 shape = SubResource( 24 )
+script = null
 
-[node name="CameraBase" type="Spatial" parent="."]
+[node name="CameraBase" type="Node3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0 )
+script = null
 __meta__ = {
 "_editor_description_": "Handles Y rotation (yaw)."
 }
 
-[node name="CameraRot" type="Spatial" parent="CameraBase"]
+[node name="CameraRot" type="Node3D" parent="CameraBase"]
+script = null
 __meta__ = {
 "_editor_description_": "Handles X rotation (pitch)."
 }
 
-[node name="SpringArm" type="SpringArm" parent="CameraBase/CameraRot"]
+[node name="SpringArm" type="SpringArm3D" parent="CameraBase/CameraRot"]
 transform = Transform( -1, -1.11444e-07, 3.06191e-07, 0, 0.939693, 0.34202, -3.25841e-07, 0.34202, -0.939693, 0, 0, 0 )
 spring_length = 2.4
+script = null
 
-[node name="Camera" type="Camera" parent="CameraBase/CameraRot/SpringArm"]
+[node name="Camera" type="Camera3D" parent="CameraBase/CameraRot/SpringArm"]
 transform = Transform( 1, 1.42109e-14, -2.84217e-14, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 current = true
 far = 300.0
@@ -287,12 +404,14 @@ __meta__ = {
 [node name="Animation" type="AnimationPlayer" parent="CameraBase"]
 anims/far = SubResource( 25 )
 anims/shoot = SubResource( 26 )
+script = null
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -308,27 +427,34 @@ margin_top = -23.8394
 margin_right = 14.6654
 margin_bottom = 8.16064
 texture = ExtResource( 3 )
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SoundEffects" type="Node" parent="."]
+script = null
 
 [node name="Step" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 4 )
+script = null
 
 [node name="Jump" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 5 )
+script = null
 
 [node name="Land" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 6 )
+script = null
 
 [node name="Shoot" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = SubResource( 27 )
+script = null
 
 [node name="FireCooldown" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
 autostart = true
+script = null
 
 [editable path="PlayerModel"]
