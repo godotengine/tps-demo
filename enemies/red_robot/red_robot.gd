@@ -71,7 +71,7 @@ func hit():
 		death.visible = true
 		$CollisionShape.disabled = true
 		death.get_node(@"Particles").emitting = true
-		
+
 		shield1.get_node(@"Col1").disabled = false
 		shield1.get_node(@"Col2").disabled = false
 		shield1.mode = RigidBody.MODE_RIGID
@@ -81,7 +81,7 @@ func hit():
 		shield3.get_node(@"Col1").disabled = false
 		shield3.get_node(@"Col2").disabled = false
 		shield3.mode = RigidBody.MODE_RIGID
-		
+
 		shield2.linear_velocity = 3 * (Vector3.UP + base_xf.x).normalized()
 		shield3.linear_velocity = 3 * (Vector3.UP).normalized()
 		shield1.linear_velocity = 3 * (Vector3.UP - base_xf.x).normalized()
@@ -96,7 +96,7 @@ func shoot():
 	var ray_origin = ray_from.global_transform.origin
 	var ray_dir = -gt.basis.z
 	var max_dist = 1000
-	
+
 	var col = get_world().direct_space_state.intersect_ray(ray_origin, ray_origin + ray_dir * max_dist, [self])
 	if not col.empty():
 		max_dist = ray_origin.distance_to(col.position)
@@ -112,21 +112,21 @@ func _physics_process(delta):
 	if test_shoot:
 		shoot()
 		test_shoot = false
-	
+
 	if dead:
 		return
-	
+
 	if not player:
 		animation_tree["parameters/state/current"] = 0 # Go idle.
 		return
-	
+
 	if state == State.APPROACH:
 		if aim_preparing > 0:
 			aim_preparing -= delta
 			if aim_preparing < 0:
 				aim_preparing = 0
 			animation_tree["parameters/aiming/blend_amount"] = aim_preparing / AIM_PREPARE_TIME
-		
+
 		var to_player_local = global_transform.xform_inv(player.global_transform.origin)
 		# The front of the robot is +Z, and atan2 is zero at +X, so we need to use the Z for the X parameter (second one).
 		var angle_to_player = atan2(to_player_local.x, to_player_local.z)
@@ -152,13 +152,13 @@ func _physics_process(delta):
 				else:
 					# Player not in sight, do nothing.
 					shoot_countdown = SHOOT_WAIT
-	
+
 	elif state == State.AIM or state == State.SHOOTING:
 		if aim_preparing < AIM_PREPARE_TIME:
 			aim_preparing += delta
 			if aim_preparing > AIM_PREPARE_TIME:
 				aim_preparing = AIM_PREPARE_TIME
-		
+
 		animation_tree["parameters/aiming/blend_amount"] = clamp(aim_preparing / AIM_PREPARE_TIME, 0, 1)
 		aim_countdown -= delta
 		if aim_countdown < 0 and state == State.AIM:
@@ -170,7 +170,7 @@ func _physics_process(delta):
 				shoot_animation.play("shoot")
 			else:
 				resume_approach()
-		
+
 		if animation_tree.active:
 			var to_cannon_local = ray_mesh.global_transform.xform_inv(player.global_transform.origin + Vector3.UP)
 			var h_angle = rad2deg(atan2( to_cannon_local.x, -to_cannon_local.z ))
@@ -179,25 +179,25 @@ func _physics_process(delta):
 			var h_motion = BLEND_AIM_SPEED * delta * -h_angle
 			blend_pos.x += h_motion
 			blend_pos.x = clamp(blend_pos.x, -1, 1)
-			
+
 			var v_motion = BLEND_AIM_SPEED * delta * v_angle
 			blend_pos.y += v_motion
 			blend_pos.y = clamp(blend_pos.y, -1, 1)
-				
+
 			animation_tree["parameters/aim/blend_position"] = blend_pos
-	
+
 	# Apply root motion to orientation.
 	orientation *= animation_tree.get_root_motion_transform()
-	
+
 	var h_velocity = orientation.origin / delta
 	velocity.x = h_velocity.x
 	velocity.z = h_velocity.z
 	velocity += gravity * delta
 	velocity = move_and_slide(velocity, Vector3.UP)
-	
+
 	orientation.origin = Vector3() # Clear accumulated root motion displacement (was applied to speed).
 	orientation = orientation.orthonormalized() # orthonormalize orientation.
-	
+
 	global_transform.basis = orientation.basis
 
 

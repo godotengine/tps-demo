@@ -22,7 +22,7 @@ func _ready():
 	noise.period = 256.0
 	noise.persistence = 0.5
 	noise.lacunarity = 1.0
-	
+
 	# This variable is reset if the camera position is changed by other scripts,
 	# such as when zooming in/out or focusing on a different position.
 	# This should NOT be done when the camera shake is happening.
