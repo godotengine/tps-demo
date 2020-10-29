@@ -77,34 +77,34 @@ func _physics_process(delta):
 			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 			Input.get_action_strength("move_back") - Input.get_action_strength("move_forward"))
 	motion = motion.linear_interpolate(motion_target, MOTION_INTERPOLATE_SPEED * delta)
-	
+
 	var camera_basis = camera_rot.global_transform.basis
 	var camera_z = camera_basis.z
 	var camera_x = camera_basis.x
-	
+
 	camera_z.y = 0
 	camera_z = camera_z.normalized()
 	camera_x.y = 0
 	camera_x = camera_x.normalized()
-	
+
 	var current_aim = Input.is_action_pressed("aim")
-	
+
 	if aiming != current_aim:
 		aiming = current_aim
 		if aiming:
 			camera_animation.play("shoot")
 		else:
 			camera_animation.play("far")
-	
+
 	# Jump/in-air logic.
 	airborne_time += delta
 	if is_on_floor():
 		if airborne_time > 0.5:
 			sound_effect_land.play()
 		airborne_time = 0
-	
+
 	var on_air = airborne_time > MIN_AIRBORNE_TIME
-	
+
 	if not on_air and Input.is_action_just_pressed("jump"):
 		velocity.y = JUMP_SPEED
 		on_air = true
@@ -112,7 +112,7 @@ func _physics_process(delta):
 		airborne_time = MIN_AIRBORNE_TIME
 		animation_tree["parameters/state/current"] = 2
 		sound_effect_jump.play()
-	
+
 	if on_air:
 		if (velocity.y > 0):
 			animation_tree["parameters/state/current"] = 2
@@ -121,31 +121,31 @@ func _physics_process(delta):
 	elif aiming:
 		# Change state to strafe.
 		animation_tree["parameters/state/current"] = 0
-		
+
 		# Change aim according to camera rotation.
 		if camera_x_rot >= 0: # Aim up.
 			animation_tree["parameters/aim/add_amount"] = -camera_x_rot / deg2rad(CAMERA_X_ROT_MAX)
 		else: # Aim down.
 			animation_tree["parameters/aim/add_amount"] = camera_x_rot / deg2rad(CAMERA_X_ROT_MIN)
-		
+
 		# Convert orientation to quaternions for interpolating rotation.
 		var q_from = orientation.basis.get_rotation_quat()
 		var q_to = camera_base.global_transform.basis.get_rotation_quat()
 		# Interpolate current rotation with desired one.
 		orientation.basis = Basis(q_from.slerp(q_to, delta * ROTATION_INTERPOLATE_SPEED))
-		
+
 		# The animation's forward/backward axis is reversed.
 		animation_tree["parameters/strafe/blend_position"] = Vector2(motion.x, -motion.y)
-		
+
 		root_motion = animation_tree.get_root_motion_transform()
-		
+
 		if Input.is_action_pressed("shoot") and fire_cooldown.time_left == 0:
 			var shoot_origin = shoot_from.global_transform.origin
-			
+
 			var ch_pos = crosshair.rect_position + crosshair.rect_size * 0.5
 			var ray_from = camera_camera.project_ray_origin(ch_pos)
 			var ray_dir = camera_camera.project_ray_normal(ch_pos)
-			
+
 			var shoot_target
 			var col = get_world().direct_space_state.intersect_ray(ray_from, ray_from + ray_dir * 1000, [self], 0b11)
 			if col.empty():
@@ -153,7 +153,7 @@ func _physics_process(delta):
 			else:
 				shoot_target = col.position
 			var shoot_dir = (shoot_target - shoot_origin).normalized()
-			
+
 			var bullet = preload("res://player/bullet/bullet.tscn").instance()
 			get_parent().add_child(bullet)
 			bullet.global_transform.origin = shoot_origin
@@ -171,28 +171,28 @@ func _physics_process(delta):
 			var q_to = Transform().looking_at(target, Vector3.UP).basis.get_rotation_quat()
 			# Interpolate current rotation with desired one.
 			orientation.basis = Basis(q_from.slerp(q_to, delta * ROTATION_INTERPOLATE_SPEED))
-		
+
 		# Aim to zero (no aiming while walking).
 		animation_tree["parameters/aim/add_amount"] = 0
 		# Change state to walk.
 		animation_tree["parameters/state/current"] = 1
 		# Blend position for walk speed based on motion.
 		animation_tree["parameters/walk/blend_position"] = Vector2(motion.length(), 0)
-		
+
 		root_motion = animation_tree.get_root_motion_transform()
-	
+
 	# Apply root motion to orientation.
 	orientation *= root_motion
-	
+
 	var h_velocity = orientation.origin / delta
 	velocity.x = h_velocity.x
 	velocity.z = h_velocity.z
 	velocity += gravity * delta
 	velocity = move_and_slide(velocity, Vector3.UP)
-	
+
 	orientation.origin = Vector3() # Clear accumulated root motion displacement (was applied to speed).
 	orientation = orientation.orthonormalized() # Orthonormalize orientation.
-	
+
 	player_model.global_transform.basis = orientation.basis
 
 
