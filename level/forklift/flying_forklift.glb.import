@@ -2,17 +2,17 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/flying_forklift.glb-5fc3f6403d54a193b6e3b14c2633d073.scn"
+path="res://.godot/imported/flying_forklift.glb-5fc3f6403d54a193b6e3b14c2633d073.scn"
 
 [deps]
 
 source_file="res://level/forklift/flying_forklift.glb"
-dest_files=[ "res://.import/flying_forklift.glb-5fc3f6403d54a193b6e3b14c2633d073.scn" ]
+dest_files=[ "res://.godot/imported/flying_forklift.glb-5fc3f6403d54a193b6e3b14c2633d073.scn" ]
 
 [params]
 
-nodes/root_type="Spatial"
-nodes/root_name="FlyingForkliftModel"
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
@@ -26,7 +26,7 @@ meshes/light_baking=0
 meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 external_files/store_in_subdir=false
-animation/import=false
+animation/import=true
 animation/fps=15
 animation/filter_script=""
 animation/storage=false

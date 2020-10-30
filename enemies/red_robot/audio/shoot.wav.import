@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/shoot.wav-81aef4aff359235fd45078daadcb9e5e.sample"
+path="res://.godot/imported/shoot.wav-81aef4aff359235fd45078daadcb9e5e.sample"
 
 [deps]
 
 source_file="res://enemies/red_robot/audio/shoot.wav"
-dest_files=[ "res://.import/shoot.wav-81aef4aff359235fd45078daadcb9e5e.sample" ]
+dest_files=[ "res://.godot/imported/shoot.wav-81aef4aff359235fd45078daadcb9e5e.sample" ]
 
 [params]
 
@@ -15,7 +15,7 @@ force/8_bit=false
 force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
-edit/trim=true
-edit/normalize=true
+edit/trim=false
+edit/normalize=false
 edit/loop=false
 compress/mode=0

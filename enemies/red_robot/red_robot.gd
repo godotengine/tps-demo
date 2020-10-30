@@ -1,4 +1,4 @@
-extends KinematicBody
+extends KinematicBody3D
 
 enum State {
 	APPROACH = 0,
@@ -23,27 +23,27 @@ var health = 5
 var dead = false
 var test_shoot = false
 
-var player = null
+var player
 var velocity = Vector3()
 var orientation = Transform()
 
-onready var animation_tree = $AnimationTree
-onready var shoot_animation = $ShootAnimation
+@onready var animation_tree = $AnimationTree
+@onready var shoot_animation = $ShootAnimation
 
-onready var model = $RedRobotModel
-onready var ray_from = model.get_node(@"Armature/Skeleton/RayFrom")
-onready var ray_mesh = ray_from.get_node(@"RayMesh")
-onready var explosion_particles = ray_from.get_node(@"ExplosionParticles")
+@onready var model = $RedRobotModel
+@onready var ray_from = model.get_node("Armature/Skeleton3D/RayFrom")
+@onready var ray_mesh = ray_from.get_node("RayMesh")
+@onready var explosion_particles = ray_from.get_node("ExplosionParticles")
 
-onready var explosion_sound = $SoundEffects/Explosion
-onready var hit_sound = $SoundEffects/Hit
+@onready var explosion_sound = $SoundEffects/Explosion
+@onready var hit_sound = $SoundEffects/Hit
 
-onready var death = $Death
-onready var shield1 = death.get_node(@"PartShield1")
-onready var shield2 = death.get_node(@"PartShield2")
-onready var shield3 = death.get_node(@"PartShield3")
+@onready var death = $Death
+@onready var shield1 = death.get_node("PartShield1")
+@onready var shield2 = death.get_node("PartShield2")
+@onready var shield3 = death.get_node("PartShield3")
 
-onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
+@onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
 func _ready():
 	orientation = global_transform
@@ -70,17 +70,17 @@ func hit():
 		model.visible = false
 		death.visible = true
 		$CollisionShape.disabled = true
-		death.get_node(@"Particles").emitting = true
+		death.get_node("Particles").emitting = true
 
-		shield1.get_node(@"Col1").disabled = false
-		shield1.get_node(@"Col2").disabled = false
-		shield1.mode = RigidBody.MODE_RIGID
-		shield2.get_node(@"Col1").disabled = false
-		shield2.get_node(@"Col2").disabled = false
-		shield2.mode = RigidBody.MODE_RIGID
-		shield3.get_node(@"Col1").disabled = false
-		shield3.get_node(@"Col2").disabled = false
-		shield3.mode = RigidBody.MODE_RIGID
+		shield1.get_node("Col1").disabled = false
+		shield1.get_node("Col2").disabled = false
+		shield1.mode = RigidBody3D.MODE_RIGID
+		shield2.get_node("Col1").disabled = false
+		shield2.get_node("Col2").disabled = false
+		shield2.mode = RigidBody3D.MODE_RIGID
+		shield3.get_node("Col1").disabled = false
+		shield3.get_node("Col2").disabled = false
+		shield3.mode = RigidBody3D.MODE_RIGID
 
 		shield2.linear_velocity = 3 * (Vector3.UP + base_xf.x).normalized()
 		shield3.linear_velocity = 3 * (Vector3.UP).normalized()
@@ -97,7 +97,7 @@ func shoot():
 	var ray_dir = -gt.basis.z
 	var max_dist = 1000
 
-	var col = get_world().direct_space_state.intersect_ray(ray_origin, ray_origin + ray_dir * max_dist, [self])
+	var col = get_world_3d().direct_space_state.intersect_ray(ray_origin, ray_origin + ray_dir * max_dist, [self])
 	if not col.empty():
 		max_dist = ray_origin.distance_to(col.position)
 		if col.collider == player:
@@ -127,7 +127,7 @@ func _physics_process(delta):
 				aim_preparing = 0
 			animation_tree["parameters/aiming/blend_amount"] = aim_preparing / AIM_PREPARE_TIME
 
-		var to_player_local = global_transform.xform_inv(player.global_transform.origin)
+		var to_player_local = global_transform.inverse() * player.global_transform.origin
 		# The front of the robot is +Z, and atan2 is zero at +X, so we need to use the Z for the X parameter (second one).
 		var angle_to_player = atan2(to_player_local.x, to_player_local.z)
 		var tolerance = deg2rad(PLAYER_AIM_TOLERANCE_DEGREES)
@@ -143,7 +143,7 @@ func _physics_process(delta):
 				# See if player can be killed because in they're sight.
 				var ray_origin = ray_from.global_transform.origin
 				var ray_to = player.global_transform.origin + Vector3.UP # Above middle of player.
-				var col = get_world().direct_space_state.intersect_ray(ray_origin, ray_to, [self])
+				var col = get_world_3d().direct_space_state.intersect_ray(ray_origin, ray_to, [self])
 				if not col.empty() and col.collider == player:
 					state = State.AIM
 					aim_countdown = AIM_TIME
@@ -164,7 +164,7 @@ func _physics_process(delta):
 		if aim_countdown < 0 and state == State.AIM:
 			var ray_origin = ray_from.global_transform.origin
 			var ray_to = player.global_transform.origin + Vector3.UP # Above middle of player.
-			var col = get_world().direct_space_state.intersect_ray(ray_origin, ray_to, [self])
+			var col = get_world_3d().direct_space_state.intersect_ray(ray_origin, ray_to, [self])
 			if not col.empty() and col.collider == player:
 				state = State.SHOOTING
 				shoot_animation.play("shoot")
@@ -172,10 +172,10 @@ func _physics_process(delta):
 				resume_approach()
 
 		if animation_tree.active:
-			var to_cannon_local = ray_mesh.global_transform.xform_inv(player.global_transform.origin + Vector3.UP)
+			var to_cannon_local = ray_mesh.global_transform.inverse() * (player.global_transform.origin + Vector3.UP)
 			var h_angle = rad2deg(atan2( to_cannon_local.x, -to_cannon_local.z ))
 			var v_angle = rad2deg(atan2( to_cannon_local.y, -to_cannon_local.z ))
-			var blend_pos = animation_tree["parameters/aim/blend_position"]
+			var blend_pos = animation_tree.get("parameters/aim/blend_position")
 			var h_motion = BLEND_AIM_SPEED * delta * -h_angle
 			blend_pos.x += h_motion
 			blend_pos.x = clamp(blend_pos.x, -1, 1)

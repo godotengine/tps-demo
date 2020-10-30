@@ -4,34 +4,25 @@
 [ext_resource path="res://door/model/door.dae" type="PackedScene" id=2]
 [ext_resource path="res://door/open_close.wav" type="AudioStream" id=3]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape3D" id=1]
 extents = Vector3( 4.42643, 3.10445, 5.53322 )
 
-[node name="Door" type="Area"]
+[node name="Door" type="Area3D"]
 script = ExtResource( 1 )
 
 [node name="DoorModel" parent="." instance=ExtResource( 2 )]
-
-[node name="shape0" parent="DoorModel/armature-doorsimple/Skeleton/doorleft" index="0"]
-disabled = true
-
-[node name="shape0" parent="DoorModel/armature-doorsimple/Skeleton/doorlower" index="0"]
-disabled = true
-
-[node name="shape0" parent="DoorModel/armature-doorsimple/Skeleton/doorright" index="0"]
-disabled = true
-
-[node name="shape0" parent="DoorModel/armature-doorsimple/Skeleton/doorupper" index="0"]
-disabled = true
 
 [node name="sound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 3 )
 unit_db = 4.0
 unit_size = 7.0
+script = null
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55109, 0 )
 shape = SubResource( 1 )
+script = null
+
 [connection signal="body_entered" from="." to="." method="_on_door_body_entered"]
 
 [editable path="DoorModel"]

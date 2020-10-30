@@ -1,4 +1,4 @@
-extends KinematicBody
+extends KinematicBody3D
 
 const CAMERA_MOUSE_ROTATION_SPEED = 0.001
 const CAMERA_CONTROLLER_ROTATION_SPEED = 3.0
@@ -22,26 +22,26 @@ var velocity = Vector3()
 var aiming = false
 var camera_x_rot = 0.0
 
-onready var initial_position = transform.origin
-onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
+@onready var initial_position = transform.origin
+@onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
-onready var animation_tree = $AnimationTree
-onready var player_model = $PlayerModel
-onready var shoot_from = player_model.get_node(@"Robot_Skeleton/Skeleton/GunBone/ShootFrom")
-onready var color_rect = $ColorRect
-onready var crosshair = $Crosshair
-onready var fire_cooldown = $FireCooldown
+@onready var animation_tree = $AnimationTree
+@onready var player_model = $PlayerModel
+@onready var shoot_from = player_model.get_node("Robot_Skeleton/Skeleton3D/GunBone/ShootFrom")
+@onready var color_rect = $ColorRect
+@onready var crosshair = $Crosshair
+@onready var fire_cooldown = $FireCooldown
 
-onready var camera_base = $CameraBase
-onready var camera_animation = camera_base.get_node(@"Animation")
-onready var camera_rot = camera_base.get_node(@"CameraRot")
-onready var camera_spring_arm = camera_rot.get_node(@"SpringArm")
-onready var camera_camera = camera_spring_arm.get_node(@"Camera")
+@onready var camera_base = $CameraBase
+@onready var camera_animation = camera_base.get_node("Animation")
+@onready var camera_rot = camera_base.get_node("CameraRot")
+@onready var camera_spring_arm = camera_rot.get_node("SpringArm")
+@onready var camera_camera = camera_spring_arm.get_node("Camera")
 
-onready var sound_effects = $SoundEffects
-onready var sound_effect_jump = sound_effects.get_node(@"Jump")
-onready var sound_effect_land = sound_effects.get_node(@"Land")
-onready var sound_effect_shoot = sound_effects.get_node(@"Shoot")
+@onready var sound_effects = $SoundEffects
+@onready var sound_effect_jump = sound_effects.get_node("Jump")
+@onready var sound_effect_land = sound_effects.get_node("Land")
+@onready var sound_effect_shoot = sound_effects.get_node("Shoot")
 
 func _init():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -54,6 +54,11 @@ func _ready():
 
 
 func _process(_delta):
+	if Input.is_action_just_pressed("screenshot"):
+		var image = get_viewport().get_texture().get_data()
+		var date = OS.get_datetime()
+		var file_name = str(hash(date))
+		image.save_png("screenshots/" + file_name + ".png")
 	# Fade out to black if falling out of the map. -17 is lower than
 	# the lowest valid position on the map (which is a bit under -16).
 	# At 15 units below -17 (so -32), the screen turns fully black.
@@ -76,7 +81,7 @@ func _physics_process(delta):
 	var motion_target = Vector2(
 			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 			Input.get_action_strength("move_back") - Input.get_action_strength("move_forward"))
-	motion = motion.linear_interpolate(motion_target, MOTION_INTERPOLATE_SPEED * delta)
+	motion = motion.lerp(motion_target, MOTION_INTERPOLATE_SPEED * delta)
 
 	var camera_basis = camera_rot.global_transform.basis
 	var camera_z = camera_basis.z
@@ -147,7 +152,7 @@ func _physics_process(delta):
 			var ray_dir = camera_camera.project_ray_normal(ch_pos)
 
 			var shoot_target
-			var col = get_world().direct_space_state.intersect_ray(ray_from, ray_from + ray_dir * 1000, [self], 0b11)
+			var col = get_world_3d().direct_space_state.intersect_ray(ray_from, ray_from + ray_dir * 1000, [self], 0b11)
 			if col.empty():
 				shoot_target = ray_from + ray_dir * 1000
 			else:

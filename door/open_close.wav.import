@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/open_close.wav-15c93b82a463a1fe63bbc03e48e48393.sample"
+path="res://.godot/imported/open_close.wav-15c93b82a463a1fe63bbc03e48e48393.sample"
 
 [deps]
 
 source_file="res://door/open_close.wav"
-dest_files=[ "res://.import/open_close.wav-15c93b82a463a1fe63bbc03e48e48393.sample" ]
+dest_files=[ "res://.godot/imported/open_close.wav-15c93b82a463a1fe63bbc03e48e48393.sample" ]
 
 [params]
 
@@ -15,7 +15,7 @@ force/8_bit=false
 force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
-edit/trim=true
-edit/normalize=true
+edit/trim=false
+edit/normalize=false
 edit/loop=false
 compress/mode=0

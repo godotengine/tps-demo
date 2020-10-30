@@ -2,17 +2,17 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/lights.glb-e682766b019cdb9ecca59a07b4749bef.scn"
+path="res://.godot/imported/lights.glb-e682766b019cdb9ecca59a07b4749bef.scn"
 
 [deps]
 
 source_file="res://level/geometry/models/lights.glb"
-dest_files=[ "res://.import/lights.glb-e682766b019cdb9ecca59a07b4749bef.scn" ]
+dest_files=[ "res://.godot/imported/lights.glb-e682766b019cdb9ecca59a07b4749bef.scn" ]
 
 [params]
 
-nodes/root_type="Spatial"
-nodes/root_name="LightsModel"
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
@@ -22,11 +22,11 @@ materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=0
-meshes/light_baking=0
+meshes/light_baking=1
 meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 external_files/store_in_subdir=false
-animation/import=false
+animation/import=true
 animation/fps=15
 animation/filter_script=""
 animation/storage=false

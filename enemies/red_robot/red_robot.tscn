@@ -1,123 +1,118 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://enemies/red_robot/red_robot.gd" type="Script" id=1]
 [ext_resource path="res://enemies/red_robot/model/red_robot.dae" type="PackedScene" id=2]
 [ext_resource path="res://enemies/red_robot/parts/ray.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://enemies/red_robot/parts/ray.shader" type="Shader" id=4]
-[ext_resource path="res://enemies/red_robot/textures/ray_texture.png" type="Texture" id=5]
-[ext_resource path="res://enemies/red_robot/textures/ray_smoke_texture.png" type="Texture" id=6]
-[ext_resource path="res://enemies/red_robot/textures/particle.png" type="Texture" id=7]
-[ext_resource path="res://enemies/red_robot/textures/explosion.png" type="Texture" id=8]
+[ext_resource path="res://enemies/red_robot/textures/ray_texture.png" type="Texture2D" id=5]
+[ext_resource path="res://enemies/red_robot/textures/ray_smoke_texture.png" type="Texture2D" id=6]
+[ext_resource path="res://enemies/red_robot/textures/particle.png" type="Texture2D" id=7]
+[ext_resource path="res://enemies/red_robot/textures/explosion.png" type="Texture2D" id=8]
 [ext_resource path="res://enemies/red_robot/audio/charge.wav" type="AudioStream" id=9]
 [ext_resource path="res://enemies/red_robot/audio/shoot.wav" type="AudioStream" id=10]
 [ext_resource path="res://enemies/red_robot/parts/part_shield.obj" type="ArrayMesh" id=11]
 [ext_resource path="res://enemies/red_robot/model/EvilRobo.tres" type="Material" id=12]
 [ext_resource path="res://enemies/red_robot/parts/part_head.obj" type="ArrayMesh" id=13]
-[ext_resource path="res://enemies/red_robot/textures/red_robot_albedo.png" type="Texture" id=14]
-[ext_resource path="res://enemies/red_robot/textures/red_robot_orm.png" type="Texture" id=15]
-[ext_resource path="res://enemies/red_robot/textures/red_robot_normal.png" type="Texture" id=16]
+[ext_resource path="res://enemies/red_robot/textures/red_robot_albedo.png" type="Texture2D" id=14]
+[ext_resource path="res://enemies/red_robot/textures/red_robot_orm.png" type="Texture2D" id=15]
+[ext_resource path="res://enemies/red_robot/textures/red_robot_normal.png" type="Texture2D" id=16]
 [ext_resource path="res://enemies/red_robot/audio/explosion.wav" type="AudioStream" id=17]
 [ext_resource path="res://enemies/red_robot/audio/hit.wav" type="AudioStream" id=18]
 [ext_resource path="res://enemies/red_robot/audio/walk.wav" type="AudioStream" id=19]
 
 [sub_resource type="ShaderMaterial" id=1]
-resource_local_to_scene = true
 shader = ExtResource( 4 )
 shader_param/deform = 0.0
 shader_param/transparency = 0.0
 shader_param/energy = 1.0
 shader_param/smoke = 0.0
-shader_param/clip = 20.0
+shader_param/clip = 1000.0
 shader_param/ray_texture = ExtResource( 5 )
 shader_param/smoke_texture = ExtResource( 6 )
 
-[sub_resource type="SpatialMaterial" id=2]
-flags_transparent = true
-flags_unshaded = true
+[sub_resource type="StandardMaterial3D" id=2]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-params_blend_mode = 1
-params_billboard_mode = 3
+albedo_color = Color( 0.870588, 0.294118, 0.294118, 1 )
+albedo_texture = ExtResource( 7 )
+billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
-albedo_color = Color( 0.870588, 0.294118, 0.294118, 1 )
-albedo_texture = ExtResource( 7 )
 
 [sub_resource type="QuadMesh" id=3]
 material = SubResource( 2 )
 
 [sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0, 0.283019, 1 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.283019, 1, 1, 1, 1 )
+colors = PackedColorArray( 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="SpatialMaterial" id=5]
-flags_transparent = true
-flags_unshaded = true
+[sub_resource type="StandardMaterial3D" id=5]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-params_blend_mode = 1
-params_billboard_mode = 3
+albedo_texture = ExtResource( 8 )
+billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
-albedo_texture = ExtResource( 8 )
-proximity_fade_enable = true
-proximity_fade_distance = 0.2
 
 [sub_resource type="QuadMesh" id=6]
 material = SubResource( 5 )
 
 [sub_resource type="Gradient" id=7]
-colors = PoolColorArray( 1, 1, 1, 0.961538, 0.960784, 0.960784, 0.960784, 0 )
+colors = PackedColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [sub_resource type="AnimationNodeAnimation" id=8]
 resource_local_to_scene = true
-animation = "TurnRight-cycle"
+animation = @"TurnRight-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=9]
 resource_local_to_scene = true
-animation = "TurnLeft-cycle"
+animation = @"TurnLeft-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 resource_local_to_scene = true
-animation = "Walk-cycle"
+animation = @"Walk-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=11]
 resource_local_to_scene = true
-animation = "Damage_take1"
+animation = @"Damage_take1"
 
 [sub_resource type="AnimationNodeAnimation" id=12]
 resource_local_to_scene = true
-animation = "Damage_take2"
+animation = @"Damage_take2"
 
 [sub_resource type="AnimationNodeAnimation" id=13]
 resource_local_to_scene = true
-animation = "Damage_heavy"
+animation = @"Damage_heavy"
 
 [sub_resource type="AnimationNodeAnimation" id=14]
 resource_local_to_scene = true
-animation = "Idle-cycle"
+animation = @"Idle-cycle"
 
 [sub_resource type="AnimationNodeAnimation" id=15]
 resource_local_to_scene = true
-animation = "Cannon-U"
+animation = @"Cannon-U"
 
 [sub_resource type="AnimationNodeAnimation" id=16]
 resource_local_to_scene = true
-animation = "Cannon-D"
+animation = @"Cannon-D"
 
 [sub_resource type="AnimationNodeAnimation" id=17]
 resource_local_to_scene = true
-animation = "Cannon-R"
+animation = @"Cannon-R"
 
 [sub_resource type="AnimationNodeAnimation" id=18]
 resource_local_to_scene = true
-animation = "Cannon-L"
+animation = @"Cannon-L"
 
 [sub_resource type="AnimationNodeAnimation" id=19]
 resource_local_to_scene = true
-animation = "Cannon-N"
+animation = @"Cannon-N"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=20]
 resource_local_to_scene = true
@@ -135,7 +130,7 @@ blend_point_4/pos = Vector2( 0, 0 )
 [sub_resource type="AnimationNodeBlend2" id=21]
 resource_local_to_scene = true
 filter_enabled = true
-filters = [ "Armature/Skeleton:Cannon-TrackTurret", "Armature/Skeleton:CannonAnimRecoil" ]
+filters = [ "Armature/Skeleton3D:Cannon-TrackTurret", "Armature/Skeleton3D:CannonAnimRecoil", "Armature/Skeleton:Cannon-TrackTurret", "Armature/Skeleton:CannonAnimRecoil" ]
 
 [sub_resource type="AnimationNodeOneShot" id=22]
 resource_local_to_scene = true
@@ -164,7 +159,7 @@ input_3/auto_advance = false
 
 [sub_resource type="AnimationNodeBlendTree" id=26]
 resource_local_to_scene = true
-graph_offset = Vector2( 0, 196.5 )
+graph_offset = Vector2( 72, 167.5 )
 nodes/Animation/node = SubResource( 14 )
 nodes/Animation/position = Vector2( -200, 100 )
 "nodes/Animation 2/node" = SubResource( 8 )
@@ -192,148 +187,76 @@ nodes/hit3/position = Vector2( 980, 240 )
 nodes/output/position = Vector2( 1180, 200 )
 nodes/state/node = SubResource( 25 )
 nodes/state/position = Vector2( 60, 100 )
-node_connections = [ "output", 0, "hit3", "state", 0, "Animation", "state", 1, "Animation 3", "state", 2, "Animation 2", "state", 3, "Animation 4", "aiming", 0, "state", "aiming", 1, "aim", "hit1", 0, "aiming", "hit1", 1, "Animation 5", "hit2", 0, "hit1", "hit2", 1, "Animation 6", "hit3", 0, "hit2", "hit3", 1, "Animation 7" ]
+node_connections = [ @"aiming", 0, @"state", @"aiming", 1, @"aim", @"hit1", 0, @"aiming", @"hit1", 1, @"Animation 5", @"hit2", 0, @"hit1", @"hit2", 1, @"Animation 6", @"hit3", 0, @"hit2", @"hit3", 1, @"Animation 7", @"output", 0, @"hit3", @"state", 0, @"Animation", @"state", 1, @"Animation 3", @"state", 2, @"Animation 2", @"state", 3, @"Animation 4" ]
 
-[sub_resource type="SphereShape" id=27]
+[sub_resource type="SphereShape3D" id=27]
 radius = 1.11815
 
-[sub_resource type="SphereShape" id=28]
+[sub_resource type="SphereShape3D" id=28]
 radius = 20.0
 
 [sub_resource type="Animation" id=29]
 length = 4.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/energy")
+tracks/0/path = NodePath("ShootLight:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 2.1, 2.2, 2.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 1.0, 1.0, 5.0, 1.0, 1.0 ]
+"times": PackedFloat32Array( 0.2, 1.6, 2, 2.6 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/transparency")
+tracks/1/path = NodePath("ShootLight:light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2, 2.1, 2.6, 2.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2, 0.9, 1.6, 2, 2.1, 2.6 ),
+"transitions": PackedFloat32Array( 1, -2, 4.28709, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 1.0, 1.0, 0.0 ]
+"values": [ 0.0, 0.0, 1.0, 0.0, 0.0, 5.0, 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/deform")
+tracks/2/path = NodePath("AnimationTree:active")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
-"times": PoolRealArray( 0, 2, 2.6, 2.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 0.0, 2.0 ]
+"times": PackedFloat32Array( 0, 2.6, 2.9 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/smoke")
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2, 2.2, 2.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 0.0, 1.0 ]
+"times": PackedFloat32Array( 1.9, 3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": @"shoot_check"
+}, {
+"args": [  ],
+"method": @"resume_approach"
+} ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("ShootLight:visible")
+tracks/4/type = "audio"
+tracks/4/path = NodePath("SoundEffects/Cannon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.2, 1.6, 2, 2.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, true, false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("ShootLight:light_energy")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.2, 0.9, 1.6, 2, 2.1, 2.6 ),
-"transitions": PoolRealArray( 1, -2, 4.28709, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 1.0, 0.0, 0.0, 5.0, 0.0 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/BuildupParticles:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.2, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/ExplosionParticles:emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 2.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("AnimationTree:active")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = false
-tracks/8/keys = {
-"times": PoolRealArray( 0, 2.6, 2.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, true ]
-}
-tracks/9/type = "method"
-tracks/9/path = NodePath(".")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 1.9, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "shoot_check"
-}, {
-"args": [  ],
-"method": "resume_approach"
-} ]
-}
-tracks/10/type = "audio"
-tracks/10/path = NodePath("SoundEffects/Cannon")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -343,48 +266,118 @@ tracks/10/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 10 )
 } ],
-"times": PoolRealArray( 0, 2.1 )
+"times": PackedFloat32Array( 0, 2.1 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("RedRobotModel/Armature/Skeleton3D/RayFrom/RayMesh:material/0:shader_param/energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PackedFloat32Array( 0, 2, 2.1, 2.2, 2.6 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 5.0, 1.0, 1.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("RedRobotModel/Armature/Skeleton3D/RayFrom/RayMesh:material/0:shader_param/transparency")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PackedFloat32Array( 0, 2, 2.1, 2.6, 2.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 1.0, 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("RedRobotModel/Armature/Skeleton3D/RayFrom/RayMesh:material/0:shader_param/deform")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PackedFloat32Array( 0, 2, 2.6, 2.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 2.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("RedRobotModel/Armature/Skeleton3D/RayFrom/RayMesh:material/0:shader_param/smoke")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PackedFloat32Array( 0, 2, 2.2, 2.6 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("RedRobotModel/Armature/Skeleton3D/RayFrom/BuildupParticles:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PackedFloat32Array( 0, 0.2, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("RedRobotModel/Armature/Skeleton3D/RayFrom/ExplosionParticles:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PackedFloat32Array( 2.1 ),
+"transitions": PackedFloat32Array( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="PhysicsMaterial" id=30]
 
-[sub_resource type="BoxShape" id=31]
+[sub_resource type="BoxShape3D" id=31]
 extents = Vector3( 0.445466, 0.622832, 0.0474423 )
 
-[sub_resource type="BoxShape" id=32]
+[sub_resource type="BoxShape3D" id=32]
 extents = Vector3( 0.432293, 0.514522, 0.0474423 )
 
-[sub_resource type="SpatialMaterial" id=33]
-flags_transparent = true
-flags_unshaded = true
+[sub_resource type="StandardMaterial3D" id=33]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-params_blend_mode = 1
-params_billboard_mode = 3
+albedo_texture = ExtResource( 8 )
+billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
-albedo_texture = ExtResource( 8 )
-proximity_fade_enable = true
-proximity_fade_distance = 0.2
 
 [sub_resource type="QuadMesh" id=34]
 material = SubResource( 33 )
 
 [sub_resource type="Gradient" id=35]
-colors = PoolColorArray( 1, 1, 1, 0.961538, 0.960784, 0.960784, 0.960784, 0 )
+colors = PackedColorArray( 1, 1, 1, 0.961538, 0.960784, 0.960784, 0.960784, 0 )
 
 [sub_resource type="PhysicsMaterial" id=36]
 
-[sub_resource type="BoxShape" id=37]
+[sub_resource type="BoxShape3D" id=37]
 extents = Vector3( 0.411196, 0.514522, 0.0474423 )
 
-[sub_resource type="BoxShape" id=38]
+[sub_resource type="BoxShape3D" id=38]
 extents = Vector3( 0.403063, 0.514522, 0.0474423 )
 
 [sub_resource type="PhysicsMaterial" id=39]
 
-[sub_resource type="SpatialMaterial" id=40]
+[sub_resource type="StandardMaterial3D" id=40]
 albedo_texture = ExtResource( 14 )
 metallic = 1.0
 metallic_texture = ExtResource( 15 )
@@ -400,9 +393,9 @@ ao_texture = ExtResource( 15 )
 ao_on_uv2 = false
 ao_texture_channel = 0
 
-[sub_resource type="SphereShape" id=41]
+[sub_resource type="SphereShape3D" id=41]
 
-[sub_resource type="BoxShape" id=42]
+[sub_resource type="BoxShape3D" id=42]
 extents = Vector3( 0.0885272, 0.514522, 0.0474423 )
 
 [sub_resource type="Animation" id=43]
@@ -413,8 +406,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -425,8 +418,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -437,8 +430,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -449,8 +442,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -461,8 +454,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -473,8 +466,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -485,8 +478,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
@@ -497,8 +490,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
@@ -509,8 +502,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -521,8 +514,8 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.2 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -533,52 +526,119 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.2 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
-[sub_resource type="AudioStreamRandomPitch" id=44]
+[sub_resource type="StandardMaterial3D" id=44]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource( 8 )
+
+[sub_resource type="QuadMesh" id=45]
+material = SubResource( 44 )
+
+[sub_resource type="Gradient" id=46]
+colors = PackedColorArray( 1, 1, 1, 0.961538, 0.960784, 0.960784, 0.960784, 0 )
+
+[sub_resource type="AudioStreamRandomPitch" id=47]
 audio_stream = ExtResource( 18 )
 
-[node name="RedRobot" type="KinematicBody"]
+[node name="RedRobot" type="KinematicBody3D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="RedRobotModel" parent="." instance=ExtResource( 2 )]
 
-[node name="Skeleton" parent="RedRobotModel/Armature" index="0"]
-bones/14/bound_children = [ NodePath("RayFrom") ]
+[node name="Skeleton3D" parent="RedRobotModel/Armature" index="0"]
+bones/0/pose = Transform( 0.999939, -0.0110267, 0, 0.0110267, 0.999939, 0, 0, 0, 1, 0, 0, 0 )
+bones/2/pose = Transform( 0.998818, 0.0408434, -0.0263702, -0.0408563, 0.999165, 5.25976e-05, 0.0263503, 0.00102485, 0.999652, 0, -0.00194334, -0.137533 )
+bones/3/pose = Transform( 0.999762, 0.0151451, -0.0157169, -0.00391182, 0.832757, 0.553626, 0.0214731, -0.553432, 0.832618, -1.79543e-07, -1.19209e-07, -8.90426e-08 )
+bones/4/pose = Transform( 0.999424, 0.0147313, -0.0305682, 0.0117982, 0.693784, 0.720086, 0.0318155, -0.720032, 0.693211, 5.99849e-08, -1.76974e-07, 1.73294e-07 )
+bones/5/pose = Transform( 1, 6.82671e-09, 3.6334e-09, -6.82671e-09, 1, -5.96047e-08, -3.6334e-09, 5.96046e-08, 1, -6.23986e-08, 0, 8.9407e-08 )
+bones/6/pose = Transform( 0.999966, 9.69572e-05, -0.0082682, 9.69567e-05, 0.999725, 0.0234493, 0.00826821, -0.0234493, 0.999691, -1.62993e-07, 1.19209e-07, 1.02763e-07 )
+bones/7/pose = Transform( 0.999957, 3.92122e-05, -0.00924448, 3.91925e-05, 0.999964, 0.00848091, 0.00924448, -0.00848091, 0.999921, 7.26659e-08, 1.15798e-07, -6.76829e-08 )
+bones/8/pose = Transform( 0.997707, 0.0599077, -0.0314945, -0.0652387, 0.975125, -0.211835, 0.0180206, 0.213403, 0.976798, -5.88759e-08, -2.9438e-08, -1.4719e-08 )
+bones/9/pose = Transform( 0.897136, 0.0407235, 0.439874, -0.0943124, 0.990441, 0.100658, -0.43157, -0.131789, 0.892401, 1.49376e-07, -7.48702e-08, -1.0449e-07 )
+bones/10/pose = Transform( 1, 6.07058e-09, 6.66281e-09, -6.07058e-09, 1, -1.49012e-07, -6.66281e-09, 1.49012e-07, 1, 2.17929e-07, 1.19209e-07, 8.9407e-08 )
+bones/11/pose = Transform( 1, -1.67618e-07, -0.000148804, -1.19537e-07, 0.999998, -0.00192975, 0.000148804, 0.00192975, 0.999998, 3.00149e-08, 1.34293e-07, -1.26326e-07 )
+bones/12/pose = Transform( 1, -8.87185e-08, -2.29696e-05, -1.86228e-08, 0.999989, -0.00467315, 2.29698e-05, 0.00467315, 0.999989, 5.86847e-08, 2.1634e-07, 9.49266e-08 )
+bones/13/pose = Transform( 0.999045, -2.32956e-09, -0.0436895, 3.68957e-10, 1, -4.48839e-08, 0.0436895, 4.4825e-08, 0.999045, -1.68382e-09, 7.43236e-08, -1.49012e-08 )
+bones/14/pose = Transform( 1, -4.25194e-10, 1.72551e-10, 4.23624e-10, 0.999959, 0.00900176, -1.76371e-10, -0.00900176, 0.999959, -3.80024e-09, -4.95497e-09, 0 )
+bones/15/pose = Transform( 0.968911, -4.89748e-09, -0.247408, 4.7494e-09, 1, -1.19534e-09, 0.247408, -1.68578e-11, 0.968911, 3.00884e-09, 5.96046e-08, -2.02942e-08 )
+bones/16/pose = Transform( 0.996729, -0.0805847, -0.00611412, 0.0804161, 0.981431, 0.174148, -0.00803304, -0.17407, 0.984701, -4.48857e-08, -1.54039e-07, -3.48301e-08 )
+bones/17/pose = Transform( 0.998271, -0.0585861, 0.0048542, 0.0587766, 0.993146, -0.101029, 0.00109795, 0.101139, 0.994871, 2.18807e-08, 3.71983e-07, 3.64349e-10 )
+bones/18/pose = Transform( 0.998022, -0.0472214, 0.0414964, 0.00073863, 0.668867, 0.743381, -0.0628592, -0.74188, 0.667579, 4.60666e-08, 1.59268e-07, 1.77065e-08 )
+bones/19/pose = Transform( 1, -2.33579e-10, 5.90454e-09, 3.55622e-09, 0.8218, -0.569777, -4.71926e-09, 0.569777, 0.8218, -2.09224e-08, 1.13492e-07, -5.38874e-08 )
+bones/20/pose = Transform( 0.770942, -0.22766, 0.594827, -0.00757441, 0.930589, 0.365985, -0.63686, -0.286659, 0.715706, -1.54477e-08, -2.01621e-07, 6.62354e-08 )
+bones/21/pose = Transform( 0.998933, 0.0457611, -0.00622293, -0.0460363, 0.9974, -0.0554501, 0.00366929, 0.0556775, 0.998442, -2.34055e-10, 2.01439e-07, 5.22452e-08 )
+bones/22/pose = Transform( 0.998687, 0.0435482, -0.0269886, -0.00340214, 0.581989, 0.813189, 0.05112, -0.81203, 0.581372, -9.74945e-08, 3.40286e-08, 4.30002e-08 )
+bones/23/pose = Transform( 0.998568, 0.0166981, 0.0508155, 0.00428254, 0.922014, -0.387131, -0.053317, 0.386795, 0.920623, 6.02128e-09, -4.81702e-08, 0 )
+bones/24/pose = Transform( 1, -2.11268e-20, 1.19124e-09, -2.11268e-20, 1, 3.54703e-11, -1.19124e-09, -3.54703e-11, 1, 6.40284e-10, -3.72529e-08, 0 )
+bones/25/pose = Transform( 1, -4.37326e-09, 7.27596e-12, 4.37326e-09, 1, 3.18323e-11, -7.27596e-12, -3.18323e-11, 1, -1.69029e-08, 5.96046e-08, -5.96046e-08 )
+bones/26/pose = Transform( 0.999536, -1.61114e-10, 0.0304545, 1.61468e-10, 1, -9.15822e-12, -0.0304545, 1.40714e-11, 0.999536, -9.55153e-11, -5.96046e-08, -9.31323e-10 )
+bones/27/pose = Transform( 1, 3.75539e-09, -4.64634e-11, -3.75539e-09, 1, -2.275e-08, 4.64633e-11, 2.275e-08, 1, -4.29408e-08, 3.33277e-08, 1.67456e-08 )
+bones/28/pose = Transform( 1, 2.98022e-08, 1.24743e-10, -2.98022e-08, 1, 1.53477e-12, -1.24743e-10, -1.53477e-12, 1, 5.64013e-08, 9.48123e-08, -2.87947e-08 )
+bones/29/pose = Transform( 1, -1.45207e-09, -3.83154e-11, 1.45207e-09, 1, -3.57264e-09, 3.83154e-11, 3.57264e-09, 1, -5.60793e-08, 0, -4.81471e-08 )
+bones/30/pose = Transform( 1, 2.98022e-08, -1.58991e-10, -2.98022e-08, 1, 7.38964e-12, 1.58991e-10, -7.38964e-12, 1, 4.6822e-08, 2.74723e-08, -3.38878e-08 )
+bones/33/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, 0.488567, 0 )
+bones/34/pose = Transform( 1, 0, 3.24004e-28, 0, 1, 0, -3.24004e-28, 0, 1, 2.80576e-08, 0, 3.4861e-09 )
+bones/35/pose = Transform( 0.998603, -0.0156897, -0.0504635, -0.0156897, 0.82383, -0.566617, 0.0504635, 0.566616, 0.822435, -1.19209e-07, -4.47035e-08, -2.98023e-08 )
+bones/36/pose = Transform( 0.99858, -0.0155663, -0.0509373, -0.0155663, 0.829293, -0.558595, 0.0509373, 0.558594, 0.827875, -1.19209e-07, -2.98023e-08, 1.49012e-08 )
+bones/37/pose = Transform( 1, -5.68434e-14, 2.29589e-41, 5.68434e-14, 1, 0, -2.29589e-41, 0, 1, 2.38419e-07, -2.98023e-08, -5.96046e-08 )
+bones/38/pose = Transform( 0.916795, -0.00702932, -0.399297, -0.00702927, 0.999406, -0.0337331, 0.399297, 0.0337331, 0.916201, 0, 7.45058e-09, -1.49012e-08 )
+bones/39/pose = Transform( 0.862541, -0.00667067, 0.505943, -0.00667069, 0.999676, 0.0245527, -0.505943, -0.0245527, 0.862217, 1.42109e-14, 9.70267e-08, 5.58794e-08 )
+bones/40/pose = Transform( 0.899504, 0.4369, 0.00339062, -0.420739, 0.86827, -0.262842, -0.11778, 0.235001, 0.964833, 3.72529e-09, -2.34952e-08, 0 )
+bones/41/pose = Transform( 1, 1.60755e-08, 9.31323e-10, -1.60755e-08, 1, 2.32831e-09, -9.31323e-10, -2.32831e-09, 1, 5.96046e-08, -4.26326e-14, -5.96046e-08 )
+bones/42/pose = Transform( 1, -1.88347e-08, 9.67284e-09, 1.26944e-08, 0.898953, 0.438045, -1.69459e-08, -0.438045, 0.898953, -2.23517e-08, -2.98023e-08, 5.96046e-08 )
+bones/43/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, -0.460788, 0 )
+bones/44/pose = Transform( 1, 0, -3.24004e-28, 0, 1, 0, 3.24004e-28, 0, 1, -5.2197e-08, 0, 4.81896e-08 )
+bones/45/pose = Transform( 0.999834, 0.0020357, -0.0180871, 0.00203565, 0.974983, 0.222263, 0.0180871, -0.222263, 0.974818, 0, -1.78814e-07, -5.96046e-08 )
+bones/46/pose = Transform( 0.999834, 0.00208565, -0.0180735, 0.0020856, 0.973717, 0.227742, 0.0180735, -0.227742, 0.973553, 0, -8.9407e-08, -8.9407e-08 )
+bones/47/pose = Transform( 1, 5.68434e-14, -2.29589e-41, -5.68434e-14, 1, 0, 2.29589e-41, 0, 1, -2.38419e-07, -8.9407e-08, -2.98023e-08 )
+bones/48/pose = Transform( 1, 2.22045e-16, -5.96047e-08, 0, 1, 3.72529e-09, 5.96046e-08, -3.72529e-09, 1, 2.98023e-08, 7.45058e-09, -5.96046e-08 )
+bones/49/pose = Transform( 0.824486, 0.00648092, -0.565845, 0.00648095, 0.999761, 0.0208941, 0.565845, -0.0208941, 0.824246, 1.49011e-08, 1.92097e-07, 1.30385e-07 )
+bones/50/pose = Transform( 0.980413, -0.0976266, 0.171055, 0.108782, 0.992425, -0.0570833, -0.164186, 0.074573, 0.983607, 1.11759e-08, -4.76346e-08, 0 )
+bones/51/pose = Transform( 1, -3.03703e-09, -3.64525e-09, 3.03703e-09, 1, 1.30967e-09, 3.64525e-09, -1.30967e-09, 1, -8.9407e-08, -4.84288e-08, 2.38419e-07 )
+bones/52/pose = Transform( 1, -3.06415e-10, 2.43395e-09, 1.18814e-09, 0.928529, -0.371259, -2.14624e-09, 0.371259, 0.928529, -3.4459e-08, -1.78814e-07, 5.96046e-08 )
+bones/53/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.268617, 0.179552, 0.101779 )
+bones/54/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382172, 0.137199, 0 )
 
-[node name="RayFrom" type="BoneAttachment" parent="RedRobotModel/Armature/Skeleton" index="4"]
-transform = Transform( -0.999994, -0.00279503, -0.00183882, -0.00279578, 0.999996, 0.000401379, 0.0018377, 0.000406517, -0.999998, -0.0288596, 1.94004, 0.194757 )
+[node name="RayFrom" type="BoneAttachment3D" parent="RedRobotModel/Armature/Skeleton3D" index="4"]
+transform = Transform( -0.999556, 0.0262433, 0.0140967, 0.0263699, 0.999613, 0.00887122, -0.0138584, 0.00923902, -0.999861, 0.0409971, 2.07518, 0.189006 )
 bone_name = "CannonAnimRecoil"
+script = null
 
-[node name="RayMesh" type="MeshInstance" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
-transform = Transform( 1, 8.40737e-09, -9.31323e-10, -6.55928e-09, 1, -9.31323e-10, 4.65661e-10, 0, 1, 1.67638e-08, 0, -1.21376 )
+[node name="RayMesh" type="MeshInstance3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2 )
 mesh = ExtResource( 3 )
-skeleton = NodePath("")
 material/0 = SubResource( 1 )
+script = null
 
-[node name="BuildupParticles" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.07273 )
+[node name="BuildupParticles" type="CPUParticles3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 emitting = false
 amount = 64
 mesh = SubResource( 3 )
 emission_shape = 1
 emission_sphere_radius = 1.0
 gravity = Vector3( 0, 0, 0 )
-angular_velocity = -0.381543
+angular_velocity = -0.38
 linear_accel = 1.0
 linear_accel_random = 1.0
 radial_accel = -1.0
 tangential_accel = 1.0
 color_ramp = SubResource( 4 )
+script = null
 
-[node name="ExplosionParticles" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0332087, -10.283 )
+[node name="ExplosionParticles" type="CPUParticles3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
 emitting = false
 amount = 32
 one_shot = true
@@ -587,41 +647,48 @@ mesh = SubResource( 6 )
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 0.3
-angular_velocity = 35.2
+angular_velocity = 35.0
 angular_velocity_random = 1.0
 color_ramp = SubResource( 7 )
+script = null
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 26 )
 anim_player = NodePath("../RedRobotModel/AnimationPlayer")
 active = true
 process_mode = 0
-root_motion_track = NodePath("Armature/Skeleton:MASTER")
+root_motion_track = NodePath("Armature/Skeleton3D:MASTER")
 parameters/aim/blend_position = Vector2( 0, 0 )
-parameters/aiming/blend_amount = 0
+parameters/aiming/blend_amount = 0.0
 parameters/hit1/active = false
 parameters/hit2/active = false
 parameters/hit3/active = false
 parameters/state/current = 0
+script = null
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11655, -0.0212681 )
 shape = SubResource( 27 )
+script = null
 
-[node name="PlayerDetectionArea" type="Area" parent="."]
+[node name="PlayerDetectionArea" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 2
+script = null
 
-[node name="CollisionShape" type="CollisionShape" parent="PlayerDetectionArea"]
+[node name="CollisionShape" type="CollisionShape3D" parent="PlayerDetectionArea"]
 shape = SubResource( 28 )
+script = null
 
 [node name="RootMotionView" type="RootMotionView" parent="."]
 animation_path = NodePath("../AnimationTree")
+script = null
 
 [node name="ShootAnimation" type="AnimationPlayer" parent="."]
 anims/shoot = SubResource( 29 )
+script = null
 
-[node name="ShootLight" type="OmniLight" parent="."]
+[node name="ShootLight" type="OmniLight3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82358, 2.06607 )
 visible = false
 light_color = Color( 0.992157, 0.713726, 0.713726, 1 )
@@ -629,35 +696,41 @@ light_energy = 0.0
 shadow_enabled = true
 omni_range = 8.68993
 omni_shadow_mode = 0
+script = null
 
-[node name="Death" type="Spatial" parent="."]
+[node name="Death" type="Node3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49858, 0 )
 visible = false
+script = null
 
-[node name="PartShield1" type="RigidBody" parent="Death"]
+[node name="PartShield1" type="RigidBody3D" parent="Death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37822, 1.11034, 1.09121 )
 collision_layer = 3
 collision_mask = 3
 mode = 1
 mass = 2000.0
 physics_material_override = SubResource( 30 )
+script = null
 
-[node name="Mesh" type="MeshInstance" parent="Death/PartShield1"]
+[node name="Mesh" type="MeshInstance3D" parent="Death/PartShield1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28307, -1.35778, -0.789012 )
 mesh = ExtResource( 11 )
 material/0 = ExtResource( 12 )
+script = null
 
-[node name="Col1" type="CollisionShape" parent="Death/PartShield1"]
+[node name="Col1" type="CollisionShape3D" parent="Death/PartShield1"]
 transform = Transform( 1, 0, 0, 0, 0.908425, 0.418048, 0, -0.418048, 0.908425, -0.0167698, 0.5788, -0.122978 )
 shape = SubResource( 31 )
 disabled = true
+script = null
 
-[node name="Col2" type="CollisionShape" parent="Death/PartShield1"]
+[node name="Col2" type="CollisionShape3D" parent="Death/PartShield1"]
 transform = Transform( 1, 0, 0, 0, 0.994888, 0.100984, 0, -0.100984, 0.994888, 0.0804193, -0.63062, 0.179012 )
 shape = SubResource( 32 )
 disabled = true
+script = null
 
-[node name="Fire" type="CPUParticles" parent="Death/PartShield1"]
+[node name="Fire" type="CPUParticles3D" parent="Death/PartShield1"]
 transform = Transform( -0.999594, 0.0284228, 0.00205158, 0.0284288, 0.999592, 0.00296096, -0.0019666, 0.00301808, -0.999993, -0.196335, 0.103942, -0.0579731 )
 amount = 32
 lifetime = 0.2
@@ -671,31 +744,36 @@ initial_velocity = 0.3
 angular_velocity = 84.86
 angular_velocity_random = 1.0
 color_ramp = SubResource( 35 )
+script = null
 
-[node name="PartShield2" type="RigidBody" parent="Death"]
+[node name="PartShield2" type="RigidBody3D" parent="Death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75083, 1.02975, 0.162546 )
 collision_layer = 3
 collision_mask = 3
 mode = 1
 mass = 2000.0
 physics_material_override = SubResource( 36 )
+script = null
 
-[node name="Mesh" type="MeshInstance" parent="Death/PartShield2"]
+[node name="Mesh" type="MeshInstance3D" parent="Death/PartShield2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28307, -1.35778, -0.789012 )
 mesh = ExtResource( 11 )
 material/0 = ExtResource( 12 )
+script = null
 
-[node name="Col1" type="CollisionShape" parent="Death/PartShield2"]
+[node name="Col1" type="CollisionShape3D" parent="Death/PartShield2"]
 transform = Transform( 1, 0, 0, 0, 0.908425, 0.418048, 0, -0.418048, 0.908425, -0.0150018, 0.599786, -0.170673 )
 shape = SubResource( 37 )
 disabled = true
+script = null
 
-[node name="Col2" type="CollisionShape" parent="Death/PartShield2"]
+[node name="Col2" type="CollisionShape3D" parent="Death/PartShield2"]
 transform = Transform( 1, 0, 0, 0, 0.999275, -0.038063, 0, 0.038063, 0.999275, 0.0207567, -0.47267, 0.0351334 )
 shape = SubResource( 38 )
 disabled = true
+script = null
 
-[node name="Fire" type="CPUParticles" parent="Death/PartShield2"]
+[node name="Fire" type="CPUParticles3D" parent="Death/PartShield2"]
 transform = Transform( -0.999594, 0.0284228, 0.00205158, 0.0284288, 0.999592, 0.00296096, -0.0019666, 0.00301808, -0.999993, -0.196335, 0.103942, -0.0579731 )
 amount = 32
 lifetime = 0.2
@@ -709,8 +787,9 @@ initial_velocity = 0.3
 angular_velocity = 84.86
 angular_velocity_random = 1.0
 color_ramp = SubResource( 35 )
+script = null
 
-[node name="PartShield3" type="RigidBody" parent="Death"]
+[node name="PartShield3" type="RigidBody3D" parent="Death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0374503, 1.02975, 0.162546 )
 collision_layer = 3
 collision_mask = 3
@@ -718,23 +797,27 @@ mode = 1
 mass = 6600.0
 physics_material_override = SubResource( 39 )
 angular_damp = 0.3
+script = null
 
-[node name="Mesh" type="MeshInstance" parent="Death/PartShield3"]
+[node name="Mesh" type="MeshInstance3D" parent="Death/PartShield3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.18159, -1.2457, -0.130535 )
 mesh = ExtResource( 13 )
 material/0 = SubResource( 40 )
 material/1 = null
+script = null
 
-[node name="Col1" type="CollisionShape" parent="Death/PartShield3"]
+[node name="Col1" type="CollisionShape3D" parent="Death/PartShield3"]
 shape = SubResource( 41 )
 disabled = true
+script = null
 
-[node name="Col2" type="CollisionShape" parent="Death/PartShield3"]
+[node name="Col2" type="CollisionShape3D" parent="Death/PartShield3"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0753293, 0.680746, 0.945143 )
 shape = SubResource( 42 )
 disabled = true
+script = null
 
-[node name="Fire" type="CPUParticles" parent="Death/PartShield3"]
+[node name="Fire" type="CPUParticles3D" parent="Death/PartShield3"]
 transform = Transform( -0.999594, 0.0284228, 0.00205158, 0.0284288, 0.999592, 0.00296096, -0.0019666, 0.00301808, -0.999993, -0.196335, 0.103942, -0.0579731 )
 amount = 32
 lifetime = 0.2
@@ -748,44 +831,54 @@ initial_velocity = 0.3
 angular_velocity = 84.86
 angular_velocity_random = 1.0
 color_ramp = SubResource( 35 )
+script = null
 
 [node name="Explosion" type="AnimationPlayer" parent="Death"]
 anims/kaboom = SubResource( 43 )
+script = null
 
-[node name="Particles" type="CPUParticles" parent="Death"]
+[node name="Particles" type="CPUParticles3D" parent="Death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.213713, 0.763735, 0 )
+emitting = false
 amount = 32
 one_shot = true
 explosiveness = 1.0
-mesh = SubResource( 6 )
+mesh = SubResource( 45 )
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 0.3
 angular_velocity = 35.2
 angular_velocity_random = 1.0
 linear_accel = 1.0
-color_ramp = SubResource( 7 )
+color_ramp = SubResource( 46 )
+script = null
 
-[node name="SoundEffects" type="Spatial" parent="."]
+[node name="SoundEffects" type="Node3D" parent="."]
+script = null
 
 [node name="Cannon" type="AudioStreamPlayer3D" parent="SoundEffects"]
 stream = ExtResource( 10 )
 unit_size = 15.0
+script = null
 
 [node name="Explosion" type="AudioStreamPlayer3D" parent="SoundEffects"]
 stream = ExtResource( 17 )
 unit_db = 12.0
 unit_size = 15.0
+script = null
 
 [node name="Hit" type="AudioStreamPlayer3D" parent="SoundEffects"]
-stream = SubResource( 44 )
+stream = SubResource( 47 )
 unit_db = 3.0
 unit_size = 15.0
+script = null
 
 [node name="Walk" type="AudioStreamPlayer3D" parent="SoundEffects"]
 stream = ExtResource( 19 )
 unit_db = 3.0
 unit_size = 15.0
+script = null
+
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_area_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_area_body_exited"]
 

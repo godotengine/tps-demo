@@ -2,17 +2,17 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/props.glb-ef7d7320b04a8755385d61edb896d714.scn"
+path="res://.godot/imported/props.glb-ef7d7320b04a8755385d61edb896d714.scn"
 
 [deps]
 
 source_file="res://level/geometry/models/props.glb"
-dest_files=[ "res://.import/props.glb-ef7d7320b04a8755385d61edb896d714.scn" ]
+dest_files=[ "res://.godot/imported/props.glb-ef7d7320b04a8755385d61edb896d714.scn" ]
 
 [params]
 
-nodes/root_type="Spatial"
-nodes/root_name="PropsModel"
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
@@ -26,7 +26,7 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 external_files/store_in_subdir=false
-animation/import=false
+animation/import=true
 animation/fps=15
 animation/filter_script=""
 animation/storage=false

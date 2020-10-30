@@ -2,21 +2,21 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/door.dae-7f8548364364a8c72d317db0aac6a97d.scn"
+path="res://.godot/imported/door.dae-7f8548364364a8c72d317db0aac6a97d.scn"
 
 [deps]
 
 source_file="res://door/model/door.dae"
-dest_files=[ "res://.import/door.dae-7f8548364364a8c72d317db0aac6a97d.scn" ]
+dest_files=[ "res://.godot/imported/door.dae-7f8548364364a8c72d317db0aac6a97d.scn" ]
 
 [params]
 
-nodes/root_type="Spatial"
-nodes/root_name="DoorModel"
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
-materials/location=1
+materials/location=0
 materials/storage=2
 materials/keep_on_reimport=true
 meshes/compress=true
@@ -29,8 +29,8 @@ external_files/store_in_subdir=false
 animation/import=true
 animation/fps=15
 animation/filter_script=""
-animation/storage=2
-animation/keep_custom_tracks=true
+animation/storage=false
+animation/keep_custom_tracks=false
 animation/optimizer/enabled=true
 animation/optimizer/max_linear_error=0.05
 animation/optimizer/max_angular_error=0.01

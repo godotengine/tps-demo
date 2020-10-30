@@ -4,61 +4,59 @@
 [ext_resource path="res://level/geometry/scenes/collision/stair_pillar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level/geometry/models/core.glb" type="PackedScene" id=3]
 [ext_resource path="res://level/geometry/scenes/collision/radial_player_only.tscn" type="PackedScene" id=4]
-[ext_resource path="res://level/textures/plasma.png" type="Texture" id=5]
+[ext_resource path="res://level/textures/plasma.png" type="Texture2D" id=5]
 
-[sub_resource type="SpatialMaterial" id=1]
-flags_transparent = true
-flags_unshaded = true
+[sub_resource type="StandardMaterial3D" id=1]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-params_blend_mode = 1
-params_billboard_mode = 3
+albedo_color = Color( 0.843137, 0.709804, 0.427451, 1 )
+albedo_texture = ExtResource( 5 )
+billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
-albedo_color = Color( 0.843137, 0.709804, 0.427451, 1 )
-albedo_texture = ExtResource( 5 )
-proximity_fade_enable = true
-proximity_fade_distance = 0.2
 
 [sub_resource type="QuadMesh" id=2]
 material = SubResource( 1 )
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.34749, 0.509652, 1 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+offsets = PackedFloat32Array( 0, 0.34749, 0.509652, 1 )
+colors = PackedColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="CylinderShape" id=4]
+[sub_resource type="CylinderShape3D" id=4]
 radius = 10.5
 height = 4.0
 
-[sub_resource type="CylinderShape" id=5]
+[sub_resource type="CylinderShape3D" id=5]
 radius = 11.0
 height = 3.6
 
-[sub_resource type="CylinderShape" id=6]
+[sub_resource type="CylinderShape3D" id=6]
 radius = 4.5
 height = 24.0
 
-[sub_resource type="CylinderShape" id=7]
+[sub_resource type="CylinderShape3D" id=7]
 radius = 10.0
 height = 11.0
 
-[sub_resource type="CylinderShape" id=8]
+[sub_resource type="CylinderShape3D" id=8]
 radius = 35.0
 height = 5.0
 
-[sub_resource type="BoxShape" id=9]
+[sub_resource type="BoxShape3D" id=9]
 extents = Vector3( 40, 6, 40 )
 
-[sub_resource type="BoxShape" id=10]
+[sub_resource type="BoxShape3D" id=10]
 extents = Vector3( 0.6, 0.6, 1.4 )
 
-[node name="Core" type="Spatial"]
+[node name="Core" type="Node3D"]
+script = null
 
 [node name="CoreModel" parent="." instance=ExtResource( 3 )]
 
-[node name="Plasma" type="CPUParticles" parent="."]
+[node name="Plasma" type="CPUParticles3D" parent="."]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -2.3, 0 )
 amount = 64
 speed_scale = 0.2
@@ -71,62 +69,81 @@ angular_velocity_random = 1.0
 angle = 720.0
 angle_random = 1.0
 color_ramp = SubResource( 3 )
+script = null
 
-[node name="CentralColliders" type="StaticBody" parent="."]
+[node name="CentralColliders" type="StaticBody3D" parent="."]
+script = null
 
-[node name="CentralCylinder1" type="CollisionShape" parent="CentralColliders"]
+[node name="CentralCylinder1" type="CollisionShape3D" parent="CentralColliders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.3, 0 )
 shape = SubResource( 4 )
+script = null
 
-[node name="CentralCylinder2" type="CollisionShape" parent="CentralColliders"]
+[node name="CentralCylinder2" type="CollisionShape3D" parent="CentralColliders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0 )
 shape = SubResource( 5 )
+script = null
 
-[node name="CentralCylinder3" type="CollisionShape" parent="CentralColliders"]
+[node name="CentralCylinder3" type="CollisionShape3D" parent="CentralColliders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 shape = SubResource( 6 )
+script = null
 
-[node name="CentralCylinder4" type="CollisionShape" parent="CentralColliders"]
+[node name="CentralCylinder4" type="CollisionShape3D" parent="CentralColliders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0 )
 shape = SubResource( 7 )
+script = null
 
-[node name="LowerFloorCylinder" type="CollisionShape" parent="CentralColliders"]
+[node name="LowerFloorCylinder" type="CollisionShape3D" parent="CentralColliders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.9, 0 )
 shape = SubResource( 8 )
+script = null
 
-[node name="Ceiling" type="CollisionShape" parent="CentralColliders"]
+[node name="Ceiling" type="CollisionShape3D" parent="CentralColliders"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
 shape = SubResource( 9 )
+script = null
 
-[node name="ExtendedCyl1" type="CollisionShape" parent="CentralColliders"]
+[node name="ExtendedCyl1" type="CollisionShape3D" parent="CentralColliders"]
 transform = Transform( 0.97437, 0, 0.224951, 0, 1, 0, -0.224951, 0, 0.97437, -4.04912, -8.1, -17.5387 )
 shape = SubResource( 10 )
+script = null
 
-[node name="ExtendedCyl2" type="CollisionShape" parent="CentralColliders"]
+[node name="ExtendedCyl2" type="CollisionShape3D" parent="CentralColliders"]
 transform = Transform( -0.681998, 0, 0.731354, 0, 1, 0, -0.731354, 0, -0.681998, -13.1644, -8.1, 12.276 )
 shape = SubResource( 10 )
+script = null
 
 [node name="RadialColliders1" parent="." instance=ExtResource( 1 )]
+script = null
 
 [node name="RadialColliders2" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.224951, 0, 0.97437, 0, 1, 0, -0.97437, 0, -0.224951, 0, 0, 0 )
+script = null
 
 [node name="RadialColliders3" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.731354, 0, -0.681999, 0, 1, 0, 0.681999, 0, -0.731354, 0, 0, 0 )
+script = null
 
 [node name="RadialPlayerOnly1" parent="." instance=ExtResource( 4 )]
+script = null
 
 [node name="RadialPlayerOnly2" parent="." instance=ExtResource( 4 )]
 transform = Transform( -0.224951, 0, 0.97437, 0, 1, 0, -0.97437, 0, -0.224951, 0, 0, 0 )
+script = null
 
 [node name="RadialPlayerOnly3" parent="." instance=ExtResource( 4 )]
 transform = Transform( -0.731354, 0, -0.681999, 0, 1, 0, 0.681999, 0, -0.731354, 0, 0, 0 )
+script = null
 
 [node name="StairPillar1" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.731354, 0, 0.681998, 0, 1, 0, -0.681998, 0, 0.731354, 18.2838, 2, -17.05 )
+script = null
 
 [node name="StairPillar2" parent="." instance=ExtResource( 2 )]
 transform = Transform( -0.956305, 0, 0.292371, 0, 1, 0, -0.292371, 0, -0.956305, -23.9076, 2, -7.30928 )
+script = null
 
 [node name="StairPillar3" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.224951, 0, -0.97437, 0, 1, 0, 0.97437, 0, 0.224951, 5.62378, 2, 24.3593 )
+script = null

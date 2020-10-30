@@ -1,34 +1,34 @@
 extends Node
 
 enum GIQuality {
-	DISABLED = 0
-	LOW = 1
+	DISABLED = 0,
+	LOW = 1,
 	HIGH = 2
 }
 
 enum AAQuality {
-	DISABLED = 0
-	AA_2X = 1
-	AA_4X = 2
+	DISABLED = 0,
+	AA_2X = 1,
+	AA_4X = 2,
 	AA_8X = 3
 }
 
 enum SSAOQuality {
-	DISABLED = 0
-	LOW = 1
+	DISABLED = 0,
+	LOW = 1,
 	HIGH = 2
 }
 
 enum BloomQuality {
-	DISABLED = 0
-	LOW = 1
+	DISABLED = 0,
+	LOW = 1,
 	HIGH = 2
 }
 
 enum Resolution {
-	RES_540 = 0
-	RES_720 = 1
-	RES_1080 = 2
+	RES_540 = 0,
+	RES_720 = 1,
+	RES_1080 = 2,
 	NATIVE = 3
 }
 

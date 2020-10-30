@@ -2,17 +2,17 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/red_robot.dae-1b7c21e895639cdfc51b4632e66bc08e.scn"
+path="res://.godot/imported/red_robot.dae-1b7c21e895639cdfc51b4632e66bc08e.scn"
 
 [deps]
 
 source_file="res://enemies/red_robot/model/red_robot.dae"
-dest_files=[ "res://.import/red_robot.dae-1b7c21e895639cdfc51b4632e66bc08e.scn" ]
+dest_files=[ "res://.godot/imported/red_robot.dae-1b7c21e895639cdfc51b4632e66bc08e.scn" ]
 
 [params]
 
-nodes/root_type="Spatial"
-nodes/root_name="RedRobotModel"
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0

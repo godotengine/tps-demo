@@ -2,17 +2,17 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/structure.glb-21fe3543c920768091702bd640720751.scn"
+path="res://.godot/imported/structure.glb-21fe3543c920768091702bd640720751.scn"
 
 [deps]
 
 source_file="res://level/geometry/models/structure.glb"
-dest_files=[ "res://.import/structure.glb-21fe3543c920768091702bd640720751.scn" ]
+dest_files=[ "res://.godot/imported/structure.glb-21fe3543c920768091702bd640720751.scn" ]
 
 [params]
 
-nodes/root_type="Spatial"
-nodes/root_name="StructureModel"
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
@@ -26,7 +26,7 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 external_files/store_in_subdir=false
-animation/import=false
+animation/import=true
 animation/fps=15
 animation/filter_script=""
 animation/storage=false
