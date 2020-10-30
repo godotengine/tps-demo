@@ -17,17 +17,19 @@ func _ready():
 		$ReflectionProbes.show()
 
 	if Settings.aa_quality == Settings.AAQuality.AA_8X:
-		get_node("/root").msaa = Viewport.MSAA_8X
+		get_viewport().msaa = Viewport.MSAA_8X
 	elif Settings.aa_quality == Settings.AAQuality.AA_4X:
-		get_node("/root").msaa = Viewport.MSAA_4X
+		get_viewport().msaa = Viewport.MSAA_4X
 	elif Settings.aa_quality == Settings.AAQuality.AA_2X:
-		get_node("/root").msaa = Viewport.MSAA_2X
+		get_viewport().msaa = Viewport.MSAA_2X
 	else:
-		get_node("/root").msaa = Viewport.MSAA_DISABLED
+		get_viewport().msaa = Viewport.MSAA_DISABLED
 
 	if Settings.ssao_quality == Settings.SSAOQuality.HIGH:
+		world_environment.environment.ssao_enabled = true
 		world_environment.environment.ssao_quality = world_environment.environment.SSAO_QUALITY_HIGH
 	elif Settings.ssao_quality == Settings.SSAOQuality.LOW:
+		world_environment.environment.ssao_enabled = true
 		world_environment.environment.ssao_quality = world_environment.environment.SSAO_QUALITY_LOW
 	else:
 		world_environment.environment.ssao_enabled = false
@@ -42,16 +44,17 @@ func _ready():
 		world_environment.environment.glow_enabled = false
 		world_environment.environment.glow_bicubic_upscale = false
 
+	var window_size = OS.window_size
 	if Settings.resolution == Settings.Resolution.NATIVE:
 		pass
 	elif Settings.resolution == Settings.Resolution.RES_1080:
-		var minsize = Vector2(OS.window_size.x * 1080 / OS.window_size.y, 1080.0)
+		var minsize = Vector2(window_size.x * 1080 / window_size.y, 1080.0)
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP_HEIGHT, minsize)
 	elif Settings.resolution == Settings.Resolution.RES_720:
-		var minsize = Vector2(OS.window_size.x * 720 / OS.window_size.y, 720.0)
+		var minsize = Vector2(window_size.x * 720 / window_size.y, 720.0)
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP_HEIGHT, minsize)
 	elif Settings.resolution == Settings.Resolution.RES_540:
-		var minsize = Vector2(OS.window_size.x * 540 / OS.window_size.y, 540.0)
+		var minsize = Vector2(window_size.x * 540 / window_size.y, 540.0)
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP_HEIGHT, minsize)
 
 

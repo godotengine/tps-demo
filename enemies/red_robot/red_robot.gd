@@ -175,7 +175,7 @@ func _physics_process(delta):
 			var to_cannon_local = ray_mesh.global_transform.xform_inv(player.global_transform.origin + Vector3.UP)
 			var h_angle = rad2deg(atan2( to_cannon_local.x, -to_cannon_local.z ))
 			var v_angle = rad2deg(atan2( to_cannon_local.y, -to_cannon_local.z ))
-			var blend_pos = animation_tree["parameters/aim/blend_position"]
+			var blend_pos = animation_tree.get("parameters/aim/blend_position")
 			var h_motion = BLEND_AIM_SPEED * delta * -h_angle
 			blend_pos.x += h_motion
 			blend_pos.x = clamp(blend_pos.x, -1, 1)
