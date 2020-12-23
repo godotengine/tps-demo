@@ -12,7 +12,6 @@ onready var collision_shape = $CollisionShape
 func _process(delta):
 	if hit:
 		return
-
 	time_alive -= delta
 	if time_alive < 0:
 		hit = true
