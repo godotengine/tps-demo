@@ -158,7 +158,15 @@ func _physics_process(delta):
 			get_parent().add_child(bullet)
 			bullet.global_transform.origin = shoot_origin
 			bullet.direction = shoot_dir
+			# If we don't rotate the bullets there is no useful way to control the particles ..
+			bullet.look_at(bullet.global_transform.origin + shoot_dir, Vector3.UP)
 			bullet.add_collision_exception_with(self)
+			var shoot_particle = $PlayerModel/Robot_Skeleton/Skeleton/GunBone/ShootFrom/ShootParticle
+			shoot_particle.restart()
+			shoot_particle.emitting = true
+			var muzzle_particle = $PlayerModel/Robot_Skeleton/Skeleton/GunBone/ShootFrom/MuzzleFlash
+			muzzle_particle.restart()
+			muzzle_particle.emitting = true
 			fire_cooldown.start()
 			sound_effect_shoot.play()
 			camera_camera.add_trauma(0.35)

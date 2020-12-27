@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/model/player.dae" type="PackedScene" id=2]
@@ -8,48 +8,92 @@
 [ext_resource path="res://player/audio/land.wav" type="AudioStream" id=6]
 [ext_resource path="res://player/audio/shoot.wav" type="AudioStream" id=7]
 [ext_resource path="res://player/camera_noise_shake_effect.gd" type="Script" id=8]
+[ext_resource path="res://player/bullet/bullet_material.tres" type="Material" id=9]
+[ext_resource path="res://player/model/MuzzleFlashParticle.tres" type="ArrayMesh" id=10]
+[ext_resource path="res://player/bullet/effect/FlarePolar.png" type="Texture" id=11]
 
-[sub_resource type="AnimationNodeAdd3" id=1]
+[sub_resource type="ParticlesMaterial" id=1]
+flag_align_y = true
+direction = Vector3( 0, 0, -1 )
+spread = 15.0
+gravity = Vector3( 0, -3, 0 )
+initial_velocity = 3.0
+
+[sub_resource type="SphereMesh" id=2]
+radius = 0.003
+height = 0.02
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_cull_mode = 2
+albedo_texture = ExtResource( 11 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.325926, 1 )
+colors = PoolColorArray( 0.0507812, 0.955505, 1, 1, 0.875, 0.888672, 1, 0.305882 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+width = 32
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.791139, 0.990909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+width = 64
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+gravity = Vector3( 0, 0, 0 )
+angle = -4.0
+angle_random = 1.0
+scale = 0.3
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
+
+[sub_resource type="AnimationNodeAdd3" id=9]
 resource_local_to_scene = true
 filter_enabled = true
 filters = [ "Robot_Skeleton/Skeleton:neck.001", "Robot_Skeleton/Skeleton:upper_arm.R" ]
 
-[sub_resource type="AnimationNodeAnimation" id=2]
+[sub_resource type="AnimationNodeAnimation" id=10]
 resource_local_to_scene = true
 animation = "AIM-Down"
 
-[sub_resource type="AnimationNodeAnimation" id=3]
+[sub_resource type="AnimationNodeAnimation" id=11]
 resource_local_to_scene = true
 animation = "AIM-Up"
 
-[sub_resource type="AnimationNodeBlend2" id=4]
+[sub_resource type="AnimationNodeBlend2" id=12]
 resource_local_to_scene = true
 filter_enabled = true
 filters = [ "Robot_Skeleton/Skeleton:eyelid.d.L", "Robot_Skeleton/Skeleton:eyelid.d.R", "Robot_Skeleton/Skeleton:eyelid.u.L", "Robot_Skeleton/Skeleton:eyelid.u.R", "Robot_Skeleton/Skeleton:eyes" ]
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=13]
 resource_local_to_scene = true
 animation = "eyes-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=14]
 resource_local_to_scene = true
 animation = "jump_5_hardlanding"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=15]
 resource_local_to_scene = true
 animation = "jump_4_falling-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=16]
 resource_local_to_scene = true
 animation = "jump_2_upwards-cycle"
 
-[sub_resource type="AnimationNodeOneShot" id=9]
+[sub_resource type="AnimationNodeOneShot" id=17]
 resource_local_to_scene = true
 fadein_time = 0.25
 fadeout_time = 0.25
 autorestart_random_delay = 1.0
 
-[sub_resource type="AnimationNodeTransition" id=10]
+[sub_resource type="AnimationNodeTransition" id=18]
 resource_local_to_scene = true
 input_count = 4
 xfade_time = 0.15
@@ -62,106 +106,106 @@ input_2/auto_advance = false
 input_3/name = "jump_down"
 input_3/auto_advance = false
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=19]
 resource_local_to_scene = true
 animation = "strafe_left-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=20]
 resource_local_to_scene = true
 animation = "strafe_right-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=21]
 resource_local_to_scene = true
 animation = "strafe_back-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=22]
 resource_local_to_scene = true
 animation = "strafe_front-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=23]
 resource_local_to_scene = true
 animation = "Idlecombat-cycle"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=16]
+[sub_resource type="AnimationNodeBlendSpace2D" id=24]
 resource_local_to_scene = true
-blend_point_0/node = SubResource( 11 )
+blend_point_0/node = SubResource( 19 )
 blend_point_0/pos = Vector2( 1, 0 )
-blend_point_1/node = SubResource( 12 )
+blend_point_1/node = SubResource( 20 )
 blend_point_1/pos = Vector2( -1, 0 )
-blend_point_2/node = SubResource( 13 )
+blend_point_2/node = SubResource( 21 )
 blend_point_2/pos = Vector2( 0, -1 )
-blend_point_3/node = SubResource( 14 )
+blend_point_3/node = SubResource( 22 )
 blend_point_3/pos = Vector2( 0, 1 )
-blend_point_4/node = SubResource( 15 )
+blend_point_4/node = SubResource( 23 )
 blend_point_4/pos = Vector2( 0, 0 )
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=25]
 resource_local_to_scene = true
 animation = "Idle-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=26]
 resource_local_to_scene = true
 animation = "running_nogun-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=27]
 resource_local_to_scene = true
 animation = "running_gun-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=28]
 resource_local_to_scene = true
 animation = "Idlecombat-cycle"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=21]
+[sub_resource type="AnimationNodeBlendSpace2D" id=29]
 resource_local_to_scene = true
-blend_point_0/node = SubResource( 17 )
+blend_point_0/node = SubResource( 25 )
 blend_point_0/pos = Vector2( 0, 0 )
-blend_point_1/node = SubResource( 18 )
+blend_point_1/node = SubResource( 26 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 19 )
+blend_point_2/node = SubResource( 27 )
 blend_point_2/pos = Vector2( 1, 1 )
-blend_point_3/node = SubResource( 20 )
+blend_point_3/node = SubResource( 28 )
 blend_point_3/pos = Vector2( 0, 1 )
 min_space = Vector2( 0, 0 )
 x_label = "speed"
 y_label = "gun"
 
-[sub_resource type="AnimationNodeBlendTree" id=22]
+[sub_resource type="AnimationNodeBlendTree" id=30]
 resource_local_to_scene = true
 graph_offset = Vector2( 1, 85 )
-nodes/aim/node = SubResource( 1 )
+nodes/aim/node = SubResource( 9 )
 nodes/aim/position = Vector2( 380, 120 )
-nodes/aimdown/node = SubResource( 2 )
+nodes/aimdown/node = SubResource( 10 )
 nodes/aimdown/position = Vector2( 120, 60 )
-nodes/aimup/node = SubResource( 3 )
+nodes/aimup/node = SubResource( 11 )
 nodes/aimup/position = Vector2( 140, 380 )
-nodes/eye_blend/node = SubResource( 4 )
+nodes/eye_blend/node = SubResource( 12 )
 nodes/eye_blend/position = Vector2( 640, 120 )
-nodes/eyes/node = SubResource( 5 )
+nodes/eyes/node = SubResource( 13 )
 nodes/eyes/position = Vector2( 380, 360 )
-nodes/hardland/node = SubResource( 6 )
+nodes/hardland/node = SubResource( 14 )
 nodes/hardland/position = Vector2( -160, 340 )
-nodes/jumpdown/node = SubResource( 7 )
+nodes/jumpdown/node = SubResource( 15 )
 nodes/jumpdown/position = Vector2( -460, 320 )
-nodes/jumpup/node = SubResource( 8 )
+nodes/jumpup/node = SubResource( 16 )
 nodes/jumpup/position = Vector2( -480, 200 )
-nodes/land/node = SubResource( 9 )
+nodes/land/node = SubResource( 17 )
 nodes/land/position = Vector2( 120, 180 )
 nodes/output/position = Vector2( 840, 120 )
-nodes/state/node = SubResource( 10 )
+nodes/state/node = SubResource( 18 )
 nodes/state/position = Vector2( -120, 120 )
-nodes/strafe/node = SubResource( 16 )
+nodes/strafe/node = SubResource( 24 )
 nodes/strafe/position = Vector2( -400, -120 )
-nodes/walk/node = SubResource( 21 )
+nodes/walk/node = SubResource( 29 )
 nodes/walk/position = Vector2( -400, 40 )
 node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "land", 0, "state", "land", 1, "hardland" ]
 
-[sub_resource type="CapsuleShape" id=23]
+[sub_resource type="CapsuleShape" id=31]
 radius = 0.5
 height = 0.6
 
-[sub_resource type="RayShape" id=24]
+[sub_resource type="RayShape" id=32]
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=33]
 tracks/0/type = "value"
 tracks/0/path = NodePath("CameraRot/SpringArm:translation")
 tracks/0/interp = 1
@@ -187,7 +231,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=34]
 tracks/0/type = "value"
 tracks/0/path = NodePath("CameraRot/SpringArm:translation")
 tracks/0/interp = 1
@@ -213,7 +257,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="AudioStreamRandomPitch" id=27]
+[sub_resource type="AudioStreamRandomPitch" id=35]
 audio_stream = ExtResource( 7 )
 
 [node name="Player" type="KinematicBody"]
@@ -230,17 +274,40 @@ transform = Transform( 0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0 )
 bones/46/bound_children = [ NodePath("GunBone") ]
 
 [node name="GunBone" type="BoneAttachment" parent="PlayerModel/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.904321, -0.247813, 0.347821, -0.25677, -0.966275, -0.0211712, 0.341372, -0.0701338, -0.937322, -0.207136, 1.3677, 0.535182 )
+transform = Transform( 0.910445, -0.245469, 0.333205, -0.249845, -0.967833, -0.0306525, 0.330045, -0.0553138, -0.942356, -0.207136, 1.37525, 0.51601 )
 bone_name = "hand.R"
 
 [node name="ShootFrom" type="Position3D" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone"]
 transform = Transform( 0.999919, 0.0106283, -0.00705317, -0.0105956, 0.99993, 0.00505793, 0.00710796, -0.0049828, 0.999962, 0.0100024, -0.00491095, -0.40371 )
 
+[node name="ShootParticle" type="Particles" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone/ShootFrom"]
+transform = Transform( 1, 2.04891e-08, 0, 3.21306e-08, 1, 5.58794e-09, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 9 )
+emitting = false
+amount = 10
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.79
+local_coords = false
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 2 )
+
+[node name="MuzzleFlash" type="Particles" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone/ShootFrom"]
+transform = Transform( 1, 0, -2.00234e-08, 1.21072e-08, -4.37722e-08, -1, -2.98023e-08, 1, -4.74975e-08, 0, 0, 0 )
+material_override = SubResource( 3 )
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 8 )
+draw_pass_1 = ExtResource( 10 )
+
 [node name="RootMotionView" type="RootMotionView" parent="."]
 animation_path = NodePath("../AnimationTree")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 22 )
+tree_root = SubResource( 30 )
 anim_player = NodePath("../PlayerModel/AnimationPlayer")
 active = true
 process_mode = 0
@@ -254,11 +321,11 @@ parameters/walk/blend_position = Vector2( 0, 0 )
 
 [node name="CapsuleShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0 )
-shape = SubResource( 23 )
+shape = SubResource( 31 )
 
 [node name="RayShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.00357, 0 )
-shape = SubResource( 24 )
+shape = SubResource( 32 )
 
 [node name="CameraBase" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0 )
@@ -285,8 +352,8 @@ __meta__ = {
 }
 
 [node name="Animation" type="AnimationPlayer" parent="CameraBase"]
-anims/far = SubResource( 25 )
-anims/shoot = SubResource( 26 )
+anims/far = SubResource( 33 )
+anims/shoot = SubResource( 34 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -324,7 +391,7 @@ stream = ExtResource( 5 )
 stream = ExtResource( 6 )
 
 [node name="Shoot" type="AudioStreamPlayer" parent="SoundEffects"]
-stream = SubResource( 27 )
+stream = SubResource( 35 )
 
 [node name="FireCooldown" type="Timer" parent="."]
 wait_time = 0.4

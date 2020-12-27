@@ -1,6 +1,7 @@
 [gd_resource type="SpatialMaterial" format=2]
 
 [resource]
+vertex_color_use_as_albedo = true
 albedo_color = Color( 0, 0, 0, 1 )
 roughness = 0.0
 emission_enabled = true
@@ -8,4 +9,3 @@ emission = Color( 0.109804, 0.894118, 1, 1 )
 emission_energy = 7.34
 emission_operator = 0
 emission_on_uv2 = false
-
