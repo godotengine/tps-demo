@@ -6,7 +6,7 @@ const DECAY_RATE = 1.5
 const MAX_YAW = 0.05
 const MAX_PITCH = 0.05
 const MAX_ROLL = 0.1
-const MAX_TRAUMA = 0.6
+const MAX_TRAUMA = 1.2
 
 # Default values.
 var start_rotation = rotation

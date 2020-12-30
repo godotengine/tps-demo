@@ -1,155 +1,363 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://enemies/red_robot/red_robot.gd" type="Script" id=1]
 [ext_resource path="res://enemies/red_robot/model/red_robot.dae" type="PackedScene" id=2]
-[ext_resource path="res://enemies/red_robot/parts/ray.obj" type="ArrayMesh" id=3]
-[ext_resource path="res://enemies/red_robot/parts/ray.shader" type="Shader" id=4]
-[ext_resource path="res://enemies/red_robot/textures/ray_texture.png" type="Texture" id=5]
-[ext_resource path="res://enemies/red_robot/textures/ray_smoke_texture.png" type="Texture" id=6]
-[ext_resource path="res://enemies/red_robot/textures/particle.png" type="Texture" id=7]
-[ext_resource path="res://enemies/red_robot/textures/explosion.png" type="Texture" id=8]
+[ext_resource path="res://enemies/red_robot/laser/LaserMaterial.tres" type="Material" id=4]
+[ext_resource path="res://enemies/red_robot/laser/EmberTrailCutoff.tres" type="Material" id=5]
+[ext_resource path="res://enemies/red_robot/laser/EmbersColorOverLife.tres" type="Gradient" id=6]
+[ext_resource path="res://enemies/red_robot/laser/impact_effect/EmissionEmbers.tres" type="Material" id=7]
+[ext_resource path="res://enemies/red_robot/parts/sparks_effect/SparkMaterial.tres" type="Material" id=8]
 [ext_resource path="res://enemies/red_robot/audio/charge.wav" type="AudioStream" id=9]
 [ext_resource path="res://enemies/red_robot/audio/shoot.wav" type="AudioStream" id=10]
-[ext_resource path="res://enemies/red_robot/parts/part_shield.obj" type="ArrayMesh" id=11]
-[ext_resource path="res://enemies/red_robot/model/EvilRobo.tres" type="Material" id=12]
-[ext_resource path="res://enemies/red_robot/parts/part_head.obj" type="ArrayMesh" id=13]
-[ext_resource path="res://enemies/red_robot/textures/red_robot_albedo.png" type="Texture" id=14]
-[ext_resource path="res://enemies/red_robot/textures/red_robot_orm.png" type="Texture" id=15]
-[ext_resource path="res://enemies/red_robot/textures/red_robot_normal.png" type="Texture" id=16]
+[ext_resource path="res://enemies/red_robot/parts/part_head.glb" type="PackedScene" id=11]
+[ext_resource path="res://enemies/red_robot/parts/part_shield.glb" type="PackedScene" id=12]
 [ext_resource path="res://enemies/red_robot/audio/explosion.wav" type="AudioStream" id=17]
 [ext_resource path="res://enemies/red_robot/audio/hit.wav" type="AudioStream" id=18]
 [ext_resource path="res://enemies/red_robot/audio/walk.wav" type="AudioStream" id=19]
+[ext_resource path="res://enemies/red_robot/laser/BarrelSmoke.tres" type="ArrayMesh" id=20]
+[ext_resource path="res://enemies/red_robot/laser/BarrelSmokeTexture.png" type="Texture" id=21]
+[ext_resource path="res://enemies/red_robot/parts/sparks_effect/SparkParticle.mesh" type="ArrayMesh" id=22]
+[ext_resource path="res://enemies/red_robot/parts/part.gd" type="Script" id=24]
 
-[sub_resource type="ShaderMaterial" id=1]
-resource_local_to_scene = true
-shader = ExtResource( 4 )
-shader_param/deform = 0.0
-shader_param/transparency = 0.0
-shader_param/energy = 1.0
-shader_param/smoke = 0.0
-shader_param/clip = 20.0
-shader_param/ray_texture = ExtResource( 5 )
-shader_param/smoke_texture = ExtResource( 6 )
+[sub_resource type="SpatialMaterial" id=1]
+resource_name = "None"
+params_cull_mode = 2
+albedo_color = Color( 0.906332, 0.906332, 0.906332, 1 )
+roughness = 0.254644
 
-[sub_resource type="SpatialMaterial" id=2]
-flags_transparent = true
-flags_unshaded = true
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-params_blend_mode = 1
-params_billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-albedo_color = Color( 0.870588, 0.294118, 0.294118, 1 )
-albedo_texture = ExtResource( 7 )
+[sub_resource type="ArrayMesh" id=2]
+resource_name = "Circle"
+surfaces/0 = {
+"aabb": AABB( -0.195923, -79.998, -0.193858, 0.391846, 79.9972, 0.387716 ),
+"array_data": PoolByteArray( 22, 21, 1, 62, 4, 175, 42, 191, 76, 112, 10, 62, 83, 13, 94, 0, 14, 130, 4, 127, 123, 36, 212, 58, 0, 0, 0, 128, 177, 82, 179, 191, 211, 188, 67, 62, 249, 2, 126, 0, 0, 130, 2, 127, 123, 36, 0, 60, 0, 0, 0, 128, 163, 29, 20, 192, 182, 130, 70, 62, 0, 0, 126, 0, 0, 130, 0, 127, 103, 39, 0, 60, 43, 221, 13, 62, 88, 57, 134, 191, 45, 94, 12, 62, 88, 1, 91, 0, 2, 130, 0, 127, 103, 39, 212, 58, 22, 21, 1, 190, 177, 82, 179, 191, 76, 112, 10, 62, 162, 5, 85, 0, 253, 130, 3, 129, 123, 36, 212, 58, 51, 141, 54, 190, 177, 82, 179, 191, 0, 0, 0, 128, 130, 5, 10, 0, 251, 130, 1, 129, 123, 36, 0, 56, 10, 160, 72, 190, 163, 29, 20, 192, 0, 0, 0, 128, 130, 0, 255, 0, 0, 130, 0, 129, 103, 39, 0, 56, 43, 221, 13, 190, 163, 29, 20, 192, 45, 94, 12, 62, 166, 0, 89, 0, 0, 130, 0, 129, 103, 39, 212, 58, 22, 21, 1, 190, 4, 175, 42, 191, 143, 112, 10, 190, 147, 15, 194, 0, 244, 130, 248, 129, 123, 36, 175, 48, 0, 0, 0, 0, 4, 175, 42, 191, 22, 189, 67, 190, 0, 12, 130, 0, 249, 130, 244, 129, 123, 36, 0, 0, 0, 0, 0, 0, 88, 57, 134, 191, 182, 130, 70, 190, 0, 0, 130, 0, 255, 130, 0, 129, 103, 39, 0, 0, 43, 221, 13, 190, 88, 57, 134, 191, 112, 94, 12, 190, 160, 1, 175, 0, 254, 130, 0, 129, 103, 39, 175, 48, 22, 21, 1, 62, 4, 175, 42, 191, 143, 112, 10, 190, 91, 14, 170, 0, 9, 130, 246, 127, 123, 36, 175, 48, 43, 221, 13, 62, 88, 57, 134, 191, 112, 94, 12, 190, 90, 1, 167, 0, 1, 130, 0, 127, 103, 39, 175, 48, 51, 141, 54, 62, 4, 175, 42, 191, 0, 0, 0, 128, 125, 16, 0, 0, 16, 131, 254, 127, 123, 36, 0, 56, 10, 160, 72, 62, 88, 57, 134, 191, 0, 0, 0, 128, 126, 2, 0, 0, 2, 130, 0, 127, 103, 39, 0, 56, 145, 238, 103, 59, 249, 254, 159, 194, 127, 135, 34, 187, 89, 0, 166, 0, 0, 130, 0, 127, 0, 60, 175, 48, 0, 0, 0, 128, 249, 254, 159, 194, 178, 213, 101, 187, 0, 0, 130, 0, 0, 130, 0, 129, 0, 60, 0, 0, 145, 238, 103, 59, 249, 254, 159, 194, 99, 68, 34, 59, 90, 0, 89, 0, 0, 130, 0, 127, 0, 60, 212, 58, 95, 9, 164, 59, 249, 254, 159, 194, 189, 55, 6, 182, 126, 0, 0, 0, 0, 130, 0, 127, 0, 60, 0, 56, 145, 238, 103, 187, 249, 254, 159, 194, 99, 68, 34, 59, 167, 0, 90, 0, 0, 130, 0, 129, 0, 60, 212, 58, 0, 0, 0, 128, 249, 254, 159, 194, 150, 146, 101, 59, 1, 0, 126, 0, 0, 130, 0, 127, 0, 60, 0, 60, 145, 238, 103, 187, 249, 254, 159, 194, 127, 135, 34, 187, 168, 0, 165, 0, 0, 130, 0, 129, 0, 60, 175, 48, 95, 9, 164, 187, 249, 254, 159, 194, 189, 55, 6, 182, 130, 0, 255, 0, 0, 130, 0, 129, 0, 60, 0, 56, 11, 8, 45, 61, 184, 145, 82, 190, 112, 119, 86, 189, 91, 38, 178, 0, 24, 136, 226, 127, 162, 27, 175, 48, 0, 0, 0, 0, 184, 145, 82, 190, 122, 166, 151, 189, 0, 42, 137, 0, 245, 137, 214, 129, 162, 27, 0, 0, 0, 0, 0, 128, 191, 73, 83, 186, 189, 55, 6, 183, 0, 43, 137, 0, 0, 137, 213, 129, 0, 0, 0, 0, 189, 55, 134, 54, 191, 73, 83, 186, 156, 83, 201, 182, 92, 38, 179, 0, 33, 136, 236, 127, 0, 0, 175, 48, 19, 181, 116, 61, 184, 145, 82, 190, 0, 0, 0, 128, 121, 35, 0, 0, 35, 135, 255, 127, 162, 27, 0, 56, 89, 105, 242, 61, 3, 95, 209, 190, 0, 0, 0, 128, 123, 31, 0, 0, 31, 133, 253, 127, 5, 33, 0, 56, 207, 104, 171, 61, 3, 95, 209, 190, 81, 21, 211, 189, 91, 31, 174, 0, 20, 134, 233, 127, 5, 33, 174, 48, 11, 8, 45, 61, 184, 145, 82, 190, 100, 118, 86, 61, 91, 38, 78, 0, 25, 136, 29, 127, 162, 27, 212, 58, 156, 83, 201, 54, 191, 73, 83, 186, 0, 0, 0, 128, 121, 35, 0, 0, 35, 135, 13, 127, 0, 0, 0, 56, 189, 55, 134, 54, 191, 73, 83, 186, 172, 197, 167, 54, 92, 38, 77, 0, 17, 137, 39, 127, 0, 0, 212, 58, 19, 181, 116, 189, 67, 170, 152, 190, 0, 0, 0, 128, 133, 18, 24, 0, 236, 131, 253, 129, 162, 27, 0, 56, 11, 8, 45, 189, 184, 145, 82, 190, 112, 119, 86, 189, 151, 36, 196, 0, 229, 135, 231, 129, 162, 27, 175, 48, 207, 104, 171, 189, 3, 95, 209, 190, 81, 21, 211, 189, 149, 28, 195, 0, 235, 133, 237, 129, 5, 33, 174, 48, 89, 105, 242, 189, 83, 205, 72, 191, 0, 0, 0, 128, 134, 13, 30, 0, 243, 130, 1, 129, 5, 33, 0, 56, 189, 55, 134, 182, 191, 73, 83, 186, 156, 83, 201, 182, 150, 37, 197, 0, 237, 137, 217, 129, 0, 0, 175, 48, 0, 0, 0, 0, 184, 145, 82, 190, 244, 165, 151, 61, 228, 40, 116, 0, 9, 138, 43, 127, 162, 27, 0, 60, 11, 8, 45, 189, 67, 170, 152, 190, 100, 118, 86, 61, 144, 19, 55, 0, 242, 131, 15, 129, 162, 27, 212, 58, 207, 104, 171, 189, 83, 205, 72, 191, 203, 20, 211, 61, 158, 10, 79, 0, 248, 130, 6, 129, 5, 33, 212, 58, 0, 0, 0, 0, 3, 95, 209, 190, 160, 55, 21, 62, 220, 25, 119, 0, 6, 133, 28, 127, 5, 33, 0, 60, 0, 0, 0, 128, 191, 73, 83, 186, 139, 225, 234, 54, 229, 42, 116, 0, 237, 137, 38, 129, 0, 0, 0, 60, 207, 104, 171, 61, 3, 95, 209, 190, 203, 20, 211, 61, 86, 28, 88, 0, 23, 133, 17, 127, 5, 33, 212, 58, 189, 55, 134, 182, 191, 73, 83, 186, 172, 197, 167, 54, 146, 25, 57, 0, 234, 132, 12, 129, 0, 0, 212, 58, 156, 83, 201, 182, 191, 73, 83, 186, 0, 0, 0, 128, 134, 24, 21, 0, 229, 133, 244, 129, 0, 0, 0, 56, 0, 0, 0, 0, 3, 95, 209, 190, 227, 55, 21, 190, 0, 32, 134, 0, 247, 134, 224, 129, 5, 33, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 8, 0, 10, 0, 9, 0, 8, 0, 11, 0, 10, 0, 9, 0, 13, 0, 12, 0, 9, 0, 10, 0, 13, 0, 14, 0, 3, 0, 0, 0, 14, 0, 15, 0, 3, 0, 1, 0, 7, 0, 4, 0, 1, 0, 2, 0, 7, 0, 5, 0, 11, 0, 8, 0, 5, 0, 6, 0, 11, 0, 12, 0, 15, 0, 14, 0, 12, 0, 13, 0, 15, 0, 10, 0, 16, 0, 13, 0, 10, 0, 17, 0, 16, 0, 15, 0, 18, 0, 3, 0, 15, 0, 19, 0, 18, 0, 2, 0, 20, 0, 7, 0, 2, 0, 21, 0, 20, 0, 6, 0, 22, 0, 11, 0, 6, 0, 23, 0, 22, 0, 13, 0, 19, 0, 15, 0, 13, 0, 16, 0, 19, 0, 3, 0, 21, 0, 2, 0, 3, 0, 18, 0, 21, 0, 7, 0, 23, 0, 6, 0, 7, 0, 20, 0, 23, 0, 11, 0, 17, 0, 10, 0, 11, 0, 22, 0, 17, 0, 24, 0, 26, 0, 25, 0, 24, 0, 27, 0, 26, 0, 24, 0, 29, 0, 28, 0, 24, 0, 30, 0, 29, 0, 30, 0, 14, 0, 29, 0, 30, 0, 12, 0, 14, 0, 31, 0, 32, 0, 28, 0, 31, 0, 33, 0, 32, 0, 34, 0, 36, 0, 35, 0, 34, 0, 37, 0, 36, 0, 37, 0, 8, 0, 36, 0, 37, 0, 5, 0, 8, 0, 25, 0, 38, 0, 35, 0, 25, 0, 26, 0, 38, 0, 39, 0, 41, 0, 40, 0, 39, 0, 42, 0, 41, 0, 42, 0, 4, 0, 41, 0, 42, 0, 1, 0, 4, 0, 39, 0, 33, 0, 31, 0, 39, 0, 43, 0, 33, 0, 28, 0, 44, 0, 31, 0, 28, 0, 29, 0, 44, 0, 29, 0, 0, 0, 44, 0, 29, 0, 14, 0, 0, 0, 34, 0, 45, 0, 40, 0, 34, 0, 46, 0, 45, 0, 25, 0, 30, 0, 24, 0, 25, 0, 47, 0, 30, 0, 47, 0, 12, 0, 30, 0, 47, 0, 9, 0, 12, 0, 35, 0, 46, 0, 34, 0, 35, 0, 38, 0, 46, 0, 35, 0, 47, 0, 25, 0, 35, 0, 36, 0, 47, 0, 36, 0, 9, 0, 47, 0, 36, 0, 8, 0, 9, 0, 28, 0, 27, 0, 24, 0, 28, 0, 32, 0, 27, 0, 40, 0, 37, 0, 34, 0, 40, 0, 41, 0, 37, 0, 41, 0, 5, 0, 37, 0, 41, 0, 4, 0, 5, 0, 40, 0, 43, 0, 39, 0, 40, 0, 45, 0, 43, 0, 31, 0, 42, 0, 39, 0, 31, 0, 44, 0, 42, 0, 44, 0, 1, 0, 42, 0, 44, 0, 0, 0, 1, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 240,
+"material": SubResource( 1 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 48
+}
 
-[sub_resource type="QuadMesh" id=3]
-material = SubResource( 2 )
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.8, 0.8, 0.8, 1 )
+metallic = 0.8
 
-[sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0, 0.283019, 1 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.283019, 1, 1, 1, 1 )
+[sub_resource type="ArrayMesh" id=4]
+surfaces/0 = {
+"aabb": AABB( -0.195923, -0.193858, -79.998, 0.391846, 0.387716, 79.9972 ),
+"array_data": PoolByteArray( 0, 0, 0, 0, 211, 188, 67, 190, 177, 82, 179, 191, 104, 179, 106, 189, 123, 131, 127, 191, 51, 196, 177, 60, 136, 37, 108, 59, 20, 192, 179, 188, 204, 239, 127, 191, 0, 0, 128, 63, 83, 117, 143, 60, 0, 0, 128, 63, 22, 21, 1, 62, 76, 112, 10, 190, 4, 175, 42, 191, 98, 16, 40, 63, 128, 72, 63, 191, 170, 96, 212, 61, 253, 217, 231, 61, 32, 246, 28, 189, 61, 42, 126, 191, 0, 0, 128, 63, 83, 117, 143, 60, 228, 135, 90, 63, 0, 0, 0, 0, 182, 130, 70, 190, 163, 29, 20, 192, 4, 231, 140, 59, 0, 0, 128, 191, 82, 73, 157, 185, 80, 56, 181, 57, 245, 11, 158, 57, 255, 255, 127, 191, 0, 0, 128, 63, 155, 254, 236, 60, 0, 0, 128, 63, 43, 221, 13, 62, 45, 94, 12, 190, 88, 57, 134, 191, 179, 123, 50, 63, 52, 128, 55, 191, 98, 161, 86, 60, 237, 110, 175, 60, 43, 177, 39, 59, 193, 240, 127, 191, 0, 0, 128, 63, 155, 254, 236, 60, 132, 130, 90, 63, 51, 141, 54, 190, 0, 0, 0, 0, 177, 82, 179, 191, 77, 243, 126, 191, 47, 221, 164, 189, 158, 239, 39, 61, 222, 153, 36, 189, 200, 232, 63, 188, 145, 198, 127, 191, 0, 0, 128, 191, 83, 117, 143, 60, 34, 0, 0, 63, 22, 21, 1, 190, 76, 112, 10, 190, 177, 82, 179, 191, 104, 145, 61, 191, 255, 178, 43, 191, 124, 242, 48, 61, 18, 201, 0, 189, 192, 200, 242, 188, 205, 194, 127, 191, 0, 0, 128, 191, 83, 117, 143, 60, 228, 135, 90, 63, 10, 160, 72, 190, 0, 0, 0, 0, 163, 29, 20, 192, 114, 249, 127, 191, 120, 122, 37, 60, 237, 13, 62, 59, 253, 236, 62, 187, 151, 131, 169, 186, 171, 255, 127, 191, 0, 0, 128, 191, 155, 254, 236, 60, 34, 0, 0, 63, 43, 221, 13, 190, 45, 94, 12, 190, 163, 29, 20, 192, 148, 135, 53, 191, 111, 129, 52, 191, 224, 45, 144, 59, 76, 154, 132, 187, 139, 63, 14, 187, 79, 255, 127, 191, 0, 0, 128, 191, 155, 254, 236, 60, 132, 130, 90, 63, 0, 0, 0, 0, 22, 189, 67, 62, 4, 175, 42, 191, 0, 0, 0, 0, 251, 203, 126, 63, 93, 220, 198, 61, 7, 153, 128, 189, 96, 119, 198, 61, 156, 73, 126, 191, 0, 0, 128, 191, 83, 117, 143, 60, 0, 0, 0, 0, 22, 21, 1, 190, 143, 112, 10, 62, 4, 175, 42, 191, 36, 185, 92, 191, 191, 14, 252, 62, 179, 234, 243, 61, 71, 241, 199, 189, 215, 187, 141, 61, 11, 41, 126, 191, 0, 0, 128, 191, 83, 117, 143, 60, 128, 225, 21, 62, 0, 0, 0, 0, 182, 130, 70, 62, 88, 57, 134, 191, 0, 0, 0, 0, 0, 0, 128, 63, 159, 171, 173, 59, 117, 170, 83, 188, 45, 168, 173, 59, 157, 249, 127, 191, 0, 0, 128, 191, 155, 254, 236, 60, 0, 0, 0, 0, 43, 221, 13, 190, 112, 94, 12, 62, 88, 57, 134, 191, 188, 116, 67, 191, 11, 70, 37, 63, 254, 101, 119, 60, 70, 127, 162, 188, 102, 189, 154, 184, 27, 243, 127, 191, 0, 0, 128, 191, 155, 254, 236, 60, 252, 246, 21, 62, 22, 21, 1, 62, 143, 112, 10, 62, 4, 175, 42, 191, 117, 147, 56, 63, 132, 13, 47, 63, 212, 43, 229, 61, 55, 119, 159, 61, 59, 228, 164, 61, 159, 99, 126, 191, 0, 0, 128, 63, 83, 117, 143, 60, 128, 225, 21, 62, 0, 0, 0, 0, 22, 189, 67, 62, 4, 175, 42, 191, 0, 0, 0, 0, 251, 203, 126, 63, 93, 220, 198, 61, 61, 118, 86, 60, 250, 214, 198, 61, 190, 196, 126, 191, 0, 0, 128, 63, 83, 117, 143, 60, 0, 0, 0, 0, 43, 221, 13, 62, 112, 94, 12, 62, 88, 57, 134, 191, 143, 194, 53, 63, 230, 63, 52, 63, 130, 226, 71, 60, 118, 167, 65, 60, 92, 44, 177, 59, 118, 250, 127, 191, 0, 0, 128, 63, 155, 254, 236, 60, 252, 246, 21, 62, 0, 0, 0, 0, 182, 130, 70, 62, 88, 57, 134, 191, 0, 0, 0, 0, 0, 0, 128, 63, 159, 171, 173, 59, 228, 103, 96, 186, 152, 171, 173, 59, 14, 255, 127, 191, 0, 0, 128, 63, 155, 254, 236, 60, 0, 0, 0, 0, 51, 141, 54, 62, 0, 0, 0, 0, 4, 175, 42, 191, 182, 243, 125, 63, 0, 0, 0, 0, 55, 137, 1, 62, 157, 128, 1, 62, 33, 188, 175, 60, 152, 226, 125, 191, 0, 0, 128, 63, 83, 117, 143, 60, 34, 0, 0, 63, 10, 160, 72, 62, 0, 0, 0, 0, 88, 57, 134, 191, 229, 242, 127, 63, 0, 0, 0, 0, 227, 165, 155, 60, 165, 166, 155, 60, 214, 39, 184, 58, 26, 244, 127, 191, 0, 0, 128, 63, 155, 254, 236, 60, 34, 0, 0, 63, 0, 0, 0, 0, 211, 188, 67, 190, 177, 82, 179, 191, 104, 179, 106, 189, 123, 131, 127, 191, 51, 196, 177, 60, 173, 146, 197, 187, 224, 57, 175, 188, 209, 239, 127, 191, 0, 0, 128, 191, 83, 117, 143, 60, 0, 0, 128, 63, 0, 0, 0, 0, 182, 130, 70, 190, 163, 29, 20, 192, 4, 231, 140, 59, 0, 0, 128, 191, 82, 73, 157, 185, 90, 184, 98, 58, 193, 62, 159, 57, 249, 255, 127, 191, 0, 0, 128, 191, 155, 254, 236, 60, 0, 0, 128, 63, 145, 238, 103, 59, 127, 135, 34, 59, 249, 254, 159, 194, 152, 221, 51, 63, 107, 43, 54, 63, 82, 73, 29, 187, 149, 248, 142, 186, 103, 115, 22, 187, 202, 255, 127, 191, 0, 0, 128, 63, 0, 0, 128, 63, 64, 247, 21, 62, 0, 0, 0, 0, 178, 213, 101, 59, 249, 254, 159, 194, 0, 0, 0, 0, 0, 0, 128, 63, 82, 73, 29, 187, 82, 35, 168, 176, 52, 73, 29, 187, 208, 255, 127, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 134, 54, 145, 238, 103, 59, 99, 68, 34, 187, 249, 254, 159, 194, 148, 135, 53, 63, 111, 129, 52, 191, 82, 73, 29, 187, 183, 204, 22, 187, 196, 211, 142, 58, 201, 255, 127, 191, 0, 0, 128, 63, 0, 0, 128, 63, 132, 130, 90, 63, 95, 9, 164, 59, 189, 55, 6, 54, 249, 254, 159, 194, 0, 0, 128, 63, 0, 0, 0, 128, 82, 73, 29, 187, 57, 73, 29, 187, 56, 54, 95, 186, 203, 255, 127, 191, 0, 0, 128, 63, 0, 0, 128, 63, 34, 0, 0, 63, 145, 238, 103, 187, 99, 68, 34, 187, 249, 254, 159, 194, 152, 221, 51, 191, 107, 43, 54, 191, 10, 215, 35, 187, 61, 232, 150, 58, 29, 190, 27, 59, 197, 255, 127, 191, 0, 0, 128, 191, 0, 0, 128, 63, 132, 130, 90, 63, 0, 0, 0, 0, 150, 146, 101, 187, 249, 254, 159, 194, 7, 95, 24, 60, 0, 0, 128, 191, 82, 73, 29, 187, 213, 145, 251, 52, 51, 73, 29, 59, 207, 255, 127, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 145, 238, 103, 187, 127, 135, 34, 59, 249, 254, 159, 194, 243, 31, 50, 191, 245, 219, 55, 63, 82, 73, 29, 187, 101, 234, 23, 59, 119, 164, 143, 186, 199, 255, 127, 191, 0, 0, 128, 191, 0, 0, 128, 63, 64, 247, 21, 62, 95, 9, 164, 187, 189, 55, 6, 54, 249, 254, 159, 194, 0, 0, 128, 191, 117, 2, 26, 60, 10, 215, 35, 187, 106, 95, 36, 59, 228, 216, 97, 58, 196, 255, 127, 191, 0, 0, 128, 191, 0, 0, 128, 63, 34, 0, 0, 63, 0, 0, 0, 0, 150, 146, 101, 187, 249, 254, 159, 194, 7, 95, 24, 60, 0, 0, 128, 191, 82, 73, 29, 187, 33, 181, 224, 186, 181, 62, 28, 59, 184, 255, 127, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 178, 213, 101, 59, 249, 254, 159, 194, 0, 0, 0, 0, 0, 0, 128, 63, 82, 73, 29, 187, 53, 224, 223, 58, 54, 73, 29, 187, 183, 255, 127, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 134, 54, 0, 0, 0, 0, 122, 166, 151, 61, 184, 145, 82, 190, 0, 0, 0, 0, 206, 25, 113, 63, 77, 21, 172, 62, 73, 55, 172, 61, 28, 122, 171, 62, 195, 64, 112, 191, 0, 0, 128, 63, 175, 64, 116, 59, 0, 0, 134, 54, 11, 8, 45, 61, 112, 119, 86, 61, 184, 145, 82, 190, 190, 48, 57, 63, 169, 164, 30, 63, 136, 244, 155, 62, 218, 206, 70, 62, 154, 146, 118, 62, 30, 114, 115, 191, 0, 0, 128, 63, 175, 64, 116, 59, 76, 248, 21, 62, 0, 0, 0, 0, 189, 55, 6, 55, 191, 73, 83, 186, 0, 0, 0, 0, 14, 190, 112, 63, 95, 7, 174, 62, 88, 237, 50, 62, 82, 91, 171, 62, 169, 13, 109, 191, 0, 0, 128, 63, 0, 0, 0, 128, 0, 0, 134, 54, 189, 55, 134, 54, 156, 83, 201, 54, 191, 73, 83, 186, 122, 54, 59, 63, 22, 251, 27, 63, 145, 237, 156, 62, 180, 162, 135, 62, 113, 51, 36, 62, 163, 106, 115, 191, 0, 0, 128, 63, 0, 0, 0, 128, 76, 248, 21, 62, 19, 181, 116, 61, 0, 0, 0, 0, 184, 145, 82, 190, 84, 227, 117, 63, 0, 0, 0, 0, 86, 125, 142, 62, 108, 122, 142, 62, 35, 103, 73, 60, 55, 222, 117, 191, 0, 0, 128, 63, 175, 64, 116, 59, 34, 0, 0, 63, 89, 105, 242, 61, 0, 0, 0, 0, 3, 95, 209, 190, 39, 49, 120, 63, 0, 0, 0, 0, 72, 225, 122, 62, 176, 206, 122, 62, 119, 77, 203, 60, 6, 31, 120, 191, 0, 0, 128, 63, 39, 165, 32, 60, 34, 0, 0, 63, 207, 104, 171, 61, 81, 21, 211, 61, 3, 95, 209, 190, 185, 252, 55, 63, 249, 49, 38, 63, 219, 249, 126, 62, 247, 206, 40, 62, 32, 86, 65, 62, 2, 212, 119, 191, 0, 0, 128, 63, 39, 165, 32, 60, 76, 221, 21, 62, 11, 8, 45, 61, 100, 118, 86, 189, 184, 145, 82, 190, 190, 48, 57, 63, 169, 164, 30, 191, 136, 244, 155, 62, 191, 157, 80, 62, 46, 119, 107, 190, 184, 158, 115, 191, 0, 0, 128, 63, 175, 64, 116, 59, 48, 130, 90, 63, 156, 83, 201, 54, 0, 0, 0, 0, 191, 73, 83, 186, 143, 194, 117, 63, 0, 0, 0, 128, 41, 92, 143, 62, 2, 144, 142, 62, 252, 182, 215, 189, 151, 100, 116, 191, 0, 0, 128, 63, 0, 0, 0, 128, 34, 0, 0, 63, 189, 55, 134, 54, 172, 197, 167, 182, 191, 73, 83, 186, 35, 74, 59, 63, 223, 224, 27, 191, 118, 224, 156, 62, 184, 193, 13, 62, 61, 100, 157, 190, 54, 3, 113, 191, 0, 0, 128, 63, 0, 0, 0, 128, 48, 130, 90, 63, 11, 8, 45, 189, 112, 119, 86, 61, 184, 145, 82, 190, 221, 181, 84, 191, 52, 162, 244, 62, 161, 248, 145, 62, 103, 230, 90, 190, 76, 181, 75, 62, 143, 215, 116, 191, 0, 0, 128, 191, 175, 64, 116, 59, 76, 248, 21, 62, 19, 181, 116, 189, 0, 0, 0, 0, 67, 170, 152, 190, 181, 55, 120, 191, 39, 194, 70, 190, 227, 199, 24, 62, 212, 201, 33, 190, 217, 155, 250, 60, 200, 169, 124, 191, 0, 0, 128, 191, 175, 64, 116, 59, 34, 0, 0, 63, 207, 104, 171, 189, 81, 21, 211, 61, 3, 95, 209, 190, 204, 127, 88, 191, 89, 134, 248, 62, 83, 5, 99, 62, 233, 6, 45, 190, 198, 26, 26, 62, 64, 92, 121, 191, 0, 0, 128, 191, 39, 165, 32, 60, 76, 221, 21, 62, 89, 105, 242, 189, 0, 0, 0, 0, 83, 205, 72, 191, 116, 36, 119, 191, 125, 208, 115, 190, 99, 127, 217, 61, 9, 133, 217, 189, 236, 46, 82, 188, 226, 135, 126, 191, 0, 0, 128, 191, 39, 165, 32, 60, 34, 0, 0, 63, 0, 0, 0, 0, 122, 166, 151, 61, 184, 145, 82, 190, 0, 0, 0, 0, 206, 25, 113, 63, 77, 21, 172, 62, 237, 100, 180, 189, 228, 106, 171, 62, 119, 43, 112, 191, 0, 0, 128, 191, 175, 64, 116, 59, 0, 0, 134, 54, 189, 55, 134, 182, 156, 83, 201, 54, 191, 73, 83, 186, 171, 207, 85, 191, 224, 190, 238, 62, 97, 50, 149, 62, 184, 169, 29, 190, 81, 239, 158, 62, 231, 35, 112, 191, 0, 0, 128, 191, 0, 0, 0, 128, 76, 248, 21, 62, 0, 0, 0, 0, 189, 55, 6, 55, 191, 73, 83, 186, 0, 0, 0, 0, 14, 190, 112, 63, 95, 7, 174, 62, 0, 0, 0, 0, 244, 9, 174, 62, 160, 193, 112, 191, 0, 0, 128, 191, 0, 0, 0, 128, 0, 0, 134, 54, 11, 8, 45, 189, 100, 118, 86, 189, 67, 170, 152, 190, 92, 143, 98, 191, 9, 249, 224, 190, 45, 178, 29, 62, 111, 50, 229, 189, 81, 101, 246, 189, 62, 133, 124, 191, 0, 0, 128, 191, 175, 64, 116, 59, 48, 130, 90, 63, 0, 0, 0, 0, 244, 165, 151, 189, 184, 145, 82, 190, 121, 233, 102, 190, 63, 87, 107, 191, 212, 43, 165, 62, 95, 159, 103, 188, 196, 239, 167, 190, 113, 207, 113, 191, 0, 0, 128, 191, 175, 64, 116, 59, 0, 0, 128, 63, 207, 104, 171, 189, 203, 20, 211, 189, 83, 205, 72, 191, 61, 10, 71, 191, 238, 124, 31, 191, 123, 131, 175, 61, 248, 58, 137, 189, 159, 217, 90, 189, 226, 14, 127, 191, 0, 0, 128, 191, 39, 165, 32, 60, 1, 137, 90, 63, 0, 0, 0, 0, 160, 55, 21, 190, 3, 95, 209, 190, 188, 5, 146, 190, 169, 19, 112, 191, 131, 192, 74, 62, 52, 238, 217, 60, 105, 98, 91, 190, 140, 246, 121, 191, 0, 0, 128, 191, 39, 165, 32, 60, 0, 0, 128, 63, 0, 0, 0, 0, 244, 165, 151, 189, 184, 145, 82, 190, 121, 233, 102, 190, 63, 87, 107, 191, 212, 43, 165, 62, 254, 88, 152, 61, 241, 91, 177, 190, 191, 100, 111, 191, 0, 0, 128, 63, 175, 64, 116, 59, 0, 0, 128, 63, 0, 0, 0, 0, 139, 225, 234, 182, 191, 73, 83, 186, 9, 27, 94, 190, 154, 8, 107, 191, 177, 225, 169, 62, 33, 46, 109, 55, 156, 5, 174, 190, 106, 194, 112, 191, 0, 0, 128, 63, 0, 0, 0, 128, 0, 0, 128, 63, 207, 104, 171, 61, 203, 20, 211, 189, 3, 95, 209, 190, 251, 203, 46, 63, 51, 196, 49, 191, 30, 167, 104, 62, 62, 151, 57, 62, 148, 162, 15, 190, 176, 47, 121, 191, 0, 0, 128, 63, 39, 165, 32, 60, 1, 137, 90, 63, 189, 55, 134, 182, 172, 197, 167, 182, 191, 73, 83, 186, 155, 230, 93, 191, 21, 29, 233, 190, 224, 45, 80, 62, 6, 71, 53, 190, 2, 31, 205, 189, 14, 166, 122, 191, 0, 0, 128, 191, 0, 0, 0, 128, 48, 130, 90, 63, 156, 83, 201, 182, 0, 0, 0, 0, 191, 73, 83, 186, 139, 108, 119, 191, 140, 185, 43, 190, 93, 220, 70, 62, 195, 253, 89, 190, 165, 250, 207, 61, 250, 198, 120, 191, 0, 0, 128, 191, 0, 0, 0, 128, 34, 0, 0, 63, 0, 0, 0, 0, 227, 55, 21, 62, 3, 95, 209, 190, 0, 0, 0, 0, 222, 147, 119, 63, 156, 51, 130, 62, 159, 64, 130, 61, 201, 240, 129, 62, 33, 21, 119, 191, 0, 0, 128, 63, 39, 165, 32, 60, 0, 0, 134, 54, 0, 0, 0, 0, 227, 55, 21, 62, 3, 95, 209, 190, 0, 0, 0, 0, 222, 147, 119, 63, 156, 51, 130, 62, 217, 112, 159, 189, 251, 206, 129, 62, 23, 213, 118, 191, 0, 0, 128, 191, 39, 165, 32, 60, 0, 0, 134, 54, 0, 0, 0, 0, 139, 225, 234, 182, 191, 73, 83, 186, 9, 27, 94, 190, 154, 8, 107, 191, 177, 225, 169, 62, 201, 82, 28, 190, 183, 140, 155, 190, 148, 191, 112, 191, 0, 0, 128, 191, 0, 0, 0, 128, 0, 0, 128, 63, 0, 0, 0, 0, 160, 55, 21, 190, 3, 95, 209, 190, 188, 5, 146, 190, 169, 19, 112, 191, 131, 192, 74, 62, 176, 196, 97, 61, 162, 158, 99, 190, 55, 50, 121, 191, 0, 0, 128, 63, 39, 165, 32, 60, 0, 0, 128, 63 ),
+"array_index_data": PoolByteArray( 0, 0, 1, 0, 2, 0, 2, 0, 1, 0, 3, 0, 4, 0, 5, 0, 6, 0, 6, 0, 5, 0, 7, 0, 8, 0, 9, 0, 10, 0, 10, 0, 9, 0, 11, 0, 12, 0, 13, 0, 14, 0, 14, 0, 13, 0, 15, 0, 1, 0, 16, 0, 3, 0, 3, 0, 16, 0, 17, 0, 5, 0, 18, 0, 7, 0, 7, 0, 18, 0, 19, 0, 9, 0, 4, 0, 11, 0, 11, 0, 4, 0, 6, 0, 16, 0, 12, 0, 17, 0, 17, 0, 12, 0, 14, 0, 14, 0, 15, 0, 20, 0, 20, 0, 15, 0, 21, 0, 3, 0, 17, 0, 22, 0, 22, 0, 17, 0, 23, 0, 7, 0, 19, 0, 24, 0, 24, 0, 19, 0, 25, 0, 11, 0, 6, 0, 26, 0, 26, 0, 6, 0, 27, 0, 17, 0, 14, 0, 23, 0, 23, 0, 14, 0, 20, 0, 2, 0, 3, 0, 28, 0, 28, 0, 3, 0, 22, 0, 6, 0, 7, 0, 27, 0, 27, 0, 7, 0, 24, 0, 10, 0, 11, 0, 29, 0, 29, 0, 11, 0, 26, 0, 30, 0, 31, 0, 32, 0, 32, 0, 31, 0, 33, 0, 34, 0, 31, 0, 35, 0, 35, 0, 31, 0, 36, 0, 35, 0, 36, 0, 16, 0, 16, 0, 36, 0, 12, 0, 34, 0, 37, 0, 38, 0, 38, 0, 37, 0, 39, 0, 40, 0, 41, 0, 42, 0, 42, 0, 41, 0, 43, 0, 42, 0, 43, 0, 9, 0, 9, 0, 43, 0, 4, 0, 40, 0, 44, 0, 45, 0, 45, 0, 44, 0, 46, 0, 47, 0, 48, 0, 49, 0, 49, 0, 48, 0, 50, 0, 49, 0, 50, 0, 5, 0, 5, 0, 50, 0, 18, 0, 37, 0, 51, 0, 39, 0, 39, 0, 51, 0, 52, 0, 37, 0, 34, 0, 53, 0, 53, 0, 34, 0, 35, 0, 53, 0, 35, 0, 1, 0, 1, 0, 35, 0, 16, 0, 47, 0, 41, 0, 54, 0, 54, 0, 41, 0, 55, 0, 31, 0, 30, 0, 36, 0, 36, 0, 30, 0, 56, 0, 36, 0, 56, 0, 12, 0, 12, 0, 56, 0, 13, 0, 41, 0, 40, 0, 55, 0, 55, 0, 40, 0, 45, 0, 44, 0, 40, 0, 57, 0, 57, 0, 40, 0, 42, 0, 57, 0, 42, 0, 8, 0, 8, 0, 42, 0, 9, 0, 31, 0, 34, 0, 33, 0, 33, 0, 34, 0, 38, 0, 41, 0, 47, 0, 43, 0, 43, 0, 47, 0, 49, 0, 43, 0, 49, 0, 4, 0, 4, 0, 49, 0, 5, 0, 48, 0, 47, 0, 58, 0, 58, 0, 47, 0, 54, 0, 51, 0, 37, 0, 59, 0, 59, 0, 37, 0, 53, 0, 59, 0, 53, 0, 0, 0, 0, 0, 53, 0, 1, 0 ),
+"blend_shape_data": [  ],
+"format": 279,
+"index_count": 240,
+"material": SubResource( 3 ),
+"name": "None",
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 60
+}
 
-[sub_resource type="SpatialMaterial" id=5]
-flags_transparent = true
-flags_unshaded = true
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-params_blend_mode = 1
-params_billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-albedo_texture = ExtResource( 8 )
-proximity_fade_enable = true
-proximity_fade_distance = 0.2
+[sub_resource type="SphereMesh" id=5]
+radius = 0.01
+height = 0.1
 
-[sub_resource type="QuadMesh" id=6]
-material = SubResource( 5 )
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.123737, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=7]
-colors = PoolColorArray( 1, 1, 1, 0.961538, 0.960784, 0.960784, 0.960784, 0 )
+offsets = PoolRealArray( 0.766756, 1 )
+colors = PoolColorArray( 1, 0, 0, 0, 0.921875, 0.270081, 0.31591, 1 )
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="SphereMesh" id=8]
+material = ExtResource( 5 )
+radius = 0.02
+height = 0.04
+radial_segments = 4
+rings = 4
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0.372727 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 1.8439, 0.0, 0, 0 ]
+
+[sub_resource type="VisualShaderNodeInput" id=10]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=11]
+uniform_name = "EmissionAmount"
+
+[sub_resource type="VisualShaderNodeVectorOp" id=12]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id=13]
+operator = 2
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=14]
+uniform_name = "noise"
+
+[sub_resource type="VisualShaderNodeInput" id=15]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeInput" id=16]
+input_name = "normal"
+
+[sub_resource type="VisualShaderNodeVectorOp" id=17]
+
+[sub_resource type="VisualShaderNodeVectorOp" id=18]
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id=19]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeVectorCompose" id=20]
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=21]
+uniform_name = "Displacement"
+
+[sub_resource type="VisualShader" id=22]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx;
+
+uniform sampler2D noise;
+uniform float Displacement;
+uniform float EmissionAmount;
+
+
+
+void vertex() {
+// Input:3
+	vec3 n_out3p0 = VERTEX;
+
+// Input:7
+	float n_out7p0 = TIME;
+
+// VectorCompose:8
+	vec3 n_out8p0 = vec3(n_out7p0, n_out7p0, n_out7p0);
+
+// TextureUniform:2
+	vec3 n_out2p0;
+	float n_out2p1;
+	{
+		vec4 n_tex_read = texture(noise, n_out8p0.xy);
+		n_out2p0 = n_tex_read.rgb;
+		n_out2p1 = n_tex_read.a;
+	}
+
+// Input:4
+	vec3 n_out4p0 = NORMAL;
+
+// ScalarUniform:9
+	float n_out9p0 = Displacement;
+
+// VectorOp:10
+	vec3 n_out10p0 = n_out4p0 * vec3(n_out9p0);
+
+// VectorOp:6
+	vec3 n_out6p0 = n_out2p0 * n_out10p0;
+
+// VectorOp:5
+	vec3 n_out5p0 = n_out3p0 + n_out6p0;
+
+// Output:0
+	VERTEX = n_out5p0;
+
+}
+
+void fragment() {
+// Input:2
+	vec3 n_out2p0 = COLOR.rgb;
+
+// ScalarUniform:3
+	float n_out3p0 = EmissionAmount;
+
+// VectorOp:4
+	vec3 n_out4p0 = n_out2p0 * vec3(n_out3p0);
+
+// Output:0
+	ALBEDO = n_out2p0;
+	EMISSION = n_out4p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -760, 176 )
+nodes/vertex/2/node = SubResource( 14 )
+nodes/vertex/2/position = Vector2( -420, 220 )
+nodes/vertex/3/node = SubResource( 15 )
+nodes/vertex/3/position = Vector2( -200, 200 )
+nodes/vertex/4/node = SubResource( 16 )
+nodes/vertex/4/position = Vector2( -420, 440 )
+nodes/vertex/5/node = SubResource( 17 )
+nodes/vertex/5/position = Vector2( 200, 220 )
+nodes/vertex/6/node = SubResource( 18 )
+nodes/vertex/6/position = Vector2( -20, 300 )
+nodes/vertex/7/node = SubResource( 19 )
+nodes/vertex/7/position = Vector2( -800, 300 )
+nodes/vertex/8/node = SubResource( 20 )
+nodes/vertex/8/position = Vector2( -620, 300 )
+nodes/vertex/9/node = SubResource( 21 )
+nodes/vertex/9/position = Vector2( -420, 520 )
+nodes/vertex/10/node = SubResource( 13 )
+nodes/vertex/10/position = Vector2( -220, 440 )
+nodes/vertex/connections = PoolIntArray( 3, 0, 5, 0, 2, 0, 6, 0, 6, 0, 5, 1, 5, 0, 0, 0, 7, 0, 8, 0, 7, 0, 8, 1, 7, 0, 8, 2, 8, 0, 2, 0, 4, 0, 10, 0, 9, 0, 10, 1, 10, 0, 6, 1 )
+nodes/fragment/0/position = Vector2( 520, 140 )
+nodes/fragment/2/node = SubResource( 10 )
+nodes/fragment/2/position = Vector2( -40, 160 )
+nodes/fragment/3/node = SubResource( 11 )
+nodes/fragment/3/position = Vector2( -40, 240 )
+nodes/fragment/4/node = SubResource( 12 )
+nodes/fragment/4/position = Vector2( 252, 246.5 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 4, 0, 3, 0, 4, 1, 4, 0, 0, 5, 2, 0, 0, 0 )
+
+[sub_resource type="OpenSimplexNoise" id=23]
+period = 5.1
+persistence = 0.063
+
+[sub_resource type="NoiseTexture" id=24]
+width = 64
+height = 64
+seamless = true
+noise = SubResource( 23 )
+
+[sub_resource type="ShaderMaterial" id=25]
+shader = SubResource( 22 )
+shader_param/Displacement = 0.3
+shader_param/EmissionAmount = 5.0
+shader_param/noise = SubResource( 24 )
+
+[sub_resource type="SphereMesh" id=26]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="Curve" id=27]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.848485, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -19.5429, 0.0, 0, 0 ]
+
+[sub_resource type="Shader" id=28]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform sampler2D smoke_texture;
+uniform sampler2D noise_texture;
+varying float lifetime_percent;
+
+void vertex(){
+	lifetime_percent = INSTANCE_CUSTOM.y;
+}
+
+void fragment(){
+	float alpha = texture(smoke_texture, UV).r;
+	float noise = texture(noise_texture, UV + vec2(0.0, lifetime_percent)).r;
+	ALPHA = smoothstep(0.0, 1.0 - lifetime_percent, clamp(alpha * noise - pow(lifetime_percent, 2.0), 0.0,1.0) * COLOR.a);
+	ALBEDO = COLOR.rgb;
+}"
+
+[sub_resource type="OpenSimplexNoise" id=29]
+octaves = 2
+period = 37.2
+persistence = 0.155
+lacunarity = 4.0
+
+[sub_resource type="NoiseTexture" id=30]
+width = 64
+height = 64
+seamless = true
+noise = SubResource( 29 )
+
+[sub_resource type="ShaderMaterial" id=31]
+shader = SubResource( 28 )
+shader_param/smoke_texture = ExtResource( 21 )
+shader_param/noise_texture = SubResource( 30 )
+
+[sub_resource type="Curve" id=32]
+_data = [ Vector2( 0, 0.236364 ), 0.0, 1.32632, 0, 0, Vector2( 1, 0.954545 ), -0.144, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=33]
+offsets = PoolRealArray( 0, 0.176944, 0.793566, 1 )
+colors = PoolColorArray( 0.964706, 0.835294, 0.835294, 0, 0.818312, 0.709063, 0.709063, 1, 0.136719, 0.115356, 0.115356, 1, 0.176471, 0.14902, 0.14902, 0 )
+
+[sub_resource type="AnimationNodeAnimation" id=34]
 resource_local_to_scene = true
 animation = "TurnRight-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=35]
 resource_local_to_scene = true
 animation = "TurnLeft-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=36]
 resource_local_to_scene = true
 animation = "Walk-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=37]
 resource_local_to_scene = true
 animation = "Damage_take1"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=38]
 resource_local_to_scene = true
 animation = "Damage_take2"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=39]
 resource_local_to_scene = true
 animation = "Damage_heavy"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=40]
 resource_local_to_scene = true
 animation = "Idle-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=41]
 resource_local_to_scene = true
 animation = "Cannon-U"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=42]
 resource_local_to_scene = true
 animation = "Cannon-D"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=43]
 resource_local_to_scene = true
 animation = "Cannon-R"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=44]
 resource_local_to_scene = true
 animation = "Cannon-L"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=45]
 resource_local_to_scene = true
 animation = "Cannon-N"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=20]
+[sub_resource type="AnimationNodeBlendSpace2D" id=46]
 resource_local_to_scene = true
-blend_point_0/node = SubResource( 15 )
+blend_point_0/node = SubResource( 41 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 16 )
+blend_point_1/node = SubResource( 42 )
 blend_point_1/pos = Vector2( 0, -1 )
-blend_point_2/node = SubResource( 17 )
+blend_point_2/node = SubResource( 43 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 18 )
+blend_point_3/node = SubResource( 44 )
 blend_point_3/pos = Vector2( -1, 0 )
-blend_point_4/node = SubResource( 19 )
+blend_point_4/node = SubResource( 45 )
 blend_point_4/pos = Vector2( 0, 0 )
 
-[sub_resource type="AnimationNodeBlend2" id=21]
+[sub_resource type="AnimationNodeBlend2" id=47]
 resource_local_to_scene = true
 filter_enabled = true
 filters = [ "Armature/Skeleton:Cannon-TrackTurret", "Armature/Skeleton:CannonAnimRecoil" ]
 
-[sub_resource type="AnimationNodeOneShot" id=22]
+[sub_resource type="AnimationNodeOneShot" id=48]
 resource_local_to_scene = true
 fadeout_time = 0.5
 
-[sub_resource type="AnimationNodeOneShot" id=23]
+[sub_resource type="AnimationNodeOneShot" id=49]
 resource_local_to_scene = true
 fadeout_time = 0.5
 
-[sub_resource type="AnimationNodeOneShot" id=24]
+[sub_resource type="AnimationNodeOneShot" id=50]
 resource_local_to_scene = true
 fadeout_time = 0.5
 
-[sub_resource type="AnimationNodeTransition" id=25]
+[sub_resource type="AnimationNodeTransition" id=51]
 resource_local_to_scene = true
 input_count = 4
 xfade_time = 0.5
@@ -162,162 +370,175 @@ input_2/auto_advance = false
 input_3/name = "walk"
 input_3/auto_advance = false
 
-[sub_resource type="AnimationNodeBlendTree" id=26]
+[sub_resource type="AnimationNodeBlendTree" id=52]
 resource_local_to_scene = true
-graph_offset = Vector2( 0, 196.5 )
-nodes/Animation/node = SubResource( 14 )
+graph_offset = Vector2( -217.182, 65.5 )
+nodes/Animation/node = SubResource( 40 )
 nodes/Animation/position = Vector2( -200, 100 )
-"nodes/Animation 2/node" = SubResource( 8 )
+"nodes/Animation 2/node" = SubResource( 34 )
 "nodes/Animation 2/position" = Vector2( -200, 340 )
-"nodes/Animation 3/node" = SubResource( 9 )
+"nodes/Animation 3/node" = SubResource( 35 )
 "nodes/Animation 3/position" = Vector2( -200, 220 )
-"nodes/Animation 4/node" = SubResource( 10 )
+"nodes/Animation 4/node" = SubResource( 36 )
 "nodes/Animation 4/position" = Vector2( -160, 460 )
-"nodes/Animation 5/node" = SubResource( 11 )
+"nodes/Animation 5/node" = SubResource( 37 )
 "nodes/Animation 5/position" = Vector2( 200, 440 )
-"nodes/Animation 6/node" = SubResource( 12 )
+"nodes/Animation 6/node" = SubResource( 38 )
 "nodes/Animation 6/position" = Vector2( 500, 440 )
-"nodes/Animation 7/node" = SubResource( 13 )
+"nodes/Animation 7/node" = SubResource( 39 )
 "nodes/Animation 7/position" = Vector2( 740, 440 )
-nodes/aim/node = SubResource( 20 )
+nodes/aim/node = SubResource( 46 )
 nodes/aim/position = Vector2( 80, 320 )
-nodes/aiming/node = SubResource( 21 )
+nodes/aiming/node = SubResource( 47 )
 nodes/aiming/position = Vector2( 320, 200 )
-nodes/hit1/node = SubResource( 22 )
+nodes/hit1/node = SubResource( 48 )
 nodes/hit1/position = Vector2( 540, 240 )
-nodes/hit2/node = SubResource( 23 )
+nodes/hit2/node = SubResource( 49 )
 nodes/hit2/position = Vector2( 760, 240 )
-nodes/hit3/node = SubResource( 24 )
+nodes/hit3/node = SubResource( 50 )
 nodes/hit3/position = Vector2( 980, 240 )
 nodes/output/position = Vector2( 1180, 200 )
-nodes/state/node = SubResource( 25 )
+nodes/state/node = SubResource( 51 )
 nodes/state/position = Vector2( 60, 100 )
 node_connections = [ "output", 0, "hit3", "state", 0, "Animation", "state", 1, "Animation 3", "state", 2, "Animation 2", "state", 3, "Animation 4", "aiming", 0, "state", "aiming", 1, "aim", "hit1", 0, "aiming", "hit1", 1, "Animation 5", "hit2", 0, "hit1", "hit2", 1, "Animation 6", "hit3", 0, "hit2", "hit3", 1, "Animation 7" ]
 
-[sub_resource type="SphereShape" id=27]
+[sub_resource type="SphereShape" id=53]
 radius = 1.11815
 
-[sub_resource type="SphereShape" id=28]
+[sub_resource type="SphereShape" id=54]
 radius = 20.0
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=55]
 length = 4.0
+step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/energy")
-tracks/0/interp = 1
+tracks/0/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/traversal_scale")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 2.1, 2.2, 2.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1.65, 1.7, 2.1, 2.2, 2.3, 2.4, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 1.0, 1.0, 5.0, 1.0, 1.0 ]
+"values": [ 0.0, 0.0, 0.3, 0.3, 1.5, 1.5, 0.3, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/transparency")
-tracks/1/interp = 1
+tracks/1/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/cutoff_value")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2, 2.1, 2.6, 2.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1.65, 1.7, 2.1, 2.2, 2.3, 2.4, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 1.0, 1.0, 0.0 ]
+"values": [ 1.0, 1.0, 0.55, 0.55, 0.0, 0.0, 0.55, 1.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/deform")
-tracks/2/interp = 1
+tracks/2/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/energy")
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 2, 2.6, 2.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 2.1, 2.2, 2.5, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 0.0, 2.0 ]
+"values": [ 1.0, 1.0, 5.0, 5.0, 1.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/smoke")
+tracks/3/path = NodePath("ShootLight:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2, 2.2, 2.6 ),
+"times": PoolRealArray( 0.2, 1.6, 2.1, 2.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 0.0, 1.0 ]
+"update": 1,
+"values": [ true, false, true, false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("ShootLight:visible")
+tracks/4/path = NodePath("ShootLight:light_energy")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.2, 1.6, 2, 2.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, true, false ]
+"times": PoolRealArray( 0, 0.2, 0.9, 1.6, 2.1, 2.2, 2.45 ),
+"transitions": PoolRealArray( 1, -2, 4.28709, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 0.0, 0.0, 5.0, 0.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("ShootLight:light_energy")
+tracks/5/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/BuildupParticles:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.2, 0.9, 1.6, 2, 2.1, 2.6 ),
-"transitions": PoolRealArray( 1, -2, 4.28709, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 1.0, 0.0, 0.0, 5.0, 0.0 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/BuildupParticles:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0, 0.2, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/LaserEmber:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 tracks/7/type = "value"
-tracks/7/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/ExplosionParticles:emitting")
+tracks/7/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/color1")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 2.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"times": PoolRealArray( 1.65, 2.1, 2.45 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 0.788235, 0.788235, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("AnimationTree:active")
+tracks/8/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayMesh:material/0:shader_param/offset_uv_x")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
-tracks/8/enabled = false
+tracks/8/enabled = true
 tracks/8/keys = {
+"times": PoolRealArray( 0, 1.65, 2.1, 2.4, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.3, 0.3, 0.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("AnimationTree:active")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = false
+tracks/9/keys = {
 "times": PoolRealArray( 0, 2.6, 2.9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
 }
-tracks/9/type = "method"
-tracks/9/path = NodePath(".")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 1.9, 3 ),
+tracks/10/type = "method"
+tracks/10/path = NodePath(".")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 2.15, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -327,13 +548,13 @@ tracks/9/keys = {
 "method": "resume_approach"
 } ]
 }
-tracks/10/type = "audio"
-tracks/10/path = NodePath("SoundEffects/Cannon")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
+tracks/11/type = "audio"
+tracks/11/path = NodePath("SoundEffects/Cannon")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -343,71 +564,78 @@ tracks/10/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 10 )
 } ],
-"times": PoolRealArray( 0, 2.1 )
+"times": PoolRealArray( 0, 2.05 )
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/LaserCenter:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/Smoke:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 2.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RedRobotModel/Armature/Skeleton/RayFrom/RayCast:enabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 1.55, 3.05 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
 }
 
-[sub_resource type="PhysicsMaterial" id=30]
+[sub_resource type="PhysicsMaterial" id=56]
 
-[sub_resource type="BoxShape" id=31]
+[sub_resource type="Curve" id=57]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.260504, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=58]
+offsets = PoolRealArray( 0, 0.131737, 0.326347, 0.607784, 1 )
+colors = PoolColorArray( 0, 0.976562, 1, 0, 0, 1, 0.953125, 1, 0, 0.976562, 1, 1, 0.00413197, 0.953319, 1, 0.180179, 0, 0.929688, 1, 0.101266 )
+
+[sub_resource type="BoxShape" id=59]
 extents = Vector3( 0.445466, 0.622832, 0.0474423 )
 
-[sub_resource type="BoxShape" id=32]
+[sub_resource type="BoxShape" id=60]
 extents = Vector3( 0.432293, 0.514522, 0.0474423 )
 
-[sub_resource type="SpatialMaterial" id=33]
-flags_transparent = true
-flags_unshaded = true
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-params_blend_mode = 1
-params_billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-albedo_texture = ExtResource( 8 )
-proximity_fade_enable = true
-proximity_fade_distance = 0.2
+[sub_resource type="PhysicsMaterial" id=61]
 
-[sub_resource type="QuadMesh" id=34]
-material = SubResource( 33 )
-
-[sub_resource type="Gradient" id=35]
-colors = PoolColorArray( 1, 1, 1, 0.961538, 0.960784, 0.960784, 0.960784, 0 )
-
-[sub_resource type="PhysicsMaterial" id=36]
-
-[sub_resource type="BoxShape" id=37]
+[sub_resource type="BoxShape" id=62]
 extents = Vector3( 0.411196, 0.514522, 0.0474423 )
 
-[sub_resource type="BoxShape" id=38]
+[sub_resource type="BoxShape" id=63]
 extents = Vector3( 0.403063, 0.514522, 0.0474423 )
 
-[sub_resource type="PhysicsMaterial" id=39]
+[sub_resource type="PhysicsMaterial" id=64]
 
-[sub_resource type="SpatialMaterial" id=40]
-albedo_texture = ExtResource( 14 )
-metallic = 1.0
-metallic_texture = ExtResource( 15 )
-metallic_texture_channel = 2
-roughness_texture = ExtResource( 15 )
-roughness_texture_channel = 1
-normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 16 )
-ao_enabled = true
-ao_light_affect = 0.0
-ao_texture = ExtResource( 15 )
-ao_on_uv2 = false
-ao_texture_channel = 0
+[sub_resource type="SphereShape" id=65]
 
-[sub_resource type="SphereShape" id=41]
-
-[sub_resource type="BoxShape" id=42]
+[sub_resource type="BoxShape" id=66]
 extents = Vector3( 0.0885272, 0.514522, 0.0474423 )
 
-[sub_resource type="Animation" id=43]
+[sub_resource type="Animation" id=67]
 tracks/0/type = "value"
-tracks/0/path = NodePath("PartShield3/Col2:disabled")
+tracks/0/path = NodePath("PartHead/Col2:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -419,7 +647,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("PartShield3/Col1:disabled")
+tracks/1/path = NodePath("PartHead/Col1:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -514,32 +742,22 @@ tracks/8/keys = {
 "update": 1,
 "values": [ true, false ]
 }
-tracks/9/type = "value"
-tracks/9/path = NodePath("Particles:one_shot")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("Particles:emitting")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
 
-[sub_resource type="AudioStreamRandomPitch" id=44]
+[sub_resource type="SpatialMaterial" id=68]
+albedo_color = Color( 0, 1, 0.929412, 1 )
+emission_enabled = true
+emission = Color( 0, 1, 0.976471, 1 )
+emission_energy = 3.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=69]
+radius = 0.005
+height = 0.08
+radial_segments = 8
+rings = 4
+
+[sub_resource type="AudioStreamRandomPitch" id=70]
 audio_stream = ExtResource( 18 )
 
 [node name="RedRobot" type="KinematicBody"]
@@ -553,46 +771,111 @@ script = ExtResource( 1 )
 bones/14/bound_children = [ NodePath("RayFrom") ]
 
 [node name="RayFrom" type="BoneAttachment" parent="RedRobotModel/Armature/Skeleton" index="4"]
-transform = Transform( -0.999994, -0.00279503, -0.00183882, -0.00279578, 0.999996, 0.000401379, 0.0018377, 0.000406517, -0.999998, -0.0288596, 1.94004, 0.194757 )
+transform = Transform( -0.999109, -5.97867e-05, 0.0422096, 0.00546806, 0.991389, 0.130834, -0.041854, 0.130948, -0.990505, -0.0813368, 1.99566, 0.277505 )
 bone_name = "CannonAnimRecoil"
 
-[node name="RayMesh" type="MeshInstance" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
-transform = Transform( 1, 8.40737e-09, -9.31323e-10, -6.55928e-09, 1, -9.31323e-10, 4.65661e-10, 0, 1, 1.67638e-08, 0, -1.21376 )
-mesh = ExtResource( 3 )
+[node name="Circle" type="MeshInstance" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
+transform = Transform( 1, 0, 1.73472e-18, 0, -8.88178e-16, -1, 0, 1, 0, 0, 0, -1 )
+mesh = SubResource( 2 )
 skeleton = NodePath("")
-material/0 = SubResource( 1 )
+material/0 = ExtResource( 4 )
+
+[node name="RayMesh" type="MeshInstance" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.25 )
+mesh = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = ExtResource( 4 )
 
 [node name="BuildupParticles" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.07273 )
+transform = Transform( 1, 3.70164e-10, 5.82077e-11, 3.66526e-10, 1, 9.31323e-10, 0, 1.86265e-09, 1, -1.39698e-09, 0, -1.47648 )
+material_override = ExtResource( 7 )
 emitting = false
 amount = 64
-mesh = SubResource( 3 )
+lifetime = 0.4
+mesh = SubResource( 5 )
 emission_shape = 1
 emission_sphere_radius = 1.0
+flag_align_y = true
+spread = 180.0
 gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.01
 angular_velocity = -0.381543
 linear_accel = 1.0
 linear_accel_random = 1.0
-radial_accel = -1.0
+radial_accel = -10.0
 tangential_accel = 1.0
-color_ramp = SubResource( 4 )
-
-[node name="ExplosionParticles" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0332087, -10.283 )
-emitting = false
-amount = 32
-one_shot = true
-explosiveness = 1.0
-mesh = SubResource( 6 )
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.3
-angular_velocity = 35.2
-angular_velocity_random = 1.0
+scale_amount_curve = SubResource( 6 )
 color_ramp = SubResource( 7 )
+hue_variation_random = 0.87
+
+[node name="LaserEmber" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
+transform = Transform( 1, 7.30506e-09, 4.65661e-10, 0, 1, 0, 0, 3.72529e-09, 1, -7.45058e-09, 0.0332088, -10.283 )
+emitting = false
+amount = 200
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.95
+lifetime_randomness = 0.85
+local_coords = false
+mesh = SubResource( 8 )
+emission_shape = 2
+emission_box_extents = Vector3( 0.01, 0.01, 10 )
+direction = Vector3( 0, 0.5, -0.3 )
+spread = 7.01
+flatness = 1.0
+gravity = Vector3( 0, 0.8, 0 )
+damping = 1.0
+damping_random = 0.68
+angle = -261.8
+angle_random = 0.18
+scale_amount_curve = SubResource( 9 )
+color_ramp = ExtResource( 6 )
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[node name="LaserCenter" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
+transform = Transform( 1, 3.72893e-10, 1.74623e-10, 3.66526e-10, 1, 4.65661e-09, 0, 5.58794e-09, 1, -8.3819e-09, 0, -1.47136 )
+material_override = SubResource( 25 )
+emitting = false
+amount = 1
+lifetime = 1.5
+one_shot = true
+mesh = SubResource( 26 )
+gravity = Vector3( 0, 0, 0 )
+scale_amount_curve = SubResource( 27 )
+
+[node name="Smoke" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
+transform = Transform( 1, 1.16415e-10, -4.0518e-10, 3.66526e-10, -4.19095e-08, -1, 0, 1, -4.65661e-08, -6.51926e-09, -1.43051e-06, -1.34189 )
+material_override = SubResource( 31 )
+emitting = false
+amount = 3
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.52
+mesh = ExtResource( 20 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0.2, 0 )
+angular_velocity = 45.0
+angular_velocity_random = 0.13
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+orbit_velocity_curve = null
+damping = 0.98
+angle = 360.0
+angle_random = 1.0
+scale_amount = 1.3
+scale_amount_random = 0.82
+scale_amount_curve = SubResource( 32 )
+color_ramp = SubResource( 33 )
+
+[node name="RayCast" type="RayCast" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
+cast_to = Vector3( 0, 0, -1000 )
+collision_mask = 3
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 26 )
+tree_root = SubResource( 52 )
 anim_player = NodePath("../RedRobotModel/AnimationPlayer")
 active = true
 process_mode = 0
@@ -606,24 +889,23 @@ parameters/state/current = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11655, -0.0212681 )
-shape = SubResource( 27 )
+shape = SubResource( 53 )
 
 [node name="PlayerDetectionArea" type="Area" parent="."]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="PlayerDetectionArea"]
-shape = SubResource( 28 )
+shape = SubResource( 54 )
 
 [node name="RootMotionView" type="RootMotionView" parent="."]
 animation_path = NodePath("../AnimationTree")
 
 [node name="ShootAnimation" type="AnimationPlayer" parent="."]
-anims/shoot = SubResource( 29 )
+anims/shoot = SubResource( 55 )
 
 [node name="ShootLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82358, 2.06607 )
-visible = false
 light_color = Color( 0.992157, 0.713726, 0.713726, 1 )
 light_energy = 0.0
 shadow_enabled = true
@@ -631,7 +913,7 @@ omni_range = 8.68993
 omni_shadow_mode = 0
 
 [node name="Death" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49858, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 visible = false
 
 [node name="PartShield1" type="RigidBody" parent="Death"]
@@ -640,37 +922,43 @@ collision_layer = 3
 collision_mask = 3
 mode = 1
 mass = 2000.0
-physics_material_override = SubResource( 30 )
+physics_material_override = SubResource( 56 )
+script = ExtResource( 24 )
 
-[node name="Mesh" type="MeshInstance" parent="Death/PartShield1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28307, -1.35778, -0.789012 )
-mesh = ExtResource( 11 )
-material/0 = ExtResource( 12 )
+[node name="StaticParticle" type="CPUParticles" parent="Death/PartShield1"]
+transform = Transform( 1, 0, 0, 0, 0.965835, 0.259156, 0, -0.259156, 0.965835, 0, 0, 0 )
+material_override = ExtResource( 8 )
+amount = 3
+lifetime = 0.5
+randomness = 0.35
+lifetime_randomness = 0.74
+mesh = ExtResource( 22 )
+emission_shape = 2
+emission_box_extents = Vector3( 0.2, 1, 0.1 )
+flag_align_y = true
+flag_disable_z = true
+spread = 142.83
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.01
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+orbit_velocity_curve = null
+scale_amount = 0.2
+scale_amount_random = 0.09
+scale_amount_curve = SubResource( 57 )
+color_ramp = SubResource( 58 )
+
+[node name="Model" parent="Death/PartShield1" instance=ExtResource( 12 )]
 
 [node name="Col1" type="CollisionShape" parent="Death/PartShield1"]
 transform = Transform( 1, 0, 0, 0, 0.908425, 0.418048, 0, -0.418048, 0.908425, -0.0167698, 0.5788, -0.122978 )
-shape = SubResource( 31 )
+shape = SubResource( 59 )
 disabled = true
 
 [node name="Col2" type="CollisionShape" parent="Death/PartShield1"]
 transform = Transform( 1, 0, 0, 0, 0.994888, 0.100984, 0, -0.100984, 0.994888, 0.0804193, -0.63062, 0.179012 )
-shape = SubResource( 32 )
+shape = SubResource( 60 )
 disabled = true
-
-[node name="Fire" type="CPUParticles" parent="Death/PartShield1"]
-transform = Transform( -0.999594, 0.0284228, 0.00205158, 0.0284288, 0.999592, 0.00296096, -0.0019666, 0.00301808, -0.999993, -0.196335, 0.103942, -0.0579731 )
-amount = 32
-lifetime = 0.2
-local_coords = false
-mesh = SubResource( 34 )
-emission_shape = 1
-emission_sphere_radius = 0.1
-spread = 180.0
-gravity = Vector3( 0, 2, 0 )
-initial_velocity = 0.3
-angular_velocity = 84.86
-angular_velocity_random = 1.0
-color_ramp = SubResource( 35 )
 
 [node name="PartShield2" type="RigidBody" parent="Death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75083, 1.02975, 0.162546 )
@@ -678,93 +966,124 @@ collision_layer = 3
 collision_mask = 3
 mode = 1
 mass = 2000.0
-physics_material_override = SubResource( 36 )
+physics_material_override = SubResource( 61 )
+script = ExtResource( 24 )
 
-[node name="Mesh" type="MeshInstance" parent="Death/PartShield2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28307, -1.35778, -0.789012 )
-mesh = ExtResource( 11 )
-material/0 = ExtResource( 12 )
+[node name="StaticParticle" type="CPUParticles" parent="Death/PartShield2"]
+transform = Transform( 1, 0, 0, 0, 0.965835, 0.259156, 0, -0.259156, 0.965835, 0, 0, 0 )
+material_override = ExtResource( 8 )
+amount = 3
+lifetime = 0.5
+randomness = 0.35
+lifetime_randomness = 0.74
+mesh = ExtResource( 22 )
+emission_shape = 2
+emission_box_extents = Vector3( 0.2, 1, 0.1 )
+flag_align_y = true
+flag_disable_z = true
+spread = 142.83
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.01
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+orbit_velocity_curve = null
+scale_amount = 0.2
+scale_amount_random = 0.09
+scale_amount_curve = SubResource( 57 )
+color_ramp = SubResource( 58 )
+
+[node name="Model" parent="Death/PartShield2" instance=ExtResource( 12 )]
 
 [node name="Col1" type="CollisionShape" parent="Death/PartShield2"]
 transform = Transform( 1, 0, 0, 0, 0.908425, 0.418048, 0, -0.418048, 0.908425, -0.0150018, 0.599786, -0.170673 )
-shape = SubResource( 37 )
+shape = SubResource( 62 )
 disabled = true
 
 [node name="Col2" type="CollisionShape" parent="Death/PartShield2"]
 transform = Transform( 1, 0, 0, 0, 0.999275, -0.038063, 0, 0.038063, 0.999275, 0.0207567, -0.47267, 0.0351334 )
-shape = SubResource( 38 )
+shape = SubResource( 63 )
 disabled = true
 
-[node name="Fire" type="CPUParticles" parent="Death/PartShield2"]
-transform = Transform( -0.999594, 0.0284228, 0.00205158, 0.0284288, 0.999592, 0.00296096, -0.0019666, 0.00301808, -0.999993, -0.196335, 0.103942, -0.0579731 )
-amount = 32
-lifetime = 0.2
-local_coords = false
-mesh = SubResource( 34 )
-emission_shape = 1
-emission_sphere_radius = 0.1
-spread = 180.0
-gravity = Vector3( 0, 2, 0 )
-initial_velocity = 0.3
-angular_velocity = 84.86
-angular_velocity_random = 1.0
-color_ramp = SubResource( 35 )
-
-[node name="PartShield3" type="RigidBody" parent="Death"]
+[node name="PartHead" type="RigidBody" parent="Death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0374503, 1.02975, 0.162546 )
 collision_layer = 3
 collision_mask = 3
 mode = 1
 mass = 6600.0
-physics_material_override = SubResource( 39 )
+physics_material_override = SubResource( 64 )
 angular_damp = 0.3
+script = ExtResource( 24 )
 
-[node name="Mesh" type="MeshInstance" parent="Death/PartShield3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.18159, -1.2457, -0.130535 )
-mesh = ExtResource( 13 )
-material/0 = SubResource( 40 )
-material/1 = null
-
-[node name="Col1" type="CollisionShape" parent="Death/PartShield3"]
-shape = SubResource( 41 )
-disabled = true
-
-[node name="Col2" type="CollisionShape" parent="Death/PartShield3"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0753293, 0.680746, 0.945143 )
-shape = SubResource( 42 )
-disabled = true
-
-[node name="Fire" type="CPUParticles" parent="Death/PartShield3"]
-transform = Transform( -0.999594, 0.0284228, 0.00205158, 0.0284288, 0.999592, 0.00296096, -0.0019666, 0.00301808, -0.999993, -0.196335, 0.103942, -0.0579731 )
-amount = 32
-lifetime = 0.2
-local_coords = false
-mesh = SubResource( 34 )
+[node name="StaticParticle3" type="CPUParticles" parent="Death/PartHead"]
+transform = Transform( 1, 0, 0, 0, 0.965835, 0.259156, 0, -0.259156, 0.965835, 0, 0, 0 )
+material_override = ExtResource( 8 )
+amount = 3
+lifetime = 0.5
+randomness = 0.35
+lifetime_randomness = 0.74
+mesh = ExtResource( 22 )
 emission_shape = 1
-emission_sphere_radius = 0.1
-spread = 180.0
-gravity = Vector3( 0, 2, 0 )
-initial_velocity = 0.3
-angular_velocity = 84.86
-angular_velocity_random = 1.0
-color_ramp = SubResource( 35 )
+emission_sphere_radius = 1.0
+flag_align_y = true
+flag_disable_z = true
+spread = 142.83
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.01
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+orbit_velocity_curve = null
+scale_amount = 0.2
+scale_amount_random = 0.09
+scale_amount_curve = SubResource( 57 )
+color_ramp = SubResource( 58 )
+
+[node name="Model" parent="Death/PartHead" instance=ExtResource( 11 )]
+
+[node name="Col1" type="CollisionShape" parent="Death/PartHead"]
+shape = SubResource( 65 )
+disabled = true
+
+[node name="Col2" type="CollisionShape" parent="Death/PartHead"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0753293, 0.680746, 0.945143 )
+shape = SubResource( 66 )
+disabled = true
 
 [node name="Explosion" type="AnimationPlayer" parent="Death"]
-anims/kaboom = SubResource( 43 )
+anims/kaboom = SubResource( 67 )
 
-[node name="Particles" type="CPUParticles" parent="Death"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.213713, 0.763735, 0 )
-amount = 32
+[node name="DetachSpark1" type="CPUParticles" parent="Death"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.803977, 0.987653, 0 )
+material_override = SubResource( 68 )
+emitting = false
+amount = 50
+lifetime = 0.4
 one_shot = true
-explosiveness = 1.0
-mesh = SubResource( 6 )
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.3
-angular_velocity = 35.2
-angular_velocity_random = 1.0
-linear_accel = 1.0
-color_ramp = SubResource( 7 )
+explosiveness = 0.81
+lifetime_randomness = 0.42
+mesh = SubResource( 69 )
+flag_align_y = true
+spread = 90.0
+gravity = Vector3( 0, -0.2, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 0.93
+color = Color( 0, 0.976471, 1, 1 )
+
+[node name="DetachSpark2" type="CPUParticles" parent="Death"]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.11386, 0.987653, 0 )
+material_override = SubResource( 68 )
+emitting = false
+amount = 50
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.81
+lifetime_randomness = 0.42
+mesh = SubResource( 69 )
+flag_align_y = true
+spread = 90.0
+gravity = Vector3( 0, -0.2, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 0.93
+color = Color( 0, 0.976471, 1, 1 )
 
 [node name="SoundEffects" type="Spatial" parent="."]
 
@@ -778,7 +1097,7 @@ unit_db = 12.0
 unit_size = 15.0
 
 [node name="Hit" type="AudioStreamPlayer3D" parent="SoundEffects"]
-stream = SubResource( 44 )
+stream = SubResource( 70 )
 unit_db = 3.0
 unit_size = 15.0
 

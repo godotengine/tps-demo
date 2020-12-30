@@ -9,7 +9,7 @@ var hit = false
 onready var animation_player = $AnimationPlayer
 onready var collision_shape = $CollisionShape
 
-func _process(delta):
+func _physics_process(delta):
 	if hit:
 		return
 	time_alive -= delta

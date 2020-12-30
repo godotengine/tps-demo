@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/BillboardPlane.glb-d89e51bcce54f5c0c5aac52df6278d12.scn"
+path="res://.import/LightRaysMesh.glb-7064e2802466cd2578058f8b016cbc85.scn"
 
 [deps]
 
-source_file="res://player/bullet/effect/BillboardPlane.glb"
-dest_files=[ "res://.import/BillboardPlane.glb-d89e51bcce54f5c0c5aac52df6278d12.scn" ]
+source_file="res://enemies/red_robot/laser/impact_effect/LightRaysMesh.glb"
+dest_files=[ "res://.import/LightRaysMesh.glb-7064e2802466cd2578058f8b016cbc85.scn" ]
 
 [params]
 
