@@ -2,7 +2,7 @@
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
-[ext_resource path="res://player/model/player.dae" type="PackedScene" id=3]
+[ext_resource path="res://player/model/player.glb" type="PackedScene" id=3]
 [ext_resource path="res://menu/floor.png" type="Texture" id=4]
 [ext_resource path="res://menu/menu_intro_music.ogg" type="AudioStream" id=5]
 [ext_resource path="res://menu/tps_demo.png" type="Texture" id=6]
@@ -91,20 +91,20 @@ Label/styles/normal = null
 
 [sub_resource type="ButtonGroup" id=12]
 
-[sub_resource type="ButtonGroup" id=19]
-
 [sub_resource type="ButtonGroup" id=13]
 
 [sub_resource type="ButtonGroup" id=14]
 
-[sub_resource type="DynamicFontData" id=15]
+[sub_resource type="ButtonGroup" id=15]
+
+[sub_resource type="DynamicFontData" id=16]
 font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=17]
 size = 40
-font_data = SubResource( 15 )
+font_data = SubResource( 16 )
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0.278431, 0.278431, 0.360784, 1 )
 border_width_left = 5
 border_width_top = 5
@@ -116,7 +116,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=19]
 bg_color = Color( 0.0901961, 0.0784314, 0.117647, 1 )
 border_width_left = 3
 border_width_top = 3
@@ -420,7 +420,7 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 19 )
+group = SubResource( 13 )
 text = "High"
 
 [node name="Low" type="Button" parent="UI/Settings/Bloom"]
@@ -429,7 +429,7 @@ margin_right = 1028.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 19 )
+group = SubResource( 13 )
 text = "Low"
 
 [node name="Disabled" type="Button" parent="UI/Settings/Bloom"]
@@ -438,7 +438,7 @@ margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 19 )
+group = SubResource( 13 )
 text = "Disabled"
 
 [node name="Resolution" type="HBoxContainer" parent="UI/Settings"]
@@ -468,7 +468,7 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 13 )
+group = SubResource( 14 )
 text = "Native"
 
 [node name="1080" type="Button" parent="UI/Settings/Resolution"]
@@ -477,7 +477,7 @@ margin_right = 870.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 13 )
+group = SubResource( 14 )
 text = "1080"
 
 [node name="720" type="Button" parent="UI/Settings/Resolution"]
@@ -486,7 +486,7 @@ margin_right = 1105.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 13 )
+group = SubResource( 14 )
 text = "720"
 
 [node name="540" type="Button" parent="UI/Settings/Resolution"]
@@ -495,7 +495,7 @@ margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 13 )
+group = SubResource( 14 )
 text = "540"
 
 [node name="Fullscreen" type="HBoxContainer" parent="UI/Settings"]
@@ -522,7 +522,7 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-group = SubResource( 14 )
+group = SubResource( 15 )
 text = "Yes"
 
 [node name="No" type="Button" parent="UI/Settings/Fullscreen"]
@@ -531,7 +531,7 @@ margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 14 )
+group = SubResource( 15 )
 text = "No"
 
 [node name="HSeparator" type="HSeparator" parent="UI/Settings"]
@@ -553,7 +553,7 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 custom_styles/hover = ExtResource( 18 )
 custom_styles/pressed = ExtResource( 18 )
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -569,7 +569,7 @@ margin_bottom = 57.0
 size_flags_horizontal = 3
 custom_styles/hover = ExtResource( 18 )
 custom_styles/pressed = ExtResource( 18 )
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -602,8 +602,8 @@ margin_right = 1690.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_styles/fg = SubResource( 17 )
-custom_styles/bg = SubResource( 18 )
+custom_styles/fg = SubResource( 18 )
+custom_styles/bg = SubResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

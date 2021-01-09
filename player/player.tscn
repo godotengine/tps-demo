@@ -1,7 +1,7 @@
 [gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
-[ext_resource path="res://player/model/player.dae" type="PackedScene" id=2]
+[ext_resource path="res://player/model/player.glb" type="PackedScene" id=2]
 [ext_resource path="res://player/crosshair.png" type="Texture" id=3]
 [ext_resource path="res://player/audio/step_random_pitch.tres" type="AudioStream" id=4]
 [ext_resource path="res://player/audio/jump.wav" type="AudioStream" id=5]
