@@ -27,27 +27,33 @@ var player = null
 var velocity = Vector3()
 var orientation = Transform()
 
+var blast_scene = preload("res://enemies/red_robot/laser/impact_effect/impact_effect.tscn")
+
 onready var animation_tree = $AnimationTree
 onready var shoot_animation = $ShootAnimation
 
 onready var model = $RedRobotModel
 onready var ray_from = model.get_node(@"Armature/Skeleton/RayFrom")
 onready var ray_mesh = ray_from.get_node(@"RayMesh")
-onready var explosion_particles = ray_from.get_node(@"ExplosionParticles")
+onready var laser_raycast = ray_from.get_node(@"RayCast")
+onready var collision_shape = $CollisionShape
 
 onready var explosion_sound = $SoundEffects/Explosion
 onready var hit_sound = $SoundEffects/Hit
 
 onready var death = $Death
-onready var shield1 = death.get_node(@"PartShield1")
-onready var shield2 = death.get_node(@"PartShield2")
-onready var shield3 = death.get_node(@"PartShield3")
+onready var death_shield1 = death.get_node(@"PartShield1")
+onready var death_shield2 = death.get_node(@"PartShield2")
+onready var death_head = death.get_node(@"PartHead")
+onready var death_detach_spark1 = death.get_node(@"DetachSpark1")
+onready var death_detach_spark2 = death.get_node(@"DetachSpark2")
 
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
 func _ready():
 	orientation = global_transform
 	orientation.origin = Vector3()
+	$AnimationTree.active = true
 
 
 func resume_approach():
@@ -66,28 +72,34 @@ func hit():
 		dead = true
 		var base_xf = global_transform.basis
 		animation_tree.active = false
-		#$Death/Explosion.play("kaboom")
 		model.visible = false
 		death.visible = true
-		$CollisionShape.disabled = true
-		death.get_node(@"Particles").emitting = true
+		collision_shape.disabled = true
 
-		shield1.get_node(@"Col1").disabled = false
-		shield1.get_node(@"Col2").disabled = false
-		shield1.mode = RigidBody.MODE_RIGID
-		shield2.get_node(@"Col1").disabled = false
-		shield2.get_node(@"Col2").disabled = false
-		shield2.mode = RigidBody.MODE_RIGID
-		shield3.get_node(@"Col1").disabled = false
-		shield3.get_node(@"Col2").disabled = false
-		shield3.mode = RigidBody.MODE_RIGID
+		death_shield1.get_node(@"Col1").disabled = false
+		death_shield1.get_node(@"Col2").disabled = false
+		death_shield1.mode = RigidBody.MODE_RIGID
+		death_shield2.get_node(@"Col1").disabled = false
+		death_shield2.get_node(@"Col2").disabled = false
+		death_shield2.mode = RigidBody.MODE_RIGID
+		death_head.get_node(@"Col1").disabled = false
+		death_head.get_node(@"Col2").disabled = false
+		death_head.mode = RigidBody.MODE_RIGID
 
-		shield2.linear_velocity = 3 * (Vector3.UP + base_xf.x).normalized()
-		shield3.linear_velocity = 3 * (Vector3.UP).normalized()
-		shield1.linear_velocity = 3 * (Vector3.UP - base_xf.x).normalized()
-		shield2.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
-		shield1.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
-		shield3.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
+		death_detach_spark1.emitting = true
+		death_detach_spark2.emitting = true
+
+		death_shield1.linear_velocity = 3 * (Vector3.UP - base_xf.x).normalized()
+		death_shield2.linear_velocity = 3 * (Vector3.UP + base_xf.x).normalized()
+		death_head.linear_velocity = 3 * (Vector3.UP).normalized()
+		death_shield1.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
+		death_shield2.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
+		death_head.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
+
+		death_shield1.start_disappear_countdown()
+		death_shield2.start_disappear_countdown()
+		death_head.start_disappear_countdown()
+
 		explosion_sound.play()
 
 
@@ -103,9 +115,19 @@ func shoot():
 		if col.collider == player:
 			pass # Kill.
 	# Clip ray in shader.
-	ray_mesh.get_surface_material(0).set_shader_param("clip", max_dist)
-	# Position explosion.
-	explosion_particles.transform.origin.z = -max_dist
+	_clip_ray(max_dist)
+	# Position laser ember particles
+	var mesh_offset = ray_mesh.translation.z
+	var laser_ember = $RedRobotModel/Armature/Skeleton/RayFrom/LaserEmber
+	laser_ember.translation = Vector3(0.0, 0.0, -max_dist / 2.0 - mesh_offset)
+	laser_ember.emission_box_extents.z = (max_dist - abs(mesh_offset)) / 2.0
+	if not col.empty():
+		var blast = blast_scene.instance()
+		get_tree().get_root().add_child(blast)
+		blast.global_transform.origin = col.position
+		if col.collider == player:
+			yield(get_tree().create_timer(0.1), "timeout")
+			player.add_camera_shake_trauma(13)
 
 
 func _physics_process(delta):
@@ -154,6 +176,10 @@ func _physics_process(delta):
 					shoot_countdown = SHOOT_WAIT
 
 	elif state == State.AIM or state == State.SHOOTING:
+		var max_dist = 1000
+		if laser_raycast.is_colliding():
+			max_dist = (ray_from.global_transform.origin - laser_raycast.get_collision_point()).length()
+		_clip_ray(max_dist)
 		if aim_preparing < AIM_PREPARE_TIME:
 			aim_preparing += delta
 			if aim_preparing > AIM_PREPARE_TIME:
@@ -168,6 +194,7 @@ func _physics_process(delta):
 			if not col.empty() and col.collider == player:
 				state = State.SHOOTING
 				shoot_animation.play("shoot")
+				shoot_countdown = SHOOT_WAIT
 			else:
 				resume_approach()
 
@@ -205,10 +232,14 @@ func shoot_check():
 	test_shoot = true
 
 
+func _clip_ray(length):
+	var mesh_offset = ray_mesh.translation.z
+	ray_mesh.get_surface_material(0).set_shader_param("clip", length + mesh_offset)
+
+
 func _on_area_body_entered(body):
 	if body is preload("res://player/player.gd"):
 		player = body
-		shoot_countdown = SHOOT_WAIT
 
 
 func _on_area_body_exited(body):

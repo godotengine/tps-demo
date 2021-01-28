@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://enemies/red_robot/laser/impact_effect/SmokePuff.png" type="Texture" id=1]
+[ext_resource path="res://enemies/red_robot/laser/impact_effect/SmokePuffNormals.png" type="Texture" id=2]
+[ext_resource path="res://enemies/red_robot/parts/part_disappear_effect/part_disappear.gd" type="Script" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 1 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 2 )
+
+[sub_resource type="QuadMesh" id=2]
+size = Vector2( 2, 2 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.384416, 1 ), 0.0777782, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.138122, 0.60221, 0.90884 )
+colors = PoolColorArray( 0, 1, 1, 0, 0, 1, 1, 1, 0.164062, 0.154449, 0.154449, 1, 0.211765, 0.211765, 0.211765, 0 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 0, 1, 1, 1 )
+emission_energy = 3.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=6]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 0 ), 0.0, 0.37234, 0, 0, Vector2( 0.462338, 0.981818 ), 5.18966, -5.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="PartDisappearPuff" type="CPUParticles"]
+material_override = SubResource( 1 )
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.76
+lifetime_randomness = 0.54
+draw_order = 2
+mesh = SubResource( 2 )
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, 2, 0 )
+angle = 661.8
+angle_random = 1.0
+scale_amount = 1.2
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 3 )
+color_ramp = SubResource( 4 )
+script = ExtResource( 3 )
+
+[node name="MiniBlasts" type="CPUParticles" parent="."]
+material_override = SubResource( 5 )
+emitting = false
+amount = 16
+lifetime = 0.3
+one_shot = true
+mesh = SubResource( 6 )
+emission_shape = 1
+emission_sphere_radius = 0.5
+gravity = Vector3( 0, 0, 0 )
+scale_amount_curve = SubResource( 7 )

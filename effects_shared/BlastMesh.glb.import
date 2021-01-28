@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/BlastMesh.glb-5fcdd65502c34cf655a578cb2d09942a.scn"
+path="res://.import/BlastMesh.glb-b73267f06de3a944c01538e9fdef2594.scn"
 
 [deps]
 
-source_file="res://player/bullet/effect/BlastMesh.glb"
-dest_files=[ "res://.import/BlastMesh.glb-5fcdd65502c34cf655a578cb2d09942a.scn" ]
+source_file="res://effects_shared/BlastMesh.glb"
+dest_files=[ "res://.import/BlastMesh.glb-b73267f06de3a944c01538e9fdef2594.scn" ]
 
 [params]
 
@@ -21,7 +21,7 @@ materials/storage=0
 materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true
-meshes/storage=2
+meshes/storage=1
 meshes/light_baking=0
 meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true

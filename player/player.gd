@@ -219,3 +219,7 @@ func rotate_camera(move):
 	camera_x_rot += move.y
 	camera_x_rot = clamp(camera_x_rot, deg2rad(CAMERA_X_ROT_MIN), deg2rad(CAMERA_X_ROT_MAX))
 	camera_rot.rotation.x = camera_x_rot
+
+
+func add_camera_shake_trauma(amount):
+	camera_camera.add_trauma(amount)

@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded,cull_disabled;
+render_mode unshaded, cull_disabled;
 
 uniform sampler2D ray_texture : hint_albedo;
 uniform sampler2D smoke_texture : hint_albedo;
@@ -13,9 +13,9 @@ varying float dist;
 
 void vertex() {
 	float deform_amount = 0.01 * deform;
-	vec2 offset = vec2(sin(VERTEX.z*1.4321),sin(VERTEX.z*2.12351));
-	VERTEX.xy+=deform_amount * offset;
-	VERTEX.xy*=1.0+deform;
+	vec2 offset = vec2(sin(VERTEX.z * 1.4321), sin(VERTEX.z * 2.12351));
+	VERTEX.xy += deform_amount * offset;
+	VERTEX.xy *= 1.0 + deform;
 	dist = abs(VERTEX.z);
 }
 

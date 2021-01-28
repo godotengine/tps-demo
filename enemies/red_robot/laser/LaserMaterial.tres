@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://enemies/red_robot/laser/LaserBodyNoise.tres" type="Texture" id=1]
+[ext_resource path="res://enemies/red_robot/laser/LaserShader.shader" type="Shader" id=2]
+
+[resource]
+shader = ExtResource( 2 )
+shader_param/uv_scale = Vector2( 15, 0.5 )
+shader_param/offset_uv_x = 0.0
+shader_param/cutoff_value = 1.0
+shader_param/traversal_scale = 0.0
+shader_param/energy = 1.0
+shader_param/clip = 8.305
+shader_param/color1 = Color( 1, 0, 0, 1 )
+shader_param/laser_body_noise = ExtResource( 1 )

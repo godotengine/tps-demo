@@ -1,0 +1,251 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://effects_shared/BlastMesh.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://effects_shared/BlastTexture.png" type="Texture" id=2]
+[ext_resource path="res://enemies/red_robot/laser/impact_effect/Plane.tres" type="ArrayMesh" id=3]
+[ext_resource path="res://enemies/red_robot/laser/impact_effect/LightRays.png" type="Texture" id=4]
+[ext_resource path="res://enemies/red_robot/laser/impact_effect/blast.gd" type="Script" id=5]
+[ext_resource path="res://enemies/red_robot/laser/impact_effect/EmissionAlbedoParticle.shader" type="Shader" id=6]
+[ext_resource path="res://enemies/red_robot/laser/impact_effect/EmissionEmbers.tres" type="Material" id=8]
+[ext_resource path="res://enemies/red_robot/laser/impact_effect/SmokePuffNormals.png" type="Texture" id=10]
+[ext_resource path="res://enemies/red_robot/laser/impact_effect/SmokePuff.png" type="Texture" id=11]
+
+[sub_resource type="Animation" id=1]
+resource_name = "blast"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Blast:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LightRays:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BlastCenter:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ExplosionEmbers:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SmokeParticle:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+params_billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="Curve" id=3]
+max_value = 5.0
+_data = [ Vector2( 0, 1.2 ), 0.0, 0.0, 0, 0, Vector2( 1, 5 ), 7.54685, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 6 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/emission = Color( 1, 1, 1, 1 )
+shader_param/emission_energy = 4.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/texture_albedo = ExtResource( 4 )
+
+[sub_resource type="Curve" id=6]
+bake_resolution = 16
+_data = [ Vector2( 0, 0.536364 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 1, 0.211765, 0, 1 )
+emission_enabled = true
+emission = Color( 0.988235, 0, 0, 1 )
+emission_energy = 5.0
+emission_operator = 0
+emission_on_uv2 = false
+rim_enabled = true
+rim = 1.0
+rim_tint = 0.74
+
+[sub_resource type="SphereMesh" id=8]
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0 ), 0.0, 2.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="SphereMesh" id=10]
+radius = 0.01
+height = 0.1
+
+[sub_resource type="Curve" id=11]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.810606, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=12]
+offsets = PoolRealArray( 0, 0.313673, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.09009, 0.09009, 1, 0.144531, 0.137756, 0.140773, 1 )
+
+[sub_resource type="SpatialMaterial" id=13]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+params_billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 11 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 10 )
+
+[sub_resource type="QuadMesh" id=14]
+size = Vector2( 2, 2 )
+
+[sub_resource type="Curve" id=15]
+_data = [ Vector2( 0, 0 ), 0.0, 3.25161, 0, 0, Vector2( 1, 1 ), 0.0363636, 0.0363636, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=16]
+offsets = PoolRealArray( 0, 0.19571, 0.576407, 1 )
+colors = PoolColorArray( 1, 0, 0, 0, 1, 0, 0, 1, 0.09375, 0.09375, 0.09375, 1, 0.105469, 0.105469, 0.105469, 0 )
+
+[node name="Blast" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "blast"
+anims/blast = SubResource( 1 )
+
+[node name="Blast" type="CPUParticles" parent="."]
+material_override = SubResource( 2 )
+emitting = false
+amount = 1
+lifetime = 0.3
+one_shot = true
+mesh = ExtResource( 1 )
+gravity = Vector3( 0, 0, 0 )
+scale_amount_curve = SubResource( 3 )
+color_ramp = SubResource( 4 )
+
+[node name="LightRays" type="CPUParticles" parent="."]
+material_override = SubResource( 5 )
+emitting = false
+amount = 40
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.9
+mesh = ExtResource( 3 )
+flag_align_y = true
+direction = Vector3( 1, 1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.01
+angle = 455.8
+angle_random = 0.93
+scale_amount = 0.02
+scale_amount_random = 0.41
+scale_amount_curve = SubResource( 6 )
+color = Color( 1, 0.00784314, 0.00784314, 1 )
+hue_variation = 0.03
+hue_variation_random = 0.78
+
+[node name="BlastCenter" type="CPUParticles" parent="."]
+material_override = SubResource( 7 )
+emitting = false
+amount = 1
+lifetime = 0.2
+one_shot = true
+mesh = SubResource( 8 )
+gravity = Vector3( 0, 0, 0 )
+scale_amount = 0.5
+scale_amount_curve = SubResource( 9 )
+
+[node name="ExplosionEmbers" type="CPUParticles" parent="."]
+material_override = ExtResource( 8 )
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.9
+mesh = SubResource( 10 )
+flag_align_y = true
+direction = Vector3( 0, 1, 0 )
+spread = 90.0
+gravity = Vector3( 0, -2, 0 )
+initial_velocity = 7.0
+damping = 1.0
+scale_amount_curve = SubResource( 11 )
+color_ramp = SubResource( 12 )
+
+[node name="SmokeParticle" type="CPUParticles" parent="."]
+material_override = SubResource( 13 )
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.92
+mesh = SubResource( 14 )
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3( 0, 1, 0 )
+spread = 90.0
+gravity = Vector3( 0, 2, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 1.0
+linear_accel = -0.3
+damping = 0.98
+angle = 458.9
+angle_random = 0.94
+scale_amount = 3.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 15 )
+color_ramp = SubResource( 16 )

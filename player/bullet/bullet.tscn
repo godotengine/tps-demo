@@ -1,11 +1,10 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://player/bullet/bullet.gd" type="Script" id=1]
-[ext_resource path="res://player/bullet/effect/BlastMesh.tres" type="ArrayMesh" id=2]
+[ext_resource path="res://effects_shared/BlastMesh.mesh" type="ArrayMesh" id=2]
 [ext_resource path="res://player/bullet/bullet_explode.wav" type="AudioStream" id=3]
 [ext_resource path="res://player/bullet/effect/BlastMaterial.tres" type="Material" id=4]
 [ext_resource path="res://player/bullet/effect/light_rays_material.tres" type="Material" id=5]
-[ext_resource path="res://player/bullet/effect/Plane.tres" type="ArrayMesh" id=6]
 [ext_resource path="res://player/bullet/blue_myst.png" type="Texture" id=8]
 [ext_resource path="res://player/bullet/bullet_material.tres" type="Material" id=9]
 
@@ -210,7 +209,10 @@ scale = 0.8
 scale_curve = SubResource( 12 )
 color_ramp = SubResource( 10 )
 
-[sub_resource type="Shader" id=14]
+[sub_resource type="QuadMesh" id=14]
+size = Vector2( 2, 2 )
+
+[sub_resource type="Shader" id=15]
 code = "shader_type spatial;
 render_mode blend_mix,depth_draw_alpha_prepass,cull_back,diffuse_burley,specular_schlick_ggx;
 uniform vec4 albedo : hint_color;
@@ -228,42 +230,42 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=15]
-shader = SubResource( 14 )
+[sub_resource type="ShaderMaterial" id=16]
+shader = SubResource( 15 )
 shader_param/albedo = Color( 1, 1, 1, 1 )
 shader_param/point_size = 1.0
 shader_param/emission_energy = 7.34
 
-[sub_resource type="Gradient" id=16]
+[sub_resource type="Gradient" id=17]
 offsets = PoolRealArray( 0, 0.237037, 0.859259 )
 colors = PoolColorArray( 1, 1, 1, 1, 0, 0.972656, 0.972656, 0.967582, 0.0107751, 0.00360107, 0.921875, 0.478431 )
 
-[sub_resource type="GradientTexture" id=17]
-gradient = SubResource( 16 )
+[sub_resource type="GradientTexture" id=18]
+gradient = SubResource( 17 )
 width = 128
 
-[sub_resource type="Curve" id=18]
+[sub_resource type="Curve" id=19]
 _data = [ Vector2( 0, 1 ), 0.0, -1.96199e-07, 0, 0, Vector2( 0.848101, 0.781818 ), -1.30578, -1.30578, 0, 0, Vector2( 1, 0.0090909 ), -0.0813035, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=19]
+[sub_resource type="CurveTexture" id=20]
 width = 128
-curve = SubResource( 18 )
+curve = SubResource( 19 )
 
-[sub_resource type="ParticlesMaterial" id=20]
+[sub_resource type="ParticlesMaterial" id=21]
 flag_align_y = true
 direction = Vector3( 0, 1, 0 )
 spread = 151.58
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 12.0
 damping = 31.5
-scale_curve = SubResource( 19 )
-color_ramp = SubResource( 17 )
+scale_curve = SubResource( 20 )
+color_ramp = SubResource( 18 )
 
-[sub_resource type="SphereMesh" id=21]
+[sub_resource type="SphereMesh" id=22]
 radius = 0.03
 height = 0.06
 
-[sub_resource type="SpatialMaterial" id=22]
+[sub_resource type="SpatialMaterial" id=23]
 flags_transparent = true
 vertex_color_use_as_albedo = true
 params_cull_mode = 2
@@ -276,42 +278,45 @@ particles_anim_loop = false
 albedo_color = Color( 0.701961, 0.701961, 0.701961, 0.560784 )
 albedo_texture = ExtResource( 8 )
 
-[sub_resource type="Curve" id=23]
+[sub_resource type="Curve" id=24]
 min_value = -1.0
 _data = [ Vector2( 0, 0.890909 ), 0.0, 0.0, 0, 0, Vector2( 1, -0.0545454 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=24]
+[sub_resource type="CurveTexture" id=25]
 width = 128
-curve = SubResource( 23 )
+curve = SubResource( 24 )
 
-[sub_resource type="Gradient" id=25]
+[sub_resource type="Gradient" id=26]
 offsets = PoolRealArray( 0, 0.918519 )
 colors = PoolColorArray( 1, 1, 1, 0.8, 0, 0.309753, 0.792969, 0.0196078 )
 
-[sub_resource type="GradientTexture" id=26]
-gradient = SubResource( 25 )
+[sub_resource type="GradientTexture" id=27]
+gradient = SubResource( 26 )
 width = 128
 
-[sub_resource type="Curve" id=27]
+[sub_resource type="Curve" id=28]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.14557, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.50114, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=28]
+[sub_resource type="CurveTexture" id=29]
 width = 128
-curve = SubResource( 27 )
+curve = SubResource( 28 )
 
-[sub_resource type="ParticlesMaterial" id=29]
+[sub_resource type="ParticlesMaterial" id=30]
 emission_shape = 1
 emission_sphere_radius = 0.4
 gravity = Vector3( 0, 2, 0 )
 angular_velocity = 82.76
 angular_velocity_random = 0.53
-angular_velocity_curve = SubResource( 24 )
+angular_velocity_curve = SubResource( 25 )
 angle = -248.2
 angle_random = 0.44
-scale_curve = SubResource( 28 )
-color_ramp = SubResource( 26 )
+scale_curve = SubResource( 29 )
+color_ramp = SubResource( 27 )
 
-[sub_resource type="SpatialMaterial" id=30]
+[sub_resource type="QuadMesh" id=31]
+size = Vector2( 2, 2 )
+
+[sub_resource type="SpatialMaterial" id=32]
 albedo_color = Color( 0.00784314, 0.988235, 0.988235, 1 )
 emission_enabled = true
 emission = Color( 0, 0.486275, 1, 1 )
@@ -319,22 +324,22 @@ emission_energy = 4.0
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="Curve" id=31]
+[sub_resource type="Curve" id=33]
 min_value = -1.0
 _data = [ Vector2( 0, 0.0181819 ), 0.0, 0.0, 0, 0, Vector2( 1, -0.745454 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=32]
-width = 128
-curve = SubResource( 31 )
-
-[sub_resource type="Curve" id=33]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.746835, 1 ), 2.15455, -3.73455, 0, 1, Vector2( 1, 0.0545454 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=34]
 width = 128
 curve = SubResource( 33 )
 
-[sub_resource type="ParticlesMaterial" id=35]
+[sub_resource type="Curve" id=35]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.746835, 1 ), 2.15455, -3.73455, 0, 1, Vector2( 1, 0.0545454 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=36]
+width = 128
+curve = SubResource( 35 )
+
+[sub_resource type="ParticlesMaterial" id=37]
 emission_shape = 1
 emission_sphere_radius = 0.3
 direction = Vector3( 0, 1, 0 )
@@ -342,53 +347,53 @@ spread = 180.0
 gravity = Vector3( 0, 3, 0 )
 initial_velocity = 0.3
 radial_accel = 1.0
-radial_accel_curve = SubResource( 32 )
+radial_accel_curve = SubResource( 34 )
 scale = 1.5
 scale_random = 1.0
-scale_curve = SubResource( 34 )
+scale_curve = SubResource( 36 )
 
-[sub_resource type="SphereMesh" id=36]
+[sub_resource type="SphereMesh" id=38]
 radius = 0.05
 height = 0.1
 radial_segments = 4
 rings = 4
 
-[sub_resource type="Curve" id=37]
+[sub_resource type="Curve" id=39]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.379747, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=38]
+[sub_resource type="CurveTexture" id=40]
 width = 128
-curve = SubResource( 37 )
+curve = SubResource( 39 )
 
-[sub_resource type="ParticlesMaterial" id=39]
+[sub_resource type="ParticlesMaterial" id=41]
 gravity = Vector3( 0, 0, 0 )
-scale_curve = SubResource( 38 )
+scale_curve = SubResource( 40 )
 
-[sub_resource type="SphereMesh" id=40]
+[sub_resource type="SphereMesh" id=42]
 radius = 0.3
 height = 0.6
 
-[sub_resource type="Gradient" id=41]
+[sub_resource type="Gradient" id=43]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=42]
-gradient = SubResource( 41 )
+[sub_resource type="GradientTexture" id=44]
+gradient = SubResource( 43 )
 
-[sub_resource type="Curve" id=43]
+[sub_resource type="Curve" id=45]
 max_value = 4.0
 _data = [ Vector2( 0.150987, 4 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.6936 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=44]
-curve = SubResource( 43 )
+[sub_resource type="CurveTexture" id=46]
+curve = SubResource( 45 )
 
-[sub_resource type="ParticlesMaterial" id=45]
+[sub_resource type="ParticlesMaterial" id=47]
 spread = 180.0
 gravity = Vector3( 0, -1, 0 )
 scale = 0.3
-scale_curve = SubResource( 44 )
-color_ramp = SubResource( 42 )
+scale_curve = SubResource( 46 )
+color_ramp = SubResource( 44 )
 
-[sub_resource type="SpatialMaterial" id=46]
+[sub_resource type="SpatialMaterial" id=48]
 flags_transparent = true
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
@@ -399,28 +404,28 @@ emission_energy = 2.0
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="SphereMesh" id=47]
-material = SubResource( 46 )
+[sub_resource type="SphereMesh" id=49]
+material = SubResource( 48 )
 radius = 0.1
 height = 0.2
 radial_segments = 5
 rings = 3
 
-[sub_resource type="Gradient" id=48]
+[sub_resource type="Gradient" id=50]
 colors = PoolColorArray( 1, 1, 1, 1, 0, 0.0313726, 0.501961, 0.752941 )
 
-[sub_resource type="GradientTexture" id=49]
-gradient = SubResource( 48 )
+[sub_resource type="GradientTexture" id=51]
+gradient = SubResource( 50 )
 width = 128
 
-[sub_resource type="Curve" id=50]
+[sub_resource type="Curve" id=52]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.417722, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=51]
+[sub_resource type="CurveTexture" id=53]
 width = 128
-curve = SubResource( 50 )
+curve = SubResource( 52 )
 
-[sub_resource type="ParticlesMaterial" id=52]
+[sub_resource type="ParticlesMaterial" id=54]
 emission_shape = 1
 emission_sphere_radius = 0.1
 flag_align_y = true
@@ -430,10 +435,10 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 9.0
 damping = 9.0
 scale = 0.3
-scale_curve = SubResource( 51 )
-color_ramp = SubResource( 49 )
+scale_curve = SubResource( 53 )
+color_ramp = SubResource( 51 )
 
-[sub_resource type="SphereMesh" id=53]
+[sub_resource type="SphereMesh" id=55]
 radius = 0.05
 height = 0.3
 radial_segments = 4
@@ -487,37 +492,37 @@ amount = 1
 lifetime = 0.15
 one_shot = true
 process_material = SubResource( 13 )
-draw_pass_1 = ExtResource( 6 )
+draw_pass_1 = SubResource( 14 )
 
 [node name="BlastSparks" type="Particles" parent="Blast"]
-material_override = SubResource( 15 )
+material_override = SubResource( 16 )
 emitting = false
 amount = 10
 lifetime = 0.3
 one_shot = true
 explosiveness = 0.92
-process_material = SubResource( 20 )
-draw_pass_1 = SubResource( 21 )
+process_material = SubResource( 21 )
+draw_pass_1 = SubResource( 22 )
 
 [node name="Smoke" type="Particles" parent="Blast"]
-material_override = SubResource( 22 )
+material_override = SubResource( 23 )
 emitting = false
 amount = 5
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 29 )
-draw_pass_1 = ExtResource( 6 )
+process_material = SubResource( 30 )
+draw_pass_1 = SubResource( 31 )
 
 [node name="LightParticle" type="Particles" parent="Blast"]
-material_override = SubResource( 30 )
+material_override = SubResource( 32 )
 emitting = false
 amount = 3
 lifetime = 0.8
 one_shot = true
 explosiveness = 0.84
-process_material = SubResource( 35 )
-draw_pass_1 = SubResource( 36 )
+process_material = SubResource( 37 )
+draw_pass_1 = SubResource( 38 )
 
 [node name="InnerBlastLight" type="Particles" parent="Blast"]
 material_override = ExtResource( 9 )
@@ -525,8 +530,8 @@ emitting = false
 amount = 1
 lifetime = 0.2
 one_shot = true
-process_material = SubResource( 39 )
-draw_pass_1 = SubResource( 40 )
+process_material = SubResource( 41 )
+draw_pass_1 = SubResource( 42 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="."]
 visible = false
@@ -541,12 +546,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00988865, 0, 0 )
 amount = 100
 lifetime = 0.1
 local_coords = false
-process_material = SubResource( 45 )
-draw_pass_1 = SubResource( 47 )
+process_material = SubResource( 47 )
+draw_pass_1 = SubResource( 49 )
 
 [node name="Trail" type="Particles" parent="BulletBody"]
 material_override = ExtResource( 9 )
 amount = 10
 local_coords = false
-process_material = SubResource( 52 )
-draw_pass_1 = SubResource( 53 )
+process_material = SubResource( 54 )
+draw_pass_1 = SubResource( 55 )
