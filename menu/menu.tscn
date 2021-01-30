@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://menu/button_focus.tres" type="StyleBox" id=16]
 [ext_resource path="res://menu/button_hover.tres" type="StyleBox" id=17]
 [ext_resource path="res://menu/button_action_pressed.tres" type="StyleBox" id=18]
+[ext_resource path="res://enemies/red_robot/red_robot.tscn" type="PackedScene" id=19]
+[ext_resource path="res://player/bullet/bullet.tscn" type="PackedScene" id=20]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 2 )
@@ -33,6 +35,7 @@ glow_hdr_threshold = 0.34
 glow_bicubic_upscale = true
 
 [sub_resource type="QuadMesh" id=3]
+size = Vector2( 15, 15 )
 
 [sub_resource type="SpatialMaterial" id=4]
 albedo_texture = ExtResource( 4 )
@@ -128,7 +131,13 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="Menu" type="Spatial"]
+[sub_resource type="BoxShape" id=20]
+extents = Vector3( 2, 1, 2 )
+
+[sub_resource type="BoxShape" id=21]
+extents = Vector3( 5, 5, 1 )
+
+[node name="Menu" type="Node"]
 script = ExtResource( 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -150,7 +159,7 @@ __meta__ = {
 }
 
 [node name="Floor" type="MeshInstance" parent="."]
-transform = Transform( 15, 0, 0, 0, 0, 15, 0, -15, 0, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
@@ -611,6 +620,38 @@ __meta__ = {
 [node name="DoneTimer" type="Timer" parent="UI/Loading"]
 wait_time = 0.5
 one_shot = true
+
+[node name="BackgroundCache" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -10, -10 )
+__meta__ = {
+"_editor_description_": "This section forces Godot to cache the models/materials/shaders by creating them on the menu. Everything is out of sight because it is behind the floor, but it's within the camera's view frustum."
+}
+
+[node name="RedRobot" parent="BackgroundCache" instance=ExtResource( 19 )]
+health = 1
+test_shoot = true
+
+[node name="Floor" type="StaticBody" parent="BackgroundCache"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+collision_layer = 2147483651
+collision_mask = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="BackgroundCache/Floor"]
+shape = SubResource( 20 )
+
+[node name="Target" type="StaticBody" parent="BackgroundCache"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3 )
+collision_layer = 2147483650
+collision_mask = 2147483650
+
+[node name="CollisionShape" type="CollisionShape" parent="BackgroundCache/Target"]
+shape = SubResource( 21 )
+
+[node name="Bullet" parent="BackgroundCache" instance=ExtResource( 20 )]
+transform = Transform( -1, 8.4334e-08, 3.14739e-07, 0, 0.965926, -0.258819, -3.25841e-07, -0.258819, -0.965926, 0, -20, -80 )
+
+[node name="ExplosionAudio" parent="BackgroundCache/Bullet" index="4"]
+unit_db = -80.0
 [connection signal="pressed" from="UI/Main/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="UI/Main/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="UI/Main/Quit" to="." method="_on_quit_pressed"]
@@ -619,3 +660,5 @@ one_shot = true
 [connection signal="timeout" from="UI/Loading/DoneTimer" to="." method="_on_loading_done_timer_timeout"]
 
 [editable path="PlayerModel"]
+
+[editable path="BackgroundCache/Bullet"]

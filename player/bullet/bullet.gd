@@ -3,7 +3,6 @@ extends KinematicBody
 const BULLET_VELOCITY = 20
 
 var time_alive = 5
-var direction = Vector3()
 var hit = false
 
 onready var animation_player = $AnimationPlayer
@@ -16,7 +15,7 @@ func _physics_process(delta):
 	if time_alive < 0:
 		hit = true
 		animation_player.play("explode")
-	var col = move_and_collide(delta * direction * BULLET_VELOCITY)
+	var col = move_and_collide(-delta * BULLET_VELOCITY * transform.basis.z)
 	if col:
 		if col.collider and col.collider.has_method("hit"):
 			col.collider.hit()

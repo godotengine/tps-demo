@@ -14,14 +14,15 @@ const AIM_TIME = 1
 const AIM_PREPARE_TIME = 0.5
 const BLEND_AIM_SPEED = 0.05
 
+export(int) var health = 5
+export(bool) var test_shoot = false
+
 var state = State.APPROACH
 
 var shoot_countdown = SHOOT_WAIT
 var aim_countdown = AIM_TIME
 var aim_preparing = AIM_PREPARE_TIME
-var health = 5
 var dead = false
-var test_shoot = false
 
 var player = null
 var velocity = Vector3()
@@ -54,6 +55,8 @@ func _ready():
 	orientation = global_transform
 	orientation.origin = Vector3()
 	$AnimationTree.active = true
+	if test_shoot:
+		shoot_countdown = 0.0
 
 
 func resume_approach():
@@ -125,7 +128,7 @@ func shoot():
 		var blast = blast_scene.instance()
 		get_tree().get_root().add_child(blast)
 		blast.global_transform.origin = col.position
-		if col.collider == player:
+		if col.collider == player and player is Player:
 			yield(get_tree().create_timer(0.1), "timeout")
 			player.add_camera_shake_trauma(13)
 
@@ -238,10 +241,10 @@ func _clip_ray(length):
 
 
 func _on_area_body_entered(body):
-	if body is preload("res://player/player.gd"):
+	if body is Player or body.name == "Target":
 		player = body
 
 
 func _on_area_body_exited(body):
-	if body is preload("res://player/player.gd"):
+	if body is Player:
 		player = null
