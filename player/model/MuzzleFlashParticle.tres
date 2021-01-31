@@ -1,4 +1,7 @@
-[gd_resource type="ArrayMesh" format=2]
+[gd_resource type="ArrayMesh" load_steps=2 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+vertex_color_use_as_albedo = true
 
 [resource]
 resource_name = "MuzzleFlashParticle"
@@ -9,6 +12,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 24,
+"material": SubResource( 1 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 24
