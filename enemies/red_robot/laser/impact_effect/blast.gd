@@ -9,4 +9,5 @@ func _ready():
 
 
 func _process(_delta):
-	light_rays.look_at(camera.global_transform.origin, Vector3.UP)
+	if camera:
+		light_rays.look_at(camera.global_transform.origin, Vector3.UP)

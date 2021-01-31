@@ -1,9 +1,7 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://level/level.gd" type="Script" id=1]
 [ext_resource path="res://level/geometry/scenes/props.tscn" type="PackedScene" id=2]
-[ext_resource path="res://level/shader_cache.gd" type="Script" id=3]
-[ext_resource path="res://player/bullet/bullet.tscn" type="PackedScene" id=4]
 [ext_resource path="res://level/geometry/giprobe_data.res" type="GIProbeData" id=5]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://enemies/red_robot/red_robot.tscn" type="PackedScene" id=7]
@@ -49,11 +47,6 @@ script = ExtResource( 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 16 )
-
-[node name="ShaderCache" type="Node" parent="WorldEnvironment"]
-script = ExtResource( 3 )
-
-[node name="Bullet" parent="WorldEnvironment/ShaderCache" instance=ExtResource( 4 )]
 
 [node name="GIProbe" type="GIProbe" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.09263, 1.28266, 2.88598 )

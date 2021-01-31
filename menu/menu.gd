@@ -1,7 +1,7 @@
-extends Spatial
+extends Node
 
-var res_loader : ResourceInteractiveLoader = null
-var loading_thread : Thread = null
+var res_loader: ResourceInteractiveLoader = null
+var loading_thread: Thread = null
 
 signal replace_main_scene
 #warning-ignore:unused_signal
@@ -56,6 +56,9 @@ onready var loading_done_timer = loading.get_node(@"DoneTimer")
 func _ready():
 	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(1920, 1080))
 	play_button.grab_focus()
+	var sound_effects = $BackgroundCache/RedRobot/SoundEffects
+	for child in sound_effects.get_children():
+		child.unit_db = -200
 
 
 func interactive_load(loader):
