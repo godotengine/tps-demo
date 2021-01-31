@@ -197,7 +197,7 @@ nodes/strafe/node = SubResource( 24 )
 nodes/strafe/position = Vector2( -400, -120 )
 nodes/walk/node = SubResource( 29 )
 nodes/walk/position = Vector2( -400, 40 )
-node_connections = [ "output", 0, "eye_blend", "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "land", 0, "state", "land", 1, "hardland" ]
+node_connections = [ "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "output", 0, "eye_blend", "land", 0, "state", "land", 1, "hardland", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup" ]
 
 [sub_resource type="CapsuleShape" id=31]
 radius = 0.5
