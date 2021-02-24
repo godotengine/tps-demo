@@ -23,13 +23,13 @@ void fragment() {
 	if (dist > clip) {
 		discard;
 	}
-	vec4 ray_color = texture(ray_texture,UV);
-	vec4 smoke_color = texture(smoke_texture,UV);
+	vec4 ray_color = texture(ray_texture, UV);
+	vec4 smoke_color = texture(smoke_texture, UV);
 
-	vec4 col = mix(ray_color,smoke_color,smoke);
+	vec4 col = mix(ray_color, smoke_color, smoke);
 
-	ALBEDO=col.rgb * energy;
-	ALPHA=col.a * transparency;
+	ALBEDO = col.rgb * energy;
+	ALPHA = col.a * transparency;
 	//ALBEDO=ray_color.rgb;
 	//ALPHA=ray_color.a;
 }

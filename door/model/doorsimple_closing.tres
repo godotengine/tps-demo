@@ -4,7 +4,7 @@
 
 [resource]
 resource_name = "doorsimple_closing"
-length = 2.6
+length = 2.08333
 tracks/0/type = "transform"
 tracks/0/path = NodePath("armature-doorsimple")
 tracks/0/interp = 1
