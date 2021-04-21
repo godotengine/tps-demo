@@ -400,7 +400,7 @@ nodes/hit3/position = Vector2( 980, 240 )
 nodes/output/position = Vector2( 1180, 200 )
 nodes/state/node = SubResource( 51 )
 nodes/state/position = Vector2( 60, 100 )
-node_connections = [ "output", 0, "hit3", "state", 0, "Animation", "state", 1, "Animation 3", "state", 2, "Animation 2", "state", 3, "Animation 4", "aiming", 0, "state", "aiming", 1, "aim", "hit1", 0, "aiming", "hit1", 1, "Animation 5", "hit2", 0, "hit1", "hit2", 1, "Animation 6", "hit3", 0, "hit2", "hit3", 1, "Animation 7" ]
+node_connections = [ "state", 0, "Animation", "state", 1, "Animation 3", "state", 2, "Animation 2", "state", 3, "Animation 4", "output", 0, "hit3", "aiming", 0, "state", "aiming", 1, "aim", "hit1", 0, "aiming", "hit1", 1, "Animation 5", "hit2", 0, "hit1", "hit2", 1, "Animation 6", "hit3", 0, "hit2", "hit3", 1, "Animation 7" ]
 
 [sub_resource type="SphereShape" id=53]
 radius = 1.11815
@@ -771,7 +771,7 @@ script = ExtResource( 1 )
 bones/14/bound_children = [ NodePath("RayFrom") ]
 
 [node name="RayFrom" type="BoneAttachment" parent="RedRobotModel/Armature/Skeleton" index="4"]
-transform = Transform( -0.999109, -5.97867e-05, 0.0422096, 0.00546806, 0.991389, 0.130834, -0.041854, 0.130948, -0.990505, -0.0813368, 1.99566, 0.277505 )
+transform = Transform( -0.997439, -0.070985, -0.00878045, -0.0710157, 0.99747, 0.00323016, 0.00852894, 0.00384544, -0.999956, -0.149183, 1.9902, 0.191941 )
 bone_name = "CannonAnimRecoil"
 
 [node name="Circle" type="MeshInstance" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
@@ -1105,6 +1105,7 @@ unit_size = 15.0
 stream = ExtResource( 19 )
 unit_db = 3.0
 unit_size = 15.0
+
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_area_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_area_body_exited"]
 

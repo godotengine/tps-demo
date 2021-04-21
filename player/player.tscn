@@ -270,12 +270,15 @@ script = ExtResource( 1 )
 [node name="Robot_Skeleton" parent="PlayerModel" index="0"]
 transform = Transform( 0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0 )
 
+[node name="Skeleton" parent="PlayerModel/Robot_Skeleton" index="0"]
+bones/55/bound_children = [ NodePath("GunBone") ]
+
 [node name="GunBone" type="BoneAttachment" parent="PlayerModel/Robot_Skeleton/Skeleton" index="5"]
 transform = Transform( 0.897421, -0.247601, 0.365395, -0.262988, -0.964798, -0.00816901, 0.354591, -0.0887302, -0.930816, -0.207098, 1.36135, 0.549705 )
 bone_name = "hand.R"
 
 [node name="ShootFrom" type="Position3D" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone"]
-transform = Transform( 0.999919, 0.0106283, -0.00705317, -0.0105956, 0.99993, 0.00505793, 0.00710796, -0.0049828, 0.999962, 0.0100024, -0.00491095, -0.40371 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
 
 [node name="ShootParticle" type="Particles" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone/ShootFrom"]
 transform = Transform( 1, 2.04891e-08, 0, 3.21306e-08, 1, 5.58794e-09, 0, 0, 1, 0, 0, 0 )

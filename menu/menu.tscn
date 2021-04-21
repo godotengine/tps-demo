@@ -652,6 +652,7 @@ transform = Transform( -1, 8.4334e-08, 3.14739e-07, 0, 0.965926, -0.258819, -3.2
 
 [node name="ExplosionAudio" parent="BackgroundCache/Bullet" index="4"]
 unit_db = -80.0
+
 [connection signal="pressed" from="UI/Main/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="UI/Main/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="UI/Main/Quit" to="." method="_on_quit_pressed"]
@@ -660,5 +661,4 @@ unit_db = -80.0
 [connection signal="timeout" from="UI/Loading/DoneTimer" to="." method="_on_loading_done_timer_timeout"]
 
 [editable path="PlayerModel"]
-
 [editable path="BackgroundCache/Bullet"]

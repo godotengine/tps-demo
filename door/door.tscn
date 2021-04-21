@@ -32,6 +32,7 @@ unit_size = 7.0
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55109, 0 )
 shape = SubResource( 1 )
+
 [connection signal="body_entered" from="." to="." method="_on_door_body_entered"]
 
 [editable path="DoorModel"]
