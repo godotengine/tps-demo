@@ -11,7 +11,7 @@ Check out this demo on the asset library: https://godotengine.org/asset-library/
 - The [`master`](https://github.com/godotengine/tps-demo) branch is compatible with the latest stable Godot version (currently 3.3.x).
 - If you are using an older version of Godot, use the appropriate branch for your Godot version:
 
-  - [`3.2`](https://github.com/godotengine/tps-demo/tree/3.2) branch
+  - [***`3.2`***](https://github.com/godotengine/tps-demo/tree/3.2) branch
   for Godot 3.2.2 or 3.2.3.
   - [`3.2.1`](https://github.com/godotengine/tps-demo/tree/3.2.1) branch
   for Godot 3.2.0 or 3.2.1.
@@ -34,7 +34,7 @@ Download the latest stable version [from the website](https://godotengine.org/do
 or [build it from source](https://github.com/godotengine/godot).
 
 You can either download from the Godot Asset Library, clone this repository, or
-[download a ZIP archive](https://github.com/godotengine/tps-demo/archive/master.zip).
+[download a ZIP archive](https://github.com/godotengine/tps-demo/archive/3.2.zip).
 
 ## Useful links
 
