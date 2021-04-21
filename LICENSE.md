@@ -15,7 +15,7 @@ used to create this scene were kindly provided by GameTextures.com
 
 ************************************************************************
 
-All code Copyright (c) 2018-2020 Juan Linietsky, Godot Engine contributors.
+All code Copyright (c) 2018-2021 Juan Linietsky, Godot Engine contributors.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
