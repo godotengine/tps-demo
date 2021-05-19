@@ -12,9 +12,6 @@ uniform float clip = 4.0;
 
 uniform vec4 color1 : hint_color = vec4(0.0, 0.0, 1.0, 1.0);
 
-// Z coordinate of the vertex, in local space.
-varying float z_local_coordinates;
-
 void vertex(){
 	// Because of how the UVs are laid out, the UVs at the right-most place
 	// are at the end of the beam. We use that to decide wether or not to
@@ -26,7 +23,6 @@ void vertex(){
 	float original_z = VERTEX.z;
 	VERTEX.z = mix(VERTEX.z, -clip, should_displace_vertex);
 	UV.x *= VERTEX.z / original_z;
-	z_local_coordinates = VERTEX.z;
 	VERTEX.xy *= traversal_scale;
 }
 
