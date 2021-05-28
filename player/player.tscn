@@ -9,7 +9,7 @@
 [ext_resource path="res://player/audio/shoot.wav" type="AudioStream" id=7]
 [ext_resource path="res://player/camera_noise_shake_effect.gd" type="Script" id=8]
 [ext_resource path="res://player/bullet/bullet_material.tres" type="Material" id=9]
-[ext_resource path="res://player/model/MuzzleFlashParticle.mesh" type="ArrayMesh" id=10]
+[ext_resource path="res://player/model/muzzle_flash_particle_mesh_Cone.mesh" type="ArrayMesh" id=10]
 [ext_resource path="res://player/bullet/effect/FlarePolar.png" type="Texture" id=11]
 
 [sub_resource type="ParticlesMaterial" id=1]

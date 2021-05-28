@@ -560,12 +560,12 @@ custom_constants/separation = 50
 margin_right = 646.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
-custom_styles/hover = ExtResource( 18 )
-custom_styles/pressed = ExtResource( 18 )
-custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = ExtResource( 18 )
+custom_styles/pressed = ExtResource( 18 )
 text = "Apply"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -576,12 +576,12 @@ margin_left = 696.0
 margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
-custom_styles/hover = ExtResource( 18 )
-custom_styles/pressed = ExtResource( 18 )
-custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = ExtResource( 18 )
+custom_styles/pressed = ExtResource( 18 )
 text = "Cancel"
 
 [node name="Loading" type="HBoxContainer" parent="UI"]

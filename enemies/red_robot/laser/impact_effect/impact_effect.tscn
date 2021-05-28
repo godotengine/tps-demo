@@ -1,8 +1,8 @@
 [gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://effects_shared/BlastMesh.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://effects_shared/BlastMesh_Sphere.mesh" type="ArrayMesh" id=1]
 [ext_resource path="res://effects_shared/BlastTexture.png" type="Texture" id=2]
-[ext_resource path="res://enemies/red_robot/laser/impact_effect/Plane.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://enemies/red_robot/laser/impact_effect/LightRaysMesh_Plane.mesh" type="ArrayMesh" id=3]
 [ext_resource path="res://enemies/red_robot/laser/impact_effect/LightRays.png" type="Texture" id=4]
 [ext_resource path="res://enemies/red_robot/laser/impact_effect/blast.gd" type="Script" id=5]
 [ext_resource path="res://enemies/red_robot/laser/impact_effect/EmissionAlbedoParticle.shader" type="Shader" id=6]

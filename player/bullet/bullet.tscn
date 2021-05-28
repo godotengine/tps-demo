@@ -1,7 +1,7 @@
 [gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://player/bullet/bullet.gd" type="Script" id=1]
-[ext_resource path="res://effects_shared/BlastMesh.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://effects_shared/BlastMesh_Sphere.mesh" type="ArrayMesh" id=2]
 [ext_resource path="res://player/bullet/bullet_explode.wav" type="AudioStream" id=3]
 [ext_resource path="res://player/bullet/effect/BlastMaterial.tres" type="Material" id=4]
 [ext_resource path="res://player/bullet/effect/light_rays_material.tres" type="Material" id=5]
