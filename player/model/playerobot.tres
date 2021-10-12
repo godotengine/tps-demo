@@ -28,5 +28,5 @@ ao_texture = ExtResource( 2 )
 ao_on_uv2 = false
 ao_texture_channel = 0
 distance_fade_mode = 3
-distance_fade_min_distance = 0.5
-distance_fade_max_distance = 1.0
+distance_fade_min_distance = 0.2
+distance_fade_max_distance = 0.8

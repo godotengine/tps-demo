@@ -3,8 +3,9 @@ extends KinematicBody
 
 const CAMERA_MOUSE_ROTATION_SPEED = 0.001
 const CAMERA_CONTROLLER_ROTATION_SPEED = 3.0
-const CAMERA_X_ROT_MIN = -40
-const CAMERA_X_ROT_MAX = 30
+# A minimum angle lower than or equal to -90 breaks movement if the player is looking upward.
+const CAMERA_X_ROT_MIN = -89.9
+const CAMERA_X_ROT_MAX = 70
 
 const DIRECTION_INTERPOLATE_SPEED = 1
 const MOTION_INTERPOLATE_SPEED = 10
