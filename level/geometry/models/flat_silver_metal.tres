@@ -2,6 +2,7 @@
 
 [resource]
 resource_name = "flat_silver_metal"
+params_diffuse_mode = 1
 albedo_color = Color( 0.293793, 0.293793, 0.293793, 1 )
 metallic = 0.198765
 roughness = 0.542695

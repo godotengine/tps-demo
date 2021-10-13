@@ -2,5 +2,6 @@
 
 [resource]
 resource_name = "trim_rail_pipe"
+params_diffuse_mode = 1
 albedo_color = Color( 0.64, 0.0652415, 0.0474241, 1 )
 roughness = 0.542695

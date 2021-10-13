@@ -6,6 +6,7 @@
 
 [resource]
 resource_name = "container3"
+params_diffuse_mode = 1
 albedo_texture = ExtResource( 3 )
 metallic = 0.5
 metallic_texture = ExtResource( 2 )

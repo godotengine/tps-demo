@@ -114,6 +114,7 @@ shader_param/emission_cutout = 0.0
 [resource]
 resource_name = "EvilRobo"
 next_pass = SubResource( 2 )
+params_diffuse_mode = 1
 albedo_texture = ExtResource( 4 )
 metallic = 0.5
 metallic_texture = ExtResource( 3 )

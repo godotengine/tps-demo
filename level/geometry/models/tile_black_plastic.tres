@@ -2,5 +2,6 @@
 
 [resource]
 resource_name = "tile_black_plastic"
+params_diffuse_mode = 1
 albedo_color = Color( 0.0224657, 0.027302, 0.0741629, 1 )
 roughness = 0.542695

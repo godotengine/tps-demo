@@ -2,6 +2,8 @@
 
 [resource]
 resource_name = "flat_emitter_orange"
+params_diffuse_mode = 1
+params_specular_mode = 4
 albedo_color = Color( 0.64, 0.214537, 0, 1 )
 roughness = 0.542695
 emission_enabled = true

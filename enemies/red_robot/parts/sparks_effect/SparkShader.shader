@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode diffuse_lambert, specular_disabled;
 
 uniform sampler2D alpha_texture;
 uniform float emission_factor = 3.0;

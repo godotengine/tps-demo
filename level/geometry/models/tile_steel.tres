@@ -2,5 +2,6 @@
 
 [resource]
 resource_name = "tile_steel"
+params_diffuse_mode = 1
 params_cull_mode = 2
 metallic = 1.0

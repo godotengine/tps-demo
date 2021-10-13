@@ -7,6 +7,7 @@
 
 [resource]
 resource_name = "flying_forklift"
+params_diffuse_mode = 1
 albedo_texture = ExtResource( 2 )
 metallic = 1.0
 metallic_texture = ExtResource( 3 )

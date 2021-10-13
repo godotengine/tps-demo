@@ -1,0 +1,25 @@
+[remap]
+
+importer="texture_array"
+type="TextureArray"
+path="res://.import/level.png-f9ee3368debc10c369d66af1426a86b3.texarr"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://level/level.png"
+dest_files=[ "res://.import/level.png-f9ee3368debc10c369d66af1426a86b3.texarr" ]
+
+[params]
+
+compress/mode=0
+compress/no_bptc_if_rgb=false
+flags/repeat=false
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=true
+slices/horizontal=1
+slices/vertical=31

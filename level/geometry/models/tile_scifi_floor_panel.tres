@@ -6,6 +6,7 @@
 
 [resource]
 resource_name = "tile_scifi_floor_panel"
+params_diffuse_mode = 1
 albedo_texture = ExtResource( 1 )
 metallic = 0.5
 metallic_texture = ExtResource( 3 )

@@ -7,6 +7,7 @@
 
 [resource]
 resource_name = "door_reactor"
+params_diffuse_mode = 1
 albedo_texture = ExtResource( 2 )
 metallic = 0.5
 metallic_texture = ExtResource( 4 )

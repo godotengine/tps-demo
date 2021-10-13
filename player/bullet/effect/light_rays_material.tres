@@ -6,6 +6,8 @@
 flags_transparent = true
 flags_unshaded = true
 vertex_color_use_as_albedo = true
+params_diffuse_mode = 1
+params_specular_mode = 4
 params_billboard_mode = 1
 params_billboard_keep_scale = true
 albedo_texture = ExtResource( 1 )

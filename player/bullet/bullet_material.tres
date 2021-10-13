@@ -2,6 +2,8 @@
 
 [resource]
 vertex_color_use_as_albedo = true
+params_diffuse_mode = 1
+params_specular_mode = 4
 albedo_color = Color( 0, 0, 0, 1 )
 roughness = 0.0
 emission_enabled = true

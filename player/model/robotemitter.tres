@@ -2,6 +2,8 @@
 
 [resource]
 resource_name = "robotemitter"
+params_diffuse_mode = 1
+params_specular_mode = 4
 albedo_color = Color( 0.196078, 0.388235, 0.639216, 1 )
 roughness = 0.0960784
 emission_enabled = true

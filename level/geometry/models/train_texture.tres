@@ -6,6 +6,7 @@
 
 [resource]
 resource_name = "train_texture"
+params_diffuse_mode = 1
 albedo_texture = ExtResource( 3 )
 metallic = 1.0
 metallic_texture = ExtResource( 2 )

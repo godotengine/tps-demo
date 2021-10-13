@@ -6,6 +6,7 @@
 
 [resource]
 resource_name = "trim_misc_1"
+params_diffuse_mode = 1
 albedo_texture = ExtResource( 2 )
 metallic = 0.5
 metallic_texture = ExtResource( 3 )

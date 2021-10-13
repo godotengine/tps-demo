@@ -7,6 +7,7 @@
 
 [resource]
 resource_name = "scifi_car"
+params_diffuse_mode = 1
 albedo_texture = ExtResource( 1 )
 metallic = 0.5
 metallic_texture = ExtResource( 4 )

@@ -2,6 +2,8 @@
 
 [resource]
 resource_name = "flat_emitter_orange_dull"
+params_diffuse_mode = 1
+params_specular_mode = 4
 albedo_color = Color( 0.43658, 0.234022, 0.0361345, 1 )
 metallic = 0.5
 roughness = 0.542695

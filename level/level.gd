@@ -8,14 +8,6 @@ signal replace_main_scene # Useless, but needed as there is no clean way to chec
 onready var world_environment = $WorldEnvironment
 
 func _ready():
-	if Settings.gi_quality == Settings.GIQuality.HIGH:
-		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = true
-	elif Settings.gi_quality == Settings.GIQuality.LOW:
-		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = false
-	else:
-		$GIProbe.hide()
-		$ReflectionProbes.show()
-
 	if Settings.aa_quality == Settings.AAQuality.AA_8X:
 		get_viewport().msaa = Viewport.MSAA_8X
 	elif Settings.aa_quality == Settings.AAQuality.AA_4X:

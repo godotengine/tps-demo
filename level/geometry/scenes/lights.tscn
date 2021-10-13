@@ -9,7 +9,6 @@
 [node name="Point001_Orientation" parent="LightsModel/Point001" index="0"]
 transform = Transform( 1, -5.96046e-08, 0, 0, 0, 1, -2.98023e-08, -1, 0, 0, 0, 0 )
 light_color = Color( 1, 0.647059, 0.0941176, 1 )
-shadow_enabled = true
 omni_range = 25.0
 omni_attenuation = 1.0
 
@@ -26,6 +25,7 @@ spot_angle_attenuation = 1.0
 [node name="Spot009_Orientation" parent="LightsModel/Spot009" index="0"]
 light_color = Color( 0.341176, 0.529412, 0.564706, 1 )
 light_energy = 3.0
+shadow_enabled = true
 spot_range = 22.0
 spot_attenuation = 1.0
 spot_angle = 45.0
@@ -34,6 +34,7 @@ spot_angle_attenuation = 1.0
 [node name="Spot008_Orientation" parent="LightsModel/Spot008" index="0"]
 light_color = Color( 0.341176, 0.529412, 0.564706, 1 )
 light_energy = 3.0
+shadow_enabled = true
 spot_range = 22.0
 spot_attenuation = 1.0
 spot_angle = 45.0
@@ -56,7 +57,6 @@ spot_angle_attenuation = 0.93
 [node name="Spot005_Orientation" parent="LightsModel/Spot005" index="0"]
 light_color = Color( 0.827451, 0.894118, 0.894118, 1 )
 light_energy = 3.26
-shadow_enabled = true
 spot_range = 10.0
 spot_attenuation = 1.0
 spot_angle = 45.0
@@ -65,7 +65,6 @@ spot_angle_attenuation = 1.0
 [node name="Spot004_Orientation" parent="LightsModel/Spot004" index="0"]
 light_color = Color( 0.827451, 0.894118, 0.894118, 1 )
 light_energy = 2.0
-shadow_enabled = true
 spot_range = 10.0
 spot_attenuation = 1.0
 spot_angle = 45.0
@@ -73,7 +72,6 @@ spot_angle_attenuation = 1.0
 
 [node name="Spot003_Orientation" parent="LightsModel/Spot003" index="0"]
 light_energy = 4.34
-shadow_enabled = true
 spot_range = 10.0
 spot_attenuation = 1.0
 spot_angle = 45.0
@@ -81,7 +79,6 @@ spot_angle_attenuation = 1.0
 
 [node name="Spot002_Orientation" parent="LightsModel/Spot002" index="0"]
 light_energy = 2.0
-shadow_enabled = true
 spot_range = 12.1
 spot_attenuation = 1.0
 spot_angle = 45.0
@@ -89,7 +86,6 @@ spot_angle_attenuation = 1.0
 
 [node name="Spot001_Orientation" parent="LightsModel/Spot001" index="0"]
 light_energy = 2.0
-shadow_enabled = true
 spot_range = 8.8
 spot_attenuation = 1.0
 spot_angle = 28.8
@@ -97,7 +93,6 @@ spot_angle_attenuation = 1.0
 
 [node name="Spot000_Orientation" parent="LightsModel/Spot000" index="0"]
 light_energy = 2.26
-shadow_enabled = true
 spot_range = 26.3
 spot_attenuation = 1.0
 spot_angle = 45.0
@@ -105,7 +100,6 @@ spot_angle_attenuation = 1.0
 
 [node name="Spot013_Orientation" parent="LightsModel/Spot013" index="0"]
 light_energy = 2.26
-shadow_enabled = true
 spot_range = 5.0
 spot_attenuation = 1.0
 spot_angle = 30.8
@@ -113,7 +107,6 @@ spot_angle_attenuation = 1.0
 
 [node name="Spot012_Orientation" parent="LightsModel/Spot012" index="0"]
 light_energy = 2.98
-shadow_enabled = true
 shadow_bias = 0.03
 spot_range = 5.0
 spot_attenuation = 1.0
@@ -122,37 +115,31 @@ spot_angle_attenuation = 1.0
 
 [node name="Point010_Orientation" parent="LightsModel/Point010" index="0"]
 light_color = Color( 0.0666667, 0.239216, 0.235294, 1 )
-shadow_enabled = true
 omni_range = 15.0
 omni_attenuation = 1.0
 
 [node name="Point008_Orientation" parent="LightsModel/Point008" index="0"]
 light_color = Color( 0.0666667, 0.239216, 0.235294, 1 )
-shadow_enabled = true
 omni_range = 15.0
 omni_attenuation = 1.0
 
 [node name="Point006_Orientation" parent="LightsModel/Point006" index="0"]
 light_color = Color( 0.0666667, 0.239216, 0.235294, 1 )
-shadow_enabled = true
 omni_range = 15.0
 omni_attenuation = 1.0
 
 [node name="Point004_Orientation" parent="LightsModel/Point004" index="0"]
 light_color = Color( 0.239216, 0.164706, 0.0666667, 1 )
-shadow_enabled = true
 omni_range = 15.0
 omni_attenuation = 1.0
 
 [node name="Point002_Orientation" parent="LightsModel/Point002" index="0"]
 light_color = Color( 0.239216, 0.176471, 0.0666667, 1 )
-shadow_enabled = true
 omni_range = 15.0
 omni_attenuation = 1.0
 
 [node name="Point_Orientation" parent="LightsModel/Point" index="0"]
 light_color = Color( 0.0666667, 0.239216, 0.235294, 1 )
-shadow_enabled = true
 shadow_color = Color( 0.223529, 0.478431, 0.494118, 1 )
 omni_range = 15.0
 omni_attenuation = 1.0

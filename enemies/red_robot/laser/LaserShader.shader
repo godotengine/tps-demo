@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode cull_disabled;
+render_mode cull_disabled, diffuse_lambert, specular_disabled;
 
 uniform sampler2D laser_body_noise;
 uniform vec2 uv_scale = vec2(5.0, 1.0);

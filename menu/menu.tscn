@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
@@ -87,8 +87,6 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/fonts/font = ExtResource( 13 )
 Label/styles/normal = null
-
-[sub_resource type="ButtonGroup" id=10]
 
 [sub_resource type="ButtonGroup" id=11]
 
@@ -253,51 +251,6 @@ custom_constants/separation = 30
 __meta__ = {
 "_edit_use_anchors_": true
 }
-
-[node name="GI" type="HBoxContainer" parent="UI/Settings"]
-margin_right = 1342.0
-margin_bottom = 57.0
-custom_constants/separation = 30
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="UI/Settings/GI"]
-margin_top = 2.0
-margin_right = 400.0
-margin_bottom = 55.0
-rect_min_size = Vector2( 400, 0 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Global Illumination:"
-
-[node name="High" type="Button" parent="UI/Settings/GI"]
-margin_left = 430.0
-margin_right = 714.0
-margin_bottom = 57.0
-size_flags_horizontal = 3
-toggle_mode = true
-pressed = true
-group = SubResource( 10 )
-text = "High"
-
-[node name="Low" type="Button" parent="UI/Settings/GI"]
-margin_left = 744.0
-margin_right = 1028.0
-margin_bottom = 57.0
-size_flags_horizontal = 3
-toggle_mode = true
-group = SubResource( 10 )
-text = "Low"
-
-[node name="Disabled" type="Button" parent="UI/Settings/GI"]
-margin_left = 1058.0
-margin_right = 1342.0
-margin_bottom = 57.0
-size_flags_horizontal = 3
-toggle_mode = true
-group = SubResource( 10 )
-text = "Disabled"
 
 [node name="AA" type="HBoxContainer" parent="UI/Settings"]
 margin_top = 87.0
@@ -560,12 +513,12 @@ custom_constants/separation = 50
 margin_right = 646.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
-custom_styles/hover = ExtResource( 18 )
-custom_styles/pressed = ExtResource( 18 )
-custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = ExtResource( 18 )
+custom_styles/pressed = ExtResource( 18 )
 text = "Apply"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -576,12 +529,12 @@ margin_left = 696.0
 margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
-custom_styles/hover = ExtResource( 18 )
-custom_styles/pressed = ExtResource( 18 )
-custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = ExtResource( 18 )
+custom_styles/pressed = ExtResource( 18 )
 text = "Cancel"
 
 [node name="Loading" type="HBoxContainer" parent="UI"]

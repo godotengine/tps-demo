@@ -18,11 +18,6 @@ onready var settings_actions = settings_menu.get_node(@"Actions")
 onready var settings_action_apply = settings_actions.get_node(@"Apply")
 onready var settings_action_cancel = settings_actions.get_node(@"Cancel")
 
-onready var gi_menu = settings_menu.get_node(@"GI")
-onready var gi_high = gi_menu.get_node(@"High")
-onready var gi_low = gi_menu.get_node(@"Low")
-onready var gi_disabled = gi_menu.get_node(@"Disabled")
-
 onready var aa_menu = settings_menu.get_node(@"AA")
 onready var aa_8x = aa_menu.get_node(@"8X")
 onready var aa_4x = aa_menu.get_node(@"4X")
@@ -108,13 +103,6 @@ func _on_settings_pressed():
 	settings_menu.show()
 	settings_action_cancel.grab_focus()
 
-	if Settings.gi_quality == Settings.GIQuality.HIGH:
-		gi_high.pressed = true
-	elif Settings.gi_quality == Settings.GIQuality.LOW:
-		gi_low.pressed = true
-	elif Settings.gi_quality == Settings.GIQuality.DISABLED:
-		gi_disabled.pressed = true
-
 	if Settings.aa_quality == Settings.AAQuality.AA_8X:
 		aa_8x.pressed = true
 	elif Settings.aa_quality == Settings.AAQuality.AA_4X:
@@ -161,13 +149,6 @@ func _on_apply_pressed():
 	main.show()
 	play_button.grab_focus()
 	settings_menu.hide()
-
-	if gi_high.pressed:
-		Settings.gi_quality = Settings.GIQuality.HIGH
-	elif gi_low.pressed:
-		Settings.gi_quality = Settings.GIQuality.LOW
-	elif gi_disabled.pressed:
-		Settings.gi_quality = Settings.GIQuality.DISABLED
 
 	if aa_8x.pressed:
 		Settings.aa_quality = Settings.AAQuality.AA_8X

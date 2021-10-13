@@ -2,6 +2,8 @@
 
 [resource]
 resource_name = "flat_emitter_powerful_white"
+params_diffuse_mode = 1
+params_specular_mode = 4
 albedo_color = Color( 0.8, 0.8, 0.8, 1 )
 metallic = 0.5
 roughness = 0.542695

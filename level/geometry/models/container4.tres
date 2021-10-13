@@ -7,6 +7,7 @@
 [resource]
 resource_name = "container4"
 flags_transparent = true
+params_diffuse_mode = 1
 params_use_alpha_scissor = true
 params_alpha_scissor_threshold = 0.98
 albedo_texture = ExtResource( 2 )

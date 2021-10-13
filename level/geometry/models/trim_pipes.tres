@@ -2,6 +2,7 @@
 
 [resource]
 resource_name = "trims_pipes"
+params_diffuse_mode = 1
 albedo_color = Color( 0.0135406, 0.00956619, 0.0144829, 1 )
 metallic = 0.0042692
 roughness = 0.542695
