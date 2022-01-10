@@ -7,6 +7,11 @@ const CAMERA_CONTROLLER_ROTATION_SPEED = 3.0
 const CAMERA_X_ROT_MIN = -89.9
 const CAMERA_X_ROT_MAX = 70
 
+# Release aiming if the mouse/gamepad button was held for longer than 0.4 seconds.
+# This works well for trackpads and is more accessible by not making long presses a requirement.
+# If the aiming button was held for less than 0.4 seconds, keep aiming until the aiming button is pressed again.
+const AIM_HOLD_THRESHOLD = 0.4
+
 const DIRECTION_INTERPOLATE_SPEED = 1
 const MOTION_INTERPOLATE_SPEED = 10
 const ROTATION_INTERPOLATE_SPEED = 10
@@ -22,6 +27,13 @@ var motion = Vector2()
 var velocity = Vector3()
 
 var aiming = false
+
+# If `true`, the aim button was toggled on by a short press (instead of being held down).
+var toggled_aim = false
+
+# The duration the aiming button was held for (in seconds).
+var aiming_timer = 0.0
+
 var camera_x_rot = 0.0
 
 onready var initial_position = transform.origin
@@ -89,7 +101,21 @@ func _physics_process(delta):
 	camera_x.y = 0
 	camera_x = camera_x.normalized()
 
-	var current_aim = Input.is_action_pressed("aim")
+	var current_aim = false
+
+	# Keep aiming if the mouse wasn't held for long enough.
+	if Input.is_action_just_released("aim") and aiming_timer <= AIM_HOLD_THRESHOLD:
+		current_aim = true
+		toggled_aim = true
+	else:
+		current_aim = toggled_aim or Input.is_action_pressed("aim")
+		if Input.is_action_just_pressed("aim"):
+			toggled_aim = false
+
+	if current_aim:
+		aiming_timer += delta
+	else:
+		aiming_timer = 0.0
 
 	if aiming != current_aim:
 		aiming = current_aim
