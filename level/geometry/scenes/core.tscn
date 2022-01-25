@@ -1,32 +1,160 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://level/geometry/scenes/collision/radial_colliders.tscn" type="PackedScene" id=1]
 [ext_resource path="res://level/geometry/scenes/collision/stair_pillar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level/geometry/models/core.glb" type="PackedScene" id=3]
 [ext_resource path="res://level/geometry/scenes/collision/radial_player_only.tscn" type="PackedScene" id=4]
-[ext_resource path="res://level/textures/plasma.png" type="Texture" id=5]
+[ext_resource path="res://level/textures/structure/Core/CoreOutLight_Circle.mesh" type="ArrayMesh" id=5]
+[ext_resource path="res://level/textures/structure/Core/core_out_light.png" type="Texture" id=6]
+[ext_resource path="res://level/textures/structure/Core/CoreOutLight_Sphere.mesh" type="ArrayMesh" id=7]
+[ext_resource path="res://level/textures/structure/Core/core_inner_noise.png" type="Texture" id=8]
+[ext_resource path="res://level/textures/structure/Core/core_inner_noise2.png" type="Texture" id=9]
+[ext_resource path="res://level/textures/structure/Core/CoreOutLight_OuterRim.mesh" type="ArrayMesh" id=10]
+[ext_resource path="res://level/textures/structure/Core/core_laval_spotches.png" type="Texture" id=11]
+[ext_resource path="res://level/textures/structure/Core/CoreOutLight_Circle001.mesh" type="ArrayMesh" id=12]
+[ext_resource path="res://level/textures/structure/Core/core_fire_noise.png" type="Texture" id=13]
 
-[sub_resource type="SpatialMaterial" id=1]
-flags_transparent = true
+[sub_resource type="Shader" id=11]
+code = "shader_type spatial;
+render_mode cull_disabled, unshaded;
+
+uniform vec2 offset;
+uniform vec2 speed;
+uniform sampler2D tex;
+uniform float emission = 3.0;
+uniform float alpha = 0.3;
+
+void vertex(){
+	UV = UV + offset + speed * INSTANCE_CUSTOM.y;
+	
+	mat4 mat_world = mat4(normalize(CAMERA_MATRIX[0])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[1])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[2])*length(WORLD_MATRIX[2]),WORLD_MATRIX[3]);
+	mat_world = mat_world * mat4( vec4(cos(INSTANCE_CUSTOM.x),-sin(INSTANCE_CUSTOM.x), 0.0, 0.0), vec4(sin(INSTANCE_CUSTOM.x), cos(INSTANCE_CUSTOM.x), 0.0, 0.0),vec4(0.0, 0.0, 1.0, 0.0),vec4(0.0, 0.0, 0.0, 1.0));
+	MODELVIEW_MATRIX = INV_CAMERA_MATRIX * mat_world;
+}
+
+void fragment(){
+	float in_range = step(0.0, UV.y) * (1.0 - step(1.0, UV.y));
+	vec4 col = texture(tex, UV);
+	ALPHA = col.r * in_range * COLOR.a * alpha;
+	ALBEDO = COLOR.rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = SubResource( 11 )
+shader_param/offset = Vector2( 0, -1 )
+shader_param/speed = Vector2( 0, 2 )
+shader_param/emission = 3.0
+shader_param/alpha = 0.106
+shader_param/tex = ExtResource( 6 )
+
+[sub_resource type="Curve" id=13]
+_data = [ Vector2( 0, 0 ), 0.0, 2.78182, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.0110497, 0.635359 )
+colors = PoolColorArray( 0, 0.847656, 1, 0, 1, 0.881836, 0, 1, 1, 0, 0, 0 )
+
+[sub_resource type="Shader" id=14]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform sampler2D tex1;
+uniform sampler2D tex2;
+uniform float time_scale_1 = 1.0;
+uniform float time_scale_2 = 1.0;
+uniform sampler2D inner_gradient;
+uniform vec4 rim_color: hint_color;
+uniform vec4 inner_color: hint_color;
+uniform vec4 core_color: hint_color;
+uniform float rim_pow = 5.0;
+uniform sampler2D noise;
+uniform float core_radius = 0.3;
+uniform sampler2D remap_curve;
+
+void vertex(){
+	VERTEX += NORMAL * texture(noise, vec2(0.0, TIME  * time_scale_1 + VERTEX.y)).r * 0.2;
+	mat4 mat_world = mat4(normalize(CAMERA_MATRIX[0])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[1])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[2])*length(WORLD_MATRIX[2]),WORLD_MATRIX[3]);
+	mat_world = mat_world * mat4( vec4(cos(INSTANCE_CUSTOM.x),-sin(INSTANCE_CUSTOM.x), 0.0, 0.0), vec4(sin(INSTANCE_CUSTOM.x), cos(INSTANCE_CUSTOM.x), 0.0, 0.0),vec4(0.0, 0.0, 1.0, 0.0),vec4(0.0, 0.0, 0.0, 1.0));
+	MODELVIEW_MATRIX = INV_CAMERA_MATRIX * mat_world;
+}
+
+void fragment(){
+	float col1 = texture(tex1, UV + vec2(texture(noise, vec2(UV.x + TIME * time_scale_1), 0.0).r * 0.3, 0.0) + vec2(TIME * time_scale_1, 0.0)).r;
+	float col2 = texture(tex2, UV +vec2(texture(noise, vec2(UV.x + TIME * time_scale_2), 0.0).r * 0.2, 0.0)+ vec2(TIME * time_scale_1, 0.0)).r;
+	col1 = 1.0;
+//	col2 = 1.0;
+	float fresnel = 1.0 - abs(dot(normalize(VERTEX), normalize(NORMAL)));
+	fresnel = pow(fresnel, rim_pow);
+	float fac = min(col1, col2);
+	fac = max(fac, fresnel);
+	float dist_from_center = length(UV - vec2(0.5));
+	dist_from_center/= core_radius + texture(noise, vec2(atan(UV - vec2(0.5)) * 3.14)+ vec2(TIME)).r* 0.05;
+	dist_from_center = 1.0 - pow(1.0 - dist_from_center, 3.0);
+	dist_from_center = clamp(dist_from_center, 0.0, 1.0);
+	ALBEDO = mix(inner_color, core_color, 1.0 - dist_from_center).rgb;
+//	fac = texture(remap_curve, vec2(fac)).r;
+	ALBEDO = mix(ALBEDO, rim_color.rgb, fac) * 1.0;
+}"
+
+[sub_resource type="OpenSimplexNoise" id=16]
+period = 76.9
+persistence = 0.396
+
+[sub_resource type="NoiseTexture" id=17]
+seamless = true
+noise = SubResource( 16 )
+
+[sub_resource type="Curve" id=18]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.391304, 0 ), 0.0, 8.36364, 0, 0, Vector2( 1, 0 ), -2.08678, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=19]
+curve = SubResource( 18 )
+
+[sub_resource type="ShaderMaterial" id=15]
+shader = SubResource( 14 )
+shader_param/time_scale_1 = 0.288
+shader_param/time_scale_2 = -0.31
+shader_param/rim_color = Color( 1, 0.678431, 0, 1 )
+shader_param/inner_color = Color( 0.517647, 0.0196078, 0.219608, 1 )
+shader_param/core_color = Color( 1, 0, 0, 1 )
+shader_param/rim_pow = 1.167
+shader_param/core_radius = 0.324
+shader_param/tex1 = ExtResource( 9 )
+shader_param/tex2 = ExtResource( 8 )
+shader_param/noise = SubResource( 17 )
+shader_param/remap_curve = SubResource( 19 )
+
+[sub_resource type="SpatialMaterial" id=20]
 flags_unshaded = true
 vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
 params_blend_mode = 1
+params_cull_mode = 2
+albedo_color = Color( 1, 0.662745, 0, 1 )
+albedo_texture = ExtResource( 11 )
+
+[sub_resource type="Curve" id=21]
+_data = [ Vector2( 0, 0 ), 0.0, 2.27182, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=22]
+colors = PoolColorArray( 1, 1, 1, 1, 0.0828729, 0.0828729, 0.0828729, 1 )
+
+[sub_resource type="SpatialMaterial" id=23]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_cull_mode = 2
 params_billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
-albedo_color = Color( 0.843137, 0.709804, 0.427451, 1 )
-albedo_texture = ExtResource( 5 )
-proximity_fade_enable = true
-proximity_fade_distance = 0.2
+albedo_texture = ExtResource( 13 )
 
-[sub_resource type="QuadMesh" id=2]
-material = SubResource( 1 )
+[sub_resource type="Curve" id=24]
+_data = [ Vector2( 0.00490196, 0.692045 ), 0.0, 0.633259, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.34749, 0.509652, 1 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+[sub_resource type="Gradient" id=25]
+offsets = PoolRealArray( 0.381215, 0.61326, 0.994475 )
+colors = PoolColorArray( 1, 0.678431, 0, 1, 0.138889, 0.0944011, 0, 1, 0, 0, 0, 1 )
 
 [sub_resource type="CylinderShape" id=4]
 radius = 10.5
@@ -58,19 +186,86 @@ extents = Vector3( 0.6, 0.6, 1.4 )
 
 [node name="CoreModel" parent="." instance=ExtResource( 3 )]
 
+[node name="Sphere001" parent="CoreModel" index="105"]
+visible = false
+
 [node name="Plasma" type="CPUParticles" parent="."]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -2.3, 0 )
-amount = 64
-speed_scale = 0.2
-mesh = SubResource( 2 )
+material_override = SubResource( 12 )
+amount = 4
+lifetime = 3.31
+explosiveness = 0.19
+randomness = 0.6
+mesh = ExtResource( 5 )
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.3
-angular_velocity = 120.0
-angular_velocity_random = 1.0
+angle = 85.9
+angle_random = 1.0
+scale_amount = 0.75
+scale_amount_random = 0.24
+scale_amount_curve = SubResource( 13 )
+color_ramp = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Plasma"]
+transform = Transform( 0.334226, 0, 0, 0, 0.334226, 0, 0, 0, 0.334226, 0, 0, 0 )
+material_override = SubResource( 15 )
+mesh = ExtResource( 7 )
+material/0 = null
+
+[node name="CPUParticles" type="CPUParticles" parent="Plasma"]
+material_override = SubResource( 20 )
+amount = 3
+preprocess = 5.29
+explosiveness = 0.1
+randomness = 0.64
+mesh = ExtResource( 10 )
+emission_shape = 5
+emission_ring_radius = 0.01
+emission_ring_inner_radius = 0.0
+emission_ring_height = 0.62
+emission_ring_axis = Vector3( 0, 1, 0 )
+flag_align_y = true
+flag_rotate_y = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.01
+angular_velocity = 2.55
+angular_velocity_random = 0.82
+scale_amount = 0.29
+scale_amount_random = 0.26
+scale_amount_curve = SubResource( 21 )
+color_ramp = SubResource( 22 )
+
+[node name="CPUParticles2" type="CPUParticles" parent="Plasma"]
+material_override = SubResource( 23 )
+amount = 5
+mesh = ExtResource( 12 )
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = -159.48
+angular_velocity_random = 0.73
 angle = 720.0
 angle_random = 1.0
-color_ramp = SubResource( 3 )
+scale_amount = 0.27
+scale_amount_random = 0.09
+scale_amount_curve = SubResource( 24 )
+color_ramp = SubResource( 25 )
+
+[node name="CPUParticles3" type="CPUParticles" parent="Plasma"]
+material_override = SubResource( 23 )
+amount = 7
+explosiveness = 0.14
+randomness = 0.78
+lifetime_randomness = 0.15
+mesh = ExtResource( 12 )
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = -159.48
+angular_velocity_random = 0.73
+angle = 720.0
+angle_random = 1.0
+scale_amount = 0.27
+scale_amount_random = 0.09
+scale_amount_curve = SubResource( 24 )
+color_ramp = SubResource( 25 )
 
 [node name="CentralColliders" type="StaticBody" parent="."]
 
@@ -130,3 +325,5 @@ transform = Transform( -0.956305, 0, 0.292371, 0, 1, 0, -0.292371, 0, -0.956305,
 
 [node name="StairPillar3" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.224951, 0, -0.97437, 0, 1, 0, 0.97437, 0, 0.224951, 5.62378, 2, 24.3593 )
+
+[editable path="CoreModel"]
