@@ -16,6 +16,7 @@ mono_crash.*.json
 
 # System/tool-specific ignores
 .directory
+.DS_Store
 *~
 
 # Blender versioning
