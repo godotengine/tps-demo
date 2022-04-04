@@ -9,5 +9,5 @@ func _ready():
 
 
 func _process(_delta):
-	if camera != null && camera.global_transform != null:
+	if is_instance_valid(camera):
 		light_rays.look_at(camera.global_transform.origin, Vector3.UP)
