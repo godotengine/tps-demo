@@ -214,6 +214,7 @@ toggle_debug={
 [physics]
 
 3d/physics_engine="Bullet"
+common/physics_interpolation=true
 
 [rendering]
 

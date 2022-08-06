@@ -27,6 +27,7 @@ material = SubResource( 2 )
 colors = PoolColorArray( 0, 1, 0.976562, 1, 1, 1, 1, 0 )
 
 [node name="FlyingForklift" type="KinematicBody"]
+physics_interpolation_mode = 1
 script = ExtResource( 3 )
 
 [node name="FlyingForkliftModel" parent="." instance=ExtResource( 1 )]
