@@ -67,7 +67,7 @@ func _ready():
 	orientation.origin = Vector3()
 
 
-func _process(_delta):
+func _process(delta):
 	# Fade out to black if falling out of the map. -17 is lower than
 	# the lowest valid position on the map (which is a bit under -16).
 	# At 15 units below -17 (so -32), the screen turns fully black.
@@ -75,8 +75,10 @@ func _process(_delta):
 		color_rect.modulate.a = min((-17 - transform.origin.y) / 15, 1)
 		# If we're below -40, respawn (teleport to the initial position).
 		if transform.origin.y < -40:
-			color_rect.modulate.a = 0
 			transform.origin = initial_position
+	else:
+		# Fade out the black ColorRect progressively after being teleported back.
+		color_rect.modulate.a *= 1.0 - delta * 4
 
 
 func _physics_process(delta):
