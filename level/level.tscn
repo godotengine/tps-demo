@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://level/level.gd" type="Script" id=1]
 [ext_resource path="res://level/geometry/scenes/props.tscn" type="PackedScene" id=2]
@@ -33,6 +33,72 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, -360, 0 ) ]
 }
+
+[sub_resource type="OccluderShapePolygon" id=3]
+polygon_points = PoolVector2Array( 4.80229, -33.101, 3.08018, -1.4522, -30.0552, -1.32411, -29.8634, -32.4913 )
+
+[sub_resource type="OccluderShapePolygon" id=5]
+polygon_points = PoolVector2Array( -7.64559, 12.4993, -8.09484, -1.73555, -30.106, 24.6176, -30.0199, -1.48293 )
+
+[sub_resource type="OccluderShapePolygon" id=24]
+polygon_points = PoolVector2Array( -12.1863, -23.6561, -24.2684, -41.0902, -19.6604, -23.5628, -7.85824, -38.841 )
+
+[sub_resource type="OccluderShapePolygon" id=6]
+polygon_points = PoolVector2Array( -7.34487, -5.3155, -32.9838, -14.4177, -32.4613, -5.52054, -7.51064, -15.3238 )
+
+[sub_resource type="OccluderShapePolygon" id=7]
+polygon_points = PoolVector2Array( 3.52376, -6.08494, -24.609, -15.4054, -24.7569, -5.0943, 2.58312, -12.1537 )
+
+[sub_resource type="OccluderShapePolygon" id=8]
+polygon_points = PoolVector2Array( 3.52376, -6.08494, -24.609, -15.4054, -24.7569, -5.0943, 2.58312, -12.1537 )
+
+[sub_resource type="OccluderShapePolygon" id=9]
+polygon_points = PoolVector2Array( 3.52376, -6.08494, -24.609, -15.4054, -24.7569, -5.0943, 2.58312, -12.1537 )
+
+[sub_resource type="OccluderShapePolygon" id=10]
+polygon_points = PoolVector2Array( 3.52376, -6.08494, -24.609, -15.4054, -24.7569, -5.0943, 2.58312, -12.1537 )
+
+[sub_resource type="OccluderShapePolygon" id=17]
+polygon_points = PoolVector2Array( -41.5669, 1.58709, -28.542, -5.7378, -31.1337, -32.2378, -52.4377, -8.12289 )
+
+[sub_resource type="OccluderShapePolygon" id=18]
+polygon_points = PoolVector2Array( -37.8557, -2.03779, -59.7506, 22.3384, -72.8289, 15.9366, -45.4469, -9.83544 )
+
+[sub_resource type="OccluderShapePolygon" id=19]
+polygon_points = PoolVector2Array( -69.3142, 28.2186, -58.847, 13.9716, -68.5458, 9.02338, -83.278, 26.0792 )
+
+[sub_resource type="OccluderShapePolygon" id=20]
+polygon_points = PoolVector2Array( -78.9044, 19.1323, -63.3689, 30.6341, -75.765, 61.9673, -92.5688, 54.2322 )
+
+[sub_resource type="OccluderShapePolygon" id=4]
+polygon_points = PoolVector2Array( 10.3326, -34.1447, 10.3129, 3.47539, 7.38751, 3.41635, 6.75379, -34.3113 )
+
+[sub_resource type="OccluderShapePolygon" id=11]
+polygon_points = PoolVector2Array( 10.6356, -18.7164, 7.1121, -1.88607, -2.01629, -1.08196, -5.47162, -20.5733 )
+
+[sub_resource type="OccluderShapePolygon" id=12]
+polygon_points = PoolVector2Array( 6.98555, -20.255, 10.6628, -13.6057, -62.5734, 8.71777, -65.2167, 0.464312 )
+
+[sub_resource type="OccluderShapePolygon" id=13]
+polygon_points = PoolVector2Array( 11.8312, -44.5862, 14.5557, -11.2637, -19.37, 0.979324, -32.1468, -17.3614 )
+
+[sub_resource type="OccluderShapePolygon" id=21]
+polygon_points = PoolVector2Array( -0.94591, -30.4103, 5.74019, -10.8198, 42.1412, -9.34103, 37.6183, -36.152 )
+
+[sub_resource type="OccluderShapePolygon" id=14]
+polygon_points = PoolVector2Array( -65.755, 6.24789, -38.7779, 18.3988, -16.5322, -0.213997, -30.2544, -31.5867 )
+
+[sub_resource type="OccluderShapePolygon" id=15]
+polygon_points = PoolVector2Array( -58.5793, 2.25238, -37.1189, 15.1946, -58.3154, 50.9894, -77.6792, 43.3567 )
+
+[sub_resource type="OccluderShapePolygon" id=16]
+polygon_points = PoolVector2Array( -82.4534, 56.419, -66.2175, 68.4896, -49.3387, 36.1825, -69.6984, 25.8608 )
+
+[sub_resource type="OccluderShapePolygon" id=23]
+polygon_points = PoolVector2Array( 10.7653, -5.60416, -21.2648, 34.8682, 17.8021, 35.1293, -12.3392, -5.53555 )
+
+[sub_resource type="OccluderShapePolygon" id=22]
+polygon_points = PoolVector2Array( 26.3687, -60.868, -21.2648, 34.8682, 17.8021, 35.1293, -26.2436, -61.0915 )
 
 [node name="Level" type="Spatial"]
 script = ExtResource( 1 )
@@ -146,3 +212,149 @@ script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Occluders" type="Spatial" parent="."]
+
+[node name="StartWall" type="Occluder" parent="Occluders"]
+transform = Transform( 0.137929, 0, 0.990442, 0, 1, 0, -0.990442, 0, 0.137929, -6.13814, 0, 82.9737 )
+shape = SubResource( 3 )
+
+[node name="StartWall2" type="Occluder" parent="Occluders"]
+transform = Transform( 0.137929, 0, 0.990442, 0, 1, 0, -0.990442, 0, 0.137929, -6.13814, 0, 82.9737 )
+shape = SubResource( 5 )
+
+[node name="CatwalkSide" type="Occluder" parent="Occluders"]
+transform = Transform( -0.314992, 0.0944954, 0.944378, 0.0257674, 0.995516, -0.0910177, -0.948745, -0.00433563, -0.316014, 30.4378, 22.7756, 78.2315 )
+shape = SubResource( 24 )
+
+[node name="CatwalkSide2" type="Occluder" parent="Occluders"]
+transform = Transform( -0.314444, -0.0875491, 0.94523, -0.0317649, 0.996151, 0.0816984, -0.948745, -0.00433563, -0.316014, 17.8758, 21.6611, 81.1039 )
+shape = SubResource( 24 )
+
+[node name="Catwalk" type="Occluder" parent="Occluders"]
+transform = Transform( 0.9958, -0.0175599, 0.0898516, 0.0257674, 0.995516, -0.0910177, -0.0878505, 0.0929507, 0.991788, 30.6936, 4.17444, 93.1516 )
+shape = SubResource( 6 )
+
+[node name="Catwalk2" type="Occluder" parent="Occluders"]
+transform = Transform( 0.891993, 0.0182083, 0.451682, 0.0257674, 0.995516, -0.0910177, -0.451314, 0.0928258, 0.887524, 54.2846, 4.4742, 80.1712 )
+shape = SubResource( 7 )
+
+[node name="Catwalk3" type="Occluder" parent="Occluders"]
+transform = Transform( 0.684897, 0.0487412, 0.727008, 0.0257674, 0.995516, -0.0910177, -0.728185, 0.0810708, 0.680569, 74.3772, 3.92189, 60.7251 )
+shape = SubResource( 8 )
+
+[node name="Catwalk4" type="Occluder" parent="Occluders"]
+transform = Transform( 0.441835, 0.0703308, 0.894335, 0.0257674, 0.995516, -0.0910177, -0.896726, 0.0632595, 0.438041, 90.5234, 3.92189, 35.7929 )
+shape = SubResource( 9 )
+
+[node name="Catwalk5" type="Occluder" parent="Occluders"]
+transform = Transform( 0.135573, 0.0867267, 0.986964, 0.0257674, 0.995516, -0.0910177, -0.990432, 0.0377711, 0.13273, 96.2565, 3.92189, 11.2907 )
+shape = SubResource( 10 )
+
+[node name="CatwalkFloor" type="Occluder" parent="Occluders"]
+transform = Transform( 0.234938, -0.972008, 0.00183225, 0, 0.00188501, 0.999998, -0.97201, -0.234938, 0.000442862, 68.1076, -1.14877, 38.4127 )
+shape = SubResource( 17 )
+
+[node name="CatwalkFloor2" type="Occluder" parent="Occluders"]
+transform = Transform( 0.234938, -0.972008, 0.00183225, 0, 0.00188501, 0.999998, -0.97201, -0.234938, 0.000442862, 68.1076, -1.14877, 38.4127 )
+shape = SubResource( 18 )
+
+[node name="CatwalkFloor3" type="Occluder" parent="Occluders"]
+transform = Transform( 0.234938, -0.972008, 0.00183225, 0, 0.00188501, 0.999998, -0.97201, -0.234938, 0.000442862, 68.1076, -1.14877, 38.4127 )
+shape = SubResource( 19 )
+
+[node name="CatwalkFloor4" type="Occluder" parent="Occluders"]
+transform = Transform( 0.234938, -0.972008, 0.00183225, 0, 0.00188501, 0.999998, -0.97201, -0.234938, 0.000442862, 68.1076, -1.14877, 38.4127 )
+shape = SubResource( 20 )
+
+[node name="Pillar1" type="Occluder" parent="Occluders"]
+transform = Transform( 0.997267, 0, 0.0738822, 0, 1, 0, -0.0738822, 0, 0.997267, -8.7376, 0, 78.6762 )
+shape = SubResource( 4 )
+
+[node name="Pillar2" type="Occluder" parent="Occluders"]
+transform = Transform( 0.963798, 0, 0.266633, 0, 1, 0, -0.266633, 0, 0.963798, 6.495, 0, 77.9881 )
+shape = SubResource( 4 )
+
+[node name="Pillar3" type="Occluder" parent="Occluders"]
+transform = Transform( 0.963798, 0, 0.266633, 0, 1, 0, -0.266633, 0, 0.963798, 21.1871, 0, 74.0353 )
+shape = SubResource( 4 )
+
+[node name="Pillar4" type="Occluder" parent="Occluders"]
+transform = Transform( 0.75884, 0, 0.651278, 0, 1, 0, -0.651278, 0, 0.75884, 36.5499, -1.43051e-06, 70.1613 )
+shape = SubResource( 4 )
+
+[node name="Pillar5" type="Occluder" parent="Occluders"]
+transform = Transform( 0.706428, 0, 0.707785, 0, 1, 0, -0.707785, 0, 0.706428, 48.5048, -1.43051e-06, 60.7618 )
+shape = SubResource( 4 )
+
+[node name="Pillar6" type="Occluder" parent="Occluders"]
+transform = Transform( 0.52098, 0, 0.853569, 0, 1, 0, -0.853569, 0, 0.52098, 59.6665, -9.53674e-07, 50.3136 )
+shape = SubResource( 4 )
+
+[node name="Pillar7" type="Occluder" parent="Occluders"]
+transform = Transform( 0.466896, 0, 0.884312, 0, 1, 0, -0.884312, 0, 0.466896, 68.1164, -9.53674e-07, 37.8245 )
+shape = SubResource( 4 )
+
+[node name="Pillar8" type="Occluder" parent="Occluders"]
+transform = Transform( 0.466896, 0, 0.884312, 0, 1, 0, -0.884312, 0, 0.466896, 72.6177, -7.15256e-07, 23.0652 )
+shape = SubResource( 4 )
+
+[node name="RoadEndBox" type="Occluder" parent="Occluders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.3859, -2.80453, 10.5797 )
+shape = SubResource( 11 )
+
+[node name="Bridge" type="Occluder" parent="Occluders"]
+transform = Transform( 1, 0, 0, 0, 0.00188501, 0.999998, 0, -0.999998, 0.00188501, 83.3859, -6.28523, 10.5797 )
+shape = SubResource( 12 )
+
+[node name="RoadFloor" type="Occluder" parent="Occluders"]
+transform = Transform( 0.234938, -0.972008, 0.00183225, 0, 0.00188501, 0.999998, -0.97201, -0.234938, 0.000442862, 61.6156, -6.28523, 38.4127 )
+shape = SubResource( 13 )
+
+[node name="RoadFloorEnd" type="Occluder" parent="Occluders"]
+transform = Transform( 0.234938, -0.972008, 0.00183225, 0, 0.00188501, 0.999998, -0.97201, -0.234938, 0.000442862, 61.6156, -6.28523, 38.4127 )
+shape = SubResource( 21 )
+
+[node name="RoadFloor2" type="Occluder" parent="Occluders"]
+transform = Transform( 0.234938, -0.972008, 0.00183225, 0, 0.00188501, 0.999998, -0.97201, -0.234938, 0.000442862, 61.6156, -6.28523, 38.4127 )
+shape = SubResource( 14 )
+
+[node name="RoadFloor3" type="Occluder" parent="Occluders"]
+transform = Transform( 0.234938, -0.972008, 0.00183225, 0, 0.00188501, 0.999998, -0.97201, -0.234938, 0.000442862, 61.6156, -6.28523, 38.4127 )
+shape = SubResource( 15 )
+
+[node name="RoadFloor4" type="Occluder" parent="Occluders"]
+transform = Transform( 0.234938, -0.972008, 0.00183225, 0, 0.00188501, 0.999998, -0.97201, -0.234938, 0.000442862, 61.6156, -6.28523, 38.4127 )
+shape = SubResource( 16 )
+
+[node name="ReactorWallEntrance" type="Occluder" parent="Occluders"]
+transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 39.3853, 4.5407, 10.5915 )
+shape = SubResource( 23 )
+
+[node name="ReactorWall2" type="Occluder" parent="Occluders"]
+transform = Transform( 0.836075, 0, 0.548614, 0, 1, 0, -0.548614, 0, 0.836075, 24.1965, 4.5407, 31.3743 )
+shape = SubResource( 22 )
+
+[node name="ReactorWall3" type="Occluder" parent="Occluders"]
+transform = Transform( 0.98069, 0, -0.19557, 0, 1, 0, 0.195569, 0, 0.980689, -7.74816, 4.5407, 37.1377 )
+shape = SubResource( 22 )
+
+[node name="ReactorWall4" type="Occluder" parent="Occluders"]
+transform = Transform( 0.432935, 0, -0.901425, 0, 1, 0, 0.901425, 0, 0.432935, -36.7226, 4.5407, 16.0138 )
+shape = SubResource( 22 )
+
+[node name="ReactorWall5" type="Occluder" parent="Occluders"]
+transform = Transform( -0.327647, 0, -0.9448, 0, 1, 0, 0.9448, 0, -0.327646, -37.9558, 4.54071, -18.2412 )
+shape = SubResource( 22 )
+
+[node name="ReactorWall6" type="Occluder" parent="Occluders"]
+transform = Transform( -0.938463, 0, -0.34538, 0, 1, 0, 0.34538, 0, -0.938462, -15.4656, 4.54071, -44.5487 )
+shape = SubResource( 22 )
+
+[node name="ReactorWall7" type="Occluder" parent="Occluders"]
+transform = Transform( -0.698815, 0, 0.715302, 0, 1, 0, -0.715302, 0, -0.698815, 20.3358, 4.54071, -38.957 )
+shape = SubResource( 22 )
+
+[node name="ReactorWall8" type="Occluder" parent="Occluders"]
+transform = Transform( -0.267642, 0, 0.963518, 0, 1, 0, -0.963518, 0, -0.267642, 35.8579, 4.54071, -16.814 )
+shape = SubResource( 22 )
