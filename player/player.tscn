@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/model/player.glb" type="PackedScene" id=2]
@@ -96,7 +96,7 @@ autorestart_random_delay = 1.0
 [sub_resource type="AnimationNodeTransition" id=18]
 resource_local_to_scene = true
 input_count = 4
-xfade_time = 0.15
+xfade_time = 0.2
 input_0/name = "strafe"
 input_0/auto_advance = false
 input_1/name = "walk"
@@ -139,6 +139,8 @@ blend_point_3/pos = Vector2( 0, 1 )
 blend_point_4/node = SubResource( 23 )
 blend_point_4/pos = Vector2( 0, 0 )
 
+[sub_resource type="AnimationNodeTimeScale" id=37]
+
 [sub_resource type="AnimationNodeAnimation" id=25]
 resource_local_to_scene = true
 animation = "Idle-cycle"
@@ -169,9 +171,11 @@ min_space = Vector2( 0, 0 )
 x_label = "speed"
 y_label = "gun"
 
+[sub_resource type="AnimationNodeTimeScale" id=36]
+
 [sub_resource type="AnimationNodeBlendTree" id=30]
 resource_local_to_scene = true
-graph_offset = Vector2( 1, 85 )
+graph_offset = Vector2( -789, -157 )
 nodes/aim/node = SubResource( 9 )
 nodes/aim/position = Vector2( 380, 120 )
 nodes/aimdown/node = SubResource( 10 )
@@ -192,12 +196,16 @@ nodes/land/node = SubResource( 17 )
 nodes/land/position = Vector2( 120, 180 )
 nodes/output/position = Vector2( 840, 120 )
 nodes/state/node = SubResource( 18 )
-nodes/state/position = Vector2( -120, 120 )
+nodes/state/position = Vector2( -80, 100 )
 nodes/strafe/node = SubResource( 24 )
-nodes/strafe/position = Vector2( -400, -120 )
+nodes/strafe/position = Vector2( -440, -120 )
+nodes/strafe_speed/node = SubResource( 37 )
+nodes/strafe_speed/position = Vector2( -260, -100 )
 nodes/walk/node = SubResource( 29 )
-nodes/walk/position = Vector2( -400, 40 )
-node_connections = [ "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "output", 0, "eye_blend", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "land", 0, "state", "land", 1, "hardland" ]
+nodes/walk/position = Vector2( -460, 40 )
+nodes/walk_speed/node = SubResource( 36 )
+nodes/walk_speed/position = Vector2( -280, 60 )
+node_connections = [ "state", 0, "strafe_speed", "state", 1, "walk_speed", "state", 2, "jumpup", "state", 3, "jumpdown", "output", 0, "eye_blend", "walk_speed", 0, "walk", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "land", 0, "state", "land", 1, "hardland", "strafe_speed", 0, "strafe" ]
 
 [sub_resource type="CapsuleShape" id=31]
 radius = 0.5
@@ -274,7 +282,7 @@ transform = Transform( 0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0 )
 bones/55/bound_children = [ NodePath("GunBone") ]
 
 [node name="GunBone" type="BoneAttachment" parent="PlayerModel/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.92223, -0.384448, -0.0436694, -0.0209561, 0.0630829, -0.997796, 0.386401, 0.920989, 0.0501149, -0.207099, 1.39771, 0.464718 )
+transform = Transform( 0.923127, -0.382575, -0.041099, -0.0231363, 0.0514465, -0.998416, 0.384127, 0.922491, 0.0386362, -0.205969, 1.38162, 0.508228 )
 bone_name = "hand.R"
 
 [node name="ShootFrom" type="Position3D" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone"]
@@ -317,7 +325,9 @@ parameters/eye_blend/blend_amount = 1.0
 parameters/land/active = false
 parameters/state/current = 0
 parameters/strafe/blend_position = Vector2( 0, 0 )
+parameters/strafe_speed/scale = 1.2
 parameters/walk/blend_position = Vector2( 0, 0 )
+parameters/walk_speed/scale = 1.1
 
 [node name="CapsuleShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0 )
