@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
@@ -91,6 +91,8 @@ Label/styles/normal = null
 [sub_resource type="ButtonGroup" id=10]
 
 [sub_resource type="ButtonGroup" id=11]
+
+[sub_resource type="ButtonGroup" id=23]
 
 [sub_resource type="ButtonGroup" id=22]
 
@@ -208,9 +210,6 @@ margin_left = -4.10107
 margin_top = 2.05054
 margin_right = -4.10107
 margin_bottom = 2.05054
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Play" type="TextureButton" parent="UI/Main"]
 margin_left = 100.0
@@ -245,10 +244,10 @@ texture_hover = ExtResource( 12 )
 [node name="Settings" type="VBoxContainer" parent="UI"]
 visible = false
 anchor_left = 0.109896
-anchor_top = 0.268518
+anchor_top = 0.23148
 anchor_right = 0.808854
-anchor_bottom = 0.931481
-custom_constants/separation = 30
+anchor_bottom = 1.00278
+custom_constants/separation = 25
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -299,9 +298,9 @@ group = SubResource( 10 )
 text = "Disabled"
 
 [node name="AA" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 87.0
+margin_top = 82.0
 margin_right = 1342.0
-margin_bottom = 144.0
+margin_bottom = 139.0
 custom_constants/separation = 30
 __meta__ = {
 "_edit_group_": true,
@@ -314,7 +313,7 @@ margin_bottom = 57.0
 rect_min_size = Vector2( 400, 0 )
 size_flags_vertical = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Anti Aliasing:"
+text = "Antialiasing (MSAA):"
 
 [node name="8X" type="Button" parent="UI/Settings/AA"]
 margin_left = 430.0
@@ -353,10 +352,44 @@ toggle_mode = true
 group = SubResource( 11 )
 text = "Disabled"
 
-[node name="Shadow" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 174.0
+[node name="FXAA" type="HBoxContainer" parent="UI/Settings"]
+margin_top = 164.0
 margin_right = 1342.0
-margin_bottom = 231.0
+margin_bottom = 221.0
+custom_constants/separation = 30
+
+[node name="Label" type="Label" parent="UI/Settings/FXAA"]
+margin_right = 400.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_vertical = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Antialiasing (FXAA):"
+
+[node name="Enabled" type="Button" parent="UI/Settings/FXAA"]
+margin_left = 430.0
+margin_right = 871.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+toggle_mode = true
+pressed = true
+keep_pressed_outside = true
+group = SubResource( 23 )
+text = "Enabled"
+
+[node name="Disabled" type="Button" parent="UI/Settings/FXAA"]
+margin_left = 901.0
+margin_right = 1342.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+toggle_mode = true
+group = SubResource( 23 )
+text = "Disabled"
+
+[node name="Shadow" type="HBoxContainer" parent="UI/Settings"]
+margin_top = 246.0
+margin_right = 1342.0
+margin_bottom = 303.0
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="UI/Settings/Shadow"]
@@ -366,9 +399,6 @@ margin_bottom = 55.0
 rect_min_size = Vector2( 400, 0 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Shadow Mapping:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Enabled" type="Button" parent="UI/Settings/Shadow"]
 margin_left = 430.0
@@ -390,12 +420,13 @@ group = SubResource( 22 )
 text = "Disabled"
 
 [node name="SSAO" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 261.0
+margin_top = 328.0
 margin_right = 1342.0
-margin_bottom = 318.0
+margin_bottom = 385.0
 custom_constants/separation = 30
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="UI/Settings/SSAO"]
@@ -438,9 +469,9 @@ group = SubResource( 12 )
 text = "Disabled"
 
 [node name="Bloom" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 348.0
+margin_top = 410.0
 margin_right = 1342.0
-margin_bottom = 405.0
+margin_bottom = 467.0
 custom_constants/separation = 30
 __meta__ = {
 "_edit_group_": true
@@ -486,9 +517,9 @@ group = SubResource( 13 )
 text = "Disabled"
 
 [node name="Resolution" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 435.0
+margin_top = 492.0
 margin_right = 1342.0
-margin_bottom = 492.0
+margin_bottom = 549.0
 custom_constants/separation = 30
 __meta__ = {
 "_edit_group_": true
@@ -543,9 +574,9 @@ group = SubResource( 14 )
 text = "540"
 
 [node name="Fullscreen" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 522.0
+margin_top = 574.0
 margin_right = 1342.0
-margin_bottom = 579.0
+margin_bottom = 631.0
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="UI/Settings/Fullscreen"]
@@ -580,15 +611,15 @@ text = "No"
 
 [node name="HSeparator" type="HSeparator" parent="UI/Settings"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 609.0
+margin_top = 656.0
 margin_right = 1342.0
-margin_bottom = 629.0
+margin_bottom = 676.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Actions" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 659.0
+margin_top = 701.0
 margin_right = 1342.0
-margin_bottom = 716.0
+margin_bottom = 758.0
 custom_constants/separation = 50
 
 [node name="Apply" type="Button" parent="UI/Settings/Actions"]

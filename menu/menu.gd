@@ -33,6 +33,10 @@ onready var shadow_menu = settings_menu.get_node(@"Shadow")
 onready var shadow_enabled = shadow_menu.get_node(@"Enabled")
 onready var shadow_disabled = shadow_menu.get_node(@"Disabled")
 
+onready var fxaa_menu = settings_menu.get_node(@"FXAA")
+onready var fxaa_enabled = fxaa_menu.get_node(@"Enabled")
+onready var fxaa_disabled = fxaa_menu.get_node(@"Disabled")
+
 onready var ssao_menu = settings_menu.get_node(@"SSAO")
 onready var ssao_high = ssao_menu.get_node(@"High")
 onready var ssao_low = ssao_menu.get_node(@"Low")
@@ -133,6 +137,11 @@ func _on_settings_pressed():
 	else:
 		shadow_disabled.pressed = true
 
+	if Settings.fxaa:
+		fxaa_enabled.pressed = true
+	else:
+		fxaa_disabled.pressed = true
+
 	if Settings.ssao_quality == Settings.SSAOQuality.HIGH:
 		ssao_high.pressed = true
 	elif Settings.ssao_quality == Settings.SSAOQuality.LOW:
@@ -188,6 +197,7 @@ func _on_apply_pressed():
 		Settings.aa_quality = Settings.AAQuality.DISABLED
 
 	Settings.shadow_enabled = shadow_enabled.pressed
+	Settings.fxaa = fxaa_enabled.pressed
 
 	if ssao_high.pressed:
 		Settings.ssao_quality = Settings.SSAOQuality.HIGH

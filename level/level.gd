@@ -30,6 +30,9 @@ func _ready():
 		# reducing the number of draw calls significantly.
 		propagate_call("set", ["shadow_enabled", false])
 
+	if Settings.fxaa:
+		get_viewport().fxaa = true
+
 	if Settings.ssao_quality == Settings.SSAOQuality.HIGH:
 		world_environment.environment.ssao_enabled = true
 		world_environment.environment.ssao_quality = world_environment.environment.SSAO_QUALITY_HIGH
