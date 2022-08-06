@@ -54,7 +54,7 @@ onready var loading_progress = loading.get_node(@"Progress")
 onready var loading_done_timer = loading.get_node(@"DoneTimer")
 
 func _ready():
-	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(1920, 1080))
+	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_EXPAND, Vector2(1920, 1080))
 	play_button.grab_focus()
 	var sound_effects = $BackgroundCache/RedRobot/SoundEffects
 	for child in sound_effects.get_children():

@@ -49,13 +49,13 @@ func _ready():
 		pass
 	elif Settings.resolution == Settings.Resolution.RES_1080:
 		var minsize = Vector2(window_size.x * 1080 / window_size.y, 1080.0)
-		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP_HEIGHT, minsize)
+		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_EXPAND, minsize)
 	elif Settings.resolution == Settings.Resolution.RES_720:
 		var minsize = Vector2(window_size.x * 720 / window_size.y, 720.0)
-		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP_HEIGHT, minsize)
+		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_EXPAND, minsize)
 	elif Settings.resolution == Settings.Resolution.RES_540:
 		var minsize = Vector2(window_size.x * 540 / window_size.y, 540.0)
-		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP_HEIGHT, minsize)
+		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_EXPAND, minsize)
 
 
 func _input(event):
