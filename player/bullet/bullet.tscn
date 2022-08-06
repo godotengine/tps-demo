@@ -453,13 +453,11 @@ transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
 visible = false
 cast_shadow = 0
 mesh = SubResource( 1 )
-material/0 = null
 
 [node name="OmniLight" type="OmniLight" parent="."]
 light_color = Color( 0, 1, 0.952941, 1 )
 light_energy = 0.778846
 light_bake_mode = 0
-shadow_enabled = true
 omni_range = 3.0
 omni_attenuation = 2.0
 omni_shadow_mode = 0
@@ -478,6 +476,7 @@ unit_size = 20.0
 
 [node name="BlastParticle" type="Particles" parent="Blast"]
 material_override = ExtResource( 4 )
+cast_shadow = 0
 emitting = false
 amount = 1
 lifetime = 0.6
@@ -487,6 +486,7 @@ draw_pass_1 = ExtResource( 2 )
 
 [node name="LightBlast" type="Particles" parent="Blast"]
 material_override = ExtResource( 5 )
+cast_shadow = 0
 emitting = false
 amount = 1
 lifetime = 0.15
@@ -496,6 +496,7 @@ draw_pass_1 = SubResource( 14 )
 
 [node name="BlastSparks" type="Particles" parent="Blast"]
 material_override = SubResource( 16 )
+cast_shadow = 0
 emitting = false
 amount = 10
 lifetime = 0.3
@@ -506,6 +507,7 @@ draw_pass_1 = SubResource( 22 )
 
 [node name="Smoke" type="Particles" parent="Blast"]
 material_override = SubResource( 23 )
+cast_shadow = 0
 emitting = false
 amount = 5
 lifetime = 1.5
@@ -516,6 +518,7 @@ draw_pass_1 = SubResource( 31 )
 
 [node name="LightParticle" type="Particles" parent="Blast"]
 material_override = SubResource( 32 )
+cast_shadow = 0
 emitting = false
 amount = 3
 lifetime = 0.8
@@ -526,6 +529,7 @@ draw_pass_1 = SubResource( 38 )
 
 [node name="InnerBlastLight" type="Particles" parent="Blast"]
 material_override = ExtResource( 9 )
+cast_shadow = 0
 emitting = false
 amount = 1
 lifetime = 0.2
@@ -536,13 +540,14 @@ draw_pass_1 = SubResource( 42 )
 [node name="MeshInstance2" type="MeshInstance" parent="."]
 visible = false
 material_override = ExtResource( 4 )
+cast_shadow = 0
 mesh = ExtResource( 2 )
-material/0 = null
 
 [node name="BulletBody" type="Spatial" parent="."]
 
 [node name="MainBody" type="Particles" parent="BulletBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00988865, 0, 0 )
+cast_shadow = 0
 amount = 100
 lifetime = 0.1
 local_coords = false
@@ -551,6 +556,7 @@ draw_pass_1 = SubResource( 49 )
 
 [node name="Trail" type="Particles" parent="BulletBody"]
 material_override = ExtResource( 9 )
+cast_shadow = 0
 amount = 10
 local_coords = false
 process_material = SubResource( 54 )

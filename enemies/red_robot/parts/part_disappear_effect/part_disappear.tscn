@@ -43,6 +43,7 @@ _data = [ Vector2( 0, 0 ), 0.0, 0.37234, 0, 0, Vector2( 0.462338, 0.981818 ), 5.
 
 [node name="PartDisappearPuff" type="CPUParticles"]
 material_override = SubResource( 1 )
+cast_shadow = 0
 emitting = false
 lifetime = 1.5
 one_shot = true
@@ -64,6 +65,7 @@ script = ExtResource( 3 )
 
 [node name="MiniBlasts" type="CPUParticles" parent="."]
 material_override = SubResource( 5 )
+cast_shadow = 0
 emitting = false
 amount = 16
 lifetime = 0.3

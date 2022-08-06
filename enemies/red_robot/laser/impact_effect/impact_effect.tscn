@@ -169,6 +169,7 @@ anims/blast = SubResource( 1 )
 
 [node name="Blast" type="CPUParticles" parent="."]
 material_override = SubResource( 2 )
+cast_shadow = 0
 emitting = false
 amount = 1
 lifetime = 0.3
@@ -180,6 +181,7 @@ color_ramp = SubResource( 4 )
 
 [node name="LightRays" type="CPUParticles" parent="."]
 material_override = SubResource( 5 )
+cast_shadow = 0
 emitting = false
 amount = 40
 lifetime = 0.2
@@ -202,6 +204,7 @@ hue_variation_random = 0.78
 
 [node name="BlastCenter" type="CPUParticles" parent="."]
 material_override = SubResource( 7 )
+cast_shadow = 0
 emitting = false
 amount = 1
 lifetime = 0.2
@@ -213,6 +216,7 @@ scale_amount_curve = SubResource( 9 )
 
 [node name="ExplosionEmbers" type="CPUParticles" parent="."]
 material_override = ExtResource( 8 )
+cast_shadow = 0
 emitting = false
 amount = 50
 one_shot = true
@@ -229,6 +233,7 @@ color_ramp = SubResource( 12 )
 
 [node name="SmokeParticle" type="CPUParticles" parent="."]
 material_override = SubResource( 13 )
+cast_shadow = 0
 emitting = false
 amount = 20
 one_shot = true

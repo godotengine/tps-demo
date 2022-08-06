@@ -116,7 +116,7 @@ uniform_name = "Displacement"
 
 [sub_resource type="VisualShader" id=22]
 code = "shader_type spatial;
-render_mode specular_schlick_ggx;
+render_mode specular_schlick_ggx, async_visible;
 
 uniform sampler2D noise;
 uniform float Displacement;
@@ -400,7 +400,7 @@ nodes/hit3/position = Vector2( 980, 240 )
 nodes/output/position = Vector2( 1180, 200 )
 nodes/state/node = SubResource( 51 )
 nodes/state/position = Vector2( 60, 100 )
-node_connections = [ "state", 0, "Animation", "state", 1, "Animation 3", "state", 2, "Animation 2", "state", 3, "Animation 4", "output", 0, "hit3", "aiming", 0, "state", "aiming", 1, "aim", "hit1", 0, "aiming", "hit1", 1, "Animation 5", "hit2", 0, "hit1", "hit2", 1, "Animation 6", "hit3", 0, "hit2", "hit3", 1, "Animation 7" ]
+node_connections = [ "state", 0, "Animation", "state", 1, "Animation 3", "state", 2, "Animation 2", "state", 3, "Animation 4", "output", 0, "hit3", "hit2", 0, "hit1", "hit2", 1, "Animation 6", "aiming", 0, "state", "aiming", 1, "aim", "hit1", 0, "aiming", "hit1", 1, "Animation 5", "hit3", 0, "hit2", "hit3", 1, "Animation 7" ]
 
 [sub_resource type="SphereShape" id=53]
 radius = 1.11815
@@ -771,7 +771,7 @@ script = ExtResource( 1 )
 bones/14/bound_children = [ NodePath("RayFrom") ]
 
 [node name="RayFrom" type="BoneAttachment" parent="RedRobotModel/Armature/Skeleton" index="4"]
-transform = Transform( -0.997439, -0.070985, -0.00878045, -0.0710157, 0.99747, 0.00323016, 0.00852894, 0.00384544, -0.999956, -0.149183, 1.9902, 0.191941 )
+transform = Transform( -0.999676, 0.0252579, 0.00304912, 0.0252842, 0.99964, 0.00893937, -0.00282223, 0.00901357, -0.999955, 0.0411851, 2.0763, 0.18828 )
 bone_name = "CannonAnimRecoil"
 
 [node name="Circle" type="MeshInstance" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
@@ -789,6 +789,7 @@ material/0 = ExtResource( 4 )
 [node name="BuildupParticles" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
 transform = Transform( 1, 3.70164e-10, 5.82077e-11, 3.66526e-10, 1, 9.31323e-10, 0, 1.86265e-09, 1, -1.39698e-09, 0, -1.47648 )
 material_override = ExtResource( 7 )
+cast_shadow = 0
 emitting = false
 amount = 64
 lifetime = 0.4
@@ -810,6 +811,7 @@ hue_variation_random = 0.87
 
 [node name="LaserEmber" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
 transform = Transform( 1, 7.30506e-09, 4.65661e-10, 0, 1, 0, 0, 3.72529e-09, 1, -7.45058e-09, 0.0332088, -10.283 )
+cast_shadow = 0
 emitting = false
 amount = 200
 lifetime = 2.0
@@ -836,6 +838,7 @@ anim_offset_random = 1.0
 [node name="LaserCenter" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
 transform = Transform( 1, 3.72893e-10, 1.74623e-10, 3.66526e-10, 1, 4.65661e-09, 0, 5.58794e-09, 1, -8.3819e-09, 0, -1.47136 )
 material_override = SubResource( 25 )
+cast_shadow = 0
 emitting = false
 amount = 1
 lifetime = 1.5
@@ -847,6 +850,7 @@ scale_amount_curve = SubResource( 27 )
 [node name="Smoke" type="CPUParticles" parent="RedRobotModel/Armature/Skeleton/RayFrom"]
 transform = Transform( 1, 1.16415e-10, -4.0518e-10, 3.66526e-10, -4.19095e-08, -1, 0, 1, -4.65661e-08, -6.51926e-09, -1.43051e-06, -1.34189 )
 material_override = SubResource( 31 )
+cast_shadow = 0
 emitting = false
 amount = 3
 lifetime = 1.5
@@ -928,6 +932,7 @@ script = ExtResource( 24 )
 [node name="StaticParticle" type="CPUParticles" parent="Death/PartShield1"]
 transform = Transform( 1, 0, 0, 0, 0.965835, 0.259156, 0, -0.259156, 0.965835, 0, 0, 0 )
 material_override = ExtResource( 8 )
+cast_shadow = 0
 amount = 3
 lifetime = 0.5
 randomness = 0.35
@@ -972,6 +977,7 @@ script = ExtResource( 24 )
 [node name="StaticParticle" type="CPUParticles" parent="Death/PartShield2"]
 transform = Transform( 1, 0, 0, 0, 0.965835, 0.259156, 0, -0.259156, 0.965835, 0, 0, 0 )
 material_override = ExtResource( 8 )
+cast_shadow = 0
 amount = 3
 lifetime = 0.5
 randomness = 0.35
@@ -1017,6 +1023,7 @@ script = ExtResource( 24 )
 [node name="StaticParticle3" type="CPUParticles" parent="Death/PartHead"]
 transform = Transform( 1, 0, 0, 0, 0.965835, 0.259156, 0, -0.259156, 0.965835, 0, 0, 0 )
 material_override = ExtResource( 8 )
+cast_shadow = 0
 amount = 3
 lifetime = 0.5
 randomness = 0.35
@@ -1054,6 +1061,7 @@ anims/kaboom = SubResource( 67 )
 [node name="DetachSpark1" type="CPUParticles" parent="Death"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.803977, 0.987653, 0 )
 material_override = SubResource( 68 )
+cast_shadow = 0
 emitting = false
 amount = 50
 lifetime = 0.4
@@ -1071,6 +1079,7 @@ color = Color( 0, 0.976471, 1, 1 )
 [node name="DetachSpark2" type="CPUParticles" parent="Death"]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.11386, 0.987653, 0 )
 material_override = SubResource( 68 )
+cast_shadow = 0
 emitting = false
 amount = 50
 lifetime = 0.4
