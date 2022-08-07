@@ -25,6 +25,11 @@ func _ready():
 	else:
 		get_viewport().msaa = Viewport.MSAA_DISABLED
 
+	if not Settings.shadow_enabled:
+		# Disable shadows on all lights present on level load,
+		# reducing the number of draw calls significantly.
+		propagate_call("set", ["shadow_enabled", false])
+
 	if Settings.ssao_quality == Settings.SSAOQuality.HIGH:
 		world_environment.environment.ssao_enabled = true
 		world_environment.environment.ssao_quality = world_environment.environment.SSAO_QUALITY_HIGH

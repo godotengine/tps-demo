@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
@@ -91,6 +91,8 @@ Label/styles/normal = null
 [sub_resource type="ButtonGroup" id=10]
 
 [sub_resource type="ButtonGroup" id=11]
+
+[sub_resource type="ButtonGroup" id=22]
 
 [sub_resource type="ButtonGroup" id=12]
 
@@ -196,9 +198,6 @@ anchor_left = 0.00106799
 anchor_right = 1.00107
 anchor_bottom = 1.0
 theme = SubResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Main" type="Control" parent="UI"]
 anchor_left = -0.000673103
@@ -246,9 +245,9 @@ texture_hover = ExtResource( 12 )
 [node name="Settings" type="VBoxContainer" parent="UI"]
 visible = false
 anchor_left = 0.109896
-anchor_top = 0.32037
+anchor_top = 0.268518
 anchor_right = 0.808854
-anchor_bottom = 0.785185
+anchor_bottom = 0.931481
 custom_constants/separation = 30
 __meta__ = {
 "_edit_use_anchors_": true
@@ -329,7 +328,7 @@ text = "8x"
 
 [node name="4X" type="Button" parent="UI/Settings/AA"]
 margin_left = 665.0
-margin_right = 870.0
+margin_right = 871.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
@@ -337,8 +336,8 @@ group = SubResource( 11 )
 text = "4x"
 
 [node name="2X" type="Button" parent="UI/Settings/AA"]
-margin_left = 900.0
-margin_right = 1105.0
+margin_left = 901.0
+margin_right = 1106.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
@@ -346,7 +345,7 @@ group = SubResource( 11 )
 text = "2x"
 
 [node name="Disabled" type="Button" parent="UI/Settings/AA"]
-margin_left = 1135.0
+margin_left = 1136.0
 margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
@@ -354,10 +353,46 @@ toggle_mode = true
 group = SubResource( 11 )
 text = "Disabled"
 
-[node name="SSAO" type="HBoxContainer" parent="UI/Settings"]
+[node name="Shadow" type="HBoxContainer" parent="UI/Settings"]
 margin_top = 174.0
 margin_right = 1342.0
 margin_bottom = 231.0
+custom_constants/separation = 30
+
+[node name="Label" type="Label" parent="UI/Settings/Shadow"]
+margin_top = 2.0
+margin_right = 400.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 400, 0 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Shadow Mapping:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enabled" type="Button" parent="UI/Settings/Shadow"]
+margin_left = 430.0
+margin_right = 871.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+toggle_mode = true
+pressed = true
+group = SubResource( 22 )
+text = "Enabled"
+
+[node name="Disabled" type="Button" parent="UI/Settings/Shadow"]
+margin_left = 901.0
+margin_right = 1342.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+toggle_mode = true
+group = SubResource( 22 )
+text = "Disabled"
+
+[node name="SSAO" type="HBoxContainer" parent="UI/Settings"]
+margin_top = 261.0
+margin_right = 1342.0
+margin_bottom = 318.0
 custom_constants/separation = 30
 __meta__ = {
 "_edit_group_": true
@@ -403,9 +438,9 @@ group = SubResource( 12 )
 text = "Disabled"
 
 [node name="Bloom" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 174.0
+margin_top = 348.0
 margin_right = 1342.0
-margin_bottom = 231.0
+margin_bottom = 405.0
 custom_constants/separation = 30
 __meta__ = {
 "_edit_group_": true
@@ -451,9 +486,9 @@ group = SubResource( 13 )
 text = "Disabled"
 
 [node name="Resolution" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 261.0
+margin_top = 435.0
 margin_right = 1342.0
-margin_bottom = 318.0
+margin_bottom = 492.0
 custom_constants/separation = 30
 __meta__ = {
 "_edit_group_": true
@@ -482,7 +517,7 @@ text = "Native"
 
 [node name="1080" type="Button" parent="UI/Settings/Resolution"]
 margin_left = 665.0
-margin_right = 870.0
+margin_right = 871.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
@@ -490,8 +525,8 @@ group = SubResource( 14 )
 text = "1080"
 
 [node name="720" type="Button" parent="UI/Settings/Resolution"]
-margin_left = 900.0
-margin_right = 1105.0
+margin_left = 901.0
+margin_right = 1106.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 toggle_mode = true
@@ -499,7 +534,7 @@ group = SubResource( 14 )
 text = "720"
 
 [node name="540" type="Button" parent="UI/Settings/Resolution"]
-margin_left = 1135.0
+margin_left = 1136.0
 margin_right = 1342.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
@@ -508,9 +543,9 @@ group = SubResource( 14 )
 text = "540"
 
 [node name="Fullscreen" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 348.0
+margin_top = 522.0
 margin_right = 1342.0
-margin_bottom = 405.0
+margin_bottom = 579.0
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="UI/Settings/Fullscreen"]
@@ -545,15 +580,15 @@ text = "No"
 
 [node name="HSeparator" type="HSeparator" parent="UI/Settings"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 435.0
+margin_top = 609.0
 margin_right = 1342.0
-margin_bottom = 455.0
+margin_bottom = 629.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Actions" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 485.0
+margin_top = 659.0
 margin_right = 1342.0
-margin_bottom = 542.0
+margin_bottom = 716.0
 custom_constants/separation = 50
 
 [node name="Apply" type="Button" parent="UI/Settings/Actions"]
