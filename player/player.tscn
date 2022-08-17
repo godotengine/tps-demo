@@ -197,7 +197,7 @@ nodes/strafe/node = SubResource( 24 )
 nodes/strafe/position = Vector2( -400, -120 )
 nodes/walk/node = SubResource( 29 )
 nodes/walk/position = Vector2( -400, 40 )
-node_connections = [ "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "output", 0, "eye_blend", "land", 0, "state", "land", 1, "hardland", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup" ]
+node_connections = [ "state", 0, "strafe", "state", 1, "walk", "state", 2, "jumpup", "state", 3, "jumpdown", "output", 0, "eye_blend", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "land", 0, "state", "land", 1, "hardland" ]
 
 [sub_resource type="CapsuleShape" id=31]
 radius = 0.5
@@ -274,7 +274,7 @@ transform = Transform( 0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0 )
 bones/55/bound_children = [ NodePath("GunBone") ]
 
 [node name="GunBone" type="BoneAttachment" parent="PlayerModel/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.897421, -0.247601, 0.365395, -0.262988, -0.964798, -0.00816901, 0.354591, -0.0887302, -0.930816, -0.207098, 1.36135, 0.549705 )
+transform = Transform( 0.92223, -0.384448, -0.0436694, -0.0209561, 0.0630829, -0.997796, 0.386401, 0.920989, 0.0501149, -0.207099, 1.39771, 0.464718 )
 bone_name = "hand.R"
 
 [node name="ShootFrom" type="Position3D" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone"]
@@ -355,15 +355,6 @@ __meta__ = {
 anims/far = SubResource( 33 )
 anims/shoot = SubResource( 34 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Crosshair" type="TextureRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
@@ -380,6 +371,12 @@ stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
 
 [node name="SoundEffects" type="Node" parent="."]
 
