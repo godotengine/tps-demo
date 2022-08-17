@@ -155,24 +155,24 @@ offsets = PoolRealArray( 0.381215, 0.61326, 0.994475 )
 colors = PoolColorArray( 1, 0.678431, 0, 1, 0.138889, 0.0944011, 0, 1, 0, 0, 0, 1 )
 
 [sub_resource type="CylinderShape" id=4]
-radius = 10.5
 height = 4.0
+radius = 10.5
 
 [sub_resource type="CylinderShape" id=5]
-radius = 11.0
 height = 3.6
+radius = 11.0
 
 [sub_resource type="CylinderShape" id=6]
-radius = 4.5
 height = 24.0
+radius = 4.5
 
 [sub_resource type="CylinderShape" id=7]
-radius = 10.0
 height = 11.0
+radius = 10.0
 
 [sub_resource type="CylinderShape" id=8]
-radius = 35.0
 height = 5.0
+radius = 35.0
 
 [sub_resource type="BoxShape" id=9]
 extents = Vector3( 40, 6, 40 )
@@ -208,9 +208,9 @@ color_ramp = SubResource( 3 )
 transform = Transform( 0.334226, 0, 0, 0, 0.334226, 0, 0, 0, 0.334226, 0, 0, 0 )
 material_override = SubResource( 15 )
 mesh = ExtResource( 7 )
-material/0 = null
 
 [node name="CPUParticles" type="CPUParticles" parent="Plasma"]
+physics_interpolation_mode = 1
 material_override = SubResource( 20 )
 amount = 3
 preprocess = 5.29
@@ -235,6 +235,7 @@ scale_amount_curve = SubResource( 21 )
 color_ramp = SubResource( 22 )
 
 [node name="CPUParticles2" type="CPUParticles" parent="Plasma"]
+physics_interpolation_mode = 1
 material_override = SubResource( 23 )
 amount = 5
 mesh = ExtResource( 12 )
@@ -249,6 +250,7 @@ scale_amount_curve = SubResource( 24 )
 color_ramp = SubResource( 25 )
 
 [node name="CPUParticles3" type="CPUParticles" parent="Plasma"]
+physics_interpolation_mode = 1
 material_override = SubResource( 23 )
 amount = 7
 explosiveness = 0.14
