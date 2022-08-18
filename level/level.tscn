@@ -1,17 +1,17 @@
 [gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://level/level.gd" type="Script" id=1]
-[ext_resource path="res://level/geometry/scenes/props.tscn" type="PackedScene" id=2]
-[ext_resource path="res://level/geometry/giprobe_data.res" type="GIProbeData" id=5]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://enemies/red_robot/red_robot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://level/geometry/scenes/core.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/red_robot/red_robot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://level/geometry/scenes/props.tscn" type="PackedScene" id=5]
+[ext_resource path="res://level/geometry/environment.tres" type="Environment" id=6]
+[ext_resource path="res://level/geometry/giprobe_data.res" type="GIProbeData" id=7]
 [ext_resource path="res://level/level_music.ogg" type="AudioStream" id=8]
 [ext_resource path="res://level/debug.gd" type="Script" id=9]
-[ext_resource path="res://level/forklift/flying_forklift.tscn" type="PackedScene" id=12]
-[ext_resource path="res://level/geometry/scenes/lights.tscn" type="PackedScene" id=13]
-[ext_resource path="res://level/geometry/scenes/core.tscn" type="PackedScene" id=14]
-[ext_resource path="res://level/geometry/scenes/structure.tscn" type="PackedScene" id=15]
-[ext_resource path="res://level/geometry/environment.tres" type="Environment" id=16]
+[ext_resource path="res://level/geometry/scenes/structure.tscn" type="PackedScene" id=10]
+[ext_resource path="res://level/forklift/flying_forklift.tscn" type="PackedScene" id=11]
+[ext_resource path="res://level/geometry/scenes/lights.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 39.7506
@@ -103,31 +103,53 @@ polygon_points = PoolVector2Array( 26.3687, -60.868, -21.2648, 34.8682, 17.8021,
 [node name="Level" type="Spatial"]
 script = ExtResource( 1 )
 
-[node name="Core" parent="." instance=ExtResource( 14 )]
+[node name="RoomManager" type="RoomManager" parent="."]
+roomlist = NodePath("../RoomList")
+gameplay_monitor = true
+show_margins = false
 
-[node name="Structure" parent="." instance=ExtResource( 15 )]
+[node name="RoomList" type="Spatial" parent="."]
 
-[node name="Props" parent="." instance=ExtResource( 2 )]
+[node name="Lights" parent="RoomList" instance=ExtResource( 12 )]
 
-[node name="Lights" parent="." instance=ExtResource( 13 )]
+[node name="Room_Structure" type="Room" parent="RoomList"]
+points = PoolVector3Array( 105.313, -44.2188, -111.056, 105.313, -44.2188, 115.054, 105.313, 47.0312, -111.056, 105.313, 47.0312, 115.054, -115.713, -44.2188, -111.056, -115.713, -44.2188, 115.054, -115.713, 47.0312, -111.056, -115.713, 47.0312, 115.054 )
+
+[node name="Structure" parent="RoomList/Room_Structure" instance=ExtResource( 10 )]
+
+[node name="Props" parent="RoomList/Room_Structure" instance=ExtResource( 5 )]
+
+[node name="RoomGroup_Core" type="RoomGroup" parent="RoomList"]
+roomgroup_priority = 1
+
+[node name="Room_Core" type="Room" parent="RoomList/RoomGroup_Core"]
+points = PoolVector3Array( 42.7086, -31.1906, -42.1428, 42.7086, 20.3199, -42.1428, -41.2881, -31.1906, -42.1428, -41.2881, 20.3199, -42.1428, 42.7086, -31.1906, 5.68789, 42.7086, 20.3199, 5.68789, -41.2881, -31.1906, 41.2592, 31.1507, -31.1906, 41.2592, -41.2881, 20.3199, 41.2592, 31.1507, 20.3199, 41.2592 )
+
+[node name="Core" parent="RoomList/RoomGroup_Core/Room_Core" instance=ExtResource( 2 )]
+
+[node name="Portal" type="Portal" parent="RoomList/RoomGroup_Core/Room_Core"]
+transform = Transform( -0.309017, 0, -0.951056, 0, 1, 0, 0.951056, 0, -0.309017, 40.424, -4.63176, 12.7192 )
+points = PoolVector2Array( 3.01481, -1.4125, 2.82033, 1.86893, -2.53423, 2.07699, -2.62032, -1.4285 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 16 )
+environment = ExtResource( 6 )
 
 [node name="GIProbe" type="GIProbe" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.09263, 1.28266, 2.88598 )
+portal_mode = 3
 subdiv = 2
 extents = Vector3( 113.946, 48.8048, 117.028 )
 energy = 4.0
 propagation = 1.0
 interior = true
-data = ExtResource( 5 )
+data = ExtResource( 7 )
 
 [node name="ReflectionProbes" type="Spatial" parent="."]
 visible = false
 
 [node name="ReflectionProbe1" type="ReflectionProbe" parent="ReflectionProbes"]
 transform = Transform( 0.494055, 0, -0.869431, 0, 1, 0, 0.869431, 0, 0.494055, 28.1433, -18.8082, 71.0693 )
+portal_mode = 3
 extents = Vector3( 37.3556, 50, 83.0437 )
 box_projection = true
 interior_enable = true
@@ -137,6 +159,7 @@ interior_ambient_contrib = 0.8
 
 [node name="ReflectionProbe2" type="ReflectionProbe" parent="ReflectionProbes"]
 transform = Transform( 0.999799, 0, -0.0200534, 0, 1, 0, 0.0200534, 0, 0.999799, 73.9972, 0, -12.2086 )
+portal_mode = 3
 extents = Vector3( 35.8169, 50, 64.5769 )
 box_projection = true
 interior_enable = true
@@ -146,6 +169,7 @@ interior_ambient_contrib = 0.8
 
 [node name="ReflectionProbe3" type="ReflectionProbe" parent="ReflectionProbes"]
 transform = Transform( 0.999799, 0, -0.0200534, 0, 1, 0, 0.0200534, 0, 0.999799, -0.392717, -7.57649, 0.0575469 )
+portal_mode = 3
 extents = Vector3( 38.9134, 50, 37.1232 )
 box_projection = true
 interior_enable = true
@@ -153,19 +177,19 @@ interior_ambient_color = Color( 0.2, 0.1595, 0.11, 1 )
 interior_ambient_energy = 16.0
 interior_ambient_contrib = 0.8
 
-[node name="Player" parent="." instance=ExtResource( 6 )]
+[node name="Player" parent="." instance=ExtResource( 3 )]
 transform = Transform( -0.575826, 0, -0.817573, 0, 1, 0, 0.817573, 0, -0.575826, 64.8183, -1.0765, 78.7639 )
 
-[node name="RedRobot1" parent="." instance=ExtResource( 7 )]
+[node name="RedRobot1" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.843905, 0, -0.536493, 0, 1, 0, 0.536493, 0, 0.843905, 71.5907, -6.05686, 46.2736 )
 
-[node name="RedRobot2" parent="." instance=ExtResource( 7 )]
+[node name="RedRobot2" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.338334, 0, 0.941027, 0, 1, 0, -0.941027, 0, 0.338334, 53.2126, -6.05686, 15.9321 )
 
-[node name="RedRobot3" parent="." instance=ExtResource( 7 )]
+[node name="RedRobot3" parent="." instance=ExtResource( 4 )]
 transform = Transform( -0.164432, 0, 0.986389, 0, 1, 0, -0.986389, 0, -0.164432, -2.96096, -11.6923, 20.2343 )
 
-[node name="RedRobot4" parent="." instance=ExtResource( 7 )]
+[node name="RedRobot4" parent="." instance=ExtResource( 4 )]
 transform = Transform( -0.164432, 0, 0.986389, 0, 1, 0, -0.986389, 0, -0.164432, -9.15526, -11.6923, -16.9238 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
@@ -193,10 +217,10 @@ shape = SubResource( 1 )
 
 [node name="FlyingForklifts" type="Spatial" parent="."]
 
-[node name="FlyingForklift1" parent="FlyingForklifts" instance=ExtResource( 12 )]
+[node name="FlyingForklift1" parent="FlyingForklifts" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 67.8049, 2.27771, 0 )
 
-[node name="FlyingForklift2" parent="FlyingForklifts" instance=ExtResource( 12 )]
+[node name="FlyingForklift2" parent="FlyingForklifts" instance=ExtResource( 11 )]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -68.2496, 2.27771, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FlyingForklifts"]
@@ -218,6 +242,7 @@ __meta__ = {
 }
 
 [node name="Occluders" type="Spatial" parent="."]
+visible = false
 
 [node name="StartWall" type="Occluder" parent="Occluders"]
 transform = Transform( 0.137929, 0, 0.990442, 0, 1, 0, -0.990442, 0, 0.137929, -6.13814, 0, 82.9737 )

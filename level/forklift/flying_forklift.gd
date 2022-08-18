@@ -11,5 +11,8 @@ func _ready():
 	for i in range(child_count):
 		children[i].visible = i == which_enabled
 
+	# Make sure shows up when portals are on.
+	Portals.change_portal_mode_recursive(self, CullInstance.PORTAL_MODE_ROAMING)
+
 
 # TODO: We can maybe implement func hit():
