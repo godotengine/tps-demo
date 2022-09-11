@@ -291,6 +291,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
 [node name="ShootParticle" type="Particles" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone/ShootFrom"]
 transform = Transform( 1, 2.04891e-08, 0, 3.21306e-08, 1, 5.58794e-09, 0, 0, 1, 0, 0, 0 )
 material_override = ExtResource( 9 )
+cast_shadow = 0
 emitting = false
 amount = 10
 lifetime = 0.3
@@ -303,6 +304,7 @@ draw_pass_1 = SubResource( 2 )
 [node name="MuzzleFlash" type="Particles" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone/ShootFrom"]
 transform = Transform( 1, 0, -2.00234e-08, 1.21072e-08, -4.37722e-08, -1, -2.98023e-08, 1, -4.74975e-08, 0, 0, 0 )
 material_override = SubResource( 3 )
+cast_shadow = 0
 emitting = false
 amount = 1
 lifetime = 0.1
