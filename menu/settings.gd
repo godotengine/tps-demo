@@ -35,6 +35,7 @@ enum Resolution {
 var gi_quality = GIQuality.LOW
 var aa_quality = AAQuality.AA_2X
 var shadow_enabled = true
+var fxaa = true
 var ssao_quality = SSAOQuality.DISABLED
 var bloom_quality = BloomQuality.HIGH
 var resolution = Resolution.NATIVE
@@ -70,6 +71,9 @@ func load_settings():
 	if "shadow_enabled" in d:
 		shadow_enabled = bool(d.shadow_enabled)
 
+	if "fxaa" in d:
+		fxaa = bool(d.fxaa)
+
 	if "ssao" in d:
 		ssao_quality = int(d.ssao)
 
@@ -88,5 +92,5 @@ func save_settings():
 	var error = f.open("user://settings.json", File.WRITE)
 	assert(not error)
 
-	var d = { "gi":gi_quality, "aa":aa_quality, "shadow_enabled":shadow_enabled, "ssao":ssao_quality, "bloom":bloom_quality, "resolution":resolution, "fullscreen":fullscreen }
+	var d = { "gi":gi_quality, "aa":aa_quality, "shadow_enabled":shadow_enabled, "fxaa":fxaa, "ssao":ssao_quality, "bloom":bloom_quality, "resolution":resolution, "fullscreen":fullscreen }
 	f.store_line(to_json(d))
