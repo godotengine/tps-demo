@@ -23,7 +23,6 @@ var shoot_countdown = SHOOT_WAIT
 var aim_countdown = AIM_TIME
 var aim_preparing = AIM_PREPARE_TIME
 var dead = false
-var didCheck = false
 
 var player = null
 var velocity = Vector3()
@@ -135,9 +134,6 @@ func shoot():
 
 
 func _physics_process(delta):
-	if not didCheck:
-		velocity = move_and_slide(gravity * delta, Vector3.UP)
-		didCheck = true
 	if test_shoot:
 		shoot()
 		test_shoot = false
@@ -147,6 +143,7 @@ func _physics_process(delta):
 
 	if not player:
 		animation_tree["parameters/state/current"] = 0 # Go idle.
+		velocity = move_and_slide(gravity * delta, Vector3.UP)
 		return
 
 	if state == State.APPROACH:
