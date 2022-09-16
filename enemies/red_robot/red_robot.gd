@@ -143,6 +143,7 @@ func _physics_process(delta):
 
 	if not player:
 		animation_tree["parameters/state/current"] = 0 # Go idle.
+		velocity = move_and_slide(gravity * delta, Vector3.UP)
 		return
 
 	if state == State.APPROACH:
