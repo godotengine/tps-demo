@@ -153,7 +153,7 @@ interior_ambient_contrib = 0.3
 transform = Transform( -0.575826, 0, -0.817573, 0, 1, 0, 0.817573, 0, -0.575826, 64.8183, -1.0765, 78.7639 )
 
 [node name="RedRobot1" parent="." instance=ExtResource( 7 )]
-transform = Transform( 0.843905, 0, -0.536493, 0, 1, 0, 0.536493, 0, 0.843905, 71.5907, -6.27938, 46.2736 )
+transform = Transform( 0.843905, 0, -0.536493, 0, 1, 0, 0.536493, 0, 0.843905, 71.5907, -6.05686, 46.2736 )
 
 [node name="RedRobot2" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.338334, 0, 0.941027, 0, 1, 0, -0.941027, 0, 0.338334, 53.2126, -6.05686, 15.9321 )
