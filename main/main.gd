@@ -4,6 +4,15 @@ func _ready():
 	OS.window_fullscreen = Settings.fullscreen
 	go_to_main_menu()
 
+	var max_refresh_rate = 60.0
+	for screen in OS.get_screen_count():
+		 max_refresh_rate = max(max_refresh_rate, OS.get_screen_refresh_rate(screen))
+
+	# Cap framerate to (roughly) the refresh rate of the monitor with the highest refresh rate.
+	# This allows for smooth operation while reducing power usage when V-Sync is disabled.
+	Engine.target_fps = max_refresh_rate + 1.0
+	print("Limiting FPS to %d." % Engine.target_fps)
+
 
 func go_to_main_menu():
 	var menu = ResourceLoader.load("res://menu/menu.tscn")
