@@ -118,7 +118,7 @@ environment = ExtResource( 16 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.09263, 1.28266, 2.88598 )
 subdiv = 2
 extents = Vector3( 113.946, 48.8048, 117.028 )
-energy = 2.2
+energy = 4.0
 propagation = 1.0
 interior = true
 data = ExtResource( 5 )
@@ -131,23 +131,27 @@ transform = Transform( 0.494055, 0, -0.869431, 0, 1, 0, 0.869431, 0, 0.494055, 2
 extents = Vector3( 37.3556, 50, 83.0437 )
 box_projection = true
 interior_enable = true
-interior_ambient_color = Color( 0.239216, 0.160784, 0.0588235, 1 )
-interior_ambient_contrib = 0.33
+interior_ambient_color = Color( 0.2, 0.1595, 0.11, 1 )
+interior_ambient_energy = 16.0
+interior_ambient_contrib = 0.8
 
 [node name="ReflectionProbe2" type="ReflectionProbe" parent="ReflectionProbes"]
 transform = Transform( 0.999799, 0, -0.0200534, 0, 1, 0, 0.0200534, 0, 0.999799, 73.9972, 0, -12.2086 )
 extents = Vector3( 35.8169, 50, 64.5769 )
 box_projection = true
 interior_enable = true
-interior_ambient_color = Color( 0.152941, 0.0941176, 0.027451, 1 )
-interior_ambient_contrib = 0.45
+interior_ambient_color = Color( 0.2, 0.1595, 0.11, 1 )
+interior_ambient_energy = 16.0
+interior_ambient_contrib = 0.8
 
 [node name="ReflectionProbe3" type="ReflectionProbe" parent="ReflectionProbes"]
 transform = Transform( 0.999799, 0, -0.0200534, 0, 1, 0, 0.0200534, 0, 0.999799, -0.392717, -7.57649, 0.0575469 )
 extents = Vector3( 38.9134, 50, 37.1232 )
+box_projection = true
 interior_enable = true
-interior_ambient_color = Color( 0.2, 0.129412, 0.0470588, 1 )
-interior_ambient_contrib = 0.3
+interior_ambient_color = Color( 0.2, 0.1595, 0.11, 1 )
+interior_ambient_energy = 16.0
+interior_ambient_contrib = 0.8
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 transform = Transform( -0.575826, 0, -0.817573, 0, 1, 0, 0.817573, 0, -0.575826, 64.8183, -1.0765, 78.7639 )
