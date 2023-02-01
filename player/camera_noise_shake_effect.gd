@@ -1,4 +1,4 @@
-extends Camera
+extends Camera3D
 
 # Constant values of the effect.
 const SPEED = 1.0
@@ -12,19 +12,17 @@ const MAX_TRAUMA = 1.2
 var start_rotation = rotation
 var trauma = 0.0
 var time = 0.0
-var noise = OpenSimplexNoise.new()
+var noise = FastNoiseLite.new()
 var noise_seed = randi()
 
 
 func _ready():
 	noise.seed = noise_seed
-	noise.octaves = 1
-	noise.period = 256.0
-	noise.persistence = 0.5
-	noise.lacunarity = 1.0
+	noise.fractal_octaves = 1
+	noise.fractal_lacunarity = 1.0
 
 	# This variable is reset if the camera position is changed by other scripts,
-	# such as when zooming in/out or focusing on a different position.
+	# such as when zooming in/out or focusing checked a different position.
 	# This should NOT be done when the camera shake is happening.
 	start_rotation = rotation
 

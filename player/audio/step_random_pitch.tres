@@ -1,4 +1,4 @@
-[gd_resource type="AudioStreamRandomPitch" load_steps=2 format=2]
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=2]
 
 [ext_resource path="res://player/audio/step.wav" type="AudioStream" id=1]
 

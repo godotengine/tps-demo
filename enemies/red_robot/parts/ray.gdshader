@@ -1,8 +1,8 @@
 shader_type spatial;
 render_mode unshaded, cull_disabled;
 
-uniform sampler2D ray_texture : hint_albedo;
-uniform sampler2D smoke_texture : hint_albedo;
+uniform sampler2D ray_texture : source_color;
+uniform sampler2D smoke_texture : source_color;
 uniform float deform = 0.0;
 uniform float transparency = 1.0;
 uniform float energy = 1.0;

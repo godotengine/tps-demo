@@ -1,8 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://yxudvmlt7e3h"]
 
-[ext_resource path="res://enemies/red_robot/laser/impact_effect/EmissionEmbers.shader" type="Shader" id=1]
+[ext_resource type="Shader" path="res://enemies/red_robot/laser/impact_effect/EmissionEmbers.gdshader" id="1"]
 
 [resource]
-shader = ExtResource( 1 )
-shader_param/albedo = Color( 1, 1, 1, 1 )
-shader_param/emission_energy = 3.0
+render_priority = 0
+shader = ExtResource("1")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/emission_energy = 3.0

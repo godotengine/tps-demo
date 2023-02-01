@@ -1,256 +1,245 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=3 uid="uid://kl4f3mi24xdv"]
 
-[ext_resource path="res://effects_shared/BlastMesh_Sphere.mesh" type="ArrayMesh" id=1]
-[ext_resource path="res://effects_shared/BlastTexture.png" type="Texture" id=2]
-[ext_resource path="res://enemies/red_robot/laser/impact_effect/LightRaysMesh_Plane.mesh" type="ArrayMesh" id=3]
-[ext_resource path="res://enemies/red_robot/laser/impact_effect/LightRays.png" type="Texture" id=4]
-[ext_resource path="res://enemies/red_robot/laser/impact_effect/blast.gd" type="Script" id=5]
-[ext_resource path="res://enemies/red_robot/laser/impact_effect/EmissionAlbedoParticle.shader" type="Shader" id=6]
-[ext_resource path="res://enemies/red_robot/laser/impact_effect/EmissionEmbers.tres" type="Material" id=8]
-[ext_resource path="res://enemies/red_robot/laser/impact_effect/SmokePuffNormals.png" type="Texture" id=10]
-[ext_resource path="res://enemies/red_robot/laser/impact_effect/SmokePuff.png" type="Texture" id=11]
+[ext_resource type="ArrayMesh" uid="uid://dqkkefcnt0erw" path="res://effects_shared/BlastMesh_Sphere.mesh" id="1"]
+[ext_resource type="Texture2D" uid="uid://bpm6frbylo5an" path="res://effects_shared/BlastTexture.png" id="2"]
+[ext_resource type="ArrayMesh" uid="uid://dsxo5so87px6f" path="res://enemies/red_robot/laser/impact_effect/LightRaysMesh_Plane.mesh" id="3"]
+[ext_resource type="Texture2D" uid="uid://clqkmuqdlo4rh" path="res://enemies/red_robot/laser/impact_effect/LightRays.png" id="4"]
+[ext_resource type="Script" path="res://enemies/red_robot/laser/impact_effect/blast.gd" id="5"]
+[ext_resource type="Shader" path="res://enemies/red_robot/laser/impact_effect/EmissionAlbedoParticle.gdshader" id="6"]
+[ext_resource type="Material" uid="uid://yxudvmlt7e3h" path="res://enemies/red_robot/laser/impact_effect/EmissionEmbers.tres" id="8"]
+[ext_resource type="Texture2D" uid="uid://crq55yidge8wt" path="res://enemies/red_robot/laser/impact_effect/SmokePuffNormals.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://bb6a2c0n7pgsk" path="res://enemies/red_robot/laser/impact_effect/SmokePuff.png" id="11"]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id="Animation_sfsol"]
 resource_name = "blast"
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Blast:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.2, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ true, false ]
+"values": [true, false]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("LightRays:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ true, false ]
+"values": [true, false]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("BlastCenter:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ true, false ]
+"values": [true, false]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("ExplosionEmbers:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.2, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ true, false ]
+"values": [true, false]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("SmokeParticle:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.3, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ true, false ]
+"values": [true, false]
 }
 
-[sub_resource type="SpatialMaterial" id=2]
-flags_transparent = true
-flags_unshaded = true
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y0aew"]
+_data = {
+"blast": SubResource("Animation_sfsol")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7bxa"]
+transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
-params_billboard_mode = 3
-params_billboard_keep_scale = true
+albedo_texture = ExtResource("2")
+billboard_mode = 3
+billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
-albedo_texture = ExtResource( 2 )
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id="Curve_3v6v7"]
 max_value = 5.0
-_data = [ Vector2( 0, 1.2 ), 0.0, 0.0, 0, 0, Vector2( 1, 5 ), 7.54685, 0.0, 0, 0 ]
+_data = [Vector2(0, 1.2), 0.0, 0.0, 0, 0, Vector2(1, 5), 7.54685, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="Gradient" id=4]
-colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1 )
+[sub_resource type="Gradient" id="Gradient_wfmlc"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 6 )
-shader_param/albedo = Color( 1, 1, 1, 1 )
-shader_param/specular = 0.5
-shader_param/metallic = 0.0
-shader_param/roughness = 1.0
-shader_param/point_size = 1.0
-shader_param/emission = Color( 1, 1, 1, 1 )
-shader_param/emission_energy = 4.0
-shader_param/uv1_scale = Vector3( 1, 1, 1 )
-shader_param/uv1_offset = Vector3( 0, 0, 0 )
-shader_param/uv2_scale = Vector3( 1, 1, 1 )
-shader_param/uv2_offset = Vector3( 0, 0, 0 )
-shader_param/texture_albedo = ExtResource( 4 )
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybfhd"]
+render_priority = 0
+shader = ExtResource("6")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/point_size = 1.0
+shader_parameter/emission = Color(1, 1, 1, 1)
+shader_parameter/emission_energy = 4.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("4")
 
-[sub_resource type="Curve" id=6]
+[sub_resource type="Curve" id="Curve_bo81s"]
 bake_resolution = 16
-_data = [ Vector2( 0, 0.536364 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+_data = [Vector2(0, 0.536364), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="SpatialMaterial" id=7]
-albedo_color = Color( 1, 0.211765, 0, 1 )
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjljl"]
+albedo_color = Color(1, 0.211765, 0, 1)
 emission_enabled = true
-emission = Color( 0.988235, 0, 0, 1 )
-emission_energy = 5.0
-emission_operator = 0
-emission_on_uv2 = false
+emission = Color(0.988235, 0, 0, 1)
+emission_energy_multiplier = 5.0
 rim_enabled = true
-rim = 1.0
 rim_tint = 0.74
 
-[sub_resource type="SphereMesh" id=8]
+[sub_resource type="SphereMesh" id="SphereMesh_xaoll"]
 
-[sub_resource type="Curve" id=9]
-_data = [ Vector2( 0, 0 ), 0.0, 2.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Curve" id="Curve_sooop"]
+_data = [Vector2(0, 0), 0.0, 2.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="SphereMesh" id=10]
+[sub_resource type="SphereMesh" id="SphereMesh_e2x7o"]
 radius = 0.01
 height = 0.1
 
-[sub_resource type="Curve" id=11]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.810606, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Curve" id="Curve_060ns"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.810606, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="Gradient" id=12]
-offsets = PoolRealArray( 0, 0.313673, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 0.09009, 0.09009, 1, 0.144531, 0.137756, 0.140773, 1 )
+[sub_resource type="Gradient" id="Gradient_0p7eu"]
+offsets = PackedFloat32Array(0, 0.313673, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.09009, 0.09009, 1, 0.144531, 0.137756, 0.140773, 1)
 
-[sub_resource type="SpatialMaterial" id=13]
-flags_transparent = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xnv3g"]
+transparency = 1
 vertex_color_use_as_albedo = true
-params_billboard_mode = 3
-params_billboard_keep_scale = true
+albedo_texture = ExtResource("11")
+normal_enabled = true
+normal_texture = ExtResource("10")
+billboard_mode = 3
+billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
-albedo_texture = ExtResource( 11 )
-normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 10 )
 
-[sub_resource type="QuadMesh" id=14]
-size = Vector2( 2, 2 )
+[sub_resource type="QuadMesh" id="QuadMesh_y004h"]
+size = Vector2(2, 2)
 
-[sub_resource type="Curve" id=15]
-_data = [ Vector2( 0, 0 ), 0.0, 3.25161, 0, 0, Vector2( 1, 1 ), 0.0363636, 0.0363636, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Curve" id="Curve_omnbd"]
+_data = [Vector2(0, 0), 0.0, 3.25161, 0, 0, Vector2(1, 1), 0.0363636, 0.0363636, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="Gradient" id=16]
-offsets = PoolRealArray( 0, 0.19571, 0.576407, 1 )
-colors = PoolColorArray( 1, 0, 0, 0, 1, 0, 0, 1, 0.09375, 0.09375, 0.09375, 1, 0.105469, 0.105469, 0.105469, 0 )
+[sub_resource type="Gradient" id="Gradient_3b8ax"]
+offsets = PackedFloat32Array(0, 0.19571, 0.576407, 1)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1, 0.09375, 0.09375, 0.09375, 1, 0.105469, 0.105469, 0.105469, 0)
 
-[node name="Blast" type="Spatial"]
-script = ExtResource( 5 )
+[node name="Blast" type="Node3D"]
+script = ExtResource("5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "blast"
-anims/blast = SubResource( 1 )
+libraries = {
+"": SubResource("AnimationLibrary_y0aew")
+}
 
-[node name="Blast" type="CPUParticles" parent="."]
-material_override = SubResource( 2 )
+[node name="Blast" type="CPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_l7bxa")
 cast_shadow = 0
 emitting = false
 amount = 1
 lifetime = 0.3
 one_shot = true
-mesh = ExtResource( 1 )
-gravity = Vector3( 0, 0, 0 )
-scale_amount_curve = SubResource( 3 )
-color_ramp = SubResource( 4 )
+mesh = ExtResource("1")
+gravity = Vector3(0, 0, 0)
+scale_amount_curve = SubResource("Curve_3v6v7")
+color_ramp = SubResource("Gradient_wfmlc")
 
-[node name="LightRays" type="CPUParticles" parent="."]
-material_override = SubResource( 5 )
+[node name="LightRays" type="CPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_ybfhd")
 cast_shadow = 0
 emitting = false
 amount = 40
 lifetime = 0.2
 one_shot = true
 explosiveness = 0.9
-mesh = ExtResource( 3 )
-flag_align_y = true
-direction = Vector3( 1, 1, 0 )
+mesh = ExtResource("3")
+direction = Vector3(1, 1, 0)
 spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.01
-angle = 455.8
-angle_random = 0.93
-scale_amount = 0.02
-scale_amount_random = 0.41
-scale_amount_curve = SubResource( 6 )
-color = Color( 1, 0.00784314, 0.00784314, 1 )
-hue_variation = 0.03
-hue_variation_random = 0.78
+gravity = Vector3(0, 0, 0)
+scale_amount_curve = SubResource("Curve_bo81s")
+color = Color(1, 0.00784314, 0.00784314, 1)
 
-[node name="BlastCenter" type="CPUParticles" parent="."]
-material_override = SubResource( 7 )
+[node name="BlastCenter" type="CPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_wjljl")
 cast_shadow = 0
 emitting = false
 amount = 1
 lifetime = 0.2
 one_shot = true
-mesh = SubResource( 8 )
-gravity = Vector3( 0, 0, 0 )
-scale_amount = 0.5
-scale_amount_curve = SubResource( 9 )
+mesh = SubResource("SphereMesh_xaoll")
+gravity = Vector3(0, 0, 0)
+scale_amount_curve = SubResource("Curve_sooop")
 
-[node name="ExplosionEmbers" type="CPUParticles" parent="."]
-material_override = ExtResource( 8 )
+[node name="ExplosionEmbers" type="CPUParticles3D" parent="."]
+material_override = ExtResource("8")
 cast_shadow = 0
 emitting = false
 amount = 50
 one_shot = true
 explosiveness = 0.9
-mesh = SubResource( 10 )
-flag_align_y = true
-direction = Vector3( 0, 1, 0 )
+mesh = SubResource("SphereMesh_e2x7o")
+direction = Vector3(0, 1, 0)
 spread = 90.0
-gravity = Vector3( 0, -2, 0 )
-initial_velocity = 7.0
-damping = 1.0
-scale_amount_curve = SubResource( 11 )
-color_ramp = SubResource( 12 )
+gravity = Vector3(0, -2, 0)
+scale_amount_curve = SubResource("Curve_060ns")
+color_ramp = SubResource("Gradient_0p7eu")
 
-[node name="SmokeParticle" type="CPUParticles" parent="."]
-material_override = SubResource( 13 )
+[node name="SmokeParticle" type="CPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_xnv3g")
 cast_shadow = 0
 emitting = false
 amount = 20
 one_shot = true
 explosiveness = 0.92
-mesh = SubResource( 14 )
+mesh = SubResource("QuadMesh_y004h")
 emission_shape = 1
 emission_sphere_radius = 1.0
-direction = Vector3( 0, 1, 0 )
+direction = Vector3(0, 1, 0)
 spread = 90.0
-gravity = Vector3( 0, 2, 0 )
-initial_velocity = 1.0
-initial_velocity_random = 1.0
-linear_accel = -0.3
-damping = 0.98
-angle = 458.9
-angle_random = 0.94
-scale_amount = 3.0
-scale_amount_random = 1.0
-scale_amount_curve = SubResource( 15 )
-color_ramp = SubResource( 16 )
+gravity = Vector3(0, 2, 0)
+scale_amount_curve = SubResource("Curve_omnbd")
+color_ramp = SubResource("Gradient_3b8ax")

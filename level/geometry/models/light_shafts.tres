@@ -1,14 +1,14 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://2derncr82ntu"]
 
-[ext_resource path="res://level/textures/structure/light_shafts.png" type="Texture" id=1]
+[ext_resource type="Texture2D" uid="uid://mynyixl3f55g" path="res://level/textures/structure/light_shafts.png" id="1"]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id="1"]
 code = "shader_type spatial;
 
 render_mode unshaded,depth_draw_never;
 
 uniform sampler2D tex;
-uniform vec4 color : hint_color;
+uniform vec4 color : source_color;
 uniform float max_dist = 2.0;
 uniform float min_dist = 5.0;
 uniform float curve = 1.0;
@@ -23,10 +23,11 @@ void fragment() {
 }"
 
 [resource]
-shader = SubResource( 1 )
-shader_param/color = Color( 1, 1, 1, 0.223529 )
-shader_param/max_dist = 2.0
-shader_param/min_dist = 5.0
-shader_param/curve = 5.87
-shader_param/dp_curve = 0.56
-shader_param/tex = ExtResource( 1 )
+render_priority = 0
+shader = SubResource("1")
+shader_parameter/color = Color(1, 1, 1, 0.223529)
+shader_parameter/max_dist = 2.0
+shader_parameter/min_dist = 5.0
+shader_parameter/curve = 5.87
+shader_parameter/dp_curve = 0.56
+shader_parameter/tex = ExtResource("1")

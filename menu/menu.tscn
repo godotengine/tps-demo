@@ -1,723 +1,793 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=36 format=3 uid="uid://c80nbk7u633n6"]
 
-[ext_resource path="res://menu/menu.gd" type="Script" id=1]
-[ext_resource path="res://menu/experiment.hdr" type="Texture" id=2]
-[ext_resource path="res://player/model/player.glb" type="PackedScene" id=3]
-[ext_resource path="res://menu/floor.png" type="Texture" id=4]
-[ext_resource path="res://menu/menu_intro_music.ogg" type="AudioStream" id=5]
-[ext_resource path="res://menu/tps_demo.png" type="Texture" id=6]
-[ext_resource path="res://menu/button_play.png" type="Texture" id=7]
-[ext_resource path="res://menu/button_play_hover.png" type="Texture" id=8]
-[ext_resource path="res://menu/button_settings.png" type="Texture" id=9]
-[ext_resource path="res://menu/button_settings_hover.png" type="Texture" id=10]
-[ext_resource path="res://menu/button_quit.png" type="Texture" id=11]
-[ext_resource path="res://menu/button_quit_hover.png" type="Texture" id=12]
-[ext_resource path="res://menu/button_font.tres" type="DynamicFont" id=13]
-[ext_resource path="res://menu/button_pressed.tres" type="StyleBox" id=14]
-[ext_resource path="res://menu/button_normal.tres" type="StyleBox" id=15]
-[ext_resource path="res://menu/button_focus.tres" type="StyleBox" id=16]
-[ext_resource path="res://menu/button_hover.tres" type="StyleBox" id=17]
-[ext_resource path="res://menu/button_action_pressed.tres" type="StyleBox" id=18]
-[ext_resource path="res://enemies/red_robot/red_robot.tscn" type="PackedScene" id=19]
-[ext_resource path="res://player/bullet/bullet.tscn" type="PackedScene" id=20]
+[ext_resource type="Script" path="res://menu/menu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://gnsovrtic7g4" path="res://menu/experiment.hdr" id="2_v7mdg"]
+[ext_resource type="PackedScene" uid="uid://kfhres7102lc" path="res://player/model/player.glb" id="3"]
+[ext_resource type="Material" path="res://player/model/playerobot.tres" id="3_xm1fn"]
+[ext_resource type="Material" path="res://player/model/robotemitter.tres" id="4_bny8p"]
+[ext_resource type="AudioStream" uid="uid://bfq26n228ipa" path="res://menu/menu_intro_music.ogg" id="5"]
+[ext_resource type="Texture2D" uid="uid://ckwsj2km1edy6" path="res://menu/tps_demo.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://c6gsd2mdmea8w" path="res://menu/floor.png" id="6_qhdg0"]
+[ext_resource type="Texture2D" uid="uid://bg3ev35ayf2q" path="res://menu/button_play.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dn0ptke5qh8o5" path="res://menu/button_play_hover.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://4nhlw88xbyk6" path="res://menu/button_settings.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://c5mv5aa4n3e5e" path="res://menu/button_settings_hover.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://dsq5y32acbkji" path="res://menu/button_quit.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://dfsb3q1v2mk3m" path="res://menu/button_quit_hover.png" id="12"]
+[ext_resource type="FontFile" path="res://menu/button_font.tres" id="13"]
+[ext_resource type="StyleBox" path="res://menu/button_pressed.tres" id="14"]
+[ext_resource type="StyleBox" path="res://menu/button_normal.tres" id="15"]
+[ext_resource type="StyleBox" path="res://menu/button_focus.tres" id="16"]
+[ext_resource type="StyleBox" path="res://menu/button_hover.tres" id="17"]
+[ext_resource type="PackedScene" uid="uid://byi6b08jpb2iw" path="res://enemies/red_robot/red_robot.tscn" id="19"]
+[ext_resource type="PackedScene" uid="uid://jphgr3qep5" path="res://player/bullet/bullet.tscn" id="20"]
 
-[sub_resource type="PanoramaSky" id=1]
-panorama = ExtResource( 2 )
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ymawy"]
+panorama = ExtResource("2_v7mdg")
 
-[sub_resource type="Environment" id=2]
-background_mode = 3
-background_sky = SubResource( 1 )
+[sub_resource type="Sky" id="1"]
+sky_material = SubResource("PanoramaSkyMaterial_ymawy")
+radiance_size = 2
+
+[sub_resource type="Environment" id="2"]
+background_mode = 1
+sky = SubResource("1")
+ambient_light_source = 3
+reflected_light_source = 2
 glow_enabled = true
-glow_levels/7 = true
-glow_intensity = 0.4
-glow_blend_mode = 1
-glow_hdr_threshold = 0.34
-glow_bicubic_upscale = true
+glow_levels/1 = 1.0
+glow_levels/4 = 1.0
+glow_levels/7 = 0.5
+glow_mix = 0.153
+glow_blend_mode = 4
+glow_hdr_threshold = 0.36
 
-[sub_resource type="QuadMesh" id=3]
-size = Vector2( 15, 15 )
+[sub_resource type="QuadMesh" id="3"]
+size = Vector2(15, 15)
 
-[sub_resource type="SpatialMaterial" id=4]
-albedo_texture = ExtResource( 4 )
-metallic = 0.78
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_froyn"]
+albedo_texture = ExtResource("6_qhdg0")
+metallic = 1.0
 
-[sub_resource type="AnimationNodeBlend2" id=5]
+[sub_resource type="AnimationNodeBlend2" id="5"]
 resource_local_to_scene = true
 filter_enabled = true
-filters = [ "Robot_Skeleton/Skeleton:eyelid.d.L", "Robot_Skeleton/Skeleton:eyelid.d.R", "Robot_Skeleton/Skeleton:eyelid.u.L", "Robot_Skeleton/Skeleton:eyelid.u.R", "Robot_Skeleton/Skeleton:eyes" ]
+filters = ["Robot_Skeleton/Skeleton3D:eyelid.d.L", "Robot_Skeleton/Skeleton3D:eyelid.d.R", "Robot_Skeleton/Skeleton3D:eyelid.u.L", "Robot_Skeleton/Skeleton3D:eyelid.u.R", "Robot_Skeleton/Skeleton3D:eyes"]
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id="6"]
 resource_local_to_scene = true
-animation = "Idlecombatrest-cycle"
+animation = &"Idlecombatrest"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id="7"]
 resource_local_to_scene = true
-animation = "eyes-cycle"
+animation = &"eyes"
 
-[sub_resource type="AnimationNodeBlendTree" id=8]
+[sub_resource type="AnimationNodeBlendTree" id="8"]
 resource_local_to_scene = true
-graph_offset = Vector2( -260.487, 63.5 )
-nodes/Blend/node = SubResource( 5 )
-nodes/Blend/position = Vector2( 180, 120 )
-nodes/CombatRest/node = SubResource( 6 )
-nodes/CombatRest/position = Vector2( -120, 100 )
-nodes/Eyes/node = SubResource( 7 )
-nodes/Eyes/position = Vector2( -40, 220 )
-nodes/output/position = Vector2( 420, 120 )
-node_connections = [ "output", 0, "Blend", "Blend", 0, "CombatRest", "Blend", 1, "Eyes" ]
+graph_offset = Vector2(-776.416, 238.649)
+nodes/Blend/node = SubResource("5")
+nodes/Blend/position = Vector2(180, 120)
+nodes/CombatRest/node = SubResource("6")
+nodes/CombatRest/position = Vector2(-120, 100)
+nodes/Eyes/node = SubResource("7")
+nodes/Eyes/position = Vector2(-40, 220)
+nodes/output/position = Vector2(420, 120)
+node_connections = [&"output", 0, &"Blend", &"Blend", 0, &"CombatRest", &"Blend", 1, &"Eyes"]
 
-[sub_resource type="Theme" id=9]
-Button/colors/font_color = Color( 1, 1, 1, 1 )
-Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
-Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
-Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
-Button/constants/hseparation = 2
-Button/fonts/font = ExtResource( 13 )
+[sub_resource type="Theme" id="9"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_color_disabled = Color(0.9, 0.9, 0.9, 0.2)
+Button/colors/font_color_hover = Color(1, 1, 1, 1)
+Button/colors/font_color_pressed = Color(1, 1, 1, 1)
+Button/constants/h_separation = 2
+Button/fonts/font = ExtResource("13")
 Button/styles/disabled = null
-Button/styles/focus = ExtResource( 16 )
-Button/styles/hover = ExtResource( 17 )
-Button/styles/normal = ExtResource( 15 )
-Button/styles/pressed = ExtResource( 14 )
-Label/colors/font_color = Color( 1, 1, 1, 1 )
-Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
-Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Button/styles/focus = ExtResource("16")
+Button/styles/hover = ExtResource("17")
+Button/styles/normal = ExtResource("15")
+Button/styles/pressed = ExtResource("14")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_color_shadow = Color(0, 0, 0, 0)
+Label/colors/font_outline_modulate = Color(1, 1, 1, 1)
 Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
-Label/fonts/font = ExtResource( 13 )
+Label/fonts/font = ExtResource("13")
 Label/styles/normal = null
 
-[sub_resource type="ButtonGroup" id=10]
+[sub_resource type="BoxShape3D" id="20"]
+size = Vector3(4, 2, 4)
 
-[sub_resource type="ButtonGroup" id=11]
+[sub_resource type="BoxShape3D" id="21"]
+size = Vector3(10, 10, 2)
 
-[sub_resource type="ButtonGroup" id=23]
+[sub_resource type="Animation" id="Animation_slk03"]
+resource_name = "explode"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.5, 3.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BulletBody/MainBody:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExplosionAudio:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Blast/BlastParticle:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Blast/LightBlast:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = false
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Blast/BlastSparks:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Blast/Smoke:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Blast/LightParticle:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Blast/InnerBlastLight:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BulletBody/Trail:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
-[sub_resource type="ButtonGroup" id=22]
-
-[sub_resource type="ButtonGroup" id=12]
-
-[sub_resource type="ButtonGroup" id=13]
-
-[sub_resource type="ButtonGroup" id=14]
-
-[sub_resource type="ButtonGroup" id=15]
-
-[sub_resource type="DynamicFontData" id=16]
-font_path = "res://menu/font/PT_Sans-Web-Bold.ttf"
-
-[sub_resource type="DynamicFont" id=17]
-size = 40
-font_data = SubResource( 16 )
-
-[sub_resource type="StyleBoxFlat" id=18]
-bg_color = Color( 0.278431, 0.278431, 0.360784, 1 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 0.0901961, 0.0784314, 0.117647, 1 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="BoxShape" id=20]
-extents = Vector3( 2, 1, 2 )
-
-[sub_resource type="BoxShape" id=21]
-extents = Vector3( 5, 5, 1 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntwc6"]
+_data = {
+"explode": SubResource("Animation_slk03")
+}
 
 [node name="Menu" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource("2")
 
-[node name="PlayerModel" parent="." instance=ExtResource( 3 )]
+[node name="PlayerModel" parent="." instance=ExtResource("3")]
 
 [node name="Robot_Skeleton" parent="PlayerModel" index="0"]
-transform = Transform( 0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0 )
+transform = Transform3D(0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0)
+
+[node name="Skeleton3D" parent="PlayerModel/Robot_Skeleton" index="0"]
+bones/1/position = Vector3(0.268173, 2.08707, -0.316997)
+bones/1/rotation = Quaternion(0.126491, -0.0015602, -0.00606962, 0.991948)
+bones/2/position = Vector3(3.94236e-06, 0.239349, -0.00015335)
+bones/2/rotation = Quaternion(0.0172566, 0.0167337, -0.00420822, 0.999702)
+bones/3/position = Vector3(3.94834e-06, 0.102673, 3.96698e-05)
+bones/3/rotation = Quaternion(0.0085989, 0.0172346, -0.000834155, 0.999814)
+bones/4/position = Vector3(3.92971e-06, 0.117414, 0.000247801)
+bones/4/rotation = Quaternion(0.0717536, 0.0171768, 0.00163814, 0.997273)
+bones/5/rotation = Quaternion(0.180715, -8.52238e-05, -0.00187649, 0.983534)
+bones/6/rotation = Quaternion(0.0203775, 0.88645, 0.462375, -0.000637202)
+bones/10/position = Vector3(-1.89171e-08, 0.245584, 0.126631)
+bones/11/rotation = Quaternion(4.1699e-07, 0.930597, 0.366045, -5.69102e-07)
+bones/12/rotation = Quaternion(4.16766e-07, 0.930597, 0.366045, -5.69427e-07)
+bones/13/rotation = Quaternion(0.044298, 0.958142, -0.282457, 0.0147933)
+bones/14/rotation = Quaternion(2.09265e-07, 0.959165, -0.282846, -7.20774e-07)
+bones/15/rotation = Quaternion(-0.339446, -0.352682, -0.470031, 0.734481)
+bones/16/rotation = Quaternion(-0.704388, 0.000148484, 0.140926, 0.695685)
+bones/17/rotation = Quaternion(0.0196451, 0.00389383, -0.376014, 0.926398)
+bones/18/rotation = Quaternion(0.0138259, -0.00158243, -0.354332, 0.935016)
+bones/20/rotation = Quaternion(-0.0338717, -0.0177171, 0.985158, 0.167341)
+bones/22/rotation = Quaternion(-0.153692, -0.0597802, 0.00318971, 0.986304)
+bones/23/rotation = Quaternion(-0.131041, -0.0202512, -0.000901781, 0.99117)
+bones/24/rotation = Quaternion(-0.216266, -0.119053, 0.0119033, 0.968976)
+bones/25/rotation = Quaternion(-0.305706, -0.0737705, -0.0120523, 0.949187)
+bones/27/rotation = Quaternion(-0.0490002, 0.0490007, -0.705409, 0.705404)
+bones/28/rotation = Quaternion(1.46105e-08, -0.00804829, 0.438187, 0.898848)
+bones/29/rotation = Quaternion(0.00420388, 0.00610657, 0.137004, 0.990543)
+bones/30/rotation = Quaternion(5.80241e-07, -0.00407949, 0.496463, 0.868048)
+bones/33/rotation = Quaternion(-0.153015, -0.0343565, -0.00687256, 0.987603)
+bones/34/rotation = Quaternion(-0.211685, -0.0300214, -0.00040766, 0.976877)
+bones/36/rotation = Quaternion(-0.382841, -0.0701099, -0.0238916, 0.92084)
+bones/39/rotation = Quaternion(-0.105379, -0.0156225, -0.00218681, 0.994307)
+bones/40/rotation = Quaternion(-0.318888, -0.0177572, -0.0054272, 0.947611)
+bones/41/rotation = Quaternion(-0.450214, -0.118277, -0.0180463, 0.884869)
+bones/42/rotation = Quaternion(-0.447648, -0.0710501, -0.0232223, 0.89108)
+bones/45/rotation = Quaternion(0.189582, -0.137612, 0.960075, 0.152896)
+bones/47/rotation = Quaternion(-0.340379, 0.0117012, 0.228395, 0.912053)
+bones/48/rotation = Quaternion(0.117747, 0.07742, 0.594166, 0.791902)
+bones/49/rotation = Quaternion(-0.259163, -0.0359031, -0.141568, 0.954727)
+bones/50/rotation = Quaternion(-0.360448, 0.366853, 0.471842, 0.716143)
+bones/51/rotation = Quaternion(-0.291694, 0.398295, 0.34776, 0.797081)
+bones/52/rotation = Quaternion(0.269657, 0.09344, 0.416323, 0.863267)
+bones/53/rotation = Quaternion(0.224391, 0.0344611, 0.330213, 0.916199)
+bones/55/rotation = Quaternion(-0.00907353, -0.999945, 0.00213467, 0.00491076)
+bones/56/rotation = Quaternion(0.0138917, -0.0168912, 0.990289, 0.137295)
+bones/56/scale = Vector3(0.766362, 0.766362, 0.766362)
+bones/58/rotation = Quaternion(-0.179816, 0.038196, 0.0552054, 0.981407)
+bones/58/scale = Vector3(0.999985, 0.999999, 1.00001)
+bones/59/rotation = Quaternion(-0.814542, 0.0376705, -0.00974553, 0.578799)
+bones/60/rotation = Quaternion(-0.65065, 0.110832, -0.108592, 0.743356)
+bones/60/scale = Vector3(0.999987, 0.99996, 1.00003)
+bones/61/rotation = Quaternion(-0.910482, 0.0403218, 0.0629405, 0.406737)
+bones/61/scale = Vector3(0.28462, 0.28462, 0.28462)
+bones/63/rotation = Quaternion(-0.30771, -0.307706, 0.636644, 0.636645)
+bones/64/rotation = Quaternion(-0.00194494, 0.0123954, -0.644473, 0.764524)
+bones/64/scale = Vector3(0.999997, 0.999999, 1)
+bones/65/rotation = Quaternion(0.0157097, -0.000684327, -0.887581, 0.460384)
+bones/65/scale = Vector3(1.00007, 0.999951, 0.999995)
+bones/66/rotation = Quaternion(-0.00258712, 0.00312482, -0.934838, 0.355051)
+bones/66/scale = Vector3(0.466168, 0.466168, 0.466168)
+bones/69/rotation = Quaternion(-0.180052, 0.0370555, 0.0614245, 0.981038)
+bones/69/scale = Vector3(0.999983, 1, 1.00001)
+bones/70/rotation = Quaternion(-0.814541, 0.0376701, -0.00974804, 0.578799)
+bones/71/rotation = Quaternion(-0.65065, 0.11083, -0.108592, 0.743357)
+bones/71/scale = Vector3(0.999988, 0.999962, 1.00003)
+bones/72/rotation = Quaternion(-0.910719, 0.0345479, 0.0655183, 0.40633)
+bones/72/scale = Vector3(0.28462, 0.28462, 0.28462)
+bones/75/rotation = Quaternion(-0.910482, 0.0403222, 0.0629406, 0.406737)
+bones/75/scale = Vector3(0.28462, 0.28462, 0.28462)
+bones/77/rotation = Quaternion(-0.179819, 0.038197, 0.0552051, 0.981407)
+bones/77/scale = Vector3(0.999985, 0.999999, 1.00001)
+bones/78/rotation = Quaternion(-0.814542, 0.0376705, -0.00974696, 0.578799)
+bones/79/rotation = Quaternion(-0.650648, 0.110831, -0.108592, 0.743359)
+bones/79/scale = Vector3(0.999986, 0.999959, 1.00003)
+bones/81/rotation = Quaternion(-0.140048, -0.141763, 0.967998, 0.152543)
+bones/81/scale = Vector3(0.999975, 0.999993, 1.00003)
+bones/82/scale = Vector3(1, 1, 1)
+bones/83/rotation = Quaternion(-0.499999, -0.499999, 0.500002, 0.499999)
+bones/84/rotation = Quaternion(0.499984, -0.499985, 0.500014, 0.500017)
+bones/85/position = Vector3(-0.00387431, 0.0527354, 0.0957328)
+bones/85/rotation = Quaternion(0.499984, -0.499985, 0.500014, 0.500017)
+bones/86/position = Vector3(-0.00394276, 0.0565441, -0.0935273)
+bones/86/rotation = Quaternion(0.499984, -0.499985, 0.500014, 0.500017)
+bones/88/position = Vector3(2.98896e-08, 2.53622e-08, 0.202989)
+bones/89/rotation = Quaternion(-0.000405133, 0.173646, 0.984808, -0.000801945)
+bones/90/position = Vector3(5.96046e-08, 0.185297, -0.0266095)
+bones/91/position = Vector3(2.98605e-08, -1.00086e-07, -0.202989)
+bones/92/position = Vector3(-5.96046e-08, 0.0660029, 0.0266979)
+bones/95/rotation = Quaternion(0.254127, 0.0387751, 0.295066, 0.920246)
+bones/96/rotation = Quaternion(0.229656, -0.179928, -0.134162, 0.94704)
+bones/97/rotation = Quaternion(0.0865943, 0.132411, 0.445303, 0.881291)
+bones/98/rotation = Quaternion(0.994672, -0.091421, -0.00425751, -0.0474526)
+bones/99/rotation = Quaternion(0.692977, 0.170173, 0.518603, -0.471037)
+bones/100/rotation = Quaternion(-0.0906472, -0.102156, 0.965552, 0.221485)
+bones/101/rotation = Quaternion(-0.216747, -0.156707, 0.951067, -0.154711)
+bones/102/rotation = Quaternion(0.341941, 0.684138, -0.561947, 0.315035)
+bones/104/rotation = Quaternion(-0.467349, 0.443838, 0.661778, 0.382939)
+bones/105/rotation = Quaternion(0.0903905, -0.162718, 0.937137, -0.295172)
+bones/106/rotation = Quaternion(0.118897, -0.283633, 0.898441, -0.3134)
+bones/107/rotation = Quaternion(-0.286879, 0.533435, -0.793886, 0.0537787)
+bones/112/rotation = Quaternion(0.999712, 0.00107389, -7.68563e-05, -0.0239627)
+bones/113/rotation = Quaternion(0.996529, -0.000924584, -0.000250728, -0.0832454)
+bones/114/position = Vector3(0.106668, 0.0991519, 0.147229)
+bones/114/rotation = Quaternion(0.00252846, 0.704445, 0.709749, 0.00247509)
+bones/115/position = Vector3(-0.0976199, 0.0992022, 0.147218)
+bones/115/rotation = Quaternion(0.0024582, 0.704427, 0.709768, 0.00243966)
+bones/116/rotation = Quaternion(0.85406, 0.21807, -0.116621, 0.457632)
+bones/117/rotation = Quaternion(0.281852, 1.80595e-07, -4.76761e-08, 0.959458)
+bones/118/rotation = Quaternion(0.189372, -4.72907e-09, -1.83954e-09, 0.981905)
+bones/119/rotation = Quaternion(-0.54173, -0.0588135, 0.16625, 0.821846)
+bones/121/rotation = Quaternion(-0.384436, 5.74738e-10, -6.29245e-09, 0.923152)
+bones/122/rotation = Quaternion(0.979074, -4.84382e-07, 1.44699e-08, 0.203503)
+bones/124/rotation = Quaternion(0.9258, -0.187306, 0.112304, 0.308544)
+bones/125/rotation = Quaternion(0.337261, 1.68993e-07, -7.42623e-08, 0.941411)
+bones/126/rotation = Quaternion(0.215918, 8.70567e-09, 1.98929e-09, 0.976412)
+bones/127/rotation = Quaternion(-0.692169, -0.0104412, -0.185326, 0.697458)
+bones/128/rotation = Quaternion(6.14475e-09, 0.940004, -0.341165, -4.50954e-08)
+bones/129/rotation = Quaternion(-0.384436, -5.74738e-10, 4.27475e-09, 0.923152)
+bones/130/rotation = Quaternion(0.97002, -4.67641e-07, 1.24243e-08, 0.243027)
+bones/134/position = Vector3(0.735576, 1.3891, -0.136944)
+bones/136/position = Vector3(1.2858, 1.45409, 7.17545)
+bones/137/position = Vector3(0.782415, 2.28766, -0.393269)
+bones/137/rotation = Quaternion(-0.707029, 0.0104927, -0.0104927, 0.707029)
+bones/139/position = Vector3(-0.162335, 2.89647, 0.297872)
+bones/139/rotation = Quaternion(-0.707029, 0.0104927, -0.0104927, 0.707029)
+bones/140/position = Vector3(-0.335296, 1.9972, -0.0890323)
+bones/143/position = Vector3(0.0110175, 3.48638, -1.24379)
+bones/143/scale = Vector3(1, 1.01788, 1)
+
+[node name="00Robot_Body008" parent="PlayerModel/Robot_Skeleton/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_xm1fn")
+
+[node name="00Robot_Cannons002" parent="PlayerModel/Robot_Skeleton/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("3_xm1fn")
+
+[node name="Robot_Arms" parent="PlayerModel/Robot_Skeleton/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("3_xm1fn")
+surface_material_override/1 = ExtResource("4_bny8p")
+
+[node name="Robot_Arms001" parent="PlayerModel/Robot_Skeleton/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("3_xm1fn")
+
+[node name="Robot_Body" parent="PlayerModel/Robot_Skeleton/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("3_xm1fn")
+surface_material_override/1 = ExtResource("4_bny8p")
 
 [node name="SoundEffects" type="Node" parent="."]
-__meta__ = {
-"_editor_description_": "There must be an AudioStreamPlayer node at the path \"SoundEffects/Step\" next to the player model, anywhere that the player model is instanced. This is to prevent the animation from deleting the step from the track."
-}
 
 [node name="Step" type="AudioStreamPlayer" parent="SoundEffects"]
-__meta__ = {
-"_editor_description_": "There must be an AudioStreamPlayer node at the path \"SoundEffects/Step\" next to the player model, anywhere that the player model is instanced. This is to prevent the animation from deleting the step from the track."
-}
 
-[node name="Floor" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_froyn")
 
-[node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 0.967027, 0, 0.254675, -0.225291, 0.466312, 0.855452, -0.118758, -0.88462, 0.450936, 0.557445, 2.31204, 0.556668 )
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.967027, 0, 0.254675, -0.225291, 0.466312, 0.855452, -0.118758, -0.88462, 0.450936, 0.557445, 2.31204, 0.556668)
 shadow_enabled = true
 shadow_bias = 0.01
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.871624, -0.0363083, 0.488828, 0, 0.997253, 0.0740721, -0.490175, -0.064563, 0.86923, 0.0702285, 1.22404, 2.09675 )
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.871624, -0.0363083, 0.488828, 0, 0.997253, 0.0740721, -0.490175, -0.064563, 0.86923, 0.0702285, 1.22404, 2.09675)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource("5")
 autoplay = true
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 8 )
+tree_root = SubResource("8")
 anim_player = NodePath("../PlayerModel/AnimationPlayer")
 active = true
 parameters/Blend/blend_amount = 1.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 20.1403
-margin_top = 5.03506
-margin_right = 1044.14
-margin_bottom = 238.035
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 20.1403
+offset_top = 5.03506
+offset_right = 1044.14
+offset_bottom = 238.035
+texture = ExtResource("6")
 
 [node name="UI" type="Control" parent="."]
+layout_mode = 3
 anchor_left = 0.00106799
 anchor_right = 1.00107
 anchor_bottom = 1.0
-theme = SubResource( 9 )
+theme = SubResource("9")
 
 [node name="Main" type="Control" parent="UI"]
+anchors_preset = 0
 anchor_left = -0.000673103
 anchor_top = -0.00189865
 anchor_right = 0.999327
 anchor_bottom = 0.998101
-margin_left = -4.10107
-margin_top = 2.05054
-margin_right = -4.10107
-margin_bottom = 2.05054
+offset_left = -4.10107
+offset_top = 2.05054
+offset_right = -4.10107
+offset_bottom = 2.05054
 
 [node name="Play" type="TextureButton" parent="UI/Main"]
-margin_left = 100.0
-margin_top = 390.0
-margin_right = 400.0
-margin_bottom = 440.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = 100.0
+offset_top = 390.0
+offset_right = 400.0
+offset_bottom = 440.0
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("7")
+texture_hover = ExtResource("8")
 
 [node name="Settings" type="TextureButton" parent="UI/Main"]
-margin_left = 100.0
-margin_top = 490.0
-margin_right = 400.0
-margin_bottom = 540.0
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 10 )
+layout_mode = 0
+offset_left = 100.0
+offset_top = 490.0
+offset_right = 400.0
+offset_bottom = 540.0
+texture_normal = ExtResource("9")
+texture_pressed = ExtResource("9")
+texture_hover = ExtResource("10")
 
 [node name="Quit" type="TextureButton" parent="UI/Main"]
-margin_left = 100.0
-margin_top = 590.0
-margin_right = 400.0
-margin_bottom = 640.0
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 11 )
-texture_hover = ExtResource( 12 )
+layout_mode = 0
+offset_left = 100.0
+offset_top = 590.0
+offset_right = 400.0
+offset_bottom = 640.0
+texture_normal = ExtResource("11")
+texture_pressed = ExtResource("11")
+texture_hover = ExtResource("12")
 
 [node name="Settings" type="VBoxContainer" parent="UI"]
 visible = false
+layout_mode = 0
 anchor_left = 0.109896
 anchor_top = 0.23148
 anchor_right = 0.808854
 anchor_bottom = 1.00278
-custom_constants/separation = 25
-__meta__ = {
-"_edit_use_anchors_": true
-}
 
 [node name="GI" type="HBoxContainer" parent="UI/Settings"]
-margin_right = 1342.0
-margin_bottom = 57.0
-custom_constants/separation = 30
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/Settings/GI"]
-margin_top = 2.0
-margin_right = 400.0
-margin_bottom = 55.0
-rect_min_size = Vector2( 400, 0 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 text = "Global Illumination:"
 
 [node name="High" type="Button" parent="UI/Settings/GI"]
-margin_left = 430.0
-margin_right = 714.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-pressed = true
-group = SubResource( 10 )
 text = "High"
 
 [node name="Low" type="Button" parent="UI/Settings/GI"]
-margin_left = 744.0
-margin_right = 1028.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 10 )
 text = "Low"
 
 [node name="Disabled" type="Button" parent="UI/Settings/GI"]
-margin_left = 1058.0
-margin_right = 1342.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 10 )
 text = "Disabled"
 
 [node name="AA" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 82.0
-margin_right = 1342.0
-margin_bottom = 139.0
-custom_constants/separation = 30
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/Settings/AA"]
-margin_right = 400.0
-margin_bottom = 57.0
-rect_min_size = Vector2( 400, 0 )
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 size_flags_vertical = 1
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Antialiasing (MSAA):"
 
 [node name="8X" type="Button" parent="UI/Settings/AA"]
-margin_left = 430.0
-margin_right = 635.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-pressed = true
-group = SubResource( 11 )
 text = "8x"
 
 [node name="4X" type="Button" parent="UI/Settings/AA"]
-margin_left = 665.0
-margin_right = 871.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 11 )
 text = "4x"
 
 [node name="2X" type="Button" parent="UI/Settings/AA"]
-margin_left = 901.0
-margin_right = 1106.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 11 )
 text = "2x"
 
 [node name="Disabled" type="Button" parent="UI/Settings/AA"]
-margin_left = 1136.0
-margin_right = 1342.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 11 )
 text = "Disabled"
 
 [node name="FXAA" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 164.0
-margin_right = 1342.0
-margin_bottom = 221.0
-custom_constants/separation = 30
+layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/Settings/FXAA"]
-margin_right = 400.0
-margin_bottom = 57.0
-rect_min_size = Vector2( 400, 0 )
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 size_flags_vertical = 1
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Antialiasing (FXAA):"
 
 [node name="Enabled" type="Button" parent="UI/Settings/FXAA"]
-margin_left = 430.0
-margin_right = 871.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-pressed = true
 keep_pressed_outside = true
-group = SubResource( 23 )
 text = "Enabled"
 
 [node name="Disabled" type="Button" parent="UI/Settings/FXAA"]
-margin_left = 901.0
-margin_right = 1342.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 23 )
 text = "Disabled"
 
 [node name="Shadow" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 246.0
-margin_right = 1342.0
-margin_bottom = 303.0
-custom_constants/separation = 30
+layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/Settings/Shadow"]
-margin_top = 2.0
-margin_right = 400.0
-margin_bottom = 55.0
-rect_min_size = Vector2( 400, 0 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 text = "Shadow Mapping:"
 
 [node name="Enabled" type="Button" parent="UI/Settings/Shadow"]
-margin_left = 430.0
-margin_right = 871.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-pressed = true
-group = SubResource( 22 )
 text = "Enabled"
 
 [node name="Disabled" type="Button" parent="UI/Settings/Shadow"]
-margin_left = 901.0
-margin_right = 1342.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 22 )
 text = "Disabled"
 
 [node name="SSAO" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 328.0
-margin_right = 1342.0
-margin_bottom = 385.0
-custom_constants/separation = 30
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/Settings/SSAO"]
-margin_right = 400.0
-margin_bottom = 57.0
-rect_min_size = Vector2( 400, 0 )
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 size_flags_vertical = 1
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "SSAO:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="High" type="Button" parent="UI/Settings/SSAO"]
-margin_left = 430.0
-margin_right = 714.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-pressed = true
-group = SubResource( 12 )
 text = "High"
 
 [node name="Low" type="Button" parent="UI/Settings/SSAO"]
-margin_left = 744.0
-margin_right = 1028.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 12 )
 text = "Low"
 
 [node name="Disabled" type="Button" parent="UI/Settings/SSAO"]
-margin_left = 1058.0
-margin_right = 1342.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 12 )
 text = "Disabled"
 
 [node name="Bloom" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 410.0
-margin_right = 1342.0
-margin_bottom = 467.0
-custom_constants/separation = 30
-__meta__ = {
-"_edit_group_": true
-}
+layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/Settings/Bloom"]
-margin_right = 400.0
-margin_bottom = 57.0
-rect_min_size = Vector2( 400, 0 )
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 size_flags_vertical = 1
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Bloom:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="High" type="Button" parent="UI/Settings/Bloom"]
-margin_left = 430.0
-margin_right = 714.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-pressed = true
-group = SubResource( 13 )
 text = "High"
 
 [node name="Low" type="Button" parent="UI/Settings/Bloom"]
-margin_left = 744.0
-margin_right = 1028.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 13 )
 text = "Low"
 
 [node name="Disabled" type="Button" parent="UI/Settings/Bloom"]
-margin_left = 1058.0
-margin_right = 1342.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 13 )
 text = "Disabled"
 
 [node name="Resolution" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 492.0
-margin_right = 1342.0
-margin_bottom = 549.0
-custom_constants/separation = 30
-__meta__ = {
-"_edit_group_": true
-}
+layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/Settings/Resolution"]
-margin_top = 2.0
-margin_right = 400.0
-margin_bottom = 55.0
-rect_min_size = Vector2( 400, 0 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 text = "Resolution:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Native" type="Button" parent="UI/Settings/Resolution"]
-margin_left = 430.0
-margin_right = 635.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-pressed = true
-group = SubResource( 14 )
 text = "Native"
 
 [node name="1080" type="Button" parent="UI/Settings/Resolution"]
-margin_left = 665.0
-margin_right = 871.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 14 )
 text = "1080"
 
 [node name="720" type="Button" parent="UI/Settings/Resolution"]
-margin_left = 901.0
-margin_right = 1106.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 14 )
 text = "720"
 
 [node name="540" type="Button" parent="UI/Settings/Resolution"]
-margin_left = 1136.0
-margin_right = 1342.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 14 )
 text = "540"
 
 [node name="Fullscreen" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 574.0
-margin_right = 1342.0
-margin_bottom = 631.0
-custom_constants/separation = 30
+layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/Settings/Fullscreen"]
-margin_top = 2.0
-margin_right = 400.0
-margin_bottom = 55.0
-rect_min_size = Vector2( 400, 0 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 text = "Fullscreen"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Yes" type="Button" parent="UI/Settings/Fullscreen"]
-margin_left = 430.0
-margin_right = 871.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-pressed = true
-group = SubResource( 15 )
 text = "Yes"
 
 [node name="No" type="Button" parent="UI/Settings/Fullscreen"]
-margin_left = 901.0
-margin_right = 1342.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-group = SubResource( 15 )
 text = "No"
 
 [node name="HSeparator" type="HSeparator" parent="UI/Settings"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 656.0
-margin_right = 1342.0
-margin_bottom = 676.0
-rect_min_size = Vector2( 0, 20 )
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
 [node name="Actions" type="HBoxContainer" parent="UI/Settings"]
-margin_top = 701.0
-margin_right = 1342.0
-margin_bottom = 758.0
-custom_constants/separation = 50
+layout_mode = 2
 
 [node name="Apply" type="Button" parent="UI/Settings/Actions"]
-margin_right = 646.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 17 )
-custom_styles/hover = ExtResource( 18 )
-custom_styles/pressed = ExtResource( 18 )
 text = "Apply"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Cancel" type="Button" parent="UI/Settings/Actions"]
-margin_left = 696.0
-margin_right = 1342.0
-margin_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 17 )
-custom_styles/hover = ExtResource( 18 )
-custom_styles/pressed = ExtResource( 18 )
 text = "Cancel"
 
 [node name="Loading" type="HBoxContainer" parent="UI"]
 visible = false
+layout_mode = 0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 100.0
-margin_top = -135.0
-margin_right = -130.0
-margin_bottom = -100.0
-custom_constants/separation = 100
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+offset_left = 100.0
+offset_top = -135.0
+offset_right = -130.0
+offset_bottom = -100.0
 
 [node name="Label" type="Label" parent="UI/Loading"]
-margin_right = 168.0
-margin_bottom = 53.0
-custom_fonts/font = ExtResource( 13 )
+layout_mode = 2
 text = "Loading..."
 
 [node name="Progress" type="ProgressBar" parent="UI/Loading"]
-margin_left = 268.0
-margin_right = 1690.0
-margin_bottom = 53.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_styles/fg = SubResource( 18 )
-custom_styles/bg = SubResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="DoneTimer" type="Timer" parent="UI/Loading"]
 wait_time = 0.5
 one_shot = true
 
-[node name="BackgroundCache" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -10, -10 )
-__meta__ = {
-"_editor_description_": "This section forces Godot to cache the models/materials/shaders by creating them on the menu. Everything is out of sight because it is behind the floor, but it's within the camera's view frustum."
-}
+[node name="BackgroundCache" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -10, -10)
 
-[node name="RedRobot" parent="BackgroundCache" instance=ExtResource( 19 )]
+[node name="RedRobot" parent="BackgroundCache" instance=ExtResource("19")]
 health = 1
 test_shoot = true
 
-[node name="Floor" type="StaticBody" parent="BackgroundCache"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+[node name="Floor" type="StaticBody3D" parent="BackgroundCache"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 collision_layer = 2147483651
 collision_mask = 3
 
-[node name="CollisionShape" type="CollisionShape" parent="BackgroundCache/Floor"]
-shape = SubResource( 20 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackgroundCache/Floor"]
+shape = SubResource("20")
 
-[node name="Target" type="StaticBody" parent="BackgroundCache"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3 )
+[node name="Target" type="StaticBody3D" parent="BackgroundCache"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
 collision_layer = 2147483650
 collision_mask = 2147483650
 
-[node name="CollisionShape" type="CollisionShape" parent="BackgroundCache/Target"]
-shape = SubResource( 21 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackgroundCache/Target"]
+shape = SubResource("21")
 
-[node name="Bullet" parent="BackgroundCache" instance=ExtResource( 20 )]
-transform = Transform( -1, 8.4334e-08, 3.14739e-07, 0, 0.965926, -0.258819, -3.25841e-07, -0.258819, -0.965926, 0, -20, -80 )
+[node name="Bullet" parent="BackgroundCache" instance=ExtResource("20")]
+transform = Transform3D(-1, 8.4334e-08, 3.14739e-07, 0, 0.965926, -0.258819, -3.25841e-07, -0.258819, -0.965926, 0, -20, -80)
+
+[node name="AnimationPlayer" parent="BackgroundCache/Bullet" index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_ntwc6")
+}
 
 [node name="ExplosionAudio" parent="BackgroundCache/Bullet" index="4"]
-unit_db = -80.0
+volume_db = -80.0
 
 [connection signal="pressed" from="UI/Main/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="UI/Main/Settings" to="." method="_on_settings_pressed"]

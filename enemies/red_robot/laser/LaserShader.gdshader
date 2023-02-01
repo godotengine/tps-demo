@@ -10,7 +10,7 @@ uniform float energy = 1.0;
 
 uniform float clip = 4.0;
 
-uniform vec4 color1 : hint_color = vec4(0.0, 0.0, 1.0, 1.0);
+uniform vec4 color1 : source_color = vec4(0.0, 0.0, 1.0, 1.0);
 
 void vertex(){
 	// Because of how the UVs are laid out, the UVs at the right-most place

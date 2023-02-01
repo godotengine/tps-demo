@@ -1,10 +1,10 @@
-extends Spatial
+extends Node3D
 
-onready var light_rays = $LightRays
-onready var camera = get_tree().get_root().get_camera()
+@onready var light_rays = $LightRays
+@onready var camera = get_tree().get_root().get_camera_3d()
 
 func _ready():
-	yield($AnimationPlayer, "animation_finished")
+	await $AnimationPlayer.animation_finished
 	queue_free()
 
 

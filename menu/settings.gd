@@ -47,26 +47,28 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("toggle_fullscreen"):
-		OS.window_fullscreen = !OS.window_fullscreen
-		get_tree().set_input_as_handled()
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (!((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))) else Window.MODE_WINDOWED
+		get_viewport().set_input_as_handled()
 
 
 func load_settings():
-	var f = File.new()
-	var error = f.open("user://settings.json", File.READ)
+	var file = FileAccess.open("user://settings.json", FileAccess.READ)
+	var error = FileAccess.get_open_error()
 	if error:
 		print("There are no settings to load.")
 		return
 
-	var d = parse_json(f.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(file.get_as_text())
+	var d = test_json_conv.get_data()
 	if typeof(d) != TYPE_DICTIONARY:
 		return
 
 	if "gi" in d:
-		gi_quality = int(d.gi)
+		gi_quality = int(d.gi) as GIQuality
 
 	if "aa" in d:
-		aa_quality = int(d.aa)
+		aa_quality = int(d.aa) as AAQuality
 
 	if "shadow_enabled" in d:
 		shadow_enabled = bool(d.shadow_enabled)
@@ -75,22 +77,22 @@ func load_settings():
 		fxaa = bool(d.fxaa)
 
 	if "ssao" in d:
-		ssao_quality = int(d.ssao)
+		ssao_quality = int(d.ssao) as SSAOQuality
 
 	if "bloom" in d:
-		bloom_quality = int(d.bloom)
+		bloom_quality = int(d.bloom) as BloomQuality
 
 	if "resolution" in d:
-		resolution = int(d.resolution)
+		resolution = int(d.resolution) as Resolution
 
 	if "fullscreen" in d:
 		fullscreen = bool(d.fullscreen)
 
 
 func save_settings():
-	var f = File.new()
-	var error = f.open("user://settings.json", File.WRITE)
+	var file = FileAccess.open("user://settings.json", FileAccess.WRITE)
+	var error = FileAccess.get_open_error()
 	assert(not error)
 
 	var d = { "gi":gi_quality, "aa":aa_quality, "shadow_enabled":shadow_enabled, "fxaa":fxaa, "ssao":ssao_quality, "bloom":bloom_quality, "resolution":resolution, "fullscreen":fullscreen }
-	f.store_line(to_json(d))
+	file.store_line(JSON.new().stringify(d))

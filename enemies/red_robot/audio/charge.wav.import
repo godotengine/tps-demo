@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/charge.wav-ca59df8cae0ad5b1fea987f205ca4e33.sample"
+type="AudioStreamWAV"
+uid="uid://bfewuxtmeylhc"
+path="res://.godot/imported/charge.wav-ca59df8cae0ad5b1fea987f205ca4e33.sample"
 
 [deps]
 
 source_file="res://enemies/red_robot/audio/charge.wav"
-dest_files=[ "res://.import/charge.wav-ca59df8cae0ad5b1fea987f205ca4e33.sample" ]
+dest_files=["res://.godot/imported/charge.wav-ca59df8cae0ad5b1fea987f205ca4e33.sample"]
 
 [params]
 

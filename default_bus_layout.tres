@@ -1,12 +1,12 @@
-[gd_resource type="AudioBusLayout" load_steps=3 format=2]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://vtdn63d3ksc2"]
 
-[sub_resource type="AudioEffectReverb" id=1]
+[sub_resource type="AudioEffectReverb" id="1"]
 resource_name = "Reverb"
 room_size = 0.98
 hipass = 0.42
 wet = 0.29
 
-[sub_resource type="AudioEffectReverb" id=2]
+[sub_resource type="AudioEffectReverb" id="2"]
 resource_name = "Reverb"
 room_size = 0.74
 hipass = 0.14
@@ -14,19 +14,19 @@ wet = 0.56
 
 [resource]
 bus/0/volume_db = -10.0
-bus/1/name = "Outside"
+bus/1/name = &"Outside"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
-bus/1/send = "Master"
-bus/1/effect/0/effect = SubResource( 1 )
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("1")
 bus/1/effect/0/enabled = true
-bus/2/name = "Reactor"
+bus/2/name = &"Reactor"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
-bus/2/send = "Master"
-bus/2/effect/0/effect = SubResource( 2 )
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("2")
 bus/2/effect/0/enabled = true

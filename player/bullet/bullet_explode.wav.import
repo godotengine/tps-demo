@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/bullet_explode.wav-cb1cff5a50e4c409ec7fc505de7bc81f.sample"
+type="AudioStreamWAV"
+uid="uid://c0bpunl6shvlr"
+path="res://.godot/imported/bullet_explode.wav-cb1cff5a50e4c409ec7fc505de7bc81f.sample"
 
 [deps]
 
 source_file="res://player/bullet/bullet_explode.wav"
-dest_files=[ "res://.import/bullet_explode.wav-cb1cff5a50e4c409ec7fc505de7bc81f.sample" ]
+dest_files=["res://.godot/imported/bullet_explode.wav-cb1cff5a50e4c409ec7fc505de7bc81f.sample"]
 
 [params]
 

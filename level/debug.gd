@@ -5,5 +5,5 @@ func _process(_delta):
 		visible = !visible
 
 	text = "FPS: " + str(Engine.get_frames_per_second())
-	text += "\nVSync: " + ("on" if ProjectSettings.get_setting("display/window/vsync/use_vsync") else "off")
+	text += "\nVSync: " + ("checked" if ProjectSettings.get_setting("display/window/vsync/vsync_mode") else "unchecked")
 	text += "\nMemory: " + "%3.2f" % (OS.get_static_memory_usage() / 1048576.0) + " MiB"
