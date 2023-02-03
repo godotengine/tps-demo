@@ -23,15 +23,15 @@ void vertex(){
 	float original_z = VERTEX.z;
 	VERTEX.z = mix(VERTEX.z, -clip, should_displace_vertex);
 	UV.x *= VERTEX.z / original_z;
-	VERTEX.xy *= traversal_scale;
+	VERTEX.xy *= max(0.0, traversal_scale);
 }
 
 void fragment() {
 	vec2 transformed_uv = UV * uv_scale;
-	transformed_uv.x += offset_uv_x;
+	transformed_uv.x += max(0.0, offset_uv_x);
 	float noise_val = texture(laser_body_noise, transformed_uv).r; //noise textures are grayscale
 	ALBEDO = color1.rgb;
-	if (noise_val < cutoff_value) {
+	if (noise_val < max(0.0, cutoff_value)) {
 		discard;
 	}
 	EMISSION = color1.rgb * energy;

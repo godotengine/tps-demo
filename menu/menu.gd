@@ -1,8 +1,5 @@
 extends Node
 
-var res_loader: ResourceLoader = null
-var loading_thread: Thread = null
-
 var path = "res://level/level.tscn"
 
 signal replace_main_scene
@@ -69,45 +66,31 @@ func _ready():
 	for child in sound_effects.get_children():
 		child.volume_db = -200
 
-
-func interactive_load(loader):
-
-	while true:
-		var status = loader.poll()
-		if status == OK:
-			loading_progress.value = (loader.get_stage() * 100) / loader.get_stage_count()
-			continue
-		elif status == ERR_FILE_EOF:
+func _process(delta):
+	if loading.visible:
+		var progress = []
+		var status = ResourceLoader.load_threaded_get_status(path, progress)
+		if status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+			loading_progress.value = progress[0] * 100
+		elif status == ResourceLoader.THREAD_LOAD_LOADED:
 			loading_progress.value = 100
+			set_process(false)
 			loading_done_timer.start()
-			break
 		else:
 			print("Error while loading level: " + str(status))
 			main.show()
 			loading.hide()
-			break
-
-
-func loading_done(loader):
-	loading_thread.wait_to_finish()
-	emit_signal("replace_main_scene", loader.get_resource())
-	# Weirdly, "res_loader = null" is needed as otherwise
-	# loading the resource again is not possible.
-
 
 func _on_loading_done_timer_timeout():
-	loading_done(res_loader)
-
+	emit_signal("replace_main_scene", ResourceLoader.load_threaded_get(path))
 
 func _on_play_pressed():
 	main.hide()
 	loading.show()
-	# Single thread for now
-#	if ResourceLoader.has_cached(path):
-	emit_signal("replace_main_scene", ResourceLoader.load(path))
-#	else:
-#		ResourceLoader.load_threaded_request(path)
-
+	if ResourceLoader.has_cached(path):
+		emit_signal("replace_main_scene", ResourceLoader.load_threaded_get(path))
+	else:
+		ResourceLoader.load_threaded_request(path, "", true)
 
 func _on_settings_pressed():
 	main.hide()
