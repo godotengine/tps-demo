@@ -1,48 +1,47 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=11 format=3 uid="uid://bwxuo5ec7m76o"]
 
-[ext_resource path="res://enemies/red_robot/laser/impact_effect/SmokePuff.png" type="Texture" id=1]
-[ext_resource path="res://enemies/red_robot/laser/impact_effect/SmokePuffNormals.png" type="Texture" id=2]
-[ext_resource path="res://enemies/red_robot/parts/part_disappear_effect/part_disappear.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://bb6a2c0n7pgsk" path="res://enemies/red_robot/laser/impact_effect/SmokePuff.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://crq55yidge8wt" path="res://enemies/red_robot/laser/impact_effect/SmokePuffNormals.png" id="2"]
+[ext_resource type="Script" path="res://enemies/red_robot/parts/part_disappear_effect/part_disappear.gd" id="3"]
 
-[sub_resource type="SpatialMaterial" id=1]
-flags_transparent = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wgk7"]
+transparency = 1
 vertex_color_use_as_albedo = true
-params_billboard_mode = 3
+albedo_texture = ExtResource("1")
+normal_enabled = true
+normal_texture = ExtResource("2")
+billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
-albedo_texture = ExtResource( 1 )
-normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 2 )
 
-[sub_resource type="QuadMesh" id=2]
-size = Vector2( 2, 2 )
+[sub_resource type="QuadMesh" id="QuadMesh_b0a3d"]
+size = Vector2(2, 2)
 
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.384416, 1 ), 0.0777782, 0.0, 0, 0 ]
+[sub_resource type="Curve" id="Curve_7k7vy"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.384416, 1), 0.0777782, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0, 0.138122, 0.60221, 0.90884 )
-colors = PoolColorArray( 0, 1, 1, 0, 0, 1, 1, 1, 0.164062, 0.154449, 0.154449, 1, 0.211765, 0.211765, 0.211765, 0 )
+[sub_resource type="Gradient" id="Gradient_lbh1j"]
+offsets = PackedFloat32Array(0, 0.138122, 0.60221, 0.90884)
+colors = PackedColorArray(0, 1, 1, 0, 0, 1, 1, 1, 0.164062, 0.154449, 0.154449, 1, 0.211765, 0.211765, 0.211765, 0)
 
-[sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 0, 0, 0, 1 )
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yf5wm"]
+albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
-emission = Color( 0, 1, 1, 1 )
-emission_energy = 3.0
-emission_operator = 0
-emission_on_uv2 = false
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 3.0
 
-[sub_resource type="SphereMesh" id=6]
+[sub_resource type="SphereMesh" id="SphereMesh_uxeil"]
 radius = 0.2
 height = 0.4
 
-[sub_resource type="Curve" id=7]
-_data = [ Vector2( 0, 0 ), 0.0, 0.37234, 0, 0, Vector2( 0.462338, 0.981818 ), 5.18966, -5.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Curve" id="Curve_amach"]
+_data = [Vector2(0, 0), 0.0, 0.37234, 0, 0, Vector2(0.462338, 0.981818), 5.18966, -5.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[node name="PartDisappearPuff" type="CPUParticles"]
-material_override = SubResource( 1 )
+[node name="PartDisappearPuff" type="CPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_7wgk7")
 cast_shadow = 0
 emitting = false
 lifetime = 1.5
@@ -50,28 +49,24 @@ one_shot = true
 explosiveness = 0.76
 lifetime_randomness = 0.54
 draw_order = 2
-mesh = SubResource( 2 )
+mesh = SubResource("QuadMesh_b0a3d")
 emission_shape = 1
 emission_sphere_radius = 0.3
-direction = Vector3( 0, 1, 0 )
-gravity = Vector3( 0, 2, 0 )
-angle = 661.8
-angle_random = 1.0
-scale_amount = 1.2
-scale_amount_random = 1.0
-scale_amount_curve = SubResource( 3 )
-color_ramp = SubResource( 4 )
-script = ExtResource( 3 )
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 2, 0)
+scale_amount_curve = SubResource("Curve_7k7vy")
+color_ramp = SubResource("Gradient_lbh1j")
+script = ExtResource("3")
 
-[node name="MiniBlasts" type="CPUParticles" parent="."]
-material_override = SubResource( 5 )
+[node name="MiniBlasts" type="CPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_yf5wm")
 cast_shadow = 0
 emitting = false
 amount = 16
 lifetime = 0.3
 one_shot = true
-mesh = SubResource( 6 )
+mesh = SubResource("SphereMesh_uxeil")
 emission_shape = 1
 emission_sphere_radius = 0.5
-gravity = Vector3( 0, 0, 0 )
-scale_amount_curve = SubResource( 7 )
+gravity = Vector3(0, 0, 0)
+scale_amount_curve = SubResource("Curve_amach")

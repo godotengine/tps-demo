@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/shoot.wav-81aef4aff359235fd45078daadcb9e5e.sample"
+type="AudioStreamWAV"
+uid="uid://vld48oqn441w"
+path="res://.godot/imported/shoot.wav-81aef4aff359235fd45078daadcb9e5e.sample"
 
 [deps]
 
 source_file="res://enemies/red_robot/audio/shoot.wav"
-dest_files=[ "res://.import/shoot.wav-81aef4aff359235fd45078daadcb9e5e.sample" ]
+dest_files=["res://.godot/imported/shoot.wav-81aef4aff359235fd45078daadcb9e5e.sample"]
 
 [params]
 

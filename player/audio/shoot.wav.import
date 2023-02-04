@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/shoot.wav-8244db64ae3703b75575788340a3a2e5.sample"
+type="AudioStreamWAV"
+uid="uid://glpjepixvmdl"
+path="res://.godot/imported/shoot.wav-8244db64ae3703b75575788340a3a2e5.sample"
 
 [deps]
 
 source_file="res://player/audio/shoot.wav"
-dest_files=[ "res://.import/shoot.wav-8244db64ae3703b75575788340a3a2e5.sample" ]
+dest_files=["res://.godot/imported/shoot.wav-8244db64ae3703b75575788340a3a2e5.sample"]
 
 [params]
 

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/open_close.wav-15c93b82a463a1fe63bbc03e48e48393.sample"
+type="AudioStreamWAV"
+uid="uid://c2nls7s14emyc"
+path="res://.godot/imported/open_close.wav-15c93b82a463a1fe63bbc03e48e48393.sample"
 
 [deps]
 
 source_file="res://door/open_close.wav"
-dest_files=[ "res://.import/open_close.wav-15c93b82a463a1fe63bbc03e48e48393.sample" ]
+dest_files=["res://.godot/imported/open_close.wav-15c93b82a463a1fe63bbc03e48e48393.sample"]
 
 [params]
 
