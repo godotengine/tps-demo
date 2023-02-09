@@ -73,7 +73,7 @@ size = Vector3(71.6338, 100, 129.154)
 box_projection = true
 
 [node name="ReflectionProbe3" type="ReflectionProbe" parent="ReflectionProbes"]
-transform = Transform3D(0.999799, 0, -0.0200534, 0, 1, 0, 0.0200534, 0, 0.999799, -0.392717, -7.57649, 0.0575469)
+transform = Transform3D(0.999799, 0, -0.0200534, 0, 1, 0, 0.0200534, 0, 0.999799, -0.204299, -8.98325, 0.0613261)
 size = Vector3(77.8268, 100, 74.2464)
 
 [node name="Player" parent="." instance=ExtResource("6")]

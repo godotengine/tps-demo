@@ -66,7 +66,7 @@ func _ready():
 	for child in sound_effects.get_children():
 		child.volume_db = -200
 
-func _process(delta):
+func _process(_delta):
 	if loading.visible:
 		var progress = []
 		var status = ResourceLoader.load_threaded_get_status(path, progress)

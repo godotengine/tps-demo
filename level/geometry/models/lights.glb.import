@@ -36,4 +36,4 @@ _subresources={
 }
 }
 }
-meshes/handle_gltf_embedded_images=1
+gltf/embedded_image_handling=1

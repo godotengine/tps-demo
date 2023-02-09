@@ -95,4 +95,4 @@ func save_settings():
 	assert(not error)
 
 	var d = { "gi":gi_quality, "aa":aa_quality, "shadow_enabled":shadow_enabled, "fxaa":fxaa, "ssao":ssao_quality, "bloom":bloom_quality, "resolution":resolution, "fullscreen":fullscreen }
-	file.store_line(JSON.new().stringify(d))
+	file.store_line(JSON.stringify(d))
