@@ -1,7 +1,8 @@
-[gd_scene load_steps=45 format=3 uid="uid://cs1k22tdf04k4"]
+[gd_scene load_steps=48 format=3 uid="uid://cs1k22tdf04k4"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://div25sd40yx1d" path="res://player/model/player.glb" id="2"]
+[ext_resource type="Script" path="res://player/player_input.gd" id="2_g11dy"]
 [ext_resource type="Texture2D" uid="uid://vpkjqsku35mr" path="res://player/crosshair.png" id="3"]
 [ext_resource type="AudioStream" uid="uid://do3ko5enqvvrb" path="res://player/audio/step_random_pitch.tres" id="4"]
 [ext_resource type="AudioStream" uid="uid://evwr35k4yn6g" path="res://player/audio/jump.wav" id="5"]
@@ -11,6 +12,43 @@
 [ext_resource type="ArrayMesh" uid="uid://pok2ib14r47b" path="res://player/model/muzzle_flash_particle_mesh_Cone.mesh" id="10"]
 [ext_resource type="Texture2D" uid="uid://dj46di0ip66q5" path="res://player/bullet/effect/FlarePolar.png" id="11"]
 [ext_resource type="AudioStream" uid="uid://glpjepixvmdl" path="res://player/audio/shoot.wav" id="11_cqsut"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o4rt5"]
+properties/0/path = NodePath(".:transform")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath(".:player_id")
+properties/1/spawn = true
+properties/1/sync = false
+properties/2/path = NodePath("PlayerModel:transform")
+properties/2/spawn = true
+properties/2/sync = true
+properties/3/path = NodePath(".:motion")
+properties/3/spawn = true
+properties/3/sync = true
+properties/4/path = NodePath(".:current_animation")
+properties/4/spawn = true
+properties/4/sync = true
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8yuxf"]
+properties/0/path = NodePath("CameraBase:rotation")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath("CameraBase/CameraRot:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/2/path = NodePath("InputSynchronizer:shoot_target")
+properties/2/spawn = true
+properties/2/sync = true
+properties/3/path = NodePath("InputSynchronizer:motion")
+properties/3/spawn = true
+properties/3/sync = true
+properties/4/path = NodePath("InputSynchronizer:shooting")
+properties/4/spawn = true
+properties/4/sync = true
+properties/5/path = NodePath("InputSynchronizer:aiming")
+properties/5/spawn = true
+properties/5/sync = true
 
 [sub_resource type="SphereMesh" id="2"]
 radius = 0.003
@@ -254,6 +292,19 @@ stream_0/weight = 1.0
 collision_layer = 6
 collision_mask = 7
 script = ExtResource("1")
+
+[node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_o4rt5")
+
+[node name="InputSynchronizer" type="MultiplayerSynchronizer" parent="." node_paths=PackedStringArray("camera_animation", "crosshair", "camera_base", "camera_rot", "camera_camera", "color_rect")]
+replication_config = SubResource("SceneReplicationConfig_8yuxf")
+script = ExtResource("2_g11dy")
+camera_animation = NodePath("../CameraBase/Animation")
+crosshair = NodePath("../Crosshair")
+camera_base = NodePath("../CameraBase")
+camera_rot = NodePath("../CameraBase/CameraRot")
+camera_camera = NodePath("../CameraBase/CameraRot/SpringArm3D/Camera3D")
+color_rect = NodePath("../ColorRect")
 
 [node name="PlayerModel" parent="." instance=ExtResource("2")]
 
@@ -502,7 +553,6 @@ spring_length = 2.4
 
 [node name="Camera3D" type="Camera3D" parent="CameraBase/CameraRot/SpringArm3D"]
 transform = Transform3D(1, 1.42109e-14, -2.84217e-14, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-current = true
 far = 300.0
 script = ExtResource("8")
 

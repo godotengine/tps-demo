@@ -6,7 +6,7 @@ enum State {
 	SHOOTING = 2,
 }
 
-const PLAYER_AIM_TOLERANCE_DEGREES = 15
+const PLAYER_AIM_TOLERANCE_DEGREES = deg_to_rad(15)
 
 const SHOOT_WAIT = 6.0
 const AIM_TIME = 1
@@ -14,15 +14,18 @@ const AIM_TIME = 1
 const AIM_PREPARE_TIME = 0.5
 const BLEND_AIM_SPEED = 0.05
 
-@export var health: int = 5
+signal exploded()
+
 @export var test_shoot: bool = false
 
-var state = State.APPROACH
+@export var target_position := Vector3()
+@export var health: int = 5
+@export var state : State = State.APPROACH
+@export var dead = false
+@export var aim_preparing = AIM_PREPARE_TIME
 
 var shoot_countdown = SHOOT_WAIT
 var aim_countdown = AIM_TIME
-var aim_preparing = AIM_PREPARE_TIME
-var dead = false
 
 var player = null
 var orientation = Transform3D()
@@ -56,8 +59,13 @@ func _ready():
 	$AnimationTree.active = true
 	if test_shoot:
 		shoot_countdown = 0.0
-	animation_tree["parameters/state/transition_request"] = "idle" # Go idle.
 
+	if dead:
+		model.visible = false
+		collision_shape.disabled = true
+		animation_tree.active = false
+
+	animate()
 
 func resume_approach():
 	state = State.APPROACH
@@ -65,6 +73,7 @@ func resume_approach():
 	shoot_countdown = SHOOT_WAIT
 
 
+@rpc("call_local")
 func hit():
 	if dead:
 		return
@@ -74,39 +83,24 @@ func hit():
 	health -= 1
 	if health == 0:
 		dead = true
-		var base_xf = global_transform.basis
 		animation_tree.active = false
 		model.visible = false
 		death.visible = true
 		collision_shape.disabled = true
 
-		death_shield1.freeze = false
-		death_shield1.get_node("Col1").disabled = false
-		death_shield1.get_node("Col2").disabled = false
-
-		death_shield2.freeze = false
-		death_shield2.get_node("Col1").disabled = false
-		death_shield2.get_node("Col2").disabled = false
-
-		death_head.freeze = false
-		death_head.get_node("Col1").disabled = false
-		death_head.get_node("Col2").disabled = false
-
 		death_detach_spark1.emitting = true
 		death_detach_spark2.emitting = true
 
-		death_shield1.linear_velocity = 3 * (Vector3.UP - base_xf.x).normalized()
-		death_shield2.linear_velocity = 3 * (Vector3.UP + base_xf.x).normalized()
-		death_head.linear_velocity = 3 * (Vector3.UP).normalized()
-		death_shield1.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
-		death_shield2.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
-		death_head.angular_velocity = (Vector3(randf(), randf(), randf()).normalized() * 2 - Vector3.ONE) * 10
-
-		death_shield1.start_disappear_countdown()
-		death_shield2.start_disappear_countdown()
-		death_head.start_disappear_countdown()
+		death_shield1.explode()
+		death_shield2.explode()
+		death_head.explode()
 
 		explosion_sound.play()
+		exploded.emit()
+
+		if multiplayer.is_server():
+			await get_tree().create_timer(10.0).timeout
+			queue_free()
 
 
 func shoot():
@@ -136,38 +130,73 @@ func shoot():
 			player.add_camera_shake_trauma(13)
 
 
+func animate(delta:=0.0):
+	if state == State.APPROACH:
+		var to_player_local = target_position * global_transform
+		# The front of the robot is +Z, and atan2 is zero at +X, so we need to use the Z for the X parameter (second one).
+		var angle_to_player = atan2(to_player_local.x, to_player_local.z)
+		if angle_to_player > PLAYER_AIM_TOLERANCE_DEGREES:
+			animation_tree["parameters/state/transition_request"] = "turn_left"
+		elif angle_to_player < -PLAYER_AIM_TOLERANCE_DEGREES:
+			animation_tree["parameters/state/transition_request"] = "turn_right"
+		elif target_position == Vector3.ZERO:
+			animation_tree["parameters/state/transition_request"] = "idle"
+		else:
+			animation_tree["parameters/state/transition_request"] = "walk"
+	else:
+		animation_tree["parameters/state/transition_request"] = "idle"
+
+	# Aiming or shooting
+	if target_position != Vector3.ZERO:
+		animation_tree["parameters/aiming/blend_amount"] = clamp(aim_preparing / AIM_PREPARE_TIME, 0, 1)
+
+		var to_cannon_local = target_position + Vector3.UP * ray_mesh.global_transform
+		var h_angle = rad_to_deg(atan2( to_cannon_local.x, -to_cannon_local.z ))
+		var v_angle = rad_to_deg(atan2( to_cannon_local.y, -to_cannon_local.z ))
+		var blend_pos = animation_tree.get("parameters/aim/blend_position")
+		var h_motion = BLEND_AIM_SPEED * delta * -h_angle
+		blend_pos.x += h_motion
+		blend_pos.x = clamp(blend_pos.x, -1, 1)
+
+		var v_motion = BLEND_AIM_SPEED * delta * v_angle
+		blend_pos.y += v_motion
+		blend_pos.y = clamp(blend_pos.y, -1, 1)
+
+		animation_tree["parameters/aim/blend_position"] = blend_pos
+
+
 func _physics_process(delta):
+	if dead:
+		return
+
+	if not multiplayer.is_server():
+		animate(delta)
+		return
+
 	if test_shoot:
 		shoot()
 		test_shoot = false
 
-	if dead:
-		return
-
 	if not player:
-		animation_tree["parameters/state/transition_request"] = "idle" # Go idle.
+		target_position = Vector3()
+		animate(delta)
 		set_velocity(gravity * delta)
 		set_up_direction(Vector3.UP)
 		move_and_slide()
 		return
+
+	target_position = player.global_transform.origin
 
 	if state == State.APPROACH:
 		if aim_preparing > 0:
 			aim_preparing -= delta
 			if aim_preparing < 0:
 				aim_preparing = 0
-			animation_tree["parameters/aiming/blend_amount"] = aim_preparing / AIM_PREPARE_TIME
 
-		var to_player_local = player.global_transform.origin * global_transform
+		var to_player_local = target_position * global_transform
 		# The front of the robot is +Z, and atan2 is zero at +X, so we need to use the Z for the X parameter (second one).
 		var angle_to_player = atan2(to_player_local.x, to_player_local.z)
-		var tolerance = deg_to_rad(PLAYER_AIM_TOLERANCE_DEGREES)
-		if angle_to_player > tolerance:
-			animation_tree["parameters/state/transition_request"] = "turn_left"
-		elif angle_to_player < -tolerance:
-			animation_tree["parameters/state/transition_request"] = "turn_right"
-		else:
-			animation_tree["parameters/state/transition_request"] = "walk"
+		if angle_to_player > -PLAYER_AIM_TOLERANCE_DEGREES and angle_to_player < PLAYER_AIM_TOLERANCE_DEGREES:
 			# Facing player, try to shoot.
 			shoot_countdown -= delta
 			if shoot_countdown < 0:
@@ -180,7 +209,6 @@ func _physics_process(delta):
 					state = State.AIM
 					aim_countdown = AIM_TIME
 					aim_preparing = 0
-					animation_tree["parameters/state/transition_request"] = "idle"
 				else:
 					# Player not in sight, do nothing.
 					shoot_countdown = SHOOT_WAIT
@@ -195,34 +223,19 @@ func _physics_process(delta):
 			if aim_preparing > AIM_PREPARE_TIME:
 				aim_preparing = AIM_PREPARE_TIME
 
-		animation_tree["parameters/aiming/blend_amount"] = clamp(aim_preparing / AIM_PREPARE_TIME, 0, 1)
 		aim_countdown -= delta
 		if aim_countdown < 0 and state == State.AIM:
 			var ray_origin = ray_from.global_transform.origin
-			var ray_to = player.global_transform.origin + Vector3.UP # Above middle of player.
+			var ray_to = target_position + Vector3.UP
 			var col = get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(ray_origin, ray_to, 0xFFFFFFFF, [self]))
 			if not col.is_empty() and col.collider == player:
 				state = State.SHOOTING
-				shoot_animation.play("shoot")
 				shoot_countdown = SHOOT_WAIT
+				play_shoot.rpc()
 			else:
 				resume_approach()
 
-		if animation_tree.active:
-			var to_cannon_local = player.global_transform.origin + Vector3.UP * ray_mesh.global_transform
-			var h_angle = rad_to_deg(atan2( to_cannon_local.x, -to_cannon_local.z ))
-			var v_angle = rad_to_deg(atan2( to_cannon_local.y, -to_cannon_local.z ))
-			var blend_pos = animation_tree.get("parameters/aim/blend_position")
-			var h_motion = BLEND_AIM_SPEED * delta * -h_angle
-			blend_pos.x += h_motion
-			blend_pos.x = clamp(blend_pos.x, -1, 1)
-
-			var v_motion = BLEND_AIM_SPEED * delta * v_angle
-			blend_pos.y += v_motion
-			blend_pos.y = clamp(blend_pos.y, -1, 1)
-
-			animation_tree["parameters/aim/blend_position"] = blend_pos
-
+	animate(delta)
 	# Apply root motion to orientation.
 	orientation *= Transform3D(animation_tree.get_root_motion_rotation(), animation_tree.get_root_motion_position())
 
@@ -240,13 +253,19 @@ func _physics_process(delta):
 	global_transform.basis = orientation.basis
 
 
+@rpc("call_local")
+func play_shoot():
+	shoot_animation.play("shoot")
+
+
 func shoot_check():
 	test_shoot = true
 
 
 func _clip_ray(length):
 	var mesh_offset = ray_mesh.position.z
-	ray_mesh.get_surface_override_material(0).set_shader_parameter("clip", length + mesh_offset)
+	if not OS.has_feature("dedicated_server"):
+		ray_mesh.get_surface_override_material(0).set_shader_parameter("clip", length + mesh_offset)
 
 
 func _on_area_body_entered(body):

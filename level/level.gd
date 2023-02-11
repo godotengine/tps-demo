@@ -1,11 +1,16 @@
 extends Node3D
 
+const RedRobot = preload("res://enemies/red_robot/red_robot.tscn")
+const PlayerScene = preload("res://player/player.tscn")
 
 signal quit
 #warning-ignore:unused_signal
 signal replace_main_scene # Useless, but needed as there is no clean way to check if a node exposes a signal
 
 @onready var world_environment = $WorldEnvironment
+@onready var robot_spawn_points = $RobotSpawnpoints
+@onready var player_spawn_points = $PlayerSpawnpoints
+@onready var spawn_node = $SpawnedNodes
 
 func _ready():
 	if Settings.gi_quality == Settings.GIQuality.HIGH:
@@ -68,6 +73,50 @@ func _ready():
 		get_window().set_content_scale_aspect(Window.CONTENT_SCALE_ASPECT_EXPAND)
 		get_window().set_content_scale_size(minsize)
 
+	if multiplayer.is_server():
+		# Server will spawn the red robots
+		for c in robot_spawn_points.get_children():
+			spawn_robot(c)
+
+		# Then spawn already connected players at random location
+		randomize()
+		var spawn_points = player_spawn_points.get_children()
+		spawn_points.shuffle()
+		add_player(1, spawn_points.pop_front())
+		for id in multiplayer.get_peers():
+			add_player(id, spawn_points.pop_front())
+
+		# Then spawn/despawn players as they connect/disconnect
+		multiplayer.peer_connected.connect(add_player)
+		multiplayer.peer_disconnected.connect(del_player)
+
+
+func spawn_robot(spawn_point):
+	var robot = RedRobot.instantiate()
+	robot.transform = spawn_point.transform
+	robot.exploded.connect(_respawn_robot.bind(spawn_point))
+	spawn_node.add_child(robot, true)
+
+
+func _respawn_robot(spawn_point):
+	await get_tree().create_timer(15.0).timeout
+	spawn_robot(spawn_point)
+
+
+func del_player(id: int):
+	if not spawn_node.has_node(str(id)):
+		return
+	spawn_node.get_node(str(id)).queue_free()
+
+
+func add_player(id: int, spawn_point: Marker3D = null):
+	if spawn_point == null:
+		spawn_point = player_spawn_points.get_child(randi() % player_spawn_points.get_child_count())
+	var player = PlayerScene.instantiate()
+	player.name = str(id)
+	player.player_id = id
+	player.transform = spawn_point.transform
+	spawn_node.add_child(player)
 
 
 func _input(event):
