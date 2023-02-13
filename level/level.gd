@@ -9,9 +9,9 @@ signal replace_main_scene # Useless, but needed as there is no clean way to chec
 
 func _ready():
 	if Settings.gi_quality == Settings.GIQuality.HIGH:
-		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = true
+		RenderingServer.voxel_gi_set_quality(RenderingServer.VOXEL_GI_QUALITY_HIGH)
 	elif Settings.gi_quality == Settings.GIQuality.LOW:
-		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = false
+		RenderingServer.voxel_gi_set_quality(RenderingServer.VOXEL_GI_QUALITY_LOW)
 	else:
 		$VoxelGI.hide()
 		$ReflectionProbes.show()

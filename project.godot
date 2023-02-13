@@ -32,6 +32,10 @@ window/size/fullscreen=true
 
 import/use_multiple_threads=false
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_accept={
@@ -214,5 +218,6 @@ common/physics_interpolation=true
 [rendering]
 
 reflections/sky_reflections/texture_array_reflections=false
+environment/ssao/half_size=false
 anti_aliasing/quality/msaa_3d=3
 environment/default_environment="res://default_env.tres"

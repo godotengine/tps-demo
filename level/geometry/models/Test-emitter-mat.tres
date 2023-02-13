@@ -1,0 +1,79 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://6leulkw6mvfk"]
+
+[ext_resource type="Texture2D" uid="uid://cli8k85feqor5" path="res://level/textures/structure/reactor_emitter_albedo.png" id="1_pn0mc"]
+[ext_resource type="Texture2D" uid="uid://bucygjeygvj1x" path="res://level/textures/structure/reactor_emitter_orm.png" id="2_64t2e"]
+[ext_resource type="Texture2D" uid="uid://c44vn6mh3xhta" path="res://level/textures/structure/reactor_emitter_normal.png" id="3_3gm8g"]
+
+[sub_resource type="Shader" id="Shader_uk8v0"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.0.rc1's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_normal : hint_roughness_normal,filter_linear_mipmap,repeat_enable;
+uniform float normal_scale : hint_range(-16,16);
+uniform sampler2D texture_ambient_occlusion : hint_default_white, filter_linear_mipmap,repeat_enable;
+uniform vec4 ao_texture_channel;
+uniform float ao_light_affect;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(0.0,1.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+	AO = dot(texture(texture_ambient_occlusion,base_uv),ao_texture_channel);
+	AO_LIGHT_AFFECT = ao_light_affect;
+}
+"
+
+[resource]
+resource_name = "reactor_emitter"
+render_priority = 0
+shader = SubResource("Shader_uk8v0")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = null
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 1, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.5
+shader_parameter/normal_scale = null
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.7
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = null
+shader_parameter/texture_albedo = ExtResource("1_pn0mc")
+shader_parameter/texture_metallic = ExtResource("2_64t2e")
+shader_parameter/texture_roughness = ExtResource("2_64t2e")
+shader_parameter/texture_normal = ExtResource("3_3gm8g")
+shader_parameter/texture_ambient_occlusion = ExtResource("2_64t2e")

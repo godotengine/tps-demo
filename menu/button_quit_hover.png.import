@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/button_quit_hover.png-88bea902fe8d3d8b23d4f57
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

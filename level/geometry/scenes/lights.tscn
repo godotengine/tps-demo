@@ -85,7 +85,7 @@ spot_angle_attenuation = 1.0
 transform = Transform3D(1, 1.55903e-09, 6.81474e-17, 0, -4.37114e-08, 1, 1.55903e-09, -1, -4.37114e-08, -3.05176e-05, -2.994, 0)
 light_energy = 2.26
 shadow_enabled = true
-shadow_bias = 0.0
+shadow_bias = 0.01
 spot_range = 5.0
 spot_angle = 30.8
 spot_angle_attenuation = 1.0
@@ -94,7 +94,7 @@ spot_angle_attenuation = 1.0
 transform = Transform3D(1, 1.55903e-09, 6.81474e-17, 0, -4.37114e-08, 1, 1.55903e-09, -1, -4.37114e-08, 0, -3.04347, -3.8147e-06)
 light_energy = 2.98
 shadow_enabled = true
-shadow_bias = 0.0
+shadow_bias = 0.01
 spot_range = 5.0
 spot_angle = 26.8
 

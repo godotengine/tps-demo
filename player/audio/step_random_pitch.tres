@@ -1,8 +1,8 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=2 format=2]
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://do3ko5enqvvrb"]
 
-[ext_resource path="res://player/audio/step.wav" type="AudioStream" id=1]
+[ext_resource type="AudioStream" uid="uid://c5228twnkf1lr" path="res://player/audio/step.wav" id="1"]
 
 [resource]
-
-audio_stream = ExtResource( 1 )
-random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("1")
+stream_0/weight = 1.0

@@ -2,18 +2,18 @@
 
 [ext_resource type="Script" path="res://enemies/red_robot/red_robot.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cmy0u0gubi0bw" path="res://enemies/red_robot/model/red_robot.glb" id="2_g6060"]
-[ext_resource type="ArrayMesh" path="res://enemies/red_robot/laser/circle.mesh" id="3_53w75"]
+[ext_resource type="ArrayMesh" uid="uid://b5a08lep8yhf1" path="res://enemies/red_robot/laser/circle.mesh" id="3_53w75"]
 [ext_resource type="Material" uid="uid://cfq45e1sfaycm" path="res://enemies/red_robot/laser/LaserMaterial.tres" id="4_6f0x2"]
 [ext_resource type="ArrayMesh" uid="uid://mku55kdo1248" path="res://enemies/red_robot/laser/raymesh.mesh" id="5_knbdw"]
 [ext_resource type="Shader" path="res://enemies/red_robot/laser/LaserShader.gdshader" id="6_qwdci"]
 [ext_resource type="Material" uid="uid://yxudvmlt7e3h" path="res://enemies/red_robot/laser/impact_effect/EmissionEmbers.tres" id="6_xf2ir"]
 [ext_resource type="Texture2D" uid="uid://cp4djbb113s3h" path="res://enemies/red_robot/laser/LaserBodyNoise.tres" id="7_dlm32"]
 [ext_resource type="Material" uid="uid://b2atvw0yire0x" path="res://enemies/red_robot/laser/EmberTrailCutoff.tres" id="7_nxdkr"]
-[ext_resource type="Material" path="res://enemies/red_robot/parts/sparks_effect/SparkMaterial.tres" id="8"]
+[ext_resource type="Material" uid="uid://b0yi1uf4xb6ex" path="res://enemies/red_robot/parts/sparks_effect/SparkMaterial.tres" id="8"]
 [ext_resource type="Gradient" path="res://enemies/red_robot/laser/EmbersColorOverLife.tres" id="8_8q6ei"]
 [ext_resource type="AudioStream" uid="uid://bfewuxtmeylhc" path="res://enemies/red_robot/audio/charge.wav" id="9"]
 [ext_resource type="Material" uid="uid://cqxcjajjrcqvk" path="res://enemies/red_robot/laser/LaserCenter.material" id="9_2boaq"]
-[ext_resource type="ArrayMesh" path="res://enemies/red_robot/laser/BarrelSmoke_Plane.mesh" id="9_l7o07"]
+[ext_resource type="ArrayMesh" uid="uid://bcvohx7obe6ar" path="res://enemies/red_robot/laser/BarrelSmoke_Plane.mesh" id="9_l7o07"]
 [ext_resource type="AudioStream" uid="uid://vld48oqn441w" path="res://enemies/red_robot/audio/shoot.wav" id="10"]
 [ext_resource type="Material" uid="uid://bhf6kwdlc7f5h" path="res://enemies/red_robot/laser/smoke.tres" id="10_bkww7"]
 [ext_resource type="PackedScene" uid="uid://biuwx526bcnen" path="res://enemies/red_robot/parts/part_head.glb" id="11"]
@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bmmpsboaqxy4s" path="res://enemies/red_robot/audio/explosion.wav" id="17"]
 [ext_resource type="AudioStream" uid="uid://h53v0p3a82ki" path="res://enemies/red_robot/audio/walk.wav" id="19"]
 [ext_resource type="AudioStream" uid="uid://iodygamtcovk" path="res://enemies/red_robot/audio/hit.wav" id="20_d1jht"]
-[ext_resource type="ArrayMesh" path="res://enemies/red_robot/parts/sparks_effect/SparkParticle_Sphere.mesh" id="22"]
+[ext_resource type="ArrayMesh" uid="uid://cna0fa1wdq56d" path="res://enemies/red_robot/parts/sparks_effect/SparkParticle_Sphere.mesh" id="22"]
 [ext_resource type="Script" path="res://enemies/red_robot/parts/part.gd" id="24"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p5m1n"]
@@ -566,58 +566,55 @@ script = ExtResource("1")
 [node name="RedRobotModel" parent="." instance=ExtResource("2_g6060")]
 
 [node name="Skeleton3D" parent="RedRobotModel/Armature" index="0"]
-bones/2/position = Vector3(0.0013105, 1.19949, -0.0713953)
-bones/2/rotation = Quaternion(0.0396912, 0.232813, 0.00612397, 0.971692)
+bones/2/position = Vector3(0, 1.20114, -0.00472171)
+bones/2/rotation = Quaternion(-0.00153308, 0.031529, 0.0319448, 0.998991)
 bones/3/rotation = Quaternion(-0.499911, -0.499911, -0.500089, 0.500089)
-bones/4/rotation = Quaternion(-0.334471, 0.244433, -0.699875, 0.581857)
-bones/5/rotation = Quaternion(7.10889e-05, 0.999996, 0.00151694, -0.00236781)
-bones/7/rotation = Quaternion(-0.109166, -0.00113482, -0.023015, 0.993756)
-bones/8/rotation = Quaternion(-0.0588085, -0.00164204, -0.0333024, 0.997712)
+bones/4/rotation = Quaternion(-0.469672, 0.468593, -0.534448, 0.523635)
+bones/5/rotation = Quaternion(-0.00748047, 0.942303, 0.334674, 0.00133683)
+bones/7/rotation = Quaternion(-0.0944425, 0.000782496, 0.0158717, 0.995404)
+bones/8/rotation = Quaternion(-0.0841591, 0.000742766, 0.0150659, 0.996338)
 bones/9/rotation = Quaternion(-0.499911, 0.499911, 0.500089, 0.500089)
-bones/10/rotation = Quaternion(-0.248222, -0.536451, 0.450958, 0.668763)
-bones/11/rotation = Quaternion(-0.286108, 0.796875, 0.193802, -0.495553)
+bones/10/rotation = Quaternion(-0.252246, -0.213129, 0.643569, 0.690483)
+bones/11/rotation = Quaternion(-0.00158411, 0.869403, 0.00101085, -0.4941)
 bones/12/rotation = Quaternion(-1.85752e-07, -0.461677, 0.887048, -3.48556e-08)
-bones/13/rotation = Quaternion(-0.0178925, -0.00309368, -0.0627477, 0.997864)
-bones/14/rotation = Quaternion(-0.106521, -0.00102886, -0.0208684, 0.994091)
+bones/13/rotation = Quaternion(-0.051257, 0.00060833, 0.0123369, 0.998609)
+bones/14/rotation = Quaternion(-0.0429339, 0.000646278, 0.0131067, 0.998992)
 bones/15/rotation = Quaternion(0.00118244, 0.707106, 0.707106, -0.00118238)
-bones/16/rotation = Quaternion(0.0487808, 4.36594e-08, -2.13228e-09, 0.99881)
-bones/18/rotation = Quaternion(-0.686434, -0.169729, -0.169729, 0.686434)
-bones/19/rotation = Quaternion(-0.384178, 0.0749691, -0.201214, 0.897942)
-bones/20/rotation = Quaternion(0.289802, -0.140504, 0.0292758, 0.946265)
-bones/21/rotation = Quaternion(-0.00776055, -0.888963, 0.457181, -0.0258994)
-bones/22/rotation = Quaternion(0.493971, -0.105185, 0.0603478, 0.86098)
-bones/23/rotation = Quaternion(-0.544635, -0.103551, -0.0125181, 0.832162)
-bones/24/rotation = Quaternion(0.147889, 0.111685, -0.0213631, 0.982445)
-bones/25/rotation = Quaternion(-0.00508712, -0.681436, 0.731806, -0.00889673)
-bones/26/rotation = Quaternion(0.408972, 0.108142, -0.0177517, 0.905943)
-bones/29/rotation = Quaternion(0.706675, 0.024693, -0.0246936, 0.706675)
-bones/30/scale = Vector3(1, 1, 1)
-bones/32/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(0.0487809, 4.36594e-08, -2.13228e-09, 0.99881)
+bones/18/rotation = Quaternion(-0.701524, -0.0886801, -0.0886801, 0.701524)
+bones/19/rotation = Quaternion(-0.370928, 0.0822236, -0.0403818, 0.924133)
+bones/20/rotation = Quaternion(0.284293, -0.138594, 0.0321782, 0.948121)
+bones/21/rotation = Quaternion(-0.00390792, -0.916789, 0.398597, -0.0245612)
+bones/22/rotation = Quaternion(0.443683, -0.108479, 0.0542043, 0.887941)
+bones/23/rotation = Quaternion(-0.305504, -0.066367, 0.296348, 0.902463)
+bones/24/rotation = Quaternion(0.249697, 0.16183, -0.0093886, 0.954659)
+bones/25/rotation = Quaternion(0.0260091, -0.788057, 0.613474, 0.0440335)
+bones/26/rotation = Quaternion(0.343803, 0.112506, -0.0248632, 0.931946)
+bones/29/rotation = Quaternion(0.707022, -0.0109696, 0.010969, 0.707022)
 bones/36/position = Vector3(1.25983, 1.30326, 0.185817)
 bones/37/rotation = Quaternion(5.33851e-08, -0.707107, 0.707107, 5.33851e-08)
-bones/39/rotation = Quaternion(0.97121, 0.00949873, -0.00244818, 0.238024)
-bones/41/rotation = Quaternion(0.958065, -0.000847721, 0.000218581, 0.28655)
+bones/39/rotation = Quaternion(0.998553, -0.0402177, 0.0103661, -0.0341592)
+bones/41/rotation = Quaternion(0.998887, -0.0396054, 0.0102083, -0.0234937)
 bones/42/rotation = Quaternion(-0.567204, -1.60356e-07, 1.10439e-07, 0.823577)
 bones/43/rotation = Quaternion(0.5665, 0.402705, 0.616376, 0.370118)
-bones/44/rotation = Quaternion(0.579314, 0.235644, 0.69615, 0.35248)
-bones/45/position = Vector3(-0.000106425, -0.361298, 0.029623)
-bones/45/rotation = Quaternion(0.527419, 0.0716747, 0.837931, -0.120682)
+bones/44/rotation = Quaternion(0.61946, 0.267158, 0.667495, 0.315193)
+bones/45/position = Vector3(-5.02977e-05, -0.361298, 0.0299357)
+bones/45/rotation = Quaternion(0.52941, 0.0640843, 0.839999, -0.100104)
 bones/47/rotation = Quaternion(-0.599593, 0.374818, 0.599592, 0.374819)
 bones/48/position = Vector3(-1.25983, 1.30326, 1.13517)
 bones/49/rotation = Quaternion(-5.33851e-08, -0.707107, 0.707107, -5.33851e-08)
-bones/51/rotation = Quaternion(0.945999, 0.191472, -0.0493512, 0.256882)
-bones/53/rotation = Quaternion(0.963629, 0.208028, -0.0536187, 0.158959)
+bones/51/rotation = Quaternion(0.920414, -0.0382196, 0.00985076, 0.388947)
+bones/53/rotation = Quaternion(0.91713, -0.0382163, 0.00984991, 0.396631)
 bones/54/rotation = Quaternion(-0.567204, 1.60356e-07, -1.10439e-07, 0.823577)
 bones/55/rotation = Quaternion(-0.630266, 0.268009, 0.685756, -0.246322)
-bones/56/rotation = Quaternion(0.712152, -0.413199, -0.521914, 0.222962)
-bones/57/rotation = Quaternion(-0.662224, 0.0860973, 0.74367, -0.0316517)
+bones/56/rotation = Quaternion(0.614619, -0.369837, -0.599625, 0.354843)
+bones/57/rotation = Quaternion(-0.662232, 0.0768283, 0.743989, -0.0450163)
 bones/59/rotation = Quaternion(-0.396466, -0.585504, -0.396466, 0.585504)
 bones/60/position = Vector3(0.937933, 1.23785, -1.52284)
-bones/61/position = Vector3(-0.702017, 1.13607, -0.804415)
-bones/62/position = Vector3(9.42637, 3.0487, 15.6378)
+bones/61/position = Vector3(-1.05149, 1.13607, -1.48048)
 
 [node name="RayFrom" type="BoneAttachment3D" parent="RedRobotModel/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.890002, 0.454381, -0.0378776, -0.0306307, 0.0233023, 0.999259, 0.454927, 0.890503, -0.0068211, 0.1014, 2.00662, 0.252279)
+transform = Transform3D(-0.995755, 0.0596829, -0.0700711, -0.0637111, 0.102512, 0.992689, 0.0664297, 0.99294, -0.098274, -0.110703, 2.02572, 0.183234)
 bone_name = "CannonAnimRecoil"
 bone_idx = 17
 
