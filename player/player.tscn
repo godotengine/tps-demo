@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/model/player.glb" type="PackedScene" id=2]
@@ -205,7 +205,7 @@ nodes/walk/node = SubResource( 29 )
 nodes/walk/position = Vector2( -460, 40 )
 nodes/walk_speed/node = SubResource( 36 )
 nodes/walk_speed/position = Vector2( -280, 60 )
-node_connections = [ "state", 0, "strafe_speed", "state", 1, "walk_speed", "state", 2, "jumpup", "state", 3, "jumpdown", "output", 0, "eye_blend", "walk_speed", 0, "walk", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "land", 0, "state", "land", 1, "hardland", "strafe_speed", 0, "strafe" ]
+node_connections = [ "state", 0, "strafe_speed", "state", 1, "walk_speed", "state", 2, "jumpup", "state", 3, "jumpdown", "output", 0, "eye_blend", "aim", 0, "aimdown", "aim", 1, "land", "aim", 2, "aimup", "strafe_speed", 0, "strafe", "walk_speed", 0, "walk", "eye_blend", 0, "aim", "eye_blend", 1, "eyes", "land", 0, "state", "land", 1, "hardland" ]
 
 [sub_resource type="CapsuleShape" id=31]
 radius = 0.5
@@ -265,6 +265,37 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=38]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("LoadingColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=39]
+resource_name = "load"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("LoadingColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [sub_resource type="AudioStreamRandomPitch" id=35]
 audio_stream = ExtResource( 7 )
 
@@ -282,7 +313,7 @@ transform = Transform( 0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0 )
 bones/55/bound_children = [ NodePath("GunBone") ]
 
 [node name="GunBone" type="BoneAttachment" parent="PlayerModel/Robot_Skeleton/Skeleton" index="5"]
-transform = Transform( 0.923127, -0.382575, -0.041099, -0.0231363, 0.0514465, -0.998416, 0.384127, 0.922491, 0.0386362, -0.205969, 1.38162, 0.508228 )
+transform = Transform( 0.91932, -0.392972, -0.0252594, -0.0172128, 0.0239966, -0.999572, 0.393456, 0.919237, 0.0152949, -0.20712, 1.3628, 0.544873 )
 bone_name = "hand.R"
 
 [node name="ShootFrom" type="Position3D" parent="PlayerModel/Robot_Skeleton/Skeleton/GunBone"]
@@ -389,6 +420,16 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="LoadingColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="LoadingAnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "load"
+anims/RESET = SubResource( 38 )
+anims/load = SubResource( 39 )
 
 [node name="SoundEffects" type="Node" parent="."]
 
