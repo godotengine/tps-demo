@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c80nbk7u633n6"]
+[gd_scene load_steps=44 format=3 uid="uid://c80nbk7u633n6"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://gnsovrtic7g4" path="res://menu/experiment.hdr" id="2_v7mdg"]
@@ -95,6 +95,30 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/fonts/font = ExtResource("13")
 Label/styles/normal = null
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_4wwby"]
+resource_name = "gi_group"
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_war27"]
+resource_name = "msaa_group"
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_ajg3e"]
+resource_name = "fxaa_group"
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_5k15r"]
+resource_name = "shadow_group"
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_61i58"]
+resource_name = "ssao_group"
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_t5qdv"]
+resource_name = "bloom_group"
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_3i78h"]
+resource_name = "resolution_group"
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_80jme"]
+resource_name = "fullscreen_group"
 
 [sub_resource type="BoxShape3D" id="20"]
 size = Vector3(4, 2, 4)
@@ -270,25 +294,25 @@ environment = SubResource("2")
 transform = Transform3D(0.803991, 0, 0, 0, 0.803991, 0, 0, 0, 0.803991, 0, 0, 0)
 
 [node name="Skeleton3D" parent="PlayerModel/Robot_Skeleton" index="0"]
-bones/1/position = Vector3(0.268173, 2.09624, -0.316997)
-bones/1/rotation = Quaternion(0.112115, -0.00164791, -0.00604639, 0.993675)
-bones/2/position = Vector3(1.99957e-05, 0.243477, -0.000598437)
-bones/2/rotation = Quaternion(0.0224407, 0.0557744, -0.00913325, 0.998149)
-bones/3/position = Vector3(1.99616e-05, 0.106811, 0.000379546)
-bones/3/rotation = Quaternion(0.0137962, 0.0564812, 0.00201712, 0.998306)
-bones/4/position = Vector3(1.99659e-05, 0.121394, 0.00142952)
-bones/4/rotation = Quaternion(0.0768452, 0.0556128, 0.0100706, 0.99544)
+bones/1/position = Vector3(0.268173, 2.10529, -0.316997)
+bones/1/rotation = Quaternion(0.0979201, -0.00173405, -0.00602225, 0.995175)
+bones/2/position = Vector3(3.19375e-06, 0.239158, -0.000124079)
+bones/2/rotation = Quaternion(0.0274696, 0.00524755, -0.00259905, 0.999606)
+bones/3/position = Vector3(3.1953e-06, 0.10248, 3.24201e-05)
+bones/3/rotation = Quaternion(0.0188123, 0.00565629, -0.00151597, 0.999806)
+bones/4/position = Vector3(3.17612e-06, 0.117226, 0.000201023)
+bones/4/rotation = Quaternion(0.081946, 0.00581491, -0.000691817, 0.99662)
 bones/5/rotation = Quaternion(0.180715, -8.52238e-05, -0.00187649, 0.983534)
-bones/6/rotation = Quaternion(0.109393, 0.916476, 0.384813, 0.00492179)
-bones/10/position = Vector3(-2.09419e-08, 0.245584, 0.126631)
-bones/11/rotation = Quaternion(4.16747e-07, 0.930597, 0.366045, -5.69876e-07)
-bones/12/rotation = Quaternion(4.16724e-07, 0.930597, 0.366045, -5.69556e-07)
-bones/13/rotation = Quaternion(0.0442982, 0.958142, -0.282457, 0.0147928)
-bones/14/rotation = Quaternion(2.09514e-07, 0.959165, -0.282846, -7.20715e-07)
-bones/15/rotation = Quaternion(-0.336513, -0.354554, -0.465867, 0.737576)
-bones/16/rotation = Quaternion(-0.694616, -0.0213221, -0.0375774, 0.718082)
-bones/17/rotation = Quaternion(0.0407905, 0.0023125, -0.346023, 0.937336)
-bones/18/rotation = Quaternion(0.0350425, -0.00183072, -0.333551, 0.942079)
+bones/6/rotation = Quaternion(-0.00917277, 0.907772, 0.419335, -0.0048392)
+bones/10/position = Vector3(-1.85019e-08, 0.245584, 0.126631)
+bones/11/rotation = Quaternion(4.1704e-07, 0.930597, 0.366045, -5.68944e-07)
+bones/12/rotation = Quaternion(4.16774e-07, 0.930597, 0.366045, -5.69401e-07)
+bones/13/rotation = Quaternion(0.0442979, 0.958142, -0.282457, 0.0147934)
+bones/14/rotation = Quaternion(2.09213e-07, 0.959165, -0.282846, -7.20786e-07)
+bones/15/rotation = Quaternion(-0.33942, -0.352699, -0.469994, 0.734509)
+bones/16/rotation = Quaternion(-0.728072, 0.0109378, 0.130672, 0.672842)
+bones/17/rotation = Quaternion(0.0484542, 0.00106386, -0.381874, 0.922943)
+bones/18/rotation = Quaternion(0.0419001, -0.00218428, -0.3642, 0.930375)
 bones/20/rotation = Quaternion(-0.0338717, -0.0177171, 0.985158, 0.167341)
 bones/22/rotation = Quaternion(-0.153692, -0.0597802, 0.00318971, 0.986304)
 bones/23/rotation = Quaternion(-0.131041, -0.0202512, -0.000901781, 0.99117)
@@ -306,13 +330,13 @@ bones/40/rotation = Quaternion(-0.318888, -0.0177572, -0.0054272, 0.947611)
 bones/41/rotation = Quaternion(-0.450214, -0.118277, -0.0180463, 0.884869)
 bones/42/rotation = Quaternion(-0.447648, -0.0710501, -0.0232223, 0.89108)
 bones/45/rotation = Quaternion(0.189582, -0.137612, 0.960075, 0.152896)
-bones/47/rotation = Quaternion(-0.338619, 0.0145923, 0.0624174, 0.938737)
-bones/48/rotation = Quaternion(0.0919991, 0.0976502, 0.48054, 0.86665)
-bones/49/rotation = Quaternion(-0.204467, -0.0515048, -0.308255, 0.927642)
-bones/50/rotation = Quaternion(-0.35376, 0.371418, 0.462805, 0.72299)
-bones/51/rotation = Quaternion(-0.348653, 0.356107, 0.224401, 0.837421)
-bones/52/rotation = Quaternion(0.319716, 0.137526, 0.434502, 0.830708)
-bones/53/rotation = Quaternion(0.277844, 0.0549105, 0.340938, 0.896409)
+bones/47/rotation = Quaternion(-0.339965, 0.0117216, 0.224418, 0.913194)
+bones/48/rotation = Quaternion(0.116787, 0.0779821, 0.591046, 0.79432)
+bones/49/rotation = Quaternion(-0.256895, -0.0366245, -0.14763, 0.954395)
+bones/50/rotation = Quaternion(-0.360463, 0.366843, 0.471862, 0.716128)
+bones/51/rotation = Quaternion(-0.255366, 0.43412, 0.402621, 0.764346)
+bones/52/rotation = Quaternion(0.257472, 0.0902754, 0.40131, 0.874362)
+bones/53/rotation = Quaternion(0.206929, 0.0328614, 0.30613, 0.928647)
 bones/55/rotation = Quaternion(-0.00907353, -0.999945, 0.00213467, 0.00491076)
 bones/56/rotation = Quaternion(0.0138917, -0.0168912, 0.990289, 0.137295)
 bones/56/scale = Vector3(0.766362, 0.766362, 0.766362)
@@ -358,46 +382,46 @@ bones/89/rotation = Quaternion(-0.000405133, 0.173646, 0.984808, -0.000801945)
 bones/90/position = Vector3(5.96046e-08, 0.185297, -0.0266095)
 bones/91/position = Vector3(2.98605e-08, -1.00086e-07, -0.202989)
 bones/92/position = Vector3(-5.96046e-08, 0.0660029, 0.0266979)
-bones/95/rotation = Quaternion(0.05799, 0.0219246, 0.189872, 0.97985)
-bones/96/rotation = Quaternion(0.174514, -0.158735, -0.21745, 0.947135)
-bones/97/rotation = Quaternion(0.0101153, 0.113078, 0.391096, 0.913321)
-bones/98/rotation = Quaternion(0.994392, -0.0944115, -0.00439916, -0.0474537)
-bones/99/rotation = Quaternion(0.646329, 0.235609, 0.593638, -0.417543)
-bones/100/rotation = Quaternion(-0.106422, -0.167151, 0.965412, 0.169454)
-bones/101/rotation = Quaternion(-0.222381, -0.211119, 0.930999, -0.198033)
-bones/102/rotation = Quaternion(0.328165, 0.691241, -0.597049, 0.240886)
-bones/104/rotation = Quaternion(-0.521977, 0.392636, 0.632836, 0.415807)
-bones/105/rotation = Quaternion(0.105477, -0.207515, 0.945947, -0.225825)
-bones/106/rotation = Quaternion(0.180097, -0.349346, 0.919203, -0.0242731)
-bones/107/rotation = Quaternion(-0.305892, 0.616796, -0.722653, -0.0613609)
-bones/112/rotation = Quaternion(0.999764, 0.00107883, -7.8484e-05, -0.0217104)
-bones/113/rotation = Quaternion(0.996348, -0.000928367, -0.000252604, -0.0853804)
-bones/114/position = Vector3(0.106977, 0.0982658, 0.149509)
-bones/114/rotation = Quaternion(0.0025418, 0.7006, 0.713545, 0.0024614)
-bones/115/position = Vector3(-0.0973112, 0.0983164, 0.149498)
-bones/115/rotation = Quaternion(0.00247134, 0.700582, 0.713564, 0.00242634)
-bones/116/rotation = Quaternion(0.869649, 0.214895, -0.112368, 0.430005)
-bones/117/rotation = Quaternion(0.268127, 1.68788e-07, -2.096e-08, 0.963384)
-bones/118/rotation = Quaternion(0.174225, 9.78156e-09, 2.88953e-09, 0.984706)
-bones/119/rotation = Quaternion(-0.532579, -0.0655485, 0.162004, 0.828141)
+bones/95/rotation = Quaternion(0.31177, 0.0438844, 0.312635, 0.896177)
+bones/96/rotation = Quaternion(0.250145, -0.187921, -0.0990988, 0.944612)
+bones/97/rotation = Quaternion(0.116884, 0.140235, 0.454077, 0.872059)
+bones/98/rotation = Quaternion(0.994112, -0.0973101, -0.00453643, -0.0474531)
+bones/99/rotation = Quaternion(0.691567, 0.172435, 0.521195, -0.469422)
+bones/100/rotation = Quaternion(-0.100656, -0.135737, 0.969126, 0.17955)
+bones/101/rotation = Quaternion(-0.21997, -0.180329, 0.942055, -0.177842)
+bones/102/rotation = Quaternion(0.34303, 0.678876, -0.570197, 0.310375)
+bones/104/rotation = Quaternion(-0.43548, 0.47474, 0.663966, 0.379642)
+bones/105/rotation = Quaternion(0.0973057, -0.182085, 0.942505, -0.262796)
+bones/106/rotation = Quaternion(0.124773, -0.334179, 0.890957, -0.280984)
+bones/107/rotation = Quaternion(-0.294965, 0.518808, -0.801522, 0.0373738)
+bones/112/rotation = Quaternion(0.999809, 0.00108364, -8.00755e-05, -0.0195184)
+bones/113/rotation = Quaternion(0.996166, -0.000932083, -0.000254458, -0.0874788)
+bones/114/position = Vector3(0.107288, 0.0973731, 0.151806)
+bones/114/rotation = Quaternion(0.00255516, 0.696705, 0.717349, 0.00244752)
+bones/115/position = Vector3(-0.0970002, 0.0974237, 0.151796)
+bones/115/rotation = Quaternion(0.00248451, 0.696687, 0.717367, 0.00241285)
+bones/116/rotation = Quaternion(0.884453, 0.211747, -0.108677, 0.401367)
+bones/117/rotation = Quaternion(0.253536, 1.73131e-07, -8.1015e-09, 0.967326)
+bones/118/rotation = Quaternion(0.158237, 3.57963e-09, 5.08242e-11, 0.987401)
+bones/119/rotation = Quaternion(-0.522544, -0.0719618, 0.157697, 0.834806)
 bones/121/rotation = Quaternion(-0.384436, 5.74738e-10, -6.29245e-09, 0.923152)
-bones/122/rotation = Quaternion(0.981098, -4.60151e-07, 3.14232e-08, 0.193512)
-bones/124/rotation = Quaternion(0.934119, -0.18445, 0.110726, 0.28485)
-bones/125/rotation = Quaternion(0.325729, 1.42842e-07, -4.62522e-08, 0.945463)
-bones/126/rotation = Quaternion(0.204298, -2.80244e-09, 9.61849e-09, 0.978909)
-bones/127/rotation = Quaternion(-0.683833, -0.00722431, -0.18225, 0.706473)
+bones/122/rotation = Quaternion(0.983136, -5.56165e-07, 2.64429e-08, 0.182874)
+bones/124/rotation = Quaternion(0.941839, -0.18168, 0.109321, 0.26073)
+bones/125/rotation = Quaternion(0.313795, 1.29725e-07, -4.2657e-08, 0.949491)
+bones/126/rotation = Quaternion(0.192338, -8.94377e-09, 7.43267e-09, 0.981329)
+bones/127/rotation = Quaternion(-0.675135, -0.00407835, -0.179269, 0.715569)
 bones/128/rotation = Quaternion(6.14475e-09, 0.940004, -0.341165, -4.50954e-08)
 bones/129/rotation = Quaternion(-0.384436, -5.74738e-10, 4.27475e-09, 0.923152)
-bones/130/rotation = Quaternion(0.972073, -5.17376e-07, 3.08143e-08, 0.234681)
+bones/130/rotation = Quaternion(0.974118, -4.56727e-07, 2.30836e-08, 0.22604)
 bones/134/position = Vector3(0.735576, 1.3891, -0.136944)
-bones/136/position = Vector3(3.75821, 2.79657, 6.08647)
-bones/137/position = Vector3(0.782667, 2.29394, -0.38149)
+bones/136/position = Vector3(0.436638, 2.11725, 7.55084)
+bones/137/position = Vector3(0.783024, 2.30015, -0.369867)
 bones/137/rotation = Quaternion(-0.707029, 0.0104927, -0.0104927, 0.707029)
-bones/139/position = Vector3(-0.160432, 2.92309, 0.289828)
+bones/139/position = Vector3(-0.158554, 2.94935, 0.28189)
 bones/139/rotation = Quaternion(-0.707029, 0.0104927, -0.0104927, 0.707029)
-bones/140/position = Vector3(-0.201236, 1.9972, -0.0890323)
-bones/143/position = Vector3(0.0110175, 3.50022, -1.24379)
-bones/143/scale = Vector3(1, 1.06456, 1)
+bones/140/position = Vector3(-0.343806, 1.9972, -0.0890323)
+bones/143/position = Vector3(0.0110175, 3.51388, -1.24379)
+bones/143/scale = Vector3(1, 1.011, 1)
 
 [node name="00Robot_Body008" parent="PlayerModel/Robot_Skeleton/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_xm1fn")
@@ -518,18 +542,21 @@ text = "Global Illumination:"
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_4wwby")
 text = "High"
 
 [node name="Low" type="Button" parent="UI/Settings/GI"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_4wwby")
 text = "Low"
 
 [node name="Disabled" type="Button" parent="UI/Settings/GI"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_4wwby")
 text = "Disabled"
 
 [node name="AA" type="HBoxContainer" parent="UI/Settings"]
@@ -545,24 +572,28 @@ text = "Antialiasing (MSAA):"
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_war27")
 text = "8x"
 
 [node name="4X" type="Button" parent="UI/Settings/AA"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_war27")
 text = "4x"
 
 [node name="2X" type="Button" parent="UI/Settings/AA"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_war27")
 text = "2x"
 
 [node name="Disabled" type="Button" parent="UI/Settings/AA"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_war27")
 text = "Disabled"
 
 [node name="FXAA" type="HBoxContainer" parent="UI/Settings"]
@@ -579,12 +610,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 keep_pressed_outside = true
+button_group = SubResource("ButtonGroup_ajg3e")
 text = "Enabled"
 
 [node name="Disabled" type="Button" parent="UI/Settings/FXAA"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_ajg3e")
 text = "Disabled"
 
 [node name="Shadow" type="HBoxContainer" parent="UI/Settings"]
@@ -599,12 +632,14 @@ text = "Shadow Mapping:"
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_5k15r")
 text = "Enabled"
 
 [node name="Disabled" type="Button" parent="UI/Settings/Shadow"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_5k15r")
 text = "Disabled"
 
 [node name="SSAO" type="HBoxContainer" parent="UI/Settings"]
@@ -620,18 +655,21 @@ text = "SSAO:"
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_61i58")
 text = "High"
 
 [node name="Low" type="Button" parent="UI/Settings/SSAO"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_61i58")
 text = "Low"
 
 [node name="Disabled" type="Button" parent="UI/Settings/SSAO"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_61i58")
 text = "Disabled"
 
 [node name="Bloom" type="HBoxContainer" parent="UI/Settings"]
@@ -647,18 +685,21 @@ text = "Bloom:"
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_t5qdv")
 text = "High"
 
 [node name="Low" type="Button" parent="UI/Settings/Bloom"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_t5qdv")
 text = "Low"
 
 [node name="Disabled" type="Button" parent="UI/Settings/Bloom"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_t5qdv")
 text = "Disabled"
 
 [node name="Resolution" type="HBoxContainer" parent="UI/Settings"]
@@ -673,24 +714,28 @@ text = "Resolution:"
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_3i78h")
 text = "Native"
 
 [node name="1080" type="Button" parent="UI/Settings/Resolution"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_3i78h")
 text = "1080"
 
 [node name="720" type="Button" parent="UI/Settings/Resolution"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_3i78h")
 text = "720"
 
 [node name="540" type="Button" parent="UI/Settings/Resolution"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_3i78h")
 text = "540"
 
 [node name="Fullscreen" type="HBoxContainer" parent="UI/Settings"]
@@ -705,12 +750,14 @@ text = "Fullscreen"
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_80jme")
 text = "Yes"
 
 [node name="No" type="Button" parent="UI/Settings/Fullscreen"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_80jme")
 text = "No"
 
 [node name="HSeparator" type="HSeparator" parent="UI/Settings"]

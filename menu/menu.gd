@@ -161,46 +161,46 @@ func _on_apply_pressed():
 	play_button.grab_focus()
 	settings_menu.hide()
 
-	if gi_high.pressed:
+	if gi_high.button_pressed:
 		Settings.gi_quality = Settings.GIQuality.HIGH
-	elif gi_low.pressed:
+	elif gi_low.button_pressed:
 		Settings.gi_quality = Settings.GIQuality.LOW
-	elif gi_disabled.pressed:
+	elif gi_disabled.button_pressed:
 		Settings.gi_quality = Settings.GIQuality.DISABLED
 
-	if aa_8x.pressed:
+	if aa_8x.button_pressed:
 		Settings.aa_quality = Settings.AAQuality.AA_8X
-	elif aa_4x.pressed:
+	elif aa_4x.button_pressed:
 		Settings.aa_quality = Settings.AAQuality.AA_4X
-	elif aa_2x.pressed:
+	elif aa_2x.button_pressed:
 		Settings.aa_quality = Settings.AAQuality.AA_2X
-	elif aa_disabled.pressed:
+	elif aa_disabled.button_pressed:
 		Settings.aa_quality = Settings.AAQuality.DISABLED
 
 	Settings.shadow_enabled = shadow_enabled.button_pressed
 	Settings.fxaa = fxaa_enabled.button_pressed
 
-	if ssao_high.pressed:
+	if ssao_high.button_pressed:
 		Settings.ssao_quality = Settings.SSAOQuality.HIGH
-	elif ssao_low.pressed:
+	elif ssao_low.button_pressed:
 		Settings.ssao_quality = Settings.SSAOQuality.LOW
-	elif ssao_disabled.pressed:
+	elif ssao_disabled.button_pressed:
 		Settings.ssao_quality = Settings.SSAOQuality.DISABLED
 
-	if bloom_high.pressed:
+	if bloom_high.button_pressed:
 		Settings.bloom_quality = Settings.BloomQuality.HIGH
-	elif bloom_low.pressed:
+	elif bloom_low.button_pressed:
 		Settings.bloom_quality = Settings.BloomQuality.LOW
-	elif bloom_disabled.pressed:
+	elif bloom_disabled.button_pressed:
 		Settings.bloom_quality = Settings.BloomQuality.DISABLED
 
-	if resolution_native.pressed:
+	if resolution_native.button_pressed:
 		Settings.resolution = Settings.Resolution.NATIVE
-	elif resolution_1080.pressed:
+	elif resolution_1080.button_pressed:
 		Settings.resolution = Settings.Resolution.RES_1080
-	elif resolution_720.pressed:
+	elif resolution_720.button_pressed:
 		Settings.resolution = Settings.Resolution.RES_720
-	elif resolution_540.pressed:
+	elif resolution_540.button_pressed:
 		Settings.resolution = Settings.Resolution.RES_540
 
 	Settings.fullscreen = fullscreen_yes.button_pressed
