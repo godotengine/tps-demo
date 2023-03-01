@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/door.dae-7f8548364364a8c72d317db0aac6a97d.scn
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="Node3D"
 nodes/root_name="DoorModel"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

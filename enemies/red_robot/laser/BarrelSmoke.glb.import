@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/BarrelSmoke.glb-8e2d69c4951af8065240d2d52c721
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

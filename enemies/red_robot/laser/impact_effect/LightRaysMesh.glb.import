@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/LightRaysMesh.glb-7064e2802466cd2578058f8b016
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

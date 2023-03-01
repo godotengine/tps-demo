@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/muzzle_flash_particle_mesh.glb-a66d023aa06942
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

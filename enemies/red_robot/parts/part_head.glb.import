@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/part_head.glb-8de207327aec4b1572370054a7354cf
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

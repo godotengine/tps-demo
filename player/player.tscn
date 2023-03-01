@@ -573,8 +573,8 @@ offset_top = -12.0
 offset_right = 12.0
 offset_bottom = 12.0
 texture = ExtResource("3")
-expand_mode = 1
-stretch_mode = 1
+expand_mode = 3
+stretch_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)

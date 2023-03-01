@@ -1,22 +1,11 @@
-[gd_resource type="Environment" load_steps=3 format=3 uid="uid://cnn46umvf55rs"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uefjr"]
-sky_top_color = Color(0.411765, 0.305882, 0.0862745, 1)
-sky_horizon_color = Color(0.458824, 0.431373, 0.137255, 1)
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
-
-[sub_resource type="Sky" id="Sky_sicf0"]
-sky_material = SubResource("ProceduralSkyMaterial_uefjr")
-radiance_size = 1
+[gd_resource type="Environment" format=3 uid="uid://cnn46umvf55rs"]
 
 [resource]
 background_mode = 1
 background_energy_multiplier = 0.4
-sky = SubResource("Sky_sicf0")
-ambient_light_source = 3
+ambient_light_source = 2
 ambient_light_color = Color(0.258824, 0.203922, 0.152941, 1)
-reflected_light_source = 2
+reflected_light_source = 1
 tonemap_mode = 3
 tonemap_exposure = 3.0
 tonemap_white = 6.0

@@ -1,39 +1,25 @@
-[gd_scene load_steps=36 format=3 uid="uid://c80nbk7u633n6"]
+[gd_scene load_steps=27 format=3 uid="uid://c80nbk7u633n6"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://gnsovrtic7g4" path="res://menu/experiment.hdr" id="2_v7mdg"]
 [ext_resource type="PackedScene" uid="uid://div25sd40yx1d" path="res://player/model/player.glb" id="3"]
 [ext_resource type="Material" path="res://player/model/playerobot.tres" id="3_xm1fn"]
 [ext_resource type="Material" path="res://player/model/robotemitter.tres" id="4_bny8p"]
 [ext_resource type="AudioStream" uid="uid://bfq26n228ipa" path="res://menu/menu_intro_music.ogg" id="5"]
 [ext_resource type="Texture2D" uid="uid://ckwsj2km1edy6" path="res://menu/tps_demo.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://c6gsd2mdmea8w" path="res://menu/floor.png" id="6_qhdg0"]
-[ext_resource type="Texture2D" uid="uid://bg3ev35ayf2q" path="res://menu/button_play.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://dn0ptke5qh8o5" path="res://menu/button_play_hover.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://4nhlw88xbyk6" path="res://menu/button_settings.png" id="9"]
-[ext_resource type="Texture2D" uid="uid://c5mv5aa4n3e5e" path="res://menu/button_settings_hover.png" id="10"]
-[ext_resource type="Texture2D" uid="uid://dsq5y32acbkji" path="res://menu/button_quit.png" id="11"]
-[ext_resource type="Texture2D" uid="uid://dfsb3q1v2mk3m" path="res://menu/button_quit_hover.png" id="12"]
 [ext_resource type="FontFile" path="res://menu/button_font.tres" id="13"]
 [ext_resource type="StyleBox" path="res://menu/button_pressed.tres" id="14"]
 [ext_resource type="StyleBox" path="res://menu/button_normal.tres" id="15"]
-[ext_resource type="StyleBox" path="res://menu/button_focus.tres" id="16"]
+[ext_resource type="StyleBox" uid="uid://b26bf43rurols" path="res://menu/button_focus.tres" id="16"]
 [ext_resource type="StyleBox" path="res://menu/button_hover.tres" id="17"]
 [ext_resource type="PackedScene" uid="uid://byi6b08jpb2iw" path="res://enemies/red_robot/red_robot.tscn" id="19"]
 [ext_resource type="PackedScene" uid="uid://jphgr3qep5" path="res://player/bullet/bullet.tscn" id="20"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ymawy"]
-panorama = ExtResource("2_v7mdg")
-
-[sub_resource type="Sky" id="1"]
-sky_material = SubResource("PanoramaSkyMaterial_ymawy")
-radiance_size = 2
-
 [sub_resource type="Environment" id="2"]
 background_mode = 1
-sky = SubResource("1")
-ambient_light_source = 3
-reflected_light_source = 2
+ambient_light_source = 2
+ambient_light_color = Color(0.164706, 0.184314, 0.270588, 1)
+reflected_light_source = 1
 glow_enabled = true
 glow_levels/1 = 1.0
 glow_levels/4 = 1.0
@@ -428,7 +414,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_froyn")
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.967027, 0, 0.254675, -0.225291, 0.466312, 0.855452, -0.118758, -0.88462, 0.450936, 0.557445, 2.31204, 0.556668)
 shadow_enabled = true
-shadow_bias = 0.01
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.871624, -0.0363083, 0.488828, 0, 0.997253, 0.0740721, -0.490175, -0.064563, 0.86923, 0.0702285, 1.22404, 2.09675)
@@ -458,7 +443,7 @@ anchor_bottom = 1.0
 theme = SubResource("9")
 
 [node name="Main" type="Control" parent="UI"]
-anchors_preset = 0
+layout_mode = 1
 anchor_left = -0.000673103
 anchor_top = -0.00189865
 anchor_right = 0.999327
@@ -468,15 +453,15 @@ offset_top = 2.05054
 offset_right = -4.10107
 offset_bottom = 2.05054
 
-[node name="Play" type="TextureButton" parent="UI/Main"]
+[node name="Play" type="Button" parent="UI/Main"]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 390.0
 offset_right = 400.0
 offset_bottom = 440.0
-texture_normal = ExtResource("7")
-texture_pressed = ExtResource("7")
-texture_hover = ExtResource("8")
+theme_override_font_sizes/font_size = 30
+text = "PLAY"
+alignment = 0
 
 [node name="PlayOnline" type="Button" parent="UI/Main"]
 layout_mode = 0
@@ -485,28 +470,28 @@ offset_top = 490.0
 offset_right = 400.0
 offset_bottom = 540.0
 theme_override_font_sizes/font_size = 30
-text = "Play Online"
+text = "PLAY ONLINE"
 alignment = 0
 
-[node name="Settings" type="TextureButton" parent="UI/Main"]
+[node name="Settings" type="Button" parent="UI/Main"]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 590.0
 offset_right = 400.0
 offset_bottom = 640.0
-texture_normal = ExtResource("9")
-texture_pressed = ExtResource("9")
-texture_hover = ExtResource("10")
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+alignment = 0
 
-[node name="Quit" type="TextureButton" parent="UI/Main"]
+[node name="Quit" type="Button" parent="UI/Main"]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 690.0
 offset_right = 400.0
 offset_bottom = 740.0
-texture_normal = ExtResource("11")
-texture_pressed = ExtResource("11")
-texture_hover = ExtResource("12")
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+alignment = 0
 
 [node name="Online" type="Control" parent="UI"]
 visible = false
@@ -714,17 +699,11 @@ layout_mode = 2
 size_flags_vertical = 1
 text = "Bloom:"
 
-[node name="High" type="Button" parent="UI/Settings/Bloom"]
+[node name="Enabled" type="Button" parent="UI/Settings/Bloom"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-text = "High"
-
-[node name="Low" type="Button" parent="UI/Settings/Bloom"]
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "Low"
+text = "Enabled"
 
 [node name="Disabled" type="Button" parent="UI/Settings/Bloom"]
 layout_mode = 2
@@ -738,31 +717,31 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UI/Settings/Resolution"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-text = "Resolution:"
+text = "3D scale:"
 
-[node name="Native" type="Button" parent="UI/Settings/Resolution"]
+[node name="100" type="Button" parent="UI/Settings/Resolution"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-text = "Native"
+text = "100%"
 
-[node name="1080" type="Button" parent="UI/Settings/Resolution"]
+[node name="90" type="Button" parent="UI/Settings/Resolution"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-text = "1080"
+text = "90%"
 
-[node name="720" type="Button" parent="UI/Settings/Resolution"]
+[node name="70" type="Button" parent="UI/Settings/Resolution"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-text = "720"
+text = "70%"
 
-[node name="540" type="Button" parent="UI/Settings/Resolution"]
+[node name="50" type="Button" parent="UI/Settings/Resolution"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-text = "540"
+text = "50%"
 
 [node name="Fullscreen" type="HBoxContainer" parent="UI/Settings"]
 layout_mode = 2

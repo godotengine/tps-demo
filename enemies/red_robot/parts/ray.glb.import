@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/ray.glb-8e1d5bd28d6e0c01a107a5b661f05121.scn"
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
