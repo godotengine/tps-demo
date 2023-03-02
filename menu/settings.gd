@@ -1,5 +1,11 @@
 extends Node
 
+enum GIType {
+	SDFGI = 0,
+	VOXEL_GI = 1,
+	LIGHTMAP_GI = 2,
+}
+
 enum GIQuality {
 	DISABLED = 0,
 	LOW = 1,
@@ -19,6 +25,7 @@ enum SSAOQuality {
 	HIGH = 2,
 }
 
+var gi_type = GIType.VOXEL_GI
 var gi_quality = GIQuality.LOW
 var aa_quality = AAQuality.AA_2X
 var shadow_enabled = true
@@ -51,6 +58,9 @@ func load_settings():
 	if typeof(d) != TYPE_DICTIONARY:
 		return
 
+	if "gi_type" in d:
+		gi_type = int(d.gi) as GIType
+
 	if "gi" in d:
 		gi_quality = int(d.gi) as GIQuality
 
@@ -81,5 +91,5 @@ func save_settings():
 	var error = FileAccess.get_open_error()
 	assert(not error)
 
-	var d = { "gi":gi_quality, "aa":aa_quality, "shadow_enabled":shadow_enabled, "fxaa":fxaa, "ssao":ssao_quality, "bloom":bloom, "resolution":resolution, "fullscreen":fullscreen }
+	var d = { "gi_type":gi_type, "gi":gi_quality, "aa":aa_quality, "shadow_enabled":shadow_enabled, "fxaa":fxaa, "ssao":ssao_quality, "bloom":bloom, "resolution":resolution, "fullscreen":fullscreen }
 	file.store_line(JSON.stringify(d))

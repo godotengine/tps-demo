@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" path="res://menu/button_font.tres" id="13"]
 [ext_resource type="StyleBox" path="res://menu/button_pressed.tres" id="14"]
 [ext_resource type="StyleBox" path="res://menu/button_normal.tres" id="15"]
-[ext_resource type="StyleBox" uid="uid://b26bf43rurols" path="res://menu/button_focus.tres" id="16"]
+[ext_resource type="StyleBox" path="res://menu/button_focus.tres" id="16"]
 [ext_resource type="StyleBox" path="res://menu/button_hover.tres" id="17"]
 [ext_resource type="PackedScene" uid="uid://byi6b08jpb2iw" path="res://enemies/red_robot/red_robot.tscn" id="19"]
 [ext_resource type="PackedScene" uid="uid://jphgr3qep5" path="res://player/bullet/bullet.tscn" id="20"]
@@ -562,13 +562,39 @@ anchor_top = 0.23148
 anchor_right = 0.808854
 anchor_bottom = 1.00278
 
+[node name="GIType" type="HBoxContainer" parent="UI/Settings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Settings/GIType"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "GI Type:"
+
+[node name="SDFGI" type="Button" parent="UI/Settings/GIType"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "SDFGI"
+
+[node name="VoxelGI" type="Button" parent="UI/Settings/GIType"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "VoxelGI"
+
+[node name="LightmapGI" type="Button" parent="UI/Settings/GIType"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "LightmapGI"
+
 [node name="GI" type="HBoxContainer" parent="UI/Settings"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/Settings/GI"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-text = "Global Illumination:"
+text = "GI Quality:"
 
 [node name="High" type="Button" parent="UI/Settings/GI"]
 layout_mode = 2

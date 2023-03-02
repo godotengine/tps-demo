@@ -2,6 +2,7 @@ extends Node3D
 
 const RedRobot = preload("res://enemies/red_robot/red_robot.tscn")
 const PlayerScene = preload("res://player/player.tscn")
+var lightmap_gi = null
 
 signal quit
 #warning-ignore:unused_signal
@@ -13,13 +14,13 @@ signal replace_main_scene # Useless, but needed as there is no clean way to chec
 @onready var spawn_node = $SpawnedNodes
 
 func _ready():
-	if Settings.gi_quality == Settings.GIQuality.HIGH:
-		RenderingServer.voxel_gi_set_quality(RenderingServer.VOXEL_GI_QUALITY_HIGH)
-	elif Settings.gi_quality == Settings.GIQuality.LOW:
-		RenderingServer.voxel_gi_set_quality(RenderingServer.VOXEL_GI_QUALITY_LOW)
+
+	if Settings.gi_type == Settings.GIType.SDFGI:
+		setup_sdfgi()
+	elif Settings.gi_type == Settings.GIType.VOXEL_GI:
+		setup_voxelgi()
 	else:
-		$VoxelGI.hide()
-		$ReflectionProbes.show()
+		setup_lightmapgi()
 
 	if Settings.aa_quality == Settings.AAQuality.AA_8X:
 		get_viewport().msaa_3d = SubViewport.MSAA_8X
@@ -70,6 +71,57 @@ func _ready():
 		# Then spawn/despawn players as they connect/disconnect
 		multiplayer.peer_connected.connect(add_player)
 		multiplayer.peer_disconnected.connect(del_player)
+
+
+func setup_sdfgi():
+	world_environment.environment.sdfgi_enabled = true
+	$VoxelGI.hide()
+	$ReflectionProbes.hide()
+	# LightmapGI nodes override SDFGI (even when hidden)
+	# so we need to free the LightmapGI node if it exists
+	if (lightmap_gi != null):
+		lightmap_gi.queue_free()
+
+	if Settings.gi_quality == Settings.GIQuality.HIGH:
+		RenderingServer.environment_set_sdfgi_ray_count(RenderingServer.ENV_SDFGI_RAY_COUNT_128)
+	elif Settings.gi_quality == Settings.GIQuality.LOW:
+		RenderingServer.environment_set_sdfgi_ray_count(RenderingServer.ENV_SDFGI_RAY_COUNT_16)
+	else:
+		world_environment.environment.sdfgi_enabled = false
+
+
+func setup_voxelgi():
+	world_environment.environment.sdfgi_enabled = false
+	$VoxelGI.show()
+	$ReflectionProbes.hide()
+	# LightmapGI nodes override VoxelGI (even when hidden)
+	# so we need to free the LightmapGI node if it exists
+	if (lightmap_gi != null):
+		lightmap_gi.queue_free()
+
+	if Settings.gi_quality == Settings.GIQuality.HIGH:
+		RenderingServer.voxel_gi_set_quality(RenderingServer.VOXEL_GI_QUALITY_HIGH)
+	elif Settings.gi_quality == Settings.GIQuality.LOW:
+		RenderingServer.voxel_gi_set_quality(RenderingServer.VOXEL_GI_QUALITY_LOW)
+	else:
+		$VoxelGI.hide()
+
+
+func setup_lightmapgi():
+	world_environment.environment.sdfgi_enabled = false
+	$VoxelGI.hide()
+	$ReflectionProbes.show()
+	# If no LightmapGI node, create one
+	if (lightmap_gi == null):
+		var new_gi = LightmapGI.new()
+		new_gi.light_data = load("res://level/level.lmbake")
+		new_gi.name = "LightmapGI"
+		lightmap_gi = new_gi
+		add_child(new_gi)
+
+	if Settings.gi_quality == Settings.GIQuality.DISABLED:
+		lightmap_gi.hide()
+		$ReflectionProbes.hide()
 
 
 func spawn_robot(spawn_point):

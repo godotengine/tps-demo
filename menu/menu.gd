@@ -20,6 +20,11 @@ var peer : MultiplayerPeer = OfflineMultiplayerPeer.new()
 @onready var settings_action_apply = settings_actions.get_node("Apply")
 @onready var settings_action_cancel = settings_actions.get_node("Cancel")
 
+@onready var gi_type_menu = settings_menu.get_node("GIType")
+@onready var gi_sdfgi = gi_type_menu.get_node("SDFGI")
+@onready var gi_voxelgi = gi_type_menu.get_node("VoxelGI")
+@onready var gi_lightmapgi = gi_type_menu.get_node("LightmapGI")
+
 @onready var gi_menu = settings_menu.get_node("GI")
 @onready var gi_high = gi_menu.get_node("High")
 @onready var gi_low = gi_menu.get_node("Low")
@@ -70,7 +75,7 @@ func _ready():
 	var sound_effects = $BackgroundCache/RedRobot/SoundEffects
 	for child in sound_effects.get_children():
 		child.volume_db = -200
-	for menu in [gi_menu, aa_menu, fxaa_menu, ssao_menu, shadow_menu,
+	for menu in [gi_type_menu, gi_menu, aa_menu, fxaa_menu, ssao_menu, shadow_menu,
 			bloom_menu, resolution_menu, fullscreen_menu]:
 		_make_button_group(menu)
 
@@ -113,6 +118,13 @@ func _on_settings_pressed():
 	main.hide()
 	settings_menu.show()
 	settings_action_cancel.grab_focus()
+
+	if Settings.gi_type == Settings.GIType.SDFGI:
+		gi_sdfgi.button_pressed = true
+	elif Settings.gi_type == Settings.GIType.VOXEL_GI:
+		gi_voxelgi.button_pressed = true
+	elif Settings.gi_type == Settings.GIType.LIGHTMAP_GI:
+		gi_lightmapgi.button_pressed = true
 
 	if Settings.gi_quality == Settings.GIQuality.HIGH:
 		gi_high.button_pressed = true
@@ -174,6 +186,13 @@ func _on_apply_pressed():
 	main.show()
 	play_button.grab_focus()
 	settings_menu.hide()
+
+	if gi_sdfgi.button_pressed:
+		Settings.gi_type = Settings.GIType.SDFGI
+	elif gi_voxelgi.button_pressed:
+		Settings.gi_type = Settings.GIType.VOXEL_GI
+	elif gi_lightmapgi.button_pressed:
+		Settings.gi_type = Settings.GIType.LIGHTMAP_GI
 
 	if gi_high.button_pressed:
 		Settings.gi_quality = Settings.GIQuality.HIGH
