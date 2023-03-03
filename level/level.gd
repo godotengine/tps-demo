@@ -83,7 +83,7 @@ func setup_sdfgi():
 		lightmap_gi.queue_free()
 
 	if Settings.gi_quality == Settings.GIQuality.HIGH:
-		RenderingServer.environment_set_sdfgi_ray_count(RenderingServer.ENV_SDFGI_RAY_COUNT_128)
+		RenderingServer.environment_set_sdfgi_ray_count(RenderingServer.ENV_SDFGI_RAY_COUNT_64)
 	elif Settings.gi_quality == Settings.GIQuality.LOW:
 		RenderingServer.environment_set_sdfgi_ray_count(RenderingServer.ENV_SDFGI_RAY_COUNT_16)
 	else:
