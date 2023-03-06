@@ -6,8 +6,11 @@ signal replace_main_scene
 #warning-ignore:unused_signal
 signal quit # Useless, but needed as there is no clean way to check if a node exposes a signal
 
+var peer : MultiplayerPeer = OfflineMultiplayerPeer.new()
+
 @onready var ui = $UI
 @onready var main = ui.get_node("Main")
+@onready var online = ui.get_node("Online")
 @onready var play_button = main.get_node("Play")
 @onready var settings_button = main.get_node("Settings")
 @onready var quit_button = main.get_node("Quit")
@@ -61,10 +64,16 @@ signal quit # Useless, but needed as there is no clean way to check if a node ex
 @onready var loading_done_timer = loading.get_node("DoneTimer")
 
 func _ready():
+	if DisplayServer.get_name() == "headless":
+		_on_host_pressed.call_deferred()
+
 	play_button.grab_focus()
 	var sound_effects = $BackgroundCache/RedRobot/SoundEffects
 	for child in sound_effects.get_children():
 		child.volume_db = -200
+	for menu in [gi_menu, aa_menu, fxaa_menu, ssao_menu, shadow_menu,
+			bloom_menu, resolution_menu, fullscreen_menu]:
+		_make_button_group(menu)
 
 func _process(_delta):
 	if loading.visible:
@@ -81,13 +90,22 @@ func _process(_delta):
 			main.show()
 			loading.hide()
 
+func _make_button_group(common_parent: Node):
+	var group = ButtonGroup.new()
+	for btn in common_parent.get_children():
+		if not btn is BaseButton:
+			continue
+		btn.button_group = group
+
 func _on_loading_done_timer_timeout():
+	multiplayer.multiplayer_peer = peer
 	emit_signal("replace_main_scene", ResourceLoader.load_threaded_get(path))
 
 func _on_play_pressed():
 	main.hide()
 	loading.show()
 	if ResourceLoader.has_cached(path):
+		multiplayer.multiplayer_peer = peer
 		emit_signal("replace_main_scene", ResourceLoader.load_threaded_get(path))
 	else:
 		ResourceLoader.load_threaded_request(path, "", true)
@@ -215,3 +233,23 @@ func _on_cancel_pressed():
 	main.show()
 	play_button.grab_focus()
 	settings_menu.hide()
+	online.hide()
+
+
+func _on_play_online_pressed():
+	online.show()
+	main.hide()
+
+
+func _on_host_pressed():
+	peer = ENetMultiplayerPeer.new()
+	peer.create_server(int($UI/Online/Port.value))
+	_on_play_pressed()
+	online.hide()
+
+
+func _on_connect_pressed():
+	peer = ENetMultiplayerPeer.new()
+	peer.create_client($UI/Online/Address.text, int($UI/Online/Port.value))
+	_on_play_pressed()
+	online.hide()

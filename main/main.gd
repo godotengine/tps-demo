@@ -1,12 +1,18 @@
 extends Node
 
 func _ready():
+	multiplayer.server_relay = false
+	if DisplayServer.get_name() == "headless":
+		Engine.max_fps = 60
+	randomize()
 	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (Settings.fullscreen) else Window.MODE_WINDOWED
 	go_to_main_menu()
 
 
 func go_to_main_menu():
 	var menu = ResourceLoader.load("res://menu/menu.tscn")
+	multiplayer.multiplayer_peer.close()
+	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	change_scene_to_file(menu)
 
 
