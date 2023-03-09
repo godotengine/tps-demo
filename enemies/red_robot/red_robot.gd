@@ -150,7 +150,7 @@ func animate(delta:=0.0):
 	if target_position != Vector3.ZERO:
 		animation_tree["parameters/aiming/blend_amount"] = clamp(aim_preparing / AIM_PREPARE_TIME, 0, 1)
 
-		var to_cannon_local = target_position + Vector3.UP * ray_mesh.global_transform
+		var to_cannon_local = (target_position + Vector3.UP) * ray_mesh.global_transform
 		var h_angle = rad_to_deg(atan2( to_cannon_local.x, -to_cannon_local.z ))
 		var v_angle = rad_to_deg(atan2( to_cannon_local.y, -to_cannon_local.z ))
 		var blend_pos = animation_tree.get("parameters/aim/blend_position")

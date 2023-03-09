@@ -59,7 +59,7 @@ func load_settings():
 		return
 
 	if "gi_type" in d:
-		gi_type = int(d.gi) as GIType
+		gi_type = int(d.gi_type) as GIType
 
 	if "gi" in d:
 		gi_quality = int(d.gi) as GIQuality
