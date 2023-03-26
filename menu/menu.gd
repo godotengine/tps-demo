@@ -20,6 +20,11 @@ var peer : MultiplayerPeer = OfflineMultiplayerPeer.new()
 @onready var settings_action_apply = settings_actions.get_node("Apply")
 @onready var settings_action_cancel = settings_actions.get_node("Cancel")
 
+@onready var gi_type_menu = settings_menu.get_node("GIType")
+@onready var gi_sdfgi = gi_type_menu.get_node("SDFGI")
+@onready var gi_voxelgi = gi_type_menu.get_node("VoxelGI")
+@onready var gi_lightmapgi = gi_type_menu.get_node("LightmapGI")
+
 @onready var gi_menu = settings_menu.get_node("GI")
 @onready var gi_high = gi_menu.get_node("High")
 @onready var gi_low = gi_menu.get_node("Low")
@@ -45,15 +50,14 @@ var peer : MultiplayerPeer = OfflineMultiplayerPeer.new()
 @onready var ssao_disabled = ssao_menu.get_node("Disabled")
 
 @onready var bloom_menu = settings_menu.get_node("Bloom")
-@onready var bloom_high = bloom_menu.get_node("High")
-@onready var bloom_low = bloom_menu.get_node("Low")
+@onready var bloom_enabled = bloom_menu.get_node("Enabled")
 @onready var bloom_disabled = bloom_menu.get_node("Disabled")
 
 @onready var resolution_menu = settings_menu.get_node("Resolution")
-@onready var resolution_native = resolution_menu.get_node("Native")
-@onready var resolution_1080 = resolution_menu.get_node("1080")
-@onready var resolution_720 = resolution_menu.get_node("720")
-@onready var resolution_540 = resolution_menu.get_node("540")
+@onready var resolution_100 = resolution_menu.get_node("100")
+@onready var resolution_90 = resolution_menu.get_node("90")
+@onready var resolution_70 = resolution_menu.get_node("70")
+@onready var resolution_50 = resolution_menu.get_node("50")
 
 @onready var fullscreen_menu = settings_menu.get_node("Fullscreen")
 @onready var fullscreen_yes = fullscreen_menu.get_node("Yes")
@@ -71,7 +75,7 @@ func _ready():
 	var sound_effects = $BackgroundCache/RedRobot/SoundEffects
 	for child in sound_effects.get_children():
 		child.volume_db = -200
-	for menu in [gi_menu, aa_menu, fxaa_menu, ssao_menu, shadow_menu,
+	for menu in [gi_type_menu, gi_menu, aa_menu, fxaa_menu, ssao_menu, shadow_menu,
 			bloom_menu, resolution_menu, fullscreen_menu]:
 		_make_button_group(menu)
 
@@ -115,6 +119,13 @@ func _on_settings_pressed():
 	settings_menu.show()
 	settings_action_cancel.grab_focus()
 
+	if Settings.gi_type == Settings.GIType.SDFGI:
+		gi_sdfgi.button_pressed = true
+	elif Settings.gi_type == Settings.GIType.VOXEL_GI:
+		gi_voxelgi.button_pressed = true
+	elif Settings.gi_type == Settings.GIType.LIGHTMAP_GI:
+		gi_lightmapgi.button_pressed = true
+
 	if Settings.gi_quality == Settings.GIQuality.HIGH:
 		gi_high.button_pressed = true
 	elif Settings.gi_quality == Settings.GIQuality.LOW:
@@ -148,27 +159,24 @@ func _on_settings_pressed():
 	elif Settings.ssao_quality == Settings.SSAOQuality.DISABLED:
 		ssao_disabled.button_pressed = true
 
-	if Settings.bloom_quality == Settings.BloomQuality.HIGH:
-		bloom_high.button_pressed = true
-	elif Settings.bloom_quality == Settings.BloomQuality.LOW:
-		bloom_low.button_pressed = true
-	elif Settings.bloom_quality == Settings.BloomQuality.DISABLED:
+	if Settings.bloom:
+		bloom_enabled.button_pressed = true
+	else:
 		bloom_disabled.button_pressed = true
 
-	if Settings.resolution == Settings.Resolution.NATIVE:
-		resolution_native.button_pressed = true
-	elif Settings.resolution == Settings.Resolution.RES_1080:
-		resolution_1080.button_pressed = true
-	elif Settings.resolution == Settings.Resolution.RES_720:
-		resolution_720.button_pressed = true
-	elif Settings.resolution == Settings.Resolution.RES_540:
-		resolution_540.button_pressed = true
+	if Settings.resolution > 0.99:
+		resolution_100.button_pressed = true
+	elif Settings.resolution > 0.89:
+		resolution_90.button_pressed = true
+	elif Settings.resolution > 0.69:
+		resolution_70.button_pressed = true
+	elif Settings.resolution > 0.49:
+		resolution_50.button_pressed = true
 
 	if Settings.fullscreen:
 		fullscreen_yes.button_pressed = true
 	else:
 		fullscreen_no.button_pressed = true
-
 
 func _on_quit_pressed():
 	get_tree().quit()
@@ -179,47 +187,49 @@ func _on_apply_pressed():
 	play_button.grab_focus()
 	settings_menu.hide()
 
-	if gi_high.pressed:
+	if gi_sdfgi.button_pressed:
+		Settings.gi_type = Settings.GIType.SDFGI
+	elif gi_voxelgi.button_pressed:
+		Settings.gi_type = Settings.GIType.VOXEL_GI
+	elif gi_lightmapgi.button_pressed:
+		Settings.gi_type = Settings.GIType.LIGHTMAP_GI
+
+	if gi_high.button_pressed:
 		Settings.gi_quality = Settings.GIQuality.HIGH
-	elif gi_low.pressed:
+	elif gi_low.button_pressed:
 		Settings.gi_quality = Settings.GIQuality.LOW
-	elif gi_disabled.pressed:
+	elif gi_disabled.button_pressed:
 		Settings.gi_quality = Settings.GIQuality.DISABLED
 
-	if aa_8x.pressed:
+	if aa_8x.button_pressed:
 		Settings.aa_quality = Settings.AAQuality.AA_8X
-	elif aa_4x.pressed:
+	elif aa_4x.button_pressed:
 		Settings.aa_quality = Settings.AAQuality.AA_4X
-	elif aa_2x.pressed:
+	elif aa_2x.button_pressed:
 		Settings.aa_quality = Settings.AAQuality.AA_2X
-	elif aa_disabled.pressed:
+	elif aa_disabled.button_pressed:
 		Settings.aa_quality = Settings.AAQuality.DISABLED
 
 	Settings.shadow_enabled = shadow_enabled.button_pressed
 	Settings.fxaa = fxaa_enabled.button_pressed
 
-	if ssao_high.pressed:
+	if ssao_high.button_pressed:
 		Settings.ssao_quality = Settings.SSAOQuality.HIGH
-	elif ssao_low.pressed:
+	elif ssao_low.button_pressed:
 		Settings.ssao_quality = Settings.SSAOQuality.LOW
-	elif ssao_disabled.pressed:
+	elif ssao_disabled.button_pressed:
 		Settings.ssao_quality = Settings.SSAOQuality.DISABLED
 
-	if bloom_high.pressed:
-		Settings.bloom_quality = Settings.BloomQuality.HIGH
-	elif bloom_low.pressed:
-		Settings.bloom_quality = Settings.BloomQuality.LOW
-	elif bloom_disabled.pressed:
-		Settings.bloom_quality = Settings.BloomQuality.DISABLED
+	Settings.bloom = bloom_enabled.button_pressed
 
-	if resolution_native.pressed:
-		Settings.resolution = Settings.Resolution.NATIVE
-	elif resolution_1080.pressed:
-		Settings.resolution = Settings.Resolution.RES_1080
-	elif resolution_720.pressed:
-		Settings.resolution = Settings.Resolution.RES_720
-	elif resolution_540.pressed:
-		Settings.resolution = Settings.Resolution.RES_540
+	if resolution_100.button_pressed:
+		Settings.resolution = 1.0
+	elif resolution_90.button_pressed:
+		Settings.resolution = 0.9
+	elif resolution_70.button_pressed:
+		Settings.resolution = 0.7
+	elif resolution_50.button_pressed:
+		Settings.resolution = 0.5
 
 	Settings.fullscreen = fullscreen_yes.button_pressed
 

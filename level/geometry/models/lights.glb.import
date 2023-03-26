@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/lights.glb-e682766b019cdb9ecca59a07b4749bef.s
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="Node3D"
 nodes/root_name="LightsModel"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://bh1lh032pmey2"]
+[gd_scene load_steps=35 format=3 uid="uid://bh1lh032pmey2"]
 
 [ext_resource type="PackedScene" path="res://level/geometry/scenes/collision/stair_pillar.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://8fujwb58dav7" path="res://level/geometry/models/structure.glb" id="2"]
+[ext_resource type="ArrayOccluder3D" uid="uid://d20dpr3pj0fn6" path="res://level/geometry/scenes/occluder.occ" id="3_2aako"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(12, 18, 20)
@@ -1922,3 +1923,6 @@ shape = SubResource("30")
 [node name="BridgePillar15" type="CollisionShape3D" parent="Bridge"]
 transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 3, -1.5, 0)
 shape = SubResource("31")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("3_2aako")

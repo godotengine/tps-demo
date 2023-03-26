@@ -13,15 +13,15 @@ dest_files=["res://.godot/imported/structure.glb-21fe3543c920768091702bd64072075
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="Node3D"
 nodes/root_name="StructureModel"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
-meshes/light_baking=1
-meshes/lightmap_texel_size=0.1
+meshes/light_baking=2
+meshes/lightmap_texel_size=0.8
 skins/use_named_skins=true
 animation/import=false
 animation/fps=15

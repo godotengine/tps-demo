@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/flying_forklift.glb-5fc3f6403d54a193b6e3b14c2
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="Node3D"
 nodes/root_name="FlyingForkliftModel"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

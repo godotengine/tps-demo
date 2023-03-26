@@ -13,15 +13,15 @@ dest_files=["res://.godot/imported/core.glb-6d1fe901749789ad3144bf80da386b2d.scn
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="Node3D"
 nodes/root_name="CoreModel"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
-meshes/light_baking=1
-meshes/lightmap_texel_size=0.1
+meshes/light_baking=2
+meshes/lightmap_texel_size=1.0
 skins/use_named_skins=true
 animation/import=false
 animation/fps=15

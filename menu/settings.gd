@@ -1,5 +1,11 @@
 extends Node
 
+enum GIType {
+	SDFGI = 0,
+	VOXEL_GI = 1,
+	LIGHTMAP_GI = 2,
+}
+
 enum GIQuality {
 	DISABLED = 0,
 	LOW = 1,
@@ -19,26 +25,14 @@ enum SSAOQuality {
 	HIGH = 2,
 }
 
-enum BloomQuality {
-	DISABLED = 0,
-	LOW = 1,
-	HIGH = 2,
-}
-
-enum Resolution {
-	RES_540 = 0,
-	RES_720 = 1,
-	RES_1080 = 2,
-	NATIVE = 3,
-}
-
+var gi_type = GIType.VOXEL_GI
 var gi_quality = GIQuality.LOW
 var aa_quality = AAQuality.AA_2X
 var shadow_enabled = true
 var fxaa = true
 var ssao_quality = SSAOQuality.DISABLED
-var bloom_quality = BloomQuality.HIGH
-var resolution = Resolution.NATIVE
+var bloom = true
+var resolution = 1.0
 var fullscreen = true
 
 func _ready():
@@ -64,6 +58,9 @@ func load_settings():
 	if typeof(d) != TYPE_DICTIONARY:
 		return
 
+	if "gi_type" in d:
+		gi_type = int(d.gi_type) as GIType
+
 	if "gi" in d:
 		gi_quality = int(d.gi) as GIQuality
 
@@ -80,10 +77,10 @@ func load_settings():
 		ssao_quality = int(d.ssao) as SSAOQuality
 
 	if "bloom" in d:
-		bloom_quality = int(d.bloom) as BloomQuality
+		bloom = bool(d.bloom)
 
 	if "resolution" in d:
-		resolution = int(d.resolution) as Resolution
+		resolution = d.resolution
 
 	if "fullscreen" in d:
 		fullscreen = bool(d.fullscreen)
@@ -94,5 +91,5 @@ func save_settings():
 	var error = FileAccess.get_open_error()
 	assert(not error)
 
-	var d = { "gi":gi_quality, "aa":aa_quality, "shadow_enabled":shadow_enabled, "fxaa":fxaa, "ssao":ssao_quality, "bloom":bloom_quality, "resolution":resolution, "fullscreen":fullscreen }
+	var d = { "gi_type":gi_type, "gi":gi_quality, "aa":aa_quality, "shadow_enabled":shadow_enabled, "fxaa":fxaa, "ssao":ssao_quality, "bloom":bloom, "resolution":resolution, "fullscreen":fullscreen }
 	file.store_line(JSON.stringify(d))

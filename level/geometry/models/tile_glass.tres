@@ -1,35 +1,24 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=2]
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://x4yrasc8fraf"]
 
-[ext_resource path="res://level/textures/structure/tile_glass_albedo.png" type="Texture2D" id=1]
-[ext_resource path="res://level/textures/structure/tile_glass_normal.png" type="Texture2D" id=2]
-[ext_resource path="res://level/textures/structure/tile_glass_orm.png" type="Texture2D" id=3]
-[ext_resource path="res://level/textures/structure/tile_glass_emission.png" type="Texture2D" id=4]
+[ext_resource type="Texture2D" uid="uid://b5imyb7wi7mgs" path="res://level/textures/structure/tile_glass_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://d2h1dgs37n1bn" path="res://level/textures/structure/tile_glass_normal.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b8miefev3aipe" path="res://level/textures/structure/tile_glass_orm.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cs0p6gx085bdj" path="res://level/textures/structure/tile_glass_emission.png" id="4"]
 
 [resource]
 resource_name = "tile_glass"
-flags_transparent = true
-albedo_color = Color( 0.0120779, 0.0427238, 0.0474042, 0.43502 )
-albedo_texture = ExtResource( 1 )
+transparency = 1
+albedo_color = Color(0.0117647, 0.0431373, 0.0470588, 0.243137)
+albedo_texture = ExtResource("1")
 metallic = 0.5
-metallic_texture = ExtResource( 3 )
+metallic_texture = ExtResource("3")
 metallic_texture_channel = 2
 roughness = 0.5
-roughness_texture = ExtResource( 3 )
+roughness_texture = ExtResource("3")
 roughness_texture_channel = 1
 emission_enabled = true
-emission = Color( 0, 0, 0, 1 )
-emission_energy = 1.0
-emission_operator = 0
-emission_on_uv2 = false
-emission_texture = ExtResource( 4 )
+emission_texture = ExtResource("4")
 normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 2 )
+normal_texture = ExtResource("2")
 ao_enabled = true
-ao_light_affect = 0.0
-ao_texture = ExtResource( 3 )
-ao_on_uv2 = false
-ao_texture_channel = 0
-refraction_enabled = true
-refraction_scale = 0.0
-refraction_texture_channel = 0
+ao_texture = ExtResource("3")

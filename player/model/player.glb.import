@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/player.glb-4fab3988dc7fd5b74f5ba5057da16803.s
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
