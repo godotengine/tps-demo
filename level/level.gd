@@ -8,13 +8,25 @@ signal replace_main_scene # Useless, but needed as there is no clean way to chec
 onready var world_environment = $WorldEnvironment
 
 func _ready():
-	if Settings.gi_quality == Settings.GIQuality.HIGH:
+	if OS.get_current_video_driver() == OS.VIDEO_DRIVER_GLES3 and Settings.gi_quality == Settings.GIQuality.HIGH:
 		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = true
-	elif Settings.gi_quality == Settings.GIQuality.LOW:
+	elif OS.get_current_video_driver() == OS.VIDEO_DRIVER_GLES3 and Settings.gi_quality == Settings.GIQuality.LOW:
 		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = false
 	else:
+		# GLES2 fallback only supports ReflectionProbe, not GIProbe.
+		# However, ReflectionProbes don't blend well with environment lighting in GLES2,
+		# so it looks better (and performs better) when ReflectionProbes are also hidden.
 		$GIProbe.hide()
-		$ReflectionProbes.show()
+		if OS.get_current_video_driver() == OS.VIDEO_DRIVER_GLES3:
+			$ReflectionProbes.show()
+		else:
+			$ReflectionProbes.hide()
+			# Brighten level if falling back to GLES2, as it looks very dark otherwise.
+			# A procedural sky is used to provide ambient and reflected lighting as a fallback.
+			world_environment.environment.background_mode = Environment.BG_SKY
+			world_environment.environment.ambient_light_sky_contribution = 1.0
+			# Adjust glow strength for GLES2 (since there is no HDR).
+			world_environment.environment.glow_strength = 1.5
 
 	if Settings.aa_quality == Settings.AAQuality.AA_8X:
 		get_viewport().msaa = Viewport.MSAA_8X

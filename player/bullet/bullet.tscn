@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://player/bullet/bullet.gd" type="Script" id=1]
 [ext_resource path="res://effects_shared/BlastMesh_Sphere.mesh" type="ArrayMesh" id=2]
@@ -373,26 +373,6 @@ scale_curve = SubResource( 40 )
 radius = 0.3
 height = 0.6
 
-[sub_resource type="Gradient" id=43]
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
-
-[sub_resource type="GradientTexture" id=44]
-gradient = SubResource( 43 )
-
-[sub_resource type="Curve" id=45]
-max_value = 4.0
-_data = [ Vector2( 0.150987, 4 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.6936 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=46]
-curve = SubResource( 45 )
-
-[sub_resource type="ParticlesMaterial" id=47]
-spread = 180.0
-gravity = Vector3( 0, -1, 0 )
-scale = 0.3
-scale_curve = SubResource( 46 )
-color_ramp = SubResource( 44 )
-
 [sub_resource type="SpatialMaterial" id=48]
 flags_transparent = true
 vertex_color_use_as_albedo = true
@@ -411,38 +391,24 @@ height = 0.2
 radial_segments = 5
 rings = 3
 
-[sub_resource type="Gradient" id=50]
-colors = PoolColorArray( 1, 1, 1, 1, 0, 0.0313726, 0.501961, 0.752941 )
+[sub_resource type="Curve" id=45]
+max_value = 4.0
+_data = [ Vector2( 0.150987, 4 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.6936 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="GradientTexture" id=51]
-gradient = SubResource( 50 )
-width = 128
-
-[sub_resource type="Curve" id=52]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.417722, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=53]
-width = 128
-curve = SubResource( 52 )
-
-[sub_resource type="ParticlesMaterial" id=54]
-emission_shape = 1
-emission_sphere_radius = 0.1
-flag_align_y = true
-direction = Vector3( 0, 0, -1 )
-spread = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 9.0
-damping = 9.0
-scale = 0.3
-scale_curve = SubResource( 53 )
-color_ramp = SubResource( 51 )
+[sub_resource type="Gradient" id=43]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [sub_resource type="SphereMesh" id=55]
 radius = 0.05
 height = 0.3
 radial_segments = 4
 rings = 4
+
+[sub_resource type="Curve" id=52]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.417722, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=50]
+colors = PoolColorArray( 1, 1, 1, 1, 0, 0.0313726, 0.501961, 0.752941 )
 
 [node name="Bullet" type="KinematicBody"]
 collision_layer = 0
@@ -545,19 +511,33 @@ mesh = ExtResource( 2 )
 
 [node name="BulletBody" type="Spatial" parent="."]
 
-[node name="MainBody" type="Particles" parent="BulletBody"]
+[node name="MainBody" type="CPUParticles" parent="BulletBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00988865, 0, 0 )
 cast_shadow = 0
 amount = 100
 lifetime = 0.1
 local_coords = false
-process_material = SubResource( 47 )
-draw_pass_1 = SubResource( 49 )
+mesh = SubResource( 49 )
+spread = 180.0
+gravity = Vector3( 0, -1, 0 )
+scale_amount = 0.3
+scale_amount_curve = SubResource( 45 )
+color_ramp = SubResource( 43 )
 
-[node name="Trail" type="Particles" parent="BulletBody"]
+[node name="Trail" type="CPUParticles" parent="BulletBody"]
 material_override = ExtResource( 9 )
 cast_shadow = 0
 amount = 10
 local_coords = false
-process_material = SubResource( 54 )
-draw_pass_1 = SubResource( 55 )
+mesh = SubResource( 55 )
+emission_shape = 1
+emission_sphere_radius = 0.1
+flag_align_y = true
+direction = Vector3( 0, 0, -1 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 9.0
+damping = 9.0
+scale_amount = 0.3
+scale_amount_curve = SubResource( 52 )
+color_ramp = SubResource( 50 )

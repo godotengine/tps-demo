@@ -201,6 +201,18 @@ anchor_right = 1.00107
 anchor_bottom = 1.0
 theme = SubResource( 9 )
 
+[node name="GLES2Fallback" type="Label" parent="UI"]
+visible = false
+margin_left = 97.9495
+margin_top = 200.0
+margin_right = 837.949
+margin_bottom = 253.0
+custom_colors/font_color = Color( 1, 0.870588, 0.356863, 1 )
+text = "GLES2 fallback (degraded graphics quality)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Main" type="Control" parent="UI"]
 anchor_left = -0.000673103
 anchor_top = -0.00189865

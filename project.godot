@@ -218,6 +218,7 @@ common/physics_interpolation=true
 
 [rendering]
 
+quality/driver/fallback_to_gles2=true
 vram_compression/import_etc2=false
 quality/shadow_atlas/size=2048
 quality/shading/use_physical_light_attenuation=true

@@ -8,6 +8,7 @@ signal replace_main_scene
 signal quit # Useless, but needed as there is no clean way to check if a node exposes a signal
 
 onready var ui = $UI
+onready var gles2_fallback = ui.get_node(@"GLES2Fallback")
 onready var main = ui.get_node(@"Main")
 onready var play_button = main.get_node(@"Play")
 onready var settings_button = main.get_node(@"Settings")
@@ -63,6 +64,13 @@ onready var loading_done_timer = loading.get_node(@"DoneTimer")
 
 func _ready():
 	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_EXPAND, Vector2(1920, 1080))
+
+	if OS.get_current_video_driver() == OS.VIDEO_DRIVER_GLES2:
+		gles2_fallback.visible = true
+		# GI and SSAO are not supported in GLES2.
+		gi_menu.visible = false
+		ssao_menu.visible = false
+
 	play_button.grab_focus()
 	var sound_effects = $BackgroundCache/RedRobot/SoundEffects
 	for child in sound_effects.get_children():
