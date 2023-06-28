@@ -8,9 +8,11 @@ Check out this demo on the asset library: https://godotengine.org/asset-library/
 
 ## Godot versions
 
-- The [`master`](https://github.com/godotengine/tps-demo) branch is compatible with the latest stable Godot version (currently 3.5.x).
+- The [`master`](https://github.com/godotengine/tps-demo) branch is compatible with the latest stable Godot version (currently 4.x).
 - If you are using an older version of Godot, use the appropriate branch for your Godot version:
 
+  - [`3.x`](https://github.com/godotengine/tps-demo/tree/3.x) branch
+  for Godot 3.4.x and 3.5.x.
   - [`3.3`](https://github.com/godotengine/tps-demo/tree/3.3) branch
   for Godot 3.3.x.
   - [`3.2`](https://github.com/godotengine/tps-demo/tree/3.2) branch
@@ -27,8 +29,9 @@ Check out this demo on the asset library: https://godotengine.org/asset-library/
 
 ## Git LFS
 
-Git LFS is no longer required for the current master branch.
-You only need Git LFS if you are checking out the 3.1 or 3.2.1 branches.
+Git LFS is no longer required for the current `master` or `3.x` branches.
+
+You only need Git LFS if you are checking out the `3.1` or `3.2.1` branches.
 Those branches have instructions for Git LFS in their README files.
 
 ## Running
