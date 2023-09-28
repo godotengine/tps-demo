@@ -211,6 +211,7 @@ mesh = ExtResource( 7 )
 
 [node name="CPUParticles" type="CPUParticles" parent="Plasma"]
 physics_interpolation_mode = 1
+portal_mode = 1
 material_override = SubResource( 20 )
 amount = 3
 preprocess = 5.29
@@ -236,6 +237,7 @@ color_ramp = SubResource( 22 )
 
 [node name="CPUParticles2" type="CPUParticles" parent="Plasma"]
 physics_interpolation_mode = 1
+portal_mode = 1
 material_override = SubResource( 23 )
 amount = 5
 mesh = ExtResource( 12 )
@@ -251,6 +253,7 @@ color_ramp = SubResource( 25 )
 
 [node name="CPUParticles3" type="CPUParticles" parent="Plasma"]
 physics_interpolation_mode = 1
+portal_mode = 1
 material_override = SubResource( 23 )
 amount = 7
 explosiveness = 0.14

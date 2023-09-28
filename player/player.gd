@@ -65,6 +65,9 @@ func _ready():
 	# Pre-initialize orientation transform.
 	orientation = player_model.global_transform
 	orientation.origin = Vector3()
+	
+	# Make sure player shows up when portals are on.
+	Portals.change_portal_mode_recursive(self, CullInstance.PORTAL_MODE_GLOBAL)
 
 
 func _process(delta):

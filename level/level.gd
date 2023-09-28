@@ -8,6 +8,8 @@ signal replace_main_scene # Useless, but needed as there is no clean way to chec
 onready var world_environment = $WorldEnvironment
 
 func _ready():
+	$RoomManager.call_deferred("rooms_convert")
+
 	if Settings.gi_quality == Settings.GIQuality.HIGH:
 		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = true
 	elif Settings.gi_quality == Settings.GIQuality.LOW:
@@ -70,3 +72,11 @@ func _input(event):
 	if event.is_action_pressed("quit"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		emit_signal("quit")
+
+	if event.is_action_pressed("ui_portals"):
+		if $RoomManager.rooms_get_active():
+			$RoomManager.rooms_set_active(false)
+			print("portals off")
+		else:
+			$RoomManager.rooms_set_active(true)
+			print("portals on")

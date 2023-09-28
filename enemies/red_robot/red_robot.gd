@@ -57,6 +57,9 @@ func _ready():
 	$AnimationTree.active = true
 	if test_shoot:
 		shoot_countdown = 0.0
+		
+	# Make sure shows up when portals are on.
+	Portals.change_portal_mode_recursive(self, CullInstance.PORTAL_MODE_ROAMING)
 
 
 func resume_approach():

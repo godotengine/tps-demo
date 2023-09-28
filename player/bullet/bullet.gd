@@ -8,6 +8,10 @@ var hit = false
 onready var animation_player = $AnimationPlayer
 onready var collision_shape = $CollisionShape
 
+func _ready():
+	# Make sure shows up when portals are on.
+	Portals.change_portal_mode_recursive(self, CullInstance.PORTAL_MODE_GLOBAL)
+
 func _physics_process(delta):
 	if hit:
 		return
