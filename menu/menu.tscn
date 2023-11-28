@@ -58,7 +58,7 @@ nodes/CombatRest/position = Vector2(-120, 100)
 nodes/Eyes/node = SubResource("7")
 nodes/Eyes/position = Vector2(-40, 220)
 nodes/output/position = Vector2(420, 120)
-node_connections = [&"output", 0, &"Blend", &"Blend", 0, &"CombatRest", &"Blend", 1, &"Eyes"]
+node_connections = [&"Blend", 0, &"CombatRest", &"Blend", 1, &"Eyes", &"output", 0, &"Blend"]
 
 [sub_resource type="Theme" id="9"]
 Button/colors/font_color = Color(1, 1, 1, 1)

@@ -16,39 +16,39 @@
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o4rt5"]
 properties/0/path = NodePath(".:transform")
 properties/0/spawn = true
-properties/0/sync = true
+properties/0/replication_mode = 1
 properties/1/path = NodePath(".:player_id")
 properties/1/spawn = true
-properties/1/sync = false
+properties/1/replication_mode = 0
 properties/2/path = NodePath("PlayerModel:transform")
 properties/2/spawn = true
-properties/2/sync = true
+properties/2/replication_mode = 1
 properties/3/path = NodePath(".:motion")
 properties/3/spawn = true
-properties/3/sync = true
+properties/3/replication_mode = 1
 properties/4/path = NodePath(".:current_animation")
 properties/4/spawn = true
-properties/4/sync = true
+properties/4/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8yuxf"]
 properties/0/path = NodePath("CameraBase:rotation")
 properties/0/spawn = true
-properties/0/sync = true
+properties/0/replication_mode = 1
 properties/1/path = NodePath("CameraBase/CameraRot:rotation")
 properties/1/spawn = true
-properties/1/sync = true
+properties/1/replication_mode = 1
 properties/2/path = NodePath("InputSynchronizer:shoot_target")
 properties/2/spawn = true
-properties/2/sync = true
+properties/2/replication_mode = 1
 properties/3/path = NodePath("InputSynchronizer:motion")
 properties/3/spawn = true
-properties/3/sync = true
+properties/3/replication_mode = 1
 properties/4/path = NodePath("InputSynchronizer:shooting")
 properties/4/spawn = true
-properties/4/sync = true
+properties/4/replication_mode = 1
 properties/5/path = NodePath("InputSynchronizer:aiming")
 properties/5/spawn = true
-properties/5/sync = true
+properties/5/replication_mode = 1
 
 [sub_resource type="SphereMesh" id="2"]
 radius = 0.003
@@ -219,7 +219,7 @@ nodes/walk/node = SubResource("29")
 nodes/walk/position = Vector2(140, 1640)
 nodes/walk_speed/node = SubResource("36")
 nodes/walk_speed/position = Vector2(440, 1600)
-node_connections = [&"output", 0, &"eye_blend", &"aim", 0, &"aimdown", &"aim", 1, &"land", &"aim", 2, &"aimup", &"eye_blend", 0, &"aim", &"eye_blend", 1, &"eyes", &"land", 0, &"state", &"land", 1, &"hardland", &"state", 0, &"strafe_speed", &"state", 1, &"walk_speed", &"state", 2, &"jumpup", &"state", 3, &"jumpdown", &"strafe_speed", 0, &"strafe", &"walk_speed", 0, &"walk"]
+node_connections = [&"aim", 0, &"aimdown", &"aim", 1, &"land", &"aim", 2, &"aimup", &"eye_blend", 0, &"aim", &"eye_blend", 1, &"eyes", &"land", 0, &"state", &"land", 1, &"hardland", &"output", 0, &"eye_blend", &"state", 0, &"strafe_speed", &"state", 1, &"walk_speed", &"state", 2, &"jumpup", &"state", 3, &"jumpdown", &"strafe_speed", 0, &"strafe", &"walk_speed", 0, &"walk"]
 
 [sub_resource type="CapsuleShape3D" id="31"]
 
