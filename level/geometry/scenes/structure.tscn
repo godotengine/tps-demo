@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=3 uid="uid://bh1lh032pmey2"]
 
-[ext_resource type="PackedScene" path="res://level/geometry/scenes/collision/stair_pillar.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://babdc0gjbduw" path="res://level/geometry/scenes/collision/stair_pillar.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://8fujwb58dav7" path="res://level/geometry/models/structure.glb" id="2"]
 [ext_resource type="ArrayOccluder3D" uid="uid://d20dpr3pj0fn6" path="res://level/geometry/scenes/occluder.occ" id="3_2aako"]
 

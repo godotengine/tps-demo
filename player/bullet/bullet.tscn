@@ -11,7 +11,7 @@
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_peqai"]
 properties/0/path = NodePath(".:global_transform")
 properties/0/spawn = true
-properties/0/sync = true
+properties/0/replication_mode = 1
 
 [sub_resource type="SphereMesh" id="SphereMesh_ku2wu"]
 radial_segments = 9
@@ -314,8 +314,8 @@ curve = SubResource("Curve_5e7et")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rdv14"]
 emission_shape = 1
 emission_sphere_radius = 0.4
-gravity = Vector3(0, 2, 0)
 angular_velocity_curve = SubResource("CurveTexture_160ax")
+gravity = Vector3(0, 2, 0)
 scale_curve = SubResource("CurveTexture_v5ggx")
 color_ramp = SubResource("GradientTexture2D_hfu4w")
 
