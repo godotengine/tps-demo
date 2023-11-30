@@ -4,126 +4,176 @@
 
 [node name="LightsModel" instance=ExtResource("1")]
 
-[node name="Point001_Orientation" parent="Point001" index="0"]
-light_color = Color(1, 0.64, 0.09, 1)
-light_energy = 1.0
-shadow_enabled = true
+[node name="Point_001_Orientation" parent="Point_001" index="0"]
+light_color = Color(1, 0.282353, 0.12549, 1)
+light_energy = 9.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
 omni_range = 25.0
 
-[node name="Spot010_Orientation" parent="Spot010" index="0"]
-light_energy = 3.0
+[node name="Spot_010_Orientation" parent="Spot_010" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 12.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
 shadow_enabled = true
-spot_range = 27.0
-spot_angle = 28.8
-spot_angle_attenuation = 1.0
+spot_range = 25.0
+spot_angle_attenuation = 2.0
 
-[node name="Spot009_Orientation" parent="Spot009" index="0"]
-light_energy = 3.0
-spot_range = 22.0
-spot_angle = 45.0
-spot_angle_attenuation = 1.0
-
-[node name="Spot008_Orientation" parent="Spot008" index="0"]
-light_energy = 3.0
-spot_range = 22.0
-spot_angle = 45.0
-spot_angle_attenuation = 1.0
-
-[node name="Spot007_Orientation" parent="Spot007" index="0"]
-light_energy = 2.0
-spot_range = 10.0
-spot_angle = 45.0
-spot_angle_attenuation = 1.0
-
-[node name="Spot006_Orientation" parent="Spot006" index="0"]
-light_energy = 2.0
-spot_range = 10.0
-spot_angle = 45.0
-
-[node name="Spot005_Orientation" parent="Spot005" index="0"]
-light_color = Color(0.82, 0.89, 0.89, 1)
-light_energy = 3.26
+[node name="Spot_009_Orientation" parent="Spot_009" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 12.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
 shadow_enabled = true
-spot_range = 10.0
-spot_angle = 45.0
+spot_range = 25.0
+spot_angle_attenuation = 2.0
 
-[node name="Spot004_Orientation" parent="Spot004" index="0"]
-light_energy = 2.0
+[node name="Spot_008_Orientation" parent="Spot_008" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 12.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
 shadow_enabled = true
-spot_range = 10.0
-spot_angle = 45.0
-spot_angle_attenuation = 1.0
+spot_range = 25.0
+spot_angle_attenuation = 2.0
 
-[node name="Spot003_Orientation" parent="Spot003" index="0"]
-light_energy = 2.0
+[node name="Spot_007_Orientation" parent="Spot_007" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 12.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
 shadow_enabled = true
-spot_range = 10.0
-spot_angle = 45.0
-spot_angle_attenuation = 1.0
+spot_range = 25.0
+spot_angle_attenuation = 2.0
 
-[node name="Spot002_Orientation" parent="Spot002" index="0"]
-light_energy = 2.0
+[node name="Spot_006_Orientation" parent="Spot_006" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 12.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
 shadow_enabled = true
-spot_range = 12.1
-spot_angle = 45.0
-spot_angle_attenuation = 1.0
+spot_range = 25.0
+spot_angle_attenuation = 2.0
 
-[node name="Spot001_Orientation" parent="Spot001" index="0"]
-light_energy = 2.0
+[node name="Spot_005_Orientation" parent="Spot_005" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 12.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
 shadow_enabled = true
-spot_range = 8.8
-spot_angle = 28.8
+spot_range = 25.0
+spot_angle_attenuation = 2.0
 
-[node name="Spot000_Orientation" parent="Spot000" index="0"]
-light_energy = 2.26
+[node name="Spot_004_Orientation" parent="Spot_004" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 12.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
 shadow_enabled = true
-spot_range = 26.3
-spot_angle = 45.0
-spot_angle_attenuation = 1.0
+spot_range = 25.0
+spot_angle_attenuation = 2.0
 
-[node name="Spot013_Orientation" parent="Spot013" index="0"]
-transform = Transform3D(1, 1.55903e-09, 6.81474e-17, 0, -4.37114e-08, 1, 1.55903e-09, -1, -4.37114e-08, -3.05176e-05, -2.994, 0)
-light_energy = 2.26
+[node name="Spot_003_Orientation" parent="Spot_003" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 12.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
 shadow_enabled = true
-shadow_bias = 0.01
-spot_range = 5.0
-spot_angle = 30.8
-spot_angle_attenuation = 1.0
+spot_range = 25.0
+spot_angle_attenuation = 2.0
 
-[node name="Spot012_Orientation" parent="Spot012" index="0"]
-transform = Transform3D(1, 1.55903e-09, 6.81474e-17, 0, -4.37114e-08, 1, 1.55903e-09, -1, -4.37114e-08, 0, -3.04347, -3.8147e-06)
-light_energy = 2.98
+[node name="Spot_002_Orientation" parent="Spot_002" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 12.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
 shadow_enabled = true
-shadow_bias = 0.01
-spot_range = 5.0
-spot_angle = 26.8
+spot_range = 25.0
+spot_angle_attenuation = 2.0
 
-[node name="Point010_Orientation" parent="Point010" index="0"]
-light_color = Color(0.0666667, 0.239216, 0.235294, 1)
+[node name="Spot_001_Orientation" parent="Spot_001" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 12.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
+shadow_enabled = true
+spot_range = 25.0
+spot_angle_attenuation = 2.0
+
+[node name="Spot_000_Orientation" parent="Spot_000" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 12.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
+shadow_enabled = true
+spot_range = 25.0
+spot_angle_attenuation = 2.0
+
+[node name="Spot_013_Orientation" parent="Spot_013" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 12.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
+shadow_enabled = true
+spot_range = 25.0
+spot_angle_attenuation = 2.0
+
+[node name="Spot_012_Orientation" parent="Spot_012" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 12.0
+light_volumetric_fog_energy = 10000.0
+light_bake_mode = 1
+shadow_enabled = true
+spot_range = 25.0
+spot_angle_attenuation = 2.0
+
+[node name="Point_010_Orientation" parent="Point_010" index="0"]
+light_color = Color(1, 1, 1, 1)
 light_energy = 1.0
-shadow_enabled = true
-omni_range = 15.0
+light_volumetric_fog_energy = 10000.0
+light_specular = 0.0
+light_bake_mode = 1
+omni_range = 25.0
 
-[node name="Point008_Orientation" parent="Point008" index="0"]
+[node name="Point_008_Orientation" parent="Point_008" index="0"]
+light_color = Color(1, 1, 1, 1)
 light_energy = 1.0
-shadow_enabled = true
-omni_range = 15.0
+light_volumetric_fog_energy = 10000.0
+light_specular = 0.0
+light_bake_mode = 1
+omni_range = 25.0
 
-[node name="Point006_Orientation" parent="Point006" index="0"]
+[node name="Point_006_Orientation" parent="Point_006" index="0"]
+light_color = Color(1, 1, 1, 1)
 light_energy = 1.0
-omni_range = 15.0
+light_volumetric_fog_energy = 10000.0
+light_specular = 0.0
+light_bake_mode = 1
+omni_range = 25.0
 
-[node name="Point004_Orientation" parent="Point004" index="0"]
+[node name="Point_004_Orientation" parent="Point_004" index="0"]
+light_color = Color(1, 1, 1, 1)
 light_energy = 1.0
-shadow_enabled = true
-omni_range = 15.0
+light_volumetric_fog_energy = 10000.0
+light_specular = 0.0
+light_bake_mode = 1
+omni_range = 25.0
 
-[node name="Point002_Orientation" parent="Point002" index="0"]
+[node name="Point_002_Orientation" parent="Point_002" index="0"]
+light_color = Color(1, 1, 1, 1)
 light_energy = 1.0
-shadow_enabled = true
-omni_range = 15.0
+light_volumetric_fog_energy = 10000.0
+light_specular = 0.0
+light_bake_mode = 1
+omni_range = 25.0
 
 [node name="Point_Orientation" parent="Point" index="0"]
+light_color = Color(1, 1, 1, 1)
 light_energy = 1.0
+light_volumetric_fog_energy = 10000.0
+light_specular = 0.0
+light_bake_mode = 1
 shadow_enabled = true
-omni_range = 15.0
+omni_range = 25.0
+omni_attenuation = 2.0

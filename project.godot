@@ -24,6 +24,8 @@ Settings="*res://menu/settings.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/size/fullscreen=true
 
 [editor]
@@ -216,8 +218,11 @@ common/physics_interpolation=true
 [rendering]
 
 reflections/sky_reflections/texture_array_reflections=false
-global_illumination/gi/use_half_resolution=true
-environment/ssao/half_size=false
-scaling_3d/mode=1
+scaling_3d/mode=2
+anti_aliasing/quality/use_debanding=true
 occlusion_culling/use_occlusion_culling=true
+lights_and_shadows/positional_shadow/atlas_size=2048
+lights_and_shadows/positional_shadow/atlas_size.mobile=1024
+lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv=2
+lights_and_shadows/positional_shadow/atlas_quadrant_3_subdiv=2
 environment/default_environment="res://default_env.tres"

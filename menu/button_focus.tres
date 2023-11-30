@@ -1,17 +1,18 @@
-[gd_resource type="StyleBoxFlat" format=2]
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://b807o31rnpht1"]
 
 [resource]
-bg_color = Color( 0, 0, 0, 0 )
+bg_color = Color(0, 0, 0, 0)
 draw_center = false
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.321569, 0.396078, 0.890196, 0.752941 )
+skew = Vector2(0.5, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.501961, 1, 1)
 border_blend = true
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 anti_aliasing = false
-anti_aliasing_size = 2
+anti_aliasing_size = 2.0

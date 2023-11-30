@@ -104,11 +104,18 @@ func _process(delta):
 
 
 func _input(event):
+	# Make mouse aiming speed resolution-independent
+	# (required when using the `canvas_items` stretch mode).
+	var scale_factor: float = min(
+			(float(get_viewport().size.x) / get_viewport().get_visible_rect().size.x),
+			(float(get_viewport().size.y) / get_viewport().get_visible_rect().size.y)
+	)
+
 	if event is InputEventMouseMotion:
 		var camera_speed_this_frame = CAMERA_MOUSE_ROTATION_SPEED
 		if aiming:
 			camera_speed_this_frame *= 0.75
-		rotate_camera(event.relative * camera_speed_this_frame)
+		rotate_camera(event.relative * camera_speed_this_frame * scale_factor)
 
 
 func rotate_camera(move):
