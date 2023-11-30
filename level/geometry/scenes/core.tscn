@@ -197,9 +197,6 @@ size = Vector3(1.2, 1.2, 2.8)
 
 [node name="CoreModel" parent="." instance=ExtResource("3")]
 
-[node name="Sphere001" parent="CoreModel" index="105"]
-visible = false
-
 [node name="Plasma" type="CPUParticles3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -2.3, 0)
 material_override = SubResource("12")

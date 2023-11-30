@@ -31,6 +31,6 @@ fog_light_color = Color(0.4, 0.25098, 0.101961, 1)
 fog_density = 0.002
 volumetric_fog_density = 0.0001
 volumetric_fog_gi_inject = 0.0
-volumetric_fog_temporal_reprojection_enabled = false
+volumetric_fog_temporal_reprojection_amount = 0.85
 adjustment_enabled = true
 adjustment_saturation = 1.4

@@ -7,6 +7,7 @@ var hit = false
 
 @onready var animation_player = $AnimationPlayer
 @onready var collision_shape = $CollisionShape3D
+@onready var omni_light = $OmniLight3D
 
 func _ready():
 	if not multiplayer.is_server():
@@ -34,6 +35,11 @@ func _physics_process(delta):
 @rpc("call_local")
 func explode():
 	animation_player.play("explode")
+
+	# Only enable shadows for the explosion, as the moving light
+	# is very small and doesn't noticeably benefit from shadow mapping.
+	if Settings.config_file.get_value("rendering", "shadow_mapping"):
+		omni_light.shadow_enabled = true
 
 
 func destroy():
