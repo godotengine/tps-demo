@@ -5,7 +5,7 @@ func _ready():
 	if DisplayServer.get_name() == "headless":
 		Engine.max_fps = 60
 	randomize()
-	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (Settings.fullscreen) else Window.MODE_WINDOWED
+	get_window().mode = Settings.config_file.get_value("video", "display_mode")
 	go_to_main_menu()
 
 
