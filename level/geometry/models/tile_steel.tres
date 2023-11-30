@@ -3,3 +3,4 @@
 [resource]
 resource_name = "tile_steel"
 metallic = 1.0
+texture_filter = 5

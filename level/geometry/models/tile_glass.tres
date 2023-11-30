@@ -22,3 +22,4 @@ normal_enabled = true
 normal_texture = ExtResource("2")
 ao_enabled = true
 ao_texture = ExtResource("3")
+texture_filter = 5

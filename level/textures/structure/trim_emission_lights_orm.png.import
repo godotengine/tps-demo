@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dtlacu2mfg4cr"
-path.s3tc="res://.godot/imported/trim_emission_lights_orm.png-c3dc78319d070fd02130b8d216eadcc1.s3tc.ctex"
+path="res://.godot/imported/trim_emission_lights_orm.png-c3dc78319d070fd02130b8d216eadcc1.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://level/textures/structure/trim_emission_lights_orm.png"
-dest_files=["res://.godot/imported/trim_emission_lights_orm.png-c3dc78319d070fd02130b8d216eadcc1.s3tc.ctex"]
+dest_files=["res://.godot/imported/trim_emission_lights_orm.png-c3dc78319d070fd02130b8d216eadcc1.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

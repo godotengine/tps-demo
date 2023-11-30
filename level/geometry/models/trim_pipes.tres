@@ -1,7 +1,8 @@
-[gd_resource type="StandardMaterial3D" format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://btb3lh0advqke"]
 
 [resource]
 resource_name = "trims_pipes"
-albedo_color = Color( 0.0135406, 0.00956619, 0.0144829, 1 )
+albedo_color = Color(0.0135406, 0.00956619, 0.0144829, 1)
 metallic = 0.0042692
 roughness = 0.542695
+texture_filter = 5

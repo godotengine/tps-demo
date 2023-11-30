@@ -1,22 +1,20 @@
-[gd_resource type="StandardMaterial3D" load_steps=4 format=2]
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://v2klt8psnllx"]
 
-[ext_resource path="res://level/textures/structure/set_asphalt_albedo.png" type="Texture2D" id=1]
-[ext_resource path="res://level/textures/structure/set_asphalt_normal.png" type="Texture2D" id=2]
-[ext_resource path="res://level/textures/structure/set_asphalt_orm.png" type="Texture2D" id=3]
+[ext_resource type="Texture2D" uid="uid://bymtnligdlipl" path="res://level/textures/structure/set_asphalt_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://di2s520ksnyt" path="res://level/textures/structure/set_asphalt_normal.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bs0ej03oxabih" path="res://level/textures/structure/set_asphalt_orm.png" id="3"]
 
 [resource]
 resource_name = "set_asphalt"
-albedo_texture = ExtResource( 1 )
+albedo_texture = ExtResource("1")
 metallic = 0.5
-metallic_texture = ExtResource( 3 )
+metallic_texture = ExtResource("3")
 metallic_texture_channel = 2
-roughness_texture = ExtResource( 3 )
+roughness_texture = ExtResource("3")
 roughness_texture_channel = 1
 normal_enabled = true
 normal_scale = 1.5
-normal_texture = ExtResource( 2 )
+normal_texture = ExtResource("2")
 ao_enabled = true
-ao_light_affect = 0.0
-ao_texture = ExtResource( 3 )
-ao_on_uv2 = false
-ao_texture_channel = 0
+ao_texture = ExtResource("3")
+texture_filter = 5

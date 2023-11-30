@@ -1,29 +1,23 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=2]
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://crai084xm7kj"]
 
-[ext_resource path="res://level/textures/props/door_normal.png" type="Texture2D" id=1]
-[ext_resource path="res://level/textures/props/door_orm.png" type="Texture2D" id=2]
-[ext_resource path="res://level/textures/props/door_emission.png" type="Texture2D" id=3]
-[ext_resource path="res://level/textures/props/door_albedo.png" type="Texture2D" id=4]
+[ext_resource type="Texture2D" uid="uid://c0s2chpxfbfva" path="res://level/textures/props/door_normal.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://crmon0kumdi2t" path="res://level/textures/props/door_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://d14y7pucpqfdu" path="res://level/textures/props/door_emission.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://u78tlsd511gf" path="res://level/textures/props/door_albedo.png" id="4"]
 
 [resource]
 resource_name = "door"
-albedo_texture = ExtResource( 4 )
+albedo_texture = ExtResource("4")
 metallic = 0.5
-metallic_texture = ExtResource( 2 )
+metallic_texture = ExtResource("2")
 metallic_texture_channel = 2
-roughness_texture = ExtResource( 2 )
+roughness_texture = ExtResource("2")
 roughness_texture_channel = 1
 emission_enabled = true
-emission = Color( 0, 0, 0, 1 )
-emission_energy = 3.0
-emission_operator = 0
-emission_on_uv2 = false
-emission_texture = ExtResource( 3 )
+emission_energy_multiplier = 3.0
+emission_texture = ExtResource("3")
 normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 1 )
+normal_texture = ExtResource("1")
 ao_enabled = true
-ao_light_affect = 0.0
-ao_texture = ExtResource( 2 )
-ao_on_uv2 = false
-ao_texture_channel = 0
+ao_texture = ExtResource("2")
+texture_filter = 5

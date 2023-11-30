@@ -1,6 +1,7 @@
-[gd_resource type="StandardMaterial3D" format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://lg6qj8wpa5va"]
 
 [resource]
 resource_name = "tile_black_plastic"
-albedo_color = Color( 0.0224657, 0.027302, 0.0741629, 1 )
+albedo_color = Color(0.0224657, 0.027302, 0.0741629, 1)
 roughness = 0.542695
+texture_filter = 5

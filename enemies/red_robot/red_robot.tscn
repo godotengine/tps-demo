@@ -10297,8 +10297,6 @@ bones/24/rotation = Quaternion(0.148649, 0.111638, -0.021468, 0.982334)
 bones/25/rotation = Quaternion(-0.00478714, -0.681487, 0.731769, -0.00823542)
 bones/26/rotation = Quaternion(0.399233, 0.108838, -0.0188344, 0.910172)
 bones/29/rotation = Quaternion(0.706577, 0.0273779, -0.0273784, 0.706577)
-bones/30/scale = Vector3(1, 1, 1)
-bones/32/scale = Vector3(1, 1, 1)
 bones/36/position = Vector3(1.25983, 1.30326, 0.185817)
 bones/37/rotation = Quaternion(5.33851e-08, -0.707107, 0.707107, 5.33851e-08)
 bones/39/rotation = Quaternion(0.972381, 0.0110875, -0.00285769, 0.233117)
@@ -10323,7 +10321,7 @@ bones/61/position = Vector3(-0.702017, 1.13607, -0.804415)
 bones/62/position = Vector3(9.22342, 3.0487, 15.6378)
 
 [node name="RayFrom" type="BoneAttachment3D" parent="RedRobotModel/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.89197, 0.450585, -0.0369248, -0.0296557, 0.0231846, 0.999291, 0.451122, 0.892432, -0.00731756, 0.101781, 2.00666, 0.25782)
+transform = Transform3D(-0.891969, 0.450586, -0.0369248, -0.0296557, 0.0231846, 0.999291, 0.451123, 0.892432, -0.0073175, 0.101781, 2.00666, 0.25782)
 bone_name = "CannonAnimRecoil"
 bone_idx = 17
 
