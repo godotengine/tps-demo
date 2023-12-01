@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgvowmn3iop44"]
+[gd_scene load_steps=3 format=3 uid="uid://dgvowmn3iop44"]
 
 [ext_resource type="PackedScene" uid="uid://y2c4qh77xij5" path="res://level/geometry/models/lights.glb" id="1"]
+[ext_resource type="Texture2D" uid="uid://biye81cs18sdp" path="res://effects_shared/spotlight_projector.png" id="2_fkvu6"]
 
 [node name="LightsModel" instance=ExtResource("1")]
 
@@ -13,119 +14,145 @@ omni_range = 25.0
 
 [node name="Spot_010_Orientation" parent="Spot_010" index="0"]
 light_color = Color(1, 1, 1, 1)
-light_energy = 12.0
-light_volumetric_fog_energy = 10000.0
+light_energy = 24.0
+light_volumetric_fog_energy = 5000.0
+light_projector = ExtResource("2_fkvu6")
 light_bake_mode = 1
 shadow_enabled = true
 spot_range = 25.0
+spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_009_Orientation" parent="Spot_009" index="0"]
 light_color = Color(1, 1, 1, 1)
-light_energy = 12.0
-light_volumetric_fog_energy = 10000.0
+light_energy = 24.0
+light_volumetric_fog_energy = 5000.0
+light_projector = ExtResource("2_fkvu6")
 light_bake_mode = 1
 shadow_enabled = true
 spot_range = 25.0
+spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_008_Orientation" parent="Spot_008" index="0"]
 light_color = Color(1, 1, 1, 1)
-light_energy = 12.0
-light_volumetric_fog_energy = 10000.0
+light_energy = 24.0
+light_volumetric_fog_energy = 5000.0
+light_projector = ExtResource("2_fkvu6")
 light_bake_mode = 1
 shadow_enabled = true
 spot_range = 25.0
+spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_007_Orientation" parent="Spot_007" index="0"]
 light_color = Color(1, 1, 1, 1)
-light_energy = 12.0
-light_volumetric_fog_energy = 10000.0
+light_energy = 24.0
+light_volumetric_fog_energy = 5000.0
+light_projector = ExtResource("2_fkvu6")
 light_bake_mode = 1
 shadow_enabled = true
 spot_range = 25.0
+spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_006_Orientation" parent="Spot_006" index="0"]
 light_color = Color(1, 1, 1, 1)
-light_energy = 12.0
-light_volumetric_fog_energy = 10000.0
+light_energy = 24.0
+light_volumetric_fog_energy = 5000.0
+light_projector = ExtResource("2_fkvu6")
 light_bake_mode = 1
 shadow_enabled = true
 spot_range = 25.0
+spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_005_Orientation" parent="Spot_005" index="0"]
 light_color = Color(1, 1, 1, 1)
-light_energy = 12.0
-light_volumetric_fog_energy = 10000.0
+light_energy = 24.0
+light_volumetric_fog_energy = 5000.0
+light_projector = ExtResource("2_fkvu6")
 light_bake_mode = 1
 shadow_enabled = true
 spot_range = 25.0
+spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_004_Orientation" parent="Spot_004" index="0"]
 light_color = Color(1, 1, 1, 1)
-light_energy = 12.0
-light_volumetric_fog_energy = 10000.0
+light_energy = 24.0
+light_volumetric_fog_energy = 5000.0
+light_projector = ExtResource("2_fkvu6")
 light_bake_mode = 1
 shadow_enabled = true
 spot_range = 25.0
+spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_003_Orientation" parent="Spot_003" index="0"]
 light_color = Color(1, 1, 1, 1)
-light_energy = 12.0
-light_volumetric_fog_energy = 10000.0
+light_energy = 24.0
+light_volumetric_fog_energy = 5000.0
+light_projector = ExtResource("2_fkvu6")
 light_bake_mode = 1
 shadow_enabled = true
 spot_range = 25.0
+spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_002_Orientation" parent="Spot_002" index="0"]
 light_color = Color(1, 1, 1, 1)
-light_energy = 12.0
-light_volumetric_fog_energy = 10000.0
+light_energy = 24.0
+light_volumetric_fog_energy = 5000.0
+light_projector = ExtResource("2_fkvu6")
 light_bake_mode = 1
 shadow_enabled = true
 spot_range = 25.0
+spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_001_Orientation" parent="Spot_001" index="0"]
 light_color = Color(1, 1, 1, 1)
-light_energy = 12.0
-light_volumetric_fog_energy = 10000.0
+light_energy = 24.0
+light_volumetric_fog_energy = 5000.0
+light_projector = ExtResource("2_fkvu6")
 light_bake_mode = 1
 shadow_enabled = true
 spot_range = 25.0
+spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_000_Orientation" parent="Spot_000" index="0"]
 light_color = Color(1, 1, 1, 1)
-light_energy = 12.0
-light_volumetric_fog_energy = 10000.0
+light_energy = 24.0
+light_volumetric_fog_energy = 5000.0
+light_projector = ExtResource("2_fkvu6")
 light_bake_mode = 1
 shadow_enabled = true
 spot_range = 25.0
+spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_013_Orientation" parent="Spot_013" index="0"]
 light_color = Color(1, 1, 1, 1)
-light_energy = 12.0
-light_volumetric_fog_energy = 10000.0
+light_energy = 24.0
+light_volumetric_fog_energy = 5000.0
+light_projector = ExtResource("2_fkvu6")
 light_bake_mode = 1
 shadow_enabled = true
 spot_range = 25.0
+spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_012_Orientation" parent="Spot_012" index="0"]
 light_color = Color(1, 1, 1, 1)
-light_energy = 12.0
-light_volumetric_fog_energy = 10000.0
+light_energy = 24.0
+light_volumetric_fog_energy = 5000.0
+light_projector = ExtResource("2_fkvu6")
 light_bake_mode = 1
 shadow_enabled = true
 spot_range = 25.0
+spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Point_010_Orientation" parent="Point_010" index="0"]

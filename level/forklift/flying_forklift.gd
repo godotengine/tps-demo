@@ -1,7 +1,11 @@
 extends Node3D
 
+@onready var spot_light = $SpotLight3D
 
 func _ready():
+	if not Settings.config_file.get_value("rendering", "shadow_mapping"):
+		spot_light.shadow_enabled = false
+
 	# Randomize the forklift model.
 	# We have 3 models, may as well use them.
 	randomize()

@@ -219,6 +219,8 @@ common/physics_interpolation=true
 
 reflections/sky_reflections/texture_array_reflections=false
 scaling_3d/mode=2
+textures/decals/filter=1
+textures/light_projectors/filter=1
 anti_aliasing/quality/use_debanding=true
 occlusion_culling/use_occlusion_culling=true
 lights_and_shadows/positional_shadow/atlas_size=2048

@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b51qillnxp84r"]
+[gd_scene load_steps=15 format=3 uid="uid://b51qillnxp84r"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bpihm2o3g658" path="res://level/geometry/scenes/props.tscn" id="2"]
 [ext_resource type="VoxelGIData" uid="uid://bw86lhn5p1ovp" path="res://level/geometry/giprobe_data.res" id="5"]
 [ext_resource type="AudioStream" uid="uid://vxxm8xm1fr6y" path="res://level/level_music.ogg" id="8"]
 [ext_resource type="Script" path="res://level/debug.gd" id="9"]
+[ext_resource type="CompressedTexture3D" uid="uid://b2x2pkclq230n" path="res://level/level.GPUParticlesCollisionSDF3D_data.exr" id="11_mt3nw"]
 [ext_resource type="PackedScene" uid="uid://dln4kthc3tvfv" path="res://level/forklift/flying_forklift.tscn" id="12"]
 [ext_resource type="PackedScene" uid="uid://dgvowmn3iop44" path="res://level/geometry/scenes/lights.tscn" id="13"]
 [ext_resource type="PackedScene" uid="uid://ddbnmy6um5fjg" path="res://level/geometry/scenes/core.tscn" id="14"]
@@ -257,3 +258,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6666, -10.2858, -15.6046)
 
 [node name="LightmapProbe32" type="LightmapProbe" parent="LightmapProbes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.3694, -10.2858, 7.23363)
+
+[node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1415, 0, 31.955)
+size = Vector3(140, 40, 140)
+resolution = 4
+texture = ExtResource("11_mt3nw")

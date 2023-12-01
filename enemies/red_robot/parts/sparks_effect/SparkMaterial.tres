@@ -1,10 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b0yi1uf4xb6ex"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b0yi1uf4xb6ex"]
 
-[ext_resource type="Texture2D" uid="uid://ic4gy2igsmd4" path="res://enemies/red_robot/parts/sparks_effect/SparkTexture.png" id="1"]
 [ext_resource type="Shader" path="res://enemies/red_robot/parts/sparks_effect/SparkShader.gdshader" id="2"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("2")
-shader_parameter/emission_factor = 3.0
-shader_parameter/alpha_texture = ExtResource("1")
