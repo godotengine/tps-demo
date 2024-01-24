@@ -1,13 +1,12 @@
-[gd_resource type="FontFile" load_steps=2 format=2]
+[gd_resource type="FontFile" load_steps=2 format=3 uid="uid://b8tvpu085c6v4"]
 
-[ext_resource path="res://menu/font/PT_Sans-Web-Bold.ttf" type="FontFile" id=1]
+[ext_resource type="FontFile" uid="uid://fevb61otyhrn" path="res://menu/font/PT_Sans-Web-Bold.ttf" id="1"]
 
 [resource]
-
-size = 40
-outline_size = 0
-outline_color = Color( 1, 1, 1, 1 )
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 1 )
-
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
