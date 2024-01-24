@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bxjcw6j767jtn"]
 
-[ext_resource type="Texture2D" uid="uid://bpm6frbylo5an" path="res://effects_shared/BlastTexture.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bpm6frbylo5an" path="res://effects_shared/BlastTexture.png" id="1_1ujtj"]
 
 [sub_resource type="Shader" id="1"]
 code = "shader_type spatial;
@@ -56,4 +56,4 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("1")
+shader_parameter/texture_albedo = ExtResource("1_1ujtj")
