@@ -14,30 +14,31 @@ enum GIQuality {
 
 const CONFIG_FILE_PATH = "user://settings.ini"
 
-const DEFAULTS = {
+var is_mobile := OS.has_feature("mobile")
+
+var defaults := {
 	video = {
 		display_mode = Window.MODE_EXCLUSIVE_FULLSCREEN,
 		vsync = DisplayServer.VSYNC_ENABLED,
-		max_fps = 0,
-		resolution_scale = 1.0,
-		scale_filter = Viewport.SCALING_3D_MODE_FSR2,
+		max_fps = 0 if not is_mobile else 30,  # Cap to 30 FPS on mobile to ensure consistency and reduce power consumption
+		resolution_scale = 1.0 if not is_mobile else 0.5,  # Native on desktop, Performance on mobile
+		scale_filter = Viewport.SCALING_3D_MODE_FSR2 if not is_mobile else Viewport.SCALING_3D_MODE_BILINEAR,
 	},
 	rendering = {
 		taa = false,
 		msaa = Viewport.MSAA_DISABLED,
-		fxaa = false,
+		fxaa = is_mobile,
 		shadow_mapping = true,
 		gi_type = GIType.VOXEL_GI,
-		gi_quality = GIQuality.LOW,
-		ssao_quality = RenderingServer.ENV_SSAO_QUALITY_MEDIUM,
+		gi_quality = GIQuality.LOW if not is_mobile else GIQuality.DISABLED,
+		ssao_quality = RenderingServer.ENV_SSAO_QUALITY_MEDIUM if not is_mobile else -1,  # Disabled on mobile
 		ssil_quality = -1,  # Disabled
 		bloom = true,
-		volumetric_fog = true,
+		volumetric_fog = not is_mobile,
 	},
 }
 
 var config_file := ConfigFile.new()
-
 
 func _ready():
 	load_settings()
@@ -53,10 +54,10 @@ func load_settings():
 	config_file.load(CONFIG_FILE_PATH)
 	# Initialize defaults for values not found in the existing configuration file,
 	# so we don't have to specify them every time we use `ConfigFile.get_value()`.
-	for section in DEFAULTS:
-		for key in DEFAULTS[section]:
+	for section in defaults:
+		for key in defaults[section]:
 			if not config_file.has_section_key(section, key):
-				config_file.set_value(section, key, DEFAULTS[section][key])
+				config_file.set_value(section, key, defaults[section][key])
 
 
 func save_settings():

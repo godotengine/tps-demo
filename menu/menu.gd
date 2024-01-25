@@ -124,6 +124,17 @@ func _ready():
 	]:
 		_make_button_group(menu)
 
+	if Settings.is_mobile:
+		# Hide settings that are not effective or relevant on mobile platforms.
+		for menu in [
+			display_mode_menu, vsync_menu, scale_filter_menu, taa_menu, gi_type_menu, gi_quality_menu,
+			ssao_menu, ssil_menu, volumetric_fog_menu,
+		]:
+			menu.visible = false
+
+			# Mobile GPUs only support MSAA up to 4×.
+			msaa_8x.visible = false
+
 func _process(_delta):
 	if loading.visible:
 		var progress = []
