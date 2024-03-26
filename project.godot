@@ -218,6 +218,7 @@ common/physics_interpolation=true
 [rendering]
 
 reflections/sky_reflections/texture_array_reflections=false
+textures/default_filters/anisotropic_filtering_level=4
 scaling_3d/mode=2
 textures/decals/filter=1
 textures/light_projectors/filter=1

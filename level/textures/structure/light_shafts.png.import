@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mynyixl3f55g"
-path.s3tc="res://.godot/imported/light_shafts.png-7bf7b75ffc6e9552229cab1850001e61.s3tc.ctex"
+path="res://.godot/imported/light_shafts.png-7bf7b75ffc6e9552229cab1850001e61.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://level/textures/structure/light_shafts.png"
-dest_files=["res://.godot/imported/light_shafts.png-7bf7b75ffc6e9552229cab1850001e61.s3tc.ctex"]
+dest_files=["res://.godot/imported/light_shafts.png-7bf7b75ffc6e9552229cab1850001e61.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

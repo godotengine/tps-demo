@@ -1,6 +1,6 @@
-[gd_resource type="StandardMaterial3D" format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bs2jei6uvq271"]
 
 [resource]
 resource_name = "trim_rail_pipe"
-albedo_color = Color( 0.64, 0.0652415, 0.0474241, 1 )
+albedo_color = Color(0.64, 0.0652415, 0.0474241, 1)
 roughness = 0.542695

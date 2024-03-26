@@ -20,3 +20,4 @@ normal_enabled = true
 normal_texture = ExtResource("2")
 ao_enabled = true
 ao_light_affect = 0.5
+texture_filter = 5

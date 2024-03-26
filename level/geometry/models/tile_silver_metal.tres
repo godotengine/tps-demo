@@ -1,7 +1,8 @@
-[gd_resource type="StandardMaterial3D" format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://xa4yqg750fv7"]
 
 [resource]
 resource_name = "tile_silver_metal"
-albedo_color = Color( 0.21507, 0.216532, 0.239556, 1 )
+albedo_color = Color(0.21507, 0.216532, 0.239556, 1)
 metallic = 0.5
 roughness = 0.0960784
+texture_filter = 5
