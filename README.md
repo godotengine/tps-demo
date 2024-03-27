@@ -4,7 +4,7 @@ Third person shooter demo made using [Godot Engine](https://godotengine.org).
 
 Check out this demo on the asset library: https://godotengine.org/asset-library/asset/678
 
-![Screenshot of TPS demo](screenshots/screenshot.png)
+![Screenshot of TPS demo](screenshots/screenshot.webp)
 
 ## Godot versions
 
