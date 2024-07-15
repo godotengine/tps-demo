@@ -153,11 +153,7 @@ func _on_loading_done_timer_timeout():
 func _on_play_pressed():
 	main.hide()
 	loading.show()
-	if ResourceLoader.has_cached(path):
-		multiplayer.multiplayer_peer = peer
-		emit_signal("replace_main_scene", ResourceLoader.load_threaded_get(path))
-	else:
-		ResourceLoader.load_threaded_request(path, "", true)
+	ResourceLoader.load_threaded_request(path, "", true)
 
 func _on_settings_pressed():
 	main.hide()
