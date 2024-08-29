@@ -1,6 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://ddbnmy6um5fjg"]
+[gd_scene load_steps=38 format=3 uid="uid://ddbnmy6um5fjg"]
 
 [ext_resource type="PackedScene" uid="uid://ckpf3t16u47pu" path="res://level/geometry/scenes/collision/radial_colliders.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bcnpdinrepean" path="res://door/door.tscn" id="1_d4yh0"]
 [ext_resource type="PackedScene" uid="uid://babdc0gjbduw" path="res://level/geometry/scenes/collision/stair_pillar.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bt78arqovue7l" path="res://level/geometry/models/core.glb" id="3"]
 [ext_resource type="PackedScene" uid="uid://bewdyyyqeciso" path="res://level/geometry/scenes/collision/radial_player_only.tscn" id="4"]
@@ -194,6 +195,12 @@ size = Vector3(80, 12, 80)
 size = Vector3(1.2, 1.2, 2.8)
 
 [node name="Core" type="Node3D"]
+
+[node name="Door" parent="." instance=ExtResource("1_d4yh0")]
+transform = Transform3D(0.291538, 0, 0.95656, 0, 1, 0, -0.95656, 0, 0.291538, 40.3273, -6.17461, 12.2754)
+
+[node name="Door2" parent="." instance=ExtResource("1_d4yh0")]
+transform = Transform3D(0.291538, 0, 0.95656, 0, 1, 0, -0.95656, 0, 0.291538, 35.4583, -6.17461, 10.7914)
 
 [node name="CoreModel" parent="." instance=ExtResource("3")]
 

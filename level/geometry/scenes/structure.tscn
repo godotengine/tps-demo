@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://bh1lh032pmey2"]
+[gd_scene load_steps=36 format=3 uid="uid://bh1lh032pmey2"]
 
 [ext_resource type="PackedScene" uid="uid://babdc0gjbduw" path="res://level/geometry/scenes/collision/stair_pillar.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://8fujwb58dav7" path="res://level/geometry/models/structure.glb" id="2"]
+[ext_resource type="PackedScene" uid="uid://bcnpdinrepean" path="res://door/door.tscn" id="2_e5crn"]
 [ext_resource type="ArrayOccluder3D" uid="uid://d20dpr3pj0fn6" path="res://level/geometry/scenes/occluder.occ" id="3_2aako"]
 
 [sub_resource type="BoxShape3D" id="1"]
@@ -100,6 +101,18 @@ size = Vector3(1.5, 3, 7.4)
 [node name="Structure" type="Node3D"]
 
 [node name="StructureModel" parent="." instance=ExtResource("2")]
+
+[node name="littledoorimposter_002" parent="StructureModel" index="157"]
+visible = false
+
+[node name="littledoorimposter_003" parent="StructureModel" index="158"]
+visible = false
+
+[node name="Door2" parent="." instance=ExtResource("2_e5crn")]
+transform = Transform3D(0.77301, 0, 0.634393, 0, 1, 0, -0.634393, 0, 0.77301, 61.3275, -6.46153, 74.7437)
+
+[node name="Door" parent="." instance=ExtResource("2_e5crn")]
+transform = Transform3D(0.77301, 0, 0.634393, 0, 1, 0, -0.634393, 0, 0.77301, 66.769, -1.23431, 81.3738)
 
 [node name="StairPillar4" parent="." instance=ExtResource("1")]
 transform = Transform3D(-1.09128, 0, -0.588822, 0, 1.24, 0, 0.588822, 0, -1.09128, 48.9491, 2.48, -26.4115)
@@ -1926,3 +1939,5 @@ shape = SubResource("31")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("3_2aako")
+
+[editable path="StructureModel"]
