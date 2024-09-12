@@ -135,7 +135,6 @@ is_locked = true
 
 [node name="Door" parent="." instance=ExtResource("2_e5crn")]
 transform = Transform3D(0.77301, 0, 0.634393, 0, 1, 0, -0.634393, 0, 0.77301, 66.769, -1.23431, 81.3738)
-is_locked = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Door"]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 5.32316, 2.05067, 7.62939e-06)
