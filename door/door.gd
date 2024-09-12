@@ -19,14 +19,11 @@ func _ready():
 		override_material.albedo_color = Color(1,0,0)
 	elif not is_locked:
 		override_material.albedo_color = Color(0,1,0)
-	
 
 func _on_door_body_entered(body):
 	if not open and body is Player and not is_locked:
-		
 		animation_player.play("doorsimple_opening")
 		open = true
-
 
 func _process(_delta):
 	if float(animation_player.current_animation_position) < 1.9:

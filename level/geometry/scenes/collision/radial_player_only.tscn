@@ -77,6 +77,3 @@ shape = SubResource("2")
 [node name="ArmBasePlayerOnly" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9, -12.4, 0)
 shape = SubResource("3")
-__meta__ = {
-"_editor_description_": ""
-}
