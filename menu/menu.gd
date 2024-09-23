@@ -114,9 +114,6 @@ func _ready():
 		_on_host_pressed.call_deferred()
 
 	play_button.grab_focus()
-	var sound_effects = $BackgroundCache/RedRobot/SoundEffects
-	for child in sound_effects.get_children():
-		child.volume_db = -INF
 	for menu in [
 		display_mode_menu, vsync_menu, max_fps_menu, resolution_scale_menu, scale_filter_menu,
 		taa_menu, msaa_menu, fxaa_menu, shadow_mapping_menu, gi_type_menu, gi_quality_menu,
