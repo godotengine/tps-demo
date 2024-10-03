@@ -1,8 +1,12 @@
-[gd_scene load_steps=35 format=3 uid="uid://bh1lh032pmey2"]
+[gd_scene load_steps=38 format=3 uid="uid://bh1lh032pmey2"]
 
 [ext_resource type="PackedScene" uid="uid://babdc0gjbduw" path="res://level/geometry/scenes/collision/stair_pillar.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://8fujwb58dav7" path="res://level/geometry/models/structure.glb" id="2"]
+[ext_resource type="PackedScene" uid="uid://bcnpdinrepean" path="res://door/door.tscn" id="2_e5crn"]
 [ext_resource type="ArrayOccluder3D" uid="uid://d20dpr3pj0fn6" path="res://level/geometry/scenes/occluder.occ" id="3_2aako"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_du13b"]
+size = Vector3(3.40112, 4.49847, 1)
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(12, 18, 20)
@@ -45,6 +49,9 @@ size = Vector3(10, 10, 10)
 
 [sub_resource type="BoxShape3D" id="14"]
 size = Vector3(1, 0.2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_330pa"]
+size = Vector3(28, 1, 10)
 
 [sub_resource type="BoxShape3D" id="15"]
 size = Vector3(200, 12, 200)
@@ -100,6 +107,42 @@ size = Vector3(1.5, 3, 7.4)
 [node name="Structure" type="Node3D"]
 
 [node name="StructureModel" parent="." instance=ExtResource("2")]
+
+[node name="littledoorimposter_001" parent="StructureModel" index="156"]
+visible = false
+
+[node name="littledoorimposter_002" parent="StructureModel" index="157"]
+visible = false
+
+[node name="littledoorimposter_003" parent="StructureModel" index="158"]
+visible = false
+
+[node name="Door3" parent="." instance=ExtResource("2_e5crn")]
+transform = Transform3D(0.954579, 0, 0.29796, 0, 1, 0, -0.29796, 0, 0.954579, 30.6242, -1.23008, 100.982)
+is_locked = true
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Door3"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 5.24426, 2.04644, -0.288971)
+shape = SubResource("BoxShape3D_du13b")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Door3"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -5.34876, 2.04644, -0.288963)
+shape = SubResource("BoxShape3D_du13b")
+
+[node name="Door2" parent="." instance=ExtResource("2_e5crn")]
+transform = Transform3D(0.77301, 0, 0.634393, 0, 1, 0, -0.634393, 0, 0.77301, 61.3275, -6.46153, 74.7437)
+is_locked = true
+
+[node name="Door" parent="." instance=ExtResource("2_e5crn")]
+transform = Transform3D(0.77301, 0, 0.634393, 0, 1, 0, -0.634393, 0, 0.77301, 66.769, -1.23431, 81.3738)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Door"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 5.32316, 2.05067, 7.62939e-06)
+shape = SubResource("BoxShape3D_du13b")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Door"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -5.37504, 2.05067, 7.62939e-06)
+shape = SubResource("BoxShape3D_du13b")
 
 [node name="StairPillar4" parent="." instance=ExtResource("1")]
 transform = Transform3D(-1.09128, 0, -0.588822, 0, 1.24, 0, 0.588822, 0, -1.09128, 48.9491, 2.48, -26.4115)
@@ -1088,8 +1131,8 @@ transform = Transform3D(0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, 
 shape = SubResource("12")
 
 [node name="StartHall9" type="CollisionShape3D" parent="UpperFloor"]
-transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 70.4817, -16.2, 83.9968)
-shape = SubResource("12")
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 70.482, -1.7, 83.997)
+shape = SubResource("BoxShape3D_330pa")
 
 [node name="StartHall10" type="CollisionShape3D" parent="UpperFloor"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 77.5342, -16.2, 77.5343)
@@ -1374,11 +1417,11 @@ transform = Transform3D(0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 
 shape = SubResource("12")
 
 [node name="StartHall4" type="CollisionShape3D" parent="OuterWalls"]
-transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 30.6442, 13.8, 114.366)
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 30.6442, 17.5782, 114.366)
 shape = SubResource("12")
 
 [node name="StartHall5" type="CollisionShape3D" parent="OuterWalls"]
-transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 40.4952, 13.8, 111.259)
+transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 40.4952, 17.5782, 111.259)
 shape = SubResource("12")
 
 [node name="StartHall6" type="CollisionShape3D" parent="OuterWalls"]
@@ -1394,7 +1437,7 @@ transform = Transform3D(0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, 
 shape = SubResource("12")
 
 [node name="StartHall9" type="CollisionShape3D" parent="OuterWalls"]
-transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 76.1061, 13.8, 90.6997)
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 76.1061, 17.7633, 90.6997)
 shape = SubResource("12")
 
 [node name="StartHall10" type="CollisionShape3D" parent="OuterWalls"]
@@ -1926,3 +1969,5 @@ shape = SubResource("31")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("3_2aako")
+
+[editable path="StructureModel"]
