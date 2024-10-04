@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dqkkefcnt0erw" path="res://effects_shared/BlastMesh_Sphere.mesh" id="2"]
 [ext_resource type="AudioStream" uid="uid://c0bpunl6shvlr" path="res://player/bullet/bullet_explode.wav" id="3"]
 [ext_resource type="Material" uid="uid://bxjcw6j767jtn" path="res://player/bullet/effect/BlastMaterial.tres" id="4"]
-[ext_resource type="Material" path="res://player/bullet/effect/light_rays_material.tres" id="5"]
+[ext_resource type="Material" uid="uid://d1hp4xsnvqyn8" path="res://player/bullet/effect/light_rays_material.tres" id="5"]
 [ext_resource type="Texture2D" uid="uid://d17qvns23fvuv" path="res://player/bullet/blue_myst.png" id="8"]
 [ext_resource type="Material" uid="uid://byb8a73wgvytk" path="res://player/bullet/bullet_material.tres" id="9"]
 
