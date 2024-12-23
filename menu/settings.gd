@@ -14,13 +14,16 @@ enum GIQuality {
 
 const CONFIG_FILE_PATH = "user://settings.ini"
 
-const DEFAULTS = {
+# MetalFX is only supported when using the Metal rendering driver.
+var metalfx_supported: bool = RenderingServer.get_current_rendering_driver_name() == "metal"
+
+var DEFAULTS := {
 	video = {
 		display_mode = Window.MODE_EXCLUSIVE_FULLSCREEN,
 		vsync = DisplayServer.VSYNC_ENABLED,
 		max_fps = 0,
 		resolution_scale = 1.0,
-		scale_filter = Viewport.SCALING_3D_MODE_FSR2,
+		scale_filter = Viewport.SCALING_3D_MODE_METALFX_TEMPORAL if metalfx_supported else Viewport.SCALING_3D_MODE_FSR2,
 	},
 	rendering = {
 		taa = false,

@@ -8,6 +8,8 @@ signal quit # Useless, but needed as there is no clean way to check if a node ex
 
 var peer : MultiplayerPeer = OfflineMultiplayerPeer.new()
 
+var metalfx_supported: bool = RenderingServer.get_current_rendering_driver_name() == "metal"
+
 @onready var world_environment = $WorldEnvironment
 
 @onready var ui = $UI
@@ -54,7 +56,9 @@ var peer : MultiplayerPeer = OfflineMultiplayerPeer.new()
 @onready var scale_filter_menu = settings_menu.get_node("ScaleFilter")
 @onready var scale_filter_bilinear = scale_filter_menu.get_node("Bilinear")
 @onready var scale_filter_fsr1 = scale_filter_menu.get_node("FSR1")
+@onready var scale_filter_metalfx_spatial = scale_filter_menu.get_node("MetalFXSpatial")
 @onready var scale_filter_fsr2 = scale_filter_menu.get_node("FSR2")
+@onready var scale_filter_metalfx_temporal = scale_filter_menu.get_node("MetalFXTemporal")
 
 @onready var taa_menu = settings_menu.get_node("TAA")
 @onready var taa_disabled = taa_menu.get_node("Disabled")
@@ -114,6 +118,11 @@ func _ready():
 		_on_host_pressed.call_deferred()
 
 	play_button.grab_focus()
+
+	if not metalfx_supported:
+		scale_filter_metalfx_spatial.hide()
+		scale_filter_metalfx_temporal.hide()
+
 	for menu in [
 		display_mode_menu, vsync_menu, max_fps_menu, resolution_scale_menu, scale_filter_menu,
 		taa_menu, msaa_menu, fxaa_menu, shadow_mapping_menu, gi_type_menu, gi_quality_menu,
@@ -210,8 +219,17 @@ func _on_settings_pressed():
 		scale_filter_bilinear.button_pressed = true
 	elif Settings.config_file.get_value("video", "scale_filter") == Viewport.SCALING_3D_MODE_FSR:
 		scale_filter_fsr1.button_pressed = true
-	else:
+	elif Settings.config_file.get_value("video", "scale_filter") == Viewport.SCALING_3D_MODE_FSR2:
 		scale_filter_fsr2.button_pressed = true
+	elif Settings.config_file.get_value("video", "scale_filter") == Viewport.SCALING_3D_MODE_METALFX_SPATIAL:
+		scale_filter_metalfx_spatial.button_pressed = true
+	elif Settings.config_file.get_value("video", "scale_filter") == Viewport.SCALING_3D_MODE_METALFX_TEMPORAL:
+		scale_filter_metalfx_temporal.button_pressed = true
+	else:
+		if metalfx_supported:
+			scale_filter_metalfx_temporal.button_pressed = true
+		else:
+			scale_filter_fsr2.button_pressed = true
 
 	if Settings.config_file.get_value("rendering", "gi_type") == Settings.GIType.LIGHTMAP_GI:
 		gi_lightmapgi.button_pressed = true
@@ -337,6 +355,10 @@ func _on_apply_pressed():
 		Settings.config_file.set_value("video", "scale_filter", Viewport.SCALING_3D_MODE_FSR)
 	elif scale_filter_fsr2.button_pressed:
 		Settings.config_file.set_value("video", "scale_filter", Viewport.SCALING_3D_MODE_FSR2)
+	elif scale_filter_metalfx_spatial.button_pressed:
+		Settings.config_file.set_value("video", "scale_filter", Viewport.SCALING_3D_MODE_METALFX_SPATIAL)
+	elif scale_filter_metalfx_temporal.button_pressed:
+		Settings.config_file.set_value("video", "scale_filter", Viewport.SCALING_3D_MODE_METALFX_TEMPORAL)
 
 	if gi_lightmapgi.button_pressed:
 		Settings.config_file.set_value("rendering", "gi_type", Settings.GIType.LIGHTMAP_GI)

@@ -471,12 +471,26 @@ size_flags_horizontal = 3
 toggle_mode = true
 text = "AMD FSR 1.0"
 
+[node name="MetalFXSpatial" type="Button" parent="UI/Settings/ScaleFilter"]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "MetalFX Spatial"
+
 [node name="FSR2" type="Button" parent="UI/Settings/ScaleFilter"]
 modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "AMD FSR 2.2"
+
+[node name="MetalFXTemporal" type="Button" parent="UI/Settings/ScaleFilter"]
+modulate = Color(1, 0.627451, 0.25098, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "MetalFX Temporal"
 
 [node name="HSeparator2" type="HSeparator" parent="UI/Settings"]
 layout_mode = 2
