@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://c80nbk7u633n6"]
 
-[ext_resource type="Script" path="res://menu/menu.gd" id="1"]
+[ext_resource type="Script" uid="uid://d01c0jp7txxst" path="res://menu/menu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://gnsovrtic7g4" path="res://menu/experiment.hdr" id="2_bpuaq"]
 [ext_resource type="PackedScene" uid="uid://div25sd40yx1d" path="res://player/model/player.glb" id="3"]
 [ext_resource type="AudioStream" uid="uid://bfq26n228ipa" path="res://menu/menu_intro_music.ogg" id="5"]
@@ -471,12 +471,26 @@ size_flags_horizontal = 3
 toggle_mode = true
 text = "AMD FSR 1.0"
 
+[node name="MetalFXSpatial" type="Button" parent="UI/Settings/ScaleFilter"]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "MetalFX Spatial"
+
 [node name="FSR2" type="Button" parent="UI/Settings/ScaleFilter"]
 modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "AMD FSR 2.2"
+
+[node name="MetalFXTemporal" type="Button" parent="UI/Settings/ScaleFilter"]
+modulate = Color(1, 0.627451, 0.25098, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "MetalFX Temporal"
 
 [node name="HSeparator2" type="HSeparator" parent="UI/Settings"]
 layout_mode = 2
