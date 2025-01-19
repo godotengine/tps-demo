@@ -147,15 +147,26 @@ libraries = {
 }
 autoplay = "mawaru"
 
-[node name="Debug" type="Label" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 40.0
-offset_bottom = 14.0
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Debug" type="Label" parent="PanelContainer/MarginContainer" node_paths=PackedStringArray("debug_container")]
+layout_mode = 2
 text = "FPS: 0
 VSync:
 Memory:"
 script = ExtResource("9")
+debug_container = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.671837, 0, -0.740699, 0, 1, 0, 0.740699, 0, 0.671837, -4.05309, -1.12911, 4)
