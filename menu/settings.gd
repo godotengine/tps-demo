@@ -34,6 +34,9 @@ const DEFAULTS = {
 		bloom = true,
 		volumetric_fog = true,
 	},
+	debug = {
+		render_test = false
+	}
 }
 
 var config_file := ConfigFile.new()
