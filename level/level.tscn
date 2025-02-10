@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://b51qillnxp84r"]
 
-[ext_resource type="Script" path="res://level/level.gd" id="1"]
+[ext_resource type="Script" uid="uid://fw0dmocxub4o" path="res://level/level.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bpihm2o3g658" path="res://level/geometry/scenes/props.tscn" id="2"]
 [ext_resource type="VoxelGIData" uid="uid://bw86lhn5p1ovp" path="res://level/geometry/giprobe_data.res" id="5"]
 [ext_resource type="AudioStream" uid="uid://vxxm8xm1fr6y" path="res://level/level_music.ogg" id="8"]
-[ext_resource type="Script" path="res://level/debug.gd" id="9"]
+[ext_resource type="Script" uid="uid://bdsm3xm0yox74" path="res://level/debug.gd" id="9"]
 [ext_resource type="CompressedTexture3D" uid="uid://b2x2pkclq230n" path="res://level/level.GPUParticlesCollisionSDF3D_data.exr" id="11_mt3nw"]
 [ext_resource type="PackedScene" uid="uid://dln4kthc3tvfv" path="res://level/forklift/flying_forklift.tscn" id="12"]
 [ext_resource type="PackedScene" uid="uid://dgvowmn3iop44" path="res://level/geometry/scenes/lights.tscn" id="13"]
