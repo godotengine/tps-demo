@@ -761,6 +761,18 @@ size_flags_horizontal = 3
 toggle_mode = true
 text = "Enabled"
 
+[node name="RenderTest" type="HBoxContainer" parent="UI/Settings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Settings/RenderTest"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Render Test"
+
+[node name="CheckBox" type="CheckBox" parent="UI/Settings/RenderTest"]
+layout_mode = 2
+
 [node name="HSeparator" type="HSeparator" parent="UI/Settings"]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 20)
