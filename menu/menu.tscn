@@ -543,30 +543,30 @@ size_flags_horizontal = 3
 toggle_mode = true
 text = "8×"
 
-[node name="FXAA" type="HBoxContainer" parent="UI/Settings"]
+[node name="SSAA" type="HBoxContainer" parent="UI/Settings"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="UI/Settings/FXAA"]
+[node name="Label" type="Label" parent="UI/Settings/SSAA"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
-text = "Fast Approximate Antialiasing:"
+text = "Screen-space Antialiasing:"
 
-[node name="Disabled" type="Button" parent="UI/Settings/FXAA"]
+[node name="Disabled" type="Button" parent="UI/Settings/SSAA"]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Disabled"
 
-[node name="Enabled" type="Button" parent="UI/Settings/FXAA"]
+[node name="FXAA" type="Button" parent="UI/Settings/SSAA"]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 keep_pressed_outside = true
-text = "Enabled"
+text = "FXAA"
 
 [node name="ShadowMapping" type="HBoxContainer" parent="UI/Settings"]
 layout_mode = 2
