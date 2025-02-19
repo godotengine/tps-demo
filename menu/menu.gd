@@ -66,9 +66,9 @@ var peer : MultiplayerPeer = OfflineMultiplayerPeer.new()
 @onready var msaa_4x = msaa_menu.get_node("4X")
 @onready var msaa_8x = msaa_menu.get_node("8X")
 
-@onready var fxaa_menu = settings_menu.get_node("FXAA")
-@onready var fxaa_disabled = fxaa_menu.get_node("Disabled")
-@onready var fxaa_enabled = fxaa_menu.get_node("Enabled")
+@onready var ssaa_menu = settings_menu.get_node("SSAA")
+@onready var ssaa_disabled = ssaa_menu.get_node("Disabled")
+@onready var ssaa_fxaa = ssaa_menu.get_node("FXAA")
 
 @onready var shadow_mapping_menu = settings_menu.get_node("ShadowMapping")
 @onready var shadow_mapping_disabled = shadow_mapping_menu.get_node("Disabled")
@@ -116,7 +116,7 @@ func _ready():
 	play_button.grab_focus()
 	for menu in [
 		display_mode_menu, vsync_menu, max_fps_menu, resolution_scale_menu, scale_filter_menu,
-		taa_menu, msaa_menu, fxaa_menu, shadow_mapping_menu, gi_type_menu, gi_quality_menu,
+		taa_menu, msaa_menu, ssaa_menu, shadow_mapping_menu, gi_type_menu, gi_quality_menu,
 		ssao_menu, ssil_menu, bloom_menu, volumetric_fog_menu,
 	]:
 		_make_button_group(menu)
@@ -241,10 +241,10 @@ func _on_settings_pressed():
 	elif Settings.config_file.get_value("rendering", "msaa") == Viewport.MSAA_8X:
 		msaa_8x.button_pressed = true
 
-	if not Settings.config_file.get_value("rendering", "fxaa"):
-		fxaa_disabled.button_pressed = true
-	else:
-		fxaa_enabled.button_pressed = true
+	if Settings.config_file.get_value("rendering", "ssaa") == Viewport.SCREEN_SPACE_AA_DISABLED:
+		ssaa_disabled.button_pressed = true
+	elif Settings.config_file.get_value("rendering", "ssaa") == Viewport.SCREEN_SPACE_AA_FXAA:
+		ssaa_fxaa.button_pressed = true
 
 	if not Settings.config_file.get_value("rendering", "shadow_mapping"):
 		shadow_mapping_disabled.button_pressed = true
@@ -364,7 +364,11 @@ func _on_apply_pressed():
 		Settings.config_file.set_value("rendering", "msaa", Viewport.MSAA_8X)
 
 	Settings.config_file.set_value("rendering", "shadow_mapping", shadow_mapping_enabled.button_pressed)
-	Settings.config_file.set_value("rendering", "fxaa", fxaa_enabled.button_pressed)
+
+	if ssaa_disabled.button_pressed:
+		Settings.config_file.set_value("rendering", "ssaa", Viewport.SCREEN_SPACE_AA_DISABLED)
+	elif ssaa_fxaa.button_pressed:
+		Settings.config_file.set_value("rendering", "ssaa", Viewport.SCREEN_SPACE_AA_FXAA)
 
 	if ssao_disabled.button_pressed:
 		Settings.config_file.set_value("rendering", "ssao_quality", -1)

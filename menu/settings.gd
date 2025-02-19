@@ -25,7 +25,7 @@ const DEFAULTS = {
 	rendering = {
 		taa = false,
 		msaa = Viewport.MSAA_DISABLED,
-		fxaa = false,
+		ssaa = Viewport.SCREEN_SPACE_AA_DISABLED,
 		shadow_mapping = true,
 		gi_type = GIType.VOXEL_GI,
 		gi_quality = GIQuality.LOW,
@@ -72,7 +72,7 @@ func apply_graphics_settings(window: Window, environment: Environment, scene_roo
 
 	window.use_taa = Settings.config_file.get_value("rendering", "taa")
 	window.msaa_3d = Settings.config_file.get_value("rendering", "msaa")
-	window.screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA if Settings.config_file.get_value("rendering", "fxaa") else Viewport.SCREEN_SPACE_AA_DISABLED
+	window.screen_space_aa = Settings.config_file.get_value("rendering", "ssaa")
 
 	if not Settings.config_file.get_value("rendering", "shadow_mapping"):
 		# Disable shadows for all lights present during level load,
