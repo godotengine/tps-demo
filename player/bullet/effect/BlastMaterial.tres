@@ -45,6 +45,7 @@ void fragment() {
 render_priority = 0
 shader = SubResource("1")
 shader_parameter/albedo = Color(0, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("1_1ujtj")
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 1.0
@@ -56,4 +57,3 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("1_1ujtj")

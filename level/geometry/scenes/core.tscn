@@ -44,9 +44,9 @@ render_priority = 0
 shader = SubResource("11")
 shader_parameter/offset = Vector2(0, -1)
 shader_parameter/speed = Vector2(0, 2)
+shader_parameter/tex = ExtResource("6")
 shader_parameter/emission = 3.0
 shader_parameter/alpha = 0.106
-shader_parameter/tex = ExtResource("6")
 
 [sub_resource type="Curve" id="13"]
 _data = [Vector2(0, 0), 0.0, 2.78182, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -121,16 +121,16 @@ curve = SubResource("18")
 [sub_resource type="ShaderMaterial" id="15"]
 render_priority = 0
 shader = SubResource("14")
+shader_parameter/tex1 = ExtResource("9")
+shader_parameter/tex2 = ExtResource("8")
 shader_parameter/time_scale_1 = 0.288
 shader_parameter/time_scale_2 = -0.31
 shader_parameter/rim_color = Color(1, 0.678431, 0, 1)
 shader_parameter/inner_color = Color(0.517647, 0.0196078, 0.219608, 1)
 shader_parameter/core_color = Color(1, 0, 0, 1)
 shader_parameter/rim_pow = 1.167
-shader_parameter/core_radius = 0.294
-shader_parameter/tex1 = ExtResource("9")
-shader_parameter/tex2 = ExtResource("8")
 shader_parameter/noise = SubResource("17")
+shader_parameter/core_radius = 0.294
 shader_parameter/remap_curve = SubResource("19")
 
 [sub_resource type="StandardMaterial3D" id="20"]

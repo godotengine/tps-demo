@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bb6a2c0n7pgsk" path="res://enemies/red_robot/laser/impact_effect/SmokePuff.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://crq55yidge8wt" path="res://enemies/red_robot/laser/impact_effect/SmokePuffNormals.png" id="2"]
-[ext_resource type="Script" path="res://enemies/red_robot/parts/part_disappear_effect/part_disappear.gd" id="3"]
+[ext_resource type="Script" uid="uid://dxd6xoeg627y6" path="res://enemies/red_robot/parts/part_disappear_effect/part_disappear.gd" id="3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wgk7"]
 transparency = 1

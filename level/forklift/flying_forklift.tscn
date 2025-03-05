@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b3kcdt0p1pr74" path="res://level/forklift/flying_forklift.glb" id="1"]
 [ext_resource type="Texture2D" uid="uid://8lj2sib517fx" path="res://level/forklift/dot.png" id="2"]
-[ext_resource type="Script" path="res://level/forklift/flying_forklift.gd" id="3"]
+[ext_resource type="Script" uid="uid://dcqnfagy55nrx" path="res://level/forklift/flying_forklift.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://biye81cs18sdp" path="res://effects_shared/spotlight_projector.png" id="4_47076"]
 
 [sub_resource type="BoxShape3D" id="1"]

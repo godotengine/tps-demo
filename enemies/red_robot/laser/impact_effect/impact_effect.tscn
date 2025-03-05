@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bpm6frbylo5an" path="res://effects_shared/BlastTexture.png" id="2"]
 [ext_resource type="ArrayMesh" uid="uid://dsxo5so87px6f" path="res://enemies/red_robot/laser/impact_effect/LightRaysMesh_Plane.mesh" id="3"]
 [ext_resource type="Texture2D" uid="uid://clqkmuqdlo4rh" path="res://enemies/red_robot/laser/impact_effect/LightRays.png" id="4"]
-[ext_resource type="Script" path="res://enemies/red_robot/laser/impact_effect/blast.gd" id="5"]
-[ext_resource type="Shader" path="res://enemies/red_robot/laser/impact_effect/EmissionAlbedoParticle.gdshader" id="6"]
+[ext_resource type="Script" uid="uid://bk20efkdq4v3m" path="res://enemies/red_robot/laser/impact_effect/blast.gd" id="5"]
+[ext_resource type="Shader" uid="uid://cdmq65xiexdf8" path="res://enemies/red_robot/laser/impact_effect/EmissionAlbedoParticle.gdshader" id="6"]
 [ext_resource type="Material" uid="uid://yxudvmlt7e3h" path="res://enemies/red_robot/laser/impact_effect/EmissionEmbers.tres" id="8"]
 [ext_resource type="Texture2D" uid="uid://crq55yidge8wt" path="res://enemies/red_robot/laser/impact_effect/SmokePuffNormals.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://bb6a2c0n7pgsk" path="res://enemies/red_robot/laser/impact_effect/SmokePuff.png" id="11"]
@@ -75,7 +75,7 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y0aew"]
 _data = {
-"blast": SubResource("Animation_sfsol")
+&"blast": SubResource("Animation_sfsol")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7bxa"]
@@ -90,7 +90,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Curve" id="Curve_3v6v7"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 1.2), 0.0, 0.0, 0, 0, Vector2(1, 5), 7.54685, 0.0, 0, 0]
 point_count = 2
 
@@ -101,6 +101,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
 render_priority = 0
 shader = ExtResource("6")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("4")
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 1.0
@@ -111,7 +112,6 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("4")
 
 [sub_resource type="Curve" id="Curve_bo81s"]
 bake_resolution = 16

@@ -1,11 +1,11 @@
 [gd_scene load_steps=99 format=3 uid="uid://byi6b08jpb2iw"]
 
-[ext_resource type="Script" path="res://enemies/red_robot/red_robot.gd" id="1"]
+[ext_resource type="Script" uid="uid://bf14mo0lrrvjl" path="res://enemies/red_robot/red_robot.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cmy0u0gubi0bw" path="res://enemies/red_robot/model/red_robot.glb" id="2_g6060"]
 [ext_resource type="ArrayMesh" uid="uid://b5a08lep8yhf1" path="res://enemies/red_robot/laser/circle.mesh" id="3_53w75"]
 [ext_resource type="Material" uid="uid://cfq45e1sfaycm" path="res://enemies/red_robot/laser/LaserMaterial.tres" id="4_6f0x2"]
 [ext_resource type="ArrayMesh" uid="uid://mku55kdo1248" path="res://enemies/red_robot/laser/raymesh.mesh" id="5_knbdw"]
-[ext_resource type="Shader" path="res://enemies/red_robot/laser/LaserShader.gdshader" id="6_qwdci"]
+[ext_resource type="Shader" uid="uid://bfl0kmtf31qti" path="res://enemies/red_robot/laser/LaserShader.gdshader" id="6_qwdci"]
 [ext_resource type="Material" uid="uid://yxudvmlt7e3h" path="res://enemies/red_robot/laser/impact_effect/EmissionEmbers.tres" id="6_xf2ir"]
 [ext_resource type="Texture2D" uid="uid://cp4djbb113s3h" path="res://enemies/red_robot/laser/LaserBodyNoise.tres" id="7_dlm32"]
 [ext_resource type="Material" uid="uid://b2atvw0yire0x" path="res://enemies/red_robot/laser/EmberTrailCutoff.tres" id="7_nxdkr"]
@@ -23,7 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://h53v0p3a82ki" path="res://enemies/red_robot/audio/walk.wav" id="19"]
 [ext_resource type="AudioStream" uid="uid://iodygamtcovk" path="res://enemies/red_robot/audio/hit.wav" id="20_d1jht"]
 [ext_resource type="ArrayMesh" uid="uid://cna0fa1wdq56d" path="res://enemies/red_robot/parts/sparks_effect/SparkParticle_Sphere.mesh" id="22"]
-[ext_resource type="Script" path="res://enemies/red_robot/parts/part.gd" id="24"]
+[ext_resource type="Script" uid="uid://c3vo80hyj6w6c" path="res://enemies/red_robot/parts/part.gd" id="24"]
 [ext_resource type="PackedScene" uid="uid://kl4f3mi24xdv" path="res://enemies/red_robot/laser/impact_effect/impact_effect.tscn" id="25_2mhnh"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_h6xi0"]
@@ -10054,27 +10054,27 @@ tracks/67/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cj6rv"]
 _data = {
-"Cannon-D": SubResource("Animation_ndf42"),
-"Cannon-L": SubResource("Animation_awjuk"),
-"Cannon-N": SubResource("Animation_p76sd"),
-"Cannon-R": SubResource("Animation_tcso2"),
-"Cannon-U": SubResource("Animation_lxh56"),
-"Cannon_Fire_Recoil": SubResource("Animation_fa0nr"),
-"Damage_heavy": SubResource("Animation_ogt1m"),
-"Damage_take1": SubResource("Animation_ilmtl"),
-"Damage_take2": SubResource("Animation_3sxtr"),
-"Idle": SubResource("Animation_c2h1b"),
-"Idle-Eyes": SubResource("Animation_1s7dt"),
-"NOEXP-DefaultPose-noexp": SubResource("Animation_uo7rk"),
-"NOEXP-TurnLeft45-noexp": SubResource("Animation_n6n3k"),
-"NOEXP-TurnRight45-noexp": SubResource("Animation_tooho"),
-"NOEXP-noexp": SubResource("Animation_mplp0"),
-"TurnLeft": SubResource("Animation_wlwqc"),
-"TurnLeft-cycle-noexp": SubResource("Animation_0u1xn"),
-"TurnLeft-start-cycle-noexp": SubResource("Animation_n3g31"),
-"TurnRight": SubResource("Animation_bwl45"),
-"TurnRight-start-noexp": SubResource("Animation_hyyrh"),
-"Walk": SubResource("Animation_arqgx")
+&"Cannon-D": SubResource("Animation_ndf42"),
+&"Cannon-L": SubResource("Animation_awjuk"),
+&"Cannon-N": SubResource("Animation_p76sd"),
+&"Cannon-R": SubResource("Animation_tcso2"),
+&"Cannon-U": SubResource("Animation_lxh56"),
+&"Cannon_Fire_Recoil": SubResource("Animation_fa0nr"),
+&"Damage_heavy": SubResource("Animation_ogt1m"),
+&"Damage_take1": SubResource("Animation_ilmtl"),
+&"Damage_take2": SubResource("Animation_3sxtr"),
+&"Idle": SubResource("Animation_c2h1b"),
+&"Idle-Eyes": SubResource("Animation_1s7dt"),
+&"NOEXP-DefaultPose-noexp": SubResource("Animation_uo7rk"),
+&"NOEXP-TurnLeft45-noexp": SubResource("Animation_n6n3k"),
+&"NOEXP-TurnRight45-noexp": SubResource("Animation_tooho"),
+&"NOEXP-noexp": SubResource("Animation_mplp0"),
+&"TurnLeft": SubResource("Animation_wlwqc"),
+&"TurnLeft-cycle-noexp": SubResource("Animation_0u1xn"),
+&"TurnLeft-start-cycle-noexp": SubResource("Animation_n3g31"),
+&"TurnRight": SubResource("Animation_bwl45"),
+&"TurnRight-start-noexp": SubResource("Animation_hyyrh"),
+&"Walk": SubResource("Animation_arqgx")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="34"]
@@ -10405,7 +10405,7 @@ tracks/14/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oexr2"]
 _data = {
-"shoot": SubResource("55")
+&"shoot": SubResource("55")
 }
 
 [sub_resource type="PhysicsMaterial" id="56"]
@@ -10557,7 +10557,7 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m5v3c"]
 _data = {
-"kaboom": SubResource("67")
+&"kaboom": SubResource("67")
 }
 
 [sub_resource type="StandardMaterial3D" id="68"]

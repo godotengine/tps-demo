@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bcnpdinrepean"]
 
-[ext_resource type="Script" path="res://door/door.gd" id="1"]
+[ext_resource type="Script" uid="uid://7v3r683kok5s" path="res://door/door.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bivo3ncbyf02f" path="res://door/model/door.dae" id="2"]
 [ext_resource type="AudioStream" uid="uid://c2nls7s14emyc" path="res://door/open_close.wav" id="3"]
 

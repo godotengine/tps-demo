@@ -1,6 +1,6 @@
 [gd_scene load_steps=57 format=3 uid="uid://jphgr3qep5"]
 
-[ext_resource type="Script" path="res://player/bullet/bullet.gd" id="1"]
+[ext_resource type="Script" uid="uid://iybteh2g0be4" path="res://player/bullet/bullet.gd" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://dqkkefcnt0erw" path="res://effects_shared/BlastMesh_Sphere.mesh" id="2"]
 [ext_resource type="AudioStream" uid="uid://c0bpunl6shvlr" path="res://player/bullet/bullet_explode.wav" id="3"]
 [ext_resource type="Material" uid="uid://bxjcw6j767jtn" path="res://player/bullet/effect/BlastMaterial.tres" id="4"]
@@ -239,8 +239,8 @@ tracks/12/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dbep6"]
 _data = {
-"RESET": SubResource("Animation_gjuvs"),
-"explode": SubResource("Animation_8lnsf")
+&"RESET": SubResource("Animation_gjuvs"),
+&"explode": SubResource("Animation_8lnsf")
 }
 
 [sub_resource type="Gradient" id="Gradient_jp56w"]
@@ -356,7 +356,7 @@ proximity_fade_enabled = true
 proximity_fade_distance = 0.25
 
 [sub_resource type="Curve" id="Curve_s4ylr"]
-min_value = -1.0
+_limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 0.890909), 0.0, 0.0, 0, 0, Vector2(1, -0.0545454), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -464,7 +464,7 @@ radial_segments = 16
 rings = 8
 
 [sub_resource type="Curve" id="Curve_s8ihl"]
-max_value = 4.0
+_limits = [0.0, 4.0, 0.0, 1.0]
 _data = [Vector2(0.150987, 4), 0.0, 0.0, 0, 0, Vector2(1, 0.6936), 0.0, 0.0, 0, 0]
 point_count = 2
 

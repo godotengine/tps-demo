@@ -1,14 +1,14 @@
 [gd_scene load_steps=51 format=3 uid="uid://cs1k22tdf04k4"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1"]
+[ext_resource type="Script" uid="uid://ctlx3bqglonsx" path="res://player/player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://div25sd40yx1d" path="res://player/model/player.glb" id="2"]
-[ext_resource type="Script" path="res://player/player_input.gd" id="2_g11dy"]
+[ext_resource type="Script" uid="uid://m1xn31x0lssx" path="res://player/player_input.gd" id="2_g11dy"]
 [ext_resource type="Texture2D" uid="uid://vpkjqsku35mr" path="res://player/crosshair.png" id="3"]
 [ext_resource type="AudioStream" uid="uid://do3ko5enqvvrb" path="res://player/audio/step_random_pitch.tres" id="4"]
 [ext_resource type="AudioStream" uid="uid://evwr35k4yn6g" path="res://player/audio/jump.wav" id="5"]
 [ext_resource type="AudioStream" uid="uid://fbnqspetw2oy" path="res://player/audio/land.wav" id="6"]
 [ext_resource type="Texture2D" uid="uid://8d78kbpqjumj" path="res://effects_shared/blob_shadow.tres" id="7_5auco"]
-[ext_resource type="Script" path="res://player/camera_noise_shake_effect.gd" id="8"]
+[ext_resource type="Script" uid="uid://byrvr71jmaisi" path="res://player/camera_noise_shake_effect.gd" id="8"]
 [ext_resource type="Material" uid="uid://byb8a73wgvytk" path="res://player/bullet/bullet_material.tres" id="9"]
 [ext_resource type="ArrayMesh" uid="uid://pok2ib14r47b" path="res://player/model/muzzle_flash_particle_mesh_Cone.mesh" id="10"]
 [ext_resource type="Texture2D" uid="uid://dj46di0ip66q5" path="res://player/bullet/effect/FlarePolar.png" id="11"]
@@ -314,9 +314,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_keqb5"]
 _data = {
-"RESET": SubResource("Animation_daexs"),
-"far": SubResource("33"),
-"shoot": SubResource("34")
+&"RESET": SubResource("Animation_daexs"),
+&"far": SubResource("33"),
+&"shoot": SubResource("34")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="35"]
