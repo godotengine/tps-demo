@@ -102,6 +102,8 @@ var peer : MultiplayerPeer = OfflineMultiplayerPeer.new()
 @onready var volumetric_fog_disabled = volumetric_fog_menu.get_node("Disabled")
 @onready var volumetric_fog_enabled = volumetric_fog_menu.get_node("Enabled")
 
+@onready var render_test = settings_menu.get_node("RenderTest").get_node("CheckBox")
+
 @onready var loading = ui.get_node("Loading")
 @onready var loading_progress = loading.get_node("Progress")
 @onready var loading_done_timer = loading.get_node("DoneTimer")
@@ -275,6 +277,11 @@ func _on_settings_pressed():
 	else:
 		volumetric_fog_enabled.button_pressed = true
 
+	if not Settings.config_file.get_value("debug", "render_test"):
+		render_test.button_pressed = false
+	else:
+		render_test.button_pressed = true
+
 
 func _on_quit_pressed():
 	get_tree().quit()
@@ -382,6 +389,8 @@ func _on_apply_pressed():
 
 	Settings.config_file.set_value("rendering", "bloom", bloom_enabled.button_pressed)
 	Settings.config_file.set_value("rendering", "volumetric_fog", volumetric_fog_enabled.button_pressed)
+	
+	Settings.config_file.set_value("debug", "render_test", render_test.button_pressed)
 
 	# Apply relevant settings directly.
 	Settings.apply_graphics_settings(get_window(), world_environment.environment, self)

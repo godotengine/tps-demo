@@ -23,7 +23,9 @@ func _ready():
 	else:
 		setup_lightmapgi()
 
-	if multiplayer.is_server():
+	if Settings.config_file.get_value("debug", "render_test"):
+		pass
+	elif multiplayer.is_server():
 		# Server will spawn the red robots
 		for c in robot_spawn_points.get_children():
 			spawn_robot(c)

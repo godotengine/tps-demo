@@ -1,8 +1,10 @@
 extends Label
 
+@export var debug_container : Container
+
 func _process(_delta):
 	if Input.is_action_just_pressed("toggle_debug"):
-		visible = not visible
+		debug_container.visible = not debug_container.visible
 
 	text = "FPS: " + str(Engine.get_frames_per_second())
 	text += "\nVSync: " + ("Enabled" if DisplayServer.window_get_vsync_mode() else "Disabled")
