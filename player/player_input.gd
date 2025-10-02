@@ -86,7 +86,7 @@ func _process(delta):
 		var ray_from = camera_camera.project_ray_origin(ch_pos)
 		var ray_dir = camera_camera.project_ray_normal(ch_pos)
 
-		var col = get_parent().get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(ray_from, ray_from + ray_dir * 1000, 0b11, [self]))
+		var col = get_parent().get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(ray_from, ray_from + ray_dir * 1000, 0b11, Array([self], TYPE_RID, "", null)))
 		if col.is_empty():
 			shoot_target = ray_from + ray_dir * 1000
 		else:
@@ -104,18 +104,11 @@ func _process(delta):
 
 
 func _input(event):
-	# Make mouse aiming speed resolution-independent
-	# (required when using the `canvas_items` stretch mode).
-	var scale_factor: float = min(
-			(float(get_viewport().size.x) / get_viewport().get_visible_rect().size.x),
-			(float(get_viewport().size.y) / get_viewport().get_visible_rect().size.y)
-	)
-
 	if event is InputEventMouseMotion:
 		var camera_speed_this_frame = CAMERA_MOUSE_ROTATION_SPEED
 		if aiming:
 			camera_speed_this_frame *= 0.75
-		rotate_camera(event.relative * camera_speed_this_frame * scale_factor)
+		rotate_camera(event.screen_relative * camera_speed_this_frame)
 
 
 func rotate_camera(move):
