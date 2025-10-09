@@ -13,7 +13,7 @@
 [ext_resource type="Environment" uid="uid://cnn46umvf55rs" path="res://level/geometry/environment.tres" id="16"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
-radius = 39.0126
+radius = 39.01255
 height = 78.0251
 
 [sub_resource type="Animation" id="2"]
@@ -72,7 +72,7 @@ transform = Transform3D(-0.575826, 0, -0.817573, 0, 1, 0, 0.817573, 0, -0.575826
 transform = Transform3D(-0.575826, 0, -0.817573, 0, 1, 0, 0.817573, 0, -0.575826, 64.818, -1.077, 74.764)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://player/player.tscn", "res://enemies/red_robot/red_robot.tscn", "res://player/bullet/bullet.tscn")
+_spawnable_scenes = PackedStringArray("uid://cs1k22tdf04k4", "uid://byi6b08jpb2iw", "uid://jphgr3qep5")
 spawn_path = NodePath("../SpawnedNodes")
 
 [node name="Core" parent="." instance=ExtResource("14")]
@@ -143,7 +143,7 @@ transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -68.24
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FlyingForklifts"]
 libraries = {
-"": SubResource("AnimationLibrary_35gwb")
+&"": SubResource("AnimationLibrary_35gwb")
 }
 autoplay = "mawaru"
 

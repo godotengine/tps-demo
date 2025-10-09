@@ -1,16 +1,16 @@
-[gd_resource type="StyleBoxFlat" format=2]
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://bdqsmwgq6h4ot"]
 
 [resource]
-bg_color = Color( 0, 0, 0, 0 )
+bg_color = Color(0, 0, 0, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-shadow_color = Color( 1, 1, 1, 0.431373 )
+shadow_color = Color(1, 1, 1, 0.431373)
 shadow_size = 10
 anti_aliasing = false

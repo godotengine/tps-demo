@@ -13,11 +13,13 @@ dest_files=["res://.godot/imported/core.glb-6d1fe901749789ad3144bf80da386b2d.scn
 
 [params]
 
-nodes/root_type="Node3D"
+nodes/root_type=""
 nodes/root_name="CoreModel"
-nodes/apply_root_scale=true
+nodes/root_script=null
+nodes/apply_root_scale=false
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -32,127 +34,160 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
 _subresources={
 "materials": {
 "door_reactor": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/door_reactor.tres"
+"use_external/fallback_path": "res://level/geometry/models/door_reactor.tres",
+"use_external/path": "uid://7ahmb3jrajnt"
 },
 "flat_emitter_blue": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://level/geometry/models/flat_emitter_blue.tres",
 "use_external/path": "res://level/geometry/models/flat_emitter_blue.tres"
 },
 "flat_emitter_orange": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://level/geometry/models/flat_emitter_orange.tres",
 "use_external/path": "res://level/geometry/models/flat_emitter_orange.tres"
 },
 "flat_emitter_orange_dull": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://level/geometry/models/flat_emitter_orange_dull.tres",
 "use_external/path": "res://level/geometry/models/flat_emitter_orange_dull.tres"
 },
 "flat_emitter_red": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://level/geometry/models/flat_emitter_red.tres",
 "use_external/path": "res://level/geometry/models/flat_emitter_red.tres"
 },
 "flat_emitter_white": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://level/geometry/models/flat_emitter_white.tres",
 "use_external/path": "res://level/geometry/models/flat_emitter_white.tres"
 },
 "flat_silver_metal": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://level/geometry/models/flat_silver_metal.tres",
 "use_external/path": "res://level/geometry/models/flat_silver_metal.tres"
 },
 "floor_grate_wholes": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/floor_grate_wholes.tres"
+"use_external/fallback_path": "res://level/geometry/models/floor_grate_wholes.tres",
+"use_external/path": "uid://bg0tag6xiao3r"
 },
 "mid_cargo_box": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/mid_cargo_box.tres"
+"use_external/fallback_path": "res://level/geometry/models/mid_cargo_box.tres",
+"use_external/path": "uid://btbrh0piulu1r"
 },
 "reactor_cylinder": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/reactor_cylinder.tres"
+"use_external/fallback_path": "res://level/geometry/models/reactor_cylinder.tres",
+"use_external/path": "uid://ct6gqk0powrr4"
 },
 "reactor_emitter": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/reactor_emitter.tres"
+"use_external/fallback_path": "res://level/geometry/models/reactor_emitter.tres",
+"use_external/path": "uid://bafp3svf0x3nh"
 },
 "scifi_car_glass": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/scifi_car_glass.tres"
+"use_external/fallback_path": "res://level/geometry/models/scifi_car_glass.tres",
+"use_external/path": "uid://cjn5c5md8djfr"
 },
 "set_asphalt": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/set_asphalt.tres"
+"use_external/fallback_path": "res://level/geometry/models/set_asphalt.tres",
+"use_external/path": "uid://v2klt8psnllx"
 },
 "tile_anti_slip_metal": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/tile_anti_slip_metal.tres"
+"use_external/fallback_path": "res://level/geometry/models/tile_anti_slip_metal.tres",
+"use_external/path": "uid://powxdyqwd86t"
 },
 "tile_black_plastic": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/tile_black_plastic.tres"
+"use_external/fallback_path": "res://level/geometry/models/tile_black_plastic.tres",
+"use_external/path": "uid://lg6qj8wpa5va"
 },
 "tile_carbon_fiber": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/tile_carbon_fiber.tres"
+"use_external/fallback_path": "res://level/geometry/models/tile_carbon_fiber.tres",
+"use_external/path": "uid://cox8xmrxcgitt"
 },
 "tile_default_metal": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/tile_default_metal.tres"
+"use_external/fallback_path": "res://level/geometry/models/tile_default_metal.tres",
+"use_external/path": "uid://4o80ywqgw2sj"
 },
 "tile_glass": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/tile_glass.tres"
+"use_external/fallback_path": "res://level/geometry/models/tile_glass.tres",
+"use_external/path": "uid://x4yrasc8fraf"
 },
 "tile_painted_gun_metal": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/tile_painted_gun_metal.tres"
+"use_external/fallback_path": "res://level/geometry/models/tile_painted_gun_metal.tres",
+"use_external/path": "uid://4li4j8ie6au1"
 },
 "tile_rivet_panels": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/tile_rivet_panels.tres"
+"use_external/fallback_path": "res://level/geometry/models/tile_rivet_panels.tres",
+"use_external/path": "uid://chkn2bkog3yaw"
 },
 "tile_scifi_floor_panel": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/tile_scifi_floor_panel.tres"
+"use_external/fallback_path": "res://level/geometry/models/tile_scifi_floor_panel.tres",
+"use_external/path": "uid://dns1851xm3coh"
 },
 "tile_silver_metal": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/tile_silver_metal.tres"
+"use_external/fallback_path": "res://level/geometry/models/tile_silver_metal.tres",
+"use_external/path": "uid://xa4yqg750fv7"
 },
 "tile_simple_floor": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/tile_simple_floor.tres"
+"use_external/fallback_path": "res://level/geometry/models/tile_simple_floor.tres",
+"use_external/path": "uid://caa8viibt4phj"
 },
 "tile_steel": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/tile_steel.tres"
+"use_external/fallback_path": "res://level/geometry/models/tile_steel.tres",
+"use_external/path": "uid://cusvgibyf81nn"
 },
 "tile_tech_panels": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/tile_tech_panels.tres"
+"use_external/fallback_path": "res://level/geometry/models/tile_tech_panels.tres",
+"use_external/path": "uid://pnaq2hdnipqg"
 },
 "tile_tech_panels_color": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/tile_tech_panels_color.tres"
+"use_external/fallback_path": "res://level/geometry/models/tile_tech_panels_color.tres",
+"use_external/path": "uid://boe38a2lsbsbu"
 },
 "trim_emission_lights": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/trim_emission_lights.tres"
+"use_external/fallback_path": "res://level/geometry/models/trim_emission_lights.tres",
+"use_external/path": "uid://csx8hue5klwn1"
 },
 "trim_misc_1": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/trim_misc_1.tres"
+"use_external/fallback_path": "res://level/geometry/models/trim_misc_1.tres",
+"use_external/path": "uid://ck8f6yik1e0kb"
 },
 "trim_misc_2": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/trim_misc_2.tres"
+"use_external/fallback_path": "res://level/geometry/models/trim_misc_2.tres",
+"use_external/path": "uid://ds7h70pdak3a2"
 },
 "trim_pipes": {
 "use_external/enabled": true,
-"use_external/path": "res://level/geometry/models/trim_pipes.tres"
+"use_external/fallback_path": "res://level/geometry/models/trim_pipes.tres",
+"use_external/path": "uid://btb3lh0advqke"
 }
 }
 }

@@ -13,9 +13,9 @@ dest_files=["res://.godot/imported/SparksParticle.blend-f58a2953e4ea71aefe8c952d
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Scene Root"
-nodes/apply_root_scale=true
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=false
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true

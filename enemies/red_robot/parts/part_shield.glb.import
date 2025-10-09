@@ -13,12 +13,14 @@ dest_files=["res://.godot/imported/part_shield.glb-d6c233d3d85ae961b022dca28194d
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Scene Root"
-nodes/apply_root_scale=true
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=false
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
-nodes/use_node_type_suffixes=true
+nodes/use_name_suffixes=false
+nodes/use_node_type_suffixes=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
@@ -32,11 +34,15 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
 _subresources={
 "materials": {
 "EvilRobo": {
 "use_external/enabled": true,
-"use_external/path": "res://enemies/red_robot/parts/EvilRobo.tres"
+"use_external/fallback_path": "res://enemies/red_robot/parts/EvilRobo.tres",
+"use_external/path": "uid://brmid853op8lj"
 }
 }
 }

@@ -106,10 +106,10 @@ fractal_octaves = 3
 fractal_gain = 0.7
 
 [sub_resource type="NoiseTexture2D" id="17"]
-in_3d_space = true
 generate_mipmaps = false
-seamless = true
 noise = SubResource("16")
+seamless = true
+in_3d_space = true
 
 [sub_resource type="Curve" id="18"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.391304, 0), 0.0, 8.36364, 0, 0, Vector2(1, 0), -2.08678, 0.0, 0, 0]
@@ -232,6 +232,7 @@ emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 0.62
 emission_ring_radius = 0.01
 emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
 particle_flag_align_y = true
 particle_flag_rotate_y = true
 spread = 180.0

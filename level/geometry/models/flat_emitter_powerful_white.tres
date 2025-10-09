@@ -1,12 +1,10 @@
-[gd_resource type="StandardMaterial3D" format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b6pwlix74yf7b"]
 
 [resource]
 resource_name = "flat_emitter_powerful_white"
-albedo_color = Color( 0.8, 0.8, 0.8, 1 )
+albedo_color = Color(0.8, 0.8, 0.8, 1)
 metallic = 0.5
 roughness = 0.542695
 emission_enabled = true
-emission = Color( 0.741176, 0.678431, 0.584314, 1 )
-emission_energy = 8.5
-emission_operator = 0
-emission_on_uv2 = false
+emission = Color(0.741176, 0.678431, 0.584314, 1)
+emission_energy_multiplier = 8.5

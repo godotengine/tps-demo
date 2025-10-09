@@ -134,7 +134,6 @@ spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_013_Orientation" parent="Spot_013" index="0"]
-light_color = Color(1, 1, 1, 1)
 light_energy = 24.0
 light_volumetric_fog_energy = 5000.0
 light_projector = ExtResource("2_fkvu6")
@@ -145,7 +144,6 @@ spot_angle = 30.0
 spot_angle_attenuation = 2.0
 
 [node name="Spot_012_Orientation" parent="Spot_012" index="0"]
-light_color = Color(1, 1, 1, 1)
 light_energy = 24.0
 light_volumetric_fog_energy = 5000.0
 light_projector = ExtResource("2_fkvu6")
@@ -203,4 +201,3 @@ light_specular = 0.0
 light_bake_mode = 1
 shadow_enabled = true
 omni_range = 25.0
-omni_attenuation = 2.0

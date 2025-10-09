@@ -1,11 +1,12 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cfq45e1sfaycm"]
 
-[ext_resource type="Shader" path="res://enemies/red_robot/laser/LaserShader.gdshader" id="1_b3x6l"]
+[ext_resource type="Shader" uid="uid://bfl0kmtf31qti" path="res://enemies/red_robot/laser/LaserShader.gdshader" id="1_b3x6l"]
 [ext_resource type="Texture2D" uid="uid://cp4djbb113s3h" path="res://enemies/red_robot/laser/LaserBodyNoise.tres" id="2_dvjar"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_b3x6l")
+shader_parameter/laser_body_noise = ExtResource("2_dvjar")
 shader_parameter/uv_scale = Vector2(15, 0.5)
 shader_parameter/offset_uv_x = 0.0
 shader_parameter/cutoff_value = 1.0
@@ -13,4 +14,3 @@ shader_parameter/traversal_scale = 0.0
 shader_parameter/energy = 1.0
 shader_parameter/clip = 8.0
 shader_parameter/color1 = Color(1, 0, 0, 1)
-shader_parameter/laser_body_noise = ExtResource("2_dvjar")

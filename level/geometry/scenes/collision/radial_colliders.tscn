@@ -341,30 +341,18 @@ shape = SubResource("30")
 [node name="WallPillar7" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.649877, -0.455049, -0.608761, 0.573577, 0.819152, 0, 0.498668, -0.349171, 0.793353, 24.1973, 11.5, 18.5672)
 shape = SubResource("30")
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="WallPillar8" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.77906, -0.545503, 0.309017, 0.573577, 0.819152, 0, -0.253132, 0.177245, 0.951056, 29.0072, 11.5, -9.42502)
 shape = SubResource("30")
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="WallPillar9" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.649877, -0.455049, 0.608761, 0.573577, 0.819152, 0, -0.498668, 0.349171, 0.793353, 24.1973, 11.5, -18.5672)
 shape = SubResource("30")
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="WallPillar10" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.409576, -0.286788, 0.866025, 0.573577, 0.819152, 0, -0.709406, 0.496732, 0.5, 15.25, 11.5, -26.4138)
 shape = SubResource("30")
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="Wall1" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.884988, 0, -0.465615, 0, 1, 0, 0.465615, 0, 0.884988, 34.5588, 0, 18.1822)

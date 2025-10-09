@@ -1,12 +1,10 @@
-[gd_resource type="StandardMaterial3D" format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cb1kogh0pvqxe"]
 
 [resource]
 resource_name = "flat_emitter_orange_dull"
-albedo_color = Color( 0.43658, 0.234022, 0.0361345, 1 )
+albedo_color = Color(0.43658, 0.234022, 0.0361345, 1)
 metallic = 0.5
 roughness = 0.542695
 emission_enabled = true
-emission = Color( 1, 0.701961, 0, 1 )
-emission_energy = 0.17
-emission_operator = 0
-emission_on_uv2 = false
+emission = Color(1, 0.701961, 0, 1)
+emission_energy_multiplier = 0.17

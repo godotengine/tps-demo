@@ -1,6 +1,6 @@
-[gd_resource type="StandardMaterial3D" format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c6q1h8dxh631b"]
 
 [resource]
 resource_name = "door_unlockedemission"
-albedo_color = Color( 0.00685012, 0.64, 0, 1 )
+albedo_color = Color(0.00685012, 0.64, 0, 1)
 roughness = 0.0960784
