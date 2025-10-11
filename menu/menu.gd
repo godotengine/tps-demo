@@ -1,116 +1,119 @@
 extends Node
 
-var path = "res://level/level.tscn"
 
 signal replace_main_scene
-#warning-ignore:unused_signal
-signal quit # Useless, but needed as there is no clean way to check if a node exposes a signal
 
-var peer : MultiplayerPeer = OfflineMultiplayerPeer.new()
+const LEVEL_PATH: String = "res://level/level.tscn"
+
+var peer: MultiplayerPeer = OfflineMultiplayerPeer.new()
 
 var metalfx_supported: bool = RenderingServer.get_current_rendering_driver_name() == "metal"
 
-@onready var world_environment = $WorldEnvironment
+@onready var world_environment: WorldEnvironment = $WorldEnvironment
 
-@onready var ui = $UI
-@onready var main = ui.get_node("Main")
-@onready var online = ui.get_node("Online")
-@onready var play_button = main.get_node("Play")
-@onready var settings_button = main.get_node("Settings")
-@onready var quit_button = main.get_node("Quit")
+@onready var ui: Control = $UI
+@onready var main: Control = ui.get_node(^"Main")
+@onready var play_button: Button = main.get_node(^"Play")
+@onready var settings_button: Button = main.get_node(^"Settings")
+@onready var quit_button: Button = main.get_node(^"Quit")
 
-@onready var settings_menu = ui.get_node("Settings")
-@onready var settings_actions = settings_menu.get_node("Actions")
-@onready var settings_action_apply = settings_actions.get_node("Apply")
-@onready var settings_action_cancel = settings_actions.get_node("Cancel")
+@onready var online: Control = ui.get_node(^"Online")
+@onready var online_port: SpinBox = online.get_node(^"Port")
+@onready var online_address: LineEdit = online.get_node(^"Address")
 
-@onready var display_mode_menu = settings_menu.get_node("DisplayMode")
-@onready var display_mode_windowed = display_mode_menu.get_node("Windowed")
-@onready var display_mode_fullscreen = display_mode_menu.get_node("Fullscreen")
-@onready var display_mode_exclusive_fullscreen = display_mode_menu.get_node("ExclusiveFullscreen")
+@onready var settings_menu: VBoxContainer = ui.get_node(^"Settings")
+@onready var settings_actions: HBoxContainer = settings_menu.get_node(^"Actions")
+@onready var settings_action_apply: Button = settings_actions.get_node(^"Apply")
+@onready var settings_action_cancel: Button = settings_actions.get_node(^"Cancel")
 
-@onready var vsync_menu = settings_menu.get_node("VSync")
-@onready var vsync_disabled = vsync_menu.get_node("Disabled")
-@onready var vsync_enabled = vsync_menu.get_node("Enabled")
-@onready var vsync_adaptive = vsync_menu.get_node("Adaptive")
-@onready var vsync_mailbox = vsync_menu.get_node("Mailbox")
+@onready var display_mode_menu: HBoxContainer = settings_menu.get_node(^"DisplayMode")
+@onready var display_mode_windowed: Button = display_mode_menu.get_node(^"Windowed")
+@onready var display_mode_fullscreen: Button = display_mode_menu.get_node(^"Fullscreen")
+@onready var display_mode_exclusive_fullscreen: Button = display_mode_menu.get_node(^"ExclusiveFullscreen")
 
-@onready var max_fps_menu = settings_menu.get_node("MaxFPS")
-@onready var max_fps_30 = max_fps_menu.get_node("30")
-@onready var max_fps_40 = max_fps_menu.get_node("40")
-@onready var max_fps_60 = max_fps_menu.get_node("60")
-@onready var max_fps_72 = max_fps_menu.get_node("72")
-@onready var max_fps_90 = max_fps_menu.get_node("90")
-@onready var max_fps_120 = max_fps_menu.get_node("120")
-@onready var max_fps_144 = max_fps_menu.get_node("144")
-@onready var max_fps_unlimited = max_fps_menu.get_node("Unlimited")
+@onready var vsync_menu: HBoxContainer = settings_menu.get_node(^"VSync")
+@onready var vsync_disabled: Button = vsync_menu.get_node(^"Disabled")
+@onready var vsync_enabled: Button = vsync_menu.get_node(^"Enabled")
+@onready var vsync_adaptive: Button = vsync_menu.get_node(^"Adaptive")
+@onready var vsync_mailbox: Button = vsync_menu.get_node(^"Mailbox")
 
-@onready var resolution_scale_menu = settings_menu.get_node("ResolutionScale")
-@onready var resolution_scale_ultra_performance = resolution_scale_menu.get_node("UltraPerformance")
-@onready var resolution_scale_performance = resolution_scale_menu.get_node("Performance")
-@onready var resolution_scale_balanced = resolution_scale_menu.get_node("Balanced")
-@onready var resolution_scale_quality = resolution_scale_menu.get_node("Quality")
-@onready var resolution_scale_ultra_quality = resolution_scale_menu.get_node("UltraQuality")
-@onready var resolution_scale_native = resolution_scale_menu.get_node("Native")
+@onready var max_fps_menu: HBoxContainer = settings_menu.get_node(^"MaxFPS")
+@onready var max_fps_30: Button = max_fps_menu.get_node(^"30")
+@onready var max_fps_40: Button = max_fps_menu.get_node(^"40")
+@onready var max_fps_60: Button = max_fps_menu.get_node(^"60")
+@onready var max_fps_72: Button = max_fps_menu.get_node(^"72")
+@onready var max_fps_90: Button = max_fps_menu.get_node(^"90")
+@onready var max_fps_120: Button = max_fps_menu.get_node(^"120")
+@onready var max_fps_144: Button = max_fps_menu.get_node(^"144")
+@onready var max_fps_unlimited: Button = max_fps_menu.get_node(^"Unlimited")
 
-@onready var scale_filter_menu = settings_menu.get_node("ScaleFilter")
-@onready var scale_filter_bilinear = scale_filter_menu.get_node("Bilinear")
-@onready var scale_filter_fsr1 = scale_filter_menu.get_node("FSR1")
-@onready var scale_filter_metalfx_spatial = scale_filter_menu.get_node("MetalFXSpatial")
-@onready var scale_filter_fsr2 = scale_filter_menu.get_node("FSR2")
-@onready var scale_filter_metalfx_temporal = scale_filter_menu.get_node("MetalFXTemporal")
+@onready var resolution_scale_menu: HBoxContainer = settings_menu.get_node(^"ResolutionScale")
+@onready var resolution_scale_ultra_performance: Button = resolution_scale_menu.get_node(^"UltraPerformance")
+@onready var resolution_scale_performance: Button = resolution_scale_menu.get_node(^"Performance")
+@onready var resolution_scale_balanced: Button = resolution_scale_menu.get_node(^"Balanced")
+@onready var resolution_scale_quality: Button = resolution_scale_menu.get_node(^"Quality")
+@onready var resolution_scale_ultra_quality: Button = resolution_scale_menu.get_node(^"UltraQuality")
+@onready var resolution_scale_native: Button = resolution_scale_menu.get_node(^"Native")
 
-@onready var taa_menu = settings_menu.get_node("TAA")
-@onready var taa_disabled = taa_menu.get_node("Disabled")
-@onready var taa_enabled = taa_menu.get_node("Enabled")
+@onready var scale_filter_menu: HBoxContainer = settings_menu.get_node(^"ScaleFilter")
+@onready var scale_filter_bilinear: Button = scale_filter_menu.get_node(^"Bilinear")
+@onready var scale_filter_fsr1: Button = scale_filter_menu.get_node(^"FSR1")
+@onready var scale_filter_metalfx_spatial: Button = scale_filter_menu.get_node(^"MetalFXSpatial")
+@onready var scale_filter_fsr2: Button = scale_filter_menu.get_node(^"FSR2")
+@onready var scale_filter_metalfx_temporal: Button = scale_filter_menu.get_node(^"MetalFXTemporal")
 
-@onready var msaa_menu = settings_menu.get_node("MSAA")
-@onready var msaa_disabled = msaa_menu.get_node("Disabled")
-@onready var msaa_2x = msaa_menu.get_node("2X")
-@onready var msaa_4x = msaa_menu.get_node("4X")
-@onready var msaa_8x = msaa_menu.get_node("8X")
+@onready var taa_menu: HBoxContainer = settings_menu.get_node(^"TAA")
+@onready var taa_disabled: Button = taa_menu.get_node(^"Disabled")
+@onready var taa_enabled: Button = taa_menu.get_node(^"Enabled")
 
-@onready var fxaa_menu = settings_menu.get_node("FXAA")
-@onready var fxaa_disabled = fxaa_menu.get_node("Disabled")
-@onready var fxaa_enabled = fxaa_menu.get_node("Enabled")
+@onready var msaa_menu: HBoxContainer = settings_menu.get_node(^"MSAA")
+@onready var msaa_disabled: Button = msaa_menu.get_node(^"Disabled")
+@onready var msaa_2x: Button = msaa_menu.get_node(^"2X")
+@onready var msaa_4x: Button = msaa_menu.get_node(^"4X")
+@onready var msaa_8x: Button = msaa_menu.get_node(^"8X")
 
-@onready var shadow_mapping_menu = settings_menu.get_node("ShadowMapping")
-@onready var shadow_mapping_disabled = shadow_mapping_menu.get_node("Disabled")
-@onready var shadow_mapping_enabled = shadow_mapping_menu.get_node("Enabled")
+@onready var fxaa_menu: HBoxContainer = settings_menu.get_node(^"FXAA")
+@onready var fxaa_disabled: Button = fxaa_menu.get_node(^"Disabled")
+@onready var fxaa_enabled: Button = fxaa_menu.get_node(^"Enabled")
 
-@onready var gi_type_menu = settings_menu.get_node("GIType")
-@onready var gi_lightmapgi = gi_type_menu.get_node("LightmapGI")
-@onready var gi_voxelgi = gi_type_menu.get_node("VoxelGI")
-@onready var gi_sdfgi = gi_type_menu.get_node("SDFGI")
+@onready var shadow_mapping_menu: HBoxContainer = settings_menu.get_node(^"ShadowMapping")
+@onready var shadow_mapping_disabled: Button = shadow_mapping_menu.get_node(^"Disabled")
+@onready var shadow_mapping_enabled: Button = shadow_mapping_menu.get_node(^"Enabled")
 
-@onready var gi_quality_menu = settings_menu.get_node("GIQuality")
-@onready var gi_disabled = gi_quality_menu.get_node("Disabled")
-@onready var gi_low = gi_quality_menu.get_node("Low")
-@onready var gi_high = gi_quality_menu.get_node("High")
+@onready var gi_type_menu: HBoxContainer = settings_menu.get_node(^"GIType")
+@onready var gi_lightmapgi: Button = gi_type_menu.get_node(^"LightmapGI")
+@onready var gi_voxelgi: Button = gi_type_menu.get_node(^"VoxelGI")
+@onready var gi_sdfgi: Button = gi_type_menu.get_node(^"SDFGI")
 
-@onready var ssao_menu = settings_menu.get_node("SSAO")
-@onready var ssao_disabled = ssao_menu.get_node("Disabled")
-@onready var ssao_medium = ssao_menu.get_node("Medium")
-@onready var ssao_high = ssao_menu.get_node("High")
+@onready var gi_quality_menu: HBoxContainer = settings_menu.get_node(^"GIQuality")
+@onready var gi_disabled: Button = gi_quality_menu.get_node(^"Disabled")
+@onready var gi_low: Button = gi_quality_menu.get_node(^"Low")
+@onready var gi_high: Button = gi_quality_menu.get_node(^"High")
 
-@onready var ssil_menu = settings_menu.get_node("SSIL")
-@onready var ssil_disabled = ssil_menu.get_node("Disabled")
-@onready var ssil_medium = ssil_menu.get_node("Medium")
-@onready var ssil_high = ssil_menu.get_node("High")
+@onready var ssao_menu: HBoxContainer = settings_menu.get_node(^"SSAO")
+@onready var ssao_disabled: Button = ssao_menu.get_node(^"Disabled")
+@onready var ssao_medium: Button = ssao_menu.get_node(^"Medium")
+@onready var ssao_high: Button = ssao_menu.get_node(^"High")
 
-@onready var bloom_menu = settings_menu.get_node("Bloom")
-@onready var bloom_disabled = bloom_menu.get_node("Disabled")
-@onready var bloom_enabled = bloom_menu.get_node("Enabled")
+@onready var ssil_menu: HBoxContainer = settings_menu.get_node(^"SSIL")
+@onready var ssil_disabled: Button = ssil_menu.get_node(^"Disabled")
+@onready var ssil_medium: Button = ssil_menu.get_node(^"Medium")
+@onready var ssil_high: Button = ssil_menu.get_node(^"High")
 
-@onready var volumetric_fog_menu = settings_menu.get_node("VolumetricFog")
-@onready var volumetric_fog_disabled = volumetric_fog_menu.get_node("Disabled")
-@onready var volumetric_fog_enabled = volumetric_fog_menu.get_node("Enabled")
+@onready var bloom_menu: HBoxContainer = settings_menu.get_node(^"Bloom")
+@onready var bloom_disabled: Button = bloom_menu.get_node(^"Disabled")
+@onready var bloom_enabled: Button = bloom_menu.get_node(^"Enabled")
 
-@onready var loading = ui.get_node("Loading")
-@onready var loading_progress = loading.get_node("Progress")
-@onready var loading_done_timer = loading.get_node("DoneTimer")
+@onready var volumetric_fog_menu: HBoxContainer = settings_menu.get_node(^"VolumetricFog")
+@onready var volumetric_fog_disabled: Button = volumetric_fog_menu.get_node(^"Disabled")
+@onready var volumetric_fog_enabled: Button = volumetric_fog_menu.get_node(^"Enabled")
 
-func _ready():
+@onready var loading: HBoxContainer = ui.get_node(^"Loading")
+@onready var loading_progress: ProgressBar = loading.get_node(^"Progress")
+@onready var loading_done_timer: Timer = loading.get_node(^"DoneTimer")
+
+
+func _ready() -> void:
 	# Apply relevant settings directly.
 	Settings.apply_graphics_settings(get_window(), world_environment.environment, self)
 
@@ -130,14 +133,15 @@ func _ready():
 	]:
 		_make_button_group(menu)
 
-func _process(_delta):
+
+func _process(_delta: float) -> void:
 	if loading.visible:
-		var progress = []
-		var status = ResourceLoader.load_threaded_get_status(path, progress)
+		var progress: Array = []
+		var status: ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(LEVEL_PATH, progress)
 		if status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-			loading_progress.value = progress[0] * 100
+			loading_progress.value = progress[0] * 100.0
 		elif status == ResourceLoader.THREAD_LOAD_LOADED:
-			loading_progress.value = 100
+			loading_progress.value = 100.0
 			set_process(false)
 			loading_done_timer.start()
 		else:
@@ -145,23 +149,27 @@ func _process(_delta):
 			main.show()
 			loading.hide()
 
-func _make_button_group(common_parent: Node):
+
+func _make_button_group(common_parent: Node) -> void:
 	var group = ButtonGroup.new()
 	for btn in common_parent.get_children():
 		if not btn is BaseButton:
 			continue
 		btn.button_group = group
 
-func _on_loading_done_timer_timeout():
-	multiplayer.multiplayer_peer = peer
-	emit_signal("replace_main_scene", ResourceLoader.load_threaded_get(path))
 
-func _on_play_pressed():
+func _on_loading_done_timer_timeout() -> void:
+	multiplayer.multiplayer_peer = peer
+	emit_signal("replace_main_scene", ResourceLoader.load_threaded_get(LEVEL_PATH))
+
+
+func _on_play_pressed() -> void:
 	main.hide()
 	loading.show()
-	ResourceLoader.load_threaded_request(path, "", true)
+	ResourceLoader.load_threaded_request(LEVEL_PATH, "", true)
 
-func _on_settings_pressed():
+
+func _on_settings_pressed() -> void:
 	main.hide()
 	settings_menu.show()
 	settings_action_cancel.grab_focus()
@@ -294,11 +302,11 @@ func _on_settings_pressed():
 		volumetric_fog_enabled.button_pressed = true
 
 
-func _on_quit_pressed():
+func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 
-func _on_apply_pressed():
+func _on_apply_pressed() -> void:
 	main.show()
 	play_button.grab_focus()
 	settings_menu.hide()
@@ -411,27 +419,27 @@ func _on_apply_pressed():
 	Settings.save_settings()
 
 
-func _on_cancel_pressed():
+func _on_cancel_pressed() -> void:
 	main.show()
 	play_button.grab_focus()
 	settings_menu.hide()
 	online.hide()
 
 
-func _on_play_online_pressed():
+func _on_play_online_pressed() -> void:
 	online.show()
 	main.hide()
 
 
-func _on_host_pressed():
+func _on_host_pressed() -> void:
 	peer = ENetMultiplayerPeer.new()
-	peer.create_server(int($UI/Online/Port.value))
+	peer.create_server(int(online_port.value))
 	_on_play_pressed()
 	online.hide()
 
 
-func _on_connect_pressed():
+func _on_connect_pressed() -> void:
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client($UI/Online/Address.text, int($UI/Online/Port.value))
+	peer.create_client(online_address.text, int(online_port.value))
 	_on_play_pressed()
 	online.hide()

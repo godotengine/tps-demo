@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cp4djbb113s3h" path="res://enemies/red_robot/laser/LaserBodyNoise.tres" id="7_dlm32"]
 [ext_resource type="Material" uid="uid://b2atvw0yire0x" path="res://enemies/red_robot/laser/EmberTrailCutoff.tres" id="7_nxdkr"]
 [ext_resource type="Material" uid="uid://b0yi1uf4xb6ex" path="res://enemies/red_robot/parts/sparks_effect/SparkMaterial.tres" id="8"]
-[ext_resource type="Gradient" path="res://enemies/red_robot/laser/EmbersColorOverLife.tres" id="8_8q6ei"]
+[ext_resource type="Gradient" uid="uid://sqhcvf58y6wj" path="res://enemies/red_robot/laser/EmbersColorOverLife.tres" id="8_8q6ei"]
 [ext_resource type="AudioStream" uid="uid://bfewuxtmeylhc" path="res://enemies/red_robot/audio/charge.wav" id="9"]
 [ext_resource type="Material" uid="uid://cqxcjajjrcqvk" path="res://enemies/red_robot/laser/LaserCenter.material" id="9_2boaq"]
 [ext_resource type="ArrayMesh" uid="uid://bcvohx7obe6ar" path="res://enemies/red_robot/laser/BarrelSmoke_Plane.mesh" id="9_l7o07"]

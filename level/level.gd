@@ -1,19 +1,20 @@
 extends Node3D
 
-const RedRobot = preload("res://enemies/red_robot/red_robot.tscn")
-const PlayerScene = preload("res://player/player.tscn")
-var lightmap_gi = null
 
 signal quit
-#warning-ignore:unused_signal
-signal replace_main_scene # Useless, but needed as there is no clean way to check if a node exposes a signal
 
-@onready var world_environment = $WorldEnvironment
-@onready var robot_spawn_points = $RobotSpawnpoints
-@onready var player_spawn_points = $PlayerSpawnpoints
-@onready var spawn_node = $SpawnedNodes
+const RedRobot: PackedScene = preload("res://enemies/red_robot/red_robot.tscn")
+const PlayerScene: PackedScene = preload("res://player/player.tscn")
 
-func _ready():
+var lightmap_gi: LightmapGI = null
+
+@onready var world_environment: WorldEnvironment = $WorldEnvironment
+@onready var robot_spawn_points: Node3D = $RobotSpawnpoints
+@onready var player_spawn_points: Node3D = $PlayerSpawnpoints
+@onready var spawned_nodes: Node3D = $SpawnedNodes
+
+
+func _ready() -> void:
 	Settings.apply_graphics_settings(get_window(), world_environment.environment, self)
 
 	if Settings.config_file.get_value("rendering", "gi_type") == Settings.GIType.SDFGI:
@@ -25,8 +26,8 @@ func _ready():
 
 	if multiplayer.is_server():
 		# Server will spawn the red robots
-		for c in robot_spawn_points.get_children():
-			spawn_robot(c)
+		for child in robot_spawn_points.get_children():
+			spawn_robot(child)
 
 		# Then spawn already connected players at random location
 		randomize()
@@ -41,13 +42,13 @@ func _ready():
 		multiplayer.peer_disconnected.connect(del_player)
 
 
-func setup_sdfgi():
+func setup_sdfgi() -> void:
 	world_environment.environment.sdfgi_enabled = true
 	$VoxelGI.hide()
 	$ReflectionProbes.hide()
 	# LightmapGI nodes override SDFGI (even when hidden)
 	# so we need to free the LightmapGI node if it exists
-	if (lightmap_gi != null):
+	if lightmap_gi != null:
 		lightmap_gi.queue_free()
 
 	if Settings.config_file.get_value("rendering", "gi_quality") == Settings.GIQuality.HIGH:
@@ -58,13 +59,13 @@ func setup_sdfgi():
 		world_environment.environment.sdfgi_enabled = false
 
 
-func setup_voxelgi():
+func setup_voxelgi() -> void:
 	world_environment.environment.sdfgi_enabled = false
 	$VoxelGI.show()
 	$ReflectionProbes.hide()
 	# LightmapGI nodes override VoxelGI (even when hidden)
 	# so we need to free the LightmapGI node if it exists
-	if (lightmap_gi != null):
+	if lightmap_gi != null:
 		lightmap_gi.queue_free()
 
 	if Settings.config_file.get_value("rendering", "gi_quality") == Settings.GIQuality.HIGH:
@@ -75,13 +76,13 @@ func setup_voxelgi():
 		$VoxelGI.hide()
 
 
-func setup_lightmapgi():
+func setup_lightmapgi() -> void:
 	world_environment.environment.sdfgi_enabled = false
 	$VoxelGI.hide()
 	$ReflectionProbes.show()
 	# If no LightmapGI node, create one
-	if (lightmap_gi == null):
-		var new_gi = LightmapGI.new()
+	if lightmap_gi == null:
+		var new_gi := LightmapGI.new()
 		new_gi.light_data = load("res://level/level.lmbake")
 		new_gi.name = "LightmapGI"
 		lightmap_gi = new_gi
@@ -92,35 +93,35 @@ func setup_lightmapgi():
 		$ReflectionProbes.hide()
 
 
-func spawn_robot(spawn_point):
-	var robot = RedRobot.instantiate()
+func spawn_robot(spawn_point) -> void:
+	var robot: CharacterBody3D = RedRobot.instantiate()
 	robot.transform = spawn_point.transform
 	robot.exploded.connect(_respawn_robot.bind(spawn_point))
-	spawn_node.add_child(robot, true)
+	spawned_nodes.add_child(robot, true)
 
 
-func _respawn_robot(spawn_point):
+func _respawn_robot(spawn_point) -> void:
 	await get_tree().create_timer(15.0).timeout
 	spawn_robot(spawn_point)
 
 
-func del_player(id: int):
-	if not spawn_node.has_node(str(id)):
+func del_player(id: int) -> void:
+	if not spawned_nodes.has_node(str(id)):
 		return
-	spawn_node.get_node(str(id)).queue_free()
+	spawned_nodes.get_node(str(id)).queue_free()
 
 
-func add_player(id: int, spawn_point: Marker3D = null):
+func add_player(id: int, spawn_point: Marker3D = null) -> void:
 	if spawn_point == null:
 		spawn_point = player_spawn_points.get_child(randi() % player_spawn_points.get_child_count())
-	var player = PlayerScene.instantiate()
+	var player: CharacterBody3D = PlayerScene.instantiate()
 	player.name = str(id)
 	player.player_id = id
 	player.transform = spawn_point.transform
-	spawn_node.add_child(player)
+	spawned_nodes.add_child(player)
 
 
-func _input(event):
-	if event.is_action_pressed("quit"):
+func _input(input_event: InputEvent) -> void:
+	if input_event.is_action_pressed(&"quit"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		emit_signal("quit")
+		quit.emit()

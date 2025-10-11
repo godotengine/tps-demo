@@ -1,6 +1,7 @@
 extends Node
 
-func _ready():
+
+func _ready() -> void:
 	multiplayer.server_relay = false
 	if DisplayServer.get_name() == "headless":
 		Engine.max_fps = 60
@@ -9,24 +10,24 @@ func _ready():
 	go_to_main_menu()
 
 
-func go_to_main_menu():
-	var menu = ResourceLoader.load("res://menu/menu.tscn")
+func go_to_main_menu() -> void:
+	var menu: PackedScene = ResourceLoader.load("res://menu/menu.tscn")
 	multiplayer.multiplayer_peer.close()
 	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
-	change_scene_to_file(menu)
+	change_scene_to_packed(menu)
 
 
-func replace_main_scene(resource):
-	call_deferred("change_scene_to_file", resource)
+func replace_main_scene(resource: PackedScene) -> void:
+	call_deferred("change_scene_to_packed", resource)
 
 
-func change_scene_to_file(resource : Resource):
-	var node = resource.instantiate()
-
+func change_scene_to_packed(resource: PackedScene) -> void:
+	var node: Node = resource.instantiate()
 	for child in get_children():
 		remove_child(child)
 		child.queue_free()
 	add_child(node)
-
-	node.connect("quit",Callable(self,"go_to_main_menu"))
-	node.connect("replace_main_scene",Callable(self,"replace_main_scene"))
+	if node.has_signal(&"quit"):
+		node.quit.connect(go_to_main_menu)
+	if node.has_signal(&"replace_main_scene"):
+		node.replace_main_scene.connect(replace_main_scene)

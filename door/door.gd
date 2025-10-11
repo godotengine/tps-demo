@@ -1,10 +1,12 @@
 extends Area3D
 
-var open = false
 
-@onready var animation_player = $DoorModel/AnimationPlayer
+var open: bool = false
 
-func _on_door_body_entered(body):
+@onready var animation_player: AnimationPlayer = $DoorModel/AnimationPlayer
+
+
+func _on_door_body_entered(body: Node3D) -> void:
 	if not open and body is Player:
-		animation_player.play("doorsimple_opening")
+		animation_player.play(&"doorsimple_opening")
 		open = true
