@@ -25,9 +25,9 @@ void fragment() {
 [resource]
 render_priority = 0
 shader = SubResource("1")
+shader_parameter/tex = ExtResource("1")
 shader_parameter/color = Color(1, 1, 1, 0.223529)
 shader_parameter/max_dist = 2.0
 shader_parameter/min_dist = 5.0
 shader_parameter/curve = 5.87
 shader_parameter/dp_curve = 0.56
-shader_parameter/tex = ExtResource("1")

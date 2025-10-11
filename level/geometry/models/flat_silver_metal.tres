@@ -1,7 +1,7 @@
-[gd_resource type="StandardMaterial3D" format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bb6gyqq26law0"]
 
 [resource]
 resource_name = "flat_silver_metal"
-albedo_color = Color( 0.293793, 0.293793, 0.293793, 1 )
+albedo_color = Color(0.293793, 0.293793, 0.293793, 1)
 metallic = 0.198765
 roughness = 0.542695

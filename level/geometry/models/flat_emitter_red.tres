@@ -1,6 +1,6 @@
-[gd_resource type="StandardMaterial3D" format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dauxox1fd0gtl"]
 
 [resource]
 resource_name = "flat_emitter_red"
-albedo_color = Color( 0.64, 0, 0.00179112, 1 )
+albedo_color = Color(0.64, 0, 0.00179112, 1)
 roughness = 0.0960784

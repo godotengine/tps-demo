@@ -171,10 +171,10 @@ colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1, 0.09375, 0.09375, 0.09375, 1, 
 script = ExtResource("5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "blast"
 libraries = {
-"": SubResource("AnimationLibrary_y0aew")
+&"": SubResource("AnimationLibrary_y0aew")
 }
+autoplay = "blast"
 
 [node name="Blast" type="CPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_l7bxa")

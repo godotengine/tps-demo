@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://yxudvmlt7e3h"]
 
-[ext_resource type="Shader" path="res://enemies/red_robot/laser/impact_effect/EmissionEmbers.gdshader" id="1"]
+[ext_resource type="Shader" uid="uid://cwsjytvpvrrai" path="res://enemies/red_robot/laser/impact_effect/EmissionEmbers.gdshader" id="1"]
 
 [resource]
 render_priority = 0

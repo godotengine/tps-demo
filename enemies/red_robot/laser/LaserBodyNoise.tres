@@ -5,5 +5,5 @@
 [resource]
 width = 64
 height = 64
-seamless = true
 noise = SubResource("1")
+seamless = true

@@ -13,9 +13,9 @@ dest_files=["res://.godot/imported/lights.blend-3d0300c84359ce2e931dcbe0e50b2d38
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Scene Root"
-nodes/apply_root_scale=true
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=false
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true

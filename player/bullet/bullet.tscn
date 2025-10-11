@@ -508,7 +508,7 @@ shape = SubResource("SphereShape3D_klbc5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_dbep6")
+&"": SubResource("AnimationLibrary_dbep6")
 }
 
 [node name="ExplosionAudio" type="AudioStreamPlayer3D" parent="."]

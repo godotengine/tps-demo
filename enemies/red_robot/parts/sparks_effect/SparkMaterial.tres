@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b0yi1uf4xb6ex"]
 
-[ext_resource type="Shader" path="res://enemies/red_robot/parts/sparks_effect/SparkShader.gdshader" id="1_y7bvi"]
+[ext_resource type="Shader" uid="uid://hn4wm60ej8m4" path="res://enemies/red_robot/parts/sparks_effect/SparkShader.gdshader" id="1_y7bvi"]
 
 [resource]
 render_priority = 0
