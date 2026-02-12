@@ -24,8 +24,10 @@ Settings="*res://menu/settings.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/hdr/request_hdr_output=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+display_server/driver.linuxbsd="wayland"
 window/size/fullscreen=true
 
 [editor]
@@ -188,8 +190,10 @@ common/physics_interpolation=true
 
 [rendering]
 
+rendering_device/driver.windows="d3d12"
 reflections/sky_reflections/texture_array_reflections=false
 textures/default_filters/anisotropic_filtering_level=4
+viewport/hdr_2d=true
 scaling_3d/mode=2
 textures/decals/filter=1
 textures/light_projectors/filter=1
