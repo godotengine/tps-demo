@@ -107,7 +107,8 @@ func hit() -> void:
 func shoot() -> void:
 	var gt: Transform3D = ray_from.global_transform
 	var ray_origin: Vector3 = ray_from.global_transform.origin
-	var ray_dir: Vector3 = -gt.basis.z
+	# The RayCast3D is rotated 90 degrees inside the BoneAttachment3D.
+	var ray_dir: Vector3 = gt.basis.y
 	var max_dist: float = 1000.0
 
 	var col: Dictionary = get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_dir * max_dist, 0xFFFFFFFF, [self] ))
