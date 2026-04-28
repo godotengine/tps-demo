@@ -107,6 +107,7 @@ func hit() -> void:
 func shoot() -> void:
 	var gt: Transform3D = ray_from.global_transform
 	var ray_origin: Vector3 = ray_from.global_transform.origin
+	# The RayCast3D is rotated 90 degrees inside the BoneAttachment3D.
 	var ray_dir: Vector3 = gt.basis.y
 	var max_dist: float = 1000.0
 
