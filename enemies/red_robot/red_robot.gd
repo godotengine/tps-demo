@@ -4,9 +4,10 @@ extends CharacterBody3D
 signal exploded()
 
 enum State {
-	APPROACH = 0,
-	AIM = 1,
-	SHOOTING = 2,
+	IDLE = 0,
+	APPROACH = 1,
+	AIM = 2,
+	SHOOTING = 3,
 }
 
 const PLAYER_AIM_TOLERANCE_DEGREES = deg_to_rad(15.0)
@@ -21,7 +22,7 @@ const BLEND_AIM_SPEED: float = 0.05
 
 @export var target_position := Vector3()
 @export var health: int = 5
-@export var state: State = State.APPROACH
+@export var state: State = State.IDLE
 @export var dead: bool = false
 @export var aim_preparing: float = AIM_PREPARE_TIME
 
@@ -273,8 +274,10 @@ func _clip_ray(length: float) -> void:
 func _on_area_body_entered(body: Node3D) -> void:
 	if body is Player or body.name == "Target":
 		player = body
+		state = State.APPROACH
 
 
 func _on_area_body_exited(body: Node3D) -> void:
 	if body is Player:
 		player = null
+		state = State.IDLE
