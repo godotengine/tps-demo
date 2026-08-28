@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://kl4f3mi24xdv"]
+[gd_scene format=3 uid="uid://kl4f3mi24xdv"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqkkefcnt0erw" path="res://effects_shared/BlastMesh_Sphere.mesh" id="1"]
 [ext_resource type="Texture2D" uid="uid://bpm6frbylo5an" path="res://effects_shared/BlastTexture.png" id="2"]
@@ -167,16 +167,14 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.19571, 0.576407, 1)
 colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1, 0.09375, 0.09375, 0.09375, 1, 0.105469, 0.105469, 0.105469, 0)
 
-[node name="Blast" type="Node3D"]
+[node name="Blast" type="Node3D" unique_id=1361742302]
 script = ExtResource("5")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_y0aew")
-}
-autoplay = "blast"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=405518197]
+libraries/ = SubResource("AnimationLibrary_y0aew")
+autoplay = &"blast"
 
-[node name="Blast" type="CPUParticles3D" parent="."]
+[node name="Blast" type="CPUParticles3D" parent="." unique_id=741425420]
 material_override = SubResource("StandardMaterial3D_l7bxa")
 cast_shadow = 0
 emitting = false
@@ -188,7 +186,7 @@ gravity = Vector3(0, 0, 0)
 scale_amount_curve = SubResource("Curve_3v6v7")
 color_ramp = SubResource("Gradient_wfmlc")
 
-[node name="LightRays" type="CPUParticles3D" parent="."]
+[node name="LightRays" type="CPUParticles3D" parent="." unique_id=1988195828]
 material_override = SubResource("ShaderMaterial_ybfhd")
 cast_shadow = 0
 emitting = false
@@ -203,7 +201,7 @@ gravity = Vector3(0, 0, 0)
 scale_amount_curve = SubResource("Curve_bo81s")
 color = Color(1, 0.00784314, 0.00784314, 1)
 
-[node name="BlastCenter" type="CPUParticles3D" parent="."]
+[node name="BlastCenter" type="CPUParticles3D" parent="." unique_id=1148319060]
 material_override = SubResource("StandardMaterial3D_wjljl")
 cast_shadow = 0
 emitting = false
@@ -214,7 +212,7 @@ mesh = SubResource("SphereMesh_xaoll")
 gravity = Vector3(0, 0, 0)
 scale_amount_curve = SubResource("Curve_sooop")
 
-[node name="ExplosionEmbers" type="CPUParticles3D" parent="."]
+[node name="ExplosionEmbers" type="CPUParticles3D" parent="." unique_id=617659764]
 material_override = ExtResource("8")
 cast_shadow = 0
 emitting = false
@@ -228,7 +226,7 @@ gravity = Vector3(0, -2, 0)
 scale_amount_curve = SubResource("Curve_060ns")
 color_ramp = SubResource("Gradient_0p7eu")
 
-[node name="SmokeParticle" type="CPUParticles3D" parent="."]
+[node name="SmokeParticle" type="CPUParticles3D" parent="." unique_id=1491625420]
 material_override = SubResource("StandardMaterial3D_xnv3g")
 cast_shadow = 0
 emitting = false

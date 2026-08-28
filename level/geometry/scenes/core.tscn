@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ddbnmy6um5fjg"]
+[gd_scene format=3 uid="uid://ddbnmy6um5fjg"]
 
 [ext_resource type="PackedScene" uid="uid://ckpf3t16u47pu" path="res://level/geometry/scenes/collision/radial_colliders.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://babdc0gjbduw" path="res://level/geometry/scenes/collision/stair_pillar.tscn" id="2"]
@@ -193,11 +193,11 @@ size = Vector3(80, 12, 80)
 [sub_resource type="BoxShape3D" id="10"]
 size = Vector3(1.2, 1.2, 2.8)
 
-[node name="Core" type="Node3D"]
+[node name="Core" type="Node3D" unique_id=1918113320]
 
-[node name="CoreModel" parent="." instance=ExtResource("3")]
+[node name="CoreModel" parent="." unique_id=429731693 instance=ExtResource("3")]
 
-[node name="Plasma" type="CPUParticles3D" parent="."]
+[node name="Plasma" type="CPUParticles3D" parent="." unique_id=214914164]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -2.3, 0)
 material_override = SubResource("12")
 amount = 4
@@ -214,12 +214,12 @@ scale_amount_max = 0.75
 scale_amount_curve = SubResource("13")
 color_ramp = SubResource("3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Plasma"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plasma" unique_id=1567582566]
 transform = Transform3D(0.294, 0, 0, 0, 0.294, 0, 0, 0, 0.294, 0, 0, 0)
 material_override = SubResource("15")
 mesh = ExtResource("7")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="Plasma"]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Plasma" unique_id=308100504]
 material_override = SubResource("20")
 amount = 3
 preprocess = 5.29
@@ -245,7 +245,7 @@ scale_amount_max = 0.29
 scale_amount_curve = SubResource("21")
 color_ramp = SubResource("22")
 
-[node name="CPUParticles2" type="CPUParticles3D" parent="Plasma"]
+[node name="CPUParticles2" type="CPUParticles3D" parent="Plasma" unique_id=1558627313]
 material_override = SubResource("23")
 amount = 5
 local_coords = true
@@ -259,7 +259,7 @@ scale_amount_max = 0.27
 scale_amount_curve = SubResource("24")
 color_ramp = SubResource("25")
 
-[node name="CPUParticles3" type="CPUParticles3D" parent="Plasma"]
+[node name="CPUParticles3" type="CPUParticles3D" parent="Plasma" unique_id=1129832730]
 material_override = SubResource("23")
 amount = 7
 explosiveness = 0.14
@@ -276,63 +276,63 @@ scale_amount_max = 0.27
 scale_amount_curve = SubResource("24")
 color_ramp = SubResource("25")
 
-[node name="CentralColliders" type="StaticBody3D" parent="."]
+[node name="CentralColliders" type="StaticBody3D" parent="." unique_id=1993721293]
 
-[node name="CentralCylinder1" type="CollisionShape3D" parent="CentralColliders"]
+[node name="CentralCylinder1" type="CollisionShape3D" parent="CentralColliders" unique_id=1147941592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.3, 0)
 shape = SubResource("4")
 
-[node name="CentralCylinder2" type="CollisionShape3D" parent="CentralColliders"]
+[node name="CentralCylinder2" type="CollisionShape3D" parent="CentralColliders" unique_id=1054925636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0)
 shape = SubResource("5")
 
-[node name="CentralCylinder3" type="CollisionShape3D" parent="CentralColliders"]
+[node name="CentralCylinder3" type="CollisionShape3D" parent="CentralColliders" unique_id=1132290620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 shape = SubResource("6")
 
-[node name="CentralCylinder4" type="CollisionShape3D" parent="CentralColliders"]
+[node name="CentralCylinder4" type="CollisionShape3D" parent="CentralColliders" unique_id=1934803404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 shape = SubResource("7")
 
-[node name="LowerFloorCylinder" type="CollisionShape3D" parent="CentralColliders"]
+[node name="LowerFloorCylinder" type="CollisionShape3D" parent="CentralColliders" unique_id=2123908893]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.9, 0)
 shape = SubResource("8")
 
-[node name="Ceiling" type="CollisionShape3D" parent="CentralColliders"]
+[node name="Ceiling" type="CollisionShape3D" parent="CentralColliders" unique_id=1505153139]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 shape = SubResource("9")
 
-[node name="ExtendedCyl1" type="CollisionShape3D" parent="CentralColliders"]
+[node name="ExtendedCyl1" type="CollisionShape3D" parent="CentralColliders" unique_id=1448694274]
 transform = Transform3D(0.97437, 0, 0.224951, 0, 1, 0, -0.224951, 0, 0.97437, -4.04912, -8.1, -17.5387)
 shape = SubResource("10")
 
-[node name="ExtendedCyl2" type="CollisionShape3D" parent="CentralColliders"]
+[node name="ExtendedCyl2" type="CollisionShape3D" parent="CentralColliders" unique_id=2027656992]
 transform = Transform3D(-0.681998, 0, 0.731354, 0, 1, 0, -0.731354, 0, -0.681998, -13.1644, -8.1, 12.276)
 shape = SubResource("10")
 
-[node name="RadialColliders1" parent="." instance=ExtResource("1")]
+[node name="RadialColliders1" parent="." unique_id=1736495437 instance=ExtResource("1")]
 
-[node name="RadialColliders2" parent="." instance=ExtResource("1")]
+[node name="RadialColliders2" parent="." unique_id=1106638701 instance=ExtResource("1")]
 transform = Transform3D(-0.224951, 0, 0.97437, 0, 1, 0, -0.97437, 0, -0.224951, 0, 0, 0)
 
-[node name="RadialColliders3" parent="." instance=ExtResource("1")]
+[node name="RadialColliders3" parent="." unique_id=505923140 instance=ExtResource("1")]
 transform = Transform3D(-0.731354, 0, -0.681999, 0, 1, 0, 0.681999, 0, -0.731354, 0, 0, 0)
 
-[node name="RadialPlayerOnly1" parent="." instance=ExtResource("4")]
+[node name="RadialPlayerOnly1" parent="." unique_id=810580513 instance=ExtResource("4")]
 
-[node name="RadialPlayerOnly2" parent="." instance=ExtResource("4")]
+[node name="RadialPlayerOnly2" parent="." unique_id=2090993191 instance=ExtResource("4")]
 transform = Transform3D(-0.224951, 0, 0.97437, 0, 1, 0, -0.97437, 0, -0.224951, 0, 0, 0)
 
-[node name="RadialPlayerOnly3" parent="." instance=ExtResource("4")]
+[node name="RadialPlayerOnly3" parent="." unique_id=1460192273 instance=ExtResource("4")]
 transform = Transform3D(-0.731354, 0, -0.681999, 0, 1, 0, 0.681999, 0, -0.731354, 0, 0, 0)
 
-[node name="StairPillar1" parent="." instance=ExtResource("2")]
+[node name="StairPillar1" parent="." unique_id=724598512 instance=ExtResource("2")]
 transform = Transform3D(0.731354, 0, 0.681998, 0, 1, 0, -0.681998, 0, 0.731354, 18.2838, 2, -17.05)
 
-[node name="StairPillar2" parent="." instance=ExtResource("2")]
+[node name="StairPillar2" parent="." unique_id=2049759540 instance=ExtResource("2")]
 transform = Transform3D(-0.956305, 0, 0.292371, 0, 1, 0, -0.292371, 0, -0.956305, -23.9076, 2, -7.30928)
 
-[node name="StairPillar3" parent="." instance=ExtResource("2")]
+[node name="StairPillar3" parent="." unique_id=805859992 instance=ExtResource("2")]
 transform = Transform3D(0.224951, 0, -0.97437, 0, 1, 0, 0.97437, 0, 0.224951, 5.62378, 2, 24.3593)
 
 [editable path="CoreModel"]

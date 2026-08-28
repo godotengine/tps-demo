@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bhf6kwdlc7f5h"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bhf6kwdlc7f5h"]
 
 [ext_resource type="Shader" uid="uid://bafg2kigqpcel" path="res://enemies/red_robot/laser/smoke.gdshader" id="1_j0r3f"]
 [ext_resource type="Texture2D" uid="uid://i5ll5xqsm55y" path="res://enemies/red_robot/laser/BarrelSmokeTexture.png" id="2"]

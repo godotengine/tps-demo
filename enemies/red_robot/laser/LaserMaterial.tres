@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cfq45e1sfaycm"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cfq45e1sfaycm"]
 
 [ext_resource type="Shader" uid="uid://bfl0kmtf31qti" path="res://enemies/red_robot/laser/LaserShader.gdshader" id="1_b3x6l"]
 [ext_resource type="Texture2D" uid="uid://cp4djbb113s3h" path="res://enemies/red_robot/laser/LaserBodyNoise.tres" id="2_dvjar"]

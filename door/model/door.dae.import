@@ -16,6 +16,8 @@ dest_files=["res://.godot/imported/door.dae-7f8548364364a8c72d317db0aac6a97d.scn
 nodes/root_type=""
 nodes/root_name="DoorModel"
 nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=false
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -47,7 +49,7 @@ _subresources={
 "door_unlockedemission": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://door/model/door_unlockedemission.tres",
-"use_external/path": "res://door/model/door_unlockedemission.tres"
+"use_external/path": "uid://c6q1h8dxh631b"
 }
 }
 }

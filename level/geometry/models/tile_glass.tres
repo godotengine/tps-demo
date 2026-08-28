@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://x4yrasc8fraf"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://x4yrasc8fraf"]
 
 [ext_resource type="Texture2D" uid="uid://b5imyb7wi7mgs" path="res://level/textures/structure/tile_glass_albedo.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://d2h1dgs37n1bn" path="res://level/textures/structure/tile_glass_normal.png" id="2"]

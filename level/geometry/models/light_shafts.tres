@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://2derncr82ntu"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://2derncr82ntu"]
 
 [ext_resource type="Texture2D" uid="uid://mynyixl3f55g" path="res://level/textures/structure/light_shafts.png" id="1"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://babdc0gjbduw"]
+[gd_scene format=3 uid="uid://babdc0gjbduw"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(6, 20, 3.6)
@@ -24,152 +24,152 @@ size = Vector3(4, 1, 0.2)
 [sub_resource type="BoxShape3D" id="8"]
 size = Vector3(0.2, 1, 6.4)
 
-[node name="StairPillar" type="StaticBody3D"]
+[node name="StairPillar" type="StaticBody3D" unique_id=1521459185]
 
-[node name="CenterCube" type="CollisionShape3D" parent="."]
+[node name="CenterCube" type="CollisionShape3D" parent="." unique_id=1187989616]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("1")
 
-[node name="CenterCylinder" type="CollisionShape3D" parent="."]
+[node name="CenterCylinder" type="CollisionShape3D" parent="." unique_id=827831981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 shape = SubResource("2")
 
-[node name="LowestPlatform" type="CollisionShape3D" parent="."]
+[node name="LowestPlatform" type="CollisionShape3D" parent="." unique_id=394316715]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1, -9.9, 2.4)
 shape = SubResource("3")
 
-[node name="MainPlatform1" type="CollisionShape3D" parent="."]
+[node name="MainPlatform1" type="CollisionShape3D" parent="." unique_id=1833496874]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -6.9, 0)
 shape = SubResource("4")
 
-[node name="MainPlatform2" type="CollisionShape3D" parent="."]
+[node name="MainPlatform2" type="CollisionShape3D" parent="." unique_id=360191655]
 transform = Transform3D(-1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, -3.1, -3.9, 0)
 shape = SubResource("4")
 
-[node name="MainPlatform3" type="CollisionShape3D" parent="."]
+[node name="MainPlatform3" type="CollisionShape3D" parent="." unique_id=494367898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -0.9, 0)
 shape = SubResource("4")
 
-[node name="MainPlatform4" type="CollisionShape3D" parent="."]
+[node name="MainPlatform4" type="CollisionShape3D" parent="." unique_id=1966654746]
 transform = Transform3D(-1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, -3.1, 2.1, 0)
 shape = SubResource("4")
 
-[node name="MainPlatform5" type="CollisionShape3D" parent="."]
+[node name="MainPlatform5" type="CollisionShape3D" parent="." unique_id=1099583346]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 5.1, 0)
 shape = SubResource("4")
 
-[node name="Stair1" type="CollisionShape3D" parent="."]
+[node name="Stair1" type="CollisionShape3D" parent="." unique_id=1471156908]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -2.98023e-08, 0, 1, -0.0300026, -8.4, 2.4)
 shape = SubResource("5")
 
-[node name="Stair2" type="CollisionShape3D" parent="."]
+[node name="Stair2" type="CollisionShape3D" parent="." unique_id=259196101]
 transform = Transform3D(-0.707107, 0.707107, -3.57628e-07, 0.707107, 0.707107, 0, 2.98023e-07, -2.38419e-07, -1, 0.0299988, -5.4, -2.4)
 shape = SubResource("5")
 
-[node name="Stair3" type="CollisionShape3D" parent="."]
+[node name="Stair3" type="CollisionShape3D" parent="." unique_id=1177469984]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -2.98023e-08, 0, 1, -0.0300026, -2.4, 2.4)
 shape = SubResource("5")
 
-[node name="Stair4" type="CollisionShape3D" parent="."]
+[node name="Stair4" type="CollisionShape3D" parent="." unique_id=2134733207]
 transform = Transform3D(-0.707107, 0.707107, -3.57628e-07, 0.707107, 0.707107, 0, 2.98023e-07, -2.38419e-07, -1, 0.0299988, 0.599999, -2.4)
 shape = SubResource("5")
 
-[node name="Stair5" type="CollisionShape3D" parent="."]
+[node name="Stair5" type="CollisionShape3D" parent="." unique_id=1360134797]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -2.98023e-08, 0, 1, -0.0300026, 3.6, 2.4)
 shape = SubResource("5")
 
-[node name="Railing1" type="CollisionShape3D" parent="."]
+[node name="Railing1" type="CollisionShape3D" parent="." unique_id=1856383472]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, -9, 2.4)
 shape = SubResource("6")
 
-[node name="Railing2" type="CollisionShape3D" parent="."]
+[node name="Railing2" type="CollisionShape3D" parent="." unique_id=106306347]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -9, 3.2)
 shape = SubResource("7")
 
-[node name="Railing3" type="CollisionShape3D" parent="."]
+[node name="Railing3" type="CollisionShape3D" parent="." unique_id=1307629506]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -2.98023e-08, 0, 1, -0.400003, -7.3, 3.2)
 shape = SubResource("7")
 
-[node name="Railing4" type="CollisionShape3D" parent="."]
+[node name="Railing4" type="CollisionShape3D" parent="." unique_id=439492598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, -6, 3.2)
 shape = SubResource("7")
 
-[node name="Railing5" type="CollisionShape3D" parent="."]
+[node name="Railing5" type="CollisionShape3D" parent="." unique_id=2029535261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, -6, -9.53674e-07)
 shape = SubResource("8")
 
-[node name="Railing6" type="CollisionShape3D" parent="."]
+[node name="Railing6" type="CollisionShape3D" parent="." unique_id=1432191491]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -9, 1.68)
 shape = SubResource("7")
 
-[node name="Railing7" type="CollisionShape3D" parent="."]
+[node name="Railing7" type="CollisionShape3D" parent="." unique_id=1250426883]
 transform = Transform3D(-1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, 2.7, -6, -3.2)
 shape = SubResource("7")
 
-[node name="Railing8" type="CollisionShape3D" parent="."]
+[node name="Railing8" type="CollisionShape3D" parent="." unique_id=681110331]
 transform = Transform3D(-0.707107, 0.707107, -3.57628e-07, 0.707107, 0.707107, 0, 2.68221e-07, -2.38419e-07, -1, 0.399998, -4.3, -3.2)
 shape = SubResource("7")
 
-[node name="Railing9" type="CollisionShape3D" parent="."]
+[node name="Railing9" type="CollisionShape3D" parent="." unique_id=554834688]
 transform = Transform3D(-1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, -2.7, -3, -3.2)
 shape = SubResource("7")
 
-[node name="Railing10" type="CollisionShape3D" parent="."]
+[node name="Railing10" type="CollisionShape3D" parent="." unique_id=123664815]
 transform = Transform3D(-1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, -4.8, -3, -9.53674e-07)
 shape = SubResource("8")
 
-[node name="Railing11" type="CollisionShape3D" parent="."]
+[node name="Railing11" type="CollisionShape3D" parent="." unique_id=988207903]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -3, 3.2)
 shape = SubResource("7")
 
-[node name="Railing12" type="CollisionShape3D" parent="."]
+[node name="Railing12" type="CollisionShape3D" parent="." unique_id=305209642]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -2.98023e-08, 0, 1, -0.400003, -1.3, 3.2)
 shape = SubResource("7")
 
-[node name="Railing13" type="CollisionShape3D" parent="."]
+[node name="Railing13" type="CollisionShape3D" parent="." unique_id=2146569990]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, -4.76837e-07, 3.2)
 shape = SubResource("7")
 
-[node name="Railing14" type="CollisionShape3D" parent="."]
+[node name="Railing14" type="CollisionShape3D" parent="." unique_id=219999085]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, -4.76837e-07, -9.53674e-07)
 shape = SubResource("8")
 
-[node name="Railing16" type="CollisionShape3D" parent="."]
+[node name="Railing16" type="CollisionShape3D" parent="." unique_id=881800195]
 transform = Transform3D(-1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, 2.7, 0, -3.2)
 shape = SubResource("7")
 
-[node name="Railing17" type="CollisionShape3D" parent="."]
+[node name="Railing17" type="CollisionShape3D" parent="." unique_id=27036798]
 transform = Transform3D(-0.707107, 0.707107, -3.57628e-07, 0.707107, 0.707107, 0, 2.68221e-07, -2.38419e-07, -1, 0.399998, 1.7, -3.2)
 shape = SubResource("7")
 
-[node name="Railing18" type="CollisionShape3D" parent="."]
+[node name="Railing18" type="CollisionShape3D" parent="." unique_id=189242787]
 transform = Transform3D(-1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, -2.7, 3, -3.2)
 shape = SubResource("7")
 
-[node name="Railing19" type="CollisionShape3D" parent="."]
+[node name="Railing19" type="CollisionShape3D" parent="." unique_id=432864590]
 transform = Transform3D(-1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, -4.8, 3, -9.53674e-07)
 shape = SubResource("8")
 
-[node name="Railing20" type="CollisionShape3D" parent="."]
+[node name="Railing20" type="CollisionShape3D" parent="." unique_id=1452678967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 3, 3.2)
 shape = SubResource("7")
 
-[node name="Railing21" type="CollisionShape3D" parent="."]
+[node name="Railing21" type="CollisionShape3D" parent="." unique_id=899934673]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -2.98023e-08, 0, 1, -0.400003, 4.7, 3.2)
 shape = SubResource("7")
 
-[node name="Railing22" type="CollisionShape3D" parent="."]
+[node name="Railing22" type="CollisionShape3D" parent="." unique_id=1254519257]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 6, 3.2)
 shape = SubResource("7")
 
-[node name="Railing23" type="CollisionShape3D" parent="."]
+[node name="Railing23" type="CollisionShape3D" parent="." unique_id=334409890]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 6, -9.53674e-07)
 shape = SubResource("8")
 
-[node name="Railing24" type="CollisionShape3D" parent="."]
+[node name="Railing24" type="CollisionShape3D" parent="." unique_id=884444572]
 transform = Transform3D(-1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, 2.7, 6, 1.5)
 shape = SubResource("7")
 
-[node name="Railing25" type="CollisionShape3D" parent="."]
+[node name="Railing25" type="CollisionShape3D" parent="." unique_id=1764323409]
 transform = Transform3D(-1, 0, -3.57628e-07, 0, 1, 0, 3.57628e-07, 0, -1, 2.7, 6, -3.2)
 shape = SubResource("7")

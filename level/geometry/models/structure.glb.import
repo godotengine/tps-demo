@@ -16,6 +16,8 @@ dest_files=["res://.godot/imported/structure.glb-21fe3543c920768091702bd64072075
 nodes/root_type=""
 nodes/root_name="StructureModel"
 nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=false
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -57,37 +59,37 @@ _subresources={
 "flat_emitter_blue": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://level/geometry/models/flat_emitter_blue.tres",
-"use_external/path": "res://level/geometry/models/flat_emitter_blue.tres"
+"use_external/path": "uid://krtu5k20rxt7"
 },
 "flat_emitter_orange": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://level/geometry/models/flat_emitter_orange.tres",
-"use_external/path": "res://level/geometry/models/flat_emitter_orange.tres"
+"use_external/path": "uid://1lnpnrxvf1ec"
 },
 "flat_emitter_orange_dull": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://level/geometry/models/flat_emitter_orange_dull.tres",
-"use_external/path": "res://level/geometry/models/flat_emitter_orange_dull.tres"
+"use_external/path": "uid://cb1kogh0pvqxe"
 },
 "flat_emitter_powerful_white": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://level/geometry/models/flat_emitter_powerful_white.tres",
-"use_external/path": "res://level/geometry/models/flat_emitter_powerful_white.tres"
+"use_external/path": "uid://b6pwlix74yf7b"
 },
 "flat_emitter_red": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://level/geometry/models/flat_emitter_red.tres",
-"use_external/path": "res://level/geometry/models/flat_emitter_red.tres"
+"use_external/path": "uid://dauxox1fd0gtl"
 },
 "flat_emitter_white": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://level/geometry/models/flat_emitter_white.tres",
-"use_external/path": "res://level/geometry/models/flat_emitter_white.tres"
+"use_external/path": "uid://bvf0hnawsbrwa"
 },
 "flat_silver_metal": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://level/geometry/models/flat_silver_metal.tres",
-"use_external/path": "res://level/geometry/models/flat_silver_metal.tres"
+"use_external/path": "uid://bb6gyqq26law0"
 },
 "floor_grate_wholes": {
 "use_external/enabled": true,
@@ -203,3 +205,4 @@ _subresources={
 }
 gltf/naming_version=0
 gltf/embedded_image_handling=1
+gltf/texture_map_mode=0

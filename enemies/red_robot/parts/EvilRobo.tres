@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://brmid853op8lj"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://brmid853op8lj"]
 
 [ext_resource type="Texture2D" uid="uid://buosl00vcjypt" path="res://enemies/red_robot/textures/red_robot_emission.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://daxby8xdf31fb" path="res://enemies/red_robot/textures/red_robot_normal.png" id="2"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bpihm2o3g658"]
+[gd_scene format=3 uid="uid://bpihm2o3g658"]
 
 [ext_resource type="PackedScene" uid="uid://bdmvel1fdqgly" path="res://level/geometry/models/props.glb" id="1"]
 
@@ -100,226 +100,226 @@ size = Vector3(3, 1.4, 1.8)
 [sub_resource type="BoxShape3D" id="33"]
 size = Vector3(1, 1.6, 6.6)
 
-[node name="Props" type="Node3D"]
+[node name="Props" type="Node3D" unique_id=481318408]
 
-[node name="PropsModel" parent="." instance=ExtResource("1")]
+[node name="PropsModel" parent="." unique_id=578125128 instance=ExtResource("1")]
 
-[node name="Props" type="StaticBody3D" parent="."]
+[node name="Props" type="StaticBody3D" parent="." unique_id=1131956240]
 collision_layer = 4
 collision_mask = 4
 
-[node name="Props1" type="CollisionShape3D" parent="Props"]
+[node name="Props1" type="CollisionShape3D" parent="Props" unique_id=1240919340]
 transform = Transform3D(0.882948, 0, 0.469472, 0, 1, 0, -0.469472, 0, 0.882948, 47.8, 0.3, 90.25)
 shape = SubResource("1")
 
-[node name="Props2" type="CollisionShape3D" parent="Props"]
+[node name="Props2" type="CollisionShape3D" parent="Props" unique_id=954582565]
 transform = Transform3D(0.829038, 0, 0.559193, 0, 1, 0, -0.559193, 0, 0.829038, 43.8, 0.3, 93.5)
 shape = SubResource("1")
 
-[node name="Props3" type="CollisionShape3D" parent="Props"]
+[node name="Props3" type="CollisionShape3D" parent="Props" unique_id=2050721578]
 transform = Transform3D(0.798636, 0, 0.601815, 0, 1, 0, -0.601815, 0, 0.798636, 52.8, 0.3, 88.7)
 shape = SubResource("1")
 
-[node name="Props4" type="CollisionShape3D" parent="Props"]
+[node name="Props4" type="CollisionShape3D" parent="Props" unique_id=462632319]
 transform = Transform3D(0.891007, 0, 0.453991, 0, 1, 0, -0.453991, 0, 0.891007, 57.482, 0.3, 85.892)
 shape = SubResource("2")
 
-[node name="Props5" type="CollisionShape3D" parent="Props"]
+[node name="Props5" type="CollisionShape3D" parent="Props" unique_id=1625636504]
 transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 34.4477, -0.3, 90.0466)
 shape = SubResource("3")
 
-[node name="Props6" type="CollisionShape3D" parent="Props"]
+[node name="Props6" type="CollisionShape3D" parent="Props" unique_id=896058876]
 transform = Transform3D(0.656059, 0, 0.75471, 0, 1, 0, -0.75471, 0, 0.656059, 70.1, -4.9, 60.5)
 shape = SubResource("1")
 
-[node name="Props7" type="CollisionShape3D" parent="Props"]
+[node name="Props7" type="CollisionShape3D" parent="Props" unique_id=535084036]
 transform = Transform3D(0.819152, 0, -0.573577, 0, 1, 0, 0.573577, 0, 0.819152, 65.7, 0, 66.2)
 shape = SubResource("4")
 
-[node name="Props52" type="CollisionShape3D" parent="Props"]
+[node name="Props52" type="CollisionShape3D" parent="Props" unique_id=1017699660]
 transform = Transform3D(0.819152, 0, 0.573577, 0, 1, 0, -0.573577, 0, 0.819152, 65.7, 0, 68.25)
 shape = SubResource("4")
 
-[node name="Props8" type="CollisionShape3D" parent="Props"]
+[node name="Props8" type="CollisionShape3D" parent="Props" unique_id=788357459]
 transform = Transform3D(0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, 74.3, -4.9, 57.6)
 shape = SubResource("1")
 
-[node name="Props9" type="CollisionShape3D" parent="Props"]
+[node name="Props9" type="CollisionShape3D" parent="Props" unique_id=8256573]
 transform = Transform3D(0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, 0.809017, 77.933, -4.9, 52.174)
 shape = SubResource("5")
 
-[node name="Props10" type="CollisionShape3D" parent="Props"]
+[node name="Props10" type="CollisionShape3D" parent="Props" unique_id=1178214090]
 transform = Transform3D(0.766045, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766045, 87.1, -4.7, 46)
 shape = SubResource("6")
 
-[node name="Props11" type="CollisionShape3D" parent="Props"]
+[node name="Props11" type="CollisionShape3D" parent="Props" unique_id=638446820]
 transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 84, -4.9, 49.3)
 shape = SubResource("5")
 
-[node name="Props12" type="CollisionShape3D" parent="Props"]
+[node name="Props12" type="CollisionShape3D" parent="Props" unique_id=1004801556]
 transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 85, -4.6, 38.5)
 shape = SubResource("7")
 
-[node name="Props13" type="CollisionShape3D" parent="Props"]
+[node name="Props13" type="CollisionShape3D" parent="Props" unique_id=335968843]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.5, -3.4, 24.5)
 shape = SubResource("8")
 
-[node name="Props14" type="CollisionShape3D" parent="Props"]
+[node name="Props14" type="CollisionShape3D" parent="Props" unique_id=1015949703]
 transform = Transform3D(0.981627, 0, -0.190809, 0, 1, 0, 0.190809, 0, 0.981627, 92.5, -3.4, 17.1)
 shape = SubResource("8")
 
-[node name="Props15" type="CollisionShape3D" parent="Props"]
+[node name="Props15" type="CollisionShape3D" parent="Props" unique_id=1318293726]
 transform = Transform3D(0.996195, 0, -0.0871558, 0, 1, 0, 0.0871558, 0, 0.996195, 90, 0, 9.5)
 shape = SubResource("9")
 
-[node name="Props16" type="CollisionShape3D" parent="Props"]
+[node name="Props16" type="CollisionShape3D" parent="Props" unique_id=614233289]
 transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 80, -3.4, 13.5)
 shape = SubResource("8")
 
-[node name="Props17" type="CollisionShape3D" parent="Props"]
+[node name="Props17" type="CollisionShape3D" parent="Props" unique_id=831883905]
 transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 77.93, -3.4, 17.5)
 shape = SubResource("10")
 
-[node name="Props18" type="CollisionShape3D" parent="Props"]
+[node name="Props18" type="CollisionShape3D" parent="Props" unique_id=1308759471]
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 74.5282, -5.3, 32.2613)
 shape = SubResource("11")
 
-[node name="Props19" type="CollisionShape3D" parent="Props"]
+[node name="Props19" type="CollisionShape3D" parent="Props" unique_id=1514026310]
 transform = Transform3D(0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, 0.5, 74, -3.4, 29.7)
 shape = SubResource("10")
 
-[node name="Props20" type="CollisionShape3D" parent="Props"]
+[node name="Props20" type="CollisionShape3D" parent="Props" unique_id=851054659]
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 70.5532, -5.3, 39.7113)
 shape = SubResource("11")
 
-[node name="Props21" type="CollisionShape3D" parent="Props"]
+[node name="Props21" type="CollisionShape3D" parent="Props" unique_id=6522345]
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 71.9, -5.1, 35.5)
 shape = SubResource("12")
 
-[node name="Props22" type="CollisionShape3D" parent="Props"]
+[node name="Props22" type="CollisionShape3D" parent="Props" unique_id=480057526]
 transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 52.6, -5.6, 61.3)
 shape = SubResource("13")
 
-[node name="Props23" type="CollisionShape3D" parent="Props"]
+[node name="Props23" type="CollisionShape3D" parent="Props" unique_id=1815140280]
 transform = Transform3D(0.207912, 0, -0.978148, 0, 1, 0, 0.978148, 0, 0.207912, 50.1, -5.6, 63.25)
 shape = SubResource("14")
 
-[node name="Props24" type="CollisionShape3D" parent="Props"]
+[node name="Props24" type="CollisionShape3D" parent="Props" unique_id=1872278526]
 transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, 53.65, -4.8, 74.1526)
 shape = SubResource("15")
 
-[node name="Props25" type="CollisionShape3D" parent="Props"]
+[node name="Props25" type="CollisionShape3D" parent="Props" unique_id=1585605325]
 transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, 50.15, -4.8, 76.7526)
 shape = SubResource("15")
 
-[node name="Props26" type="CollisionShape3D" parent="Props"]
+[node name="Props26" type="CollisionShape3D" parent="Props" unique_id=830465172]
 transform = Transform3D(0.994522, 0, -0.104528, 0, 1, 0, 0.104528, 0, 0.994522, 45, -4.6, 79.1)
 shape = SubResource("16")
 
-[node name="Props27" type="CollisionShape3D" parent="Props"]
+[node name="Props27" type="CollisionShape3D" parent="Props" unique_id=1501232538]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 44.5, -1.5, 80.4)
 shape = SubResource("17")
 
-[node name="Props28" type="CollisionShape3D" parent="Props"]
+[node name="Props28" type="CollisionShape3D" parent="Props" unique_id=685946467]
 transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 39, -5, 82.8)
 shape = SubResource("18")
 
-[node name="Props29" type="CollisionShape3D" parent="Props"]
+[node name="Props29" type="CollisionShape3D" parent="Props" unique_id=1686317356]
 transform = Transform3D(0.939692, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939692, 32.7, -5.3, 86.7)
 shape = SubResource("19")
 
-[node name="Props30" type="CollisionShape3D" parent="Props"]
+[node name="Props30" type="CollisionShape3D" parent="Props" unique_id=1041101578]
 transform = Transform3D(0.951056, 0, 0.309017, 0, 1, 0, -0.309017, 0, 0.951056, 19.8, -5.1, 78.4)
 shape = SubResource("20")
 
-[node name="Props31" type="CollisionShape3D" parent="Props"]
+[node name="Props31" type="CollisionShape3D" parent="Props" unique_id=1447330761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, -5.1, 80.9)
 shape = SubResource("20")
 
-[node name="Props32" type="CollisionShape3D" parent="Props"]
+[node name="Props32" type="CollisionShape3D" parent="Props" unique_id=1198463308]
 transform = Transform3D(-0.0871559, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871559, 7.3, -5.7, 81.6)
 shape = SubResource("21")
 
-[node name="Props33" type="CollisionShape3D" parent="Props"]
+[node name="Props33" type="CollisionShape3D" parent="Props" unique_id=597344886]
 transform = Transform3D(0.990268, 0, 0.139173, 0, 1, 0, -0.139173, 0, 0.990268, 11.1, -5.7, 80.4)
 shape = SubResource("22")
 
-[node name="Props34" type="CollisionShape3D" parent="Props"]
+[node name="Props34" type="CollisionShape3D" parent="Props" unique_id=1476225587]
 transform = Transform3D(0.984807, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984807, 10.2, -5.7, 91.9)
 shape = SubResource("22")
 
-[node name="Props35" type="CollisionShape3D" parent="Props"]
+[node name="Props35" type="CollisionShape3D" parent="Props" unique_id=1272286645]
 transform = Transform3D(0.998629, 0, 0.052336, 0, 1, 0, -0.052336, 0, 0.998629, -0.8, -4.8, 91.8)
 shape = SubResource("23")
 
-[node name="Props36" type="CollisionShape3D" parent="Props"]
+[node name="Props36" type="CollisionShape3D" parent="Props" unique_id=1647971096]
 transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 14.5, -4.6, 91.1)
 shape = SubResource("24")
 
-[node name="Props37" type="CollisionShape3D" parent="Props"]
+[node name="Props37" type="CollisionShape3D" parent="Props" unique_id=1427032770]
 transform = Transform3D(0.992546, 0, 0.121869, 0, 1, 0, -0.121869, 0, 0.992546, 7.8, 6.8, 99)
 shape = SubResource("9")
 
-[node name="Props38" type="CollisionShape3D" parent="Props"]
+[node name="Props38" type="CollisionShape3D" parent="Props" unique_id=258773932]
 transform = Transform3D(0.984807, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984807, 21.5, 0.6, 101.3)
 shape = SubResource("24")
 
-[node name="Props39" type="CollisionShape3D" parent="Props"]
+[node name="Props39" type="CollisionShape3D" parent="Props" unique_id=475895627]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 78.4749, 6.8, 64.0251)
 shape = SubResource("25")
 
-[node name="Props40" type="CollisionShape3D" parent="Props"]
+[node name="Props40" type="CollisionShape3D" parent="Props" unique_id=864213007]
 transform = Transform3D(0.48481, 0, 0.87462, 0, 1, 0, -0.87462, 0, 0.48481, 92, 6.8, 42.1)
 shape = SubResource("25")
 
-[node name="Props41" type="CollisionShape3D" parent="Props"]
+[node name="Props41" type="CollisionShape3D" parent="Props" unique_id=403688951]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 95, 6.8, 38.2)
 shape = SubResource("25")
 
-[node name="Props42" type="CollisionShape3D" parent="Props"]
+[node name="Props42" type="CollisionShape3D" parent="Props" unique_id=1049171726]
 transform = Transform3D(-1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 100.5, 6.8, -12)
 shape = SubResource("25")
 
-[node name="Props43" type="CollisionShape3D" parent="Props"]
+[node name="Props43" type="CollisionShape3D" parent="Props" unique_id=748834266]
 transform = Transform3D(0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, 0.5, 87, 6.8, -50)
 shape = SubResource("25")
 
-[node name="Props44" type="CollisionShape3D" parent="Props"]
+[node name="Props44" type="CollisionShape3D" parent="Props" unique_id=1919262040]
 transform = Transform3D(0.951056, 0, 0.309017, 0, 1, 0, -0.309017, 0, 0.951056, 28.2, -4.6, 75.5)
 shape = SubResource("26")
 
-[node name="Props45" type="CollisionShape3D" parent="Props"]
+[node name="Props45" type="CollisionShape3D" parent="Props" unique_id=329626893]
 transform = Transform3D(0.992546, 0, 0.121869, 0, 1, 0, -0.121869, 0, 0.992546, 7, 2, 85.2)
 shape = SubResource("27")
 
-[node name="Props46" type="CollisionShape3D" parent="Props"]
+[node name="Props46" type="CollisionShape3D" parent="Props" unique_id=1743940391]
 transform = Transform3D(0.961262, 0, -0.275637, 0, 1, 0, 0.275637, 0, 0.961262, -13.5, -10.4, 20.6)
 shape = SubResource("28")
 
-[node name="Props47" type="CollisionShape3D" parent="Props"]
+[node name="Props47" type="CollisionShape3D" parent="Props" unique_id=348352311]
 transform = Transform3D(0.978148, 0, 0.207912, 0, 1, 0, -0.207912, 0, 0.978148, -12.4, -10.4, -20.8)
 shape = SubResource("29")
 
-[node name="Props48" type="CollisionShape3D" parent="Props"]
+[node name="Props48" type="CollisionShape3D" parent="Props" unique_id=2012146741]
 transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 52.5, -0.6, 81.3)
 shape = SubResource("30")
 
-[node name="Props49" type="CollisionShape3D" parent="Props"]
+[node name="Props49" type="CollisionShape3D" parent="Props" unique_id=1876164489]
 transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 62.7, -0.5, 73.746)
 shape = SubResource("30")
 
-[node name="Props50" type="CollisionShape3D" parent="Props"]
+[node name="Props50" type="CollisionShape3D" parent="Props" unique_id=1115681126]
 transform = Transform3D(0.965272, 0, 0.261246, 0, 1, 0, -0.261246, 0, 0.965272, 69.95, -0.2, 76.65)
 shape = SubResource("31")
 
-[node name="Props51" type="CollisionShape3D" parent="Props"]
+[node name="Props51" type="CollisionShape3D" parent="Props" unique_id=1860220582]
 transform = Transform3D(0.779709, 0, 0.626141, 0, 1, 0, -0.626141, 0, 0.779709, 64.25, -0.5, 72.8)
 shape = SubResource("32")
 
-[node name="Props54" type="CollisionShape3D" parent="Props"]
+[node name="Props54" type="CollisionShape3D" parent="Props" unique_id=143276749]
 transform = Transform3D(0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 64.6, -5.6, 48.6)
 shape = SubResource("13")
 
-[node name="Props55" type="CollisionShape3D" parent="Props"]
+[node name="Props55" type="CollisionShape3D" parent="Props" unique_id=93304696]
 transform = Transform3D(0.777146, 0, -0.62932, 0, 1, 0, 0.62932, 0, 0.777146, 64.1, -5.6, 51.3)
 shape = SubResource("33")
