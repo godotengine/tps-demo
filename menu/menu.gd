@@ -56,6 +56,7 @@ var metalfx_supported: bool = RenderingServer.get_current_rendering_driver_name(
 @onready var resolution_scale_native: Button = resolution_scale_menu.get_node(^"Native")
 
 @onready var scale_filter_menu: HBoxContainer = settings_menu.get_node(^"ScaleFilter")
+@onready var scale_filter_nearest: Button = scale_filter_menu.get_node(^"Nearest")
 @onready var scale_filter_bilinear: Button = scale_filter_menu.get_node(^"Bilinear")
 @onready var scale_filter_fsr1: Button = scale_filter_menu.get_node(^"FSR1")
 @onready var scale_filter_metalfx_spatial: Button = scale_filter_menu.get_node(^"MetalFXSpatial")
@@ -72,9 +73,10 @@ var metalfx_supported: bool = RenderingServer.get_current_rendering_driver_name(
 @onready var msaa_4x: Button = msaa_menu.get_node(^"4X")
 @onready var msaa_8x: Button = msaa_menu.get_node(^"8X")
 
-@onready var fxaa_menu: HBoxContainer = settings_menu.get_node(^"FXAA")
-@onready var fxaa_disabled: Button = fxaa_menu.get_node(^"Disabled")
-@onready var fxaa_enabled: Button = fxaa_menu.get_node(^"Enabled")
+@onready var screen_space_aa_menu: HBoxContainer = settings_menu.get_node(^"ScreenSpaceAA")
+@onready var screen_space_aa_disabled: Button = screen_space_aa_menu.get_node(^"Disabled")
+@onready var screen_space_aa_fxaa: Button = screen_space_aa_menu.get_node(^"FXAA")
+@onready var screen_space_aa_smaa: Button = screen_space_aa_menu.get_node(^"SMAA")
 
 @onready var shadow_mapping_menu: HBoxContainer = settings_menu.get_node(^"ShadowMapping")
 @onready var shadow_mapping_disabled: Button = shadow_mapping_menu.get_node(^"Disabled")
@@ -128,7 +130,7 @@ func _ready() -> void:
 
 	for menu in [
 		display_mode_menu, vsync_menu, max_fps_menu, resolution_scale_menu, scale_filter_menu,
-		taa_menu, msaa_menu, fxaa_menu, shadow_mapping_menu, gi_type_menu, gi_quality_menu,
+		taa_menu, msaa_menu, screen_space_aa_menu, shadow_mapping_menu, gi_type_menu, gi_quality_menu,
 		ssao_menu, ssil_menu, bloom_menu, volumetric_fog_menu,
 	]:
 		_make_button_group(menu)
@@ -223,7 +225,9 @@ func _on_settings_pressed() -> void:
 	else:
 		resolution_scale_native.button_pressed = true
 
-	if Settings.config_file.get_value("video", "scale_filter") == Viewport.SCALING_3D_MODE_BILINEAR:
+	if Settings.config_file.get_value("video", "scale_filter") == Viewport.SCALING_3D_MODE_NEAREST:
+		scale_filter_nearest.button_pressed = true
+	elif Settings.config_file.get_value("video", "scale_filter") == Viewport.SCALING_3D_MODE_BILINEAR:
 		scale_filter_bilinear.button_pressed = true
 	elif Settings.config_file.get_value("video", "scale_filter") == Viewport.SCALING_3D_MODE_FSR:
 		scale_filter_fsr1.button_pressed = true
@@ -267,10 +271,12 @@ func _on_settings_pressed() -> void:
 	elif Settings.config_file.get_value("rendering", "msaa") == Viewport.MSAA_8X:
 		msaa_8x.button_pressed = true
 
-	if not Settings.config_file.get_value("rendering", "fxaa"):
-		fxaa_disabled.button_pressed = true
-	else:
-		fxaa_enabled.button_pressed = true
+	if Settings.config_file.get_value("rendering", "screen_space_aa") == Viewport.SCREEN_SPACE_AA_DISABLED:
+		screen_space_aa_disabled.button_pressed = true
+	elif Settings.config_file.get_value("rendering", "screen_space_aa") == Viewport.SCREEN_SPACE_AA_FXAA:
+		screen_space_aa_fxaa.button_pressed = true
+	elif Settings.config_file.get_value("rendering", "screen_space_aa") == Viewport.SCREEN_SPACE_AA_SMAA:
+		screen_space_aa_smaa.button_pressed = true
 
 	if not Settings.config_file.get_value("rendering", "shadow_mapping"):
 		shadow_mapping_disabled.button_pressed = true
@@ -357,7 +363,9 @@ func _on_apply_pressed() -> void:
 	elif resolution_scale_native.button_pressed:
 		Settings.config_file.set_value("video", "resolution_scale", 1.0)
 
-	if scale_filter_bilinear.button_pressed:
+	if scale_filter_nearest.button_pressed:
+		Settings.config_file.set_value("video", "scale_filter", Viewport.SCALING_3D_MODE_NEAREST)
+	elif scale_filter_bilinear.button_pressed:
 		Settings.config_file.set_value("video", "scale_filter", Viewport.SCALING_3D_MODE_BILINEAR)
 	elif scale_filter_fsr1.button_pressed:
 		Settings.config_file.set_value("video", "scale_filter", Viewport.SCALING_3D_MODE_FSR)
@@ -393,8 +401,15 @@ func _on_apply_pressed() -> void:
 	elif msaa_8x.button_pressed:
 		Settings.config_file.set_value("rendering", "msaa", Viewport.MSAA_8X)
 
+	if screen_space_aa_disabled.button_pressed:
+		Settings.config_file.set_value("rendering", "screen_space_aa", Viewport.SCREEN_SPACE_AA_DISABLED)
+	elif screen_space_aa_fxaa.button_pressed:
+		Settings.config_file.set_value("rendering", "screen_space_aa", Viewport.SCREEN_SPACE_AA_FXAA)
+	elif screen_space_aa_smaa.button_pressed:
+		Settings.config_file.set_value("rendering", "screen_space_aa", Viewport.SCREEN_SPACE_AA_SMAA)
+
 	Settings.config_file.set_value("rendering", "shadow_mapping", shadow_mapping_enabled.button_pressed)
-	Settings.config_file.set_value("rendering", "fxaa", fxaa_enabled.button_pressed)
+
 
 	if ssao_disabled.button_pressed:
 		Settings.config_file.set_value("rendering", "ssao_quality", -1)

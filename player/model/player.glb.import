@@ -16,6 +16,8 @@ dest_files=["res://.godot/imported/player.glb-4fab3988dc7fd5b74f5ba5057da16803.s
 nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=false
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -47,9 +49,10 @@ _subresources={
 "robotemitter": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://player/model/robotemitter.tres",
-"use_external/path": "res://player/model/robotemitter.tres"
+"use_external/path": "uid://bb8w80od0uuhd"
 }
 }
 }
 gltf/naming_version=0
 gltf/embedded_image_handling=1
+gltf/texture_map_mode=0

@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b703875llvtsk"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b703875llvtsk"]
 
 [ext_resource type="Texture2D" uid="uid://dlgb8fuxysstd" path="res://level/textures/car/scificar_albedo.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://tsfvwxlfyjbj" path="res://level/textures/car/scificar_normal.png" id="2"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://byi6b08jpb2iw"]
+[gd_scene format=3 uid="uid://byi6b08jpb2iw"]
 
 [ext_resource type="Script" uid="uid://bf14mo0lrrvjl" path="res://enemies/red_robot/red_robot.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cmy0u0gubi0bw" path="res://enemies/red_robot/model/red_robot.glb" id="2_g6060"]
@@ -10123,14 +10123,19 @@ animation = &"Cannon-D"
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_24kw2"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_4hwod")
 blend_point_0/pos = Vector2(0, 0)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_gssmr")
 blend_point_1/pos = Vector2(-1, 0)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_wvdy4")
 blend_point_2/pos = Vector2(1, 0)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_gcasf")
 blend_point_3/pos = Vector2(0, 1)
+blend_point_3/name = &"3"
 blend_point_4/node = SubResource("AnimationNodeAnimation_t5oks")
 blend_point_4/pos = Vector2(0, -0.9)
+blend_point_4/name = &"4"
 
 [sub_resource type="AnimationNodeBlend2" id="47"]
 resource_local_to_scene = true
@@ -10576,46 +10581,46 @@ rings = 4
 streams_count = 1
 stream_0/stream = ExtResource("20_d1jht")
 
-[node name="RedRobot" type="CharacterBody3D"]
+[node name="RedRobot" type="CharacterBody3D" unique_id=56261083]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1768116397]
 replication_config = SubResource("SceneReplicationConfig_h6xi0")
 
-[node name="RedRobotModel" parent="." instance=ExtResource("2_g6060")]
+[node name="RedRobotModel" parent="." unique_id=199768359 instance=ExtResource("2_g6060")]
 
-[node name="Skeleton3D" parent="RedRobotModel/Armature" index="0"]
+[node name="Skeleton3D" parent="RedRobotModel/Armature" parent_id_path=PackedInt32Array(199768359, 1640648123) index="0" unique_id=1870733179]
 bones/0/position = Vector3(0, -1.1106, 1.61554)
-bones/2/position = Vector3(0, 1.1535751, -0.00059740007)
-bones/2/rotation = Quaternion(-0.0006287969, 0.04713281, 0.03358399, 0.9983238)
+bones/2/position = Vector3(0, 1.17536, -0.0016982749)
+bones/2/rotation = Quaternion(-0.0011244756, 0.041051418, 0.03567407, 0.9985194)
 bones/3/rotation = Quaternion(-0.49991095, -0.499911, -0.50008893, 0.500089)
-bones/4/rotation = Quaternion(-0.47150627, 0.46601778, -0.5354038, 0.5233089)
-bones/5/rotation = Quaternion(-0.006299021, 0.90049136, 0.43482757, 0.0008865489)
-bones/7/rotation = Quaternion(-0.06621624, 0.0007789263, 0.015799265, 0.99767995)
-bones/8/rotation = Quaternion(-0.04876415, 0.00071346486, 0.014471501, 0.9987053)
+bones/4/rotation = Quaternion(-0.46895278, 0.46529174, -0.5364451, 0.5251796)
+bones/5/rotation = Quaternion(-0.0064011854, 0.92910385, 0.3697622, 0.0010448802)
+bones/7/rotation = Quaternion(-0.082990825, 0.0008275742, 0.016785834, 0.99640864)
+bones/8/rotation = Quaternion(-0.06873771, 0.0007696377, 0.0156108355, 0.99751234)
 bones/9/rotation = Quaternion(-0.49991095, 0.499911, 0.50008893, 0.500089)
-bones/10/rotation = Quaternion(-0.24298528, -0.21455224, 0.63782525, 0.6986448)
-bones/11/rotation = Quaternion(-0.0015151652, 0.8638349, 0.00095923664, -0.5037718)
+bones/10/rotation = Quaternion(-0.24650204, -0.21281604, 0.6404256, 0.6955581)
+bones/11/rotation = Quaternion(-0.0014476896, 0.86556953, 0.0009123353, -0.5007858)
 bones/12/rotation = Quaternion(-1.8429803e-07, -0.46167707, 0.8870482, -3.5087503e-08)
-bones/13/rotation = Quaternion(-0.052878276, 0.0005417933, 0.010987453, 0.99854046)
-bones/14/rotation = Quaternion(-0.046638776, 0.0005648754, 0.011455656, 0.998846)
+bones/13/rotation = Quaternion(-0.05251808, 0.0006127373, 0.012426365, 0.9985425)
+bones/14/rotation = Quaternion(-0.044861645, 0.0006477335, 0.013136135, 0.9989067)
 bones/15/rotation = Quaternion(0.0011824387, 0.7071058, 0.7071058, -0.0011823771)
 bones/16/rotation = Quaternion(0.048780933, 4.3662855e-08, -2.060843e-09, 0.9988096)
 bones/17/position = Vector3(-1.0736881e-11, -1.8512962e-09, 1.8762956e-09)
 bones/17/rotation = Quaternion(-1.0658024e-18, -2.6454781e-17, 7.152516e-11, 1)
-bones/18/rotation = Quaternion(-0.7015917, -0.0881427, -0.0881427, 0.7015917)
-bones/19/rotation = Quaternion(-0.31933376, 0.087999545, -0.05063088, 0.94218826)
-bones/20/rotation = Quaternion(0.2901341, -0.14121406, 0.02716511, 0.9461199)
-bones/21/rotation = Quaternion(-0.010369097, -0.866189, 0.49894354, -0.025778262)
-bones/22/rotation = Quaternion(0.40399984, -0.110768735, 0.049356155, 0.9066855)
-bones/23/rotation = Quaternion(-0.2602235, -0.06628465, 0.25966096, 0.92761326)
-bones/24/rotation = Quaternion(0.2366596, 0.16815858, -0.0041732467, 0.9569209)
-bones/25/rotation = Quaternion(0.031321768, -0.7536213, 0.65471995, 0.04915201)
-bones/26/rotation = Quaternion(0.29389244, 0.11540436, -0.030105792, 0.9483685)
+bones/18/rotation = Quaternion(-0.7015893, -0.08816201, -0.08816201, 0.7015893)
+bones/19/rotation = Quaternion(-0.34793222, 0.0856221, -0.048989806, 0.9323155)
+bones/20/rotation = Quaternion(0.28992194, -0.13929945, 0.03031304, 0.94637316)
+bones/21/rotation = Quaternion(-0.0068568345, -0.89281034, 0.4497013, -0.02472719)
+bones/22/rotation = Quaternion(0.41671142, -0.11006339, 0.050909076, 0.900914)
+bones/23/rotation = Quaternion(-0.27591902, -0.06550712, 0.2728285, 0.9193161)
+bones/24/rotation = Quaternion(0.24116188, 0.16646276, -0.005664222, 0.9560853)
+bones/25/rotation = Quaternion(0.029871501, -0.76491785, 0.6416518, 0.04786914)
+bones/26/rotation = Quaternion(0.30973086, 0.114524506, -0.028460477, 0.9434728)
 bones/29/position = Vector3(-8.25734e-11, 0.918942, 0.00903559)
-bones/29/rotation = Quaternion(0.70702446, -0.010791229, 0.010790722, 0.70702446)
+bones/29/rotation = Quaternion(0.70702434, -0.010797638, 0.010797129, 0.70702434)
 bones/31/rotation = Quaternion(0.8995771, 2.2956301e-07, 0.43676203, -2.5202897e-07)
 bones/31/scale = Vector3(1, 1, 1)
 bones/33/rotation = Quaternion(0.8995771, -1.5106494e-08, -0.43676203, -2.5200202e-07)
@@ -10624,26 +10629,26 @@ bones/36/position = Vector3(1.25983, 1.30326, 0.185817)
 bones/36/rotation = Quaternion(1, 0, -7.54979e-08, 0)
 bones/37/rotation = Quaternion(5.3385083e-08, -0.7071068, 0.7071068, 5.3385087e-08)
 bones/38/rotation = Quaternion(-3.0908595e-08, 0.7071068, -0.7071068, 3.0908595e-08)
-bones/39/rotation = Quaternion(0.9991069, -0.04036749, 0.0104046725, -0.006912757)
+bones/39/rotation = Quaternion(0.9987707, -0.044052, 0.011354315, -0.019688783)
 bones/40/rotation = Quaternion(-3.0908595e-08, 0.7071068, -0.7071068, 3.0908595e-08)
-bones/41/rotation = Quaternion(0.9990738, -0.040377617, 0.010407332, 0.010632527)
+bones/41/rotation = Quaternion(0.99896294, -0.043787785, 0.011286272, -0.0053383545)
 bones/42/rotation = Quaternion(-0.5672042, -1.6035605e-07, 1.10439025e-07, 0.8235772)
 bones/43/rotation = Quaternion(0.56649995, 0.40270498, 0.6163759, 0.37011793)
-bones/44/rotation = Quaternion(0.58942163, 0.30679464, 0.65048915, 0.36786282)
-bones/45/position = Vector3(-5.6631106e-06, -0.361298, 0.030184336)
-bones/45/rotation = Quaternion(0.5293051, 0.05834552, 0.84218484, -0.08459794)
+bones/44/rotation = Quaternion(0.6053708, 0.28105736, 0.6631274, 0.33881402)
+bones/45/position = Vector3(-7.266742e-06, -0.361298, 0.030175403)
+bones/45/rotation = Quaternion(0.52941585, 0.06016856, 0.8414778, -0.08952045)
 bones/46/rotation = Quaternion(-2.32831e-10, -3.22126e-07, -1.04545e-16, 1)
 bones/47/rotation = Quaternion(-0.5995933, 0.37481815, 0.5995922, 0.37481815)
 bones/48/position = Vector3(-1.25983, 1.30326, 1.13517)
 bones/48/rotation = Quaternion(1, 0, 7.54979e-08, 0)
 bones/49/rotation = Quaternion(-5.3385083e-08, -0.7071068, 0.7071068, -5.3385087e-08)
-bones/51/rotation = Quaternion(0.91946757, -0.03696196, 0.009526606, 0.39130867)
-bones/53/rotation = Quaternion(0.91699064, -0.037109967, 0.009564752, 0.39706376)
+bones/51/rotation = Quaternion(0.9193995, -0.04058704, 0.010460979, 0.39108565)
+bones/53/rotation = Quaternion(0.91641086, -0.039951548, 0.010297179, 0.39810672)
 bones/54/rotation = Quaternion(-0.5672042, 1.6035605e-07, -1.10439025e-07, 0.8235772)
 bones/55/rotation = Quaternion(-0.630266, 0.268009, 0.6857561, -0.246322)
-bones/56/rotation = Quaternion(0.610165, -0.38129556, -0.591992, 0.3631225)
+bones/56/rotation = Quaternion(0.6121661, -0.37817723, -0.5938903, 0.3599015)
 bones/57/position = Vector3(1.49285e-08, -0.361298, 0.0302156)
-bones/57/rotation = Quaternion(-0.6651065, 0.06992355, 0.741432, -0.054980308)
+bones/57/rotation = Quaternion(-0.6640851, 0.072093256, 0.7423646, -0.051850453)
 bones/58/rotation = Quaternion(-9.67704e-10, 3.29868e-07, -3.76895e-09, 1)
 bones/59/rotation = Quaternion(-0.39646593, -0.58550394, -0.3964659, 0.58550394)
 bones/60/position = Vector3(0.937933, 1.23785, -1.52284)
@@ -10651,23 +10656,23 @@ bones/60/rotation = Quaternion(1, 0, -4.37114e-08, 0)
 bones/61/position = Vector3(-1.05149, 1.13607, -1.48048)
 bones/62/position = Vector3(0, 3.0487, 15.6378)
 
-[node name="RayFrom" type="BoneAttachment3D" parent="RedRobotModel/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.9929812, 0.09038326, -0.076285176, -0.06698095, 0.10184904, 0.9925423, 0.0974788, 0.99068546, -0.09508022, -0.110958174, 1.9776229, 1.8081291)
+[node name="RayFrom" type="BoneAttachment3D" parent="RedRobotModel/Armature/Skeleton3D" index="4" unique_id=325662549]
+transform = Transform3D(-0.993805, 0.07786829, -0.07930015, -0.07113248, 0.10258416, 0.9921777, 0.08539412, 0.9916719, -0.096409686, -0.12145293, 1.9989917, 1.8048687)
 bone_name = "CannonAnimRecoil"
 bone_idx = 17
 
-[node name="Circle" type="MeshInstance3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom"]
+[node name="Circle" type="MeshInstance3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom" unique_id=2103009140]
 transform = Transform3D(-1, 8.74227e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1, 0)
 rotation_order = 0
 mesh = ExtResource("3_53w75")
 surface_material_override/0 = ExtResource("4_6f0x2")
 
-[node name="RayMesh" type="MeshInstance3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom"]
+[node name="RayMesh" type="MeshInstance3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom" unique_id=630256724]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.25, 0)
 mesh = ExtResource("5_knbdw")
 surface_material_override/0 = SubResource("ShaderMaterial_p5m1n")
 
-[node name="BuildupParticles" type="CPUParticles3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom"]
+[node name="BuildupParticles" type="CPUParticles3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom" unique_id=698449355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.476, 0)
 material_override = ExtResource("6_xf2ir")
 cast_shadow = 0
@@ -10693,7 +10698,7 @@ tangential_accel_max = 1.0
 scale_amount_curve = SubResource("Curve_bucgl")
 color_ramp = SubResource("Gradient_itfnn")
 
-[node name="LaserEmber" type="CPUParticles3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom"]
+[node name="LaserEmber" type="CPUParticles3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom" unique_id=1375064558]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0.033)
 cast_shadow = 0
 emitting = false
@@ -10717,7 +10722,7 @@ scale_amount_curve = SubResource("Curve_23icu")
 color_ramp = ExtResource("8_8q6ei")
 anim_offset_max = 1.0
 
-[node name="LaserCenter" type="CPUParticles3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom"]
+[node name="LaserCenter" type="CPUParticles3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom" unique_id=741860063]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 material_override = ExtResource("9_2boaq")
 cast_shadow = 0
@@ -10729,7 +10734,7 @@ mesh = SubResource("SphereMesh_2uov0")
 gravity = Vector3(0, 0, 0)
 scale_amount_curve = SubResource("Curve_8fal6")
 
-[node name="Smoke" type="CPUParticles3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom"]
+[node name="Smoke" type="CPUParticles3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom" unique_id=785815136]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.3, 0)
 material_override = ExtResource("10_bkww7")
 cast_shadow = 0
@@ -10757,18 +10762,16 @@ scale_amount_max = 1.3
 scale_amount_curve = SubResource("Curve_3tvin")
 color_ramp = SubResource("Gradient_1e1e6")
 
-[node name="RayCast" type="RayCast3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom"]
+[node name="RayCast" type="RayCast3D" parent="RedRobotModel/Armature/Skeleton3D/RayFrom" unique_id=600162090]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 enabled = false
 target_position = Vector3(0, 0, -1000)
 collision_mask = 3
 
-[node name="AnimationPlayer" parent="RedRobotModel" index="1"]
-libraries = {
-&"": SubResource("AnimationLibrary_cj6rv")
-}
+[node name="AnimationPlayer" parent="RedRobotModel" index="1" unique_id=763812360]
+libraries/ = SubResource("AnimationLibrary_cj6rv")
 
-[node name="Decal" type="Decal" parent="RedRobotModel"]
+[node name="Decal" type="Decal" parent="RedRobotModel" unique_id=1001592328]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00427005, 0.0625777, -0.00797471)
 size = Vector3(5, 2, 5)
 texture_albedo = ExtResource("14_7iihk")
@@ -10776,7 +10779,7 @@ albedo_mix = 0.5
 upper_fade = 3.63772
 lower_fade = 1.0
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1618570170]
 root_node = NodePath("../RedRobotModel")
 root_motion_track = NodePath("Armature/Skeleton3D:MASTER")
 callback_mode_process = 0
@@ -10797,26 +10800,24 @@ parameters/state/current_state = "idle"
 parameters/state/transition_request = ""
 parameters/state/current_index = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=698399855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11655, -0.0212681)
 shape = SubResource("53")
 
-[node name="PlayerDetectionArea" type="Area3D" parent="."]
+[node name="PlayerDetectionArea" type="Area3D" parent="." unique_id=1852016750]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea" unique_id=721711602]
 shape = SubResource("54")
 
-[node name="RootMotionView" type="RootMotionView" parent="."]
+[node name="RootMotionView" type="RootMotionView" parent="." unique_id=128084469]
 animation_path = NodePath("../AnimationTree")
 
-[node name="ShootAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_oexr2")
-}
+[node name="ShootAnimation" type="AnimationPlayer" parent="." unique_id=620467123]
+libraries/ = SubResource("AnimationLibrary_oexr2")
 
-[node name="ShootLight" type="OmniLight3D" parent="."]
+[node name="ShootLight" type="OmniLight3D" parent="." unique_id=991509211]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82358, 2.06607)
 visible = false
 light_color = Color(0.992157, 0.713726, 0.713726, 1)
@@ -10825,11 +10826,11 @@ shadow_enabled = true
 omni_range = 8.68993
 omni_shadow_mode = 0
 
-[node name="Death" type="Node3D" parent="."]
+[node name="Death" type="Node3D" parent="." unique_id=1055832940]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
 
-[node name="PartShield1" type="RigidBody3D" parent="Death"]
+[node name="PartShield1" type="RigidBody3D" parent="Death" unique_id=24395049]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37822, 1.11034, 1.09121)
 collision_layer = 3
 collision_mask = 3
@@ -10839,11 +10840,11 @@ freeze = true
 angular_damp = 0.3
 script = ExtResource("24")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Death/PartShield1"]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Death/PartShield1" unique_id=226170807]
 replication_config = SubResource("SceneReplicationConfig_hqtbc")
 public_visibility = false
 
-[node name="StaticParticle" type="CPUParticles3D" parent="Death/PartShield1"]
+[node name="StaticParticle" type="CPUParticles3D" parent="Death/PartShield1" unique_id=753488755]
 transform = Transform3D(1, 0, 0, 0, 0.965835, 0.259156, 0, -0.259156, 0.965835, 0, 0, 0)
 material_override = ExtResource("8")
 cast_shadow = 0
@@ -10869,19 +10870,19 @@ scale_amount_max = 0.2
 scale_amount_curve = SubResource("57")
 color_ramp = SubResource("58")
 
-[node name="Model" parent="Death/PartShield1" instance=ExtResource("12")]
+[node name="Model" parent="Death/PartShield1" unique_id=1376719260 instance=ExtResource("12")]
 
-[node name="Col1" type="CollisionShape3D" parent="Death/PartShield1"]
+[node name="Col1" type="CollisionShape3D" parent="Death/PartShield1" unique_id=909540575]
 transform = Transform3D(1, 0, 0, 0, 0.908425, 0.418048, 0, -0.418048, 0.908425, -0.0167698, 0.5788, -0.122978)
 shape = SubResource("59")
 disabled = true
 
-[node name="Col2" type="CollisionShape3D" parent="Death/PartShield1"]
+[node name="Col2" type="CollisionShape3D" parent="Death/PartShield1" unique_id=2084853095]
 transform = Transform3D(1, 0, 0, 0, 0.994888, 0.100984, 0, -0.100984, 0.994888, 0.0804193, -0.63062, 0.179012)
 shape = SubResource("60")
 disabled = true
 
-[node name="PartShield2" type="RigidBody3D" parent="Death"]
+[node name="PartShield2" type="RigidBody3D" parent="Death" unique_id=1053416321]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75083, 1.02975, 0.162546)
 collision_layer = 3
 collision_mask = 3
@@ -10890,11 +10891,11 @@ physics_material_override = SubResource("61")
 freeze = true
 script = ExtResource("24")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Death/PartShield2"]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Death/PartShield2" unique_id=1118162873]
 replication_config = SubResource("SceneReplicationConfig_hqtbc")
 public_visibility = false
 
-[node name="StaticParticle2" type="CPUParticles3D" parent="Death/PartShield2"]
+[node name="StaticParticle2" type="CPUParticles3D" parent="Death/PartShield2" unique_id=385429597]
 transform = Transform3D(1, 0, 0, 0, 0.965835, 0.259156, 0, -0.259156, 0.965835, 0, 0, 0)
 material_override = ExtResource("8")
 cast_shadow = 0
@@ -10920,19 +10921,19 @@ scale_amount_max = 0.2
 scale_amount_curve = SubResource("57")
 color_ramp = SubResource("58")
 
-[node name="Model" parent="Death/PartShield2" instance=ExtResource("12")]
+[node name="Model" parent="Death/PartShield2" unique_id=1747690253 instance=ExtResource("12")]
 
-[node name="Col1" type="CollisionShape3D" parent="Death/PartShield2"]
+[node name="Col1" type="CollisionShape3D" parent="Death/PartShield2" unique_id=1502932188]
 transform = Transform3D(1, 0, 0, 0, 0.908425, 0.418048, 0, -0.418048, 0.908425, -0.0150018, 0.599786, -0.170673)
 shape = SubResource("62")
 disabled = true
 
-[node name="Col2" type="CollisionShape3D" parent="Death/PartShield2"]
+[node name="Col2" type="CollisionShape3D" parent="Death/PartShield2" unique_id=2067172375]
 transform = Transform3D(1, 0, 0, 0, 0.999275, -0.038063, 0, 0.038063, 0.999275, 0.0207567, -0.47267, 0.0351334)
 shape = SubResource("63")
 disabled = true
 
-[node name="PartHead" type="RigidBody3D" parent="Death"]
+[node name="PartHead" type="RigidBody3D" parent="Death" unique_id=1250047684]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0374503, 1.02975, 0.162546)
 collision_layer = 3
 collision_mask = 3
@@ -10942,11 +10943,11 @@ freeze = true
 angular_damp = 0.3
 script = ExtResource("24")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Death/PartHead"]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Death/PartHead" unique_id=110510044]
 replication_config = SubResource("SceneReplicationConfig_hqtbc")
 public_visibility = false
 
-[node name="StaticParticle3" type="CPUParticles3D" parent="Death/PartHead"]
+[node name="StaticParticle3" type="CPUParticles3D" parent="Death/PartHead" unique_id=952784178]
 transform = Transform3D(1, 0, 0, 0, 0.965835, 0.259156, 0, -0.259156, 0.965835, 0, 0, 0)
 material_override = ExtResource("8")
 cast_shadow = 0
@@ -10972,23 +10973,21 @@ scale_amount_max = 0.2
 scale_amount_curve = SubResource("57")
 color_ramp = SubResource("58")
 
-[node name="Model" parent="Death/PartHead" instance=ExtResource("11")]
+[node name="Model" parent="Death/PartHead" unique_id=747863311 instance=ExtResource("11")]
 
-[node name="Col1" type="CollisionShape3D" parent="Death/PartHead"]
+[node name="Col1" type="CollisionShape3D" parent="Death/PartHead" unique_id=1427546544]
 shape = SubResource("65")
 disabled = true
 
-[node name="Col2" type="CollisionShape3D" parent="Death/PartHead"]
+[node name="Col2" type="CollisionShape3D" parent="Death/PartHead" unique_id=1105131357]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0753293, 0.680746, 0.945143)
 shape = SubResource("66")
 disabled = true
 
-[node name="Explosion" type="AnimationPlayer" parent="Death"]
-libraries = {
-&"": SubResource("AnimationLibrary_m5v3c")
-}
+[node name="Explosion" type="AnimationPlayer" parent="Death" unique_id=1589946624]
+libraries/ = SubResource("AnimationLibrary_m5v3c")
 
-[node name="DetachSpark1" type="CPUParticles3D" parent="Death"]
+[node name="DetachSpark1" type="CPUParticles3D" parent="Death" unique_id=925345635]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.803977, 0.987653, 0)
 material_override = SubResource("68")
 cast_shadow = 0
@@ -11007,7 +11006,7 @@ initial_velocity_min = 1.0
 initial_velocity_max = 10.0
 color = Color(0, 0.976471, 1, 1)
 
-[node name="DetachSpark2" type="CPUParticles3D" parent="Death"]
+[node name="DetachSpark2" type="CPUParticles3D" parent="Death" unique_id=617605116]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.11386, 0.987653, 0)
 material_override = SubResource("68")
 cast_shadow = 0
@@ -11025,27 +11024,27 @@ initial_velocity_min = 1.0
 initial_velocity_max = 10.0
 color = Color(0, 0.976471, 1, 1)
 
-[node name="SoundEffects" type="Node3D" parent="."]
+[node name="SoundEffects" type="Node3D" parent="." unique_id=1732488465]
 
-[node name="Cannon" type="AudioStreamPlayer3D" parent="SoundEffects"]
+[node name="Cannon" type="AudioStreamPlayer3D" parent="SoundEffects" unique_id=797686453]
 unit_size = 15.0
 
-[node name="Explosion" type="AudioStreamPlayer3D" parent="SoundEffects"]
+[node name="Explosion" type="AudioStreamPlayer3D" parent="SoundEffects" unique_id=686554134]
 stream = ExtResource("17")
 volume_db = 12.0
 unit_size = 15.0
 
-[node name="Hit" type="AudioStreamPlayer3D" parent="SoundEffects"]
+[node name="Hit" type="AudioStreamPlayer3D" parent="SoundEffects" unique_id=87512176]
 stream = SubResource("70")
 volume_db = 3.0
 unit_size = 15.0
 
-[node name="Walk" type="AudioStreamPlayer3D" parent="SoundEffects"]
+[node name="Walk" type="AudioStreamPlayer3D" parent="SoundEffects" unique_id=964694463]
 stream = ExtResource("19")
 volume_db = 3.0
 unit_size = 15.0
 
-[node name="BlastCache" parent="." instance=ExtResource("25_2mhnh")]
+[node name="BlastCache" parent="." unique_id=609465267 instance=ExtResource("25_2mhnh")]
 visible = false
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_area_body_entered"]

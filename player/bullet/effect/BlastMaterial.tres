@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bxjcw6j767jtn"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bxjcw6j767jtn"]
 
 [ext_resource type="Texture2D" uid="uid://bpm6frbylo5an" path="res://effects_shared/BlastTexture.png" id="1_1ujtj"]
 

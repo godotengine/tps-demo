@@ -13,8 +13,12 @@ config_version=5
 config/name="Godot Third-Person Shooter Demo"
 config/description="Godot Third Person Shooter with high quality assets and lighting"
 run/main_scene="res://main/main.tscn"
-config/features=PackedStringArray("4.5")
+config/features=PackedStringArray("4.7")
 config/icon="res://icon.png"
+
+[audio]
+
+buses/default_bus_layout="uid://vtdn63d3ksc2"
 
 [autoload]
 
@@ -194,10 +198,11 @@ rendering_device/driver.windows="d3d12"
 reflections/sky_reflections/texture_array_reflections=false
 textures/default_filters/anisotropic_filtering_level=4
 viewport/hdr_2d=true
+anti_aliasing/quality/use_debanding=true
 scaling_3d/mode=2
 textures/decals/filter=1
 textures/light_projectors/filter=1
-anti_aliasing/quality/use_debanding=true
+global_illumination/sdfgi/probe_ray_count=2
 occlusion_culling/use_occlusion_culling=true
 lights_and_shadows/positional_shadow/atlas_size=2048
 lights_and_shadows/positional_shadow/atlas_size.mobile=1024

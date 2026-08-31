@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c80nbk7u633n6"]
+[gd_scene format=3 uid="uid://c80nbk7u633n6"]
 
 [ext_resource type="Script" uid="uid://4pwshyfo5i0d" path="res://menu/menu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://gnsovrtic7g4" path="res://menu/experiment.hdr" id="2_bpuaq"]
@@ -100,66 +100,66 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = ExtResource("13")
 Label/styles/normal = null
 
-[node name="Menu" type="Node"]
+[node name="Menu" type="Node" unique_id=638347746]
 script = ExtResource("1")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=126264825]
 environment = SubResource("2")
 
-[node name="FogVolume" type="FogVolume" parent="WorldEnvironment"]
+[node name="FogVolume" type="FogVolume" parent="WorldEnvironment" unique_id=1450914945]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54524, 0.476703, 0.346051)
 size = Vector3(16, 4, 16)
 material = SubResource("FogMaterial_e2dgj")
 
-[node name="PlayerModel" parent="." instance=ExtResource("3")]
+[node name="PlayerModel" parent="." unique_id=2066740528 instance=ExtResource("3")]
 
-[node name="SoundEffects" type="Node" parent="."]
+[node name="SoundEffects" type="Node" parent="." unique_id=460902806]
 
-[node name="Step" type="AudioStreamPlayer" parent="SoundEffects"]
+[node name="Step" type="AudioStreamPlayer" parent="SoundEffects" unique_id=2018925167]
 
-[node name="Floor" type="MeshInstance3D" parent="."]
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1102617400]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 mesh = SubResource("3")
 surface_material_override/0 = SubResource("StandardMaterial3D_froyn")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=497422568]
 transform = Transform3D(0.967027, 0, 0.254675, -0.225291, 0.466312, 0.855452, -0.118758, -0.88462, 0.450936, 0.557445, 2.31204, 0.556668)
 shadow_enabled = true
 
-[node name="SpotLightBounce" type="SpotLight3D" parent="."]
+[node name="SpotLightBounce" type="SpotLight3D" parent="." unique_id=1671765117]
 transform = Transform3D(-0.967027, -1.26906e-07, -0.254675, 0.225291, 0.466312, -0.855451, 0.118758, -0.88462, -0.450936, -0.206581, -0.720626, 0.088479)
 light_color = Color(1, 0.654902, 0.0509804, 1)
 light_energy = 0.3
 light_specular = 0.0
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1138212063]
 transform = Transform3D(0.871624, -0.0363083, 0.488828, 0, 0.997253, 0.0740721, -0.490175, -0.064563, 0.86923, 0.0702285, 1.22404, 2.09675)
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1759199230]
 stream = ExtResource("5")
 autoplay = true
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=2091175254]
 root_node = NodePath("../PlayerModel")
 tree_root = SubResource("8")
 anim_player = NodePath("../PlayerModel/AnimationPlayer")
 parameters/Blend/blend_amount = 1.0
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=62116410]
 offset_left = 20.1403
 offset_top = 5.03506
 offset_right = 1044.14
 offset_bottom = 238.035
 texture = ExtResource("6")
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." unique_id=996434165]
 layout_mode = 3
 anchor_left = 0.00106799
 anchor_right = 1.00107
 anchor_bottom = 1.0
 theme = SubResource("9")
 
-[node name="Main" type="Control" parent="UI"]
+[node name="Main" type="Control" parent="UI" unique_id=1279337218]
 layout_mode = 1
 anchor_left = -0.000673103
 anchor_top = -0.00189865
@@ -170,7 +170,7 @@ offset_top = 2.05054
 offset_right = -4.10107
 offset_bottom = 2.05054
 
-[node name="Play" type="Button" parent="UI/Main"]
+[node name="Play" type="Button" parent="UI/Main" unique_id=433382165]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 390.0
@@ -180,7 +180,7 @@ theme_override_font_sizes/font_size = 30
 text = "PLAY"
 alignment = 0
 
-[node name="PlayOnline" type="Button" parent="UI/Main"]
+[node name="PlayOnline" type="Button" parent="UI/Main" unique_id=886691214]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 490.0
@@ -190,7 +190,7 @@ theme_override_font_sizes/font_size = 30
 text = "PLAY ONLINE"
 alignment = 0
 
-[node name="Settings" type="Button" parent="UI/Main"]
+[node name="Settings" type="Button" parent="UI/Main" unique_id=29625528]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 590.0
@@ -200,7 +200,7 @@ theme_override_font_sizes/font_size = 30
 text = "SETTINGS"
 alignment = 0
 
-[node name="Quit" type="Button" parent="UI/Main"]
+[node name="Quit" type="Button" parent="UI/Main" unique_id=2144747608]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 690.0
@@ -210,7 +210,7 @@ theme_override_font_sizes/font_size = 30
 text = "QUIT"
 alignment = 0
 
-[node name="Online" type="Control" parent="UI"]
+[node name="Online" type="Control" parent="UI" unique_id=1985942088]
 visible = false
 anchors_preset = 0
 anchor_left = -0.000673103
@@ -222,7 +222,7 @@ offset_top = 2.05054
 offset_right = -4.10107
 offset_bottom = 2.05054
 
-[node name="Host" type="Button" parent="UI/Online"]
+[node name="Host" type="Button" parent="UI/Online" unique_id=2082688446]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 490.0
@@ -232,7 +232,7 @@ theme_override_font_sizes/font_size = 30
 text = "Host"
 alignment = 0
 
-[node name="Port" type="SpinBox" parent="UI/Online"]
+[node name="Port" type="SpinBox" parent="UI/Online" unique_id=48668762]
 layout_mode = 0
 offset_left = 500.0
 offset_top = 490.0
@@ -242,7 +242,7 @@ min_value = 1025.0
 max_value = 49151.0
 value = 4383.0
 
-[node name="Connect" type="Button" parent="UI/Online"]
+[node name="Connect" type="Button" parent="UI/Online" unique_id=1882467567]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 590.0
@@ -252,7 +252,7 @@ theme_override_font_sizes/font_size = 30
 text = "Connect"
 alignment = 0
 
-[node name="Address" type="LineEdit" parent="UI/Online"]
+[node name="Address" type="LineEdit" parent="UI/Online" unique_id=598641841]
 layout_mode = 0
 offset_left = 500.0
 offset_top = 590.0
@@ -261,7 +261,7 @@ offset_bottom = 640.0
 theme_override_font_sizes/font_size = 30
 text = "127.0.0.1"
 
-[node name="Back" type="Button" parent="UI/Online"]
+[node name="Back" type="Button" parent="UI/Online" unique_id=1785058496]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 690.0
@@ -271,7 +271,7 @@ theme_override_font_sizes/font_size = 30
 text = "Back"
 alignment = 0
 
-[node name="Settings" type="VBoxContainer" parent="UI"]
+[node name="Settings" type="VBoxContainer" parent="UI" unique_id=1539731661]
 visible = false
 layout_mode = 0
 anchor_left = 0.109896
@@ -280,521 +280,536 @@ anchor_right = 0.808854
 anchor_bottom = 1.00278
 theme_override_constants/separation = 8
 
-[node name="DisplayMode" type="HBoxContainer" parent="UI/Settings"]
+[node name="DisplayMode" type="HBoxContainer" parent="UI/Settings" unique_id=1456867160]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/DisplayMode"]
+[node name="Label" type="Label" parent="UI/Settings/DisplayMode" unique_id=1814026126]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Display Mode:"
 
-[node name="Windowed" type="Button" parent="UI/Settings/DisplayMode"]
+[node name="Windowed" type="Button" parent="UI/Settings/DisplayMode" unique_id=756156554]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Window"
 
-[node name="Fullscreen" type="Button" parent="UI/Settings/DisplayMode"]
+[node name="Fullscreen" type="Button" parent="UI/Settings/DisplayMode" unique_id=128625350]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Fullscreen"
 
-[node name="ExclusiveFullscreen" type="Button" parent="UI/Settings/DisplayMode"]
+[node name="ExclusiveFullscreen" type="Button" parent="UI/Settings/DisplayMode" unique_id=1982209388]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Exclusive Fullscreen"
 
-[node name="VSync" type="HBoxContainer" parent="UI/Settings"]
+[node name="VSync" type="HBoxContainer" parent="UI/Settings" unique_id=1950350597]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/VSync"]
+[node name="Label" type="Label" parent="UI/Settings/VSync" unique_id=2109792651]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Vertical Synchronization:"
 
-[node name="Disabled" type="Button" parent="UI/Settings/VSync"]
+[node name="Disabled" type="Button" parent="UI/Settings/VSync" unique_id=414202777]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Disabled"
 
-[node name="Enabled" type="Button" parent="UI/Settings/VSync"]
+[node name="Enabled" type="Button" parent="UI/Settings/VSync" unique_id=4175107]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Enabled"
 
-[node name="Adaptive" type="Button" parent="UI/Settings/VSync"]
+[node name="Adaptive" type="Button" parent="UI/Settings/VSync" unique_id=104800148]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Adaptive"
 
-[node name="Mailbox" type="Button" parent="UI/Settings/VSync"]
+[node name="Mailbox" type="Button" parent="UI/Settings/VSync" unique_id=1817706592]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Mailbox"
 
-[node name="MaxFPS" type="HBoxContainer" parent="UI/Settings"]
+[node name="MaxFPS" type="HBoxContainer" parent="UI/Settings" unique_id=1148378915]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/MaxFPS"]
+[node name="Label" type="Label" parent="UI/Settings/MaxFPS" unique_id=1319814599]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "FPS Limit:"
 
-[node name="30" type="Button" parent="UI/Settings/MaxFPS"]
+[node name="30" type="Button" parent="UI/Settings/MaxFPS" unique_id=349274292]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "30"
 
-[node name="40" type="Button" parent="UI/Settings/MaxFPS"]
+[node name="40" type="Button" parent="UI/Settings/MaxFPS" unique_id=601350247]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "40"
 
-[node name="60" type="Button" parent="UI/Settings/MaxFPS"]
+[node name="60" type="Button" parent="UI/Settings/MaxFPS" unique_id=1316643254]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "60"
 
-[node name="72" type="Button" parent="UI/Settings/MaxFPS"]
+[node name="72" type="Button" parent="UI/Settings/MaxFPS" unique_id=49360362]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "72"
 
-[node name="90" type="Button" parent="UI/Settings/MaxFPS"]
+[node name="90" type="Button" parent="UI/Settings/MaxFPS" unique_id=1324308453]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "90"
 
-[node name="120" type="Button" parent="UI/Settings/MaxFPS"]
+[node name="120" type="Button" parent="UI/Settings/MaxFPS" unique_id=1737890205]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "120"
 
-[node name="144" type="Button" parent="UI/Settings/MaxFPS"]
+[node name="144" type="Button" parent="UI/Settings/MaxFPS" unique_id=79917878]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "144"
 
-[node name="Unlimited" type="Button" parent="UI/Settings/MaxFPS"]
+[node name="Unlimited" type="Button" parent="UI/Settings/MaxFPS" unique_id=533403582]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Unlimited"
 
-[node name="ResolutionScale" type="HBoxContainer" parent="UI/Settings"]
+[node name="ResolutionScale" type="HBoxContainer" parent="UI/Settings" unique_id=19911945]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/ResolutionScale"]
+[node name="Label" type="Label" parent="UI/Settings/ResolutionScale" unique_id=516787099]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Resolution Scale:"
 
-[node name="UltraPerformance" type="Button" parent="UI/Settings/ResolutionScale"]
+[node name="UltraPerformance" type="Button" parent="UI/Settings/ResolutionScale" unique_id=142600755]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Ultra Performance"
 
-[node name="Performance" type="Button" parent="UI/Settings/ResolutionScale"]
+[node name="Performance" type="Button" parent="UI/Settings/ResolutionScale" unique_id=1702326269]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Performance"
 
-[node name="Balanced" type="Button" parent="UI/Settings/ResolutionScale"]
+[node name="Balanced" type="Button" parent="UI/Settings/ResolutionScale" unique_id=1689476050]
 modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Balanced"
 
-[node name="Quality" type="Button" parent="UI/Settings/ResolutionScale"]
+[node name="Quality" type="Button" parent="UI/Settings/ResolutionScale" unique_id=1389564962]
 modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Quality"
 
-[node name="UltraQuality" type="Button" parent="UI/Settings/ResolutionScale"]
+[node name="UltraQuality" type="Button" parent="UI/Settings/ResolutionScale" unique_id=1310532278]
 modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Ultra Quality"
 
-[node name="Native" type="Button" parent="UI/Settings/ResolutionScale"]
+[node name="Native" type="Button" parent="UI/Settings/ResolutionScale" unique_id=978291612]
 modulate = Color(1, 0.376471, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Native"
 
-[node name="ScaleFilter" type="HBoxContainer" parent="UI/Settings"]
+[node name="ScaleFilter" type="HBoxContainer" parent="UI/Settings" unique_id=1017563364]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/ScaleFilter"]
+[node name="Label" type="Label" parent="UI/Settings/ScaleFilter" unique_id=968750842]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Resolution Scale Filter:"
 
-[node name="Bilinear" type="Button" parent="UI/Settings/ScaleFilter"]
+[node name="Nearest" type="Button" parent="UI/Settings/ScaleFilter" unique_id=455958696]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Nearest"
+
+[node name="Bilinear" type="Button" parent="UI/Settings/ScaleFilter" unique_id=321763514]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Bilinear"
 
-[node name="FSR1" type="Button" parent="UI/Settings/ScaleFilter"]
+[node name="FSR1" type="Button" parent="UI/Settings/ScaleFilter" unique_id=1879333939]
 modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "AMD FSR 1.0"
 
-[node name="MetalFXSpatial" type="Button" parent="UI/Settings/ScaleFilter"]
+[node name="MetalFXSpatial" type="Button" parent="UI/Settings/ScaleFilter" unique_id=1285124171]
 modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "MetalFX Spatial"
 
-[node name="FSR2" type="Button" parent="UI/Settings/ScaleFilter"]
+[node name="FSR2" type="Button" parent="UI/Settings/ScaleFilter" unique_id=480647464]
 modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "AMD FSR 2.2"
 
-[node name="MetalFXTemporal" type="Button" parent="UI/Settings/ScaleFilter"]
+[node name="MetalFXTemporal" type="Button" parent="UI/Settings/ScaleFilter" unique_id=1450129499]
 modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "MetalFX Temporal"
 
-[node name="HSeparator2" type="HSeparator" parent="UI/Settings"]
+[node name="HSeparator2" type="HSeparator" parent="UI/Settings" unique_id=1680250124]
 layout_mode = 2
 
-[node name="TAA" type="HBoxContainer" parent="UI/Settings"]
+[node name="TAA" type="HBoxContainer" parent="UI/Settings" unique_id=1248738753]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/TAA"]
+[node name="Label" type="Label" parent="UI/Settings/TAA" unique_id=2025168532]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Temporal Antialiasing:"
 
-[node name="Disabled" type="Button" parent="UI/Settings/TAA"]
+[node name="Disabled" type="Button" parent="UI/Settings/TAA" unique_id=732253335]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Disabled"
 
-[node name="Enabled" type="Button" parent="UI/Settings/TAA"]
+[node name="Enabled" type="Button" parent="UI/Settings/TAA" unique_id=1398158229]
 modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Enabled"
 
-[node name="MSAA" type="HBoxContainer" parent="UI/Settings"]
+[node name="MSAA" type="HBoxContainer" parent="UI/Settings" unique_id=190979908]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/MSAA"]
+[node name="Label" type="Label" parent="UI/Settings/MSAA" unique_id=839402567]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Multisample Antialiasing:"
 
-[node name="Disabled" type="Button" parent="UI/Settings/MSAA"]
+[node name="Disabled" type="Button" parent="UI/Settings/MSAA" unique_id=516295948]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Disabled"
 
-[node name="2X" type="Button" parent="UI/Settings/MSAA"]
+[node name="2X" type="Button" parent="UI/Settings/MSAA" unique_id=1053850328]
 modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "2×"
 
-[node name="4X" type="Button" parent="UI/Settings/MSAA"]
+[node name="4X" type="Button" parent="UI/Settings/MSAA" unique_id=527457744]
 modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "4×"
 
-[node name="8X" type="Button" parent="UI/Settings/MSAA"]
+[node name="8X" type="Button" parent="UI/Settings/MSAA" unique_id=613177525]
 modulate = Color(1, 0.376471, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "8×"
 
-[node name="FXAA" type="HBoxContainer" parent="UI/Settings"]
+[node name="ScreenSpaceAA" type="HBoxContainer" parent="UI/Settings" unique_id=828568315]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/FXAA"]
+[node name="Label" type="Label" parent="UI/Settings/ScreenSpaceAA" unique_id=377145755]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
-text = "Fast Approximate Antialiasing:"
+text = "Screen-Space Antialiasing:"
 
-[node name="Disabled" type="Button" parent="UI/Settings/FXAA"]
+[node name="Disabled" type="Button" parent="UI/Settings/ScreenSpaceAA" unique_id=1619630717]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Disabled"
 
-[node name="Enabled" type="Button" parent="UI/Settings/FXAA"]
+[node name="FXAA" type="Button" parent="UI/Settings/ScreenSpaceAA" unique_id=884760904]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 keep_pressed_outside = true
-text = "Enabled"
+text = "FXAA"
 
-[node name="ShadowMapping" type="HBoxContainer" parent="UI/Settings"]
+[node name="SMAA" type="Button" parent="UI/Settings/ScreenSpaceAA" unique_id=477751064]
+modulate = Color(1, 1, 0.3137255, 1)
 layout_mode = 2
-theme_override_constants/separation = 8
+size_flags_horizontal = 3
+toggle_mode = true
+keep_pressed_outside = true
+text = "SMAA"
 
-[node name="Label" type="Label" parent="UI/Settings/ShadowMapping"]
+[node name="ShadowMapping" type="HBoxContainer" parent="UI/Settings" unique_id=1511937078]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="UI/Settings/ShadowMapping" unique_id=1029609967]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Shadow Mapping:"
 
-[node name="Disabled" type="Button" parent="UI/Settings/ShadowMapping"]
+[node name="Disabled" type="Button" parent="UI/Settings/ShadowMapping" unique_id=1578627253]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Disabled"
 
-[node name="Enabled" type="Button" parent="UI/Settings/ShadowMapping"]
+[node name="Enabled" type="Button" parent="UI/Settings/ShadowMapping" unique_id=1904307764]
 modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Enabled"
 
-[node name="GIType" type="HBoxContainer" parent="UI/Settings"]
+[node name="GIType" type="HBoxContainer" parent="UI/Settings" unique_id=1525708964]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/GIType"]
+[node name="Label" type="Label" parent="UI/Settings/GIType" unique_id=737390969]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Global Illumination Type:"
 
-[node name="LightmapGI" type="Button" parent="UI/Settings/GIType"]
+[node name="LightmapGI" type="Button" parent="UI/Settings/GIType" unique_id=44793426]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "LightmapGI"
 
-[node name="VoxelGI" type="Button" parent="UI/Settings/GIType"]
+[node name="VoxelGI" type="Button" parent="UI/Settings/GIType" unique_id=1983823264]
 modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "VoxelGI"
 
-[node name="SDFGI" type="Button" parent="UI/Settings/GIType"]
+[node name="SDFGI" type="Button" parent="UI/Settings/GIType" unique_id=1578657799]
 modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "SDFGI"
 
-[node name="GIQuality" type="HBoxContainer" parent="UI/Settings"]
+[node name="GIQuality" type="HBoxContainer" parent="UI/Settings" unique_id=870441429]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/GIQuality"]
+[node name="Label" type="Label" parent="UI/Settings/GIQuality" unique_id=1493844638]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Global Illumination Quality:"
 
-[node name="Disabled" type="Button" parent="UI/Settings/GIQuality"]
+[node name="Disabled" type="Button" parent="UI/Settings/GIQuality" unique_id=1585433100]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Disabled"
 
-[node name="Low" type="Button" parent="UI/Settings/GIQuality"]
+[node name="Low" type="Button" parent="UI/Settings/GIQuality" unique_id=1000151434]
 modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Low"
 
-[node name="High" type="Button" parent="UI/Settings/GIQuality"]
+[node name="High" type="Button" parent="UI/Settings/GIQuality" unique_id=1235652684]
 modulate = Color(1, 0.376471, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "High"
 
-[node name="SSAO" type="HBoxContainer" parent="UI/Settings"]
+[node name="SSAO" type="HBoxContainer" parent="UI/Settings" unique_id=1305397337]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/SSAO"]
+[node name="Label" type="Label" parent="UI/Settings/SSAO" unique_id=57007525]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Screen-space Ambient Occlusion:"
 
-[node name="Disabled" type="Button" parent="UI/Settings/SSAO"]
+[node name="Disabled" type="Button" parent="UI/Settings/SSAO" unique_id=1680579275]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Disabled"
 
-[node name="Medium" type="Button" parent="UI/Settings/SSAO"]
+[node name="Medium" type="Button" parent="UI/Settings/SSAO" unique_id=786353232]
 modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Medium"
 
-[node name="High" type="Button" parent="UI/Settings/SSAO"]
+[node name="High" type="Button" parent="UI/Settings/SSAO" unique_id=962935294]
 modulate = Color(1, 0.376471, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "High"
 
-[node name="SSIL" type="HBoxContainer" parent="UI/Settings"]
+[node name="SSIL" type="HBoxContainer" parent="UI/Settings" unique_id=2069718655]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/SSIL"]
+[node name="Label" type="Label" parent="UI/Settings/SSIL" unique_id=1096216149]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Screen-space Indirect Lighting:"
 
-[node name="Disabled" type="Button" parent="UI/Settings/SSIL"]
+[node name="Disabled" type="Button" parent="UI/Settings/SSIL" unique_id=251857440]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Disabled"
 
-[node name="Medium" type="Button" parent="UI/Settings/SSIL"]
+[node name="Medium" type="Button" parent="UI/Settings/SSIL" unique_id=738846535]
 modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Medium"
 
-[node name="High" type="Button" parent="UI/Settings/SSIL"]
+[node name="High" type="Button" parent="UI/Settings/SSIL" unique_id=1944455120]
 modulate = Color(1, 0.376471, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "High"
 
-[node name="Bloom" type="HBoxContainer" parent="UI/Settings"]
+[node name="Bloom" type="HBoxContainer" parent="UI/Settings" unique_id=2060184356]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/Bloom"]
+[node name="Label" type="Label" parent="UI/Settings/Bloom" unique_id=151275605]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Bloom:"
 
-[node name="Disabled" type="Button" parent="UI/Settings/Bloom"]
+[node name="Disabled" type="Button" parent="UI/Settings/Bloom" unique_id=1945798888]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Disabled"
 
-[node name="Enabled" type="Button" parent="UI/Settings/Bloom"]
+[node name="Enabled" type="Button" parent="UI/Settings/Bloom" unique_id=1138793223]
 modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Enabled"
 
-[node name="VolumetricFog" type="HBoxContainer" parent="UI/Settings"]
+[node name="VolumetricFog" type="HBoxContainer" parent="UI/Settings" unique_id=1631429580]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UI/Settings/VolumetricFog"]
+[node name="Label" type="Label" parent="UI/Settings/VolumetricFog" unique_id=324136324]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Volumetric Fog:"
 
-[node name="Disabled" type="Button" parent="UI/Settings/VolumetricFog"]
+[node name="Disabled" type="Button" parent="UI/Settings/VolumetricFog" unique_id=1570878569]
 modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Disabled"
 
-[node name="Enabled" type="Button" parent="UI/Settings/VolumetricFog"]
+[node name="Enabled" type="Button" parent="UI/Settings/VolumetricFog" unique_id=2040088370]
 modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Enabled"
 
-[node name="HSeparator" type="HSeparator" parent="UI/Settings"]
+[node name="HSeparator" type="HSeparator" parent="UI/Settings" unique_id=536412912]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Actions" type="HBoxContainer" parent="UI/Settings"]
+[node name="Actions" type="HBoxContainer" parent="UI/Settings" unique_id=1209396316]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Apply" type="Button" parent="UI/Settings/Actions"]
+[node name="Apply" type="Button" parent="UI/Settings/Actions" unique_id=1898348177]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Apply"
 
-[node name="Cancel" type="Button" parent="UI/Settings/Actions"]
+[node name="Cancel" type="Button" parent="UI/Settings/Actions" unique_id=433030297]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cancel"
 
-[node name="Loading" type="HBoxContainer" parent="UI"]
+[node name="Loading" type="HBoxContainer" parent="UI" unique_id=1639148534]
 visible = false
 layout_mode = 0
 anchor_top = 1.0
@@ -805,16 +820,16 @@ offset_top = -135.0
 offset_right = -130.0
 offset_bottom = -100.0
 
-[node name="Label" type="Label" parent="UI/Loading"]
+[node name="Label" type="Label" parent="UI/Loading" unique_id=1961373571]
 layout_mode = 2
 text = "Loading..."
 
-[node name="Progress" type="ProgressBar" parent="UI/Loading"]
+[node name="Progress" type="ProgressBar" parent="UI/Loading" unique_id=1379961033]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="DoneTimer" type="Timer" parent="UI/Loading"]
+[node name="DoneTimer" type="Timer" parent="UI/Loading" unique_id=459006344]
 wait_time = 0.5
 one_shot = true
 

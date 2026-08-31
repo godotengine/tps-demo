@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://csx8hue5klwn1"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://csx8hue5klwn1"]
 
 [ext_resource type="Texture2D" uid="uid://dtlacu2mfg4cr" path="res://level/textures/structure/trim_emission_lights_orm.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://dflt45b68hqv8" path="res://level/textures/structure/trim_emission_lights_albedo.png" id="2"]

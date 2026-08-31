@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://ct6gqk0powrr4"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ct6gqk0powrr4"]
 
 [ext_resource type="Texture2D" uid="uid://s1qpxe4ao8l" path="res://level/textures/props/reactor_cylinder_emissive.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://cp1sttp6pfsim" path="res://level/textures/props/reactor_cylinder_normal.png" id="2"]

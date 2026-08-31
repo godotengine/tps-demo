@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://crai084xm7kj"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://crai084xm7kj"]
 
 [ext_resource type="Texture2D" uid="uid://c0s2chpxfbfva" path="res://level/textures/props/door_normal.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://crmon0kumdi2t" path="res://level/textures/props/door_orm.png" id="2"]

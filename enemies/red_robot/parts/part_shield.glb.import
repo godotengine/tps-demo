@@ -16,6 +16,8 @@ dest_files=["res://.godot/imported/part_shield.glb-d6c233d3d85ae961b022dca28194d
 nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=false
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -48,3 +50,4 @@ _subresources={
 }
 gltf/naming_version=0
 gltf/embedded_image_handling=1
+gltf/texture_map_mode=0

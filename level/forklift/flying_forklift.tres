@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bb4rjtvtwl1a3"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bb4rjtvtwl1a3"]
 
 [ext_resource type="Texture2D" uid="uid://do3riae3njc8h" path="res://level/forklift/flying_forklift_emission.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://b8w456lyydinp" path="res://level/forklift/flying_forklift_albedo.png" id="2"]

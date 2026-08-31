@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dln4kthc3tvfv"]
+[gd_scene format=3 uid="uid://dln4kthc3tvfv"]
 
 [ext_resource type="PackedScene" uid="uid://b3kcdt0p1pr74" path="res://level/forklift/flying_forklift.glb" id="1"]
 [ext_resource type="Texture2D" uid="uid://8lj2sib517fx" path="res://level/forklift/dot.png" id="2"]
@@ -33,21 +33,21 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.1, 0.3, 1)
 colors = PackedColorArray(0.0431373, 0.458824, 1, 1, 0.42, 0.874333, 1, 0.858824, 0.945098, 0.627451, 1, 0.411765, 0.12549, 0.25098, 1, 0)
 
-[node name="FlyingForklift" type="CharacterBody3D"]
+[node name="FlyingForklift" type="CharacterBody3D" unique_id=590037938]
 script = ExtResource("3")
 
-[node name="FlyingForkliftModel2" parent="." instance=ExtResource("1")]
+[node name="FlyingForkliftModel2" parent="." unique_id=660367620 instance=ExtResource("1")]
 
-[node name="RedFlyingForklift" parent="FlyingForkliftModel2" index="0"]
+[node name="RedFlyingForklift" parent="FlyingForkliftModel2" index="0" unique_id=516751117]
 visible = false
 
-[node name="YellowFlyingForklift" parent="FlyingForkliftModel2" index="1"]
+[node name="YellowFlyingForklift" parent="FlyingForkliftModel2" index="1" unique_id=1129096468]
 visible = false
 
-[node name="Collider" type="CollisionShape3D" parent="."]
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=298979238]
 shape = SubResource("1")
 
-[node name="Particles1" type="CPUParticles3D" parent="."]
+[node name="Particles1" type="CPUParticles3D" parent="." unique_id=946836414]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.471727, -0.277269, -2.89514)
 amount = 20
 lifetime = 0.5
@@ -63,7 +63,7 @@ angular_velocity_max = 360.0
 scale_amount_curve = SubResource("Curve_bs8xw")
 color_ramp = SubResource("4")
 
-[node name="Particles2" type="CPUParticles3D" parent="."]
+[node name="Particles2" type="CPUParticles3D" parent="." unique_id=1907428855]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.501376, -0.277269, -2.89514)
 amount = 20
 lifetime = 0.5
@@ -79,7 +79,7 @@ angular_velocity_max = 360.0
 scale_amount_curve = SubResource("Curve_bs8xw")
 color_ramp = SubResource("4")
 
-[node name="Particles3" type="CPUParticles3D" parent="."]
+[node name="Particles3" type="CPUParticles3D" parent="." unique_id=1527369752]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1.42691, -0.414244, -2.48934)
 amount = 20
 lifetime = 0.5
@@ -95,7 +95,7 @@ angular_velocity_max = 360.0
 scale_amount_curve = SubResource("Curve_bs8xw")
 color_ramp = SubResource("4")
 
-[node name="Particles4" type="CPUParticles3D" parent="."]
+[node name="Particles4" type="CPUParticles3D" parent="." unique_id=393937133]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.33273, -0.414244, -2.48934)
 amount = 20
 lifetime = 0.5
@@ -111,7 +111,7 @@ angular_velocity_max = 360.0
 scale_amount_curve = SubResource("Curve_bs8xw")
 color_ramp = SubResource("4")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=773347702]
 transform = Transform3D(1, 0, 0, 0, -0.819152, 0.573576, 0, -0.573576, -0.819152, 0, 0.181815, 4.10661)
 light_color = Color(0.439216, 0.752941, 1, 1)
 light_energy = 12.0
@@ -119,6 +119,7 @@ light_volumetric_fog_energy = 10.0
 light_projector = ExtResource("4_47076")
 light_bake_mode = 0
 shadow_enabled = true
+shadow_bias = 0.06
 shadow_blur = 0.5
 spot_range = 50.0
 spot_angle = 50.0
